@@ -52,7 +52,7 @@ const I18N = {
         { k: "Loop", body: "Elk resultaat voedt het fundament terug. Het systeem leert en wordt elke maand beter." } ] },
     work: { eyebrow: "Showcase", h2: "Wat we lanceerden", manage: "Beheer showcase ↗", view: "Bekijk case ↗" },
     reviews: { eyebrow: "Reviews", h2: "Bewijs, geen beloftes.", word: "reviews" },
-    byline: { by: "Flii.app, by", name: "Flii Media", desc: "Het digital & AI-studio uit Amstelveen achter dit product.", link: "Bezoek flii.nl ↗" },
+    byline: { by: "by", name: "Flii Media" },
     who: { eyebrow: "Voor wie we werken", h2: "Gebouwd voor ambitie.",
       lede: "Geen goedkope leverancier. Een partner voor teams die iets willen bouwen dat presteert.",
       items: [
@@ -144,7 +144,7 @@ const I18N = {
         { k: "Loop", body: "Every result feeds the foundation back. The system learns and gets better every month." } ] },
     work: { eyebrow: "Showcase", h2: "What we've shipped", manage: "Manage showcase ↗", view: "View case ↗" },
     reviews: { eyebrow: "Reviews", h2: "Proof, not promises.", word: "reviews" },
-    byline: { by: "Flii.app, by", name: "Flii Media", desc: "The digital & AI studio from Amstelveen behind this product.", link: "Visit flii.nl ↗" },
+    byline: { by: "by", name: "Flii Media" },
     who: { eyebrow: "Who we're for", h2: "Built for ambition.",
       lede: "Not a low-cost vendor. A partner for teams ready to build something that performs.",
       items: [
@@ -563,28 +563,39 @@ function DockBar({ openConsult }) {
 function LoopDiagram() {
   const { t } = useLang();
   const items = t.loop.items;
+  const [hover, setHover] = useState(null);
   const C = 200, R = 140;
   const pts = [[C, C - R], [C + R, C], [C, C + R], [C - R, C]];
   const labels = [[C, C - R - 22], [C + R + 16, C], [C, C + R + 30], [C - R - 16, C]];
   const anchors = ["middle", "start", "middle", "end"];
   return (
-    <svg className="loop-svg" viewBox="-100 -10 600 420" role="img" aria-label="Flii Loop">
-      <circle cx={C} cy={C} r={R} className="loop-ring" />
-      {[-45, 45, 135, 225].map((deg, i) => {
-        const a = deg * Math.PI / 180, x = C + R * Math.cos(a), y = C + R * Math.sin(a);
-        return <path key={i} className="loop-arrow" d="M-5,-4 L4,0 L-5,4" transform={`translate(${x},${y}) rotate(${deg + 90})`} />;
-      })}
-      <g className="loop-spin"><circle cx={C} cy={C - R} r="5.5" className="loop-dot" /></g>
-      {pts.map((p, i) => (
-        <g key={i}>
-          <circle cx={p[0]} cy={p[1]} r="11" className={`loop-node ${i === items.length - 1 ? "loop-node-acc" : ""}`} />
-          <text x={p[0]} y={p[1]} className="loop-node-n" textAnchor="middle" dominantBaseline="central">{i + 1}</text>
-          <text x={labels[i][0]} y={labels[i][1]} className="loop-label" textAnchor={anchors[i]} dominantBaseline="central">{items[i].k}</text>
-        </g>
-      ))}
-      <text x={C} y={C - 9} className="loop-center-t" textAnchor="middle">Flii Loop</text>
-      <text x={C} y={C + 13} className="loop-center-s" textAnchor="middle">{t.loop.center}</text>
-    </svg>
+    <div className="loop-diagram-inner">
+      <svg className="loop-svg" viewBox="-100 -10 600 420" role="img" aria-label="Flii Loop">
+        <circle cx={C} cy={C} r={R} className="loop-ring" />
+        {[-45, 45, 135, 225].map((deg, i) => {
+          const a = deg * Math.PI / 180, x = C + R * Math.cos(a), y = C + R * Math.sin(a);
+          return <path key={i} className="loop-arrow" d="M-5,-4 L4,0 L-5,4" transform={`translate(${x},${y}) rotate(${deg + 90})`} />;
+        })}
+        <g className="loop-spin"><circle cx={C} cy={C - R} r="5.5" className="loop-dot" /></g>
+        {pts.map((p, i) => (
+          <g key={i} className={`loop-node-g ${hover === i ? "on" : ""}`} tabIndex={0}
+            onMouseEnter={() => setHover(i)} onMouseLeave={() => setHover(null)}
+            onFocus={() => setHover(i)} onBlur={() => setHover(null)}>
+            <circle cx={p[0]} cy={p[1]} r="26" className="loop-hit" />
+            <circle cx={p[0]} cy={p[1]} r="11" className={`loop-node ${i === items.length - 1 ? "loop-node-acc" : ""}`} />
+            <text x={p[0]} y={p[1]} className="loop-node-n" textAnchor="middle" dominantBaseline="central">{i + 1}</text>
+            <text x={labels[i][0]} y={labels[i][1]} className="loop-label" textAnchor={anchors[i]} dominantBaseline="central">{items[i].k}</text>
+          </g>
+        ))}
+      </svg>
+      <div className="loop-tip" aria-hidden>
+        {hover !== null ? (
+          <><span className="loop-tip-h">{items[hover].k}</span><span className="loop-tip-d">{items[hover].body}</span></>
+        ) : (
+          <><span className="loop-tip-h">Flii Loop</span><span className="loop-tip-s mono">{t.loop.center}</span></>
+        )}
+      </div>
+    </div>
   );
 }
 
@@ -738,20 +749,18 @@ function Home({ content, openConsult }) {
 
       <section className="band band-mist">
         <div className="wrap">
-          <Section>
-            <a href="https://flii.nl" target="_blank" rel="noreferrer" className="byline">
-              <span className="byline-mark"><FliiLogo variant="mark" /></span>
-              <span className="byline-text">
-                <span className="byline-by mono">{t.byline.by}</span>
-                <span className="byline-name">{t.byline.name}</span>
-                <span className="byline-desc">{t.byline.desc}</span>
-              </span>
-              <span className="byline-link">{t.byline.link}</span>
-            </a>
-          </Section>
           <Section className="quotes-head">
             <div><div className="eyebrow">{t.reviews.eyebrow}</div><h2 className="display h2">{t.reviews.h2}</h2></div>
-            <div className="rating-badge"><span className="rating-stars" aria-hidden>★★★★★</span><span className="rating-meta"><strong>{avg}</strong><span className="mono">{reviews.length} {t.reviews.word}</span></span></div>
+          </Section>
+          <Section>
+            <div className="byline">
+              <div className="byline-brand">
+                <FliiLogo variant="word" />
+                <span className="byline-div" aria-hidden />
+                <a href="https://flii.nl" target="_blank" rel="noreferrer" className="byline-by">{t.byline.by} <span className="byline-name">{t.byline.name}</span> <span className="byline-arrow" aria-hidden>↗</span></a>
+              </div>
+              <div className="rating-badge"><span className="rating-stars" aria-hidden>★★★★★</span><span className="rating-meta"><strong>{avg}</strong><span className="mono">{reviews.length} {t.reviews.word}</span></span></div>
+            </div>
           </Section>
           <div className="quote-grid">
             {reviews.slice(0, 6).map((q, i) => (
@@ -1276,8 +1285,16 @@ button{font-family:inherit;}
 .loop-node-n{fill:#C9C6BD;font-family:'IBM Plex Mono',monospace;font-size:11px;}
 .loop-label{fill:var(--paper);font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:14px;}
 .loop-dot{fill:var(--mag);filter:drop-shadow(0 0 6px rgba(231,37,90,0.85));}
-.loop-center-t{fill:var(--paper);font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:18px;letter-spacing:-0.01em;}
-.loop-center-s{fill:#9A978E;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.12em;text-transform:uppercase;}
+.loop-diagram-inner{position:relative;display:flex;justify-content:center;width:100%;}
+.loop-node-g{cursor:pointer;outline:none;}
+.loop-hit{fill:transparent;}
+.loop-node-g .loop-node{transition:fill .15s,stroke .15s,r .15s;}
+.loop-node-g:hover .loop-node,.loop-node-g.on .loop-node,.loop-node-g:focus-visible .loop-node{stroke:var(--mag);fill:#2A1019;}
+.loop-node-g:hover .loop-label,.loop-node-g.on .loop-label,.loop-node-g:focus-visible .loop-label{fill:#fff;}
+.loop-tip{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:42%;max-width:200px;display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center;pointer-events:none;}
+.loop-tip-h{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:17px;letter-spacing:-0.01em;color:var(--paper);line-height:1.15;}
+.loop-tip-d{font-size:12.5px;line-height:1.4;color:#C9C6BD;}
+.loop-tip-s{font-size:9.5px;letter-spacing:0.12em;text-transform:uppercase;color:#9A978E;}
 .loop-spin{transform-box:view-box;transform-origin:200px 200px;animation:loop-rotate 16s linear infinite;}
 @keyframes loop-rotate{to{transform:rotate(360deg);}}
 .loop-steps{display:flex;flex-direction:column;gap:20px;}
@@ -1304,15 +1321,15 @@ button{font-family:inherit;}
 
 /* quotes */
 .quote-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-.byline{display:flex;align-items:center;gap:18px;padding:18px 24px;border:1px solid var(--line);border-radius:16px;background:var(--card);margin-bottom:44px;text-decoration:none;color:inherit;transition:border-color .15s,transform .15s,box-shadow .15s;}
-.byline:hover{border-color:var(--ink);transform:translateY(-2px);box-shadow:0 24px 44px -28px rgba(23,23,23,0.22);}
-.byline-mark{flex:none;display:flex;}
-.byline-mark .logo-mark{width:34px;height:34px;}
-.byline-text{display:flex;flex-direction:column;gap:1px;flex:1;min-width:0;}
-.byline-by{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--soft);}
-.byline-name{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:18px;color:var(--ink);letter-spacing:-0.01em;}
-.byline-desc{font-size:13.5px;color:var(--mid);}
-.byline-link{flex:none;font-weight:600;font-size:14px;color:var(--mag);white-space:nowrap;}
+.byline{display:flex;align-items:center;justify-content:space-between;gap:18px 28px;flex-wrap:wrap;padding:18px 24px;border:1px solid var(--line);border-radius:16px;background:var(--card);margin-bottom:40px;}
+.byline-brand{display:inline-flex;align-items:center;gap:16px;}
+.byline-brand .brand{font-size:24px;}
+.byline-div{width:1px;height:24px;background:var(--line);flex:none;}
+.byline-by{display:inline-flex;align-items:center;gap:7px;font-size:16px;color:var(--mid);font-weight:600;text-decoration:none;}
+.byline-name{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:18px;color:var(--mag);letter-spacing:-0.01em;}
+.byline-arrow{color:var(--mag);font-weight:700;}
+.byline-by:hover .byline-name{text-decoration:underline;text-underline-offset:3px;}
+.byline .rating-badge{border:none;background:transparent;padding:0;}
 .quote-card{background:var(--card);border:1px solid var(--line);border-radius:18px;transition:transform .2s,box-shadow .2s;}
 .quote-card:hover{transform:translateY(-4px);box-shadow:0 30px 50px -28px rgba(23,23,23,0.16);}
 .quote-link{display:flex;flex-direction:column;height:100%;padding:26px;}
@@ -1463,9 +1480,8 @@ button{font-family:inherit;}
   .hero-scroll{display:none;}
   .node-net-canvas{-webkit-mask-image:none;mask-image:none;}
   .node-net{opacity:0.6;}
-  .byline{flex-wrap:wrap;gap:14px;padding:16px 18px;}
-  .byline-desc{display:none;}
-  .byline-link{width:100%;}
+  .byline{gap:14px;padding:16px 18px;}
+  .byline-brand{flex-wrap:wrap;gap:12px;}
 }
 @media(prefers-reduced-motion:reduce){
   .reveal{opacity:1;transform:none;transition:none;}
