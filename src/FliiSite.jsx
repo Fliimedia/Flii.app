@@ -589,12 +589,16 @@ function LoopDiagram() {
 /* ---------- Flii Loop glowing ring mark ---------- */
 function FliiLoopMark({ label }) {
   return (
-    <div className="loopmark">
-      <div className="loopmark-glow" aria-hidden />
-      <div className="loopmark-ring" aria-hidden />
-      <div className="loopmark-spark" aria-hidden><span /></div>
-      <div className="loopmark-core"><span className="loopmark-core-t">{label}</span></div>
-    </div>
+    <span className="loopmark-wrap">
+      <span className="loopmark">
+        <span className="loopmark-reso r1" aria-hidden />
+        <span className="loopmark-reso r2" aria-hidden />
+        <span className="loopmark-glow" aria-hidden />
+        <span className="loopmark-ring" aria-hidden />
+        <span className="loopmark-spark" aria-hidden><span /></span>
+      </span>
+      <span className="loopmark-cap mono">{label}</span>
+    </span>
   );
 }
 
@@ -1157,18 +1161,21 @@ button{font-family:inherit;}
 .node-net-canvas{display:block;width:100%;height:100%;-webkit-mask-image:linear-gradient(102deg,transparent 0%,rgba(0,0,0,0.08) 34%,#000 68%);mask-image:linear-gradient(102deg,transparent 0%,rgba(0,0,0,0.08) 34%,#000 68%);}
 .hero-inner{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:48px;}
 .hero-text{max-width:620px;}
-.hero-loopmark{flex:none;display:block;border-radius:50%;outline:none;}
-.loopmark{position:relative;width:300px;height:300px;}
-.loopmark-ring,.loopmark-glow{position:absolute;border-radius:50%;background:conic-gradient(from 0deg,#E7255A,#FF4D8D,#C04BFF,#7A5BFF,#FF6FA3,#FF7A3D,#E7255A);animation:loopmark-spin 9s linear infinite;}
-.loopmark-ring{inset:0;-webkit-mask:radial-gradient(farthest-side,#0000 calc(100% - 18px),#000 calc(100% - 17px));mask:radial-gradient(farthest-side,#0000 calc(100% - 18px),#000 calc(100% - 17px));}
-.loopmark-glow{inset:-8px;filter:blur(17px);opacity:.55;-webkit-mask:radial-gradient(farthest-side,#0000 calc(100% - 32px),#000 calc(100% - 24px));mask:radial-gradient(farthest-side,#0000 calc(100% - 32px),#000 calc(100% - 24px));animation:loopmark-spin 9s linear infinite,loopmark-flicker 2.6s steps(3,end) infinite;}
-.loopmark-spark{position:absolute;inset:0;animation:loopmark-spin 9s linear infinite;}
-.loopmark-spark span{position:absolute;top:-3px;left:50%;width:8px;height:8px;margin-left:-4px;border-radius:50%;background:#fff;box-shadow:0 0 12px 3px rgba(255,120,170,0.9),0 0 4px 1px #fff;}
-.loopmark-core{position:absolute;inset:0;display:grid;place-items:center;background:radial-gradient(closest-side,rgba(243,241,235,0.92),rgba(243,241,235,0) 72%);border-radius:50%;}
-.loopmark-core-t{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:23px;letter-spacing:-0.02em;color:var(--ink);}
+.hero-loopmark{flex:none;display:block;text-decoration:none;outline:none;}
+.loopmark-wrap{display:flex;flex-direction:column;align-items:center;gap:14px;}
+.loopmark{position:relative;width:96px;height:96px;}
+.loopmark-ring,.loopmark-glow{position:absolute;border-radius:50%;background:conic-gradient(from 0deg,#E7255A,#FF5E9A 10%,#E7255A 24%,#C04BFF 40%,#E7255A 56%,#FF7A3D 68%,#E7255A 82%,#FF5E9A 92%,#E7255A);animation:loopmark-spin 7s linear infinite;}
+.loopmark-ring{inset:0;-webkit-mask:radial-gradient(farthest-side,#0000 calc(100% - 3px),#000 calc(100% - 2.5px));mask:radial-gradient(farthest-side,#0000 calc(100% - 3px),#000 calc(100% - 2.5px));}
+.loopmark-glow{inset:-4px;filter:blur(7px);opacity:.5;-webkit-mask:radial-gradient(farthest-side,#0000 calc(100% - 7px),#000 calc(100% - 4px));mask:radial-gradient(farthest-side,#0000 calc(100% - 7px),#000 calc(100% - 4px));animation:loopmark-spin 7s linear infinite,loopmark-flicker 3s steps(4,end) infinite;}
+.loopmark-reso{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(231,37,90,0.45);animation:loopmark-reso 3.4s ease-out infinite;}
+.loopmark-reso.r2{animation-delay:1.7s;}
+.loopmark-spark{position:absolute;inset:0;animation:loopmark-spin 7s linear infinite;}
+.loopmark-spark span{position:absolute;top:-2px;left:50%;width:5px;height:5px;margin-left:-2.5px;border-radius:50%;background:#fff;box-shadow:0 0 8px 2px rgba(255,120,170,0.9),0 0 3px 1px #fff;}
+.loopmark-cap{font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--mid);}
 @keyframes loopmark-spin{to{transform:rotate(360deg);}}
-@keyframes loopmark-flicker{0%,100%{opacity:.5;}40%{opacity:.72;}60%{opacity:.58;}}
-.hero-loopmark:hover .loopmark-glow{opacity:.85;}
+@keyframes loopmark-flicker{0%,100%{opacity:.42;}45%{opacity:.62;}65%{opacity:.5;}}
+@keyframes loopmark-reso{0%{transform:scale(1);opacity:.5;}70%{opacity:0;}100%{transform:scale(1.7);opacity:0;}}
+.hero-loopmark:hover .loopmark-glow{opacity:.78;}
 .hero-h1{font-size:clamp(44px,8vw,84px);margin:0 0 20px;}
 .grad{color:var(--mag);}
 .hero-kicker{display:inline-flex;align-items:center;gap:9px;padding:7px 14px 7px 12px;margin-bottom:24px;border:1px solid var(--line);border-radius:999px;background:rgba(251,250,247,0.55);backdrop-filter:blur(6px);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid);}
@@ -1397,7 +1404,7 @@ button{font-family:inherit;}
   .burger{display:flex;}
   .hero-inner{flex-direction:column;align-items:flex-start;gap:36px;}
   .hero-loopmark{align-self:center;}
-  .loopmark{width:240px;height:240px;}
+  .loopmark{width:84px;height:84px;}
   .service-grid,.stats-grid,.aud-grid,.steps-grid,.brandwall{grid-template-columns:repeat(2,1fr);}
   .loop-cycle{grid-template-columns:1fr;gap:36px;}
   .loop-svg{max-width:360px;}
@@ -1421,12 +1428,11 @@ button{font-family:inherit;}
   .hero-scroll{display:none;}
   .node-net-canvas{-webkit-mask-image:none;mask-image:none;}
   .node-net{opacity:0.6;}
-  .loopmark{width:208px;height:208px;}
-  .loopmark-core-t{font-size:18px;}
+  .loopmark{width:76px;height:76px;}
 }
 @media(prefers-reduced-motion:reduce){
   .reveal{opacity:1;transform:none;transition:none;}
   .hl::after{animation:none;transform:scaleX(1);}
-  .hero-dot,.hero-scroll-line,.loop-spin,.loopmark-ring,.loopmark-glow,.loopmark-spark{animation:none;}
+  .hero-dot,.hero-scroll-line,.loop-spin,.loopmark-ring,.loopmark-glow,.loopmark-spark,.loopmark-reso{animation:none;}
 }
 `;
