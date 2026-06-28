@@ -52,6 +52,7 @@ const I18N = {
         { k: "Loop", body: "Elk resultaat voedt het fundament terug. Het systeem leert en wordt elke maand beter." } ] },
     work: { eyebrow: "Showcase", h2: "Wat we lanceerden", manage: "Beheer showcase ↗", view: "Bekijk case ↗" },
     reviews: { eyebrow: "Reviews", h2: "Bewijs, geen beloftes.", word: "reviews" },
+    byline: { by: "Flii.app, by", name: "Flii Media", desc: "Het digital & AI-studio uit Amstelveen achter dit product.", link: "Bezoek flii.nl ↗" },
     who: { eyebrow: "Voor wie we werken", h2: "Gebouwd voor ambitie.",
       lede: "Geen goedkope leverancier. Een partner voor teams die iets willen bouwen dat presteert.",
       items: [
@@ -143,6 +144,7 @@ const I18N = {
         { k: "Loop", body: "Every result feeds the foundation back. The system learns and gets better every month." } ] },
     work: { eyebrow: "Showcase", h2: "What we've shipped", manage: "Manage showcase ↗", view: "View case ↗" },
     reviews: { eyebrow: "Reviews", h2: "Proof, not promises.", word: "reviews" },
+    byline: { by: "Flii.app, by", name: "Flii Media", desc: "The digital & AI studio from Amstelveen behind this product.", link: "Visit flii.nl ↗" },
     who: { eyebrow: "Who we're for", h2: "Built for ambition.",
       lede: "Not a low-cost vendor. A partner for teams ready to build something that performs.",
       items: [
@@ -711,6 +713,17 @@ function Home({ content, openConsult }) {
 
       <section className="band band-mist">
         <div className="wrap">
+          <Section>
+            <a href="https://flii.nl" target="_blank" rel="noreferrer" className="byline">
+              <span className="byline-mark"><FliiLogo variant="mark" /></span>
+              <span className="byline-text">
+                <span className="byline-by mono">{t.byline.by}</span>
+                <span className="byline-name">{t.byline.name}</span>
+                <span className="byline-desc">{t.byline.desc}</span>
+              </span>
+              <span className="byline-link">{t.byline.link}</span>
+            </a>
+          </Section>
           <Section className="quotes-head">
             <div><div className="eyebrow">{t.reviews.eyebrow}</div><h2 className="display h2">{t.reviews.h2}</h2></div>
             <div className="rating-badge"><span className="rating-stars" aria-hidden>★★★★★</span><span className="rating-meta"><strong>{avg}</strong><span className="mono">{reviews.length} {t.reviews.word}</span></span></div>
@@ -1272,6 +1285,15 @@ button{font-family:inherit;}
 
 /* quotes */
 .quote-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.byline{display:flex;align-items:center;gap:18px;padding:18px 24px;border:1px solid var(--line);border-radius:16px;background:var(--card);margin-bottom:44px;text-decoration:none;color:inherit;transition:border-color .15s,transform .15s,box-shadow .15s;}
+.byline:hover{border-color:var(--ink);transform:translateY(-2px);box-shadow:0 24px 44px -28px rgba(23,23,23,0.22);}
+.byline-mark{flex:none;display:flex;}
+.byline-mark .logo-mark{width:34px;height:34px;}
+.byline-text{display:flex;flex-direction:column;gap:1px;flex:1;min-width:0;}
+.byline-by{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--soft);}
+.byline-name{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:18px;color:var(--ink);letter-spacing:-0.01em;}
+.byline-desc{font-size:13.5px;color:var(--mid);}
+.byline-link{flex:none;font-weight:600;font-size:14px;color:var(--mag);white-space:nowrap;}
 .quote-card{background:var(--card);border:1px solid var(--line);border-radius:18px;transition:transform .2s,box-shadow .2s;}
 .quote-card:hover{transform:translateY(-4px);box-shadow:0 30px 50px -28px rgba(23,23,23,0.16);}
 .quote-link{display:flex;flex-direction:column;height:100%;padding:26px;}
@@ -1422,6 +1444,9 @@ button{font-family:inherit;}
   .hero-scroll{display:none;}
   .node-net-canvas{-webkit-mask-image:none;mask-image:none;}
   .node-net{opacity:0.6;}
+  .byline{flex-wrap:wrap;gap:14px;padding:16px 18px;}
+  .byline-desc{display:none;}
+  .byline-link{width:100%;}
 }
 @media(prefers-reduced-motion:reduce){
   .reveal{opacity:1;transform:none;transition:none;}
