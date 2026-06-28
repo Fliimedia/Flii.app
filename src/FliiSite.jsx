@@ -43,7 +43,7 @@ const I18N = {
       { value: 21, suffix: " dagen", label: "Van brief tot live" },
       { value: 100, suffix: "%", label: "AI-native oplevering" },
       { value: 12, suffix: "+", label: "Producten gelanceerd" } ],
-    loop: { eyebrow: "Flii Loop", h2: "Eén AI-fundament. Elke maand slimmer.",
+    loop: { eyebrow: "Flii Loop", h2: "Eén AI-fundament. Elke maand slimmer.", center: "elke maand beter",
       lede: "Flii Loop legt een AI-fundament onder je bedrijf. Daarop verbeteren we wat je al doet en sluiten we slimme marketing-apps aan. Elk resultaat komt terug als data, en het hele systeem wordt scherper.",
       items: [
         { k: "Fundament", body: "We koppelen je data en tools tot één AI-fundament: de basis waar alles op draait." },
@@ -134,7 +134,7 @@ const I18N = {
       { value: 21, suffix: " days", label: "Brief to live" },
       { value: 100, suffix: "%", label: "AI-native delivery" },
       { value: 12, suffix: "+", label: "Products shipped" } ],
-    loop: { eyebrow: "Flii Loop", h2: "One AI foundation. Smarter every month.",
+    loop: { eyebrow: "Flii Loop", h2: "One AI foundation. Smarter every month.", center: "smarter monthly",
       lede: "Flii Loop lays an AI foundation under your business. On top of it we sharpen what you already do and plug in smart marketing apps. Every result comes back as data, and the whole system gets sharper.",
       items: [
         { k: "Foundation", body: "We connect your data and tools into one AI foundation: the base everything runs on." },
@@ -557,6 +557,35 @@ function DockBar({ openConsult }) {
 }
 
 /* ---------- home ---------- */
+/* ---------- Flii Loop cyclic diagram ---------- */
+function LoopDiagram() {
+  const { t } = useLang();
+  const items = t.loop.items;
+  const C = 200, R = 140;
+  const pts = [[C, C - R], [C + R, C], [C, C + R], [C - R, C]];
+  const labels = [[C, C - R - 24], [C + R + 20, C], [C, C + R + 32], [C - R - 20, C]];
+  const anchors = ["middle", "start", "middle", "end"];
+  return (
+    <svg className="loop-svg" viewBox="0 0 400 400" role="img" aria-label="Flii Loop">
+      <circle cx={C} cy={C} r={R} className="loop-ring" />
+      {[-45, 45, 135, 225].map((deg, i) => {
+        const a = deg * Math.PI / 180, x = C + R * Math.cos(a), y = C + R * Math.sin(a);
+        return <path key={i} className="loop-arrow" d="M-5,-4 L4,0 L-5,4" transform={`translate(${x},${y}) rotate(${deg + 90})`} />;
+      })}
+      <g className="loop-spin"><circle cx={C} cy={C - R} r="5.5" className="loop-dot" /></g>
+      {pts.map((p, i) => (
+        <g key={i}>
+          <circle cx={p[0]} cy={p[1]} r="11" className={`loop-node ${i === items.length - 1 ? "loop-node-acc" : ""}`} />
+          <text x={p[0]} y={p[1]} className="loop-node-n" textAnchor="middle" dominantBaseline="central">{i + 1}</text>
+          <text x={labels[i][0]} y={labels[i][1]} className="loop-label" textAnchor={anchors[i]} dominantBaseline="central">{items[i].k}</text>
+        </g>
+      ))}
+      <text x={C} y={C - 9} className="loop-center-t" textAnchor="middle">Flii Loop</text>
+      <text x={C} y={C + 13} className="loop-center-s" textAnchor="middle">{t.loop.center}</text>
+    </svg>
+  );
+}
+
 function Home({ content, openConsult }) {
   const { t } = useLang();
   const { apps, articles, reviews, certs } = content;
@@ -631,12 +660,16 @@ function Home({ content, openConsult }) {
       <section className="band band-dark" id="loop">
         <div className="wrap">
           <Section><div className="eyebrow on-dark">{t.loop.eyebrow}</div><h2 className="display h2 on-dark">{t.loop.h2}</h2><p className="lede on-dark-soft">{t.loop.lede}</p></Section>
-          <div className="loop-grid">
-            {t.loop.items.map((l, i) => (
-              <Section key={i} className="loop-item" style={{ transitionDelay: `${i * 80}ms` }}>
-                <div className="loop-k mono">{String(i + 1).padStart(2, "0")} · {l.k}</div><p className="loop-body">{l.body}</p>
-              </Section>
-            ))}
+          <div className="loop-cycle">
+            <Section className="loop-diagram"><LoopDiagram /></Section>
+            <Section className="loop-steps">
+              {t.loop.items.map((l, i) => (
+                <div key={i} className="loop-step">
+                  <div className="loop-step-n mono">{String(i + 1).padStart(2, "0")}</div>
+                  <div><h3 className="loop-step-h">{l.k}</h3><p className="loop-step-b">{l.body}</p></div>
+                </div>
+              ))}
+            </Section>
           </div>
         </div>
       </section>
@@ -1170,10 +1203,25 @@ button{font-family:inherit;}
 .stat-label{font-size:12px;color:var(--mid);margin-top:12px;letter-spacing:0.04em;}
 
 /* loop */
-.loop-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:48px;}
-.loop-item{border-top:2px solid rgba(231,37,90,0.45);padding-top:18px;}
-.loop-k{font-size:13px;color:var(--mag);margin-bottom:12px;}
-.loop-body{font-size:14.5px;color:#C9C6BD;margin:0;}
+.loop-cycle{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center;margin-top:52px;}
+.loop-diagram{display:flex;justify-content:center;}
+.loop-svg{width:100%;max-width:420px;height:auto;display:block;overflow:visible;}
+.loop-ring{fill:none;stroke:rgba(255,255,255,0.14);stroke-width:1.5;}
+.loop-arrow{fill:none;stroke:rgba(255,255,255,0.32);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}
+.loop-node{fill:#1E1E1E;stroke:rgba(255,255,255,0.38);stroke-width:1.5;}
+.loop-node-acc{stroke:var(--mag);fill:#241016;}
+.loop-node-n{fill:#C9C6BD;font-family:'IBM Plex Mono',monospace;font-size:11px;}
+.loop-label{fill:var(--paper);font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:15px;}
+.loop-dot{fill:var(--mag);filter:drop-shadow(0 0 6px rgba(231,37,90,0.85));}
+.loop-center-t{fill:var(--paper);font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:18px;letter-spacing:-0.01em;}
+.loop-center-s{fill:#9A978E;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.12em;text-transform:uppercase;}
+.loop-spin{transform-box:view-box;transform-origin:200px 200px;animation:loop-rotate 16s linear infinite;}
+@keyframes loop-rotate{to{transform:rotate(360deg);}}
+.loop-steps{display:flex;flex-direction:column;gap:20px;}
+.loop-step{display:flex;gap:16px;align-items:flex-start;}
+.loop-step-n{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--mag);padding-top:3px;min-width:22px;}
+.loop-step-h{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:18px;margin:0 0 4px;color:var(--paper);}
+.loop-step-b{font-size:14.5px;color:#C9C6BD;margin:0;}
 
 /* work */
 .work-head,.quotes-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:40px;}
@@ -1320,7 +1368,9 @@ button{font-family:inherit;}
 @media(max-width:980px){
   .nav-links{display:none;}
   .burger{display:flex;}
-  .service-grid,.stats-grid,.loop-grid,.aud-grid,.steps-grid,.brandwall{grid-template-columns:repeat(2,1fr);}
+  .service-grid,.stats-grid,.aud-grid,.steps-grid,.brandwall{grid-template-columns:repeat(2,1fr);}
+  .loop-cycle{grid-template-columns:1fr;gap:36px;}
+  .loop-svg{max-width:360px;}
   .creds-row{grid-template-columns:repeat(2,1fr);}
   .work-grid,.post-grid{grid-template-columns:1fr;}
   .quote-grid,.contact-grid{grid-template-columns:repeat(2,1fr);}
@@ -1330,7 +1380,7 @@ button{font-family:inherit;}
   .nav-cta{display:none;}
   .band,.cta-band{padding:64px 0;}
   .hero{padding:60px 0 72px;}
-  .service-grid,.stats-grid,.loop-grid,.aud-grid,.steps-grid,.footer-grid,.quote-grid,.contact-grid,.brandwall,.creds-row{grid-template-columns:1fr;}
+  .service-grid,.stats-grid,.aud-grid,.steps-grid,.footer-grid,.quote-grid,.contact-grid,.brandwall,.creds-row{grid-template-columns:1fr;}
   .stat{text-align:center;}
   .cms-row{flex-direction:column;align-items:flex-start;}
   .modal{padding:28px 22px;}
@@ -1345,6 +1395,6 @@ button{font-family:inherit;}
 @media(prefers-reduced-motion:reduce){
   .reveal{opacity:1;transform:none;transition:none;}
   .hl::after{animation:none;transform:scaleX(1);}
-  .hero-dot,.hero-scroll-line{animation:none;}
+  .hero-dot,.hero-scroll-line,.loop-spin{animation:none;}
 }
 `;
