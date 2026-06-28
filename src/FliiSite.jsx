@@ -563,10 +563,10 @@ function LoopDiagram() {
   const items = t.loop.items;
   const C = 200, R = 140;
   const pts = [[C, C - R], [C + R, C], [C, C + R], [C - R, C]];
-  const labels = [[C, C - R - 24], [C + R + 20, C], [C, C + R + 32], [C - R - 20, C]];
+  const labels = [[C, C - R - 22], [C + R + 16, C], [C, C + R + 30], [C - R - 16, C]];
   const anchors = ["middle", "start", "middle", "end"];
   return (
-    <svg className="loop-svg" viewBox="0 0 400 400" role="img" aria-label="Flii Loop">
+    <svg className="loop-svg" viewBox="-100 -10 600 420" role="img" aria-label="Flii Loop">
       <circle cx={C} cy={C} r={R} className="loop-ring" />
       {[-45, 45, 135, 225].map((deg, i) => {
         const a = deg * Math.PI / 180, x = C + R * Math.cos(a), y = C + R * Math.sin(a);
@@ -586,6 +586,18 @@ function LoopDiagram() {
   );
 }
 
+/* ---------- Flii Loop glowing ring mark ---------- */
+function FliiLoopMark({ label }) {
+  return (
+    <div className="loopmark">
+      <div className="loopmark-glow" aria-hidden />
+      <div className="loopmark-ring" aria-hidden />
+      <div className="loopmark-spark" aria-hidden><span /></div>
+      <div className="loopmark-core"><span className="loopmark-core-t">{label}</span></div>
+    </div>
+  );
+}
+
 function Home({ content, openConsult }) {
   const { t } = useLang();
   const { apps, articles, reviews, certs } = content;
@@ -595,13 +607,15 @@ function Home({ content, openConsult }) {
       <section className="hero" id="top">
         <div className="hero-bg" aria-hidden><NodeNetwork /></div>
         <div className="wrap hero-inner">
-          <div className="hero-kicker mono"><span className="hero-dot" aria-hidden />{t.slogan}</div>
-          <h1 className="display hero-h1">{t.hero.pre}<span className="hl">{t.hero.mark}</span>{t.hero.post}</h1>
-          <p className="hero-sub">{t.hero.sub}</p>
-          <div className="hero-actions">
-            <button onClick={openConsult} className="btn btn-primary">{t.hero.primary}</button>
-            <a href="#loop" className="btn btn-ghost">{t.hero.secondary}</a>
+          <div className="hero-text">
+            <div className="hero-kicker mono"><span className="hero-dot" aria-hidden />{t.slogan}</div>
+            <h1 className="display hero-h1">{t.hero.pre}<span className="hl">{t.hero.mark}</span>{t.hero.post}</h1>
+            <p className="hero-sub">{t.hero.sub}</p>
+            <div className="hero-actions">
+              <button onClick={openConsult} className="btn btn-primary">{t.hero.primary}</button>
+            </div>
           </div>
+          <a href="#loop" className="hero-loopmark" aria-label={t.loop.eyebrow}><FliiLoopMark label={t.loop.eyebrow} /></a>
         </div>
         <a href="#solutions" className="hero-scroll mono" aria-label="Scroll"><span>scroll</span><span className="hero-scroll-line" aria-hidden /></a>
       </section>
@@ -1141,7 +1155,20 @@ button{font-family:inherit;}
 .hero-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(58% 58% at 84% 12%,rgba(231,37,90,0.10),rgba(231,37,90,0) 70%);}
 .node-net{position:absolute;inset:0;}
 .node-net-canvas{display:block;width:100%;height:100%;-webkit-mask-image:linear-gradient(102deg,transparent 0%,rgba(0,0,0,0.08) 34%,#000 68%);mask-image:linear-gradient(102deg,transparent 0%,rgba(0,0,0,0.08) 34%,#000 68%);}
-.hero-inner{position:relative;z-index:2;max-width:740px;}
+.hero-inner{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:48px;}
+.hero-text{max-width:620px;}
+.hero-loopmark{flex:none;display:block;border-radius:50%;outline:none;}
+.loopmark{position:relative;width:300px;height:300px;}
+.loopmark-ring,.loopmark-glow{position:absolute;border-radius:50%;background:conic-gradient(from 0deg,#E7255A,#FF4D8D,#C04BFF,#7A5BFF,#FF6FA3,#FF7A3D,#E7255A);animation:loopmark-spin 9s linear infinite;}
+.loopmark-ring{inset:0;-webkit-mask:radial-gradient(farthest-side,#0000 calc(100% - 18px),#000 calc(100% - 17px));mask:radial-gradient(farthest-side,#0000 calc(100% - 18px),#000 calc(100% - 17px));}
+.loopmark-glow{inset:-8px;filter:blur(17px);opacity:.55;-webkit-mask:radial-gradient(farthest-side,#0000 calc(100% - 32px),#000 calc(100% - 24px));mask:radial-gradient(farthest-side,#0000 calc(100% - 32px),#000 calc(100% - 24px));animation:loopmark-spin 9s linear infinite,loopmark-flicker 2.6s steps(3,end) infinite;}
+.loopmark-spark{position:absolute;inset:0;animation:loopmark-spin 9s linear infinite;}
+.loopmark-spark span{position:absolute;top:-3px;left:50%;width:8px;height:8px;margin-left:-4px;border-radius:50%;background:#fff;box-shadow:0 0 12px 3px rgba(255,120,170,0.9),0 0 4px 1px #fff;}
+.loopmark-core{position:absolute;inset:0;display:grid;place-items:center;background:radial-gradient(closest-side,rgba(243,241,235,0.92),rgba(243,241,235,0) 72%);border-radius:50%;}
+.loopmark-core-t{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:23px;letter-spacing:-0.02em;color:var(--ink);}
+@keyframes loopmark-spin{to{transform:rotate(360deg);}}
+@keyframes loopmark-flicker{0%,100%{opacity:.5;}40%{opacity:.72;}60%{opacity:.58;}}
+.hero-loopmark:hover .loopmark-glow{opacity:.85;}
 .hero-h1{font-size:clamp(44px,8vw,84px);margin:0 0 20px;}
 .grad{color:var(--mag);}
 .hero-kicker{display:inline-flex;align-items:center;gap:9px;padding:7px 14px 7px 12px;margin-bottom:24px;border:1px solid var(--line);border-radius:999px;background:rgba(251,250,247,0.55);backdrop-filter:blur(6px);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid);}
@@ -1205,13 +1232,13 @@ button{font-family:inherit;}
 /* loop */
 .loop-cycle{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center;margin-top:52px;}
 .loop-diagram{display:flex;justify-content:center;}
-.loop-svg{width:100%;max-width:420px;height:auto;display:block;overflow:visible;}
+.loop-svg{width:100%;max-width:480px;height:auto;display:block;overflow:visible;}
 .loop-ring{fill:none;stroke:rgba(255,255,255,0.14);stroke-width:1.5;}
 .loop-arrow{fill:none;stroke:rgba(255,255,255,0.32);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}
 .loop-node{fill:#1E1E1E;stroke:rgba(255,255,255,0.38);stroke-width:1.5;}
 .loop-node-acc{stroke:var(--mag);fill:#241016;}
 .loop-node-n{fill:#C9C6BD;font-family:'IBM Plex Mono',monospace;font-size:11px;}
-.loop-label{fill:var(--paper);font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:15px;}
+.loop-label{fill:var(--paper);font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:14px;}
 .loop-dot{fill:var(--mag);filter:drop-shadow(0 0 6px rgba(231,37,90,0.85));}
 .loop-center-t{fill:var(--paper);font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:18px;letter-spacing:-0.01em;}
 .loop-center-s{fill:#9A978E;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.12em;text-transform:uppercase;}
@@ -1368,6 +1395,9 @@ button{font-family:inherit;}
 @media(max-width:980px){
   .nav-links{display:none;}
   .burger{display:flex;}
+  .hero-inner{flex-direction:column;align-items:flex-start;gap:36px;}
+  .hero-loopmark{align-self:center;}
+  .loopmark{width:240px;height:240px;}
   .service-grid,.stats-grid,.aud-grid,.steps-grid,.brandwall{grid-template-columns:repeat(2,1fr);}
   .loop-cycle{grid-template-columns:1fr;gap:36px;}
   .loop-svg{max-width:360px;}
@@ -1391,10 +1421,12 @@ button{font-family:inherit;}
   .hero-scroll{display:none;}
   .node-net-canvas{-webkit-mask-image:none;mask-image:none;}
   .node-net{opacity:0.6;}
+  .loopmark{width:208px;height:208px;}
+  .loopmark-core-t{font-size:18px;}
 }
 @media(prefers-reduced-motion:reduce){
   .reveal{opacity:1;transform:none;transition:none;}
   .hl::after{animation:none;transform:scaleX(1);}
-  .hero-dot,.hero-scroll-line,.loop-spin{animation:none;}
+  .hero-dot,.hero-scroll-line,.loop-spin,.loopmark-ring,.loopmark-glow,.loopmark-spark{animation:none;}
 }
 `;
