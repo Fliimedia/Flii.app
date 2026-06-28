@@ -590,13 +590,38 @@ function LoopDiagram() {
 
 /* ---------- Flii Loop glowing ring mark ---------- */
 function FliiLoopMark() {
+  const [reduce] = useState(() => typeof window !== "undefined" && window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
   return (
     <span className="loopmark" aria-hidden>
-      <span className="loopmark-reso r1" />
-      <span className="loopmark-reso r2" />
-      <span className="loopmark-glow" />
-      <span className="loopmark-ring" />
-      <span className="loopmark-spark"><span /></span>
+      <svg className="loopmark-svg" viewBox="0 0 100 100">
+        <defs>
+          <linearGradient id="lmGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="#B14BFF" />
+            <stop offset="28%" stopColor="#E7255A" />
+            <stop offset="50%" stopColor="#FF5E9A" />
+            <stop offset="64%" stopColor="#FFD2E4" />
+            <stop offset="80%" stopColor="#FF3D8E" />
+            <stop offset="100%" stopColor="#C04BFF" />
+          </linearGradient>
+          <filter id="lmFire" x="-60%" y="-60%" width="220%" height="220%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.022 0.04" numOctaves="2" seed="4" result="n">
+              {!reduce && <animate attributeName="baseFrequency" dur="6s" values="0.022 0.04;0.03 0.052;0.02 0.034;0.022 0.04" repeatCount="indefinite" />}
+            </feTurbulence>
+            <feDisplacementMap in="SourceGraphic" in2="n" scale="9" xChannelSelector="R" yChannelSelector="G">
+              {!reduce && <animate attributeName="scale" dur="5s" values="8;12.5;9;8" repeatCount="indefinite" />}
+            </feDisplacementMap>
+            <feGaussianBlur stdDeviation="0.5" />
+          </filter>
+          <filter id="lmGlow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="2.4" /></filter>
+        </defs>
+        <g className={reduce ? "" : "lm-rot"}>
+          <circle cx="50" cy="50" r="35" fill="none" stroke="url(#lmGrad)" strokeWidth="7" filter="url(#lmGlow)" opacity="0.5" />
+          <circle cx="50" cy="50" r="35" fill="none" stroke="url(#lmGrad)" strokeWidth="5" filter="url(#lmFire)" />
+        </g>
+        <g className={reduce ? "" : "lm-rot2"}>
+          <circle cx="50" cy="50" r="32" fill="none" stroke="url(#lmGrad)" strokeWidth="3" filter="url(#lmFire)" opacity="0.85" />
+        </g>
+      </svg>
     </span>
   );
 }
@@ -1175,18 +1200,12 @@ button{font-family:inherit;}
 .loop-cta:hover{color:var(--mag);}
 .loop-cta-t{white-space:nowrap;}
 .loop-cta-arrow{color:var(--mag);}
-.loopmark{position:relative;width:46px;height:46px;flex:none;}
-.loopmark-ring,.loopmark-glow{position:absolute;border-radius:50%;background:conic-gradient(from 0deg,#E7255A,#FF5E9A 10%,#E7255A 24%,#C04BFF 40%,#E7255A 56%,#FF7A3D 68%,#E7255A 82%,#FF5E9A 92%,#E7255A);animation:loopmark-spin 7s linear infinite;}
-.loopmark-ring{inset:0;-webkit-mask:radial-gradient(farthest-side,#0000 calc(100% - 2.5px),#000 calc(100% - 2px));mask:radial-gradient(farthest-side,#0000 calc(100% - 2.5px),#000 calc(100% - 2px));}
-.loopmark-glow{inset:-3px;filter:blur(5px);opacity:.5;-webkit-mask:radial-gradient(farthest-side,#0000 calc(100% - 6px),#000 calc(100% - 3px));mask:radial-gradient(farthest-side,#0000 calc(100% - 6px),#000 calc(100% - 3px));animation:loopmark-spin 7s linear infinite,loopmark-flicker 3s steps(4,end) infinite;}
-.loopmark-reso{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(231,37,90,0.45);animation:loopmark-reso 3.4s ease-out infinite;}
-.loopmark-reso.r2{animation-delay:1.7s;}
-.loopmark-spark{position:absolute;inset:0;animation:loopmark-spin 7s linear infinite;}
-.loopmark-spark span{position:absolute;top:-2px;left:50%;width:4px;height:4px;margin-left:-2px;border-radius:50%;background:#fff;box-shadow:0 0 7px 2px rgba(255,120,170,0.9),0 0 2px 1px #fff;}
+.loopmark{position:relative;width:52px;height:52px;flex:none;}
+.loopmark-svg{width:100%;height:100%;display:block;overflow:visible;filter:saturate(1.05);}
+.lm-rot{transform-box:view-box;transform-origin:50px 50px;animation:loopmark-spin 7s linear infinite;}
+.lm-rot2{transform-box:view-box;transform-origin:50px 50px;animation:loopmark-spin 10s linear infinite reverse;}
 @keyframes loopmark-spin{to{transform:rotate(360deg);}}
-@keyframes loopmark-flicker{0%,100%{opacity:.42;}45%{opacity:.62;}65%{opacity:.5;}}
-@keyframes loopmark-reso{0%{transform:scale(1);opacity:.5;}70%{opacity:0;}100%{transform:scale(1.7);opacity:0;}}
-.loop-cta:hover .loopmark-glow{opacity:.78;}
+.loop-cta:hover .loopmark-svg{filter:saturate(1.2) brightness(1.06);}
 .hero-h1{font-size:clamp(44px,8vw,84px);margin:0 0 20px;}
 .grad{color:var(--mag);}
 .hero-kicker{display:inline-flex;align-items:center;gap:9px;padding:7px 14px 7px 12px;margin-bottom:24px;border:1px solid var(--line);border-radius:999px;background:rgba(251,250,247,0.55);backdrop-filter:blur(6px);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid);}
@@ -1451,6 +1470,6 @@ button{font-family:inherit;}
 @media(prefers-reduced-motion:reduce){
   .reveal{opacity:1;transform:none;transition:none;}
   .hl{animation:none;}
-  .hero-dot,.hero-scroll-line,.loop-spin,.loopmark-ring,.loopmark-glow,.loopmark-spark,.loopmark-reso{animation:none;}
+  .hero-dot,.hero-scroll-line,.loop-spin,.lm-rot,.lm-rot2{animation:none;}
 }
 `;
