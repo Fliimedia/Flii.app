@@ -28,8 +28,7 @@ const I18N = {
     },
     hero: { pre: "AI architectuur als fundament van ", mark: "resultaat", post: "",
       sub: "Wij ontwerpen en ontwikkelen AI architectuur & apps. Gebouwd voor groei, gericht op rendement.",
-      primary: "Plan een gesprek", secondary: "Bekijk Flii Loop ↘",
-      spec: ["Fundament leggen", "Diensten verbeteren", "Apps aansluiten"] },
+      primary: "Plan een gesprek", secondary: "Bekijk Flii Loop ↘" },
     brandsLabel: "Merken waarvoor we bouwden",
     services: { eyebrow: "Wat we doen", h2: "Wat we bouwen",
       lede: "Design, development, marketing en automatisering. Eén team, één systeem, één doel om te halen.",
@@ -120,8 +119,7 @@ const I18N = {
     },
     hero: { pre: "AI architecture as the foundation of ", mark: "results", post: "",
       sub: "We design and build AI architecture & apps. Built for growth, focused on return.",
-      primary: "Book a consultation", secondary: "See Flii Loop ↘",
-      spec: ["Lay the foundation", "Improve services", "Connect apps"] },
+      primary: "Book a consultation", secondary: "See Flii Loop ↘" },
     brandsLabel: "Brands we've shipped for",
     services: { eyebrow: "What we do", h2: "What we build",
       lede: "Design, development, marketing and automation. One team, one system, one number to hit.",
@@ -331,12 +329,18 @@ function Counter({ value, suffix }) {
   useEffect(() => { const el = ref.current; if (!el) return; if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { setN(value); return; } const io = new IntersectionObserver((en) => { if (!en[0].isIntersecting) return; io.disconnect(); const dur = 1300, t0 = performance.now(); const tick = (t) => { const p = Math.min(1, (t - t0) / dur); setN(value * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(tick); }; requestAnimationFrame(tick); }, { threshold: 0.5 }); io.observe(el); return () => io.disconnect(); }, [value]);
   return <span ref={ref}>{Number.isInteger(value) ? Math.round(n) : n.toFixed(1)}{suffix}</span>;
 }
-function FliiLogo({ dark = false }) {
+function FliiLogo({ dark = false, variant = "word" }) {
+  if (variant === "mark") {
+    return (
+      <span className={`brand brand-mark ${dark ? "brand-on-dark" : ""}`}>
+        <svg className="logo-mark" viewBox="0 0 500 500" fill="none" aria-hidden>
+          <path fill={MAG} d="m 239.8092,332.68537 c -2.28447,-3.49286 -23.46567,-48.57731 -23.46567,-50.01464 0,-0.93415 13.88823,-0.66647 21.30481,-0.87484 7.75505,-0.21787 53.41913,-115.30501 53.06132,-114.03739 -1.54162,5.46154 -1.00892,4.30871 -0.54189,0.14626 L 322.17232,168.5 H 349.5 v 82.5 82.5 h -22 -22 l -0.26195,-38.32102 c -0.30405,-44.48 7.24157,-55.84478 -0.8773,-38.24361 -11.37304,20.61415 -25.02431,56.46612 -37.2072,76.63979 C 266.40468,334.4775 262.28909,334 253.90061,334 c -11.19087,0 -12.7022,0.80941 -14.09141,-1.31463 z m -82.3413,-2.91541 C 157.20134,329.07148 157.09952,292.5 157.24162,248.5 l 0.25838,-80 58.25,-0.25806 c 55.01074,-0.24371 59.35516,-1.52083 59.35032,0.13946 -0.003,0.96693 -4.62864,12.78964 -10.28528,24.20363 L 254.96003,214.35034 227.97492,214 201.5,214.5 v 13.5 13.5 l 19.3529,0.27195 19.3529,0.27196 0.91723,0.0629 c 1.38257,0.0949 -3.92785,10.20835 -7.20338,17.07342 l -6.24989,13.09893 -13.33998,-0.0597 L 201.5,272.5 l -0.5,29 -0.5,29 -21.27373,0.26996 c -16.47548,0.20907 -21.38304,-0.0165 -21.75837,-1 z" />
+        </svg>
+      </span>
+    );
+  }
   return (
-    <span className={`brand ${dark ? "brand-on-dark" : ""}`}>
-      <svg className="logo-mark" viewBox="0 0 500 500" fill="none" aria-hidden>
-        <path fill={MAG} d="m 239.8092,332.68537 c -2.28447,-3.49286 -23.46567,-48.57731 -23.46567,-50.01464 0,-0.93415 13.88823,-0.66647 21.30481,-0.87484 7.75505,-0.21787 53.41913,-115.30501 53.06132,-114.03739 -1.54162,5.46154 -1.00892,4.30871 -0.54189,0.14626 L 322.17232,168.5 H 349.5 v 82.5 82.5 h -22 -22 l -0.26195,-38.32102 c -0.30405,-44.48 7.24157,-55.84478 -0.8773,-38.24361 -11.37304,20.61415 -25.02431,56.46612 -37.2072,76.63979 C 266.40468,334.4775 262.28909,334 253.90061,334 c -11.19087,0 -12.7022,0.80941 -14.09141,-1.31463 z m -82.3413,-2.91541 C 157.20134,329.07148 157.09952,292.5 157.24162,248.5 l 0.25838,-80 58.25,-0.25806 c 55.01074,-0.24371 59.35516,-1.52083 59.35032,0.13946 -0.003,0.96693 -4.62864,12.78964 -10.28528,24.20363 L 254.96003,214.35034 227.97492,214 201.5,214.5 v 13.5 13.5 l 19.3529,0.27195 19.3529,0.27196 0.91723,0.0629 c 1.38257,0.0949 -3.92785,10.20835 -7.20338,17.07342 l -6.24989,13.09893 -13.33998,-0.0597 L 201.5,272.5 l -0.5,29 -0.5,29 -21.27373,0.26996 c -16.47548,0.20907 -21.38304,-0.0165 -21.75837,-1 z" />
-      </svg>
+    <span className={`brand brand-word-only ${dark ? "brand-on-dark" : ""}`}>
       <span className="brand-word">flii<span className="brand-dot">.app</span></span>
     </span>
   );
@@ -465,7 +469,14 @@ function Nav({ openConsult, admin, onLogin, onLogout }) {
   const { t } = useLang();
   const [menu, setMenu] = useState(false);
   const [solOpen, setSolOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const close = () => setMenu(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
   const top = [
     { label: t.nav.work, href: "#work" }, { label: t.nav.approach, href: "#loop" },
     { label: t.nav.about, href: "#about" }, { label: t.nav.insights, href: "#blog" }, { label: t.nav.contact, href: "#contact" },
@@ -473,7 +484,7 @@ function Nav({ openConsult, admin, onLogin, onLogout }) {
   return (
     <header className="nav">
       <div className="wrap nav-inner">
-        <a href="#/" aria-label="Flii.app home" onClick={close}><FliiLogo /></a>
+        <a href="#/" className="nav-brand" aria-label="Flii.app home" onClick={close}><FliiLogo variant={scrolled ? "mark" : "word"} /></a>
         <nav className="nav-links" aria-label="Primary">
           <div className="nav-item" onMouseEnter={() => setSolOpen(true)} onMouseLeave={() => setSolOpen(false)}>
             <button className="nav-link">{t.nav.solutions} <span className="caret">›</span></button>
@@ -519,7 +530,7 @@ function Footer({ admin }) {
   return (
     <footer className="footer">
       <div className="wrap footer-grid">
-        <div><a href="#/" aria-label="Flii.app home"><FliiLogo dark /></a><p className="footer-note">{t.slogan}.</p></div>
+        <div><a href="#/" aria-label="Flii.app home"><FliiLogo dark variant="word" /></a><p className="footer-note">{t.slogan}.</p></div>
         <div className="footer-col"><div className="footer-h mono">{t.footer.solutions}</div>{t.mega.groups.flatMap((g) => g.items).map((c) => <a key={c.label} href={c.href}>{c.label}</a>)}</div>
         <div className="footer-col"><div className="footer-h mono">{t.footer.company}</div>{t.footer.company_links.filter((c) => c.href !== "#/cms" || admin).map((c) => <a key={c.label} href={c.href}>{c.label}</a>)}</div>
         <div className="footer-col"><div className="footer-h mono">{t.footer.connect}</div><a href="#">LinkedIn</a><a href="#">Instagram</a><a href="mailto:hello@flii.app">hello@flii.app</a></div>
@@ -561,9 +572,6 @@ function Home({ content, openConsult }) {
           <div className="hero-actions">
             <button onClick={openConsult} className="btn btn-primary">{t.hero.primary}</button>
             <a href="#loop" className="btn btn-ghost">{t.hero.secondary}</a>
-          </div>
-          <div className="hero-spec">
-            {t.hero.spec.map((s, i) => <span key={i} className="hero-spec-item mono">{s}</span>)}
           </div>
         </div>
         <a href="#solutions" className="hero-scroll mono" aria-label="Scroll"><span>scroll</span><span className="hero-scroll-line" aria-hidden /></a>
@@ -1074,13 +1082,14 @@ button{font-family:inherit;}
 .mega-feature{display:flex;flex-direction:column;gap:3px;padding:14px 16px;border-radius:13px;background:var(--ink);color:var(--paper);}
 .mega-feature-k{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--mag);}.mega-feature-t{font-size:14px;font-weight:600;}
 .nav-cta{display:flex;}
-.icon-btn{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;transition:all .15s;flex:none;}
-.icon-btn:hover{border-color:var(--ink);transform:translateY(-1px);}
-.admin-btn.on{border-color:var(--mag);color:var(--mag);}
+.icon-btn{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;border:none;background:transparent;color:var(--mid);cursor:pointer;transition:all .15s;flex:none;}
+.icon-btn:hover{color:var(--ink);background:rgba(23,23,23,0.05);}
+.admin-btn.on{color:var(--mag);}
+.admin-btn.on:hover{color:var(--mag);background:rgba(231,37,90,0.08);}
 .pin-input{letter-spacing:0.35em;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:18px;}
 .pin-err{color:var(--mag);font-size:12px;}
 .modal-sm{max-width:380px;}
-.burger{display:flex;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:9px;border-radius:10px;transition:background .15s;}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:9px;border-radius:10px;transition:background .15s;}
 .burger:hover{background:rgba(23,23,23,0.05);}
 .burger span{width:22px;height:2px;background:var(--ink);border-radius:2px;transition:transform .2s,opacity .2s;}
 .burger.on span:nth-child(1){transform:translateY(7px) rotate(45deg);}
@@ -1108,9 +1117,6 @@ button{font-family:inherit;}
 .hl{color:var(--mag);position:relative;white-space:nowrap;}
 .hl::after{content:"";position:absolute;left:0;right:0;bottom:0.02em;height:0.085em;background:var(--mag);border-radius:3px;opacity:.4;transform:scaleX(0);transform-origin:left;animation:hl-draw .85s cubic-bezier(.22,.61,.36,1) .55s forwards;}
 @keyframes hl-draw{to{transform:scaleX(1);}}
-.hero-spec{display:flex;flex-wrap:wrap;gap:18px;margin-top:30px;}
-.hero-spec-item{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:0.03em;color:var(--soft);}
-.hero-spec-item::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--mag);opacity:.7;flex:none;}
 .hero-scroll{position:absolute;left:50%;transform:translateX(-50%);bottom:16px;display:flex;flex-direction:column;align-items:center;gap:7px;font-size:9.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--soft);z-index:2;}
 .hero-scroll-line{width:1px;height:30px;background:linear-gradient(var(--soft),transparent);animation:scroll-fade 2s ease-in-out infinite;}
 @keyframes scroll-fade{0%,100%{opacity:.3;transform:scaleY(.7);transform-origin:top;}50%{opacity:1;transform:scaleY(1);transform-origin:top;}}
@@ -1242,8 +1248,8 @@ button{font-family:inherit;}
 .footer-col a:hover{color:var(--mag);}
 .footer-bottom{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:48px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.1);font-size:12.5px;color:#8C8980;}
 .dockbar{position:fixed;left:0;right:0;bottom:0;z-index:60;height:var(--dock);display:flex;align-items:center;justify-content:space-between;padding:0 16px;background:rgba(243,241,235,0.9);backdrop-filter:blur(12px);border-top:1px solid var(--line);}
-.dock-consult{display:inline-flex;align-items:center;gap:9px;height:38px;padding:0 16px 0 13px;border-radius:999px;border:none;cursor:pointer;background:var(--ink);color:var(--paper);font-weight:600;font-size:14px;transition:background .18s,transform .18s;}
-.dock-consult:hover{background:var(--mag);color:#fff;transform:translateY(-1px);}
+.dock-consult{display:inline-flex;align-items:center;gap:9px;height:38px;padding:0 16px 0 13px;border-radius:999px;border:none;cursor:pointer;background:var(--mag);color:#fff;font-weight:600;font-size:14px;transition:background .18s,transform .18s;}
+.dock-consult:hover{background:#cf1f50;transform:translateY(-1px);}
 .dock-consult svg{display:block;}
 .lang-toggle{display:inline-flex;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:3px;}
 .lang-btn{border:none;background:none;cursor:pointer;font-size:13px;font-weight:600;color:var(--soft);padding:6px 13px;border-radius:999px;transition:all .15s;}
@@ -1313,6 +1319,7 @@ button{font-family:inherit;}
 .reveal.in{opacity:1;transform:none;}
 @media(max-width:980px){
   .nav-links{display:none;}
+  .burger{display:flex;}
   .service-grid,.stats-grid,.loop-grid,.aud-grid,.steps-grid,.brandwall{grid-template-columns:repeat(2,1fr);}
   .creds-row{grid-template-columns:repeat(2,1fr);}
   .work-grid,.post-grid{grid-template-columns:1fr;}
