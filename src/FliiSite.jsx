@@ -28,7 +28,8 @@ const I18N = {
     },
     hero: { pre: "AI architectuur als fundament van ", mark: "resultaat", post: "",
       sub: "Wij ontwerpen en ontwikkelen AI architectuur & apps. Gebouwd voor groei, gericht op rendement.",
-      primary: "Plan een gesprek", secondary: "Bekijk Flii Loop ↘" },
+      primary: "Plan een gesprek", secondary: "Bekijk Flii Loop ↘",
+      spec: ["Fundament leggen", "Diensten verbeteren", "Apps aansluiten"] },
     brandsLabel: "Merken waarvoor we bouwden",
     services: { eyebrow: "Wat we doen", h2: "Wat we bouwen",
       lede: "Design, development, marketing en automatisering. Eén team, één systeem, één doel om te halen.",
@@ -119,7 +120,8 @@ const I18N = {
     },
     hero: { pre: "AI architecture as the foundation of ", mark: "results", post: "",
       sub: "We design and build AI architecture & apps. Built for growth, focused on return.",
-      primary: "Book a consultation", secondary: "See Flii Loop ↘" },
+      primary: "Book a consultation", secondary: "See Flii Loop ↘",
+      spec: ["Lay the foundation", "Improve services", "Connect apps"] },
     brandsLabel: "Brands we've shipped for",
     services: { eyebrow: "What we do", h2: "What we build",
       lede: "Design, development, marketing and automation. One team, one system, one number to hit.",
@@ -373,6 +375,7 @@ function NodeNetwork() {
           const ay = yPad + yspan * ty + (Math.random() - 0.5) * jitter;
           return { ax, ay, x: ax, y: ay, r: 1.5 + Math.random() * 1.2,
             ph: Math.random() * Math.PI * 2, amp: 1 + Math.random() * 1.3,
+            dph: Math.random() * Math.PI * 2, damp: 5 + Math.random() * 7,
             gph: Math.random() * Math.PI * 2, gsp: 0.00035 + Math.random() * 0.0004,
             accent: li === L - 1 };
         });
@@ -390,10 +393,10 @@ function NodeNetwork() {
 
     function frame(t) {
       ctx.clearRect(0, 0, W, H);
-      // very slow, tiny sway around anchors
+      // tiny fast breathing + very slow positional drift
       for (const layer of layers) for (const n of layer) {
-        n.x = n.ax + Math.sin(t * 0.00022 + n.ph) * n.amp;
-        n.y = n.ay + Math.cos(t * 0.00018 + n.ph * 1.3) * n.amp * 0.8;
+        n.x = n.ax + Math.sin(t * 0.00022 + n.ph) * n.amp + Math.sin(t * 0.00007 + n.dph) * n.damp;
+        n.y = n.ay + Math.cos(t * 0.00018 + n.ph * 1.3) * n.amp * 0.8 + Math.cos(t * 0.00006 + n.dph * 1.1) * n.damp * 0.8;
       }
       // faint static edges
       ctx.lineWidth = 1;
@@ -552,14 +555,18 @@ function Home({ content, openConsult }) {
       <section className="hero" id="top">
         <div className="hero-bg" aria-hidden><NodeNetwork /></div>
         <div className="wrap hero-inner">
-          <div className="eyebrow">{t.slogan}</div>
-          <h1 className="display hero-h1">{t.hero.pre}<span className="grad">{t.hero.mark}</span>{t.hero.post}</h1>
+          <div className="hero-kicker mono"><span className="hero-dot" aria-hidden />{t.slogan}</div>
+          <h1 className="display hero-h1">{t.hero.pre}<span className="hl">{t.hero.mark}</span>{t.hero.post}</h1>
           <p className="hero-sub">{t.hero.sub}</p>
           <div className="hero-actions">
             <button onClick={openConsult} className="btn btn-primary">{t.hero.primary}</button>
             <a href="#loop" className="btn btn-ghost">{t.hero.secondary}</a>
           </div>
+          <div className="hero-spec">
+            {t.hero.spec.map((s, i) => <span key={i} className="hero-spec-item mono">{s}</span>)}
+          </div>
         </div>
+        <a href="#solutions" className="hero-scroll mono" aria-label="Scroll"><span>scroll</span><span className="hero-scroll-line" aria-hidden /></a>
       </section>
 
       <Section className="brandwall-wrap">
@@ -1095,6 +1102,18 @@ button{font-family:inherit;}
 .hero-inner{position:relative;z-index:2;max-width:740px;}
 .hero-h1{font-size:clamp(44px,8vw,84px);margin:0 0 20px;}
 .grad{color:var(--mag);}
+.hero-kicker{display:inline-flex;align-items:center;gap:9px;padding:7px 14px 7px 12px;margin-bottom:24px;border:1px solid var(--line);border-radius:999px;background:rgba(251,250,247,0.55);backdrop-filter:blur(6px);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid);}
+.hero-dot{width:7px;height:7px;border-radius:50%;background:var(--mag);animation:dot-pulse 2.4s ease-in-out infinite;flex:none;}
+@keyframes dot-pulse{0%,100%{box-shadow:0 0 0 0 rgba(231,37,90,0.45);}50%{box-shadow:0 0 0 5px rgba(231,37,90,0);}}
+.hl{color:var(--mag);position:relative;white-space:nowrap;}
+.hl::after{content:"";position:absolute;left:0;right:0;bottom:0.02em;height:0.085em;background:var(--mag);border-radius:3px;opacity:.4;transform:scaleX(0);transform-origin:left;animation:hl-draw .85s cubic-bezier(.22,.61,.36,1) .55s forwards;}
+@keyframes hl-draw{to{transform:scaleX(1);}}
+.hero-spec{display:flex;flex-wrap:wrap;gap:18px;margin-top:30px;}
+.hero-spec-item{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:0.03em;color:var(--soft);}
+.hero-spec-item::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--mag);opacity:.7;flex:none;}
+.hero-scroll{position:absolute;left:50%;transform:translateX(-50%);bottom:16px;display:flex;flex-direction:column;align-items:center;gap:7px;font-size:9.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--soft);z-index:2;}
+.hero-scroll-line{width:1px;height:30px;background:linear-gradient(var(--soft),transparent);animation:scroll-fade 2s ease-in-out infinite;}
+@keyframes scroll-fade{0%,100%{opacity:.3;transform:scaleY(.7);transform-origin:top;}50%{opacity:1;transform:scaleY(1);transform-origin:top;}}
 .hero-sub{font-size:clamp(17px,2.2vw,20px);color:var(--mid);max-width:520px;margin:0 0 32px;}
 .hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
 
@@ -1312,10 +1331,13 @@ button{font-family:inherit;}
   .detail-metrics{gap:28px;}
   .dock-consult-label{display:none;}
   .dock-consult{padding:0 12px;width:38px;justify-content:center;}
+  .hero-scroll{display:none;}
   .node-net-canvas{-webkit-mask-image:none;mask-image:none;}
   .node-net{opacity:0.6;}
 }
 @media(prefers-reduced-motion:reduce){
   .reveal{opacity:1;transform:none;transition:none;}
+  .hl::after{animation:none;transform:scaleX(1);}
+  .hero-dot,.hero-scroll-line{animation:none;}
 }
 `;
