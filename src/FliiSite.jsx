@@ -28,7 +28,7 @@ const I18N = {
     },
     hero: { pre: "AI architectuur als fundament van ", mark: "resultaat", post: "",
       sub: "Wij ontwerpen en ontwikkelen AI architectuur & apps. Gebouwd voor groei, gericht op rendement.",
-      primary: "Plan een gesprek", secondary: "Bekijk Flii Loop ↘" },
+      primary: "Plan een gesprek", secondary: "Bekijk Flii Loop ↘", loopCta: "Test Flii Loop" },
     brandsLabel: "Merken waarvoor we bouwden",
     services: { eyebrow: "Wat we doen", h2: "Wat we bouwen",
       lede: "Design, development, marketing en automatisering. Eén team, één systeem, één doel om te halen.",
@@ -119,7 +119,7 @@ const I18N = {
     },
     hero: { pre: "AI architecture as the foundation of ", mark: "results", post: "",
       sub: "We design and build AI architecture & apps. Built for growth, focused on return.",
-      primary: "Book a consultation", secondary: "See Flii Loop ↘" },
+      primary: "Book a consultation", secondary: "See Flii Loop ↘", loopCta: "Test Flii Loop" },
     brandsLabel: "Brands we've shipped for",
     services: { eyebrow: "What we do", h2: "What we build",
       lede: "Design, development, marketing and automation. One team, one system, one number to hit.",
@@ -587,17 +587,14 @@ function LoopDiagram() {
 }
 
 /* ---------- Flii Loop glowing ring mark ---------- */
-function FliiLoopMark({ label }) {
+function FliiLoopMark() {
   return (
-    <span className="loopmark-wrap">
-      <span className="loopmark">
-        <span className="loopmark-reso r1" aria-hidden />
-        <span className="loopmark-reso r2" aria-hidden />
-        <span className="loopmark-glow" aria-hidden />
-        <span className="loopmark-ring" aria-hidden />
-        <span className="loopmark-spark" aria-hidden><span /></span>
-      </span>
-      <span className="loopmark-cap mono">{label}</span>
+    <span className="loopmark" aria-hidden>
+      <span className="loopmark-reso r1" />
+      <span className="loopmark-reso r2" />
+      <span className="loopmark-glow" />
+      <span className="loopmark-ring" />
+      <span className="loopmark-spark"><span /></span>
     </span>
   );
 }
@@ -611,15 +608,16 @@ function Home({ content, openConsult }) {
       <section className="hero" id="top">
         <div className="hero-bg" aria-hidden><NodeNetwork /></div>
         <div className="wrap hero-inner">
-          <div className="hero-text">
-            <div className="hero-kicker mono"><span className="hero-dot" aria-hidden />{t.slogan}</div>
-            <h1 className="display hero-h1">{t.hero.pre}<span className="hl">{t.hero.mark}</span>{t.hero.post}</h1>
-            <p className="hero-sub">{t.hero.sub}</p>
-            <div className="hero-actions">
-              <button onClick={openConsult} className="btn btn-primary">{t.hero.primary}</button>
-            </div>
+          <div className="hero-kicker mono"><span className="hero-dot" aria-hidden />{t.slogan}</div>
+          <h1 className="display hero-h1">{t.hero.pre}<span className="hl">{t.hero.mark}</span>{t.hero.post}</h1>
+          <p className="hero-sub">{t.hero.sub}</p>
+          <div className="hero-actions">
+            <button onClick={openConsult} className="btn btn-primary">{t.hero.primary}</button>
+            <a href="#loop" className="loop-cta" aria-label={t.hero.loopCta}>
+              <FliiLoopMark />
+              <span className="loop-cta-t">{t.hero.loopCta} <span className="loop-cta-arrow" aria-hidden>↘</span></span>
+            </a>
           </div>
-          <a href="#loop" className="hero-loopmark" aria-label={t.loop.eyebrow}><FliiLoopMark label={t.loop.eyebrow} /></a>
         </div>
         <a href="#solutions" className="hero-scroll mono" aria-label="Scroll"><span>scroll</span><span className="hero-scroll-line" aria-hidden /></a>
       </section>
@@ -1159,31 +1157,30 @@ button{font-family:inherit;}
 .hero-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(58% 58% at 84% 12%,rgba(231,37,90,0.10),rgba(231,37,90,0) 70%);}
 .node-net{position:absolute;inset:0;}
 .node-net-canvas{display:block;width:100%;height:100%;-webkit-mask-image:linear-gradient(102deg,transparent 0%,rgba(0,0,0,0.08) 34%,#000 68%);mask-image:linear-gradient(102deg,transparent 0%,rgba(0,0,0,0.08) 34%,#000 68%);}
-.hero-inner{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:48px;}
-.hero-text{max-width:620px;}
-.hero-loopmark{flex:none;display:block;text-decoration:none;outline:none;}
-.loopmark-wrap{display:flex;flex-direction:column;align-items:center;gap:14px;}
-.loopmark{position:relative;width:96px;height:96px;}
+.hero-inner{position:relative;z-index:2;max-width:740px;}
+.loop-cta{display:inline-flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink);font-weight:600;font-size:15px;}
+.loop-cta:hover{color:var(--mag);}
+.loop-cta-t{white-space:nowrap;}
+.loop-cta-arrow{color:var(--mag);}
+.loopmark{position:relative;width:46px;height:46px;flex:none;}
 .loopmark-ring,.loopmark-glow{position:absolute;border-radius:50%;background:conic-gradient(from 0deg,#E7255A,#FF5E9A 10%,#E7255A 24%,#C04BFF 40%,#E7255A 56%,#FF7A3D 68%,#E7255A 82%,#FF5E9A 92%,#E7255A);animation:loopmark-spin 7s linear infinite;}
-.loopmark-ring{inset:0;-webkit-mask:radial-gradient(farthest-side,#0000 calc(100% - 3px),#000 calc(100% - 2.5px));mask:radial-gradient(farthest-side,#0000 calc(100% - 3px),#000 calc(100% - 2.5px));}
-.loopmark-glow{inset:-4px;filter:blur(7px);opacity:.5;-webkit-mask:radial-gradient(farthest-side,#0000 calc(100% - 7px),#000 calc(100% - 4px));mask:radial-gradient(farthest-side,#0000 calc(100% - 7px),#000 calc(100% - 4px));animation:loopmark-spin 7s linear infinite,loopmark-flicker 3s steps(4,end) infinite;}
+.loopmark-ring{inset:0;-webkit-mask:radial-gradient(farthest-side,#0000 calc(100% - 2.5px),#000 calc(100% - 2px));mask:radial-gradient(farthest-side,#0000 calc(100% - 2.5px),#000 calc(100% - 2px));}
+.loopmark-glow{inset:-3px;filter:blur(5px);opacity:.5;-webkit-mask:radial-gradient(farthest-side,#0000 calc(100% - 6px),#000 calc(100% - 3px));mask:radial-gradient(farthest-side,#0000 calc(100% - 6px),#000 calc(100% - 3px));animation:loopmark-spin 7s linear infinite,loopmark-flicker 3s steps(4,end) infinite;}
 .loopmark-reso{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(231,37,90,0.45);animation:loopmark-reso 3.4s ease-out infinite;}
 .loopmark-reso.r2{animation-delay:1.7s;}
 .loopmark-spark{position:absolute;inset:0;animation:loopmark-spin 7s linear infinite;}
-.loopmark-spark span{position:absolute;top:-2px;left:50%;width:5px;height:5px;margin-left:-2.5px;border-radius:50%;background:#fff;box-shadow:0 0 8px 2px rgba(255,120,170,0.9),0 0 3px 1px #fff;}
-.loopmark-cap{font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--mid);}
+.loopmark-spark span{position:absolute;top:-2px;left:50%;width:4px;height:4px;margin-left:-2px;border-radius:50%;background:#fff;box-shadow:0 0 7px 2px rgba(255,120,170,0.9),0 0 2px 1px #fff;}
 @keyframes loopmark-spin{to{transform:rotate(360deg);}}
 @keyframes loopmark-flicker{0%,100%{opacity:.42;}45%{opacity:.62;}65%{opacity:.5;}}
 @keyframes loopmark-reso{0%{transform:scale(1);opacity:.5;}70%{opacity:0;}100%{transform:scale(1.7);opacity:0;}}
-.hero-loopmark:hover .loopmark-glow{opacity:.78;}
+.loop-cta:hover .loopmark-glow{opacity:.78;}
 .hero-h1{font-size:clamp(44px,8vw,84px);margin:0 0 20px;}
 .grad{color:var(--mag);}
 .hero-kicker{display:inline-flex;align-items:center;gap:9px;padding:7px 14px 7px 12px;margin-bottom:24px;border:1px solid var(--line);border-radius:999px;background:rgba(251,250,247,0.55);backdrop-filter:blur(6px);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid);}
 .hero-dot{width:7px;height:7px;border-radius:50%;background:var(--mag);animation:dot-pulse 2.4s ease-in-out infinite;flex:none;}
 @keyframes dot-pulse{0%,100%{box-shadow:0 0 0 0 rgba(231,37,90,0.45);}50%{box-shadow:0 0 0 5px rgba(231,37,90,0);}}
-.hl{color:var(--mag);position:relative;white-space:nowrap;}
-.hl::after{content:"";position:absolute;left:0;right:0;bottom:0.02em;height:0.085em;background:var(--mag);border-radius:3px;opacity:.4;transform:scaleX(0);transform-origin:left;animation:hl-draw .85s cubic-bezier(.22,.61,.36,1) .55s forwards;}
-@keyframes hl-draw{to{transform:scaleX(1);}}
+.hl{white-space:nowrap;background:linear-gradient(90deg,#E7255A 0%,#FF5E9A 18%,#E7255A 34%,#C04BFF 50%,#E7255A 66%,#FF7A3D 82%,#E7255A 100%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:hl-wave 5s linear infinite;}
+@keyframes hl-wave{0%{background-position:0% 0;}100%{background-position:200% 0;}}
 .hero-scroll{position:absolute;left:50%;transform:translateX(-50%);bottom:16px;display:flex;flex-direction:column;align-items:center;gap:7px;font-size:9.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--soft);z-index:2;}
 .hero-scroll-line{width:1px;height:30px;background:linear-gradient(var(--soft),transparent);animation:scroll-fade 2s ease-in-out infinite;}
 @keyframes scroll-fade{0%,100%{opacity:.3;transform:scaleY(.7);transform-origin:top;}50%{opacity:1;transform:scaleY(1);transform-origin:top;}}
@@ -1402,9 +1399,6 @@ button{font-family:inherit;}
 @media(max-width:980px){
   .nav-links{display:none;}
   .burger{display:flex;}
-  .hero-inner{flex-direction:column;align-items:flex-start;gap:36px;}
-  .hero-loopmark{align-self:center;}
-  .loopmark{width:84px;height:84px;}
   .service-grid,.stats-grid,.aud-grid,.steps-grid,.brandwall{grid-template-columns:repeat(2,1fr);}
   .loop-cycle{grid-template-columns:1fr;gap:36px;}
   .loop-svg{max-width:360px;}
@@ -1428,11 +1422,10 @@ button{font-family:inherit;}
   .hero-scroll{display:none;}
   .node-net-canvas{-webkit-mask-image:none;mask-image:none;}
   .node-net{opacity:0.6;}
-  .loopmark{width:76px;height:76px;}
 }
 @media(prefers-reduced-motion:reduce){
   .reveal{opacity:1;transform:none;transition:none;}
-  .hl::after{animation:none;transform:scaleX(1);}
+  .hl{animation:none;}
   .hero-dot,.hero-scroll-line,.loop-spin,.loopmark-ring,.loopmark-glow,.loopmark-spark,.loopmark-reso{animation:none;}
 }
 `;
