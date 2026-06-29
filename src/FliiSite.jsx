@@ -468,7 +468,7 @@ const UnlockIcon = () => (
 );
 /* ---------- nav + footer ---------- */
 function Nav({ openConsult, admin, onLogin, onLogout }) {
-  const { t } = useLang();
+  const { t, lang, setLang } = useLang();
   const [menu, setMenu] = useState(false);
   const [solOpen, setSolOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -506,9 +506,6 @@ function Nav({ openConsult, admin, onLogin, onLogout }) {
           {top.map((n) => <a key={n.label} href={n.href} className="nav-link">{n.label}</a>)}
         </nav>
         <div className="nav-cta"><button onClick={openConsult} className="btn btn-primary btn-sm">{t.nav.consult}</button></div>
-        {admin
-          ? <button className="icon-btn admin-btn on" onClick={onLogout} aria-label={t.login.logoutAria} title={t.login.logoutAria}><UnlockIcon /></button>
-          : <button className="icon-btn admin-btn" onClick={onLogin} aria-label={t.login.loginAria} title={t.login.loginAria}><LockIcon /></button>}
         <button className={`burger ${menu ? "on" : ""}`} aria-label="Menu" onClick={() => setMenu((m) => !m)}><span/><span/><span/></button>
       </div>
       {menu && (
@@ -522,6 +519,15 @@ function Nav({ openConsult, admin, onLogin, onLogout }) {
           {top.map((n) => <a key={n.label} href={n.href} onClick={close} className="mobile-top">{n.label}</a>)}
           {admin && <a href="#/cms" onClick={close} className="btn btn-ghost mobile-cms">{t.nav.manage}</a>}
           <button className="btn btn-primary" onClick={(e) => { close(); openConsult(e); }}>{t.nav.consult}</button>
+          <div className="mobile-foot">
+            <div className="lang-toggle" role="group" aria-label="Language">
+              <button className={`lang-btn ${lang === "nl" ? "on" : ""}`} onClick={() => setLang("nl")}>NL</button>
+              <button className={`lang-btn ${lang === "en" ? "on" : ""}`} onClick={() => setLang("en")}>EN</button>
+            </div>
+            {admin
+              ? <button className="mobile-login" onClick={() => { close(); onLogout(); }}><UnlockIcon /><span>{t.login.logoutAria}</span></button>
+              : <button className="mobile-login" onClick={() => { close(); onLogin(); }}><LockIcon /><span>{t.login.loginAria}</span></button>}
+          </div>
         </div>
       )}
     </header>
@@ -543,16 +549,21 @@ function Footer({ admin }) {
 }
 
 /* ---------- dock bar (fixed bottom) ---------- */
-function DockBar({ openConsult }) {
+function DockBar({ openConsult, admin, onLogin, onLogout }) {
   const { t, lang, setLang } = useLang();
   return (
     <div className="dockbar">
-      <button className="dock-consult" onClick={openConsult} aria-label={t.nav.consult}>
-        <CalIcon /><span className="dock-consult-label">{t.nav.consult}</span>
-      </button>
       <div className="lang-toggle" role="group" aria-label="Language">
         <button className={`lang-btn ${lang === "nl" ? "on" : ""}`} onClick={() => setLang("nl")}>NL</button>
         <button className={`lang-btn ${lang === "en" ? "on" : ""}`} onClick={() => setLang("en")}>EN</button>
+      </div>
+      <div className="dock-right">
+        <button className="dock-consult" onClick={openConsult} aria-label={t.nav.consult}>
+          <CalIcon /><span className="dock-consult-label">{t.nav.consult}</span>
+        </button>
+        {admin
+          ? <button className="icon-btn admin-btn on dock-login" onClick={onLogout} aria-label={t.login.logoutAria} title={t.login.logoutAria}><UnlockIcon /></button>
+          : <button className="icon-btn admin-btn dock-login" onClick={onLogin} aria-label={t.login.loginAria} title={t.login.loginAria}><LockIcon /></button>}
       </div>
     </div>
   );
@@ -637,6 +648,17 @@ function FliiLoopMark() {
   );
 }
 
+function Marquee({ items, render, className = "", duration = 32 }) {
+  return (
+    <div className={`marquee ${className}`}>
+      <div className="marquee-track" style={{ animationDuration: `${duration}s` }}>
+        {[0, 1].map((copy) => items.map((it, i) => (
+          <div className="marquee-item" key={`${copy}-${i}`} aria-hidden={copy === 1 ? true : undefined}>{render(it, copy === 1)}</div>
+        )))}
+      </div>
+    </div>
+  );
+}
 function Home({ content, openConsult }) {
   const { t } = useLang();
   const { apps, articles, reviews, certs } = content;
@@ -663,7 +685,7 @@ function Home({ content, openConsult }) {
       <Section className="brandwall-wrap">
         <div className="wrap">
           <div className="brandwall-label mono">{t.brandsLabel}</div>
-          <div className="brandwall">{BRANDS.map((b) => <div key={b} className="brand-cell"><span>{b}</span></div>)}</div>
+          <Marquee className="brand-marquee" items={BRANDS} duration={34} render={(b) => <span className="marquee-brand">{b}</span>} />
         </div>
       </Section>
 
@@ -687,16 +709,15 @@ function Home({ content, openConsult }) {
       <Section className="creds">
         <div className="wrap">
           <div className="creds-label mono">{t.certsLabel}</div>
-          <div className="creds-row">
-            {certs.map((c) => (
-              <a key={c.id} href={`#/cert/${c.id}`} className="cred">
-                <span className="cred-seal" aria-hidden>
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke={MAG} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
-                </span>
-                <span className="cred-info"><span className="cred-name">{c.name}</span><span className="cred-tier mono">{c.tier}</span></span>
-              </a>
-            ))}
-          </div>
+          <Marquee className="cred-marquee" items={certs} duration={28} render={(c, dup) => (
+            <a href={`#/cert/${c.id}`} className="marquee-cred" tabIndex={dup ? -1 : undefined}>
+              <span className="cred-seal" aria-hidden>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke={MAG} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+              </span>
+              <span className="marquee-cred-name">{c.name}</span>
+              <span className="marquee-cred-tier mono">{c.tier}</span>
+            </a>
+          )} />
         </div>
       </Section>
 
@@ -755,12 +776,11 @@ function Home({ content, openConsult }) {
           </Section>
           <Section>
             <div className="byline">
-              <div className="byline-brand">
-                <FliiLogo variant="word" />
-                <span className="byline-div" aria-hidden />
-                <a href="https://flii.nl" target="_blank" rel="noreferrer" className="byline-by">{t.byline.by} <span className="byline-name">{t.byline.name}</span> <span className="byline-arrow" aria-hidden>↗</span></a>
-              </div>
-              <div className="rating-badge"><span className="rating-stars" aria-hidden>★★★★★</span><span className="rating-meta"><strong>{avg}</strong><span className="mono">{reviews.length} {t.reviews.word}</span></span></div>
+              <div className="byline-brand"><FliiLogo variant="word" /></div>
+              <a href="https://flii.nl" target="_blank" rel="noreferrer" className="byline-right">
+                <span className="byline-by">{t.byline.by} <span className="byline-name">{t.byline.name}</span> <span className="byline-arrow" aria-hidden>↗</span></span>
+                <span className="rating-badge"><span className="rating-stars" aria-hidden>★★★★★</span><span className="rating-meta"><strong>{avg}</strong><span className="mono">{reviews.length} {t.reviews.word}</span></span></span>
+              </a>
             </div>
           </Section>
           <div className="quote-grid">
@@ -1123,7 +1143,7 @@ export default function FliiSite() {
         {route.name === "review" && <ReviewDetail content={content.data} id={route.id} />}
         {route.name === "cert" && <CertDetail content={content.data} id={route.id} />}
         <Footer admin={admin} />
-        <DockBar openConsult={openConsult} />
+        <DockBar openConsult={openConsult} admin={admin} onLogin={() => setLoginOpen(true)} onLogout={logout} />
         {consult && <ConsultModal onClose={() => setConsult(false)} />}
         {loginOpen && <LoginModal onClose={() => setLoginOpen(false)} onSuccess={grantAdmin} />}
       </div>
@@ -1236,6 +1256,19 @@ button{font-family:inherit;}
 /* brand wall */
 .brandwall-wrap{padding:8px 0 0;}
 .brandwall-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--soft);text-align:center;margin-bottom:20px;}
+.marquee{overflow:hidden;position:relative;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);}
+.marquee-track{display:flex;width:max-content;animation:marquee-scroll linear infinite;will-change:transform;}
+@keyframes marquee-scroll{to{transform:translateX(-50%);}}
+.marquee:hover .marquee-track{animation-play-state:paused;}
+.marquee-item{flex:none;display:flex;align-items:center;}
+.marquee-brand{display:flex;align-items:center;height:62px;padding:0 38px;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:21px;color:#B7B3A7;letter-spacing:-0.01em;white-space:nowrap;transition:color .2s;}
+.marquee-brand:hover{color:var(--ink);}
+.cred-marquee{margin-top:2px;}
+.marquee-cred{display:inline-flex;align-items:center;gap:10px;height:58px;padding:0 24px;text-decoration:none;white-space:nowrap;}
+.marquee-cred .cred-seal{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:rgba(231,37,90,0.10);flex:none;}
+.marquee-cred-name{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:16px;color:var(--ink);letter-spacing:-0.01em;transition:color .2s;}
+.marquee-cred-tier{font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--soft);}
+.marquee-cred:hover .marquee-cred-name{color:var(--mag);}
 .brandwall{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden;}
 .brand-cell{background:var(--paper);display:grid;place-items:center;padding:30px 16px;transition:background .2s;}
 .brand-cell span{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:21px;color:#B7B3A7;letter-spacing:-0.01em;transition:color .2s,transform .2s;}
@@ -1326,14 +1359,14 @@ button{font-family:inherit;}
 
 /* quotes */
 .quote-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-.byline{display:flex;align-items:center;justify-content:space-between;gap:18px 28px;flex-wrap:wrap;padding:18px 24px;border:1px solid var(--line);border-radius:16px;background:var(--card);margin-bottom:40px;}
-.byline-brand{display:inline-flex;align-items:center;gap:16px;}
+.byline{display:flex;align-items:center;justify-content:space-between;gap:16px 28px;flex-wrap:wrap;padding:18px 24px;border:1px solid var(--line);border-radius:16px;background:var(--card);margin-bottom:40px;}
+.byline-brand{display:inline-flex;align-items:center;}
 .byline-brand .brand{font-size:24px;}
-.byline-div{width:1px;height:24px;background:var(--line);flex:none;}
-.byline-by{display:inline-flex;align-items:center;gap:7px;font-size:16px;color:var(--mid);font-weight:600;text-decoration:none;}
+.byline-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px;text-decoration:none;}
+.byline-by{display:inline-flex;align-items:center;gap:7px;font-size:15px;color:var(--mid);font-weight:600;}
 .byline-name{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:18px;color:var(--mag);letter-spacing:-0.01em;}
 .byline-arrow{color:var(--mag);font-weight:700;}
-.byline-by:hover .byline-name{text-decoration:underline;text-underline-offset:3px;}
+.byline-right:hover .byline-name{text-decoration:underline;text-underline-offset:3px;}
 .byline .rating-badge{border:none;background:transparent;padding:0;}
 .quote-card{background:var(--card);border:1px solid var(--line);border-radius:18px;transition:transform .2s,box-shadow .2s;}
 .quote-card:hover{transform:translateY(-4px);box-shadow:0 30px 50px -28px rgba(23,23,23,0.16);}
@@ -1397,6 +1430,14 @@ button{font-family:inherit;}
 .lang-btn{border:none;background:none;cursor:pointer;font-size:13px;font-weight:600;color:var(--soft);padding:6px 13px;border-radius:999px;transition:all .15s;}
 .lang-btn.on{background:var(--ink);color:var(--paper);}
 .lang-btn:not(.on):hover{color:var(--ink);}
+.dock-right{display:inline-flex;align-items:center;gap:10px;}
+.dock-login{width:38px;height:38px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--mid);}
+.dock-login:hover{color:var(--ink);border-color:var(--ink);}
+.dock-login.on{color:var(--mag);border-color:rgba(231,37,90,0.4);}
+.mobile-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:18px;padding-top:16px;border-top:1px solid var(--line);}
+.mobile-login{display:inline-flex;align-items:center;gap:8px;background:none;border:1px solid var(--line);border-radius:999px;padding:9px 15px;cursor:pointer;font-size:14px;font-weight:600;color:var(--ink);transition:border-color .15s;}
+.mobile-login svg{width:18px;height:18px;}
+.mobile-login:hover{border-color:var(--ink);}
 .detail{padding:64px 0 96px;min-height:60vh;}
 .detail-narrow .wrap{max-width:760px;}
 .back{display:inline-block;font-size:13.5px;font-weight:600;color:var(--mid);margin-bottom:28px;}
@@ -1491,6 +1532,6 @@ button{font-family:inherit;}
 @media(prefers-reduced-motion:reduce){
   .reveal{opacity:1;transform:none;transition:none;}
   .hl{animation:none;}
-  .hero-dot,.hero-scroll-line,.loop-spin,.lm-rot,.lm-rot2{animation:none;}
+  .hero-dot,.hero-scroll-line,.loop-spin,.lm-rot,.lm-rot2,.marquee-track{animation:none;}
 }
 `;
