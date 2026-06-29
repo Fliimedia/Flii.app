@@ -105,6 +105,8 @@ const I18N = {
     pricing: { eyebrow: "Prijzen", h1: "Stel je Loop samen.",
       intro: "Richtprijzen, exclusief btw en op basis van vanaf-tarieven. Mediabudget is niet inbegrepen. De definitieve prijs hangt af van de scope.",
       scopeLabel: "Wat heb je nodig?", scopes: { campagne: "Campagne", app: "App", platform: "Platform" },
+      scopeDesc: { campagne: "Een advertentiecampagne, opgezet en gestuurd op resultaat.", app: "Een werkende app of PWA, van één functie tot meerdere modules.", platform: "Een volwaardig, schaalbaar platform met backend en AI." },
+      badge: "Meest gekozen", save: "Je bespaart",
       levelLabel: "Niveau", levels: { basis: "Basis", advanced: "Advanced" },
       phaseLabel: "Loop-fases", phases: { plan: "Plan", build: "Build", run: "Run" },
       phaseDesc: { plan: "Onderzoek, meting en plan", build: "Ontwikkeling met meting", run: "Beheer en optimalisatie" },
@@ -222,6 +224,8 @@ const I18N = {
     pricing: { eyebrow: "Pricing", h1: "Configure your Loop.",
       intro: "Indicative prices, excluding VAT and based on starting rates. Media budget is not included. The final price depends on scope.",
       scopeLabel: "What do you need?", scopes: { campagne: "Campaign", app: "App", platform: "Platform" },
+      scopeDesc: { campagne: "An ad campaign, set up and steered on results.", app: "A working app or PWA, from one feature to several modules.", platform: "A full, scalable platform with backend and AI." },
+      badge: "Most chosen", save: "You save",
       levelLabel: "Level", levels: { basis: "Basic", advanced: "Advanced" },
       phaseLabel: "Loop phases", phases: { plan: "Plan", build: "Build", run: "Run" },
       phaseDesc: { plan: "Research, measurement and plan", build: "Development with measurement", run: "Management and optimisation" },
@@ -825,6 +829,66 @@ function LoopDiagram() {
 }
 
 /* ---------- Flii Loop glowing ring mark ---------- */
+function LoopRing() {
+  const { t } = useLang();
+  const items = t.loop.items;
+  const [active, setActive] = useState(null);
+  const [reduce] = useState(() => typeof window !== "undefined" && window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  const pos = ["top", "right", "bottom", "left"];
+  const select = (i) => setActive((a) => (a === i ? null : i));
+  const cur = active != null ? items[active] : null;
+  return (
+    <div className={`loop-ring-stage ${active != null ? "open" : ""}`}>
+      <div className={`loop-ring-tilt ${active != null && !reduce ? "tilted" : ""}`}>
+        <svg className="loop-ring-svg" viewBox="0 0 100 100" aria-hidden>
+          <defs>
+            <linearGradient id="lrGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stopColor="#B14BFF" /><stop offset="28%" stopColor="#E7255A" /><stop offset="50%" stopColor="#FF5E9A" />
+              <stop offset="64%" stopColor="#FFD2E4" /><stop offset="80%" stopColor="#FF3D8E" /><stop offset="100%" stopColor="#C04BFF" />
+            </linearGradient>
+            <filter id="lrFire" x="-60%" y="-60%" width="220%" height="220%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.018 0.034" numOctaves="2" seed="4" result="n">
+                {!reduce && <animate attributeName="baseFrequency" dur="7s" values="0.018 0.034;0.026 0.046;0.016 0.03;0.018 0.034" repeatCount="indefinite" />}
+              </feTurbulence>
+              <feDisplacementMap in="SourceGraphic" in2="n" scale="10" xChannelSelector="R" yChannelSelector="G">
+                {!reduce && <animate attributeName="scale" dur="5.5s" values="9;14;10;9" repeatCount="indefinite" />}
+              </feDisplacementMap>
+              <feGaussianBlur stdDeviation="0.5" />
+            </filter>
+            <filter id="lrGlow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="2.6" /></filter>
+          </defs>
+          <g className={reduce ? "" : "lm-rot"}>
+            <circle cx="50" cy="50" r="38" fill="none" stroke="url(#lrGrad)" strokeWidth="6.5" filter="url(#lrGlow)" opacity="0.5" />
+            <circle cx="50" cy="50" r="38" fill="none" stroke="url(#lrGrad)" strokeWidth="4.6" filter="url(#lrFire)" />
+          </g>
+          <g className={reduce ? "" : "lm-rot2"}>
+            <circle cx="50" cy="50" r="35" fill="none" stroke="url(#lrGrad)" strokeWidth="2.6" filter="url(#lrFire)" opacity="0.85" />
+          </g>
+        </svg>
+      </div>
+      <div className="loop-ring-core" aria-live="polite">
+        {cur ? (
+          <div className="loop-core-content" key={active}>
+            <div className="loop-core-k mono">{cur.k}</div>
+            <p className="loop-core-b">{cur.body}</p>
+          </div>
+        ) : (
+          <div className="loop-core-default">
+            <div className="loop-core-mark mono">{t.loop.eyebrow}</div>
+            <div className="loop-core-hint">{t.loop.center}</div>
+          </div>
+        )}
+      </div>
+      {items.map((l, i) => (
+        <button key={i} className={`loop-step-label lbl-${pos[i]} ${active === i ? "on" : ""}`} onClick={() => select(i)} aria-pressed={active === i}>
+          <span className="loop-step-dot" aria-hidden />
+          <span className="loop-step-k">{l.k}</span>
+        </button>
+      ))}
+    </div>
+  );
+}
+
 function FliiLoopMark() {
   const [reduce] = useState(() => typeof window !== "undefined" && window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
   return (
@@ -950,17 +1014,7 @@ function Home({ content, openConsult }) {
         <div className="loop-bg" aria-hidden><NodeNetwork mono spread /></div>
         <div className="wrap">
           <Section><div className="eyebrow on-dark">{t.loop.eyebrow}</div><h2 className="display h2 on-dark">{t.loop.h2}</h2><p className="lede on-dark-soft">{t.loop.lede}</p></Section>
-          <div className="loop-cycle">
-            <Section className="loop-diagram"><LoopDiagram /></Section>
-            <Section className="loop-steps">
-              {t.loop.items.map((l, i) => (
-                <div key={i} className="loop-step">
-                  <div className="loop-step-n mono">{String(i + 1).padStart(2, "0")}</div>
-                  <div><h3 className="loop-step-h">{l.k}</h3><p className="loop-step-b">{l.body}</p></div>
-                </div>
-              ))}
-            </Section>
-          </div>
+          <Section className="loop-ring-wrap"><LoopRing /></Section>
           <Section className="loop-foot"><a href="#/prijzen" className="loop-price-link">{t.loop.priceCta}</a></Section>
         </div>
       </section>
@@ -1190,6 +1244,20 @@ const PRICING = {
   app: { basis: 3500, advanced: 8500, platform: 18000 },
 };
 const eur = (n) => "\u20AC\u00A0" + (n || 0).toLocaleString("nl-NL");
+function useCountUp(value, dur = 460) {
+  const [disp, setDisp] = useState(value);
+  const fromRef = useRef(value);
+  useEffect(() => {
+    const reduce = typeof window !== "undefined" && window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const from = fromRef.current, to = value;
+    if (reduce || from === to) { fromRef.current = to; setDisp(to); return; }
+    let raf; const start = performance.now();
+    const tick = (now) => { const k = Math.min(1, (now - start) / dur); const e = 1 - Math.pow(1 - k, 3); setDisp(Math.round(from + (to - from) * e)); if (k < 1) raf = requestAnimationFrame(tick); else fromRef.current = to; };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [value, dur]);
+  return disp;
+}
 function Pricing({ openConsult }) {
   const { t } = useLang(); const p = t.pricing;
   const [scope, setScope] = useState("app");
@@ -1206,6 +1274,9 @@ function Pricing({ openConsult }) {
   const once = planApplied + (phases.build ? buildBase : 0) + (search ? PRICING.addons.search.once : 0) + (social ? PRICING.addons.social.once : 0);
   const mo = (phases.run ? sc.run : 0) + (search ? PRICING.addons.search.mo : 0) + (social ? PRICING.addons.social.mo : 0) + PRICING.content[content];
   const nothing = once === 0 && mo === 0;
+  const onceA = useCountUp(once);
+  const moA = useCountUp(mo);
+  const saving = allLoop ? sc.plan : 0;
   const togglePhase = (k) => setPhases((s) => ({ ...s, [k]: !s[k] }));
   const phasePrice = (k) => k === "run" ? eur(sc.run) + p.mo : k === "build" ? eur(buildBase) : eur(sc.plan);
   const refPrice = (sk, pk) => pk === "build" ? (sk === "app" ? PRICING.scopes.app.build.basis : PRICING.scopes[sk].build) : PRICING.scopes[sk][pk];
@@ -1231,20 +1302,29 @@ function Pricing({ openConsult }) {
           <div className="cfg-form">
             <div className="cfg-block">
               <div className="cfg-label mono">{p.scopeLabel}</div>
-              <div className="seg">{["campagne", "app", "platform"].map((s) => <button key={s} className={`seg-btn ${scope === s ? "on" : ""}`} onClick={() => setScope(s)}>{p.scopes[s]}</button>)}</div>
-            </div>
-            {scope === "app" && (
-              <div className="cfg-block">
-                <div className="cfg-label mono">{p.levelLabel}</div>
-                <div className="seg">{["basis", "advanced"].map((l) => <button key={l} className={`seg-btn ${level === l ? "on" : ""}`} onClick={() => setLevel(l)}>{p.levels[l]}</button>)}</div>
+              <div className="scope-cards">
+                {["campagne", "app", "platform"].map((s) => (
+                  <button key={s} className={`scope-card ${scope === s ? "on" : ""}`} onClick={() => setScope(s)} aria-pressed={scope === s}>
+                    {s === "app" && <span className="scope-badge mono">{p.badge}</span>}
+                    <span className="scope-card-t">{p.scopes[s]}</span>
+                    <span className="scope-card-d">{p.scopeDesc[s]}</span>
+                    <span className="scope-card-p mono">{p.from} {eur(s === "app" ? PRICING.scopes.app.build.basis : PRICING.scopes[s].build)}</span>
+                  </button>
+                ))}
               </div>
-            )}
+              {scope === "app" && (
+                <div className="cfg-sub-row">
+                  <span className="cfg-label mono">{p.levelLabel}</span>
+                  <div className="seg">{["basis", "advanced"].map((l) => <button key={l} className={`seg-btn ${level === l ? "on" : ""}`} onClick={() => setLevel(l)}>{p.levels[l]}</button>)}</div>
+                </div>
+              )}
+            </div>
             <div className="cfg-block">
               <div className="cfg-label mono">{p.phaseLabel}</div>
               <div className="cfg-toggles">
                 {["plan", "build", "run"].map((k) => (
                   <button key={k} className={`toggle ${phases[k] ? "on" : ""}`} onClick={() => togglePhase(k)} aria-pressed={phases[k]}>
-                    <span className="toggle-box" aria-hidden>{phases[k] ? "\u2713" : ""}</span>
+                    <span className="switch" aria-hidden><span className="switch-knob" /></span>
                     <span className="toggle-main"><span className="toggle-t">{p.phases[k]}</span><span className="toggle-d">{p.phaseDesc[k]}</span></span>
                     <span className="toggle-p mono">{phasePrice(k)}</span>
                   </button>
@@ -1256,11 +1336,11 @@ function Pricing({ openConsult }) {
               <div className="cfg-label mono">{p.addonsLabel}</div>
               <div className="cfg-toggles">
                 <button className={`toggle ${search ? "on" : ""}`} onClick={() => setSearch((v) => !v)} aria-pressed={search}>
-                  <span className="toggle-box" aria-hidden>{search ? "\u2713" : ""}</span>
+                  <span className="switch" aria-hidden><span className="switch-knob" /></span>
                   <span className="toggle-main"><span className="toggle-t">{p.addons.search}</span><span className="toggle-d">{eur(PRICING.addons.search.once)} {p.once1} \u00B7 {eur(PRICING.addons.search.mo)}{p.mo}</span></span>
                 </button>
                 <button className={`toggle ${social ? "on" : ""}`} onClick={() => setSocial((v) => !v)} aria-pressed={social}>
-                  <span className="toggle-box" aria-hidden>{social ? "\u2713" : ""}</span>
+                  <span className="switch" aria-hidden><span className="switch-knob" /></span>
                   <span className="toggle-main"><span className="toggle-t">{p.addons.social}</span><span className="toggle-d">{eur(PRICING.addons.social.once)} {p.once1} \u00B7 {eur(PRICING.addons.social.mo)}{p.mo}</span></span>
                 </button>
               </div>
@@ -1272,8 +1352,9 @@ function Pricing({ openConsult }) {
             <div className="cfg-out-card">
               <div className="cfg-out-h mono">{p.scopes[scope]}{scope === "app" ? ` \u00B7 ${p.levels[level]}` : ""}</div>
               {nothing ? <div className="cfg-empty">{p.empty}</div> : <>
-                <div className="cfg-amount"><span className="cfg-amount-l mono">{p.once} {p.from}</span><span className="cfg-amount-v display">{eur(once)}</span></div>
-                {mo > 0 && <div className="cfg-amount"><span className="cfg-amount-l mono">{p.perMonth} {p.from}</span><span className="cfg-amount-v display">{eur(mo)}<span className="cfg-mo">{p.mo}</span></span></div>}
+                <div className="cfg-amount"><span className="cfg-amount-l mono">{p.once} {p.from}</span><span className="cfg-amount-v display">{eur(onceA)}</span></div>
+                {mo > 0 && <div className="cfg-amount"><span className="cfg-amount-l mono">{p.perMonth} {p.from}</span><span className="cfg-amount-v display">{eur(moA)}<span className="cfg-mo">{p.mo}</span></span></div>}
+                {saving > 0 && <div className="cfg-save mono">{p.save} {eur(saving)}</div>}
               </>}
               <button className="btn btn-primary cfg-cta" onClick={() => openConsult(null, summary())}>{p.cta}</button>
               <p className="cfg-excl mono">{p.excl}</p>
@@ -2040,6 +2121,29 @@ button{font-family:inherit;}
 .editor-bar{position:sticky;bottom:0;display:flex;justify-content:flex-end;gap:10px;padding:16px 24px;background:var(--card);border-top:1px solid var(--line);}
 .pricing{padding:36px 0 96px;}
 .loop-foot{margin-top:30px;text-align:center;}
+.loop-ring-wrap{display:flex;justify-content:center;}
+.loop-ring-stage{position:relative;width:min(500px,90vw);margin:48px auto 8px;aspect-ratio:1;perspective:1200px;}
+.loop-ring-tilt{position:absolute;inset:70px;transform-origin:center center;transition:transform .7s cubic-bezier(.2,.7,.2,1),opacity .7s;will-change:transform;}
+.loop-ring-stage.open .loop-ring-tilt.tilted{transform:rotateX(34deg) scale(.97);opacity:.9;}
+.loop-ring-svg{width:100%;height:100%;display:block;overflow:visible;}
+.loop-ring-core{position:absolute;inset:70px;display:flex;align-items:center;justify-content:center;text-align:center;padding:13%;pointer-events:none;z-index:3;}
+.loop-core-default,.loop-core-content{display:flex;flex-direction:column;gap:9px;align-items:center;}
+.loop-core-content{animation:coreIn .5s ease both;}
+@keyframes coreIn{from{opacity:0;transform:translateY(8px) scale(.96);}to{opacity:1;transform:none;}}
+.loop-core-k{font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--mag);}
+.loop-core-b{font-size:15px;line-height:1.5;color:var(--paper);margin:0;max-width:28ch;}
+.loop-core-mark{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(243,241,235,0.45);}
+.loop-core-hint{font-family:'Bricolage Grotesque',sans-serif;font-size:19px;color:rgba(243,241,235,0.82);}
+.loop-step-label{position:absolute;display:flex;align-items:center;gap:7px;background:none;border:none;cursor:pointer;font:inherit;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.11em;text-transform:uppercase;color:rgba(243,241,235,0.6);white-space:nowrap;padding:6px;transition:color .15s;text-shadow:0 1px 8px rgba(0,0,0,0.45);z-index:4;}
+.loop-step-label:hover,.loop-step-label:focus-visible{color:var(--paper);outline:none;}
+.loop-step-label.on{color:#fff;}
+.loop-step-dot{width:7px;height:7px;border-radius:50%;background:rgba(243,241,235,0.38);transition:background .15s,box-shadow .15s;flex:none;}
+.loop-step-label:hover .loop-step-dot{background:var(--paper);}
+.loop-step-label.on .loop-step-dot{background:var(--mag);box-shadow:0 0 0 4px rgba(231,37,90,0.25);}
+.lbl-top{top:-2px;left:50%;transform:translate(-50%,0);flex-direction:column;}
+.lbl-bottom{bottom:-2px;left:50%;transform:translate(-50%,0);flex-direction:column-reverse;}
+.lbl-left{left:-2px;top:50%;transform:translate(0,-50%);}
+.lbl-right{right:-2px;top:50%;transform:translate(0,-50%);flex-direction:row-reverse;}
 .loop-price-link{color:var(--paper);font-weight:600;font-size:15px;border-bottom:1px solid rgba(243,241,235,0.32);padding-bottom:2px;transition:border-color .15s,color .15s;}
 .loop-price-link:hover{border-color:var(--mag);color:#fff;}
 .cfg{display:grid;grid-template-columns:1fr 340px;gap:28px;align-items:start;margin:30px 0 56px;}
@@ -2055,8 +2159,20 @@ button{font-family:inherit;}
 .toggle{display:flex;align-items:center;gap:13px;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:13px 15px;font:inherit;cursor:pointer;text-align:left;transition:border-color .14s;}
 .toggle:hover{border-color:var(--soft);}
 .toggle.on{border-color:var(--ink);}
-.toggle-box{width:22px;height:22px;flex:none;border:1.5px solid var(--line);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:13px;background:var(--paper);transition:background .14s,border-color .14s;}
-.toggle.on .toggle-box{background:var(--mag);border-color:var(--mag);color:#fff;}
+.switch{width:38px;height:22px;flex:none;border-radius:999px;background:var(--mist);border:1px solid var(--line);position:relative;transition:background .18s,border-color .18s;}
+.switch-knob{position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:var(--paper);box-shadow:0 1px 2px rgba(23,23,23,0.25);transition:transform .18s;}
+.toggle.on .switch{background:var(--mag);border-color:var(--mag);}
+.toggle.on .switch-knob{transform:translateX(16px);background:#fff;}
+.scope-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.scope-card{position:relative;display:flex;flex-direction:column;gap:5px;text-align:left;background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:15px;font:inherit;cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .15s;}
+.scope-card:hover{border-color:var(--soft);}
+.scope-card.on{border-color:var(--ink);box-shadow:0 10px 24px -16px rgba(23,23,23,0.4);}
+.scope-card-t{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:16px;}
+.scope-card-d{font-size:12px;color:var(--soft);line-height:1.45;}
+.scope-card-p{font-size:12px;color:var(--mag);margin-top:2px;}
+.scope-badge{position:absolute;top:-9px;right:12px;background:var(--mag);color:#fff;font-size:9px;letter-spacing:0.08em;text-transform:uppercase;padding:3px 8px;border-radius:999px;}
+.cfg-sub-row{display:flex;align-items:center;gap:12px;margin-top:4px;}
+.cfg-save{margin-top:6px;font-size:12px;color:#1FAE5A;}
 .toggle-main{flex:1;display:flex;flex-direction:column;gap:2px;min-width:0;}
 .toggle-t{font-weight:600;font-size:15px;color:var(--ink);}
 .toggle-d{font-size:12.5px;color:var(--soft);}
@@ -2110,6 +2226,10 @@ button{font-family:inherit;}
   .burger{display:flex;}
   .service-grid,.stats-grid,.aud-grid,.steps-grid,.brandwall{grid-template-columns:repeat(2,1fr);}
   .loop-cycle{grid-template-columns:1fr;gap:36px;}
+  .loop-ring-tilt,.loop-ring-core{inset:54px;}
+  .loop-step-label{font-size:9.5px;letter-spacing:0.08em;}
+  .loop-core-b{font-size:14px;}
+  .loop-core-hint{font-size:17px;}
   .loop-svg{max-width:360px;}
   .creds-row{grid-template-columns:repeat(2,1fr);}
   .work-grid,.post-grid{grid-template-columns:1fr;}
@@ -2129,6 +2249,7 @@ button{font-family:inherit;}
   .cms-coll{flex:1 1 auto;}
   .field-grid.two{grid-template-columns:1fr;}
   .cfg{grid-template-columns:1fr;gap:22px;}
+  .scope-cards{grid-template-columns:1fr;}
   .cfg-out{position:static;}
   .ref-grid{grid-template-columns:1fr;}
   .modal{padding:28px 22px;}
@@ -2146,5 +2267,7 @@ button{font-family:inherit;}
   .reveal{opacity:1;transform:none;transition:none;}
   .hl{animation:none;}
   .hero-dot,.hero-scroll-line,.loop-spin,.lm-rot,.lm-rot2,.marquee-track{animation:none;}
+  .loop-ring-tilt{transition:none;}
+  .loop-core-content{animation:none;}
 }
 `;
