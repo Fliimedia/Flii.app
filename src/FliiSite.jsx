@@ -1358,7 +1358,7 @@ function Editor({ coll, item, onSave, onCancel }) {
     let out = { ...d };
     if (!out.id) out.id = slugify(coll === "reviews" ? (out.name || "review") : (out.title || out.name || "item"));
     if (coll === "reviews") out.rating = Math.max(1, Math.min(5, parseInt(out.rating, 10) || 5));
-    onSave(out);
+    onSave(out, item.id || "");
   };
   const slugField = <Field label={t.cms.slug} value={d.id || ""} onChange={(v) => set("id", v)} hint={h.slug} mono placeholder="auto" />;
   return (
@@ -1473,7 +1473,7 @@ function CMS({ content }) {
         </aside>
         <main className="cms-main">
           {editing ? (
-            <Editor coll={tab} item={editing} onSave={(it) => { upsert(tab, it); setEditing(null); }} onCancel={() => setEditing(null)} />
+            <Editor coll={tab} item={editing} onSave={(it, orig) => { if (orig && orig !== it.id) remove(tab, orig); upsert(tab, it); setEditing(null); }} onCancel={() => setEditing(null)} />
           ) : (
             <>
               <div className="cms-main-head">
