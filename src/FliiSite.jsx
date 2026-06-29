@@ -1152,7 +1152,7 @@ export default function FliiSite() {
 }
 
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
 .flii-root{
   --ink:#171717; --dark:#171717; --dark-2:#1E1E1E;
   --mag:#E7255A; --paper:#F3F1EB; --card:#FBFAF7; --mist:#EAE7DF; --line:#E2DED3;
