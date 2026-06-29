@@ -352,7 +352,7 @@ function FliiLogo({ dark = false, variant = "word" }) {
 // adjacent layers; faint magenta signals propagate left-to-right through
 // the net. Nodes breathe softly around their anchors. Tuned to read as
 // AI architecture without competing with the headline.
-function NodeNetwork() {
+function NodeNetwork({ mono = false, spread = false }) {
   const wrapRef = useRef(null);
   const canvasRef = useRef(null);
   useEffect(() => {
@@ -360,7 +360,7 @@ function NodeNetwork() {
     if (!wrap || !canvas) return;
     const ctx = canvas.getContext("2d");
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const BASE = [156, 150, 136], ACC = [231, 37, 90];
+    const BASE = mono ? [233, 230, 222] : [156, 150, 136], ACC = mono ? [233, 230, 222] : [231, 37, 90];
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     let W = 0, H = 0, layers = [];
     const ptr = { x: -9999, y: -9999, on: false };
@@ -369,7 +369,7 @@ function NodeNetwork() {
       const mobile = W < 760;
       const counts = mobile ? [3, 4, 2] : [3, 5, 4, 2];
       const L = counts.length;
-      const xStart = mobile ? W * 0.16 : W * 0.44;
+      const xStart = spread ? (mobile ? W * 0.08 : W * 0.07) : (mobile ? W * 0.16 : W * 0.44);
       const xEnd = W * 0.93;
       const yPad = H * 0.18, yspan = H - 2 * yPad;
       layers = counts.map((c, li) => {
@@ -449,7 +449,7 @@ function NodeNetwork() {
     }
     return () => { stop(); ro.disconnect(); io.disconnect(); document.removeEventListener("visibilitychange", onVis); wrap.removeEventListener("pointermove", onMove); wrap.removeEventListener("pointerleave", onLeave); };
   }, []);
-  return <div className="node-net" ref={wrapRef} aria-hidden><canvas ref={canvasRef} className="node-net-canvas" /></div>;
+  return <div className={"node-net" + (spread ? " node-net-loop" : "")} ref={wrapRef} aria-hidden><canvas ref={canvasRef} className="node-net-canvas" /></div>;
 }
 const CalIcon = () => (
   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -711,7 +711,8 @@ function Home({ content, openConsult }) {
         </div>
       </section>
 
-      <section className="band band-dark" id="loop">
+      <section className="band band-dark band-loop" id="loop">
+        <div className="loop-bg" aria-hidden><NodeNetwork mono spread /></div>
         <div className="wrap">
           <Section><div className="eyebrow on-dark">{t.loop.eyebrow}</div><h2 className="display h2 on-dark">{t.loop.h2}</h2><p className="lede on-dark-soft">{t.loop.lede}</p></Section>
           <div className="loop-cycle">
@@ -1204,6 +1205,10 @@ button{font-family:inherit;}
 .hero-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(58% 58% at 84% 12%,rgba(231,37,90,0.10),rgba(231,37,90,0) 70%);}
 .node-net{position:absolute;inset:0;}
 .node-net-canvas{display:block;width:100%;height:100%;-webkit-mask-image:linear-gradient(102deg,transparent 0%,rgba(0,0,0,0.08) 34%,#000 68%);mask-image:linear-gradient(102deg,transparent 0%,rgba(0,0,0,0.08) 34%,#000 68%);}
+.band-loop{position:relative;overflow:hidden;}
+.band-loop>.wrap{position:relative;z-index:2;}
+.loop-bg{position:absolute;inset:0;z-index:0;opacity:0.5;}
+.node-net-loop .node-net-canvas{-webkit-mask-image:radial-gradient(78% 78% at 50% 46%,#000 30%,rgba(0,0,0,0.18) 66%,transparent 100%);mask-image:radial-gradient(78% 78% at 50% 46%,#000 30%,rgba(0,0,0,0.18) 66%,transparent 100%);}
 .hero-inner{position:relative;z-index:2;max-width:740px;}
 .loop-cta{display:inline-flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink);font-weight:600;font-size:15px;}
 .loop-cta:hover{color:var(--mag);}
