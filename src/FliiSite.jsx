@@ -86,16 +86,20 @@ const I18N = {
     footer: { solutions: "Diensten", company: "Bedrijf", connect: "Connect",
       company_links: [ { label: "Werk", href: "#work" }, { label: "Over ons", href: "#about" }, { label: "Inzichten", href: "#blog" }, { label: "CMS", href: "#/cms" } ],
       bottom: "Snel gebouwd. Afgesteld op prestatie." },
-    cms: { back: "← Terug naar site", eyebrow: "Content", h1: "Beheer content", reset: "Herstel standaard",
+    cms: { back: "← Terug naar site", eyebrow: "Control panel", h1: "Content", reset: "Herstel standaard",
       status: { supabase: "Gesynct met Supabase", loading: "Verbinden met Supabase…", local: "Lokaal (deze browser)" },
       tabs: { reviews: "Reviews", certs: "Certificeringen", apps: "Showcase", articles: "Inzichten" },
-      newPrefix: "+ Nieuw: ", view: "Bekijk", edit: "Bewerk", del: "Verwijder",
-      empty: "Nog niets. Voeg de eerste toe.", save: "Opslaan", cancel: "Annuleer",
+      desc: { reviews: "Klantbeoordelingen op de homepage.", certs: "Partnercertificeringen en niveaus.", apps: "Producten en cases in de showcase.", articles: "Artikelen en inzichten voor de blog." },
+      collectionsLabel: "Collecties", entries: "items", search: "Zoek op titel of slug…", noMatch: "Geen resultaten.",
+      newEntry: "Nieuw item", editEntry: "Item bewerken", newPrefix: "+ Nieuw: ", view: "Bekijk", edit: "Bewerk", del: "Verwijder",
+      empty: "Nog niets. Voeg de eerste toe.", save: "Opslaan", cancel: "Annuleer", slug: "Slug",
+      groups: { content: "Inhoud", meta: "Meta", media: "Media", links: "Links" },
+      hints: { slug: "URL-naam. Laat leeg om automatisch te genereren.", cover: "Trefwoord (funnel, build of signal) of een afbeelding-URL.", body: "Opmaak: ## kop · > citaat · - opsomming · ![bijschrift](funnel) voor een figuur.", metrics: "Formaat label:waarde, gescheiden door komma's." },
       confirmReset: "Alle content terugzetten naar standaard?", confirmDelete: "Dit item verwijderen?",
       f: { quote: "Quote", name: "Naam", role: "Functie", org: "Organisatie", rating: "Score (1-5)",
         certName: "Naam", tier: "Niveau", blurb: "Omschrijving", link: "Link",
         title: "Titel", client: "Klant", tag: "Tag", summary: "Samenvatting",
-        body: "Tekst (lege regel = nieuwe alinea)", metrics: "Metrics (label:waarde, komma-gescheiden)",
+        body: "Tekst", metrics: "Metrics", read: "Leestijd", cover: "Cover",
         category: "Categorie", date: "Datum", excerpt: "Samenvatting" } },
     detail: { backShowcase: "← Showcase", backInsights: "← Inzichten", backHome: "← Home",
       notFound: "Niet gevonden", notFoundSub: "Dit item is mogelijk verwijderd in het CMS.",
@@ -178,16 +182,20 @@ const I18N = {
     footer: { solutions: "Solutions", company: "Company", connect: "Connect",
       company_links: [ { label: "Work", href: "#work" }, { label: "About", href: "#about" }, { label: "Insights", href: "#blog" }, { label: "CMS", href: "#/cms" } ],
       bottom: "Built fast. Tuned for performance." },
-    cms: { back: "← Back to site", eyebrow: "Content", h1: "Manage content", reset: "Reset to defaults",
+    cms: { back: "← Back to site", eyebrow: "Control panel", h1: "Content", reset: "Reset to defaults",
       status: { supabase: "Synced with Supabase", loading: "Connecting to Supabase…", local: "Local (this browser)" },
       tabs: { reviews: "Reviews", certs: "Certifications", apps: "Showcase", articles: "Insights" },
-      newPrefix: "+ New: ", view: "View", edit: "Edit", del: "Delete",
-      empty: "Nothing here yet. Add the first one.", save: "Save", cancel: "Cancel",
+      desc: { reviews: "Customer reviews shown on the homepage.", certs: "Partner certifications and tiers.", apps: "Products and cases in the showcase.", articles: "Articles and insights for the blog." },
+      collectionsLabel: "Collections", entries: "entries", search: "Search title or slug…", noMatch: "No results.",
+      newEntry: "New entry", editEntry: "Edit entry", newPrefix: "+ New: ", view: "View", edit: "Edit", del: "Delete",
+      empty: "Nothing here yet. Add the first one.", save: "Save", cancel: "Cancel", slug: "Slug",
+      groups: { content: "Content", meta: "Meta", media: "Media", links: "Links" },
+      hints: { slug: "URL name. Leave empty to auto-generate.", cover: "Keyword (funnel, build or signal) or an image URL.", body: "Formatting: ## heading · > quote · - list · ![caption](funnel) for a figure.", metrics: "Format label:value, comma separated." },
       confirmReset: "Reset all content to defaults?", confirmDelete: "Delete this item?",
       f: { quote: "Quote", name: "Name", role: "Role", org: "Organisation", rating: "Rating (1-5)",
         certName: "Name", tier: "Tier", blurb: "Blurb", link: "Link",
         title: "Title", client: "Client", tag: "Tag", summary: "Summary",
-        body: "Body (blank line = new paragraph)", metrics: "Metrics (label:value, comma separated)",
+        body: "Body", metrics: "Metrics", read: "Read time", cover: "Cover",
         category: "Category", date: "Date", excerpt: "Excerpt" } },
     detail: { backShowcase: "← Showcase", backInsights: "← Insights", backHome: "← Home",
       notFound: "Not found", notFoundSub: "This item may have been removed in the CMS.",
@@ -225,15 +233,177 @@ const DEFAULT_APPS = [
     body: "Een installeerbaar planning-dashboard voor taken, budget, gastenlijst en een dagplanning, module voor module uitgebouwd en via Vercel gelanceerd." },
 ];
 const DEFAULT_ARTICLES = [
-  { id: "stop-kapotte-funnels", title: "Stop met kapotte funnels opschalen", cat: "Performance", date: "jun 2026",
+  { id: "stop-kapotte-funnels", title: "Stop met kapotte funnels opschalen", cat: "Performance", date: "jun 2026", read: "6 min", cover: "funnel",
     excerpt: "Meer leads bij gelijke omzet is een valkuil. Repareer conversie voordat je budget toevoegt.",
-    body: "Budget in een funnel pompen die niet converteert, koopt alleen duurdere teleurstelling.\n\nVoordat je advertentiebudget opschaalt: repareer het pad van klik naar omzet. De aanbieding, de landingservaring en de overdracht naar sales. Schaal daarna op wat bewezen werkt." },
-  { id: "lanceren-21-dagen", title: "Lanceren in 21 dagen met AI in de lus", cat: "AI Build", date: "jun 2026",
+    body: `Er is een moment in bijna elk groeitraject waarop iemand met overtuiging zegt: we moeten meer budget op de advertenties zetten. De cijfers lijken het te steunen. Het verkeer is goedkoop, de kliks komen binnen, en toch blijft de omzet achter. Het antwoord voelt logisch: meer bovenaan erin, dan komt er onderaan vanzelf meer uit. Maar dat klopt alleen als de funnel onderweg niets weglekt. En dat doet hij bijna altijd.
+
+Budget in een funnel pompen die niet converteert, koopt geen groei. Het koopt duurdere teleurstelling. Voordat je ook maar één euro extra uitgeeft, moet je weten waar het pad van klik naar omzet lekt, en dat lek eerst dichten.
+
+## De rekensom die niemand hardop maakt
+
+Stel je verdubbelt je advertentiebudget. In het gunstigste geval verdubbelt je verkeer mee. Maar je conversieratio verandert niet, want aan de funnel zelf heb je niets gedaan. Je betaalt dus twee keer zoveel om exact hetzelfde percentage bezoekers te converteren. Erger nog: schaal je op binnen hetzelfde kanaal, dan bereik je vaak een minder gekwalificeerd publiek en daalt je conversie juist. Je kosten stijgen lineair, je opbrengst sublineair. Dat is geen groei, dat is verlies met een groeigrafiek eromheen.
+
+De eerlijke vraag is niet hoeveel verkeer je kunt kopen, maar hoeveel omzet je haalt per honderd bezoekers, en waar je de andere drieënnegentig verliest. Pas als dat antwoord scherp is, wordt extra budget een hefboom in plaats van een lek.
+
+## Wat kapot precies betekent
+
+Een kapotte funnel is zelden één groot gat. Het zijn meestal drie kleinere, die elkaar versterken:
+
+- De aanbieding is onduidelijk. De bezoeker snapt binnen vijf seconden niet wat je verkoopt, voor wie het is, en waarom nu.
+- De landingservaring vraagt te veel, te vroeg. Traag laden, een formulier met elf velden, of een pagina die op mobiel uit elkaar valt.
+- De overdracht naar sales lekt. Een lead vult een formulier in en hoort drie dagen niets, of belandt in een inbox die niemand leest.
+
+![Van klik naar omzet: waar de meeste funnels hun bezoekers verliezen](funnel)
+
+Elk van die drie kost je een deel van de bezoekers die je net duur hebt ingekocht. Vermenigvuldig de verliezen en je begrijpt waarom meer budget het probleem groter maakt in plaats van kleiner. Een funnel die op klein volume tien procent weglekt, lekt op groot volume nog steeds tien procent, alleen tegen een veel hogere prijs.
+
+## Repareer in deze volgorde
+
+Begin niet bij het kanaal, begin bij het einde. Werk terug van omzet naar klik, want een reparatie stroomafwaarts is waardeloos zolang het lek erboven zit.
+
+Eerst de overdracht. Hoe snel en hoe goed wordt een lead opgevolgd? Een lead die binnen vijf minuten een reactie krijgt, converteert veelvoudig beter dan een lead die een dag moet wachten. Dit is vaak de goedkoopste ingreep met de grootste impact, en hij kost geen cent extra advertentiebudget. Soms is het verschil tussen stilstand en groei niet een nieuw kanaal, maar iemand die de telefoon opneemt.
+
+Dan de landingservaring. Meet de werkelijke laadtijd op een gemiddelde telefoon op een gemiddelde verbinding, niet op je glasvezel met een leeg cachegeheugen. Haal velden uit je formulier tot alleen overblijft wat sales echt nodig heeft om het gesprek te beginnen. Eén heldere actie per pagina, niet vier die om aandacht vechten.
+
+Dan de aanbieding. Dit is het moeilijkste, want het raakt aan positionering. Kan een vreemde in één zin navertellen wat je doet en voor wie? Zo niet, dan converteert geen enkele hoeveelheid verkeer goed, hoe strak de pagina er ook uitziet. De aanbieding repareren is werk dat je niet wegoptimaliseert met knoppen en kleuren, het vraagt dat je een keuze maakt over wie je wel en niet bedient.
+
+> Verkeer is een vermenigvuldiger, en een vermenigvuldiger werkt twee kanten op. Hij vergroot wat werkt en vergroot net zo hard wat niet werkt.
+
+## Meet wat telt, niet wat makkelijk is
+
+De meeste dashboards tonen wat eenvoudig te meten is: kliks, impressies, kosten per klik. Dat zijn ijdele cijfers zolang je niet weet wat een bezoeker waard is. De enige metriek die de reparatie stuurt, is de waarde per bezoeker: omzet gedeeld door bezoekers, over een periode die lang genoeg is om je salescyclus te dekken.
+
+Zodra je die kent, wordt elke beslissing simpel. Stijgt de waarde per bezoeker na een ingreep? Houden. Daalt hij zodra je opschaalt? Stoppen, en eerst terug naar de funnel. Je hoeft niet te raden en je hoeft niet te discussiëren over onderbuikgevoel, je laat de waarde per bezoeker de beslissing nemen.
+
+## Een rekenvoorbeeld dat blijft hangen
+
+Neem een webshop met honderd bezoekers per dag en een conversie van twee procent. Dat zijn twee verkopen. De eigenaar verdubbelt het budget, het verkeer gaat naar tweehonderd, maar de conversie zakt naar anderhalf procent omdat het extra publiek minder gericht is. Resultaat: drie verkopen in plaats van vier, tegen dubbele advertentiekosten. Hij betaalt meer en groeit minder hard dan de grafiek beloofde.
+
+Nu hetzelfde bedrijf, maar in omgekeerde volgorde. Eerst wordt de productpagina sneller, het formulier korter en de opvolging strakker. De conversie stijgt van twee naar drie procent. Bij dezelfde honderd bezoekers zijn dat al drie verkopen, zonder een euro extra advertentiegeld. Verdubbelt hij daarna het budget, dan staan er zes verkopen, want nu werkt de hogere conversie mee op elke nieuwe bezoeker.
+
+Hetzelfde budget, hetzelfde verkeer, een totaal andere uitkomst. Het verschil zit niet in hoeveel je erin stopt, maar in de staat van de funnel waar het doorheen gaat. Dat is de hele les: conversie is een vermenigvuldiger die op al je toekomstige verkeer wordt toegepast, en daarmee de enige investering die zichzelf blijft terugbetalen.
+
+## Pas daarna schaal je op
+
+Als de overdracht strak staat, de pagina snel en helder is, en de aanbieding klopt, dan, en pas dan, is opschalen verstandig. Nu werkt de vermenigvuldiger in je voordeel. Elke extra euro raakt een pad dat bewezen omzet oplevert, en je weet binnen een week of het kanaal blijft presteren op schaal.
+
+Dit is geen pleidooi tegen adverteren. Het is een pleidooi voor volgorde. Eerst converteren, dan schalen. De teams die we het hardst zien groeien, hebben zelden de grootste budgetten. Het zijn de teams die hun funnel behandelen als een product: ze meten waar het lekt, repareren in de juiste volgorde, en geven pas gas als het pad van klik naar omzet aantoonbaar dicht is. Saai, methodisch, en veel winstgevender dan nog een budgetverhoging die je teleurstelling alleen maar opschaalt.` },
+  { id: "lanceren-21-dagen", title: "Lanceren in 21 dagen met AI in de lus", cat: "AI Build", date: "jun 2026", read: "7 min", cover: "build",
     excerpt: "Wat verandert er als AI de bouwer is en jij regisseert, en waar wint de mens nog?",
-    body: "AI verkleint de afstand tussen idee en werkende software. De rem verschuift van typesnelheid naar oordeel.\n\nTeams die winnen behandelen AI als snelle bouwer en zichzelf als scherpe regisseurs: eigenaar van scope, smaak en de keuze wat live gaat." },
-  { id: "analytics-weet-al", title: "Je analytics weet al wat te doen", cat: "RevOps", date: "mei 2026",
+    body: `Drie weken klinkt te kort om iets echts te lanceren. Dat was het ook, tot voor kort. De afstand tussen een idee en werkende software werd altijd bepaald door hoe snel mensen konden typen, testen en herstellen. Die afstand is in elkaar geklapt. Niet omdat mensen sneller typen, maar omdat AI het typen heeft overgenomen. Wat overblijft, is oordeel. En oordeel is precies waar de mens nog wint.
+
+Een lancering in eenentwintig dagen is geen trucje en geen belofte van perfectie. Het is een andere manier van werken, waarin de rem niet langer bij de uitvoering zit maar bij de keuzes. Dit is wat er verandert, en wat hetzelfde blijft.
+
+## De rem verschuift van handen naar hoofd
+
+Vroeger was bouwen de bottleneck. Je had een idee, en dan volgden weken van implementatie voordat je kon zien of het idee deugde. De meeste tijd ging naar uitvoering, niet naar denken.
+
+Met AI als bouwer keert dat om. Een werkend prototype is er in uren, niet in weken. De vraag is niet meer of je het kunt bouwen, maar of je weet wat je wilt bouwen, en of je kunt zien wanneer het resultaat goed genoeg is om live te gaan. De schaarste verschuift van typesnelheid naar smaak en richting.
+
+Dat klinkt bevrijdend, en dat is het ook, maar het legt een nieuwe last bij de mens. Als bouwen bijna gratis wordt, wordt de prijs van vaag denken zichtbaar. Een onduidelijke opdracht levert nu in een uur een onduidelijk product op, in plaats van pas na een maand. Je fouten komen sneller terug.
+
+## AI bouwt, jij regisseert
+
+De teams die hier het meeste uithalen, behandelen AI niet als een collega met een eigen mening, maar als een buitengewoon snelle bouwer die exact doet wat hem gevraagd wordt. De rol van de mens schuift op naar die van regisseur: eigenaar van de scope, bewaker van de smaak, en degene die beslist wat de deur uit gaat.
+
+![De lus: regisseren, bouwen, beoordelen, bijsturen](build)
+
+Regisseren betekent in de praktijk drie dingen. Je bepaalt de scope, dus wat er wel en vooral niet in deze versie hoort. Je bewaakt de kwaliteit, want een AI levert moeiteloos iets op dat werkt maar niet klopt. En je neemt de eindbeslissing over wat live gaat, want die verantwoordelijkheid kun je niet delegeren aan een model dat geen gevolgen draagt.
+
+Wie deze rol niet pakt, krijgt een berg code die werkt maar nergens heen gaat. Snelheid zonder richting is geen voordeel, het is alleen sneller verdwalen.
+
+## Eenentwintig dagen, in drie bewegingen
+
+De eerste week is voor scherpte. Niet bouwen, maar kiezen. Wat is de kern, voor wie, en hoe weet je straks of het werkt? Een goede brief in week één bespaart je tien correcties in week drie. Hier wint de mens, want geen model kan voor jou bepalen welk probleem het waard is om op te lossen.
+
+De tweede week is voor tempo. Nu draait de lus op volle kracht: regisseren, bouwen, beoordelen, bijsturen, en weer opnieuw. Omdat een iteratie uren kost in plaats van dagen, kun je per dag meerdere keren rond. Je leert niet uit vergaderingen maar uit werkende versies die je voor je ziet.
+
+De derde week is voor afmaken. Het laatste deel van een lancering, de scherpe randen, de echte data, de momenten waarop het misgaat, is altijd het werk dat AI het minst goed alleen doet. Hier komt de menselijke smaak terug: het verschil tussen iets dat werkt en iets dat af voelt.
+
+> AI verkleint de afstand tussen idee en uitvoering tot bijna nul. Daardoor wordt de kwaliteit van je idee opeens het enige dat telt.
+
+## Waar de mens wint
+
+Het is verleidelijk om te denken dat snelheid het hele verhaal is. Dat is het niet. De drie dingen die een lancering laten slagen, zijn juist de dingen die AI niet voor je doet.
+
+Het eerste is oordeel: weten wanneer iets goed genoeg is, en wanneer net niet. Het tweede is scope: de discipline om dingen weg te laten, terwijl een model je met plezier alles tegelijk bouwt. Het derde is verantwoordelijkheid: iemand moet beslissen wat live gaat en de gevolgen dragen, en dat is geen taak voor een systeem zonder belang bij de uitkomst.
+
+## De valkuilen die snelheid met zich meebrengt
+
+Snelheid lost het ene probleem op en introduceert een nieuw. Wie in uren kan bouwen, bouwt al snel meer dan nodig is. De verleiding om er nog een functie bij te vragen is groot, juist omdat het zo weinig moeite kost. Voor je het weet heb je een product met tien half afgemaakte ideeën in plaats van één dat af is. Scope-discipline wordt belangrijker naarmate bouwen goedkoper wordt, niet minder belangrijk.
+
+De tweede valkuil is vertrouwen zonder controle. Een AI levert code die werkt, en werkende code voelt als af. Maar werken en kloppen zijn niet hetzelfde. Een model maakt aannames die het niet uitspreekt, kiest randgevallen die je niet hebt bedacht, en presenteert het resultaat met hetzelfde gemak of het nu briljant of subtiel fout is. Wie niet leest wat er gebouwd is, levert vroeg of laat iets op dat onderhuids rammelt.
+
+De derde valkuil is de illusie dat snelheid richting vervangt. Drie weken winnen op de bouw helpt je niet als je de verkeerde drie weken bouwt. Een snel gebouwd verkeerd product is alleen sneller verkeerd. De tijd die je wint, hoort terug te gaan naar nadenken, niet naar nog meer bouwen.
+
+Geen van deze valkuilen is een reden om langzamer te werken. Ze zijn een reden om de menselijke rol serieus te nemen: kiezen, controleren, en de richting bewaken terwijl de uitvoering om je heen versnelt.
+
+## Snelheid is een middel, geen doel
+
+Lanceren in eenentwintig dagen is geen wedstrijd in hard rennen. Het is een manier om sneller te leren of een idee deugt, tegen veel lagere kosten dan vroeger. Je zet niet drie maanden in op een aanname, je test hem in drie weken en je weet het.
+
+De teams die hier winnen, zijn niet de teams die het snelst bouwen. Het zijn de teams die het scherpst kiezen, het strengst weglaten, en het beste zien wanneer iets af is. AI levert het tempo. De mens levert de richting. En richting, niet snelheid, is wat een lancering laat slagen.` },
+  { id: "analytics-weet-al", title: "Je analytics weet al wat te doen", cat: "RevOps", date: "mei 2026", read: "6 min", cover: "signal",
     excerpt: "De data die je product verzamelt is de goedkoopste groeiknop die je niet gebruikt.",
-    body: "De meeste teams zitten op gedragsdata waar ze nooit iets mee doen. Het signaal is er al.\n\nKoppel productevents aan marketingbeslissingen en dezelfde dataset die groei meet, gaat groei aansturen." },
+    body: `De meeste teams zoeken hun volgende groeiknop buiten de deur. Een nieuw kanaal, een nieuwe campagne, een nieuw budget. Ondertussen zitten ze op een berg gedragsdata die ze zelf verzamelen en nooit gebruiken. Elk klik, elke sessie, elk moment waarop een gebruiker afhaakt of juist doorgaat, is een signaal. Het signaal is er al. Het wordt alleen zelden omgezet in een beslissing.
+
+Dat is zonde, want het is de goedkoopste groeiknop die er is. Je hebt er niets extra's voor nodig: geen nieuw kanaal, geen groter budget. Je hoeft alleen de data die je product al produceert te koppelen aan de keuzes die je marketing en sales maken.
+
+## Twee werelden die elkaar niet spreken
+
+In de meeste bedrijven leven productdata en marketingdata in gescheiden werelden. Het product weet precies wie actief is, wie vastloopt, en wie op het punt staat te vertrekken. De marketing weet wie er binnenkwam, via welk kanaal, en tegen welke kosten. Maar die twee praten niet met elkaar.
+
+Het gevolg: marketing optimaliseert op het verkeerde doel. Je stuurt op leads, terwijl niet elke lead evenveel waard is. Je viert een goedkope aanmelding, terwijl die gebruiker drie dagen later alweer weg is. Zolang de marketing niet weet wat er ná de aanmelding gebeurt, stuurt ze blind.
+
+## Het signaal zit in het gedrag
+
+Elke gebruiker laat een spoor achter dat verraadt hoe het verder gaat. Een paar voorbeelden van signalen die de meeste teams al hebben, maar niet benutten:
+
+- Het activatiemoment. De handeling die een nieuwe gebruiker doet vlak voordat hij blijft hangen. Wie die handeling haalt, blijft. Wie hem mist, vertrekt.
+- Het afhaaksignaal. Het patroon dat voorafgaat aan vertrek: minder sessies, kortere bezoeken, een functie die niet meer gebruikt wordt.
+- Het uitbreidingssignaal. Gedrag dat laat zien dat iemand klaar is voor meer, een zwaarder plan, een extra zitplaats, een vervolgaankoop.
+
+![Van productgedrag naar marketingbeslissing](signal)
+
+Deze signalen liggen in je eventdata, vaak al maanden. Het enige wat ontbreekt, is de brug naar de plek waar beslissingen worden genomen.
+
+## Koppel events aan beslissingen
+
+De brug bouwen is minder werk dan het lijkt. Je hebt geen volledig nieuw datateam nodig, je hebt een handvol koppelingen nodig die productgedrag doorgeven aan je marketing en sales.
+
+Drie koppelingen leveren bijna altijd direct rendement op. De eerste: stuur het activatiesignaal terug naar je advertentieplatform, zodat je niet optimaliseert op aanmeldingen maar op gebruikers die daadwerkelijk activeren. Je advertenties leren dan zoeken naar mensen die blijven, niet naar mensen die klikken.
+
+De tweede: laat het afhaaksignaal een actie starten. Een gerichte mail, een seintje naar sales, een aanbod op het juiste moment. Niet voor iedereen, maar precies voor de gebruikers die op het punt staan te vertrekken en nog te redden zijn.
+
+De derde: gebruik het uitbreidingssignaal om sales te laten weten wanneer een klant klaar is voor meer. Geen koud nabellen, maar contact op het moment dat het gedrag erom vraagt.
+
+> Dezelfde dataset waarmee je groei meet, kan groei aansturen. Meten en sturen zijn geen twee projecten, het is dezelfde data met een andere bestemming.
+
+## Begin klein, en met één signaal
+
+De fout die teams hier maken, is te groot beginnen. Ze willen een compleet datamodel, een perfect dashboard, een systeem dat alles voorspelt. Dat duurt maanden en levert intussen niets op.
+
+Begin met één signaal en één beslissing. Kies je activatiemoment, definieer het scherp, en koppel het aan precies één keuze, bijvoorbeeld waar je advertenties op optimaliseren. Dat is in een week te bouwen en je ziet binnen een maand of het werkt. Werkt het, dan voeg je het volgende signaal toe. Werkt het niet, dan heb je een week verloren in plaats van een kwartaal. Klein beginnen is niet voorzichtig, het is de snelste manier om te leren wat je data je probeert te vertellen.
+
+## Een voorbeeld: van aanmelding naar activatie
+
+Stel een product waar nieuwe gebruikers zich gratis aanmelden. De marketing optimaliseert op die aanmeldingen, want dat is wat het advertentieplatform kan meten. De kosten per aanmelding dalen mooi, het dashboard kleurt groen. Toch groeit de omzet niet mee. De reden: een groot deel van die goedkope aanmeldingen logt één keer in en komt nooit terug.
+
+In de productdata is precies te zien waar het kantelt. Gebruikers die binnen hun eerste sessie één specifieke handeling doen, hun eerste project aanmaken, blijven veel vaker hangen dan gebruikers die dat niet doen. Dat is het activatiemoment. Door dat ene event terug te sturen naar het advertentieplatform, verschuift het doel van aanmelding naar activatie. De advertenties stoppen met jagen op goedkope klikkers en gaan zoeken naar mensen die het product echt gaan gebruiken. De kosten per aanmelding stijgen op papier, maar de kosten per blijvende gebruiker dalen, en dat is de metriek die telt.
+
+## Wat het oplevert
+
+Het mooie aan deze aanpak is dat hij geen nieuw verkeer en geen groter budget vraagt. Je verlegt alleen waar je bestaande systeem op stuurt. Dezelfde campagnes, hetzelfde geld, maar gericht op het gedrag dat omzet voorspelt in plaats van op het gedrag dat makkelijk te tellen is.
+
+En het stopt niet bij activatie. Zodra de brug tussen productgedrag en marketing er ligt, kun je hem voor elk signaal gebruiken. Het afhaaksignaal wordt een reddingsactie, het uitbreidingssignaal wordt een verkoopkans, en elk nieuw inzicht uit je data wordt direct een hefboom in plaats van een grafiek waar niemand iets mee doet.
+
+Dat is de echte winst: niet één slimme koppeling, maar een manier van werken waarin je product en je marketing eindelijk dezelfde taal spreken. De data die je toch al verzamelt, gaat werken voor je groei in plaats van stof vangen in een dashboard.
+
+## De goedkoopste knop die je niet gebruikt
+
+Een nieuw kanaal kost geld en tijd voordat het iets oplevert. Een groter budget vergroot zowel je winst als je verlies. Maar de signalen in je eigen productdata heb je al betaald: ze ontstaan vanzelf, elke dag, bij elke gebruiker.
+
+De teams die dit benutten, hebben geen geheim kanaal en geen groter budget. Ze hebben alleen de moeite genomen om hun eigen data te laten praten met hun eigen beslissingen. Het signaal was er al. De enige vraag is of je ernaar luistert.` },
 ];
 const DEFAULT_REVIEWS = [
   { id: "bikefair", quote: "Resultaat geleverd: persoonlijke aanpak, kwaliteit van werk, korte lijntjes. Het zijn experts in hun veld.", name: "J. Pecník", role: "CEO", org: "BikeFair", rating: 5 },
@@ -817,8 +987,8 @@ function Home({ content, openConsult }) {
             {articles.slice(0, 3).map((p, i) => (
               <Section key={p.id} className="post" style={{ transitionDelay: `${i * 70}ms` }}>
                 <a href={`#/insight/${p.id}`} className="post-link">
-                  <div className="post-thumb" aria-hidden />
-                  <div className="post-meta mono">{p.cat} · {p.date}</div>
+                  <div className="post-thumb" aria-hidden><ArticleArt variant={p.cover} mode="thumb" /></div>
+                  <div className="post-meta mono">{p.cat} · {p.date}{p.read ? ` · ${p.read}` : ""}</div>
                   <h3 className="post-title">{p.title}</h3>
                   <p className="post-body">{p.excerpt}</p>
                   <span className="service-link">{t.insights.read}</span>
@@ -864,16 +1034,76 @@ function AppDetail({ content, id }) {
     </div></article>
   );
 }
+function ArticleArt({ variant = "default", mode = "thumb" }) {
+  if (variant && /^https?:\/\//.test(variant)) {
+    return <div className={`art art-${mode} art-photo`} style={{ backgroundImage: `url(${variant})` }} role="img" aria-hidden />;
+  }
+  const motifs = {
+    funnel: (
+      <>
+        <path className="art-line" d="M28 56 H372 M28 100 H372 M28 144 H372" />
+        <path className="art-stroke" d="M46 52 L250 96 L250 104 L46 148" fill="none" strokeWidth="2" />
+        <path className="art-stroke" d="M250 96 L330 100 L250 104" fill="none" strokeWidth="2" />
+        <circle className="art-dot" cx="66" cy="56" r="3.5" /><circle className="art-dot" cx="92" cy="100" r="3.5" /><circle className="art-dot" cx="74" cy="144" r="3.5" />
+        <circle className="art-dot" cx="138" cy="80" r="3" /><circle className="art-dot" cx="150" cy="120" r="3" /><circle className="art-dot" cx="120" cy="100" r="3" />
+        <circle className="art-acc-r" cx="332" cy="100" r="13" fill="none" /><circle className="art-acc-f" cx="332" cy="100" r="6" />
+      </>
+    ),
+    build: (
+      <>
+        <rect className="art-stroke-o" x="46" y="44" width="64" height="18" rx="5" fill="none" strokeWidth="2" />
+        <rect className="art-line-f" x="120" y="48" width="120" height="10" rx="5" />
+        <path className="art-acc" d="M356 70 C 372 30, 60 26, 46 64" fill="none" strokeWidth="2" />
+        <path className="art-acc-f" d="M46 64 l9 -3 l-1 8 z" />
+        {Array.from({ length: 21 }).map((_, k) => {
+          const x = 48 + k * 15.4, on = k <= 9, cur = k === 9, h = cur ? 30 : on ? 22 : 16;
+          return <rect key={k} className={cur ? "art-acc-f" : on ? "art-stroke-f" : "art-line-f"} x={x} y={158 - h} width="6" height={h} rx="2" />;
+        })}
+      </>
+    ),
+    signal: (
+      <>
+        {[[58, 54], [74, 92], [56, 130], [104, 70], [110, 122], [138, 100], [92, 156]].map(([x, y], k) => (
+          <g key={k}><path className="art-line" d={`M${x} ${y} L 312 100`} /><circle className="art-dot" cx={x} cy={y} r={k % 2 ? 3 : 4} /></g>
+        ))}
+        <circle className="art-acc-r" cx="312" cy="100" r="26" fill="none" opacity="0.35" /><circle className="art-acc-r" cx="312" cy="100" r="17" fill="none" /><circle className="art-acc-f" cx="312" cy="100" r="8" />
+      </>
+    ),
+    default: (<><circle className="art-acc-f" cx="200" cy="100" r="8" /><circle className="art-acc-r" cx="200" cy="100" r="22" fill="none" /></>),
+  };
+  return (
+    <div className={`art art-${mode}`}>
+      <svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" role="img" aria-hidden>
+        <rect className="art-bg" x="0" y="0" width="400" height="200" />
+        {motifs[variant] || motifs.default}
+      </svg>
+    </div>
+  );
+}
+function renderArticleBody(body) {
+  const blocks = (body || "").split("\n\n").map((b) => b.trim()).filter(Boolean);
+  return blocks.map((b, i) => {
+    if (b.startsWith("## ")) return <h2 key={i} className="article-h2">{b.slice(3)}</h2>;
+    if (b.startsWith("> ")) return <blockquote key={i} className="article-quote">{b.replace(/^> ?/gm, "")}</blockquote>;
+    const fig = b.match(/^!\[(.*?)\]\((.*?)\)$/);
+    if (fig) return <figure key={i} className="article-fig"><ArticleArt variant={fig[2]} mode="figure" /><figcaption>{fig[1]}</figcaption></figure>;
+    if (b.split("\n").every((l) => l.trim().startsWith("- "))) {
+      return <ul key={i} className="article-list">{b.split("\n").map((l, j) => <li key={j}>{l.replace(/^-\s*/, "").trim()}</li>)}</ul>;
+    }
+    return <p key={i}>{b.split("\n").join(" ")}</p>;
+  });
+}
 function ArticleDetail({ content, id }) {
   const { t } = useLang(); const a = content.articles.find((x) => x.id === id);
   if (!a) return <NotFound back="#blog" />;
   return (
     <article className="detail detail-narrow"><div className="wrap">
       <a href="#blog" className="back">{t.detail.backInsights}</a>
-      <div className="detail-meta mono">{a.cat} · {a.date}</div>
+      <div className="detail-meta mono">{a.cat} · {a.date}{a.read ? ` · ${a.read}` : ""}</div>
       <h1 className="display detail-h">{a.title}</h1>
       <p className="detail-lede">{a.excerpt}</p>
-      <div className="detail-body">{paras(a.body).map((p, i) => <p key={i}>{p}</p>)}</div>
+      <div className="article-hero"><ArticleArt variant={a.cover} mode="hero" /></div>
+      <div className="detail-body article-body">{renderArticleBody(a.body)}</div>
     </div></article>
   );
 }
@@ -904,64 +1134,109 @@ function CertDetail({ content, id }) {
 }
 
 /* ---------- CMS ---------- */
-function Field({ label, value, onChange, type = "text" }) {
+function Field({ label, value, onChange, type = "text", hint, rows = 6, placeholder, mono }) {
   return (
-    <label className="field"><span className="field-l">{label}</span>
-      {type === "textarea" ? <textarea className="field-i" rows={6} value={value} onChange={(e) => onChange(e.target.value)} /> : <input className="field-i" type={type} value={value} onChange={(e) => onChange(e.target.value)} />}
+    <label className="field">
+      <span className="field-l">{label}{hint && <span className="field-hint">{hint}</span>}</span>
+      {type === "textarea"
+        ? <textarea className={`field-i${mono ? " field-mono" : ""}`} rows={rows} value={value} placeholder={placeholder} onChange={(e) => onChange(e.target.value)} />
+        : <input className={`field-i${mono ? " field-mono" : ""}`} type={type} value={value} placeholder={placeholder} onChange={(e) => onChange(e.target.value)} />}
     </label>
   );
 }
+function SearchIcon() {
+  return <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden><circle cx="11" cy="11" r="7" /><path d="M21 21l-4.3-4.3" /></svg>;
+}
 function Editor({ coll, item, onSave, onCancel }) {
-  const { t } = useLang(); const f = t.cms.f;
+  const { t } = useLang(); const f = t.cms.f; const g = t.cms.groups; const h = t.cms.hints;
   const [d, setD] = useState(item);
   const set = (k, v) => setD((p) => ({ ...p, [k]: v }));
+  const isNew = !item.id;
   const save = () => {
     let out = { ...d };
     if (!out.id) out.id = slugify(coll === "reviews" ? (out.name || "review") : (out.title || out.name || "item"));
     if (coll === "reviews") out.rating = Math.max(1, Math.min(5, parseInt(out.rating, 10) || 5));
     onSave(out);
   };
+  const slugField = <Field label={t.cms.slug} value={d.id || ""} onChange={(v) => set("id", v)} hint={h.slug} mono placeholder="auto" />;
   return (
     <div className="editor">
-      {coll === "reviews" && <>
-        <Field label={f.quote} value={d.quote || ""} onChange={(v) => set("quote", v)} type="textarea" />
-        <Field label={f.name} value={d.name || ""} onChange={(v) => set("name", v)} />
-        <Field label={f.role} value={d.role || ""} onChange={(v) => set("role", v)} />
-        <Field label={f.org} value={d.org || ""} onChange={(v) => set("org", v)} />
-        <Field label={f.rating} value={d.rating ?? 5} onChange={(v) => set("rating", v)} type="number" />
-      </>}
-      {coll === "certs" && <>
-        <Field label={f.certName} value={d.name || ""} onChange={(v) => set("name", v)} />
-        <Field label={f.tier} value={d.tier || ""} onChange={(v) => set("tier", v)} />
-        <Field label={f.blurb} value={d.blurb || ""} onChange={(v) => set("blurb", v)} type="textarea" />
-        <Field label={f.link} value={d.href || ""} onChange={(v) => set("href", v)} />
-      </>}
-      {coll === "apps" && <>
-        <Field label={f.title} value={d.title || ""} onChange={(v) => set("title", v)} />
-        <Field label={f.client} value={d.client || ""} onChange={(v) => set("client", v)} />
-        <Field label={f.tag} value={d.tag || ""} onChange={(v) => set("tag", v)} />
-        <Field label={f.summary} value={d.summary || ""} onChange={(v) => set("summary", v)} type="textarea" />
-        <Field label={f.body} value={d.body || ""} onChange={(v) => set("body", v)} type="textarea" />
-        <Field label={f.link} value={d.link || ""} onChange={(v) => set("link", v)} />
-        <Field label={f.metrics} value={(d.metrics || []).map((m) => `${m.label}:${m.value}`).join(", ")}
-          onChange={(v) => set("metrics", v.split(",").map((s) => s.trim()).filter(Boolean).map((s) => { const [label, ...r] = s.split(":"); return { label: (label || "").trim(), value: r.join(":").trim() }; }))} type="textarea" />
-      </>}
-      {coll === "articles" && <>
-        <Field label={f.title} value={d.title || ""} onChange={(v) => set("title", v)} />
-        <Field label={f.category} value={d.cat || ""} onChange={(v) => set("cat", v)} />
-        <Field label={f.date} value={d.date || ""} onChange={(v) => set("date", v)} />
-        <Field label={f.excerpt} value={d.excerpt || ""} onChange={(v) => set("excerpt", v)} type="textarea" />
-        <Field label={f.body} value={d.body || ""} onChange={(v) => set("body", v)} type="textarea" />
-      </>}
-      <div className="editor-actions"><button className="btn btn-primary btn-sm" onClick={save}>{t.cms.save}</button><button className="btn btn-ghost btn-sm" onClick={onCancel}>{t.cms.cancel}</button></div>
+      <div className="editor-head">
+        <button className="editor-back" onClick={onCancel}>←</button>
+        <div><div className="editor-eyebrow mono">{t.cms.tabs[coll]}</div><h2 className="display editor-title">{isNew ? t.cms.newEntry : t.cms.editEntry}</h2></div>
+      </div>
+      <div className="editor-body">
+        {coll === "reviews" && <>
+          <div className="field-group"><div className="field-group-h mono">{g.content}</div><div className="field-grid">
+            <Field label={f.quote} value={d.quote || ""} onChange={(v) => set("quote", v)} type="textarea" rows={4} />
+          </div></div>
+          <div className="field-group"><div className="field-group-h mono">{g.meta}</div><div className="field-grid two">
+            <Field label={f.name} value={d.name || ""} onChange={(v) => set("name", v)} />
+            <Field label={f.rating} value={d.rating ?? 5} onChange={(v) => set("rating", v)} type="number" />
+            <Field label={f.role} value={d.role || ""} onChange={(v) => set("role", v)} />
+            <Field label={f.org} value={d.org || ""} onChange={(v) => set("org", v)} />
+            {slugField}
+          </div></div>
+        </>}
+        {coll === "certs" && <>
+          <div className="field-group"><div className="field-group-h mono">{g.content}</div><div className="field-grid two">
+            <Field label={f.certName} value={d.name || ""} onChange={(v) => set("name", v)} />
+            <Field label={f.tier} value={d.tier || ""} onChange={(v) => set("tier", v)} />
+            <Field label={f.blurb} value={d.blurb || ""} onChange={(v) => set("blurb", v)} type="textarea" rows={3} />
+          </div></div>
+          <div className="field-group"><div className="field-group-h mono">{g.links}</div><div className="field-grid two">
+            <Field label={f.link} value={d.href || ""} onChange={(v) => set("href", v)} mono />
+            {slugField}
+          </div></div>
+        </>}
+        {coll === "apps" && <>
+          <div className="field-group"><div className="field-group-h mono">{g.content}</div><div className="field-grid">
+            <Field label={f.summary} value={d.summary || ""} onChange={(v) => set("summary", v)} type="textarea" rows={3} />
+            <Field label={f.body} value={d.body || ""} onChange={(v) => set("body", v)} type="textarea" />
+            <Field label={f.metrics} value={(d.metrics || []).map((m) => `${m.label}:${m.value}`).join(", ")} hint={h.metrics} mono
+              onChange={(v) => set("metrics", v.split(",").map((s) => s.trim()).filter(Boolean).map((s) => { const [label, ...r] = s.split(":"); return { label: (label || "").trim(), value: r.join(":").trim() }; }))} type="textarea" rows={2} />
+          </div></div>
+          <div className="field-group"><div className="field-group-h mono">{g.meta}</div><div className="field-grid two">
+            <Field label={f.title} value={d.title || ""} onChange={(v) => set("title", v)} />
+            <Field label={f.client} value={d.client || ""} onChange={(v) => set("client", v)} />
+            <Field label={f.tag} value={d.tag || ""} onChange={(v) => set("tag", v)} />
+            {slugField}
+          </div></div>
+          <div className="field-group"><div className="field-group-h mono">{g.links}</div><div className="field-grid">
+            <Field label={f.link} value={d.link || ""} onChange={(v) => set("link", v)} mono />
+          </div></div>
+        </>}
+        {coll === "articles" && <>
+          <div className="field-group"><div className="field-group-h mono">{g.content}</div><div className="field-grid">
+            <Field label={f.title} value={d.title || ""} onChange={(v) => set("title", v)} />
+            <Field label={f.excerpt} value={d.excerpt || ""} onChange={(v) => set("excerpt", v)} type="textarea" rows={2} />
+            <Field label={f.body} value={d.body || ""} onChange={(v) => set("body", v)} type="textarea" rows={14} hint={h.body} mono />
+          </div></div>
+          <div className="field-group"><div className="field-group-h mono">{g.media}</div><div className="field-grid">
+            <Field label={f.cover} value={d.cover || ""} onChange={(v) => set("cover", v)} hint={h.cover} mono />
+            <div className="cover-preview"><ArticleArt variant={d.cover || "default"} mode="figure" /></div>
+          </div></div>
+          <div className="field-group"><div className="field-group-h mono">{g.meta}</div><div className="field-grid two">
+            <Field label={f.category} value={d.cat || ""} onChange={(v) => set("cat", v)} />
+            <Field label={f.date} value={d.date || ""} onChange={(v) => set("date", v)} />
+            <Field label={f.read} value={d.read || ""} onChange={(v) => set("read", v)} placeholder="6 min" />
+            {slugField}
+          </div></div>
+        </>}
+      </div>
+      <div className="editor-bar">
+        <button className="btn btn-ghost btn-sm" onClick={onCancel}>{t.cms.cancel}</button>
+        <button className="btn btn-primary btn-sm" onClick={save}>{t.cms.save}</button>
+      </div>
     </div>
   );
 }
 function CMS({ content }) {
   const { t } = useLang();
   const { data, upsert, remove, reset, status } = content;
-  const [tab, setTab] = useState("apps");
+  const [tab, setTab] = useState("articles");
   const [editing, setEditing] = useState(null);
+  const [q, setQ] = useState("");
   useEffect(() => { window.scrollTo(0, 0); }, []);
   const tabs = [
     { key: "reviews", label: t.cms.tabs.reviews, title: (x) => x.name },
@@ -970,43 +1245,65 @@ function CMS({ content }) {
     { key: "articles", label: t.cms.tabs.articles, title: (x) => x.title },
   ];
   const meta = tabs.find((x) => x.key === tab);
-  const list = data[tab] || [];
+  const all = data[tab] || [];
+  const s = (q || "").trim().toLowerCase();
+  const list = s ? all.filter((it) => (meta.title(it) || "").toLowerCase().includes(s) || (it.id || "").toLowerCase().includes(s)) : all;
   const pageFor = (it) => ({ reviews: "review", certs: "cert", apps: "app", articles: "insight" }[tab]) + "/" + it.id;
   return (
     <section className="cms">
-      <div className="wrap">
-        <a href="#/" className="back">{t.cms.back}</a>
-        <div className="cms-head">
-          <div>
-            <div className="eyebrow">{t.cms.eyebrow}</div>
-            <h1 className="display detail-h">{t.cms.h1}</h1>
+      <div className="wrap cms-shell">
+        <aside className="cms-side">
+          <a href="#/" className="cms-side-back">{t.cms.back}</a>
+          <div className="cms-side-brand"><FliiLogo variant="word" /><span className="cms-side-tag mono">{t.cms.eyebrow}</span></div>
+          <div className="cms-side-label mono">{t.cms.collectionsLabel}</div>
+          <nav className="cms-collections" aria-label="Collections">
+            {tabs.map((x) => (
+              <button key={x.key} className={`cms-coll ${tab === x.key ? "on" : ""}`} onClick={() => { setTab(x.key); setEditing(null); setQ(""); }}>
+                <span className="cms-coll-name">{x.label}</span>
+                <span className="cms-coll-count">{(data[x.key] || []).length}</span>
+              </button>
+            ))}
+          </nav>
+          <div className="cms-side-foot">
             <div className={`cms-status cms-status-${status}`}><span className="cms-dot" />{t.cms.status[status] || t.cms.status.local}</div>
+            <button className="cms-reset" onClick={() => { if (confirm(t.cms.confirmReset)) { reset(); setEditing(null); } }}>{t.cms.reset}</button>
           </div>
-          <button className="btn btn-ghost btn-sm" onClick={() => { if (confirm(t.cms.confirmReset)) { reset(); setEditing(null); } }}>{t.cms.reset}</button>
-        </div>
-        <div className="cms-tabs">
-          {tabs.map((x) => <button key={x.key} className={`cms-tab ${tab === x.key ? "on" : ""}`} onClick={() => { setTab(x.key); setEditing(null); }}>{x.label} <span className="cms-count">{(data[x.key] || []).length}</span></button>)}
-        </div>
-        {editing ? (
-          <Editor coll={tab} item={editing} onSave={(it) => { upsert(tab, it); setEditing(null); }} onCancel={() => setEditing(null)} />
-        ) : (
-          <>
-            <button className="btn btn-primary btn-sm cms-add" onClick={() => setEditing({})}>{t.cms.newPrefix}{meta.label}</button>
-            <div className="cms-list">
-              {list.map((it) => (
-                <div key={it.id} className="cms-row">
-                  <div className="cms-row-main"><div className="cms-row-t">{meta.title(it)}</div><div className="cms-row-s mono">{it.id}</div></div>
-                  <div className="cms-row-actions">
-                    <a className="cms-link" href={`#/${pageFor(it)}`}>{t.cms.view}</a>
-                    <button className="cms-link" onClick={() => setEditing(it)}>{t.cms.edit}</button>
-                    <button className="cms-link danger" onClick={() => { if (confirm(t.cms.confirmDelete)) remove(tab, it.id); }}>{t.cms.del}</button>
-                  </div>
+        </aside>
+        <main className="cms-main">
+          {editing ? (
+            <Editor coll={tab} item={editing} onSave={(it) => { upsert(tab, it); setEditing(null); }} onCancel={() => setEditing(null)} />
+          ) : (
+            <>
+              <div className="cms-main-head">
+                <div className="cms-main-title">
+                  <h1 className="display cms-h1">{meta.label}</h1>
+                  <p className="cms-desc">{t.cms.desc[tab]}</p>
                 </div>
-              ))}
-              {list.length === 0 && <div className="cms-empty">{t.cms.empty}</div>}
-            </div>
-          </>
-        )}
+                <button className="btn btn-primary btn-sm" onClick={() => setEditing({})}>+ {t.cms.newEntry}</button>
+              </div>
+              <div className="cms-toolbar">
+                <div className="cms-search"><SearchIcon /><input value={q} onChange={(e) => setQ(e.target.value)} placeholder={t.cms.search} aria-label={t.cms.search} /></div>
+                <span className="cms-count-meta mono">{list.length} {t.cms.entries}</span>
+              </div>
+              <div className="cms-list">
+                {list.map((it) => (
+                  <div key={it.id} className="cms-row">
+                    <div className="cms-row-main">
+                      <div className="cms-row-t">{meta.title(it)}</div>
+                      <div className="cms-row-s mono">{it.id}{it.cat ? ` · ${it.cat}` : ""}{it.tier ? ` · ${it.tier}` : ""}{it.date ? ` · ${it.date}` : ""}</div>
+                    </div>
+                    <div className="cms-row-actions">
+                      <a className="cms-link" href={`#/${pageFor(it)}`}>{t.cms.view}</a>
+                      <button className="cms-link" onClick={() => setEditing(it)}>{t.cms.edit}</button>
+                      <button className="cms-link danger" onClick={() => { if (confirm(t.cms.confirmDelete)) remove(tab, it.id); }}>{t.cms.del}</button>
+                    </div>
+                  </div>
+                ))}
+                {list.length === 0 && <div className="cms-empty">{s ? t.cms.noMatch : t.cms.empty}</div>}
+              </div>
+            </>
+          )}
+        </main>
       </div>
     </section>
   );
@@ -1394,9 +1691,20 @@ button{font-family:inherit;}
 .post{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:transform .2s,box-shadow .2s;}
 .post:hover{transform:translateY(-4px);box-shadow:0 30px 50px -28px rgba(23,23,23,0.16);}
 .post-link{display:block;padding-bottom:24px;}
-.post-thumb{height:140px;background:linear-gradient(135deg,#ECE8DF,#DDD7C9);}
-.post:nth-child(2) .post-thumb{background:linear-gradient(135deg,#EEE7DC,#F1D9E0);}
-.post:nth-child(3) .post-thumb{background:linear-gradient(135deg,#E7E2D6,#ECE8DF);}
+.post-thumb{height:150px;border-radius:14px 14px 0 0;overflow:hidden;background:var(--card);}
+.art{width:100%;height:100%;}
+.art svg{display:block;width:100%;height:100%;}
+.art-photo{background-size:cover;background-position:center;}
+.art-bg{fill:var(--card);}
+.art-line{stroke:var(--line);stroke-width:1.5;}
+.art-line-f{fill:var(--line);}
+.art-stroke{stroke:var(--soft);}
+.art-stroke-f{fill:var(--soft);}
+.art-stroke-o{stroke:var(--soft);}
+.art-dot{fill:var(--soft);}
+.art-acc{stroke:var(--mag);}
+.art-acc-f{fill:var(--mag);}
+.art-acc-r{stroke:var(--mag);stroke-width:1.5;opacity:.55;}
 .post-meta{font-size:11.5px;color:var(--mag);letter-spacing:0.06em;text-transform:uppercase;margin:18px 24px 10px;}
 .post-title{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:18px;margin:0 24px 10px;letter-spacing:-0.01em;}
 .post-body{font-size:14px;color:var(--mid);margin:0 24px 14px;}
@@ -1452,36 +1760,80 @@ button{font-family:inherit;}
 .dm-l{font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--soft);margin-top:4px;}
 .detail-body{max-width:64ch;}
 .detail-body p{font-size:16.5px;color:#33312C;margin:0 0 20px;}
+.article-hero{margin:26px 0 10px;border:1px solid var(--line);border-radius:18px;overflow:hidden;aspect-ratio:16 / 7;background:var(--card);}
+.article-body{max-width:68ch;}
+.article-h2{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:24px;letter-spacing:-0.01em;line-height:1.18;margin:40px 0 12px;}
+.article-quote{margin:30px 0;padding:4px 0 4px 22px;border-left:3px solid var(--mag);font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:21px;line-height:1.42;color:var(--ink);}
+.article-list{margin:18px 0 22px;padding:0;list-style:none;display:grid;gap:11px;}
+.article-list li{position:relative;padding-left:24px;font-size:16.5px;color:#33312C;}
+.article-list li::before{content:"";position:absolute;left:3px;top:9px;width:8px;height:8px;border-radius:2px;background:var(--mag);}
+.article-fig{margin:32px 0;}
+.article-fig .art{border:1px solid var(--line);border-radius:16px;overflow:hidden;aspect-ratio:16 / 8;background:var(--card);}
+.article-fig figcaption{margin-top:11px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.02em;color:var(--soft);text-align:center;}
 .detail-by{display:flex;align-items:center;gap:14px;}
-.cms{padding:48px 0 96px;min-height:70vh;}
-.cms-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:28px;}
-.cms-status{display:inline-flex;align-items:center;gap:8px;margin-top:12px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mid);}
+.cms{padding:36px 0 96px;min-height:80vh;}
+.cms-shell{display:grid;grid-template-columns:248px 1fr;gap:28px;align-items:start;}
+.cms-side{position:sticky;top:24px;display:flex;flex-direction:column;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;}
+.cms-side-back{font-size:13px;color:var(--soft);font-weight:600;}
+.cms-side-back:hover{color:var(--ink);}
+.cms-side-brand{display:flex;align-items:center;gap:9px;padding-bottom:14px;border-bottom:1px solid var(--line);}
+.cms-side-brand .brand{font-size:20px;}
+.cms-side-tag{font-size:9.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--soft);border:1px solid var(--line);border-radius:6px;padding:3px 6px;}
+.cms-side-label{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--soft);padding:0 4px;}
+.cms-collections{display:flex;flex-direction:column;gap:3px;}
+.cms-coll{display:flex;align-items:center;justify-content:space-between;gap:8px;background:none;border:none;border-radius:10px;padding:10px 12px;font:inherit;font-size:14px;font-weight:600;color:var(--mid);cursor:pointer;text-align:left;transition:background .14s,color .14s;}
+.cms-coll:hover{background:var(--mist);color:var(--ink);}
+.cms-coll.on{background:var(--ink);color:var(--paper);}
+.cms-coll-count{font-family:'IBM Plex Mono',monospace;font-size:11px;opacity:.7;}
+.cms-coll.on .cms-coll-count{opacity:.85;}
+.cms-side-foot{margin-top:6px;padding-top:14px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:10px;align-items:flex-start;}
+.cms-status{display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--mid);}
 .cms-dot{width:8px;height:8px;border-radius:50%;background:var(--soft);}
 .cms-status-supabase .cms-dot{background:#1FAE5A;}
 .cms-status-loading .cms-dot{background:#E0A93B;animation:pulse 1s ease-in-out infinite;}
 .cms-status-local .cms-dot{background:var(--mag);}
 @keyframes pulse{0%,100%{opacity:.4;}50%{opacity:1;}}
-.cms-tabs{display:flex;gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:24px;}
-.cms-tab{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:9px 16px;font:inherit;font-size:14px;font-weight:600;color:var(--mid);cursor:pointer;display:inline-flex;gap:8px;align-items:center;transition:all .15s;}
-.cms-tab:hover{border-color:var(--ink);color:var(--ink);}
-.cms-tab.on{background:var(--ink);color:var(--paper);border-color:var(--ink);}
-.cms-count{font-family:'IBM Plex Mono',monospace;font-size:11px;opacity:.7;}
-.cms-add{margin-bottom:18px;}
+.cms-reset{background:none;border:none;font:inherit;font-size:12.5px;font-weight:600;color:var(--soft);cursor:pointer;padding:0;}
+.cms-reset:hover{color:var(--mag);}
+.cms-main{min-width:0;}
+.cms-main-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:20px;}
+.cms-h1{font-size:34px;margin:0 0 4px;}
+.cms-desc{color:var(--mid);font-size:14.5px;margin:0;}
+.cms-toolbar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:16px;}
+.cms-search{display:flex;align-items:center;gap:9px;flex:1;max-width:360px;background:var(--card);border:1px solid var(--line);border-radius:11px;padding:0 13px;color:var(--soft);}
+.cms-search:focus-within{border-color:var(--ink);color:var(--ink);}
+.cms-search input{flex:1;border:none;background:none;outline:none;font:inherit;font-size:14px;color:var(--ink);padding:11px 0;}
+.cms-count-meta{font-size:12px;color:var(--soft);white-space:nowrap;}
 .cms-list{display:flex;flex-direction:column;gap:8px;}
-.cms-row{display:flex;justify-content:space-between;align-items:center;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 20px;}
+.cms-row{display:flex;justify-content:space-between;align-items:center;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px 18px;transition:border-color .14s;}
+.cms-row:hover{border-color:var(--soft);}
 .cms-row-t{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:16px;}
-.cms-row-s{font-size:11px;color:var(--soft);margin-top:2px;}
+.cms-row-s{font-size:11px;color:var(--soft);margin-top:3px;}
 .cms-row-actions{display:flex;gap:14px;flex-shrink:0;}
 .cms-link{background:none;border:none;font:inherit;font-size:13.5px;font-weight:600;color:var(--mid);cursor:pointer;padding:0;}
 .cms-link:hover{color:var(--ink);}
 .cms-link.danger:hover{color:var(--mag);}
-.cms-empty{padding:40px;text-align:center;color:var(--soft);border:1px dashed var(--line);border-radius:14px;}
-.editor{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;display:flex;flex-direction:column;gap:16px;max-width:680px;}
+.cms-empty{padding:48px;text-align:center;color:var(--soft);border:1px dashed var(--line);border-radius:14px;}
+.editor{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;}
+.editor-head{display:flex;align-items:center;gap:14px;padding:20px 24px;border-bottom:1px solid var(--line);}
+.editor-back{width:34px;height:34px;border:1px solid var(--line);border-radius:9px;background:var(--paper);font-size:16px;color:var(--mid);cursor:pointer;flex:none;}
+.editor-back:hover{border-color:var(--ink);color:var(--ink);}
+.editor-eyebrow{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mag);}
+.editor-title{font-size:22px;margin:2px 0 0;}
+.editor-body{padding:8px 24px 20px;display:flex;flex-direction:column;}
+.field-group{padding:20px 0;border-bottom:1px solid var(--line);}
+.field-group:last-child{border-bottom:none;}
+.field-group-h{font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--soft);margin-bottom:14px;}
+.field-grid{display:grid;gap:16px;}
+.field-grid.two{grid-template-columns:1fr 1fr;}
 .field{display:flex;flex-direction:column;gap:6px;}
-.field-l{font-size:12px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--mid);}
-.field-i{font:inherit;font-size:15px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:11px 13px;resize:vertical;}
+.field-l{font-size:12px;font-weight:600;letter-spacing:0.03em;text-transform:uppercase;color:var(--mid);display:flex;flex-direction:column;gap:3px;}
+.field-hint{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:400;letter-spacing:0;text-transform:none;color:var(--soft);}
+.field-i{font:inherit;font-size:15px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:11px 13px;resize:vertical;width:100%;}
 .field-i:focus{outline:none;border-color:var(--ink);}
-.editor-actions{display:flex;gap:10px;margin-top:4px;}
+.field-mono{font-family:'IBM Plex Mono',monospace;font-size:13.5px;}
+.cover-preview{border:1px solid var(--line);border-radius:12px;overflow:hidden;aspect-ratio:16 / 7;background:var(--paper);}
+.editor-bar{position:sticky;bottom:0;display:flex;justify-content:flex-end;gap:10px;padding:16px 24px;background:var(--card);border-top:1px solid var(--line);}
 .modal-overlay{position:fixed;inset:0;z-index:100;background:rgba(23,23,23,0.55);backdrop-filter:blur(6px);display:grid;place-items:center;padding:24px;animation:fade .2s ease;}
 .modal{position:relative;width:100%;max-width:560px;background:var(--paper);border-radius:22px;padding:40px;box-shadow:0 40px 90px -30px rgba(23,23,23,0.5);animation:rise .26s cubic-bezier(.22,.61,.36,1);}
 .modal-close{position:absolute;top:18px;right:18px;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--card);font-size:20px;line-height:1;color:var(--mid);cursor:pointer;transition:all .15s;}
@@ -1518,6 +1870,11 @@ button{font-family:inherit;}
   .service-grid,.stats-grid,.aud-grid,.steps-grid,.footer-grid,.quote-grid,.contact-grid,.brandwall,.creds-row{grid-template-columns:1fr;}
   .stat{text-align:center;}
   .cms-row{flex-direction:column;align-items:flex-start;}
+  .cms-shell{grid-template-columns:1fr;gap:18px;}
+  .cms-side{position:static;}
+  .cms-collections{flex-direction:row;flex-wrap:wrap;}
+  .cms-coll{flex:1 1 auto;}
+  .field-grid.two{grid-template-columns:1fr;}
   .modal{padding:28px 22px;}
   .modal-opt-d{display:none;}
   .detail-metrics{gap:28px;}
