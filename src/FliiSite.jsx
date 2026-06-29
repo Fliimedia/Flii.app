@@ -14,7 +14,7 @@ const BRANDS = ["Weddy", "Aperture", "Populos", "Waryte", "FC Data"];
 const I18N = {
   nl: {
     slogan: "AI-architectuur & marketing-apps",
-    nav: { solutions: "Diensten", work: "Werk", approach: "Aanpak", about: "Over ons", insights: "Inzichten", contact: "Contact", consult: "Plan een gesprek", manage: "CMS" },
+    nav: { solutions: "Diensten", work: "Werk", approach: "Aanpak", about: "Over ons", insights: "Inzichten", pricing: "Prijzen", contact: "Contact", consult: "Plan een gesprek", manage: "CMS" },
     mega: {
       groups: [
         { group: "Bouwen", blurb: "Ontwerp en lanceer het product.", items: [
@@ -49,7 +49,8 @@ const I18N = {
         { k: "Fundament", body: "We koppelen je data en tools tot één AI-fundament: de basis waar alles op draait." },
         { k: "Verbeteren", body: "Daarop maken we je bestaande diensten slimmer: sneller werk, betere keuzes, minder handwerk." },
         { k: "Aansluiten", body: "We pluggen kant-en-klare marketing-apps in die meteen meedraaien en resultaat opleveren." },
-        { k: "Loop", body: "Elk resultaat voedt het fundament terug. Het systeem leert en wordt elke maand beter." } ] },
+        { k: "Loop", body: "Elk resultaat voedt het fundament terug. Het systeem leert en wordt elke maand beter." } ],
+      priceCta: "Stel je Loop samen en bekijk de prijzen ↘" },
     work: { eyebrow: "Showcase", h2: "Wat we lanceerden", manage: "Beheer showcase ↗", view: "Bekijk case ↗" },
     reviews: { eyebrow: "Reviews", h2: "Bewijs, geen beloftes.", word: "reviews" },
     byline: { by: "by", name: "Flii Media" },
@@ -84,7 +85,7 @@ const I18N = {
       detailPh: { vraag: "Waar loop je tegenaan?", advies: "Wat wil je bereiken?", product: "Welk product spreekt je aan?" },
       subject: { vraag: "Vraag via flii.app", advies: "Adviesgesprek via flii.app", product: "Productinteresse via flii.app" } },
     footer: { solutions: "Diensten", company: "Bedrijf", connect: "Connect",
-      company_links: [ { label: "Werk", href: "#work" }, { label: "Over ons", href: "#about" }, { label: "Inzichten", href: "#blog" }, { label: "CMS", href: "#/cms" } ],
+      company_links: [ { label: "Werk", href: "#work" }, { label: "Over ons", href: "#about" }, { label: "Inzichten", href: "#blog" }, { label: "Prijzen", href: "#/prijzen" }, { label: "CMS", href: "#/cms" } ],
       bottom: "Snel gebouwd. Afgesteld op prestatie." },
     cms: { back: "← Terug naar site", eyebrow: "Control panel", h1: "Content", reset: "Herstel standaard",
       status: { supabase: "Gesynct met Supabase", loading: "Verbinden met Supabase…", local: "Lokaal (deze browser)" },
@@ -101,6 +102,26 @@ const I18N = {
         title: "Titel", client: "Klant", tag: "Tag", summary: "Samenvatting",
         body: "Tekst", metrics: "Metrics", read: "Leestijd", cover: "Cover",
         category: "Categorie", date: "Datum", excerpt: "Samenvatting" } },
+    pricing: { eyebrow: "Prijzen", h1: "Stel je Loop samen.",
+      intro: "Richtprijzen, exclusief btw en op basis van vanaf-tarieven. Mediabudget is niet inbegrepen. De definitieve prijs hangt af van de scope.",
+      scopeLabel: "Wat heb je nodig?", scopes: { campagne: "Campagne", app: "App", platform: "Platform" },
+      levelLabel: "Niveau", levels: { basis: "Basis", advanced: "Advanced" },
+      phaseLabel: "Loop-fases", phases: { plan: "Plan", build: "Build", run: "Run" },
+      phaseDesc: { plan: "Onderzoek, meting en plan", build: "Ontwikkeling met meting", run: "Beheer en optimalisatie" },
+      addonsLabel: "Losse diensten", addons: { search: "Zoekcampagne (Search)", social: "Social campagne", content: "Content creatie" },
+      contentOpts: { none: "Geen", klein: "Klein", groot: "Groot" },
+      once: "Eenmalig", perMonth: "Per maand", from: "vanaf", mo: "/mnd", once1: "eenmalig", setup: "Opzet", mgmt: "Beheer",
+      comboNote: "Combinatievoordeel: de losse Plan-fee vervalt in de volledige loop.",
+      empty: "Kies minimaal één fase of dienst.", cta: "Plan een gesprek", summaryPrefix: "Interesse in",
+      excl: "Alle bedragen exclusief btw, op basis van vanaf-tarieven. Definitieve prijs hangt af van de scope. Mediabudget niet inbegrepen.",
+      refTitle: "Prijsreferentie", loopRef: "Flii Loop", loopRefDesc: "Drie fases, per campagne, app of platform. Neem de hele loop of losse fases.",
+      appRef: "App ontwikkeling", appRefDesc: "Drie niveaus. De prijs is de Build-fee; Plan en Run reken je apart.", looseRef: "Losse diensten",
+      searchRef: "Keyword- en concurrentieonderzoek, structuur, advertentieteksten, conversietracking, optimalisatie en rapportage.",
+      socialRef: "Doelgroepbepaling, opzet, A/B-tests, conversietracking, optimalisatie en rapportage. Creatives lopen via content.",
+      contentLos: "Los: blog vanaf € 300, visual vanaf € 95, reel of korte video vanaf € 350.",
+      appBasis: "Eén kernfunctie, responsive PWA, basismeting, hosting-klaar op Vercel.",
+      appAdvanced: "Meerdere modules, gebruikersaccounts, API-koppelingen, dashboard en uitgebreide meting.",
+      appPlatform: "Gebruikersrollen, backend en database, AI- of LLM-integratie, beheer-CMS en schaalbaar." },
     detail: { backShowcase: "← Showcase", backInsights: "← Inzichten", backHome: "← Home",
       notFound: "Niet gevonden", notFoundSub: "Dit item is mogelijk verwijderd in het CMS.",
       visit: "Bezoek", credential: "Bekijk certificaat ↗" },
@@ -110,7 +131,7 @@ const I18N = {
   },
   en: {
     slogan: "AI architecture & marketing apps",
-    nav: { solutions: "Solutions", work: "Work", approach: "Approach", about: "About", insights: "Insights", contact: "Contact", consult: "Book a consultation", manage: "CMS" },
+    nav: { solutions: "Solutions", work: "Work", approach: "Approach", about: "About", insights: "Insights", pricing: "Pricing", contact: "Contact", consult: "Book a consultation", manage: "CMS" },
     mega: {
       groups: [
         { group: "Build", blurb: "Design and ship the product.", items: [
@@ -145,7 +166,8 @@ const I18N = {
         { k: "Foundation", body: "We connect your data and tools into one AI foundation: the base everything runs on." },
         { k: "Improve", body: "On top of it we make your existing services smarter: faster work, better calls, less manual effort." },
         { k: "Connect", body: "We plug in ready-made marketing apps that start working and paying back right away." },
-        { k: "Loop", body: "Every result feeds the foundation back. The system learns and gets better every month." } ] },
+        { k: "Loop", body: "Every result feeds the foundation back. The system learns and gets better every month." } ],
+      priceCta: "Configure your Loop and see pricing ↘" },
     work: { eyebrow: "Showcase", h2: "What we've shipped", manage: "Manage showcase ↗", view: "View case ↗" },
     reviews: { eyebrow: "Reviews", h2: "Proof, not promises.", word: "reviews" },
     byline: { by: "by", name: "Flii Media" },
@@ -180,7 +202,7 @@ const I18N = {
       detailPh: { vraag: "What are you running into?", advies: "What do you want to achieve?", product: "Which product appeals to you?" },
       subject: { vraag: "Question via flii.app", advies: "Consultation via flii.app", product: "Product interest via flii.app" } },
     footer: { solutions: "Solutions", company: "Company", connect: "Connect",
-      company_links: [ { label: "Work", href: "#work" }, { label: "About", href: "#about" }, { label: "Insights", href: "#blog" }, { label: "CMS", href: "#/cms" } ],
+      company_links: [ { label: "Work", href: "#work" }, { label: "About", href: "#about" }, { label: "Insights", href: "#blog" }, { label: "Pricing", href: "#/prijzen" }, { label: "CMS", href: "#/cms" } ],
       bottom: "Built fast. Tuned for performance." },
     cms: { back: "← Back to site", eyebrow: "Control panel", h1: "Content", reset: "Reset to defaults",
       status: { supabase: "Synced with Supabase", loading: "Connecting to Supabase…", local: "Local (this browser)" },
@@ -197,6 +219,26 @@ const I18N = {
         title: "Title", client: "Client", tag: "Tag", summary: "Summary",
         body: "Body", metrics: "Metrics", read: "Read time", cover: "Cover",
         category: "Category", date: "Date", excerpt: "Excerpt" } },
+    pricing: { eyebrow: "Pricing", h1: "Configure your Loop.",
+      intro: "Indicative prices, excluding VAT and based on starting rates. Media budget is not included. The final price depends on scope.",
+      scopeLabel: "What do you need?", scopes: { campagne: "Campaign", app: "App", platform: "Platform" },
+      levelLabel: "Level", levels: { basis: "Basic", advanced: "Advanced" },
+      phaseLabel: "Loop phases", phases: { plan: "Plan", build: "Build", run: "Run" },
+      phaseDesc: { plan: "Research, measurement and plan", build: "Development with measurement", run: "Management and optimisation" },
+      addonsLabel: "Add-on services", addons: { search: "Search campaign", social: "Social campaign", content: "Content creation" },
+      contentOpts: { none: "None", klein: "Small", groot: "Large" },
+      once: "One-time", perMonth: "Per month", from: "from", mo: "/mo", once1: "one-time", setup: "Setup", mgmt: "Management",
+      comboNote: "Bundle benefit: the separate Plan fee is waived in the full loop.",
+      empty: "Pick at least one phase or service.", cta: "Book a consultation", summaryPrefix: "Interested in",
+      excl: "All amounts exclude VAT, based on starting rates. Final price depends on scope. Media budget not included.",
+      refTitle: "Price reference", loopRef: "Flii Loop", loopRefDesc: "Three phases, per campaign, app or platform. Take the full loop or single phases.",
+      appRef: "App development", appRefDesc: "Three levels. The price is the Build fee; Plan and Run are billed separately.", looseRef: "Add-on services",
+      searchRef: "Keyword and competitor research, structure, ad copy, conversion tracking, optimisation and reporting.",
+      socialRef: "Audience targeting, setup, A/B tests, conversion tracking, optimisation and reporting. Creatives run via content.",
+      contentLos: "Single: blog from € 300, visual from € 95, reel or short video from € 350.",
+      appBasis: "One core feature, responsive PWA, basic measurement, hosting-ready on Vercel.",
+      appAdvanced: "Multiple modules, user accounts, API integrations, dashboard and extended measurement.",
+      appPlatform: "User roles, backend and database, AI or LLM integration, admin CMS and scalable." },
     detail: { backShowcase: "← Showcase", backInsights: "← Insights", backHome: "← Home",
       notFound: "Not found", notFoundSub: "This item may have been removed in the CMS.",
       visit: "Visit", credential: "View credential ↗" },
@@ -479,6 +521,7 @@ function parseHash() {
   if (!h) return { name: "home" };
   const [seg, id] = h.split("/");
   if (seg === "cms") return { name: "cms" };
+  if (seg === "prijzen") return { name: "prijzen" };
   if (["app", "insight", "review", "cert"].includes(seg) && id) return { name: seg, id };
   return { name: "home" };
 }
@@ -651,7 +694,8 @@ function Nav({ openConsult, admin, onLogin, onLogout }) {
   }, []);
   const top = [
     { label: t.nav.work, href: "#work" }, { label: t.nav.approach, href: "#loop" },
-    { label: t.nav.about, href: "#about" }, { label: t.nav.insights, href: "#blog" }, { label: t.nav.contact, href: "#contact" },
+    { label: t.nav.about, href: "#about" }, { label: t.nav.insights, href: "#blog" },
+    { label: t.nav.pricing, href: "#/prijzen" }, { label: t.nav.contact, href: "#contact" },
   ];
   return (
     <header className="nav">
@@ -917,6 +961,7 @@ function Home({ content, openConsult }) {
               ))}
             </Section>
           </div>
+          <Section className="loop-foot"><a href="#/prijzen" className="loop-price-link">{t.loop.priceCta}</a></Section>
         </div>
       </section>
 
@@ -1130,6 +1175,163 @@ function CertDetail({ content, id }) {
       <p className="detail-lede">{c.blurb}</p>
       {c.href && c.href !== "#" && <a href={c.href} className="btn btn-primary" target="_blank" rel="noreferrer">{t.detail.credential}</a>}
     </div></article>
+  );
+}
+
+/* ---------- pricing ---------- */
+const PRICING = {
+  scopes: {
+    campagne: { plan: 1500, build: 3500, run: 450 },
+    app: { plan: 2500, build: { basis: 3500, advanced: 8500 }, run: 750 },
+    platform: { plan: 4500, build: 18000, run: 2500 },
+  },
+  addons: { search: { once: 750, mo: 450 }, social: { once: 750, mo: 500 } },
+  content: { none: 0, klein: 650, groot: 1200 },
+  app: { basis: 3500, advanced: 8500, platform: 18000 },
+};
+const eur = (n) => "\u20AC\u00A0" + (n || 0).toLocaleString("nl-NL");
+function Pricing({ openConsult }) {
+  const { t } = useLang(); const p = t.pricing;
+  const [scope, setScope] = useState("app");
+  const [level, setLevel] = useState("advanced");
+  const [phases, setPhases] = useState({ plan: true, build: true, run: true });
+  const [search, setSearch] = useState(false);
+  const [social, setSocial] = useState(false);
+  const [content, setContent] = useState("none");
+  useEffect(() => { window.scrollTo(0, 0); }, []);
+  const sc = PRICING.scopes[scope];
+  const buildBase = scope === "app" ? sc.build[level] : sc.build;
+  const allLoop = phases.plan && phases.build && phases.run;
+  const planApplied = allLoop ? 0 : (phases.plan ? sc.plan : 0);
+  const once = planApplied + (phases.build ? buildBase : 0) + (search ? PRICING.addons.search.once : 0) + (social ? PRICING.addons.social.once : 0);
+  const mo = (phases.run ? sc.run : 0) + (search ? PRICING.addons.search.mo : 0) + (social ? PRICING.addons.social.mo : 0) + PRICING.content[content];
+  const nothing = once === 0 && mo === 0;
+  const togglePhase = (k) => setPhases((s) => ({ ...s, [k]: !s[k] }));
+  const phasePrice = (k) => k === "run" ? eur(sc.run) + p.mo : k === "build" ? eur(buildBase) : eur(sc.plan);
+  const refPrice = (sk, pk) => pk === "build" ? (sk === "app" ? PRICING.scopes.app.build.basis : PRICING.scopes[sk].build) : PRICING.scopes[sk][pk];
+  const summary = () => {
+    const parts = [p.scopes[scope] + (scope === "app" ? ` (${p.levels[level]})` : "")];
+    const ph = ["plan", "build", "run"].filter((k) => phases[k]).map((k) => p.phases[k]);
+    if (ph.length) parts.push("Loop: " + ph.join(", "));
+    const ad = [];
+    if (search) ad.push(p.addons.search);
+    if (social) ad.push(p.addons.social);
+    if (content !== "none") ad.push(p.addons.content + " " + p.contentOpts[content]);
+    if (ad.length) parts.push(ad.join(", "));
+    return `${p.summaryPrefix}: ${parts.join(" \u00B7 ")}. ${p.once} ${p.from} ${eur(once)}${mo ? `, ${p.perMonth.toLowerCase()} ${p.from} ${eur(mo)}` : ""}.`;
+  };
+  return (
+    <section className="pricing">
+      <div className="wrap">
+        <a href="#/" className="back">{t.cms.back}</a>
+        <div className="eyebrow">{p.eyebrow}</div>
+        <h1 className="display detail-h">{p.h1}</h1>
+        <p className="detail-lede">{p.intro}</p>
+        <div className="cfg">
+          <div className="cfg-form">
+            <div className="cfg-block">
+              <div className="cfg-label mono">{p.scopeLabel}</div>
+              <div className="seg">{["campagne", "app", "platform"].map((s) => <button key={s} className={`seg-btn ${scope === s ? "on" : ""}`} onClick={() => setScope(s)}>{p.scopes[s]}</button>)}</div>
+            </div>
+            {scope === "app" && (
+              <div className="cfg-block">
+                <div className="cfg-label mono">{p.levelLabel}</div>
+                <div className="seg">{["basis", "advanced"].map((l) => <button key={l} className={`seg-btn ${level === l ? "on" : ""}`} onClick={() => setLevel(l)}>{p.levels[l]}</button>)}</div>
+              </div>
+            )}
+            <div className="cfg-block">
+              <div className="cfg-label mono">{p.phaseLabel}</div>
+              <div className="cfg-toggles">
+                {["plan", "build", "run"].map((k) => (
+                  <button key={k} className={`toggle ${phases[k] ? "on" : ""}`} onClick={() => togglePhase(k)} aria-pressed={phases[k]}>
+                    <span className="toggle-box" aria-hidden>{phases[k] ? "\u2713" : ""}</span>
+                    <span className="toggle-main"><span className="toggle-t">{p.phases[k]}</span><span className="toggle-d">{p.phaseDesc[k]}</span></span>
+                    <span className="toggle-p mono">{phasePrice(k)}</span>
+                  </button>
+                ))}
+              </div>
+              {allLoop && <div className="combo-note mono">{p.comboNote}</div>}
+            </div>
+            <div className="cfg-block">
+              <div className="cfg-label mono">{p.addonsLabel}</div>
+              <div className="cfg-toggles">
+                <button className={`toggle ${search ? "on" : ""}`} onClick={() => setSearch((v) => !v)} aria-pressed={search}>
+                  <span className="toggle-box" aria-hidden>{search ? "\u2713" : ""}</span>
+                  <span className="toggle-main"><span className="toggle-t">{p.addons.search}</span><span className="toggle-d">{eur(PRICING.addons.search.once)} {p.once1} \u00B7 {eur(PRICING.addons.search.mo)}{p.mo}</span></span>
+                </button>
+                <button className={`toggle ${social ? "on" : ""}`} onClick={() => setSocial((v) => !v)} aria-pressed={social}>
+                  <span className="toggle-box" aria-hidden>{social ? "\u2713" : ""}</span>
+                  <span className="toggle-main"><span className="toggle-t">{p.addons.social}</span><span className="toggle-d">{eur(PRICING.addons.social.once)} {p.once1} \u00B7 {eur(PRICING.addons.social.mo)}{p.mo}</span></span>
+                </button>
+              </div>
+              <div className="cfg-sub mono">{p.addons.content}</div>
+              <div className="seg">{["none", "klein", "groot"].map((cv) => <button key={cv} className={`seg-btn ${content === cv ? "on" : ""}`} onClick={() => setContent(cv)}>{p.contentOpts[cv]}{cv !== "none" ? ` \u00B7 ${eur(PRICING.content[cv])}${p.mo}` : ""}</button>)}</div>
+            </div>
+          </div>
+          <aside className="cfg-out">
+            <div className="cfg-out-card">
+              <div className="cfg-out-h mono">{p.scopes[scope]}{scope === "app" ? ` \u00B7 ${p.levels[level]}` : ""}</div>
+              {nothing ? <div className="cfg-empty">{p.empty}</div> : <>
+                <div className="cfg-amount"><span className="cfg-amount-l mono">{p.once} {p.from}</span><span className="cfg-amount-v display">{eur(once)}</span></div>
+                {mo > 0 && <div className="cfg-amount"><span className="cfg-amount-l mono">{p.perMonth} {p.from}</span><span className="cfg-amount-v display">{eur(mo)}<span className="cfg-mo">{p.mo}</span></span></div>}
+              </>}
+              <button className="btn btn-primary cfg-cta" onClick={() => openConsult(null, summary())}>{p.cta}</button>
+              <p className="cfg-excl mono">{p.excl}</p>
+            </div>
+          </aside>
+        </div>
+        <div className="ref">
+          <h2 className="display ref-h">{p.refTitle}</h2>
+          <div className="ref-block">
+            <div className="ref-block-h"><h3 className="ref-t">{p.loopRef}</h3><p className="ref-d">{p.loopRefDesc}</p></div>
+            <div className="ref-grid">
+              {["plan", "build", "run"].map((k) => (
+                <div key={k} className="ref-card">
+                  <div className="ref-card-t">{p.phases[k]}</div>
+                  <div className="ref-card-d">{p.phaseDesc[k]}</div>
+                  <div className="ref-rows mono">
+                    {["campagne", "app", "platform"].map((s) => <div key={s} className="ref-row"><span>{p.scopes[s]}</span><span>{eur(refPrice(s, k))}{k === "run" ? p.mo : ""}</span></div>)}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="ref-block">
+            <div className="ref-block-h"><h3 className="ref-t">{p.appRef}</h3><p className="ref-d">{p.appRefDesc}</p></div>
+            <div className="ref-grid">
+              {[["basis", p.appBasis], ["advanced", p.appAdvanced], ["platform", p.appPlatform]].map(([k, desc]) => (
+                <div key={k} className="ref-card">
+                  <div className="ref-card-t">{k === "platform" ? p.scopes.platform : p.levels[k]}</div>
+                  <div className="ref-card-price mono">{p.from} {eur(PRICING.app[k])}</div>
+                  <div className="ref-card-d">{desc}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="ref-block">
+            <div className="ref-block-h"><h3 className="ref-t">{p.looseRef}</h3></div>
+            <div className="ref-grid">
+              <div className="ref-card">
+                <div className="ref-card-t">{p.addons.search}</div>
+                <div className="ref-card-price mono">{p.setup} {eur(750)} \u00B7 {p.mgmt} {eur(450)}{p.mo}</div>
+                <div className="ref-card-d">{p.searchRef}</div>
+              </div>
+              <div className="ref-card">
+                <div className="ref-card-t">{p.addons.social}</div>
+                <div className="ref-card-price mono">{p.setup} {eur(750)} \u00B7 {p.mgmt} {eur(500)}{p.mo}</div>
+                <div className="ref-card-d">{p.socialRef}</div>
+              </div>
+              <div className="ref-card">
+                <div className="ref-card-t">{p.addons.content}</div>
+                <div className="ref-card-price mono">{p.contentOpts.klein} {eur(650)}{p.mo} \u00B7 {p.contentOpts.groot} {eur(1200)}{p.mo}</div>
+                <div className="ref-card-d">{p.contentLos}</div>
+              </div>
+            </div>
+          </div>
+          <p className="ref-excl mono">{p.excl}</p>
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -1349,14 +1551,14 @@ function LockedNotice({ onLogin }) {
 }
 
 /* ---------- consultation modal (2 steps) ---------- */
-function ConsultModal({ onClose }) {
+function ConsultModal({ onClose, prefill }) {
   const { t } = useLang();
   const c = t.consult;
-  const [step, setStep] = useState(1);
-  const [reason, setReason] = useState(null);
+  const [step, setStep] = useState(prefill ? 2 : 1);
+  const [reason, setReason] = useState(prefill ? (c.opts[0] && c.opts[0].id) : null);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [detail, setDetail] = useState("");
+  const [detail, setDetail] = useState(prefill || "");
   const opt = c.opts.find((o) => o.id === reason);
   const choose = (id) => { setReason(id); setStep(2); };
   const canSend = email.trim().length > 0 && detail.trim().length > 0;
@@ -1416,12 +1618,13 @@ export default function FliiSite() {
   const content = useContent();
   const route = useRoute();
   const [consult, setConsult] = useState(false);
+  const [consultPrefill, setConsultPrefill] = useState("");
   const [loginOpen, setLoginOpen] = useState(false);
   const [admin, setAdmin] = useState(() => { try { return sessionStorage.getItem("flii_admin") === "1"; } catch (e) { return false; } });
   const [lang, setLangState] = useState(() => { try { return localStorage.getItem("flii_lang") || "nl"; } catch (e) { return "nl"; } });
   const setLang = (l) => { setLangState(l); try { localStorage.setItem("flii_lang", l); } catch (e) {} };
   const t = I18N[lang] || I18N.nl;
-  const openConsult = (e) => { if (e) e.preventDefault(); setConsult(true); };
+  const openConsult = (e, prefill) => { if (e && e.preventDefault) e.preventDefault(); setConsultPrefill(typeof prefill === "string" ? prefill : ""); setConsult(true); };
   const grantAdmin = () => { setAdmin(true); try { sessionStorage.setItem("flii_admin", "1"); } catch (e) {} };
   const logout = () => { setAdmin(false); try { sessionStorage.removeItem("flii_admin"); } catch (e) {} if (route.name === "cms") window.location.hash = "#/"; };
   useEffect(() => { const onKey = (e) => { if (e.key === "Escape") { setConsult(false); setLoginOpen(false); } }; window.addEventListener("keydown", onKey); document.body.style.overflow = (consult || loginOpen) ? "hidden" : ""; return () => { window.removeEventListener("keydown", onKey); document.body.style.overflow = ""; }; }, [consult, loginOpen]);
@@ -1435,13 +1638,14 @@ export default function FliiSite() {
         <Nav openConsult={openConsult} admin={admin} onLogin={() => setLoginOpen(true)} onLogout={logout} />
         {route.name === "home" && <Home content={content.data} openConsult={openConsult} />}
         {route.name === "cms" && (admin ? <CMS content={content} /> : <LockedNotice onLogin={() => setLoginOpen(true)} />)}
+        {route.name === "prijzen" && <Pricing openConsult={openConsult} />}
         {route.name === "app" && <AppDetail content={content.data} id={route.id} />}
         {route.name === "insight" && <ArticleDetail content={content.data} id={route.id} />}
         {route.name === "review" && <ReviewDetail content={content.data} id={route.id} />}
         {route.name === "cert" && <CertDetail content={content.data} id={route.id} />}
         <Footer admin={admin} />
         <DockBar openConsult={openConsult} admin={admin} onLogin={() => setLoginOpen(true)} onLogout={logout} />
-        {consult && <ConsultModal onClose={() => setConsult(false)} />}
+        {consult && <ConsultModal onClose={() => setConsult(false)} prefill={consultPrefill} />}
         {loginOpen && <LoginModal onClose={() => setLoginOpen(false)} onSuccess={grantAdmin} />}
       </div>
     </LangCtx.Provider>
@@ -1834,6 +2038,55 @@ button{font-family:inherit;}
 .field-mono{font-family:'IBM Plex Mono',monospace;font-size:13.5px;}
 .cover-preview{border:1px solid var(--line);border-radius:12px;overflow:hidden;aspect-ratio:16 / 7;background:var(--paper);}
 .editor-bar{position:sticky;bottom:0;display:flex;justify-content:flex-end;gap:10px;padding:16px 24px;background:var(--card);border-top:1px solid var(--line);}
+.pricing{padding:36px 0 96px;}
+.loop-foot{margin-top:30px;text-align:center;}
+.loop-price-link{color:var(--paper);font-weight:600;font-size:15px;border-bottom:1px solid rgba(243,241,235,0.32);padding-bottom:2px;transition:border-color .15s,color .15s;}
+.loop-price-link:hover{border-color:var(--mag);color:#fff;}
+.cfg{display:grid;grid-template-columns:1fr 340px;gap:28px;align-items:start;margin:30px 0 56px;}
+.cfg-form{display:flex;flex-direction:column;gap:26px;}
+.cfg-block{display:flex;flex-direction:column;gap:12px;}
+.cfg-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--soft);}
+.cfg-sub{font-size:12px;color:var(--soft);margin-top:6px;}
+.seg{display:inline-flex;gap:6px;flex-wrap:wrap;background:var(--mist);border:1px solid var(--line);border-radius:12px;padding:5px;align-self:flex-start;}
+.seg-btn{background:none;border:none;border-radius:9px;padding:9px 15px;font:inherit;font-size:14px;font-weight:600;color:var(--mid);cursor:pointer;transition:background .14s,color .14s;}
+.seg-btn:hover{color:var(--ink);}
+.seg-btn.on{background:var(--ink);color:var(--paper);}
+.cfg-toggles{display:flex;flex-direction:column;gap:8px;}
+.toggle{display:flex;align-items:center;gap:13px;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:13px 15px;font:inherit;cursor:pointer;text-align:left;transition:border-color .14s;}
+.toggle:hover{border-color:var(--soft);}
+.toggle.on{border-color:var(--ink);}
+.toggle-box{width:22px;height:22px;flex:none;border:1.5px solid var(--line);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:13px;background:var(--paper);transition:background .14s,border-color .14s;}
+.toggle.on .toggle-box{background:var(--mag);border-color:var(--mag);color:#fff;}
+.toggle-main{flex:1;display:flex;flex-direction:column;gap:2px;min-width:0;}
+.toggle-t{font-weight:600;font-size:15px;color:var(--ink);}
+.toggle-d{font-size:12.5px;color:var(--soft);}
+.toggle-p{font-size:13px;color:var(--mid);white-space:nowrap;}
+.combo-note{font-size:12px;color:var(--mag);margin-top:2px;}
+.cfg-out{position:sticky;top:84px;}
+.cfg-out-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;}
+.cfg-out-h{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--soft);padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:10px;}
+.cfg-amount{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:12px 0;}
+.cfg-amount-l{font-size:12px;color:var(--mid);}
+.cfg-amount-v{font-size:26px;font-weight:800;letter-spacing:-0.01em;}
+.cfg-mo{font-size:14px;font-weight:600;color:var(--soft);margin-left:1px;}
+.cfg-empty{padding:16px 0;color:var(--soft);font-size:14px;}
+.cfg-cta{width:100%;justify-content:center;margin-top:14px;}
+.cfg-excl{font-size:11px;color:var(--soft);line-height:1.55;margin:14px 0 0;}
+.ref{margin-top:10px;}
+.ref-h{font-size:26px;margin:0;}
+.ref-block{margin-top:30px;}
+.ref-block-h{margin-bottom:14px;}
+.ref-t{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:18px;margin:0;}
+.ref-d{font-size:14px;color:var(--mid);margin:4px 0 0;max-width:62ch;}
+.ref-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.ref-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;}
+.ref-card-t{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:16px;margin-bottom:6px;}
+.ref-card-price{font-size:13px;color:var(--mag);margin-bottom:8px;}
+.ref-card-d{font-size:13px;color:var(--mid);line-height:1.5;}
+.ref-rows{margin-top:10px;display:flex;flex-direction:column;gap:7px;}
+.ref-row{display:flex;justify-content:space-between;gap:10px;font-size:13px;color:var(--mid);}
+.ref-row span:last-child{color:var(--ink);font-weight:600;}
+.ref-excl{font-size:11px;color:var(--soft);margin-top:26px;}
 .modal-overlay{position:fixed;inset:0;z-index:100;background:rgba(23,23,23,0.55);backdrop-filter:blur(6px);display:grid;place-items:center;padding:24px;animation:fade .2s ease;}
 .modal{position:relative;width:100%;max-width:560px;background:var(--paper);border-radius:22px;padding:40px;box-shadow:0 40px 90px -30px rgba(23,23,23,0.5);animation:rise .26s cubic-bezier(.22,.61,.36,1);}
 .modal-close{position:absolute;top:18px;right:18px;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--card);font-size:20px;line-height:1;color:var(--mid);cursor:pointer;transition:all .15s;}
@@ -1875,6 +2128,9 @@ button{font-family:inherit;}
   .cms-collections{flex-direction:row;flex-wrap:wrap;}
   .cms-coll{flex:1 1 auto;}
   .field-grid.two{grid-template-columns:1fr;}
+  .cfg{grid-template-columns:1fr;gap:22px;}
+  .cfg-out{position:static;}
+  .ref-grid{grid-template-columns:1fr;}
   .modal{padding:28px 22px;}
   .modal-opt-d{display:none;}
   .detail-metrics{gap:28px;}
