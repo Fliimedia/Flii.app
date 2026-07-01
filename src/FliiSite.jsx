@@ -75,7 +75,7 @@ const I18N = {
     loop: { eyebrow: "Flii Loop", h2: "Verbeter op basis van marktvraag.", center: "Altijd lerend",
       lede: "Een plan voor het opstarten en blijvend verbeteren van jouw apps, platformen of media. Synchroon aan de wensen van je doelgroep, elke maand beter.",
       items: [
-        { k: "Build", body: "Je bouwt en lanceert je app, platform of campagne." },
+        { k: "Test", body: "Je bouwt en lanceert je app, platform of campagne." },
         { k: "Measure", body: "Je meet wat er gebeurt met echte data en gedrag." },
         { k: "Analyse", body: "De data laat zien wat werkt en waar het geld lekt." },
         { k: "Optimize", body: "Je versterkt wat rendeert en schrapt wat niet werkt." } ],
@@ -263,7 +263,7 @@ const I18N = {
     loop: { eyebrow: "Flii Loop", h2: "Improve based on market demand.", center: "Always learning",
       lede: "A plan for launching and continuously improving your apps, platforms or media. In sync with your audience, better every month.",
       items: [
-        { k: "Build", body: "You build and launch your app, platform or campaign." },
+        { k: "Test", body: "You build and launch your app, platform or campaign." },
         { k: "Measure", body: "You measure what happens with real data and behaviour." },
         { k: "Analyse", body: "The data shows what works and where money leaks." },
         { k: "Optimize", body: "You strengthen what pays off and cut what does not." } ],
@@ -987,7 +987,27 @@ function LoopRing() {
   const [reduce] = useState(() => typeof window !== "undefined" && window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
   const pos = ["top", "right", "bottom", "left"];
   const [lens, setLens] = useState("generic");
-  const select = (i) => setActive((a) => (a === i ? null : i));
+  const [spinning, setSpinning] = useState(false);
+  const [spinTick, setSpinTick] = useState(0);
+  const spinRef = useRef(null);
+  const spinTimer = useRef(null);
+  const select = (i) => {
+    const next = active === i ? null : i;
+    clearTimeout(spinTimer.current);
+    if (reduce || next == null) { setActive(next); setSpinning(false); return; }
+    setActive(next);
+    setSpinning(true);
+    setSpinTick((tk) => tk + 1);
+    spinTimer.current = setTimeout(() => setSpinning(false), 640);
+  };
+  useEffect(() => {
+    const el = spinRef.current;
+    if (!el || !spinning) return;
+    el.style.animation = "none";
+    void el.offsetWidth;
+    el.style.animation = "";
+  }, [spinTick]);
+  useEffect(() => () => clearTimeout(spinTimer.current), []);
   const cur = active != null ? items[active] : null;
   const curBody = cur ? (lens !== "generic" && t.loop.variants[lens] ? t.loop.variants[lens][active] : cur.body) : "";
   return (
@@ -1002,6 +1022,7 @@ function LoopRing() {
     </div>
     <div className={`loop-ring-stage ${active != null ? "open" : ""}`}>
       <div className={`loop-ring-tilt ${active != null && !reduce ? "tilted" : ""}`}>
+        <div className={`loop-ring-spin ${spinning ? "spin" : ""}`} ref={spinRef}>
         <svg className="loop-ring-svg" viewBox="0 0 100 100" aria-hidden>
           <defs>
             <linearGradient id="lrGrad" x1="0" y1="0" x2="1" y2="1">
@@ -1050,9 +1071,10 @@ function LoopRing() {
             </g>
           )}
         </svg>
+        </div>
       </div>
       <div className="loop-ring-core" aria-live="polite">
-        {cur ? (
+        {spinning ? null : cur ? (
           <div className="loop-core-content" key={active}>
             <div className="loop-core-k mono">{cur.k}</div>
             <p className="loop-core-b">{curBody}</p>
@@ -2817,6 +2839,9 @@ button{font-family:inherit;}
 .loop-ring-tilt{position:absolute;inset:70px;transform-origin:center center;transition:transform .7s cubic-bezier(.2,.7,.2,1),opacity .7s;will-change:transform;}
 .loop-ring-stage.open .loop-ring-tilt.tilted{transform:rotateX(34deg) scale(.97);opacity:.9;}
 .loop-ring-svg{width:100%;height:100%;display:block;overflow:visible;}
+.loop-ring-spin{width:100%;height:100%;transform-origin:50% 50%;}
+.loop-ring-spin.spin{animation:lrStepSpin .62s cubic-bezier(.45,0,.15,1);}
+@keyframes lrStepSpin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
 .loop-ring-core{position:absolute;inset:70px;display:flex;align-items:center;justify-content:center;text-align:center;padding:13%;pointer-events:none;z-index:3;}
 .loop-core-default,.loop-core-content{display:flex;flex-direction:column;gap:9px;align-items:center;}
 .loop-core-content{animation:coreIn .5s ease both;}
@@ -2926,7 +2951,7 @@ button{font-family:inherit;}
 .svc-row.on .svc-row-p{color:var(--ink);}
 .svc-item .sub-chips{display:flex;flex-wrap:wrap;gap:7px;}
 .cat-refine{display:flex;flex-direction:column;gap:13px;padding:2px 0 18px 0;}
-.cat-explain{font-size:12.5px;color:var(--soft);line-height:1.5;margin:0;}
+.cat-explain{font-size:12.5px;color:var(--soft);line-height:1.5;margin:0;text-align:left;padding:0;}
 .toggle-sm .toggle-p{font-size:12px;}
 .refine-group{display:flex;flex-direction:column;gap:8px;}
 .refine-h{font-size:10px;letter-spacing:0.11em;text-transform:uppercase;color:var(--soft);}
