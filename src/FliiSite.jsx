@@ -160,9 +160,10 @@ const I18N = {
       appKinds: { webapp: "Webapp", software: "Software-app" },
       platformFns: { website: "Website", ecommerce: "E-commerce", ai: "AI-functionaliteit" },
       cats: { search: "Search", social: "Social", display: "Display", videotv: "Video & TV", audio: "Audio", email: "E-mail & CRM", messaging: "Messaging", ooh: "Out-of-home", print: "Print", pr: "PR & partnerships" },
-      subs: { searchEngines: "Zoekmachines (Google, Bing)", aiSearch: "AI-search / LLM's", socialSearch: "Social search", appStore: "App store (ASO)", meta: "Meta (Facebook, Instagram)", tiktok: "TikTok", linkedin: "LinkedIn", pinterest: "Pinterest", otherSocial: "X, Snapchat, Reddit", programmatic: "Programmatic display", gdn: "Google Display Network", native: "Native advertising", retargeting: "Retargeting", onlineVideo: "Online video (YouTube Ads)", ctv: "Connected TV / streaming", linearTv: "Lineaire TV", radio: "Radio", streamingAudio: "Streaming audio (Spotify)", podcasts: "Podcasts", newsletters: "E-mail & nieuwsbrieven", automation: "Marketing automation", loyalty: "Loyaliteit / CRM", whatsapp: "WhatsApp", sms: "SMS", push: "Push-notificaties", billboards: "Billboards & abri's", dooh: "Digital OOH (DOOH)", transit: "Transit (trein, bus)", retail: "Retail / in-store", stationery: "Visitekaartjes & briefpapier", flyers: "Flyers, folders, brochures", directMail: "Direct mail (post)", merch: "Branded gear / merchandise", earned: "Persrelaties / earned media", influencer: "Influencer marketing", affiliate: "Affiliate / partnerships", sponsoring: "Sponsoring & events" },
+      subs: { searchEngines: "Zoekmachines (Google, Bing)", aiSearch: "AI-search / LLM's", socialSearch: "Social search", appStore: "App store (ASO)", meta: "Meta (Facebook, Instagram)", tiktok: "TikTok", linkedin: "LinkedIn", pinterest: "Pinterest", otherSocial: "X, Snapchat, Reddit", programmatic: "Programmatic display", gdn: "Google Display Network", native: "Native advertising", retargeting: "Retargeting", onlineVideo: "Online video (YouTube Ads)", ctv: "Connected TV / streaming", linearTv: "Lineaire TV", radio: "Radio", streamingAudio: "Streaming audio (Spotify)", podcasts: "Podcasts", newsletters: "Nieuwsbrieven", automation: "Marketing automation", loyalty: "Loyaliteit / CRM", whatsapp: "WhatsApp", sms: "SMS", push: "Push-notificaties", billboards: "Billboards & abri's", dooh: "Digital OOH (DOOH)", transit: "Transit (trein, bus)", retail: "Retail / in-store", stationery: "Visitekaartjes & briefpapier", flyers: "Flyers, folders, brochures", directMail: "Direct mail (post)", merch: "Branded gear / merchandise", earned: "Persrelaties / earned media", influencer: "Influencer marketing", affiliate: "Affiliate / partnerships", sponsoring: "Sponsoring & events" },
       catDesc: { search: "Gevonden worden bij een zoekintentie, in zoekmachines en AI.", social: "Organisch en betaald op de platformen waar je doelgroep scrolt.", display: "Banners en native over web en apps.", videotv: "Bewegend beeld, van online video tot Connected TV.", audio: "Radio, streaming audio en podcasts.", email: "Je eigen publiek: e-mail, automation en CRM.", messaging: "Directe 1-op-1 kanalen zoals WhatsApp en SMS.", ooh: "Buitenreclame, van billboards tot digitale schermen.", print: "Gedrukt: van visitekaartjes tot brochures.", pr: "Verdiende aandacht via pers, influencers en partners." },
       onRequest: "Op aanvraag",
+      approach: { paid: "Betaald", organic: "Organisch", both: "Beide" }, approachH: "Aanpak",
       next: "Volgende", back: "Terug", startOver: "Opnieuw", totalFrom: "Totaal vanaf",
       proposedNote: "Sommige kanalen zijn nieuw en als voorstel geprijsd. Categorieën zonder tarief zijn op aanvraag.",
       excl: "Alle bedragen exclusief btw, op basis van vanaf-tarieven. Definitieve prijs hangt af van de scope. Mediabudget niet inbegrepen.",
@@ -330,9 +331,10 @@ const I18N = {
       appKinds: { webapp: "Web app", software: "Software app" },
       platformFns: { website: "Website", ecommerce: "E-commerce", ai: "AI functionality" },
       cats: { search: "Search", social: "Social", display: "Display", videotv: "Video & TV", audio: "Audio", email: "Email & CRM", messaging: "Messaging", ooh: "Out-of-home", print: "Print", pr: "PR & partnerships" },
-      subs: { searchEngines: "Search engines (Google, Bing)", aiSearch: "AI search / LLMs", socialSearch: "Social search", appStore: "App store (ASO)", meta: "Meta (Facebook, Instagram)", tiktok: "TikTok", linkedin: "LinkedIn", pinterest: "Pinterest", otherSocial: "X, Snapchat, Reddit", programmatic: "Programmatic display", gdn: "Google Display Network", native: "Native advertising", retargeting: "Retargeting", onlineVideo: "Online video (YouTube Ads)", ctv: "Connected TV / streaming", linearTv: "Linear TV", radio: "Radio", streamingAudio: "Streaming audio (Spotify)", podcasts: "Podcasts", newsletters: "Email & newsletters", automation: "Marketing automation", loyalty: "Loyalty / CRM", whatsapp: "WhatsApp", sms: "SMS", push: "Push notifications", billboards: "Billboards & panels", dooh: "Digital OOH (DOOH)", transit: "Transit (train, bus)", retail: "Retail / in-store", stationery: "Business cards & stationery", flyers: "Flyers, leaflets, brochures", directMail: "Direct mail", merch: "Branded gear / merch", earned: "PR / earned media", influencer: "Influencer marketing", affiliate: "Affiliate / partnerships", sponsoring: "Sponsoring & events" },
+      subs: { searchEngines: "Search engines (Google, Bing)", aiSearch: "AI search / LLMs", socialSearch: "Social search", appStore: "App store (ASO)", meta: "Meta (Facebook, Instagram)", tiktok: "TikTok", linkedin: "LinkedIn", pinterest: "Pinterest", otherSocial: "X, Snapchat, Reddit", programmatic: "Programmatic display", gdn: "Google Display Network", native: "Native advertising", retargeting: "Retargeting", onlineVideo: "Online video (YouTube Ads)", ctv: "Connected TV / streaming", linearTv: "Linear TV", radio: "Radio", streamingAudio: "Streaming audio (Spotify)", podcasts: "Podcasts", newsletters: "Newsletters", automation: "Marketing automation", loyalty: "Loyalty / CRM", whatsapp: "WhatsApp", sms: "SMS", push: "Push notifications", billboards: "Billboards & panels", dooh: "Digital OOH (DOOH)", transit: "Transit (train, bus)", retail: "Retail / in-store", stationery: "Business cards & stationery", flyers: "Flyers, leaflets, brochures", directMail: "Direct mail", merch: "Branded gear / merch", earned: "PR / earned media", influencer: "Influencer marketing", affiliate: "Affiliate / partnerships", sponsoring: "Sponsoring & events" },
       catDesc: { search: "Getting found on search intent, in engines and AI.", social: "Organic and paid on the platforms where your audience scrolls.", display: "Banners and native across web and apps.", videotv: "Moving image, from online video to Connected TV.", audio: "Radio, streaming audio and podcasts.", email: "Your own audience: email, automation and CRM.", messaging: "Direct 1-to-1 channels like WhatsApp and SMS.", ooh: "Out-of-home, from billboards to digital screens.", print: "Print, from business cards to brochures.", pr: "Earned attention via press, influencers and partners." },
       onRequest: "On request",
+      approach: { paid: "Paid", organic: "Organic", both: "Both" }, approachH: "Approach",
       next: "Next", back: "Back", startOver: "Start over", totalFrom: "Total from",
       proposedNote: "Some channels are new and priced as a proposal. Categories without a rate are on request.",
       excl: "All amounts exclude VAT, based on starting rates. Final price depends on scope. Media budget not included.",
@@ -1455,16 +1457,16 @@ const PRICING = {
 const SCOPE_KEYS = ["campagne", "app", "platform", "ai"];
 const PLATFORM_FNS = ["website", "ecommerce", "ai"];
 const CHANNEL_TREE = [
-  { key: "search", once: 850, mo: 500, subs: ["searchEngines", "aiSearch", "socialSearch", "appStore"] },
-  { key: "social", once: 750, mo: 500, subs: ["meta", "tiktok", "linkedin", "pinterest", "otherSocial"] },
+  { key: "search", once: 850, mo: 500, mix: true, subs: ["searchEngines", "aiSearch", "socialSearch", "appStore"] },
+  { key: "social", once: 750, mo: 500, mix: true, subs: ["meta", "tiktok", "linkedin", "pinterest", "otherSocial"] },
   { key: "display", once: 700, mo: 450, subs: ["programmatic", "gdn", "native", "retargeting"] },
-  { key: "videotv", once: 950, mo: 600, subs: ["onlineVideo", "ctv", "linearTv"] },
-  { key: "audio", once: 0, mo: 0, subs: ["radio", "streamingAudio", "podcasts"] },
+  { key: "videotv", once: 950, mo: 600, mix: true, subs: ["onlineVideo", "ctv", "linearTv"] },
+  { key: "audio", once: 0, mo: 0, mix: true, subs: ["radio", "streamingAudio", "podcasts"] },
   { key: "email", once: 850, mo: 500, subs: ["newsletters", "automation", "loyalty"] },
   { key: "messaging", once: 0, mo: 0, subs: ["whatsapp", "sms", "push"] },
   { key: "ooh", once: 850, mo: 0, subs: ["billboards", "dooh", "transit", "retail"] },
   { key: "print", once: 650, mo: 0, subs: ["stationery", "flyers", "directMail", "merch"] },
-  { key: "pr", once: 0, mo: 0, subs: ["earned", "influencer", "affiliate", "sponsoring"] },
+  { key: "pr", once: 0, mo: 0, mix: true, subs: ["earned", "influencer", "affiliate", "sponsoring"] },
 ];
 const CAT_KEYS = CHANNEL_TREE.map((c) => c.key);
 const CAT_BY_KEY = Object.fromEntries(CHANNEL_TREE.map((c) => [c.key, c]));
@@ -1510,6 +1512,7 @@ function PriceCalculator({ openConsult }) {
   const [phases, setPhases] = useState({ plan: true, build: true, run: true });
   const [cats, setCats] = useState(() => Object.fromEntries(CAT_KEYS.map((k) => [k, false])));
   const [subs, setSubs] = useState(() => Object.fromEntries(ALL_SUBS.map((k) => [k, false])));
+  const [approach, setApproach] = useState({});
   const [advice, setAdvice] = useState(false);
   const [appKind, setAppKind] = useState("webapp");
   const [appFeatures, setAppFeatures] = useState("");
@@ -1526,10 +1529,17 @@ function PriceCalculator({ openConsult }) {
   const togglePhase = (k) => setPhases((s) => ({ ...s, [k]: !s[k] }));
   const toggleCat = (k) => setCats((s) => ({ ...s, [k]: !s[k] }));
   const toggleSub = (k) => setSubs((s) => ({ ...s, [k]: !s[k] }));
+  const setAp = (k, v) => setApproach((s) => ({ ...s, [k]: v }));
   const togglePlatformFn = (k) => setPlatformFn((s) => ({ ...s, [k]: !s[k] }));
   const catLabel = (k) => (p.cats && p.cats[k]) || k;
   const subLabel = (k) => (p.subs && p.subs[k]) || k;
-  const catBits = () => CAT_KEYS.filter((k) => cats[k]).map((k) => { const sl = CAT_BY_KEY[k].subs.filter((x) => subs[x]).map(subLabel); return catLabel(k) + (sl.length ? ` (${sl.join(", ")})` : ""); });
+  const catBits = () => CAT_KEYS.filter((k) => cats[k]).map((k) => {
+    const extra = [];
+    const ap = approach[k];
+    if (CAT_BY_KEY[k].mix && ap && ap !== "both") extra.push(p.approach[ap]);
+    CAT_BY_KEY[k].subs.filter((x) => subs[x]).forEach((x) => extra.push(subLabel(x)));
+    return catLabel(k) + (extra.length ? ` (${extra.join(", ")})` : "");
+  });
   const phaseSum = (pk) => selected.reduce((a, sk) => a + typePhasePrice(sk, pk), 0);
   const packagePrice = (k) => k === "run" ? eur(phaseSum("run")) + p.mo : eur(phaseSum(k));
   const typeLabel = selected.map((s) => p.scopes[s]).join(" \u00B7 ");
@@ -1597,10 +1607,22 @@ function PriceCalculator({ openConsult }) {
                         {c.once > 0 && <span className="chip-p"> {p.from} {eur(c.once)}</span>}
                       </button>
                       {cats[c.key] && (
-                        <div className="sub-chips">
-                          {c.subs.map((sub) => (
-                            <button key={sub} className={`chip chip-sub ${subs[sub] ? "on" : ""}`} onClick={() => toggleSub(sub)} aria-pressed={subs[sub]}>{subLabel(sub)}</button>
-                          ))}
+                        <div className="cat-expand">
+                          {c.mix && (
+                            <div className="approach-seg" role="group" aria-label={p.approachH}>
+                              <span className="approach-l mono">{p.approachH}</span>
+                              <div className="seg seg-sm">
+                                {["paid", "organic", "both"].map((a) => (
+                                  <button key={a} className={`seg-btn ${(approach[c.key] || "both") === a ? "on" : ""}`} onClick={() => setAp(c.key, a)}>{p.approach[a]}</button>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                          <div className="sub-chips">
+                            {c.subs.map((sub) => (
+                              <button key={sub} className={`chip chip-sub ${subs[sub] ? "on" : ""}`} onClick={() => toggleSub(sub)} aria-pressed={subs[sub]}>{subLabel(sub)}</button>
+                            ))}
+                          </div>
                         </div>
                       )}
                     </div>
@@ -2591,6 +2613,13 @@ button{font-family:inherit;}
 .sub-chips{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 4px 15px;padding-left:15px;border-left:2px solid var(--line);}
 .chip-sub{font-size:12.5px;padding:6px 12px;}
 .chip-sub.on{background:var(--ink);border-color:var(--ink);color:#fff;}
+.cat-expand{display:flex;flex-direction:column;gap:11px;margin:0 0 6px 15px;padding-left:15px;border-left:2px solid var(--line);}
+.cat-expand .sub-chips{margin:0;padding:0;border:none;}
+.approach-seg{display:flex;align-items:center;gap:11px;flex-wrap:wrap;}
+.approach-l{font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--soft);}
+.seg-sm{padding:4px;border-radius:10px;gap:4px;}
+.seg-sm .seg-btn{padding:6px 12px;font-size:12.5px;border-radius:7px;}
+.seg-sm .seg-btn.on{background:var(--card);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,0.05);}
 .advice-toggle{margin-top:2px;}
 .detail-field{display:flex;flex-direction:column;gap:6px;}
 .detail-field-l{font-size:11px;letter-spacing:0.04em;color:var(--soft);}
