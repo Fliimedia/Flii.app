@@ -111,7 +111,7 @@ const I18N = {
         { n: "Stap 3", h: "Afstemmen", b: "Slimme vervolgvragen, daarna leggen we de opdracht vast." },
         { n: "Stap 4", h: "Bouwen", b: "Heldere scope, gedeelde verwachtingen, een build die live gaat." } ] },
     insights: { eyebrow: "Inzichten", h2: "Scherpe inzichten.", manage: "Beheer inzichten ↗", read: "Lees ↗" },
-    cta: { h2: "De kracht van feedback.", sub: "Wie betaalt, bepaalt: de markt is je ijkpunt. Feedback loops zijn je directe verbinding met die markt en de enige echte bron van verbetering. Dat is de kern van Loop.",
+    cta: { h2: "De kracht van feedback.", sub: "Moderne bedrijven passen zich real-time aan op de markt. Gebruik Loop als jouw motor voor verbetering.",
       primary: "Plan een gesprek", secondary: "Vraag een groei-audit ↗" },
     contact: [
       { k: "Locatie", v: "Amstelveen, NL", href: null },
@@ -298,7 +298,7 @@ const I18N = {
         { n: "Step 3", h: "Align", b: "Smart follow-ups, then we lock the engagement." },
         { n: "Step 4", h: "Build", b: "Clear scope, shared expectations, a build that ships." } ] },
     insights: { eyebrow: "Insights", h2: "Sharp takes.", manage: "Manage insights ↗", read: "Read ↗" },
-    cta: { h2: "The power of feedback.", sub: "Whoever pays, decides: the market is your benchmark. Feedback loops are your direct link to that market and the only real source of improvement. That is the heart of Loop.",
+    cta: { h2: "The power of feedback.", sub: "Modern companies adapt to the market in real time. Use Loop as your engine for improvement.",
       primary: "Book a consultation", secondary: "Get a growth audit ↗" },
     contact: [
       { k: "Location", v: "Amstelveen, NL", href: null },
@@ -1406,7 +1406,13 @@ function Home({ content, openConsult }) {
           <Section>
             <h2 className="display cta-h">{t.cta.h2}</h2>
             <p className="cta-sub">{t.cta.sub}</p>
-            <div className="hero-actions"><button onClick={openConsult} className="btn btn-primary">{t.cta.primary}</button><button onClick={openConsult} className="btn btn-ghost">{t.cta.secondary}</button></div>
+            <div className="hero-actions">
+              <button onClick={openConsult} className="btn btn-primary">{t.cta.primary}</button>
+              <a href="#loop" className="loop-cta" aria-label={t.hero.loopCta}>
+                <FliiLoopMark />
+                <span className="loop-cta-t">{t.hero.loopCta} <span className="loop-cta-arrow" aria-hidden>↘</span></span>
+              </a>
+            </div>
           </Section>
           <Section className="contact-grid">
             {t.contact.map((c) => <div key={c.k} className="contact-item"><div className="contact-k mono">{c.k}</div>{c.href ? <a href={c.href} className="contact-v contact-link">{c.v}</a> : <div className="contact-v">{c.v}</div>}</div>)}
@@ -2571,6 +2577,8 @@ button{font-family:inherit;}
 .cta-h{font-size:clamp(36px,6vw,64px);margin:0 auto 14px;}
 .cta-sub{font-size:18px;color:#B5B2A8;max-width:42ch;margin:0 auto 30px;}
 .cta-band .hero-actions{justify-content:center;}
+.cta-band .loop-cta{color:var(--paper);}
+.cta-band .loop-cta:hover{color:var(--mag);}
 .cta-band .btn-primary{background:var(--paper);color:var(--ink);}
 .cta-band .btn-primary:hover{background:var(--mag);color:#fff;}
 .cta-band .btn-ghost{border-color:#3A3A3A;color:var(--paper);}
@@ -2806,7 +2814,7 @@ button{font-family:inherit;}
 .svc-row-p{font-size:12.5px;color:var(--mid);font-weight:500;white-space:nowrap;}
 .svc-row.on .svc-row-p{color:var(--ink);}
 .svc-item .sub-chips{display:flex;flex-wrap:wrap;gap:7px;}
-.cat-refine{display:flex;flex-direction:column;gap:13px;padding:2px 2px 16px 32px;}
+.cat-refine{display:flex;flex-direction:column;gap:13px;padding:2px 0 18px 0;}
 .cat-explain{font-size:12.5px;color:var(--soft);line-height:1.5;margin:0;}
 .toggle-sm .toggle-p{font-size:12px;}
 .refine-group{display:flex;flex-direction:column;gap:8px;}
