@@ -61,7 +61,7 @@ const I18N = {
           exec: [{ h: "Strategie", b: "Doelgroep, boodschap en kanaalkeuze." }, { h: "Creatie", b: "Advertenties, teksten en visuals die opvallen." }, { h: "Lanceren", b: "Opzet, tracking en de eerste live campagnes." }, { h: "Optimaliseren", b: "We schalen wat werkt en snoeien de rest." }],
           outcome: "Campagnes die te volgen zijn tot op de klant, en elke maand scherper." },
         { slug: "media", tag: "Performance", title: "Media performance",
-          body: "Doorlopend sturen op data, zodat elke euro harder werkt.",
+          body: "Organische inzet en adverteren op 20+ media kanalen. Gedreven door data, gericht op resultaat.",
           lede: "Beheer en optimalisatie van je media. We sturen doorlopend op de cijfers die tellen, verbeteren wat rendeert en schrappen wat niet werkt.",
           help: [{ h: "Minder verspilling", b: "Budget verschuift naar wat het beste presteert." }, { h: "Grip op de cijfers", b: "Rapportage op omzet en waarde per bezoeker, geen ijdele cijfers." }, { h: "Continu beter", b: "Elke maand een iteratie op basis van echte data." }],
           exec: [{ h: "Meten", b: "We zetten tracking en attributie goed neer." }, { h: "Analyseren", b: "We lezen de data en vinden de knelpunten." }, { h: "Bijsturen", b: "We optimaliseren biedingen, doelgroepen en creatives." }, { h: "Rapporteren", b: "Transparante rapportage op wat echt telt." }],
@@ -230,7 +230,7 @@ const I18N = {
           exec: [{ h: "Strategy", b: "Audience, message and channel choice." }, { h: "Creative", b: "Ads, copy and visuals that stand out." }, { h: "Launch", b: "Setup, tracking and the first live campaigns." }, { h: "Optimise", b: "We scale what works and cut the rest." }],
           outcome: "Campaigns traceable down to the customer, sharper every month." },
         { slug: "media", tag: "Performance", title: "Media performance",
-          body: "Steering on data continuously, so every euro works harder.",
+          body: "Organic and paid across 20+ media channels. Driven by data, focused on results.",
           lede: "Management and optimisation of your media. We steer continuously on the numbers that matter, improve what pays off and cut what does not.",
           help: [{ h: "Less waste", b: "Budget shifts to what performs best." }, { h: "Grip on the numbers", b: "Reporting on revenue and value per visitor, no vanity metrics." }, { h: "Continuously better", b: "An iteration every month based on real data." }],
           exec: [{ h: "Measure", b: "We set up tracking and attribution properly." }, { h: "Analyse", b: "We read the data and find the bottlenecks." }, { h: "Adjust", b: "We optimise bids, audiences and creative." }, { h: "Report", b: "Transparent reporting on what really counts." }],
@@ -980,6 +980,13 @@ function LoopRing() {
               <feGaussianBlur stdDeviation="0.5" />
             </filter>
             <filter id="lrGlow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="2.6" /></filter>
+            <radialGradient id="lrStarGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="#fff" stopOpacity="0.95" />
+              <stop offset="22%" stopColor="#FFE3EE" stopOpacity="0.7" />
+              <stop offset="55%" stopColor="#FF6FA6" stopOpacity="0.28" />
+              <stop offset="100%" stopColor="#FF6FA6" stopOpacity="0" />
+            </radialGradient>
+            <filter id="lrSoft" x="-120%" y="-120%" width="340%" height="340%"><feGaussianBlur stdDeviation="0.7" /></filter>
           </defs>
           <circle cx="50" cy="50" r="38" fill="none" stroke="url(#lrGrad)" strokeWidth="2.2" opacity="0.34" />
           <g className={reduce ? "" : "lm-rot"}>
@@ -994,9 +1001,13 @@ function LoopRing() {
               <path className="lr-trail" d="M50 11 L38 12 L50 13 Z" fill="#FFD8E7" filter="url(#lrGlow)" />
               <circle className="lr-spark" cx="50" cy="12" r="1.4" fill="#FFEAF2" filter="url(#lrGlow)" />
               <g className="lr-burst">
-                <path d="M50 4 L50.5 11.5 L58 12 L50.5 12.5 L50 20 L49.5 12.5 L42 12 L49.5 11.5 Z" fill="#fff" />
-                <path d="M53.2 8.8 L50.4 12 L53.2 15.2 L50 12.6 L46.8 15.2 L49.6 12 L46.8 8.8 L50 11.4 Z" fill="#FFEAF2" />
-                <circle cx="50" cy="12" r="1.9" fill="#fff" filter="url(#lrGlow)" />
+                <circle cx="50" cy="12" r="10" fill="url(#lrStarGlow)" />
+                <g filter="url(#lrSoft)">
+                  <path d="M50 2.5 L50.35 11.6 L59.5 12 L50.35 12.4 L50 21.5 L49.65 12.4 L40.5 12 L49.65 11.6 Z" fill="#fff" />
+                  <path d="M53.89 8.11 L50.35 12 L53.89 15.89 L50 12.35 L46.11 15.89 L49.65 12 L46.11 8.11 L50 11.65 Z" fill="#FFE3EE" opacity="0.85" />
+                </g>
+                <circle cx="50" cy="12" r="1.5" fill="#fff" filter="url(#lrGlow)" />
+                <circle cx="50" cy="12" r="0.8" fill="#fff" />
               </g>
             </g>
           )}
