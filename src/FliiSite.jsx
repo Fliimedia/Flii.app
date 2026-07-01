@@ -41,31 +41,31 @@ const I18N = {
           lede: "We ontwerpen en bouwen apps en interfaces waar mensen graag mee werken. Van eerste schets tot werkende PWA, met steeds dezelfde vraag: wat heeft de gebruiker echt nodig?",
           help: [{ h: "Minder afhakers", b: "Een heldere flow haalt drempels weg, zodat meer bezoekers doen wat je wilt." }, { h: "Sneller iets echts", b: "We werken in werkende versies in plaats van eindeloze mockups." }, { h: "Klaar voor groei", b: "Een opzet die meegroeit met nieuwe functies en gebruikers." }],
           exec: [{ h: "Onderzoek", b: "We brengen gebruikers, doelen en knelpunten in kaart." }, { h: "Ontwerp", b: "Wireframes en een strak, herkenbaar interfaceontwerp." }, { h: "Bouw", b: "Een responsive app of PWA, meteen hosting-klaar." }, { h: "Meten & verbeteren", b: "We meten gebruik en scherpen de interface aan." }],
-          outcome: "Een app die klopt, converteert en klaarstaat om door te ontwikkelen.", loop: ["Je app of PWA gaat live bij de eerste gebruikers.", "Je ziet in de data hoe mensen de app echt gebruiken.", "Je verbetert flows en voegt toe wat gemist wordt.", "Elke release maakt de app sneller en slimmer."] },
+          outcome: "Een app die klopt, converteert en klaarstaat om door te ontwikkelen.", loop: ["Je bouwt en lanceert je app bij de eerste gebruikers.", "Je meet hoe mensen de app echt gebruiken.", "Je ziet welke flows werken en wat gemist wordt.", "Je verbetert flows en maakt de app sneller."] },
         { slug: "platform", tag: "Platform", title: "Platform development",
           body: "Schaalbare platformen met backend, data en AI onder de motorkap.",
           lede: "We bouwen volwaardige platformen: portals, webapps en sites met een echte backend, gebruikersrollen en waar nodig AI. Gemaakt om te schalen.",
           help: [{ h: "Alles op één plek", b: "Data, gebruikers en processen in één systeem in plaats van losse tools." }, { h: "Minder handwerk", b: "Automatisering en koppelingen nemen repeterend werk uit handen." }, { h: "Schaalbaar", b: "Een architectuur die meegroeit met verkeer, features en teams." }],
           exec: [{ h: "Architectuur", b: "We bepalen datamodel, rollen en koppelingen." }, { h: "Bouw", b: "Backend, database en interface, module voor module." }, { h: "Integraties", b: "API's, betalingen, AI en bestaande tools aan elkaar." }, { h: "Beheer", b: "Hosting, monitoring en doorontwikkeling." }],
-          outcome: "Een platform dat je bedrijf draagt in plaats van vertraagt.", loop: ["Je platform draait live met backend en echte gebruikers.", "Je meet gebruik, funnels en waar het proces stokt.", "Je bouwt door op wat werkt en automatiseert meer.", "Elke iteratie schaalt het platform verder op."] },
+          outcome: "Een platform dat je bedrijf draagt in plaats van vertraagt.", loop: ["Je bouwt je platform met backend en gaat live.", "Je meet gebruik, funnels en waar het proces stokt.", "Je ziet welke stappen werken en welke afhaken.", "Je automatiseert meer en schaalt het platform op."] },
         { slug: "ai", tag: "AI", title: "AI integratie",
           body: "AI die echt werk uit handen neemt, ingebed in je eigen processen.",
           lede: "We integreren AI daar waar het rendeert: assistenten, automatisering en slimme functies die in je bestaande processen passen, niet ernaast.",
           help: [{ h: "Tijd terug", b: "AI neemt repeterend werk over, je team houdt tijd over voor wat telt." }, { h: "Altijd bereikbaar", b: "Assistenten die vragen beantwoorden en leads kwalificeren, dag en nacht." }, { h: "Betere beslissingen", b: "Modellen die patronen zien die mensen missen." }],
           exec: [{ h: "Kansen vinden", b: "We zoeken waar AI het meeste oplevert in jouw proces." }, { h: "Ontwerp", b: "We kiezen model, data en de plek in de flow." }, { h: "Integratie", b: "We bouwen het in je tools en koppelen de data." }, { h: "Bijsturen", b: "We meten de output en verbeteren de kwaliteit." }],
-          outcome: "AI die meedraait in je processen en elke maand slimmer wordt.", loop: ["Je eerste AI-functie draait live in je eigen proces.", "Je meet waar hij tijd wint en waar hij mist.", "Je scherpt de prompts, data en logica aan.", "Elke ronde neemt de AI meer werk uit handen."] },
+          outcome: "AI die meedraait in je processen en elke maand slimmer wordt.", loop: ["Je bouwt je eerste AI-functie in je eigen proces.", "Je meet waar hij tijd wint en waar hij mist.", "Je ziet waar de output klopt en waar niet.", "Je scherpt prompts, data en logica aan."] },
         { slug: "campaigns", tag: "Campagnes", title: "Marketing campagnes",
           body: "Content en campagnes voor elk kanaal. In de stem van jouw merk, gericht op resultaat.",
           lede: "We zetten campagnes op die renderen: search, social, display, video, outdoor en AI-vindbaarheid. Eén verhaal, over de kanalen waar jouw klant zit.",
           help: [{ h: "De juiste kanalen", b: "We kiezen kanalen op basis van je doelgroep, niet op gewoonte." }, { h: "Meetbaar rendement", b: "Elke euro is te volgen van klik tot klant." }, { h: "Eén verhaal", b: "Consistente boodschap en creatives over alle kanalen." }],
           exec: [{ h: "Strategie", b: "Doelgroep, boodschap en kanaalkeuze." }, { h: "Creatie", b: "Advertenties, teksten en visuals die opvallen." }, { h: "Lanceren", b: "Opzet, tracking en de eerste live campagnes." }, { h: "Optimaliseren", b: "We schalen wat werkt en snoeien de rest." }],
-          outcome: "Campagnes die te volgen zijn tot op de klant, en elke maand scherper.", loop: ["Je campagne gaat live over de gekozen kanalen.", "Je meet bereik, kliks en conversies per kanaal.", "Je schaalt de winnende creatives en boodschappen op.", "Elke ronde scherpere targeting en content."] },
+          outcome: "Campagnes die te volgen zijn tot op de klant, en elke maand scherper.", loop: ["Je zet je campagne live over de gekozen kanalen.", "Je meet bereik, kliks en conversies per kanaal.", "Je ziet welke creatives en boodschappen werken.", "Je schaalt de winnaars en scherpt de targeting aan."] },
         { slug: "media", tag: "Performance", title: "Media performance",
           body: "Organische inzet en adverteren op 20+ media kanalen. Gedreven door data, gericht op resultaat.",
           lede: "Beheer en optimalisatie van je media. We sturen doorlopend op de cijfers die tellen, verbeteren wat rendeert en schrappen wat niet werkt.",
           help: [{ h: "Minder verspilling", b: "Budget verschuift naar wat het beste presteert." }, { h: "Grip op de cijfers", b: "Rapportage op omzet en waarde per bezoeker, geen ijdele cijfers." }, { h: "Continu beter", b: "Elke maand een iteratie op basis van echte data." }],
           exec: [{ h: "Meten", b: "We zetten tracking en attributie goed neer." }, { h: "Analyseren", b: "We lezen de data en vinden de knelpunten." }, { h: "Bijsturen", b: "We optimaliseren biedingen, doelgroepen en creatives." }, { h: "Rapporteren", b: "Transparante rapportage op wat echt telt." }],
-          outcome: "Media die elke maand meetbaar beter presteert.", loop: ["Je media draait live op de gekozen kanalen.", "Je meet kliks, kosten en conversies per kanaal.", "Je schaalt op wat converteert en snoeit de rest.", "Elke maand scherpere targeting en creatives."] }] },
+          outcome: "Media die elke maand meetbaar beter presteert.", loop: ["Je zet je media live op de gekozen kanalen.", "Je meet kliks, kosten en conversies per kanaal.", "Je ziet wat converteert en wat budget verspilt.", "Je schaalt de winnaars en scherpt de targeting aan."] }] },
     loopCta: { k: "Flii Loop", h2: "Elke dienst draait in Flii Loop.", body: "We lanceren, meten, verbeteren en herhalen. Zo wordt elke dienst elke maand beter, in plaats van eenmalig af.", pricing: "Bekijk Flii Loop ↗", talk: "Plan een gesprek" },
     certsLabel: "Gecertificeerd & partner",
     stats: [
@@ -75,15 +75,15 @@ const I18N = {
     loop: { eyebrow: "Flii Loop", h2: "Opstarten, ontwikkelen en verbeteren. In één loop.", center: "Altijd lerend",
       lede: "Flii Loop is een plan voor het opstarten, ontwikkelen en verbeteren van apps, platformen en media. Je lanceert, meet wat er gebeurt, verbetert op basis van de data, en begint opnieuw. Elke ronde maakt het geheel scherper.",
       items: [
-        { k: "Launch", body: "Je app, platform of campagne gaat live en levert de eerste data." },
-        { k: "Analyse", body: "Data en gedrag laten zien wat werkt en waar het geld lekt." },
-        { k: "Improve", body: "Je versterkt wat rendeert en schrapt wat niet werkt." },
-        { k: "Loop", body: "Elke ronde voedt de volgende, zodat het systeem blijft leren." } ],
+        { k: "Build", body: "Je bouwt en lanceert je app, platform of campagne." },
+        { k: "Measure", body: "Je meet wat er gebeurt met echte data en gedrag." },
+        { k: "Analyse", body: "De data laat zien wat werkt en waar het geld lekt." },
+        { k: "Optimize", body: "Je versterkt wat rendeert en schrapt wat niet werkt." } ],
       lens: { generic: "Algemeen", platform: "Platform", app: "App", media: "Media" },
       variants: {
-        platform: ["Je platform draait live met backend en echte gebruikers.", "Je meet gebruik, funnels en waar het proces stokt.", "Je bouwt door op wat werkt en automatiseert meer.", "Elke iteratie schaalt het platform verder op."],
-        app: ["Je app of PWA gaat live bij de eerste gebruikers.", "Je ziet in de data hoe mensen de app echt gebruiken.", "Je verbetert flows en voegt toe wat gemist wordt.", "Elke release maakt de app sneller en slimmer."],
-        media: ["Je campagne gaat live op de gekozen kanalen.", "Je meet kliks, kosten en conversies per kanaal.", "Je schaalt op wat converteert en snoeit de rest.", "Elke maand scherpere targeting en creatives."],
+        platform: ["Je bouwt je platform met backend en gaat live.", "Je meet gebruik, funnels en waar het proces stokt.", "Je ziet welke stappen werken en welke afhaken.", "Je automatiseert meer en schaalt het platform op."],
+        app: ["Je bouwt en lanceert je app of PWA.", "Je meet hoe mensen de app echt gebruiken.", "Je ziet welke flows werken en wat gemist wordt.", "Je verbetert flows en maakt de app sneller."],
+        media: ["Je zet je campagne live op de gekozen kanalen.", "Je meet kliks, kosten en conversies per kanaal.", "Je ziet wat converteert en wat budget verspilt.", "Je schaalt de winnaars en scherpt de targeting aan."],
       },
       priceCta: "Stel Loop samen en bekijk de prijzen ↘" },
     work: { eyebrow: "Showcase", h2: "Wat we lanceerden", manage: "Beheer showcase ↗", view: "Bekijk case ↗" },
@@ -166,6 +166,7 @@ const I18N = {
       details: { pickType: "Kies eerst een type hierboven.", campagneQ: "Welke mediakanalen wil je inzetten?", advice: "Ik weet dit nog niet zeker en wil advies", platformQ: "Welke functionaliteit heeft het platform nodig?", appQ: "Wat voor app wil je?", appFeatures: "Gewenste functionaliteit", appFeaturesPh: "Beschrijf kort wat de app moet kunnen", aiNote: "AI integratie of automatisering. We bepalen de exacte scope in het gesprek." },
       appKinds: { webapp: "Webapp", software: "Software-app" },
       platformFns: { website: "Website", ecommerce: "E-commerce", ai: "AI-functionaliteit" },
+      typeOpts: { webapp: "Webapp", nativeApp: "Native app", pwa: "PWA", uxDesign: "UX-design", backendApi: "Backend & API", appIntegraties: "Integraties", appStorePub: "App store-publicatie", website: "Website", ecommerce: "Webshop / e-commerce", portaal: "Portaal / dashboard", platformAi: "AI-functionaliteit", platformIntegraties: "Integraties", cms: "CMS", chatbot: "Chatbot / assistent", contentgen: "Contentgeneratie", automatisering: "Automatisering / workflows", dataAnalyse: "Data-analyse", aiIntegratie: "Integratie in tools", customModel: "Custom model" },
       cats: { search: "Search", social: "Social", display: "Display", videotv: "Video & TV", audio: "Audio", email: "E-mail & CRM", messaging: "Messaging", ooh: "Out-of-home", print: "Print", pr: "PR & partnerships" },
       subs: { searchEngines: "Zoekmachines (Google, Bing)", aiSearch: "AI-search / LLM's", socialSearch: "Social search", appStore: "App store (ASO)", meta: "Meta (Facebook, Instagram)", tiktok: "TikTok", linkedin: "LinkedIn", pinterest: "Pinterest", otherSocial: "X, Snapchat, Reddit", programmatic: "Programmatic display", gdn: "Google Display Network", native: "Native advertising", retargeting: "Retargeting", onlineVideo: "Online video (YouTube Ads)", ctv: "Connected TV / streaming", linearTv: "Lineaire TV", radio: "Radio", streamingAudio: "Streaming audio (Spotify)", podcasts: "Podcasts", newsletters: "Nieuwsbrieven", automation: "Marketing automation", loyalty: "Loyaliteit / CRM", whatsapp: "WhatsApp", sms: "SMS", push: "Push-notificaties", billboards: "Billboards & abri's", dooh: "Digital OOH (DOOH)", transit: "Transit (trein, bus)", retail: "Retail / in-store", stationery: "Visitekaartjes & briefpapier", flyers: "Flyers, folders, brochures", directMail: "Direct mail (post)", merch: "Branded gear / merchandise", earned: "Persrelaties / earned media", influencer: "Influencer marketing", affiliate: "Affiliate / partnerships", sponsoring: "Sponsoring & events" },
       catDesc: { search: "Gevonden worden bij een zoekintentie, in zoekmachines en AI.", social: "Organisch en betaald op de platformen waar je doelgroep scrolt.", display: "Banners en native over web en apps.", videotv: "Bewegend beeld, van online video tot Connected TV.", audio: "Radio, streaming audio en podcasts.", email: "Je eigen publiek: e-mail, automation en CRM.", messaging: "Directe 1-op-1 kanalen zoals WhatsApp en SMS.", ooh: "Buitenreclame, van billboards tot digitale schermen.", print: "Gedrukt: van visitekaartjes tot brochures.", pr: "Verdiende aandacht via pers, influencers en partners." },
@@ -219,31 +220,31 @@ const I18N = {
           lede: "We design and build apps and interfaces people enjoy using. From first sketch to working PWA, always asking: what does the user actually need?",
           help: [{ h: "Fewer drop-offs", b: "A clear flow removes friction so more visitors do what you want." }, { h: "Something real, sooner", b: "We work in working versions instead of endless mockups." }, { h: "Ready to grow", b: "A setup that scales with new features and users." }],
           exec: [{ h: "Research", b: "We map users, goals and pain points." }, { h: "Design", b: "Wireframes and a sharp, recognisable interface." }, { h: "Build", b: "A responsive app or PWA, hosting-ready." }, { h: "Measure & improve", b: "We measure usage and refine the interface." }],
-          outcome: "An app that fits, converts and is ready to build on.", loop: ["Your app or PWA goes live with the first users.", "You see in the data how people really use the app.", "You improve flows and add what is missing.", "Every release makes the app faster and smarter."] },
+          outcome: "An app that fits, converts and is ready to build on.", loop: ["You build and launch your app with the first users.", "You measure how people really use the app.", "You see which flows work and what is missing.", "You improve flows and make the app faster."] },
         { slug: "platform", tag: "Platform", title: "Platform development",
           body: "Scalable platforms with backend, data and AI under the hood.",
           lede: "We build full platforms: portals, web apps and sites with a real backend, user roles and AI where needed. Made to scale.",
           help: [{ h: "Everything in one place", b: "Data, users and processes in one system instead of scattered tools." }, { h: "Less manual work", b: "Automation and integrations take repetitive work off your hands." }, { h: "Scalable", b: "An architecture that grows with traffic, features and teams." }],
           exec: [{ h: "Architecture", b: "We define the data model, roles and integrations." }, { h: "Build", b: "Backend, database and interface, module by module." }, { h: "Integrations", b: "APIs, payments, AI and existing tools connected." }, { h: "Operate", b: "Hosting, monitoring and further development." }],
-          outcome: "A platform that carries your business instead of slowing it.", loop: ["Your platform runs live with a backend and real users.", "You measure usage, funnels and where the process stalls.", "You build on what works and automate more.", "Every iteration scales the platform further."] },
+          outcome: "A platform that carries your business instead of slowing it.", loop: ["You build your platform with a backend and go live.", "You measure usage, funnels and where the process stalls.", "You see which steps work and which drop off.", "You automate more and scale the platform up."] },
         { slug: "ai", tag: "AI", title: "AI integration",
           body: "AI that truly takes work off your hands, embedded in your processes.",
           lede: "We integrate AI where it pays off: assistants, automation and smart features that fit inside your existing processes, not beside them.",
           help: [{ h: "Time back", b: "AI takes over repetitive work so your team focuses on what matters." }, { h: "Always available", b: "Assistants that answer questions and qualify leads, day and night." }, { h: "Better decisions", b: "Models that spot patterns people miss." }],
           exec: [{ h: "Find the opportunities", b: "We look for where AI pays off most in your process." }, { h: "Design", b: "We pick the model, data and place in the flow." }, { h: "Integration", b: "We build it into your tools and connect the data." }, { h: "Refine", b: "We measure output and improve quality." }],
-          outcome: "AI that runs inside your processes and gets smarter every month.", loop: ["Your first AI feature runs live inside your own process.", "You measure where it saves time and where it misses.", "You sharpen the prompts, data and logic.", "Every round has the AI take on more work."] },
+          outcome: "AI that runs inside your processes and gets smarter every month.", loop: ["You build your first AI feature into your own process.", "You measure where it saves time and where it misses.", "You see where the output is right and where not.", "You sharpen prompts, data and logic."] },
         { slug: "campaigns", tag: "Campaigns", title: "Marketing campaigns",
           body: "Content and campaigns for every channel. In your brand's voice, built for results.",
           lede: "We set up campaigns that pay back: search, social, display, video, outdoor and AI visibility. One story, across the channels where your customer is.",
           help: [{ h: "The right channels", b: "We pick channels based on your audience, not habit." }, { h: "Measurable return", b: "Every euro is traceable from click to customer." }, { h: "One story", b: "Consistent message and creative across all channels." }],
           exec: [{ h: "Strategy", b: "Audience, message and channel choice." }, { h: "Creative", b: "Ads, copy and visuals that stand out." }, { h: "Launch", b: "Setup, tracking and the first live campaigns." }, { h: "Optimise", b: "We scale what works and cut the rest." }],
-          outcome: "Campaigns traceable down to the customer, sharper every month.", loop: ["Your campaign goes live across the chosen channels.", "You measure reach, clicks and conversions per channel.", "You scale the winning creatives and messages.", "Every round means sharper targeting and content."] },
+          outcome: "Campaigns traceable down to the customer, sharper every month.", loop: ["You launch your campaign across the chosen channels.", "You measure reach, clicks and conversions per channel.", "You see which creatives and messages work.", "You scale the winners and sharpen targeting."] },
         { slug: "media", tag: "Performance", title: "Media performance",
           body: "Organic and paid across 20+ media channels. Driven by data, focused on results.",
           lede: "Management and optimisation of your media. We steer continuously on the numbers that matter, improve what pays off and cut what does not.",
           help: [{ h: "Less waste", b: "Budget shifts to what performs best." }, { h: "Grip on the numbers", b: "Reporting on revenue and value per visitor, no vanity metrics." }, { h: "Continuously better", b: "An iteration every month based on real data." }],
           exec: [{ h: "Measure", b: "We set up tracking and attribution properly." }, { h: "Analyse", b: "We read the data and find the bottlenecks." }, { h: "Adjust", b: "We optimise bids, audiences and creative." }, { h: "Report", b: "Transparent reporting on what really counts." }],
-          outcome: "Media that performs measurably better every month.", loop: ["Your media runs live on the chosen channels.", "You measure clicks, cost and conversions per channel.", "You scale what converts and cut the rest.", "Every month sharper targeting and creatives."] }] },
+          outcome: "Media that performs measurably better every month.", loop: ["You launch your media on the chosen channels.", "You measure clicks, cost and conversions per channel.", "You see what converts and what wastes budget.", "You scale the winners and sharpen targeting."] }] },
     loopCta: { k: "Flii Loop", h2: "Every service runs inside Flii Loop.", body: "We launch, measure, improve and repeat. So every service gets better every month, instead of shipping once and stopping.", pricing: "See Flii Loop ↗", talk: "Book a consultation" },
     certsLabel: "Certified & partnered",
     stats: [
@@ -253,10 +254,10 @@ const I18N = {
     loop: { eyebrow: "Flii Loop", h2: "Launch, develop and improve. In one loop.", center: "Always learning",
       lede: "Flii Loop is a plan for launching, developing and improving apps, platforms and media. You launch, measure what happens, improve on the data, and start again. Every round sharpens the whole.",
       items: [
-        { k: "Launch", body: "Your app, platform or campaign goes live and produces the first data." },
-        { k: "Analyse", body: "Data and behaviour show what works and where money leaks." },
-        { k: "Improve", body: "You double down on what pays off and cut what does not." },
-        { k: "Loop", body: "Every round feeds the next, so the system keeps learning." } ],
+        { k: "Build", body: "You build and launch your app, platform or campaign." },
+        { k: "Measure", body: "You measure what happens with real data and behaviour." },
+        { k: "Analyse", body: "The data shows what works and where money leaks." },
+        { k: "Optimize", body: "You strengthen what pays off and cut what does not." } ],
       lens: { generic: "General", platform: "Platform", app: "App", media: "Media" },
       variants: {
         platform: ["Your platform runs live with backend and real users.", "You measure usage, funnels and where the process stalls.", "You build on what works and automate more.", "Every iteration scales the platform further."],
@@ -344,6 +345,7 @@ const I18N = {
       details: { pickType: "Pick a type above first.", campagneQ: "Which media channels do you want to use?", advice: "I'm not sure yet and want advice", platformQ: "Which functionality does the platform need?", appQ: "What kind of app do you want?", appFeatures: "Desired functionality", appFeaturesPh: "Briefly describe what the app should do", aiNote: "AI integration or automation. We define the exact scope in the call." },
       appKinds: { webapp: "Web app", software: "Software app" },
       platformFns: { website: "Website", ecommerce: "E-commerce", ai: "AI functionality" },
+      typeOpts: { webapp: "Web app", nativeApp: "Native app", pwa: "PWA", uxDesign: "UX design", backendApi: "Backend & API", appIntegraties: "Integrations", appStorePub: "App store release", website: "Website", ecommerce: "Webshop / e-commerce", portaal: "Portal / dashboard", platformAi: "AI functionality", platformIntegraties: "Integrations", cms: "CMS", chatbot: "Chatbot / assistant", contentgen: "Content generation", automatisering: "Automation / workflows", dataAnalyse: "Data analysis", aiIntegratie: "Integration into tools", customModel: "Custom model" },
       cats: { search: "Search", social: "Social", display: "Display", videotv: "Video & TV", audio: "Audio", email: "Email & CRM", messaging: "Messaging", ooh: "Out-of-home", print: "Print", pr: "PR & partnerships" },
       subs: { searchEngines: "Search engines (Google, Bing)", aiSearch: "AI search / LLMs", socialSearch: "Social search", appStore: "App store (ASO)", meta: "Meta (Facebook, Instagram)", tiktok: "TikTok", linkedin: "LinkedIn", pinterest: "Pinterest", otherSocial: "X, Snapchat, Reddit", programmatic: "Programmatic display", gdn: "Google Display Network", native: "Native advertising", retargeting: "Retargeting", onlineVideo: "Online video (YouTube Ads)", ctv: "Connected TV / streaming", linearTv: "Linear TV", radio: "Radio", streamingAudio: "Streaming audio (Spotify)", podcasts: "Podcasts", newsletters: "Newsletters", automation: "Marketing automation", loyalty: "Loyalty / CRM", whatsapp: "WhatsApp", sms: "SMS", push: "Push notifications", billboards: "Billboards & panels", dooh: "Digital OOH (DOOH)", transit: "Transit (train, bus)", retail: "Retail / in-store", stationery: "Business cards & stationery", flyers: "Flyers, leaflets, brochures", directMail: "Direct mail", merch: "Branded gear / merch", earned: "PR / earned media", influencer: "Influencer marketing", affiliate: "Affiliate / partnerships", sponsoring: "Sponsoring & events" },
       catDesc: { search: "Getting found on search intent, in engines and AI.", social: "Organic and paid on the platforms where your audience scrolls.", display: "Banners and native across web and apps.", videotv: "Moving image, from online video to Connected TV.", audio: "Radio, streaming audio and podcasts.", email: "Your own audience: email, automation and CRM.", messaging: "Direct 1-to-1 channels like WhatsApp and SMS.", ooh: "Out-of-home, from billboards to digital screens.", print: "Print, from business cards to brochures.", pr: "Earned attention via press, influencers and partners." },
@@ -1513,6 +1515,10 @@ const PRICING = {
 };
 const SCOPE_KEYS = ["campagne", "app", "platform", "ai"];
 const PLATFORM_FNS = ["website", "ecommerce", "ai"];
+const APP_OPTS = ["webapp", "nativeApp", "pwa", "uxDesign", "backendApi", "appIntegraties", "appStorePub"];
+const PLATFORM_OPTS = ["website", "ecommerce", "portaal", "platformAi", "platformIntegraties", "cms"];
+const AI_OPTS = ["chatbot", "contentgen", "automatisering", "dataAnalyse", "aiIntegratie", "customModel"];
+const ALL_TYPE_OPTS = [...APP_OPTS, ...PLATFORM_OPTS, ...AI_OPTS];
 const CHANNEL_TREE = [
   { key: "search", once: 850, mo: 500, subs: ["searchEngines", "aiSearch", "socialSearch", "appStore"], dels: ["seoContent", "seoTech", "sea", "linkbuilding"] },
   { key: "social", once: 750, mo: 500, subs: ["meta", "tiktok", "linkedin", "pinterest", "otherSocial"], dels: ["socialContent", "community", "paidSocial", "socialInfluencer"] },
@@ -1573,9 +1579,9 @@ function PriceCalculator({ openConsult }) {
   const [dels, setDels] = useState(() => Object.fromEntries(ALL_DELS.map((k) => [k, false])));
   const [advice, setAdvice] = useState(false);
   const [contentCreatie, setContentCreatie] = useState(true);
-  const [appKind, setAppKind] = useState("webapp");
-  const [appFeatures, setAppFeatures] = useState("");
-  const [platformFn, setPlatformFn] = useState({ website: false, ecommerce: false, ai: false });
+  const [opts, setOpts] = useState({});
+  const toggleOpt = (k) => setOpts((s) => ({ ...s, [k]: !s[k] }));
+  const optLabel = (k) => (p.typeOpts && p.typeOpts[k]) || k;
   const { once, mo, saving, allLoop, selected } = computeLoop({ types, phases, cats, contentCreatie });
   const onceA = useCountUp(once); const moA = useCountUp(mo);
   const nothing = once === 0 && mo === 0;
@@ -1588,7 +1594,6 @@ function PriceCalculator({ openConsult }) {
   const toggleCat = (k) => setCats((s) => ({ ...s, [k]: !s[k] }));
   const toggleSub = (k) => setSubs((s) => ({ ...s, [k]: !s[k] }));
   const toggleDel = (k) => setDels((s) => ({ ...s, [k]: !s[k] }));
-  const togglePlatformFn = (k) => setPlatformFn((s) => ({ ...s, [k]: !s[k] }));
   const catLabel = (k) => (p.cats && p.cats[k]) || k;
   const subLabel = (k) => (p.subs && p.subs[k]) || k;
   const delLabel = (k) => (p.dels && p.dels[k]) || k;
@@ -1607,7 +1612,9 @@ function PriceCalculator({ openConsult }) {
       const planFee = allLoop ? 0 : (phases.plan ? typePhasePrice(sk, "plan") : 0);
       const onceItem = planFee + (phases.build ? typePhasePrice(sk, "build") : 0);
       const moItem = phases.run ? typePhasePrice(sk, "run") : 0;
-      items.push({ label: p.scopes[sk], once: onceItem, mo: moItem, req: false });
+      const optList = sk === "app" ? APP_OPTS : sk === "platform" ? PLATFORM_OPTS : sk === "ai" ? AI_OPTS : null;
+      const detail = optList ? optList.filter((k) => opts[k]).map(optLabel).join(", ") : "";
+      items.push({ label: p.scopes[sk], once: onceItem, mo: moItem, req: false, detail });
     });
     CAT_KEYS.filter((k) => cats[k]).forEach((k) => {
       const c = CAT_BY_KEY[k];
@@ -1629,8 +1636,11 @@ function PriceCalculator({ openConsult }) {
     if (selected.length) parts.push(typeLabel);
     const ph = ["plan", "build", "run"].filter((k) => phases[k]).map((k) => p.phases[k]);
     if (ph.length) parts.push(ph.join(", "));
-    if (types.app) parts.push(p.appKinds[appKind] + (appFeatures.trim() ? `: ${appFeatures.trim()}` : ""));
-    if (types.platform) { const pf = PLATFORM_FNS.filter((k) => platformFn[k]).map((k) => p.platformFns[k]); if (pf.length) parts.push(pf.join(", ")); }
+    const activeOpts = [];
+    if (types.app) activeOpts.push(...APP_OPTS.filter((k) => opts[k]));
+    if (types.platform) activeOpts.push(...PLATFORM_OPTS.filter((k) => opts[k]));
+    if (types.ai) activeOpts.push(...AI_OPTS.filter((k) => opts[k]));
+    if (activeOpts.length) parts.push(activeOpts.map(optLabel).join(", "));
     const ch = catBits();
     if (types.campagne && contentCreatie) ch.push(p.contentCreatie);
     if (advice) ch.push(p.details.advice);
@@ -1656,7 +1666,6 @@ function PriceCalculator({ openConsult }) {
         ))}
       </div>
       <div className="calc-slide" key={cur}>
-        <div className="calc-slide-help mono">{p.stepHelp[cur]}</div>
         {cur === "type" && (
           <div className="calc-panel">
             <div className="scope-cards type-cards">
@@ -1665,7 +1674,6 @@ function PriceCalculator({ openConsult }) {
                   {s === "app" && <span className="scope-badge mono">{p.badge}</span>}
                   <span className="scope-check" aria-hidden>{types[s] ? "\u2713" : ""}</span>
                   <span className="scope-card-t">{p.scopes[s]}</span>
-                  <span className="scope-card-d">{p.scopeDesc[s]}</span>
                   <span className="scope-card-p mono">{p.from} {eur(typePhasePrice(s, "build"))}</span>
                 </button>
               ))}
@@ -1712,7 +1720,7 @@ function PriceCalculator({ openConsult }) {
                 </div>
                 <button className={`toggle ${contentCreatie ? "on" : ""}`} onClick={() => setContentCreatie((v) => !v)} aria-pressed={contentCreatie}>
                   <span className="switch" aria-hidden><span className="switch-knob" /></span>
-                  <span className="toggle-main"><span className="toggle-t">{p.contentCreatie}</span><span className="toggle-d">{p.contentCreatieNote}</span></span>
+                  <span className="toggle-main"><span className="toggle-t">{p.contentCreatie}</span></span>
                   <span className="toggle-p mono">{eur(PRICING.contentCreatie)}{p.mo}</span>
                 </button>
                 <button className={`toggle advice-toggle ${advice ? "on" : ""}`} onClick={() => setAdvice((v) => !v)} aria-pressed={advice}>
@@ -1724,21 +1732,19 @@ function PriceCalculator({ openConsult }) {
             {types.app && (
               <div className="detail-block">
                 <div className="detail-block-q">{p.details.appQ}</div>
-                <div className="seg calc-seg">{["webapp", "software"].map((k) => <button key={k} className={`seg-btn ${appKind === k ? "on" : ""}`} onClick={() => setAppKind(k)}>{p.appKinds[k]}</button>)}</div>
-                <label className="detail-field"><span className="detail-field-l mono">{p.details.appFeatures}</span>
-                  <textarea className="detail-textarea" rows={3} value={appFeatures} placeholder={p.details.appFeaturesPh} onChange={(e) => setAppFeatures(e.target.value)} /></label>
+                <div className="chips">{APP_OPTS.map((k) => <button key={k} className={`chip ${opts[k] ? "on" : ""}`} onClick={() => toggleOpt(k)} aria-pressed={opts[k]}>{optLabel(k)}</button>)}</div>
               </div>
             )}
             {types.platform && (
               <div className="detail-block">
                 <div className="detail-block-q">{p.details.platformQ}</div>
-                <div className="chips">{PLATFORM_FNS.map((k) => <button key={k} className={`chip ${platformFn[k] ? "on" : ""}`} onClick={() => togglePlatformFn(k)} aria-pressed={platformFn[k]}>{p.platformFns[k]}</button>)}</div>
+                <div className="chips">{PLATFORM_OPTS.map((k) => <button key={k} className={`chip ${opts[k] ? "on" : ""}`} onClick={() => toggleOpt(k)} aria-pressed={opts[k]}>{optLabel(k)}</button>)}</div>
               </div>
             )}
             {types.ai && (
               <div className="detail-block">
                 <div className="detail-block-q">{p.scopes.ai}</div>
-                <p className="calc-note mono">{p.details.aiNote}</p>
+                <div className="chips">{AI_OPTS.map((k) => <button key={k} className={`chip ${opts[k] ? "on" : ""}`} onClick={() => toggleOpt(k)} aria-pressed={opts[k]}>{optLabel(k)}</button>)}</div>
               </div>
             )}
           </div>
