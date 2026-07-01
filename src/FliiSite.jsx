@@ -159,8 +159,12 @@ const I18N = {
       details: { pickType: "Kies eerst een type hierboven.", campagneQ: "Welke mediakanalen wil je inzetten?", advice: "Ik weet dit nog niet zeker en wil advies", platformQ: "Welke functionaliteit heeft het platform nodig?", appQ: "Wat voor app wil je?", appFeatures: "Gewenste functionaliteit", appFeaturesPh: "Beschrijf kort wat de app moet kunnen", aiNote: "AI-integratie of automatisering. We bepalen de exacte scope in het gesprek." },
       appKinds: { webapp: "Webapp", software: "Software-app" },
       platformFns: { website: "Website", ecommerce: "E-commerce", ai: "AI-functionaliteit" },
+      cats: { search: "Search", social: "Social", display: "Display", videotv: "Video & TV", audio: "Audio", email: "E-mail & CRM", messaging: "Messaging", ooh: "Out-of-home", print: "Print", pr: "PR & partnerships" },
+      subs: { searchEngines: "Zoekmachines (Google, Bing)", aiSearch: "AI-search / LLM's", socialSearch: "Social search", appStore: "App store (ASO)", meta: "Meta (Facebook, Instagram)", tiktok: "TikTok", linkedin: "LinkedIn", pinterest: "Pinterest", otherSocial: "X, Snapchat, Reddit", programmatic: "Programmatic display", gdn: "Google Display Network", native: "Native advertising", retargeting: "Retargeting", onlineVideo: "Online video (YouTube Ads)", ctv: "Connected TV / streaming", linearTv: "Lineaire TV", radio: "Radio", streamingAudio: "Streaming audio (Spotify)", podcasts: "Podcasts", newsletters: "E-mail & nieuwsbrieven", automation: "Marketing automation", loyalty: "Loyaliteit / CRM", whatsapp: "WhatsApp", sms: "SMS", push: "Push-notificaties", billboards: "Billboards & abri's", dooh: "Digital OOH (DOOH)", transit: "Transit (trein, bus)", retail: "Retail / in-store", stationery: "Visitekaartjes & briefpapier", flyers: "Flyers, folders, brochures", directMail: "Direct mail (post)", merch: "Branded gear / merchandise", earned: "Persrelaties / earned media", influencer: "Influencer marketing", affiliate: "Affiliate / partnerships", sponsoring: "Sponsoring & events" },
+      catDesc: { search: "Gevonden worden bij een zoekintentie, in zoekmachines en AI.", social: "Organisch en betaald op de platformen waar je doelgroep scrolt.", display: "Banners en native over web en apps.", videotv: "Bewegend beeld, van online video tot Connected TV.", audio: "Radio, streaming audio en podcasts.", email: "Je eigen publiek: e-mail, automation en CRM.", messaging: "Directe 1-op-1 kanalen zoals WhatsApp en SMS.", ooh: "Buitenreclame, van billboards tot digitale schermen.", print: "Gedrukt: van visitekaartjes tot brochures.", pr: "Verdiende aandacht via pers, influencers en partners." },
+      onRequest: "Op aanvraag",
       next: "Volgende", back: "Terug", startOver: "Opnieuw", totalFrom: "Totaal vanaf",
-      proposedNote: "Nieuw, als voorstel geprijsd: AI-vindbaarheid, print, outdoor, video en lifecycle.",
+      proposedNote: "Sommige kanalen zijn nieuw en als voorstel geprijsd. Categorieën zonder tarief zijn op aanvraag.",
       excl: "Alle bedragen exclusief btw, op basis van vanaf-tarieven. Definitieve prijs hangt af van de scope. Mediabudget niet inbegrepen.",
       refTitle: "Prijsreferentie", loopRef: "Flii Loop", loopRefDesc: "Drie pakketten, per campagne, app, platform of AI. Neem de hele loop of losse pakketten.",
       appRef: "App ontwikkeling", appRefDesc: "Drie niveaus. De prijs is de Loop Build-fee; Loop Start en Loop Run reken je apart.", looseRef: "Losse diensten",
@@ -325,8 +329,12 @@ const I18N = {
       details: { pickType: "Pick a type above first.", campagneQ: "Which media channels do you want to use?", advice: "I'm not sure yet and want advice", platformQ: "Which functionality does the platform need?", appQ: "What kind of app do you want?", appFeatures: "Desired functionality", appFeaturesPh: "Briefly describe what the app should do", aiNote: "AI integration or automation. We define the exact scope in the call." },
       appKinds: { webapp: "Web app", software: "Software app" },
       platformFns: { website: "Website", ecommerce: "E-commerce", ai: "AI functionality" },
+      cats: { search: "Search", social: "Social", display: "Display", videotv: "Video & TV", audio: "Audio", email: "Email & CRM", messaging: "Messaging", ooh: "Out-of-home", print: "Print", pr: "PR & partnerships" },
+      subs: { searchEngines: "Search engines (Google, Bing)", aiSearch: "AI search / LLMs", socialSearch: "Social search", appStore: "App store (ASO)", meta: "Meta (Facebook, Instagram)", tiktok: "TikTok", linkedin: "LinkedIn", pinterest: "Pinterest", otherSocial: "X, Snapchat, Reddit", programmatic: "Programmatic display", gdn: "Google Display Network", native: "Native advertising", retargeting: "Retargeting", onlineVideo: "Online video (YouTube Ads)", ctv: "Connected TV / streaming", linearTv: "Linear TV", radio: "Radio", streamingAudio: "Streaming audio (Spotify)", podcasts: "Podcasts", newsletters: "Email & newsletters", automation: "Marketing automation", loyalty: "Loyalty / CRM", whatsapp: "WhatsApp", sms: "SMS", push: "Push notifications", billboards: "Billboards & panels", dooh: "Digital OOH (DOOH)", transit: "Transit (train, bus)", retail: "Retail / in-store", stationery: "Business cards & stationery", flyers: "Flyers, leaflets, brochures", directMail: "Direct mail", merch: "Branded gear / merch", earned: "PR / earned media", influencer: "Influencer marketing", affiliate: "Affiliate / partnerships", sponsoring: "Sponsoring & events" },
+      catDesc: { search: "Getting found on search intent, in engines and AI.", social: "Organic and paid on the platforms where your audience scrolls.", display: "Banners and native across web and apps.", videotv: "Moving image, from online video to Connected TV.", audio: "Radio, streaming audio and podcasts.", email: "Your own audience: email, automation and CRM.", messaging: "Direct 1-to-1 channels like WhatsApp and SMS.", ooh: "Out-of-home, from billboards to digital screens.", print: "Print, from business cards to brochures.", pr: "Earned attention via press, influencers and partners." },
+      onRequest: "On request",
       next: "Next", back: "Back", startOver: "Start over", totalFrom: "Total from",
-      proposedNote: "New, priced as a proposal: AI visibility, print, outdoor, video and lifecycle.",
+      proposedNote: "Some channels are new and priced as a proposal. Categories without a rate are on request.",
       excl: "All amounts exclude VAT, based on starting rates. Final price depends on scope. Media budget not included.",
       refTitle: "Price reference", loopRef: "Flii Loop", loopRefDesc: "Three packages, per campaign, app, platform or AI. Take the full loop or single packages.",
       appRef: "App development", appRefDesc: "Three levels. The price is the Loop Build fee; Loop Start and Loop Run are billed separately.", looseRef: "Add-on services",
@@ -1441,20 +1449,32 @@ const PRICING = {
     platform: { plan: 4500, build: 18000, run: 2500 },
     ai: { plan: 2500, build: 6500, run: 850 },
   },
-  addons: { search: { once: 750, mo: 450 }, social: { once: 750, mo: 500 }, display: { once: 700, mo: 450 }, llm: { once: 950, mo: 550 }, print: { once: 650, mo: 0 }, outdoor: { once: 850, mo: 0 }, video: { once: 950, mo: 600 }, lifecycle: { once: 850, mo: 500 }, tiktok: { once: 0, mo: 0 }, instagram: { once: 0, mo: 0 }, linkedin: { once: 0, mo: 0 }, youtube: { once: 0, mo: 0 }, website: { once: 0, mo: 0 }, pr: { once: 0, mo: 0 }, email: { once: 0, mo: 0 } },
   content: { none: 0, klein: 650, groot: 1200 },
   app: { basis: 3500, advanced: 8500, platform: 18000 },
 };
 const SCOPE_KEYS = ["campagne", "app", "platform", "ai"];
-const SERVICE_KEYS = ["search", "social", "display", "llm", "print", "outdoor", "video", "lifecycle"];
-const CHANNEL_KEYS = ["search", "social", "display", "video", "tiktok", "instagram", "linkedin", "youtube", "website", "pr", "email", "llm", "print", "outdoor", "lifecycle"];
-const CHANNEL_LABELS = { display: "Display", tiktok: "TikTok", instagram: "Instagram", linkedin: "LinkedIn", youtube: "YouTube", website: "Website", pr: "PR", email: "E-mail" };
 const PLATFORM_FNS = ["website", "ecommerce", "ai"];
+const CHANNEL_TREE = [
+  { key: "search", once: 850, mo: 500, subs: ["searchEngines", "aiSearch", "socialSearch", "appStore"] },
+  { key: "social", once: 750, mo: 500, subs: ["meta", "tiktok", "linkedin", "pinterest", "otherSocial"] },
+  { key: "display", once: 700, mo: 450, subs: ["programmatic", "gdn", "native", "retargeting"] },
+  { key: "videotv", once: 950, mo: 600, subs: ["onlineVideo", "ctv", "linearTv"] },
+  { key: "audio", once: 0, mo: 0, subs: ["radio", "streamingAudio", "podcasts"] },
+  { key: "email", once: 850, mo: 500, subs: ["newsletters", "automation", "loyalty"] },
+  { key: "messaging", once: 0, mo: 0, subs: ["whatsapp", "sms", "push"] },
+  { key: "ooh", once: 850, mo: 0, subs: ["billboards", "dooh", "transit", "retail"] },
+  { key: "print", once: 650, mo: 0, subs: ["stationery", "flyers", "directMail", "merch"] },
+  { key: "pr", once: 0, mo: 0, subs: ["earned", "influencer", "affiliate", "sponsoring"] },
+];
+const CAT_KEYS = CHANNEL_TREE.map((c) => c.key);
+const CAT_BY_KEY = Object.fromEntries(CHANNEL_TREE.map((c) => [c.key, c]));
+const ALL_SUBS = CHANNEL_TREE.flatMap((c) => c.subs);
+const PRICED_CATS = CHANNEL_TREE.filter((c) => c.once > 0 || c.mo > 0).map((c) => c.key);
 function typePhasePrice(sk, pk) {
   const sc = PRICING.scopes[sk];
   return pk === "build" ? sc.build : sc[pk];
 }
-function computeLoop({ types, phases, channels, content }) {
+function computeLoop({ types, phases, cats, content }) {
   const selected = SCOPE_KEYS.filter((k) => types[k]);
   const allLoop = phases.plan && phases.build && phases.run;
   let once = 0, mo = 0, saving = 0;
@@ -1464,7 +1484,7 @@ function computeLoop({ types, phases, channels, content }) {
     mo += phases.run ? typePhasePrice(sk, "run") : 0;
     if (allLoop) saving += PRICING.scopes[sk].plan;
   });
-  CHANNEL_KEYS.forEach((k) => { if (channels[k]) { once += PRICING.addons[k].once; mo += PRICING.addons[k].mo; } });
+  CAT_KEYS.forEach((k) => { if (cats[k]) { const c = CAT_BY_KEY[k]; once += c.once; mo += c.mo; } });
   mo += PRICING.content[content] || 0;
   return { once, mo, saving, allLoop, selected };
 }
@@ -1488,13 +1508,14 @@ function PriceCalculator({ openConsult }) {
   const [step, setStep] = useState(0);
   const [types, setTypes] = useState({ campagne: false, app: true, platform: false, ai: false });
   const [phases, setPhases] = useState({ plan: true, build: true, run: true });
-  const [channels, setChannels] = useState(() => Object.fromEntries(CHANNEL_KEYS.map((k) => [k, false])));
+  const [cats, setCats] = useState(() => Object.fromEntries(CAT_KEYS.map((k) => [k, false])));
+  const [subs, setSubs] = useState(() => Object.fromEntries(ALL_SUBS.map((k) => [k, false])));
   const [advice, setAdvice] = useState(false);
   const [appKind, setAppKind] = useState("webapp");
   const [appFeatures, setAppFeatures] = useState("");
   const [platformFn, setPlatformFn] = useState({ website: false, ecommerce: false, ai: false });
   const [content, setContent] = useState("none");
-  const { once, mo, saving, allLoop, selected } = computeLoop({ types, phases, channels, content });
+  const { once, mo, saving, allLoop, selected } = computeLoop({ types, phases, cats, content });
   const onceA = useCountUp(once); const moA = useCountUp(mo);
   const nothing = once === 0 && mo === 0;
   const steps = ["type", "details", "pakketten", "content", "result"];
@@ -1503,9 +1524,12 @@ function PriceCalculator({ openConsult }) {
   const go = (d) => setStep((s) => Math.min(last, Math.max(0, s + d)));
   const toggleType = (k) => setTypes((s) => ({ ...s, [k]: !s[k] }));
   const togglePhase = (k) => setPhases((s) => ({ ...s, [k]: !s[k] }));
-  const toggleChannel = (k) => setChannels((s) => ({ ...s, [k]: !s[k] }));
+  const toggleCat = (k) => setCats((s) => ({ ...s, [k]: !s[k] }));
+  const toggleSub = (k) => setSubs((s) => ({ ...s, [k]: !s[k] }));
   const togglePlatformFn = (k) => setPlatformFn((s) => ({ ...s, [k]: !s[k] }));
-  const chLabel = (k) => p.addons[k] || CHANNEL_LABELS[k];
+  const catLabel = (k) => (p.cats && p.cats[k]) || k;
+  const subLabel = (k) => (p.subs && p.subs[k]) || k;
+  const catBits = () => CAT_KEYS.filter((k) => cats[k]).map((k) => { const sl = CAT_BY_KEY[k].subs.filter((x) => subs[x]).map(subLabel); return catLabel(k) + (sl.length ? ` (${sl.join(", ")})` : ""); });
   const phaseSum = (pk) => selected.reduce((a, sk) => a + typePhasePrice(sk, pk), 0);
   const packagePrice = (k) => k === "run" ? eur(phaseSum("run")) + p.mo : eur(phaseSum(k));
   const typeLabel = selected.map((s) => p.scopes[s]).join(" \u00B7 ");
@@ -1516,20 +1540,20 @@ function PriceCalculator({ openConsult }) {
     if (ph.length) parts.push(ph.join(", "));
     if (types.app) parts.push(p.appKinds[appKind] + (appFeatures.trim() ? `: ${appFeatures.trim()}` : ""));
     if (types.platform) { const pf = PLATFORM_FNS.filter((k) => platformFn[k]).map((k) => p.platformFns[k]); if (pf.length) parts.push(pf.join(", ")); }
-    const ch = CHANNEL_KEYS.filter((k) => channels[k]).map(chLabel);
+    const ch = catBits();
     if (advice) ch.push(p.details.advice);
     if (content !== "none") ch.push(p.addons.content + " " + p.contentOpts[content]);
-    if (ch.length) parts.push(ch.join(", "));
+    if (ch.length) parts.push(ch.join(" \u00B7 "));
     return `${p.summaryPrefix}: ${parts.join(" \u00B7 ")}. ${p.once} ${p.from} ${eur(once)}${mo ? `, ${p.perMonth.toLowerCase()} ${p.from} ${eur(mo)}` : ""}.`;
   };
   const selLine = () => {
     const bits = [];
     const ph = ["plan", "build", "run"].filter((k) => phases[k]).map((k) => p.phases[k]);
     if (ph.length) bits.push(ph.join(", "));
-    const ch = CHANNEL_KEYS.filter((k) => channels[k]).map(chLabel);
+    const ch = catBits();
     if (content !== "none") ch.push(p.addons.content + " " + p.contentOpts[content]);
     if (advice) ch.push(p.details.advice);
-    if (ch.length) bits.push(ch.join(", "));
+    if (ch.length) bits.push(ch.join(" \u00B7 "));
     return bits.join(" \u00B7 ");
   };
   return (
@@ -1564,11 +1588,22 @@ function PriceCalculator({ openConsult }) {
             {types.campagne && (
               <div className="detail-block">
                 <div className="detail-block-q">{p.details.campagneQ}</div>
-                <div className="chips">
-                  {CHANNEL_KEYS.map((k) => (
-                    <button key={k} className={`chip ${channels[k] ? "on" : ""}`} onClick={() => toggleChannel(k)} aria-pressed={channels[k]}>
-                      {chLabel(k)}{PRICING.addons[k].once > 0 && <span className="chip-p"> {p.from} {eur(PRICING.addons[k].once)}</span>}
-                    </button>
+                <div className="cat-tree">
+                  {CHANNEL_TREE.map((c) => (
+                    <div key={c.key} className="cat-row">
+                      <button className={`chip cat-chip ${cats[c.key] ? "on" : ""}`} onClick={() => toggleCat(c.key)} aria-pressed={cats[c.key]}>
+                        <span className="cat-chip-x" aria-hidden>{cats[c.key] ? "\u2212" : "+"}</span>
+                        {catLabel(c.key)}
+                        {c.once > 0 && <span className="chip-p"> {p.from} {eur(c.once)}</span>}
+                      </button>
+                      {cats[c.key] && (
+                        <div className="sub-chips">
+                          {c.subs.map((sub) => (
+                            <button key={sub} className={`chip chip-sub ${subs[sub] ? "on" : ""}`} onClick={() => toggleSub(sub)} aria-pressed={subs[sub]}>{subLabel(sub)}</button>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   ))}
                 </div>
                 <button className={`toggle advice-toggle ${advice ? "on" : ""}`} onClick={() => setAdvice((v) => !v)} aria-pressed={advice}>
@@ -1687,11 +1722,11 @@ function Pricing({ openConsult }) {
           <div className="ref-block">
             <div className="ref-block-h"><h3 className="ref-t">{p.looseRef}</h3></div>
             <div className="ref-grid">
-              {SERVICE_KEYS.map((k) => (
-                <div key={k} className="ref-card">
-                  <div className="ref-card-t">{p.addons[k]}</div>
-                  <div className="ref-card-price mono">{PRICING.addons[k].mo ? `${p.setup} ${eur(PRICING.addons[k].once)} \u00B7 ${p.mgmt} ${eur(PRICING.addons[k].mo)}${p.mo}` : `${p.setup} ${eur(PRICING.addons[k].once)}`}</div>
-                  <div className="ref-card-d">{p.addonDesc[k]}</div>
+              {CHANNEL_TREE.map((c) => (
+                <div key={c.key} className="ref-card">
+                  <div className="ref-card-t">{p.cats[c.key]}</div>
+                  <div className="ref-card-price mono">{c.once === 0 && c.mo === 0 ? p.onRequest : (c.mo ? `${p.setup} ${eur(c.once)} \u00B7 ${p.mgmt} ${eur(c.mo)}${p.mo}` : `${p.setup} ${eur(c.once)}`)}</div>
+                  <div className="ref-card-d">{p.catDesc[c.key]}</div>
                 </div>
               ))}
               <div className="ref-card">
@@ -2548,6 +2583,14 @@ button{font-family:inherit;}
 .chip:hover{border-color:var(--soft);}
 .chip.on{background:var(--mag);border-color:var(--mag);color:#fff;}
 .chip-p{font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:500;opacity:0.7;}
+.cat-tree{display:flex;flex-direction:column;gap:9px;}
+.cat-row{display:flex;flex-direction:column;gap:9px;}
+.cat-chip{align-self:flex-start;}
+.cat-chip-x{display:inline-flex;width:14px;justify-content:center;font-weight:700;margin-right:3px;opacity:0.65;}
+.cat-chip.on .cat-chip-x{opacity:1;}
+.sub-chips{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 4px 15px;padding-left:15px;border-left:2px solid var(--line);}
+.chip-sub{font-size:12.5px;padding:6px 12px;}
+.chip-sub.on{background:var(--ink);border-color:var(--ink);color:#fff;}
 .advice-toggle{margin-top:2px;}
 .detail-field{display:flex;flex-direction:column;gap:6px;}
 .detail-field-l{font-size:11px;letter-spacing:0.04em;color:var(--soft);}
