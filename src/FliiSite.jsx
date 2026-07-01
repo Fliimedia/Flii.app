@@ -66,14 +66,14 @@ const I18N = {
           help: [{ h: "Minder verspilling", b: "Budget verschuift naar wat het beste presteert." }, { h: "Grip op de cijfers", b: "Rapportage op omzet en waarde per bezoeker, geen ijdele cijfers." }, { h: "Continu beter", b: "Elke maand een iteratie op basis van echte data." }],
           exec: [{ h: "Meten", b: "We zetten tracking en attributie goed neer." }, { h: "Analyseren", b: "We lezen de data en vinden de knelpunten." }, { h: "Bijsturen", b: "We optimaliseren biedingen, doelgroepen en creatives." }, { h: "Rapporteren", b: "Transparante rapportage op wat echt telt." }],
           outcome: "Media die elke maand meetbaar beter presteert.", loop: ["Je zet je media live op de gekozen kanalen.", "Je meet kliks, kosten en conversies per kanaal.", "Je ziet wat converteert en wat budget verspilt.", "Je schaalt de winnaars en scherpt de targeting aan."] }] },
-    loopCta: { k: "Flii Loop", h2: "Elke dienst draait in Flii Loop.", body: "We lanceren, meten, verbeteren en herhalen. Zo wordt elke dienst elke maand beter, in plaats van eenmalig af.", pricing: "Bekijk Flii Loop ↗", talk: "Plan een gesprek" },
+    loopCta: { k: "Flii Loop", h2: "Get in the Loop", body: "Lanceer, meet en verbeter. Zet feedback om naar duurzame verbetering.", pricing: "Bekijk Flii Loop ↗", talk: "Plan een gesprek" },
     certsLabel: "Gecertificeerd & partner",
     stats: [
       { value: 21, suffix: " dagen", label: "Van brief tot live" },
       { value: 100, suffix: "%", label: "AI-native oplevering" },
       { value: 12, suffix: "+", label: "Producten gelanceerd" } ],
-    loop: { eyebrow: "Flii Loop", h2: "Opstarten, ontwikkelen en verbeteren. In één loop.", center: "Altijd lerend",
-      lede: "Flii Loop is een plan voor het opstarten, ontwikkelen en verbeteren van apps, platformen en media. Je lanceert, meet wat er gebeurt, verbetert op basis van de data, en begint opnieuw. Elke ronde maakt het geheel scherper.",
+    loop: { eyebrow: "Flii Loop", h2: "Verbeter op basis van marktvraag.", center: "Altijd lerend",
+      lede: "Een plan voor het opstarten en blijvend verbeteren van jouw apps, platformen of media. Synchroon aan de wensen van je doelgroep, elke maand beter.",
       items: [
         { k: "Build", body: "Je bouwt en lanceert je app, platform of campagne." },
         { k: "Measure", body: "Je meet wat er gebeurt met echte data en gedrag." },
@@ -89,16 +89,16 @@ const I18N = {
     funnel: { eyebrow: "Campagnes", h2: "Van onbekend tot ambassadeur.",
       lede: "Elke campagne begeleidt je doelgroep stap voor stap door de funnel, van de eerste kennismaking tot herhaalaankopen en aanbevelingen.",
       stages: [
-        { k: "Awareness", note: "Algemene & in-market doelgroepen", goal: "Van onbekend met je merk naar aware." },
-        { k: "Interactie", goal: "Van bekend naar engaged." },
-        { k: "Overtuiging", goal: "Van engaged naar overtuigd." },
-        { k: "Conversie", goal: "Van overtuigd naar aankoop." },
-        { k: "Loyaliteit", goal: "Van aankoop naar referrals en klantwaardeverhoging." } ] },
+        { k: "Aware", desc: "Je merk verschijnt bij algemene en in-market doelgroepen. Doel: van onbekend met je merk naar aware." },
+        { k: "Engaged", desc: "Mensen reageren, klikken en verdiepen zich. Doel: van bekend naar betrokken." },
+        { k: "Nudged", desc: "Je overtuigt met bewijs, aanbod en herhaling. Doel: van betrokken naar overtuigd." },
+        { k: "Signed", desc: "De klant zet de stap en koopt. Doel: van overtuigd naar aankoop." },
+        { k: "Loyal", desc: "Klanten blijven, bevelen aan en groeien in waarde. Doel: van aankoop naar ambassadeur." } ] },
     work: { eyebrow: "Showcase", h2: "Wat we lanceerden", manage: "Beheer showcase ↗", view: "Bekijk case ↗" },
     reviews: { eyebrow: "Reviews", h2: "Bewijs, geen beloftes.", word: "reviews" },
     byline: { by: "by", name: "Flii Media" },
     who: { eyebrow: "Voor wie we werken", h2: "Gebouwd voor ambitie.",
-      lede: "Geen goedkope leverancier. Een partner voor teams die iets willen bouwen dat presteert.",
+      lede: "Een partner voor teams die iets willen bouwen dat presteert.",
       items: [
         { h: "Gefinancierde startups", b: "die een product in de markt willen, met een groeimotor erachter." },
         { h: "Scale-ups", b: "klaar om uitgaven om te zetten in een systeem dat optelt." },
@@ -253,14 +253,14 @@ const I18N = {
           help: [{ h: "Less waste", b: "Budget shifts to what performs best." }, { h: "Grip on the numbers", b: "Reporting on revenue and value per visitor, no vanity metrics." }, { h: "Continuously better", b: "An iteration every month based on real data." }],
           exec: [{ h: "Measure", b: "We set up tracking and attribution properly." }, { h: "Analyse", b: "We read the data and find the bottlenecks." }, { h: "Adjust", b: "We optimise bids, audiences and creative." }, { h: "Report", b: "Transparent reporting on what really counts." }],
           outcome: "Media that performs measurably better every month.", loop: ["You launch your media on the chosen channels.", "You measure clicks, cost and conversions per channel.", "You see what converts and what wastes budget.", "You scale the winners and sharpen targeting."] }] },
-    loopCta: { k: "Flii Loop", h2: "Every service runs inside Flii Loop.", body: "We launch, measure, improve and repeat. So every service gets better every month, instead of shipping once and stopping.", pricing: "See Flii Loop ↗", talk: "Book a consultation" },
+    loopCta: { k: "Flii Loop", h2: "Get in the Loop", body: "Launch, measure and improve. Turn feedback into lasting improvement.", pricing: "See Flii Loop ↗", talk: "Book a consultation" },
     certsLabel: "Certified & partnered",
     stats: [
       { value: 21, suffix: " days", label: "Brief to live" },
       { value: 100, suffix: "%", label: "AI-native delivery" },
       { value: 12, suffix: "+", label: "Products shipped" } ],
-    loop: { eyebrow: "Flii Loop", h2: "Launch, develop and improve. In one loop.", center: "Always learning",
-      lede: "Flii Loop is a plan for launching, developing and improving apps, platforms and media. You launch, measure what happens, improve on the data, and start again. Every round sharpens the whole.",
+    loop: { eyebrow: "Flii Loop", h2: "Improve based on market demand.", center: "Always learning",
+      lede: "A plan for launching and continuously improving your apps, platforms or media. In sync with your audience, better every month.",
       items: [
         { k: "Build", body: "You build and launch your app, platform or campaign." },
         { k: "Measure", body: "You measure what happens with real data and behaviour." },
@@ -276,16 +276,16 @@ const I18N = {
     funnel: { eyebrow: "Campaigns", h2: "From stranger to advocate.",
       lede: "Every campaign guides your audience step by step through the funnel, from the first introduction to repeat purchases and referrals.",
       stages: [
-        { k: "Awareness", note: "Broad & in-market audiences", goal: "From unaware of your brand to aware." },
-        { k: "Interaction", goal: "From aware to engaged." },
-        { k: "Persuasion", goal: "From engaged to convinced." },
-        { k: "Conversion", goal: "From convinced to purchase." },
-        { k: "Loyalty", goal: "From purchase to referrals and higher customer value." } ] },
+        { k: "Aware", desc: "Your brand shows up for broad and in-market audiences. Goal: from unaware to aware." },
+        { k: "Engaged", desc: "People respond, click and dig deeper. Goal: from aware to engaged." },
+        { k: "Nudged", desc: "You convince with proof, offer and repetition. Goal: from engaged to convinced." },
+        { k: "Signed", desc: "The customer takes the step and buys. Goal: from convinced to purchase." },
+        { k: "Loyal", desc: "Customers stay, refer and grow in value. Goal: from purchase to advocate." } ] },
     work: { eyebrow: "Showcase", h2: "What we've shipped", manage: "Manage showcase ↗", view: "View case ↗" },
     reviews: { eyebrow: "Reviews", h2: "Proof, not promises.", word: "reviews" },
     byline: { by: "by", name: "Flii Media" },
     who: { eyebrow: "Who we're for", h2: "Built for ambition.",
-      lede: "Not a low-cost vendor. A partner for teams ready to build something that performs.",
+      lede: "A partner for teams ready to build something that performs.",
       items: [
         { h: "Funded startups", b: "who need a product in market and a growth engine behind it." },
         { h: "Scale-ups", b: "ready to turn spend into a compounding system." },
@@ -590,7 +590,7 @@ De teams die dit benutten, hebben geen geheim kanaal en geen groter budget. Ze h
 ];
 const DEFAULT_REVIEWS = [
   { id: "bikefair", logo: "bikefair.org", quote: "Resultaat geleverd: persoonlijke aanpak, kwaliteit van werk, korte lijntjes. Het zijn experts in hun veld.", name: "J. Pecník", role: "CEO", org: "BikeFair", rating: 5 },
-  { id: "soest-machinery", logo: "soestmachinery.nl", quote: "Erg tevreden over de kwaliteit, resultaten en betrokkenheid. Bedankt!", name: "M. van Soest", role: "CEO", org: "Soest Machinery", rating: 5 },
+  { id: "soest-machinery", logo: "soestmachinery.com", quote: "Erg tevreden over de kwaliteit, resultaten en betrokkenheid. Bedankt!", name: "M. van Soest", role: "CEO", org: "Soest Machinery", rating: 5 },
   { id: "social-innovations", logo: "socialinnovations.nl", quote: "Creatieve denkers die zich goed kunnen verplaatsen in je bedrijf. En waar je van op aan kan.", name: "Tim Muller", role: "Head of Marketing", org: "Social Innovations", rating: 5 },
   { id: "broadcast-magazine", logo: "broadcastmagazine.nl", quote: "Snel, ter zake kundig en met resultaat. Wat wil een mens nog meer?", name: "J. Te Nuijl", role: "Hoofdredacteur", org: "Broadcast Magazine", rating: 5 },
   { id: "zeewind", logo: "zeewind.nl", quote: "Niets minder dan indrukwekkend. Ik kan hun diensten ten zeerste aanbevelen.", name: "H. Hasnaoui", role: "Eigenaar", org: "Zeewind", rating: 5 },
@@ -1217,7 +1217,7 @@ function OrgAvatar({ review, lg }) {
   if (review.logo && !failed) {
     return (
       <span className={cls + " has-logo"} aria-hidden>
-        <img src={`https://logo.clearbit.com/${review.logo}`} alt="" loading="lazy" onError={() => setFailed(true)} />
+        <img src={`https://www.google.com/s2/favicons?domain=${review.logo}&sz=128`} alt="" loading="lazy" onError={() => setFailed(true)} />
       </span>
     );
   }
@@ -1228,6 +1228,52 @@ function FliiMark({ className }) {
     <svg className={className} viewBox="0 0 500 500" aria-hidden focusable="false">
       <path fill="#E7255A" d="m 239.8092,332.68537 c -2.28447,-3.49286 -23.46567,-48.57731 -23.46567,-50.01464 0,-0.93415 13.88823,-0.66647 21.30481,-0.87484 7.75505,-0.21787 53.41913,-115.30501 53.06132,-114.03739 -1.54162,5.46154 -1.00892,4.30871 -0.54189,0.14626 L 322.17232,168.5 H 349.5 v 82.5 82.5 h -22 -22 l -0.26195,-38.32102 c -0.30405,-44.48 7.24157,-55.84478 -0.8773,-38.24361 -11.37304,20.61415 -25.02431,56.46612 -37.2072,76.63979 C 266.40468,334.4775 262.28909,334 253.90061,334 c -11.19087,0 -12.7022,0.80941 -14.09141,-1.31463 z m -82.3413,-2.91541 C 157.20134,329.07148 157.09952,292.5 157.24162,248.5 l 0.25838,-80 58.25,-0.25806 c 55.01074,-0.24371 59.35516,-1.52083 59.35032,0.13946 -0.003,0.96693 -4.62864,12.78964 -10.28528,24.20363 L 254.96003,214.35034 227.97492,214 201.5,214.5 v 13.5 13.5 l 19.3529,0.27195 19.3529,0.27196 0.91723,0.0629 c 1.38257,0.0949 -3.92785,10.20835 -7.20338,17.07342 l -6.24989,13.09893 -13.33998,-0.0597 L 201.5,272.5 l -0.5,29 -0.5,29 -21.27373,0.26996 c -16.47548,0.20907 -21.38304,-0.0165 -21.75837,-1 z" />
     </svg>
+  );
+}
+function FunnelViz() {
+  const { t } = useLang();
+  const f = t.funnel;
+  const stages = f.stages;
+  const [active, setActive] = useState(0);
+  const [sweep, setSweep] = useState(0);
+  const W = 1000, N = stages.length, segW = W / N;
+  const yTop = (x) => 30 + 0.10 * x;
+  const yBot = (x) => 330 - 0.10 * x;
+  const perim = `M0,${yTop(0)} L${W},${yTop(W)} L${W},${yBot(W)} L0,${yBot(0)} Z`;
+  const pick = (i) => { setActive(i); setSweep((s) => s + 1); };
+  return (
+    <div className="fnl">
+      <svg className="fnl-svg" viewBox="0 0 1000 360" role="img" aria-label={f.h2}>
+        <defs>
+          <linearGradient id="fnlGloss" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stopColor="#F4739B" />
+            <stop offset="0.5" stopColor="#E7255A" />
+            <stop offset="1" stopColor="#B81846" />
+          </linearGradient>
+          <filter id="fnlGlow" x="-20%" y="-50%" width="140%" height="200%">
+            <feGaussianBlur stdDeviation="5" result="b" />
+            <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+          </filter>
+        </defs>
+        {stages.map((st, i) => {
+          const x0 = i * segW, x1 = (i + 1) * segW, cx = (x0 + x1) / 2;
+          const d = `M${x0},${yTop(x0)} L${x1},${yTop(x1)} L${x1},${yBot(x1)} L${x0},${yBot(x0)} Z`;
+          return (
+            <g key={i} className={`fnl-seg ${active === i ? "on" : ""}`} onClick={() => pick(i)} role="button" tabIndex={0}
+               aria-label={st.k} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pick(i); } }}>
+              <path className="fnl-slice" d={d} />
+              <text className="fnl-letter" x={cx} y="180" textAnchor="middle" dominantBaseline="central">{st.k.charAt(0)}</text>
+            </g>
+          );
+        })}
+        <path className="fnl-outline" d={perim} />
+        <path key={sweep} className="fnl-sweep" pathLength="1" d={perim} />
+      </svg>
+      <div className="fnl-desc" key={active}>
+        <span className="fnl-desc-k">{stages[active].k}</span>
+        <span className="fnl-desc-b">{stages[active].desc}</span>
+      </div>
+    </div>
   );
 }
 function Home({ content, openConsult }) {
@@ -1283,19 +1329,7 @@ function Home({ content, openConsult }) {
       <section className="band band-mist" id="campagnes">
         <div className="wrap">
           <Section><div className="eyebrow">{t.funnel.eyebrow}</div><h2 className="display h2">{t.funnel.h2}</h2><p className="lede">{t.funnel.lede}</p></Section>
-          <div className="funnel">
-            {t.funnel.stages.map((st, i) => (
-              <Section key={i} className="funnel-stage" style={{ transitionDelay: `${i * 70}ms`, ["--fw"]: `${100 - i * 12}%` }}>
-                <div className="funnel-bar">
-                  <span className="funnel-n mono">{String(i + 1).padStart(2, "0")}</span>
-                  <div className="funnel-txt">
-                    <div className="funnel-top"><span className="funnel-k">{st.k}</span>{st.note ? <span className="funnel-note">{st.note}</span> : null}</div>
-                    <span className="funnel-goal">{st.goal}</span>
-                  </div>
-                </div>
-              </Section>
-            ))}
-          </div>
+          <Section><FunnelViz /></Section>
         </div>
       </section>
 
@@ -1403,7 +1437,7 @@ function Home({ content, openConsult }) {
 
       <section className="band" id="blog">
         <div className="wrap">
-          <Section className="work-head"><div><div className="eyebrow">{t.insights.eyebrow}</div><h2 className="display h2">{t.insights.h2}</h2></div><a href="#/cms" className="btn btn-ghost">{t.insights.manage}</a></Section>
+          <Section className="work-head"><div><div className="eyebrow">{t.insights.eyebrow}</div><h2 className="display h2">{t.insights.h2}</h2></div></Section>
           <div className="post-grid">
             {articles.slice(0, 3).map((p, i) => (
               <Section key={p.id} className="post" style={{ transitionDelay: `${i * 70}ms` }}>
@@ -1421,6 +1455,7 @@ function Home({ content, openConsult }) {
       </section>
 
       <section className="cta-band" id="contact">
+        <div className="cta-chip">Get in the Loop</div>
         <div className="wrap cta-inner">
           <Section>
             <h2 className="display cta-h">{t.cta.h2}</h2>
@@ -2271,6 +2306,7 @@ const CSS = `
 .flii-root{
   --ink:#171717; --dark:#171717; --dark-2:#1E1E1E;
   --mag:#E7255A; --paper:#F3F1EB; --card:#FBFAF7; --mist:#EAE7DF; --line:#E2DED3;
+  --gloss:linear-gradient(135deg,#F4739B 0%,#E7255A 46%,#B81846 100%);
   --mid:#5C5A52; --soft:#8B887E; --max:1180px; --dock:54px;
   color:var(--ink); background:var(--paper); font-family:'Inter',system-ui,sans-serif; line-height:1.6;
   -webkit-font-smoothing:antialiased; overflow-x:hidden; padding-bottom:var(--dock);
@@ -2377,6 +2413,23 @@ button{font-family:inherit;}
 .brandwall-wrap{padding:8px 0 0;}
 .brandwall-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--soft);text-align:center;margin-bottom:20px;}
 .funnel{display:flex;flex-direction:column;align-items:center;gap:9px;margin-top:44px;}
+.fnl{max-width:920px;margin:44px auto 0;}
+.fnl-svg{width:100%;height:auto;display:block;overflow:visible;}
+.fnl-seg{cursor:pointer;outline:none;}
+.fnl-slice{fill:var(--card);stroke:rgba(231,37,90,0.30);stroke-width:1.5;transition:fill .2s;}
+.fnl-seg:hover .fnl-slice{fill:rgba(231,37,90,0.06);}
+.fnl-seg.on .fnl-slice{fill:rgba(231,37,90,0.13);}
+.fnl-seg:focus-visible .fnl-slice{fill:rgba(231,37,90,0.09);}
+.fnl-letter{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:64px;fill:var(--soft);transition:fill .2s;pointer-events:none;}
+.fnl-seg.on .fnl-letter{fill:var(--mag);}
+.fnl-outline{fill:none;stroke:url(#fnlGloss);stroke-width:3;stroke-linejoin:round;filter:url(#fnlGlow);pointer-events:none;}
+.fnl-sweep{fill:none;stroke:#fff;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.16 0.84;stroke-dashoffset:1;opacity:0;pointer-events:none;animation:fnlSweep 0.95s ease-out;}
+@keyframes fnlSweep{0%{stroke-dashoffset:1;opacity:0;}12%{opacity:0.95;}88%{opacity:0.95;}100%{stroke-dashoffset:0;opacity:0;}}
+.fnl-desc{margin:22px auto 0;max-width:640px;text-align:center;display:flex;flex-direction:column;gap:6px;animation:fnlFade .3s ease;}
+.fnl-desc-k{font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--mag);font-weight:600;}
+.fnl-desc-b{font-size:15px;color:var(--mid);line-height:1.5;}
+@keyframes fnlFade{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:none;}}
+@media (prefers-reduced-motion: reduce){.fnl-sweep{animation:none;}}
 .funnel-stage{width:var(--fw,100%);max-width:660px;}
 .funnel-bar{display:flex;align-items:center;gap:18px;background:var(--card);border:1px solid var(--line);border-radius:15px;padding:17px 22px;transition:border-color .16s;}
 .funnel-stage:last-child .funnel-bar{background:var(--ink);border-color:var(--ink);}
@@ -2551,9 +2604,10 @@ button{font-family:inherit;}
 .quote-link{display:flex;flex-direction:column;height:100%;padding:26px;}
 .quote-text{font-size:16px;color:var(--ink);margin:0 0 22px;line-height:1.55;}
 .quote-by{display:flex;align-items:center;gap:12px;margin-top:auto;}
-.quote-avatar{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;color:var(--paper);font-weight:700;background:var(--ink);font-family:'Bricolage Grotesque',sans-serif;}
-.quote-avatar.has-logo{background:#fff;border:1px solid var(--line);overflow:hidden;padding:0;}
-.quote-avatar.has-logo img{width:100%;height:100%;object-fit:contain;padding:7px;box-sizing:border-box;display:block;}
+.quote-avatar{width:42px;height:42px;flex:none;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;color:var(--paper);font-weight:700;background:var(--ink);font-family:'Bricolage Grotesque',sans-serif;overflow:hidden;}
+.quote-avatar.lg{width:54px;height:54px;}
+.quote-avatar.has-logo{background:#fff;border:1px solid var(--line);padding:0;}
+.quote-avatar.has-logo img{width:100%;height:100%;object-fit:contain;padding:8px;box-sizing:border-box;display:block;}
 .byline-logo{width:17px;height:17px;flex:none;margin-right:5px;vertical-align:-3px;}
 .quote-avatar.lg{width:54px;height:54px;font-size:22px;}
 .quote-name{font-weight:600;font-size:14.5px;}.quote-name.lg{font-size:18px;}
@@ -2593,7 +2647,8 @@ button{font-family:inherit;}
 .post-title{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:18px;margin:0 24px 10px;letter-spacing:-0.01em;}
 .post-body{font-size:14px;color:var(--mid);margin:0 24px 14px;}
 .post .service-link{margin:0 24px;}
-.cta-band{background:var(--ink);color:var(--paper);padding:104px 0;}
+.cta-band{background:var(--ink);color:var(--paper);padding:104px 0;position:relative;}
+.cta-chip{position:absolute;top:0;left:50%;transform:translate(-50%,-50%);z-index:2;font-size:12px;font-weight:600;letter-spacing:0.02em;color:var(--ink);padding:9px 20px;border-radius:999px;border:1px solid transparent;background:linear-gradient(#fff,#fff) padding-box, var(--gloss) border-box;box-shadow:0 6px 22px -8px rgba(231,37,90,0.45);white-space:nowrap;}
 .cta-inner{text-align:center;}
 .cta-h{font-size:clamp(36px,6vw,64px);margin:0 auto 14px;}
 .cta-sub{font-size:18px;color:#B5B2A8;max-width:42ch;margin:0 auto 30px;}
@@ -2769,7 +2824,7 @@ button{font-family:inherit;}
 .cfg-toggles{display:flex;flex-direction:column;gap:8px;}
 .toggle{display:flex;align-items:center;gap:13px;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:13px 15px;font:inherit;cursor:pointer;text-align:left;transition:border-color .14s;}
 .toggle:hover{border-color:var(--soft);}
-.toggle.on{border-color:var(--ink);}
+.toggle.on{border-color:transparent;background:linear-gradient(var(--card),var(--card)) padding-box, var(--gloss) border-box;box-shadow:0 6px 18px -12px rgba(231,37,90,0.5);}
 .switch{width:38px;height:22px;flex:none;border-radius:999px;background:var(--mist);border:1px solid var(--line);position:relative;transition:background .18s,border-color .18s;}
 .switch-knob{position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:var(--paper);box-shadow:0 1px 2px rgba(23,23,23,0.25);transition:transform .18s;}
 .toggle.on .switch{background:var(--mag);border-color:var(--mag);}
@@ -2782,7 +2837,7 @@ button{font-family:inherit;}
 .scope-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
 .scope-card{position:relative;display:flex;flex-direction:column;gap:5px;text-align:left;background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:15px;font:inherit;cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .15s;}
 .scope-card:hover{border-color:var(--soft);}
-.scope-card.on{border-color:var(--ink);box-shadow:0 10px 24px -16px rgba(23,23,23,0.4);}
+.scope-card.on{border-color:transparent;background:linear-gradient(var(--card),var(--card)) padding-box, var(--gloss) border-box;box-shadow:0 10px 26px -14px rgba(231,37,90,0.45);}
 .scope-card-t{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:16px;}
 .scope-card-d{font-size:12px;color:var(--soft);line-height:1.45;}
 .scope-card-p{font-size:12px;color:var(--mag);margin-top:2px;}
@@ -2885,7 +2940,7 @@ button{font-family:inherit;}
 .toggle-p{font-size:13px;color:var(--mid);white-space:nowrap;}
 .combo-note{font-size:12px;color:var(--mag);margin-top:2px;}
 .cfg-out{position:sticky;top:84px;}
-.cfg-out-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;}
+.cfg-out-card{background:linear-gradient(var(--card),var(--card)) padding-box, var(--gloss) border-box;border:1px solid transparent;border-radius:18px;padding:22px;box-shadow:0 14px 34px -18px rgba(231,37,90,0.4);}
 .cfg-out-h{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--soft);padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:10px;}
 .cfg-amount{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:12px 0;}
 .cfg-amount-l{font-size:12px;color:var(--mid);}
