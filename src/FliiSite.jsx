@@ -163,7 +163,7 @@ const I18N = {
       subs: { searchEngines: "Zoekmachines (Google, Bing)", aiSearch: "AI-search / LLM's", socialSearch: "Social search", appStore: "App store (ASO)", meta: "Meta (Facebook, Instagram)", tiktok: "TikTok", linkedin: "LinkedIn", pinterest: "Pinterest", otherSocial: "X, Snapchat, Reddit", programmatic: "Programmatic display", gdn: "Google Display Network", native: "Native advertising", retargeting: "Retargeting", onlineVideo: "Online video (YouTube Ads)", ctv: "Connected TV / streaming", linearTv: "Lineaire TV", radio: "Radio", streamingAudio: "Streaming audio (Spotify)", podcasts: "Podcasts", newsletters: "Nieuwsbrieven", automation: "Marketing automation", loyalty: "Loyaliteit / CRM", whatsapp: "WhatsApp", sms: "SMS", push: "Push-notificaties", billboards: "Billboards & abri's", dooh: "Digital OOH (DOOH)", transit: "Transit (trein, bus)", retail: "Retail / in-store", stationery: "Visitekaartjes & briefpapier", flyers: "Flyers, folders, brochures", directMail: "Direct mail (post)", merch: "Branded gear / merchandise", earned: "Persrelaties / earned media", influencer: "Influencer marketing", affiliate: "Affiliate / partnerships", sponsoring: "Sponsoring & events" },
       catDesc: { search: "Gevonden worden bij een zoekintentie, in zoekmachines en AI.", social: "Organisch en betaald op de platformen waar je doelgroep scrolt.", display: "Banners en native over web en apps.", videotv: "Bewegend beeld, van online video tot Connected TV.", audio: "Radio, streaming audio en podcasts.", email: "Je eigen publiek: e-mail, automation en CRM.", messaging: "Directe 1-op-1 kanalen zoals WhatsApp en SMS.", ooh: "Buitenreclame, van billboards tot digitale schermen.", print: "Gedrukt: van visitekaartjes tot brochures.", pr: "Verdiende aandacht via pers, influencers en partners." },
       onRequest: "Op aanvraag",
-      svcCol: "Dienst", priceCol: "Prijs vanaf",
+      svcCol: "Dienst", priceCol: "Prijs vanaf", contentCreatie: "Content creatie", contentCreatieNote: "Posts, visuals en video in je merkstem.",
       next: "Volgende", back: "Terug", startOver: "Opnieuw", totalFrom: "Totaal vanaf",
       refTitle: "Prijsreferentie", loopRef: "Flii Loop", loopRefDesc: "Drie pakketten, per campagne, app, platform of AI. Neem de hele loop of losse pakketten.",
       appRef: "App ontwikkeling", appRefDesc: "Drie niveaus. De prijs is de Loop Build-fee; Loop Start en Loop Run reken je apart.", looseRef: "Losse diensten",
@@ -332,7 +332,7 @@ const I18N = {
       subs: { searchEngines: "Search engines (Google, Bing)", aiSearch: "AI search / LLMs", socialSearch: "Social search", appStore: "App store (ASO)", meta: "Meta (Facebook, Instagram)", tiktok: "TikTok", linkedin: "LinkedIn", pinterest: "Pinterest", otherSocial: "X, Snapchat, Reddit", programmatic: "Programmatic display", gdn: "Google Display Network", native: "Native advertising", retargeting: "Retargeting", onlineVideo: "Online video (YouTube Ads)", ctv: "Connected TV / streaming", linearTv: "Linear TV", radio: "Radio", streamingAudio: "Streaming audio (Spotify)", podcasts: "Podcasts", newsletters: "Newsletters", automation: "Marketing automation", loyalty: "Loyalty / CRM", whatsapp: "WhatsApp", sms: "SMS", push: "Push notifications", billboards: "Billboards & panels", dooh: "Digital OOH (DOOH)", transit: "Transit (train, bus)", retail: "Retail / in-store", stationery: "Business cards & stationery", flyers: "Flyers, leaflets, brochures", directMail: "Direct mail", merch: "Branded gear / merch", earned: "PR / earned media", influencer: "Influencer marketing", affiliate: "Affiliate / partnerships", sponsoring: "Sponsoring & events" },
       catDesc: { search: "Getting found on search intent, in engines and AI.", social: "Organic and paid on the platforms where your audience scrolls.", display: "Banners and native across web and apps.", videotv: "Moving image, from online video to Connected TV.", audio: "Radio, streaming audio and podcasts.", email: "Your own audience: email, automation and CRM.", messaging: "Direct 1-to-1 channels like WhatsApp and SMS.", ooh: "Out-of-home, from billboards to digital screens.", print: "Print, from business cards to brochures.", pr: "Earned attention via press, influencers and partners." },
       onRequest: "On request",
-      svcCol: "Service", priceCol: "From",
+      svcCol: "Service", priceCol: "From", contentCreatie: "Content creation", contentCreatieNote: "Posts, visuals and video in your brand voice.",
       next: "Next", back: "Back", startOver: "Start over", totalFrom: "Total from",
       refTitle: "Price reference", loopRef: "Flii Loop", loopRefDesc: "Three packages, per campaign, app, platform or AI. Take the full loop or single packages.",
       appRef: "App development", appRefDesc: "Three levels. The price is the Loop Build fee; Loop Start and Loop Run are billed separately.", looseRef: "Add-on services",
@@ -1490,6 +1490,7 @@ const PRICING = {
     ai: { plan: 2500, build: 6500, run: 850 },
   },
   content: { none: 0, klein: 650, groot: 1200 },
+  contentCreatie: 650,
   app: { basis: 3500, advanced: 8500, platform: 18000 },
 };
 const SCOPE_KEYS = ["campagne", "app", "platform", "ai"];
@@ -1514,7 +1515,7 @@ function typePhasePrice(sk, pk) {
   const sc = PRICING.scopes[sk];
   return pk === "build" ? sc.build : sc[pk];
 }
-function computeLoop({ types, phases, cats }) {
+function computeLoop({ types, phases, cats, contentCreatie }) {
   const selected = SCOPE_KEYS.filter((k) => types[k]);
   const allLoop = phases.plan && phases.build && phases.run;
   let once = 0, mo = 0, saving = 0;
@@ -1525,6 +1526,7 @@ function computeLoop({ types, phases, cats }) {
     if (allLoop) saving += PRICING.scopes[sk].plan;
   });
   CAT_KEYS.forEach((k) => { if (cats[k]) { const c = CAT_BY_KEY[k]; once += c.once; mo += c.mo; } });
+  if (types.campagne && contentCreatie) mo += PRICING.contentCreatie;
   return { once, mo, saving, allLoop, selected };
 }
 const eur = (n) => "\u20AC\u00A0" + (n || 0).toLocaleString("nl-NL");
@@ -1550,10 +1552,11 @@ function PriceCalculator({ openConsult }) {
   const [cats, setCats] = useState(() => Object.fromEntries(CAT_KEYS.map((k) => [k, false])));
   const [subs, setSubs] = useState(() => Object.fromEntries(ALL_SUBS.map((k) => [k, false])));
   const [advice, setAdvice] = useState(false);
+  const [contentCreatie, setContentCreatie] = useState(true);
   const [appKind, setAppKind] = useState("webapp");
   const [appFeatures, setAppFeatures] = useState("");
   const [platformFn, setPlatformFn] = useState({ website: false, ecommerce: false, ai: false });
-  const { once, mo, saving, allLoop, selected } = computeLoop({ types, phases, cats });
+  const { once, mo, saving, allLoop, selected } = computeLoop({ types, phases, cats, contentCreatie });
   const onceA = useCountUp(once); const moA = useCountUp(mo);
   const nothing = once === 0 && mo === 0;
   const steps = ["type", "details", "pakketten", "result"];
@@ -1583,6 +1586,7 @@ function PriceCalculator({ openConsult }) {
       const c = CAT_BY_KEY[k];
       items.push({ label: catLabel(k), once: c.once, mo: c.mo, req: c.once === 0 && c.mo === 0 });
     });
+    if (types.campagne && contentCreatie) items.push({ label: p.contentCreatie, once: 0, mo: PRICING.contentCreatie, req: false });
     return items;
   };
   const phaseSum = (pk) => selected.reduce((a, sk) => a + typePhasePrice(sk, pk), 0);
@@ -1596,6 +1600,7 @@ function PriceCalculator({ openConsult }) {
     if (types.app) parts.push(p.appKinds[appKind] + (appFeatures.trim() ? `: ${appFeatures.trim()}` : ""));
     if (types.platform) { const pf = PLATFORM_FNS.filter((k) => platformFn[k]).map((k) => p.platformFns[k]); if (pf.length) parts.push(pf.join(", ")); }
     const ch = catBits();
+    if (types.campagne && contentCreatie) ch.push(p.contentCreatie);
     if (advice) ch.push(p.details.advice);
     if (ch.length) parts.push(ch.join(" \u00B7 "));
     return `${p.summaryPrefix}: ${parts.join(" \u00B7 ")}. ${p.once} ${p.from} ${eur(once)}${mo ? `, ${p.perMonth.toLowerCase()} ${p.from} ${eur(mo)}` : ""}.`;
@@ -1660,6 +1665,11 @@ function PriceCalculator({ openConsult }) {
                     </div>
                   ))}
                 </div>
+                <button className={`toggle ${contentCreatie ? "on" : ""}`} onClick={() => setContentCreatie((v) => !v)} aria-pressed={contentCreatie}>
+                  <span className="switch" aria-hidden><span className="switch-knob" /></span>
+                  <span className="toggle-main"><span className="toggle-t">{p.contentCreatie}</span><span className="toggle-d">{p.contentCreatieNote}</span></span>
+                  <span className="toggle-p mono">{eur(PRICING.contentCreatie)}{p.mo}</span>
+                </button>
                 <button className={`toggle advice-toggle ${advice ? "on" : ""}`} onClick={() => setAdvice((v) => !v)} aria-pressed={advice}>
                   <span className="switch" aria-hidden><span className="switch-knob" /></span>
                   <span className="toggle-main"><span className="toggle-t">{p.details.advice}</span></span>
