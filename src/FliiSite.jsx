@@ -43,7 +43,7 @@ const I18N = {
       { value: 21, suffix: " dagen", label: "Van brief tot live" },
       { value: 100, suffix: "%", label: "AI-native oplevering" },
       { value: 12, suffix: "+", label: "Producten gelanceerd" } ],
-    loop: { eyebrow: "Flii Loop", h2: "Opstarten, ontwikkelen en verbeteren. In één lus.", center: "de lus die blijft leren",
+    loop: { eyebrow: "Flii Loop", h2: "Opstarten, ontwikkelen en verbeteren. In één loop.", center: "de loop die blijft leren",
       lede: "Flii Loop is een plan voor het opstarten, ontwikkelen en verbeteren van apps, platformen en media. Je lanceert, meet wat er gebeurt, verbetert op basis van de data, en begint opnieuw. Elke ronde maakt het geheel scherper.",
       items: [
         { k: "Launch", body: "Live gaan met een scherp startpunt. Je app, platform of campagne draait en levert de eerste data." },
@@ -56,7 +56,7 @@ const I18N = {
         app: ["Je app of PWA gaat live bij de eerste gebruikers.", "Je ziet in de data hoe mensen de app echt gebruiken.", "Je verbetert flows en voegt toe wat gemist wordt.", "Elke release maakt de app sneller en slimmer."],
         media: ["Je campagne gaat live op de gekozen kanalen.", "Je meet kliks, kosten en conversies per kanaal.", "Je schaalt op wat converteert en snoeit de rest.", "Elke maand scherpere targeting en creatives."],
       },
-      priceCta: "Stel je Loop samen en bekijk de prijzen ↘" },
+      priceCta: "Stel Loop samen en bekijk de prijzen ↘" },
     work: { eyebrow: "Showcase", h2: "Wat we lanceerden", manage: "Beheer showcase ↗", view: "Bekijk case ↗" },
     reviews: { eyebrow: "Reviews", h2: "Bewijs, geen beloftes.", word: "reviews" },
     byline: { by: "by", name: "Flii Media" },
@@ -108,7 +108,7 @@ const I18N = {
         title: "Titel", client: "Klant", tag: "Tag", summary: "Samenvatting",
         body: "Tekst", metrics: "Metrics", read: "Leestijd", cover: "Cover",
         category: "Categorie", date: "Datum", excerpt: "Samenvatting" } },
-    pricing: { eyebrow: "Prijzen", h1: "Stel je Loop samen.",
+    pricing: { eyebrow: "Prijzen", h1: "Stel Loop samen.",
       intro: "Richtprijzen, exclusief btw en op basis van vanaf-tarieven. Mediabudget is niet inbegrepen. De definitieve prijs hangt af van de scope.",
       scopeLabel: "Wat heb je nodig?", scopes: { campagne: "Campagne", app: "App", platform: "Platform", ai: "AI" },
       scopeDesc: { campagne: "Een advertentiecampagne, opgezet en gestuurd op resultaat.", app: "Een werkende app of PWA, van één functie tot meerdere modules.", platform: "Een volwaardig, schaalbaar platform met backend en AI.", ai: "Een AI-oplossing of automatisering, van integratie tot een eigen model." },
@@ -142,7 +142,7 @@ const I18N = {
       appBasis: "Eén kernfunctie, responsive PWA, basismeting, hosting-klaar op Vercel.",
       appAdvanced: "Meerdere modules, gebruikersaccounts, API-koppelingen, dashboard en uitgebreide meting.",
       appPlatform: "Gebruikersrollen, backend en database, AI- of LLM-integratie, beheer-CMS en schaalbaar." },
-    calc: { eyebrow: "Prijsindicatie", h2: "Bereken je Loop.", lede: "Klik snel door de stappen en zie meteen wat jouw Loop kost. Een indicatie op basis van vanaf-tarieven, geen offerte." },
+    calc: { eyebrow: "Prijsindicatie", h2: "Bereken Loop.", lede: "Klik snel door de stappen en zie meteen wat Loop kost. Een indicatie op basis van vanaf-tarieven, geen offerte." },
     detail: { backShowcase: "← Showcase", backInsights: "← Inzichten", backHome: "← Home",
       notFound: "Niet gevonden", notFoundSub: "Dit item is mogelijk verwijderd in het CMS.",
       visit: "Bezoek", credential: "Bekijk certificaat ↗" },
@@ -300,7 +300,7 @@ const DEFAULT_APPS = [
     summary: "Social-content-automatisering met een AI-composer en een live publicatiepijplijn.",
     link: "https://waryte.vercel.app",
     metrics: [{ label: "Composer-stappen", value: "3" }, { label: "Bronnen", value: "Reddit + Web" }, { label: "Publiceren", value: "Webflow" }],
-    body: "Waryte zet ruwe signalen om in publicatieklare social content. Een AI-composer in drie stappen schrijft, verfijnt en maakt posts op, met context uit een Reddit-datapijplijn, en publiceert direct naar Webflow.\n\nDe build verving een fragiele scraping-opzet door een robuuste Apify-pijplijn, met daarbovenop een goedkeuringsflow zodat er niets live gaat zonder mens in de lus." },
+    body: "Waryte zet ruwe signalen om in publicatieklare social content. Een AI-composer in drie stappen schrijft, verfijnt en maakt posts op, met context uit een Reddit-datapijplijn, en publiceert direct naar Webflow.\n\nDe build verving een fragiele scraping-opzet door een robuuste Apify-pijplijn, met daarbovenop een goedkeuringsflow zodat er niets live gaat zonder mens in de loop." },
   { id: "wk2026", title: "WK2026 Voorspellingen", client: "Flii Labs", tag: "Sport / Realtime",
     summary: "Een WK-voorspellingsapp met live wedstrijden, animatie en een resultatenengine.",
     link: "https://wk2026-voorspellingen.vercel.app/",
@@ -373,7 +373,7 @@ Hetzelfde budget, hetzelfde verkeer, een totaal andere uitkomst. Het verschil zi
 Als de overdracht strak staat, de pagina snel en helder is, en de aanbieding klopt, dan, en pas dan, is opschalen verstandig. Nu werkt de vermenigvuldiger in je voordeel. Elke extra euro raakt een pad dat bewezen omzet oplevert, en je weet binnen een week of het kanaal blijft presteren op schaal.
 
 Dit is geen pleidooi tegen adverteren. Het is een pleidooi voor volgorde. Eerst converteren, dan schalen. De teams die we het hardst zien groeien, hebben zelden de grootste budgetten. Het zijn de teams die hun funnel behandelen als een product: ze meten waar het lekt, repareren in de juiste volgorde, en geven pas gas als het pad van klik naar omzet aantoonbaar dicht is. Saai, methodisch, en veel winstgevender dan nog een budgetverhoging die je teleurstelling alleen maar opschaalt.` },
-  { id: "lanceren-21-dagen", title: "Lanceren in 21 dagen met AI in de lus", cat: "AI Build", date: "jun 2026", read: "7 min", cover: "build",
+  { id: "lanceren-21-dagen", title: "Lanceren in 21 dagen met AI in de loop", cat: "AI Build", date: "jun 2026", read: "7 min", cover: "build",
     excerpt: "Wat verandert er als AI de bouwer is en jij regisseert, en waar wint de mens nog?",
     body: `Drie weken klinkt te kort om iets echts te lanceren. Dat was het ook, tot voor kort. De afstand tussen een idee en werkende software werd altijd bepaald door hoe snel mensen konden typen, testen en herstellen. Die afstand is in elkaar geklapt. Niet omdat mensen sneller typen, maar omdat AI het typen heeft overgenomen. Wat overblijft, is oordeel. En oordeel is precies waar de mens nog wint.
 
@@ -391,7 +391,7 @@ Dat klinkt bevrijdend, en dat is het ook, maar het legt een nieuwe last bij de m
 
 De teams die hier het meeste uithalen, behandelen AI niet als een collega met een eigen mening, maar als een buitengewoon snelle bouwer die exact doet wat hem gevraagd wordt. De rol van de mens schuift op naar die van regisseur: eigenaar van de scope, bewaker van de smaak, en degene die beslist wat de deur uit gaat.
 
-![De lus: regisseren, bouwen, beoordelen, bijsturen](build)
+![De loop: regisseren, bouwen, beoordelen, bijsturen](build)
 
 Regisseren betekent in de praktijk drie dingen. Je bepaalt de scope, dus wat er wel en vooral niet in deze versie hoort. Je bewaakt de kwaliteit, want een AI levert moeiteloos iets op dat werkt maar niet klopt. En je neemt de eindbeslissing over wat live gaat, want die verantwoordelijkheid kun je niet delegeren aan een model dat geen gevolgen draagt.
 
@@ -401,7 +401,7 @@ Wie deze rol niet pakt, krijgt een berg code die werkt maar nergens heen gaat. S
 
 De eerste week is voor scherpte. Niet bouwen, maar kiezen. Wat is de kern, voor wie, en hoe weet je straks of het werkt? Een goede brief in week één bespaart je tien correcties in week drie. Hier wint de mens, want geen model kan voor jou bepalen welk probleem het waard is om op te lossen.
 
-De tweede week is voor tempo. Nu draait de lus op volle kracht: regisseren, bouwen, beoordelen, bijsturen, en weer opnieuw. Omdat een iteratie uren kost in plaats van dagen, kun je per dag meerdere keren rond. Je leert niet uit vergaderingen maar uit werkende versies die je voor je ziet.
+De tweede week is voor tempo. Nu draait de loop op volle kracht: regisseren, bouwen, beoordelen, bijsturen, en weer opnieuw. Omdat een iteratie uren kost in plaats van dagen, kun je per dag meerdere keren rond. Je leert niet uit vergaderingen maar uit werkende versies die je voor je ziet.
 
 De derde week is voor afmaken. Het laatste deel van een lancering, de scherpe randen, de echte data, de momenten waarop het misgaat, is altijd het werk dat AI het minst goed alleen doet. Hier komt de menselijke smaak terug: het verschil tussen iets dat werkt en iets dat af voelt.
 
@@ -995,6 +995,7 @@ function Marquee({ items, render, className = "", duration = 32 }) {
 function Home({ content, openConsult }) {
   const { t } = useLang();
   const { apps, articles, reviews, certs } = content;
+  const [priceOpen, setPriceOpen] = useState(false);
   const avg = reviews.length ? (reviews.reduce((s, r) => s + (r.rating || 5), 0) / reviews.length).toFixed(1) : "5.0";
   return (
     <>
@@ -1070,14 +1071,14 @@ function Home({ content, openConsult }) {
         <div className="wrap">
           <Section><div className="eyebrow on-dark">{t.loop.eyebrow}</div><h2 className="display h2 on-dark">{t.loop.h2}</h2><p className="lede on-dark-soft">{t.loop.lede}</p></Section>
           <Section className="loop-ring-wrap"><LoopRing /></Section>
-          <Section className="loop-foot"><a href="#/prijzen" className="loop-price-link">{t.loop.priceCta}</a></Section>
-        </div>
-      </section>
-
-      <section className="band band-calc" id="calculator">
-        <div className="wrap">
-          <Section><div className="eyebrow">{t.calc.eyebrow}</div><h2 className="display h2">{t.calc.h2}</h2><p className="lede">{t.calc.lede}</p></Section>
-          <Section><PriceCalculator openConsult={openConsult} /></Section>
+          <Section className="loop-fold">
+            <button className={`price-fold-trigger ${priceOpen ? "open" : ""}`} onClick={() => setPriceOpen((v) => !v)} aria-expanded={priceOpen}>
+              <FliiLoopMark />
+              <span className="price-fold-t">{t.calc.eyebrow} <span className="price-fold-arrow" aria-hidden>↘</span></span>
+            </button>
+            <p className="price-fold-sub on-dark-soft">{t.pricing.typeNote}</p>
+            {priceOpen && <div className="price-fold-panel"><PriceCalculator openConsult={openConsult} /></div>}
+          </Section>
         </div>
       </section>
 
@@ -1298,7 +1299,7 @@ function CertDetail({ content, id }) {
 const PRICING = {
   scopes: {
     campagne: { plan: 1500, build: 3500, run: 450 },
-    app: { plan: 2500, build: { basis: 3500, advanced: 8500 }, run: 750 },
+    app: { plan: 2500, build: 3500, run: 750 },
     platform: { plan: 4500, build: 18000, run: 2500 },
     ai: { plan: 2500, build: 6500, run: 850 },
   },
@@ -1311,19 +1312,18 @@ const SERVICE_KEYS = ["search", "social", "display", "llm", "print", "outdoor", 
 const CHANNEL_KEYS = ["search", "social", "display", "video", "tiktok", "instagram", "linkedin", "youtube", "website", "pr", "email", "llm", "print", "outdoor", "lifecycle"];
 const CHANNEL_LABELS = { display: "Display", tiktok: "TikTok", instagram: "Instagram", linkedin: "LinkedIn", youtube: "YouTube", website: "Website", pr: "PR", email: "E-mail" };
 const PLATFORM_FNS = ["website", "ecommerce", "ai"];
-function typePhasePrice(sk, pk, level) {
+function typePhasePrice(sk, pk) {
   const sc = PRICING.scopes[sk];
-  if (pk === "build") return sk === "app" ? sc.build[level] : sc.build;
-  return sc[pk];
+  return pk === "build" ? sc.build : sc[pk];
 }
-function computeLoop({ types, level, phases, channels, content }) {
+function computeLoop({ types, phases, channels, content }) {
   const selected = SCOPE_KEYS.filter((k) => types[k]);
   const allLoop = phases.plan && phases.build && phases.run;
   let once = 0, mo = 0, saving = 0;
   selected.forEach((sk) => {
-    const planFee = allLoop ? 0 : (phases.plan ? typePhasePrice(sk, "plan", level) : 0);
-    once += planFee + (phases.build ? typePhasePrice(sk, "build", level) : 0);
-    mo += phases.run ? typePhasePrice(sk, "run", level) : 0;
+    const planFee = allLoop ? 0 : (phases.plan ? typePhasePrice(sk, "plan") : 0);
+    once += planFee + (phases.build ? typePhasePrice(sk, "build") : 0);
+    mo += phases.run ? typePhasePrice(sk, "run") : 0;
     if (allLoop) saving += PRICING.scopes[sk].plan;
   });
   CHANNEL_KEYS.forEach((k) => { if (channels[k]) { once += PRICING.addons[k].once; mo += PRICING.addons[k].mo; } });
@@ -1349,7 +1349,6 @@ function PriceCalculator({ openConsult }) {
   const { t } = useLang(); const p = t.pricing;
   const [step, setStep] = useState(0);
   const [types, setTypes] = useState({ campagne: false, app: true, platform: false, ai: false });
-  const [level, setLevel] = useState("advanced");
   const [phases, setPhases] = useState({ plan: true, build: true, run: true });
   const [channels, setChannels] = useState(() => Object.fromEntries(CHANNEL_KEYS.map((k) => [k, false])));
   const [advice, setAdvice] = useState(false);
@@ -1357,7 +1356,7 @@ function PriceCalculator({ openConsult }) {
   const [appFeatures, setAppFeatures] = useState("");
   const [platformFn, setPlatformFn] = useState({ website: false, ecommerce: false, ai: false });
   const [content, setContent] = useState("none");
-  const { once, mo, saving, allLoop, selected } = computeLoop({ types, level, phases, channels, content });
+  const { once, mo, saving, allLoop, selected } = computeLoop({ types, phases, channels, content });
   const onceA = useCountUp(once); const moA = useCountUp(mo);
   const nothing = once === 0 && mo === 0;
   const steps = ["type", "details", "pakketten", "content", "result"];
@@ -1369,9 +1368,9 @@ function PriceCalculator({ openConsult }) {
   const toggleChannel = (k) => setChannels((s) => ({ ...s, [k]: !s[k] }));
   const togglePlatformFn = (k) => setPlatformFn((s) => ({ ...s, [k]: !s[k] }));
   const chLabel = (k) => p.addons[k] || CHANNEL_LABELS[k];
-  const phaseSum = (pk) => selected.reduce((a, sk) => a + typePhasePrice(sk, pk, level), 0);
+  const phaseSum = (pk) => selected.reduce((a, sk) => a + typePhasePrice(sk, pk), 0);
   const packagePrice = (k) => k === "run" ? eur(phaseSum("run")) + p.mo : eur(phaseSum(k));
-  const typeLabel = selected.map((s) => p.scopes[s] + (s === "app" ? ` (${p.levels[level]})` : "")).join(" \u00B7 ");
+  const typeLabel = selected.map((s) => p.scopes[s]).join(" \u00B7 ");
   const summary = () => {
     const parts = [];
     if (selected.length) parts.push(typeLabel);
@@ -1384,6 +1383,16 @@ function PriceCalculator({ openConsult }) {
     if (content !== "none") ch.push(p.addons.content + " " + p.contentOpts[content]);
     if (ch.length) parts.push(ch.join(", "));
     return `${p.summaryPrefix}: ${parts.join(" \u00B7 ")}. ${p.once} ${p.from} ${eur(once)}${mo ? `, ${p.perMonth.toLowerCase()} ${p.from} ${eur(mo)}` : ""}.`;
+  };
+  const selLine = () => {
+    const bits = [];
+    const ph = ["plan", "build", "run"].filter((k) => phases[k]).map((k) => p.phases[k]);
+    if (ph.length) bits.push(ph.join(", "));
+    const ch = CHANNEL_KEYS.filter((k) => channels[k]).map(chLabel);
+    if (content !== "none") ch.push(p.addons.content + " " + p.contentOpts[content]);
+    if (advice) ch.push(p.details.advice);
+    if (ch.length) bits.push(ch.join(", "));
+    return bits.join(" \u00B7 ");
   };
   return (
     <div className="calc">
@@ -1405,16 +1414,10 @@ function PriceCalculator({ openConsult }) {
                   <span className="scope-check" aria-hidden>{types[s] ? "\u2713" : ""}</span>
                   <span className="scope-card-t">{p.scopes[s]}</span>
                   <span className="scope-card-d">{p.scopeDesc[s]}</span>
-                  <span className="scope-card-p mono">{p.from} {eur(typePhasePrice(s, "build", level))}</span>
+                  <span className="scope-card-p mono">{p.from} {eur(typePhasePrice(s, "build"))}</span>
                 </button>
               ))}
             </div>
-            {types.app && (
-              <div className="cfg-sub-row"><span className="cfg-label mono">{p.levelLabel}</span>
-                <div className="seg">{["basis", "advanced"].map((l) => <button key={l} className={`seg-btn ${level === l ? "on" : ""}`} onClick={() => setLevel(l)}>{p.levels[l]}</button>)}</div>
-              </div>
-            )}
-            <div className="calc-note mono">{p.typeNote}</div>
           </div>
         )}
         {cur === "details" && (
@@ -1487,6 +1490,7 @@ function PriceCalculator({ openConsult }) {
                 <div className="cfg-amount"><span className="cfg-amount-l mono">{p.once} {p.from}</span><span className="cfg-amount-v display">{eur(onceA)}</span></div>
                 {mo > 0 && <div className="cfg-amount"><span className="cfg-amount-l mono">{p.perMonth} {p.from}</span><span className="cfg-amount-v display">{eur(moA)}<span className="cfg-mo">{p.mo}</span></span></div>}
                 {saving > 0 && <div className="cfg-save mono">{p.save} {eur(saving)}</div>}
+                {selLine() && <div className="cfg-incl mono">{selLine()}</div>}
               </>}
               <button className="btn btn-primary cfg-cta" onClick={() => openConsult(null, summary())}>{p.cta}</button>
               <p className="cfg-excl mono">{p.excl}</p>
@@ -2298,6 +2302,16 @@ button{font-family:inherit;}
 .lbl-right{right:-2px;top:50%;transform:translate(0,-50%);flex-direction:row-reverse;}
 .loop-price-link{color:var(--paper);font-weight:600;font-size:15px;border-bottom:1px solid rgba(243,241,235,0.32);padding-bottom:2px;transition:border-color .15s,color .15s;}
 .loop-price-link:hover{border-color:var(--mag);color:#fff;}
+.loop-fold{margin-top:34px;text-align:center;}
+.price-fold-trigger{display:inline-flex;align-items:center;gap:13px;background:none;border:none;cursor:pointer;font:inherit;padding:4px;}
+.price-fold-trigger .loopmark{width:46px;height:46px;}
+.price-fold-t{display:inline-flex;align-items:center;gap:9px;color:#fff;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(19px,2.6vw,26px);letter-spacing:-0.01em;}
+.price-fold-arrow{color:var(--mag);display:inline-block;transition:transform .32s cubic-bezier(.2,.7,.2,1);}
+.price-fold-trigger:hover .price-fold-arrow{transform:translate(2px,2px);}
+.price-fold-trigger.open .price-fold-arrow{transform:rotate(90deg);}
+.price-fold-sub{max-width:430px;margin:12px auto 0;font-size:14px;line-height:1.55;}
+.price-fold-panel{margin-top:28px;animation:foldIn .4s ease both;}
+@keyframes foldIn{from{opacity:0;transform:translateY(-10px);}to{opacity:1;transform:none;}}
 .cfg{display:grid;grid-template-columns:1fr 340px;gap:28px;align-items:start;margin:30px 0 56px;}
 .cfg-form{display:flex;flex-direction:column;gap:26px;}
 .cfg-block{display:flex;flex-direction:column;gap:12px;}
@@ -2328,6 +2342,7 @@ button{font-family:inherit;}
 .scope-card.on .scope-check{background:var(--mag);border-color:var(--mag);}
 .cfg-sub-row{display:flex;align-items:center;gap:12px;margin-top:4px;}
 .cfg-save{margin-top:6px;font-size:12px;color:#1FAE5A;}
+.cfg-incl{margin-top:10px;padding-top:10px;border-top:1px solid var(--line);font-size:11.5px;color:var(--soft);line-height:1.55;}
 .band-calc{background:var(--mist);}
 .calc{max-width:720px;margin:34px auto 0;background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 30px 60px -52px rgba(23,23,23,0.55);}
 .calc-steps{display:flex;gap:2px;padding:13px 14px;border-bottom:1px solid var(--line);overflow-x:auto;}
@@ -2471,5 +2486,6 @@ button{font-family:inherit;}
   .loop-ring-tilt{transition:none;}
   .loop-core-content{animation:none;}
   .calc-slide{animation:none;}
+  .price-fold-panel{animation:none;}
 }
 `;
