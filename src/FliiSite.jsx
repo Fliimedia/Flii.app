@@ -144,6 +144,13 @@ const I18N = {
       levelLabel: "Niveau", levels: { basis: "Basis", advanced: "Advanced" },
       phaseLabel: "Pakketten", phases: { plan: "Loop Start", build: "Loop Build", run: "Loop Run" },
       phaseDesc: { plan: "Research en plan van aanpak, met de optie om dit zelf uit te voeren.", build: "Creatie: de app, het platform of de campagne wordt gebouwd.", run: "Beheer & verbeter: hosting, optimalisatie en doorontwikkeling." },
+      phaseByType: {
+        campagne: { plan: "Onderzoek en strategie voor je campagnes, om zelf uit te voeren.", build: "Creatie van de content en advertentiecampagnes.", run: "Beheer en verbetering van je campagnes." },
+        app: { plan: "Onderzoek en plan voor je app, om zelf uit te voeren.", build: "Ontwerp en bouw van de app.", run: "Beheer en doorontwikkeling van de app." },
+        platform: { plan: "Onderzoek en plan voor je platform, om zelf uit te voeren.", build: "Ontwerp en bouw van het platform.", run: "Hosting, beheer en doorontwikkeling." },
+        ai: { plan: "Onderzoek en plan voor de AI-integratie, om zelf uit te voeren.", build: "Bouw en integratie van de AI-oplossing.", run: "Beheer en optimalisatie van de AI." },
+      },
+      phaseMulti: { plan: "Onderzoek en plan van aanpak voor je diensten, om zelf uit te voeren.", build: "Creatie en bouw van je gekozen diensten.", run: "Beheer en verbetering van je gekozen diensten." },
       mediaLabel: "Campagnes & media", packagesLabel: "Pakketten",
       addonsLabel: "Losse diensten",
       addons: { search: "Search (Google Ads)", social: "Social (Meta, LinkedIn, TikTok)", display: "Display", llm: "AI-vindbaarheid (GEO)", print: "Print", outdoor: "Outdoor (DOOH)", video: "Video & CTV", lifecycle: "Lifecycle (e-mail & CRM)", content: "Content creatie" },
@@ -315,6 +322,13 @@ const I18N = {
       levelLabel: "Level", levels: { basis: "Basic", advanced: "Advanced" },
       phaseLabel: "Packages", phases: { plan: "Loop Start", build: "Loop Build", run: "Loop Run" },
       phaseDesc: { plan: "Research and plan of action, with the option to execute it yourself.", build: "Creation: the app, platform or campaign gets built.", run: "Manage & improve: hosting, optimisation and further development." },
+      phaseByType: {
+        campagne: { plan: "Research and strategy for your campaigns, ready to execute yourself.", build: "Creation of the content and ad campaigns.", run: "Management and improvement of your campaigns." },
+        app: { plan: "Research and plan for your app, ready to execute yourself.", build: "Design and build of the app.", run: "Management and further development of the app." },
+        platform: { plan: "Research and plan for your platform, ready to execute yourself.", build: "Design and build of the platform.", run: "Hosting, management and further development." },
+        ai: { plan: "Research and plan for the AI integration, ready to execute yourself.", build: "Build and integration of the AI solution.", run: "Management and optimisation of the AI." },
+      },
+      phaseMulti: { plan: "Research and plan of action for your services, ready to execute yourself.", build: "Creation and build of your chosen services.", run: "Management and improvement of your chosen services." },
       mediaLabel: "Campaigns & media", packagesLabel: "Packages",
       addonsLabel: "Add-on services",
       addons: { search: "Search (Google Ads)", social: "Social (Meta, LinkedIn, TikTok)", display: "Display", llm: "AI visibility (GEO)", print: "Print", outdoor: "Outdoor (DOOH)", video: "Video & CTV", lifecycle: "Lifecycle (email & CRM)", content: "Content creation" },
@@ -1604,6 +1618,11 @@ function PriceCalculator({ openConsult }) {
   };
   const phaseSum = (pk) => selected.reduce((a, sk) => a + typePhasePrice(sk, pk), 0);
   const packagePrice = (k) => k === "run" ? eur(phaseSum("run")) + p.mo : eur(phaseSum(k));
+  const phaseDescFor = (k) => {
+    if (selected.length === 1 && p.phaseByType && p.phaseByType[selected[0]]) return p.phaseByType[selected[0]][k];
+    if (selected.length > 1 && p.phaseMulti) return p.phaseMulti[k];
+    return p.phaseDesc[k];
+  };
   const typeLabel = selected.map((s) => p.scopes[s]).join(" \u00B7 ");
   const summary = () => {
     const parts = [];
@@ -1730,7 +1749,7 @@ function PriceCalculator({ openConsult }) {
               {["plan", "build", "run"].map((k) => (
                 <button key={k} className={`toggle ${phases[k] ? "on" : ""}`} onClick={() => togglePhase(k)} aria-pressed={phases[k]}>
                   <span className="switch" aria-hidden><span className="switch-knob" /></span>
-                  <span className="toggle-main"><span className="toggle-t">{p.phases[k]}</span><span className="toggle-d">{p.phaseDesc[k]}</span></span>
+                  <span className="toggle-main"><span className="toggle-t">{p.phases[k]}</span><span className="toggle-d">{phaseDescFor(k)}</span></span>
                   <span className="toggle-p mono">{k === "plan" && allLoop && selected.length > 0 ? <span className="waived">{packagePrice("plan")}</span> : packagePrice(k)}</span>
                 </button>
               ))}
