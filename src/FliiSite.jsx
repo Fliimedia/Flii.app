@@ -31,13 +31,13 @@ const I18N = {
       sub: "Wij ontwerpen en ontwikkelen AI architectuur & apps. Gebouwd voor groei, gericht op rendement.",
       primary: "Plan een gesprek", secondary: "Bekijk Flii Loop ↘", loopCta: "Test Flii Loop" },
     brandsLabel: "Merken waarvoor we bouwden",
-    services: { eyebrow: "Wat we doen", h2: "Vijf diensten, één loop",
-      lede: "Design, development, marketing en automatisering. Eén team, één systeem, één doel om te halen.",
+    services: { eyebrow: "Wat we doen", h2: "Klaar om te bouwen?",
+      lede: "Eén aanbod als fundament van resultaat. We bedenken en bouwen jouw blauwdruk voor succes.",
       cta: "Bekijk de dienst ↗",
-      helpH: "Hoe het helpt", execH: "Hoe wij het uitvoeren", outcomeK: "Resultaat",
+      helpH: "Hoe het helpt", execH: "Hoe wij het uitvoeren", outcomeK: "Resultaat", channelsH: "Kanalen waarmee we werken",
       items: [
         { slug: "app-ux", tag: "App & UX", title: "App & UX design",
-          body: "Apps en interfaces die mensen meteen snappen en blijven gebruiken.",
+          body: "Apps en interfaces die doen wat gebruikers willen.",
           lede: "We ontwerpen en bouwen apps en interfaces waar mensen graag mee werken. Van eerste schets tot werkende PWA, met steeds dezelfde vraag: wat heeft de gebruiker echt nodig?",
           help: [{ h: "Minder afhakers", b: "Een heldere flow haalt drempels weg, zodat meer bezoekers doen wat je wilt." }, { h: "Sneller iets echts", b: "We werken in werkende versies in plaats van eindeloze mockups." }, { h: "Klaar voor groei", b: "Een opzet die meegroeit met nieuwe functies en gebruikers." }],
           exec: [{ h: "Onderzoek", b: "We brengen gebruikers, doelen en knelpunten in kaart." }, { h: "Ontwerp", b: "Wireframes en een strak, herkenbaar interfaceontwerp." }, { h: "Bouw", b: "Een responsive app of PWA, meteen hosting-klaar." }, { h: "Meten & verbeteren", b: "We meten gebruik en scherpen de interface aan." }],
@@ -55,7 +55,7 @@ const I18N = {
           exec: [{ h: "Kansen vinden", b: "We zoeken waar AI het meeste oplevert in jouw proces." }, { h: "Ontwerp", b: "We kiezen model, data en de plek in de flow." }, { h: "Integratie", b: "We bouwen het in je tools en koppelen de data." }, { h: "Bijsturen", b: "We meten de output en verbeteren de kwaliteit." }],
           outcome: "AI die meedraait in je processen en elke maand slimmer wordt." },
         { slug: "campaigns", tag: "Campagnes", title: "Marketing campagnes",
-          body: "Campagnes over de juiste kanalen, gestuurd op resultaat.",
+          body: "Content en campagnes voor elk kanaal. In de stem van jouw merk, gericht op resultaat.",
           lede: "We zetten campagnes op die renderen: search, social, display, video, outdoor en AI-vindbaarheid. Eén verhaal, over de kanalen waar jouw klant zit.",
           help: [{ h: "De juiste kanalen", b: "We kiezen kanalen op basis van je doelgroep, niet op gewoonte." }, { h: "Meetbaar rendement", b: "Elke euro is te volgen van klik tot klant." }, { h: "Eén verhaal", b: "Consistente boodschap en creatives over alle kanalen." }],
           exec: [{ h: "Strategie", b: "Doelgroep, boodschap en kanaalkeuze." }, { h: "Creatie", b: "Advertenties, teksten en visuals die opvallen." }, { h: "Lanceren", b: "Opzet, tracking en de eerste live campagnes." }, { h: "Optimaliseren", b: "We schalen wat werkt en snoeien de rest." }],
@@ -197,13 +197,13 @@ const I18N = {
       sub: "We design and build AI architecture & apps. Built for growth, focused on return.",
       primary: "Book a consultation", secondary: "See Flii Loop ↘", loopCta: "Test Flii Loop" },
     brandsLabel: "Brands we've shipped for",
-    services: { eyebrow: "What we do", h2: "Five services, one loop",
-      lede: "Design, development, marketing and automation. One team, one system, one number to hit.",
+    services: { eyebrow: "What we do", h2: "Ready to build?",
+      lede: "One offering as the foundation of results. We design and build your blueprint for success.",
       cta: "See the service ↗",
-      helpH: "How it helps", execH: "How we do it", outcomeK: "Result",
+      helpH: "How it helps", execH: "How we do it", outcomeK: "Result", channelsH: "Channels we work with",
       items: [
         { slug: "app-ux", tag: "App & UX", title: "App & UX design",
-          body: "Apps and interfaces people grasp instantly and keep using.",
+          body: "Apps and interfaces that do what users want.",
           lede: "We design and build apps and interfaces people enjoy using. From first sketch to working PWA, always asking: what does the user actually need?",
           help: [{ h: "Fewer drop-offs", b: "A clear flow removes friction so more visitors do what you want." }, { h: "Something real, sooner", b: "We work in working versions instead of endless mockups." }, { h: "Ready to grow", b: "A setup that scales with new features and users." }],
           exec: [{ h: "Research", b: "We map users, goals and pain points." }, { h: "Design", b: "Wireframes and a sharp, recognisable interface." }, { h: "Build", b: "A responsive app or PWA, hosting-ready." }, { h: "Measure & improve", b: "We measure usage and refine the interface." }],
@@ -221,7 +221,7 @@ const I18N = {
           exec: [{ h: "Find the opportunities", b: "We look for where AI pays off most in your process." }, { h: "Design", b: "We pick the model, data and place in the flow." }, { h: "Integration", b: "We build it into your tools and connect the data." }, { h: "Refine", b: "We measure output and improve quality." }],
           outcome: "AI that runs inside your processes and gets smarter every month." },
         { slug: "campaigns", tag: "Campaigns", title: "Marketing campaigns",
-          body: "Campaigns across the right channels, steered on results.",
+          body: "Content and campaigns for every channel. In your brand's voice, built for results.",
           lede: "We set up campaigns that pay back: search, social, display, video, outdoor and AI visibility. One story, across the channels where your customer is.",
           help: [{ h: "The right channels", b: "We pick channels based on your audience, not habit." }, { h: "Measurable return", b: "Every euro is traceable from click to customer." }, { h: "One story", b: "Consistent message and creative across all channels." }],
           exec: [{ h: "Strategy", b: "Audience, message and channel choice." }, { h: "Creative", b: "Ads, copy and visuals that stand out." }, { h: "Launch", b: "Setup, tracking and the first live campaigns." }, { h: "Optimise", b: "We scale what works and cut the rest." }],
@@ -1049,6 +1049,29 @@ function Marquee({ items, render, className = "", duration = 32 }) {
     </div>
   );
 }
+const BRAND_SVGS = {
+  google: (<svg viewBox="0 0 24 24"><path fill="#4285F4" d="M21.6 12.2c0-.66-.06-1.3-.17-1.9H12v3.6h5.4a4.6 4.6 0 01-2 3v2.5h3.2c1.9-1.75 3-4.3 3-7.2z" /><path fill="#34A853" d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 .95-3.4.95-2.6 0-4.8-1.75-5.6-4.1H3.1v2.6A10 10 0 0012 22z" /><path fill="#FBBC05" d="M6.4 13.95a6 6 0 010-3.9V7.45H3.1a10 10 0 000 9.1z" /><path fill="#EA4335" d="M12 6.05c1.47 0 2.8.5 3.84 1.5l2.85-2.85A10 10 0 003.1 7.45L6.4 10.05C7.2 7.7 9.4 6.05 12 6.05z" /></svg>),
+  facebook: (<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#1877F2" /><path fill="#fff" d="M15 8h-1.6c-.3 0-.6.3-.6.7V11H15l-.3 2.3h-1.9V20h-2.4v-6.7H8.5V11h1.9V9.15c0-1.68 1.02-2.9 2.72-2.9H15z" /></svg>),
+  instagram: (<svg viewBox="0 0 24 24"><defs><linearGradient id="fbl-ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stopColor="#FEDA75" /><stop offset=".3" stopColor="#FA7E1E" /><stop offset=".6" stopColor="#D62976" /><stop offset="1" stopColor="#4F5BD5" /></linearGradient></defs><rect x="2" y="2" width="20" height="20" rx="6" fill="url(#fbl-ig)" /><rect x="6" y="6" width="12" height="12" rx="4" fill="none" stroke="#fff" strokeWidth="1.6" /><circle cx="12" cy="12" r="3" fill="none" stroke="#fff" strokeWidth="1.6" /><circle cx="16.4" cy="7.6" r="1" fill="#fff" /></svg>),
+  tiktok: (<svg viewBox="0 0 24 24"><path fill="#010101" d="M16.5 3c.3 1.9 1.4 3.3 3.5 3.6v2.5c-1.2.1-2.4-.2-3.5-.8v5.2c0 3.1-2.3 5.3-5.2 5.3A5 5 0 016 13.9c.2-2.5 2.2-4.4 4.9-4.3v2.6c-.4-.1-.8-.1-1.2 0-1 .3-1.7 1.1-1.6 2.2.1 1 1 1.9 2 1.9 1.2 0 2.1-.9 2.1-2.3V3z" /></svg>),
+  youtube: (<svg viewBox="0 0 24 24"><rect x="1" y="5" width="22" height="14" rx="4" fill="#FF0000" /><path d="M10 8.5l6 3.5-6 3.5z" fill="#fff" /></svg>),
+  linkedin: (<svg viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#0A66C2" /><path fill="#fff" d="M7 9.5H4.5V19H7zM5.75 5.6a1.45 1.45 0 100 2.9 1.45 1.45 0 000-2.9zM19.5 19H17v-4.8c0-1.2-.43-2-1.5-2-.8 0-1.27.54-1.48 1.06-.08.19-.1.45-.1.71V19h-2.5s.03-8.13 0-9h2.5v1.27c.33-.51.93-1.24 2.25-1.24 1.64 0 2.83 1.07 2.83 3.38z" /></svg>),
+  spotify: (<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#1DB954" /><g fill="none" stroke="#000" strokeWidth="1.6" strokeLinecap="round"><path d="M7 9.5c3-.9 6.6-.6 9.1 1" /><path d="M7.6 12.4c2.6-.7 5.5-.4 7.5 1" /><path d="M8.1 15.2c2-.5 4.1-.3 5.8.8" /></g></svg>),
+};
+const SERVICE_LOGOS = {
+  campaigns: ["google", "instagram", "tiktok", "youtube", "linkedin", "facebook", "spotify"],
+  media: ["google", "facebook", "instagram", "tiktok", "youtube", "linkedin"],
+};
+function BrandLogo({ name }) {
+  const svg = BRAND_SVGS[name];
+  if (!svg) return null;
+  return <span className="brand-logo" aria-label={name}>{svg}</span>;
+}
+function CredLogo({ slug }) {
+  const [err, setErr] = useState(false);
+  if (err || !slug) return <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke={MAG} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>;
+  return <img className="cred-logo" src={`https://cdn.simpleicons.org/${slug}`} alt="" loading="lazy" onError={() => setErr(true)} />;
+}
 function LoopCTA({ openConsult }) {
   const { t } = useLang(); const c = t.loopCta;
   return (
@@ -1092,6 +1115,12 @@ function ServicePage({ id, openConsult }) {
           </div>
         </div>
         <div className="svc-outcome"><span className="svc-outcome-k mono">{svc.outcomeK}</span><p className="svc-outcome-b">{s.outcome}</p></div>
+        {SERVICE_LOGOS[s.slug] && (
+          <div className="svc-logos">
+            <div className="svc-col-h mono">{svc.channelsH}</div>
+            <div className="svc-logos-row">{SERVICE_LOGOS[s.slug].map((n) => <BrandLogo key={n} name={n} />)}</div>
+          </div>
+        )}
       </div></article>
       <LoopCTA openConsult={openConsult} />
     </>
@@ -1153,8 +1182,8 @@ function Home({ content, openConsult }) {
           <div className="creds-label mono">{t.certsLabel}</div>
           <Marquee className="cred-marquee" items={certs} duration={28} render={(c, dup) => (
             <a href={`#/cert/${c.id}`} className="marquee-cred" tabIndex={dup ? -1 : undefined}>
-              <span className="cred-seal" aria-hidden>
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke={MAG} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+              <span className="cred-seal cred-seal-logo" aria-hidden>
+                <CredLogo slug={c.logo || c.id} />
               </span>
               <span className="marquee-cred-name">{c.name}</span>
               <span className="marquee-cred-tier mono">{c.tier}</span>
@@ -1395,6 +1424,7 @@ function CertDetail({ content, id }) {
   return (
     <article className="detail detail-narrow"><div className="wrap">
       <a href="#/" className="back" onClick={(e) => { e.preventDefault(); window.location.hash = "#/"; }}>{t.detail.backHome}</a>
+      <div className="cert-logo-lg"><CredLogo slug={c.logo || c.id} /></div>
       <div className="detail-meta mono">{c.tier}</div>
       <h1 className="display detail-h">{c.name}</h1>
       <p className="detail-lede">{c.blurb}</p>
@@ -2115,6 +2145,11 @@ button{font-family:inherit;}
 .marquee-cred-name{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:16px;color:var(--ink);letter-spacing:-0.01em;transition:color .2s;}
 .marquee-cred-tier{font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--soft);}
 .marquee-cred:hover .marquee-cred-name{color:var(--mag);}
+.cred-seal-logo,.marquee-cred .cred-seal-logo{background:#fff;border:1px solid var(--line);}
+.cred-logo{width:15px;height:15px;object-fit:contain;display:block;}
+.cert-logo-lg{width:56px;height:56px;border-radius:14px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;margin-bottom:24px;}
+.cert-logo-lg img{width:28px;height:28px;object-fit:contain;}
+.cert-logo-lg svg{width:24px;height:24px;}
 .brandwall{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden;}
 .brand-cell{background:var(--paper);display:grid;place-items:center;padding:30px 16px;transition:background .2s;}
 .brand-cell span{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:21px;color:#B7B3A7;letter-spacing:-0.01em;transition:color .2s,transform .2s;}
@@ -2157,6 +2192,11 @@ button{font-family:inherit;}
 .svc-outcome{display:flex;gap:16px;align-items:baseline;margin-top:42px;padding:24px 26px;background:var(--card);border:1px solid var(--line);border-radius:16px;}
 .svc-outcome-k{font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--mag);flex:none;}
 .svc-outcome-b{font-family:'Bricolage Grotesque',sans-serif;font-size:19px;font-weight:500;margin:0;letter-spacing:-0.01em;}
+.svc-logos{margin-top:40px;}
+.svc-logos-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:16px;}
+.brand-logo{display:inline-flex;width:34px;height:34px;flex:none;filter:grayscale(1);opacity:0.72;transition:filter .2s,opacity .2s;}
+.brand-logo:hover{filter:none;opacity:1;}
+.brand-logo svg{width:100%;height:100%;display:block;}
 /* loop CTA band */
 .loop-cta-band{text-align:center;}
 .loop-cta-inner{display:flex;flex-direction:column;align-items:center;}
