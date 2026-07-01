@@ -359,25 +359,25 @@ const useLang = () => useContext(LangCtx);
 const shotUrl = (url) => `https://s.wordpress.com/mshots/v1/${encodeURIComponent(url)}?w=1200&h=900`;
 const DEFAULT_APPS = [
   { id: "waryte", title: "Waryte", client: "Flii Media", tag: "Product / SaaS",
-    summary: "Van trending signaal naar publicatieklare social post, in drie stappen.",
+    summary: "Social content scheduler met geautomatiseerde, branded contentcreatie op basis van trends.",
     link: "https://waryte.vercel.app",
-    metrics: [{ label: "Composer", value: "3 stappen" }, { label: "Bronnen", value: "Reddit + web" }, { label: "Publiceren", value: "1 klik" }],
-    body: "Waryte vangt actuele signalen uit Reddit en het web en zet ze met een AI-composer in drie stappen om naar merkklare social posts: schrijven, verfijnen, opmaken. Een ingebouwde goedkeuringsflow houdt de mens in de regie, en publiceren gebeurt met een klik rechtstreeks naar Webflow.\n\nGebouwd voor teams die elke dag relevant willen zijn, zonder elke dag vanaf nul te beginnen." },
-  { id: "wk2026", title: "WK2026 Voorspellingen", client: "Flii Labs", tag: "Sport / PWA",
-    summary: "Voorspel het WK 2026, volg live standen en reken punten af per wedstrijd.",
+    metrics: [{ label: "Content", value: "Branded" }, { label: "Basis", value: "Trends" }, { label: "Publiceren", value: "Gepland" }],
+    body: "Waryte is een social content scheduler die branded content automatisch creeert op basis van actuele trends. Het volgt wat er speelt, schrijft en maakt posts op in de stem van je merk, en plant ze vooruit in zodat je feed altijd gevuld is.\n\nEen goedkeuringsflow houdt de mens in de regie en publiceren gaat rechtstreeks naar Webflow. Gebouwd voor teams die consistent en actueel willen posten, zonder dagelijks handwerk." },
+  { id: "wk2026", title: "World Cup Model", client: "Flii Labs", tag: "Sport / PWA",
+    summary: "Beheer je WK-voorspellingen en fantasy team op een aanpasbaar datamodel.",
     link: "https://wk2026-voorspellingen.vercel.app/",
-    metrics: [{ label: "Wedstrijden", value: "Live data" }, { label: "Type", value: "PWA" }, { label: "Deploy", value: "Vercel" }],
-    body: "Een speelse voorspellingsapp rond het WK 2026: zet je voorspellingen, stel je poules samen en zie de stand realtime meebewegen met echte wedstrijddata. Een resultatenengine rekent automatisch punten af, compleet met vlaggen, groepsstanden en vloeiende intro-animaties.\n\nMobile-first, installeerbaar als PWA en continu gelanceerd via Vercel." },
+    metrics: [{ label: "Voorspellingen", value: "Live" }, { label: "Fantasy", value: "Team" }, { label: "Datamodel", value: "Aanpasbaar" }],
+    body: "World Cup Model is een omgeving om je WK-voorspellingen en fantasy team op te beheren, gebouwd op een aanpasbaar datamodel. Zet je voorspellingen, stel je team samen en zie standen en punten realtime meebewegen met echte wedstrijddata.\n\nHet datamodel is bij te stellen, zodat regels, punten en scenario's flexibel blijven. Mobile-first, installeerbaar als PWA en gelanceerd via Vercel." },
   { id: "social-os", title: "Flii Social OS", client: "Flii Media", tag: "Marketingsite",
     summary: "De propositie van Flii: strategie, media en platform in een helder verhaal.",
     link: "https://flii.nl",
     metrics: [{ label: "Kanalen", value: "20+" }, { label: "Tools", value: "50+" }, { label: "Focus", value: "Groei" }],
     body: "De publieke site van Flii Media brengt strategie, media-inkoop, contentcreatie en platformbouw samen in een ervaring. Van planning en adverteren op 20+ mediakanalen tot development op maat en een eigen client-dashboard voor data.\n\nGebouwd om ambitieuze merken te laten zien hoe media, creatie en techniek samen resultaat opleveren." },
   { id: "wedding-pwa", title: "Weddy", client: "Privé", tag: "PWA",
-    summary: "Alles voor de trouwdag op een plek: taken, budget, gasten en dagplanning.",
+    summary: "Wedding planner voor bruid en bruidegom: samen alles voor de grote dag geregeld.",
     link: "https://wedding-app-flii-media.vercel.app/",
-    metrics: [{ label: "Modules", value: "4" }, { label: "Offline", value: "Ja" }, { label: "Installeren", value: "PWA" }],
-    body: "Weddy brengt de complete trouwplanning samen in een rustige app: takenlijst, budgetbewaking, gastenlijst en een minuut-voor-minuut dagplanning. Installeerbaar als PWA en offline te gebruiken, zodat alles bij de hand is, ook zonder verbinding.\n\nModule voor module opgebouwd en gelanceerd via Vercel, ontworpen om de stress uit het plannen te halen." },
+    metrics: [{ label: "Voor", value: "Het bruidspaar" }, { label: "Offline", value: "Ja" }, { label: "Installeren", value: "PWA" }],
+    body: "Weddy is een wedding planner voor bruid en bruidegom: samen op een plek de trouwdag regelen. Taken, budget, gastenlijst en een minuut-voor-minuut dagplanning, overzichtelijk en met zijn tweeen bij te houden.\n\nInstalleerbaar als PWA en offline te gebruiken, ontworpen om de stress uit het plannen te halen." },
 ];
 const DEFAULT_ARTICLES = [
   { id: "stop-kapotte-funnels", title: "Stop met kapotte funnels opschalen", cat: "Performance", date: "jun 2026", read: "6 min", cover: "funnel",
@@ -587,7 +587,7 @@ const TABLES = ["reviews", "certs", "apps", "articles"];
 const DEFAULTS = { apps: DEFAULT_APPS, articles: DEFAULT_ARTICLES, reviews: DEFAULT_REVIEWS, certs: DEFAULT_CERTS };
 
 const LS_KEY = "flii_cms_v2";
-const SEED_VERSION = 4;
+const SEED_VERSION = 5;
 function loadStore() { try { const r = localStorage.getItem(LS_KEY); return r ? JSON.parse(r) : null; } catch (e) { return null; } }
 function saveStore(d) { try { localStorage.setItem(LS_KEY, JSON.stringify(d)); } catch (e) {} }
 
