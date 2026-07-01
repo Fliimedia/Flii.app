@@ -20,7 +20,7 @@ const I18N = {
         { group: "Bouwen", blurb: "Ontwerp en lanceer het product.", items: [
           { label: "App & UX design", desc: "Conversiegericht ontwerp", href: "#/dienst/app-ux" },
           { label: "Platform development", desc: "Schaalbaar, met backend", href: "#/dienst/platform" },
-          { label: "AI-integratie", desc: "AI in je processen", href: "#/dienst/ai" } ] },
+          { label: "AI integratie", desc: "AI in je processen", href: "#/dienst/ai" } ] },
         { group: "Groeien", blurb: "Maak van het product groei.", items: [
           { label: "Marketing campagnes", desc: "Over de juiste kanalen", href: "#/dienst/campaigns" },
           { label: "Media performance", desc: "Sturen op rendement", href: "#/dienst/media" } ] },
@@ -28,7 +28,7 @@ const I18N = {
       featureK: "Flii Loop", featureT: "Eén loop die blijft leren →",
     },
     hero: { pre: "AI architectuur als fundament van ", mark: "resultaat", post: "",
-      sub: "Wij ontwerpen en ontwikkelen AI architectuur & apps. Gebouwd voor groei, gericht op rendement.",
+      sub: "Wij ontwerpen en ontwikkelen AI architectuur & apps.",
       primary: "Plan een gesprek", secondary: "Bekijk Flii Loop ↘", loopCta: "Test Flii Loop" },
     brandsLabel: "Merken waarvoor we bouwden",
     services: { eyebrow: "Wat we doen", h2: "Klaar om te bouwen?",
@@ -48,7 +48,7 @@ const I18N = {
           help: [{ h: "Alles op één plek", b: "Data, gebruikers en processen in één systeem in plaats van losse tools." }, { h: "Minder handwerk", b: "Automatisering en koppelingen nemen repeterend werk uit handen." }, { h: "Schaalbaar", b: "Een architectuur die meegroeit met verkeer, features en teams." }],
           exec: [{ h: "Architectuur", b: "We bepalen datamodel, rollen en koppelingen." }, { h: "Bouw", b: "Backend, database en interface, module voor module." }, { h: "Integraties", b: "API's, betalingen, AI en bestaande tools aan elkaar." }, { h: "Beheer", b: "Hosting, monitoring en doorontwikkeling." }],
           outcome: "Een platform dat je bedrijf draagt in plaats van vertraagt." },
-        { slug: "ai", tag: "AI", title: "AI-integratie",
+        { slug: "ai", tag: "AI", title: "AI integratie",
           body: "AI die echt werk uit handen neemt, ingebed in je eigen processen.",
           lede: "We integreren AI daar waar het rendeert: assistenten, automatisering en slimme functies die in je bestaande processen passen, niet ernaast.",
           help: [{ h: "Tijd terug", b: "AI neemt repeterend werk over, je team houdt tijd over voor wat telt." }, { h: "Altijd bereikbaar", b: "Assistenten die vragen beantwoorden en leads kwalificeren, dag en nacht." }, { h: "Betere beslissingen", b: "Modellen die patronen zien die mensen missen." }],
@@ -156,7 +156,7 @@ const I18N = {
       stepHelp: { type: "Kies één type of combineer er meerdere.", details: "Verfijn je keuze per dienst.", pakketten: "Welke fases van de loop neem je af?", content: "Hoeveel content per maand?", result: "Je indicatieve investering." },
       typeNote: "Je kunt types combineren. AI-diensten zijn nieuw en als voorstel geprijsd.",
       waived: "vervalt",
-      details: { pickType: "Kies eerst een type hierboven.", campagneQ: "Welke mediakanalen wil je inzetten?", advice: "Ik weet dit nog niet zeker en wil advies", platformQ: "Welke functionaliteit heeft het platform nodig?", appQ: "Wat voor app wil je?", appFeatures: "Gewenste functionaliteit", appFeaturesPh: "Beschrijf kort wat de app moet kunnen", aiNote: "AI-integratie of automatisering. We bepalen de exacte scope in het gesprek." },
+      details: { pickType: "Kies eerst een type hierboven.", campagneQ: "Welke mediakanalen wil je inzetten?", advice: "Ik weet dit nog niet zeker en wil advies", platformQ: "Welke functionaliteit heeft het platform nodig?", appQ: "Wat voor app wil je?", appFeatures: "Gewenste functionaliteit", appFeaturesPh: "Beschrijf kort wat de app moet kunnen", aiNote: "AI integratie of automatisering. We bepalen de exacte scope in het gesprek." },
       appKinds: { webapp: "Webapp", software: "Software-app" },
       platformFns: { website: "Website", ecommerce: "E-commerce", ai: "AI-functionaliteit" },
       cats: { search: "Search", social: "Social", display: "Display", videotv: "Video & TV", audio: "Audio", email: "E-mail & CRM", messaging: "Messaging", ooh: "Out-of-home", print: "Print", pr: "PR & partnerships" },
@@ -197,7 +197,7 @@ const I18N = {
       featureK: "Flii Loop", featureT: "One loop that keeps learning →",
     },
     hero: { pre: "AI architecture as the foundation of ", mark: "results", post: "",
-      sub: "We design and build AI architecture & apps. Built for growth, focused on return.",
+      sub: "We design and build AI architecture & apps.",
       primary: "Book a consultation", secondary: "See Flii Loop ↘", loopCta: "Test Flii Loop" },
     brandsLabel: "Brands we've shipped for",
     services: { eyebrow: "What we do", h2: "Ready to build?",
@@ -972,8 +972,10 @@ function LoopRing() {
           </g>
           {!reduce && (
             <g className="lr-orbit">
-              <circle cx="50" cy="12" r="4.8" fill="#FFD2E4" filter="url(#lrGlow)" opacity="0.9" />
-              <circle cx="50" cy="12" r="2" fill="#fff" />
+              <g className="lr-star">
+                <path className="lr-star-p" d="M50 7.6 L51 11 L54.4 12 L51 13 L50 16.4 L49 13 L45.6 12 L49 11 Z" fill="#FFD8E7" filter="url(#lrGlow)" />
+                <circle cx="50" cy="12" r="0.9" fill="#fff" />
+              </g>
             </g>
           )}
         </svg>
@@ -2154,7 +2156,9 @@ button{font-family:inherit;}
 .loopmark-svg{width:100%;height:100%;display:block;overflow:visible;filter:saturate(1.05);}
 .lm-rot{transform-box:view-box;transform-origin:50px 50px;animation:loopmark-spin 7s linear infinite;}
 .lm-rot2{transform-box:view-box;transform-origin:50px 50px;animation:loopmark-spin 10s linear infinite reverse;}
-.lr-orbit{transform-box:view-box;transform-origin:50px 50px;animation:loopmark-spin 6.5s linear infinite;}
+.lr-orbit{transform-box:view-box;transform-origin:50px 50px;animation:loopmark-spin 16s linear infinite;}
+.lr-star{animation:lr-twinkle 4s ease-in-out infinite;}
+@keyframes lr-twinkle{0%{opacity:0.7;}50%{opacity:0.12;}100%{opacity:0.7;}}
 @keyframes loopmark-spin{to{transform:rotate(360deg);}}
 .loop-cta:hover .loopmark-svg{filter:saturate(1.2) brightness(1.06);}
 .hero-h1{font-size:clamp(44px,8vw,84px);margin:0 0 20px;}
