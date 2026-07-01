@@ -75,10 +75,10 @@ const I18N = {
     loop: { eyebrow: "Flii Loop", h2: "Verbeter op basis van marktvraag.", center: "Altijd lerend",
       lede: "Een plan voor het opstarten en blijvend verbeteren van jouw apps, platformen of media. Synchroon aan de wensen van je doelgroep, elke maand beter.",
       items: [
-        { k: "Test", body: "Je bouwt en lanceert je app, platform of campagne." },
-        { k: "Measure", body: "Je meet wat er gebeurt met echte data en gedrag." },
-        { k: "Analyse", body: "De data laat zien wat werkt en waar het geld lekt." },
-        { k: "Optimize", body: "Je versterkt wat rendeert en schrapt wat niet werkt." } ],
+        { k: "Livegang", body: "De nieuwe app, campagne of platform bereikt de markt." },
+        { k: "Measure", body: "De reactie van gebruikers wordt in kaart gebracht." },
+        { k: "Analyse", body: "Data wordt omgezet naar inzichten, kansen en problemen." },
+        { k: "Improve", body: "We verbeteren, fixen of zetten een test op." } ],
       lens: { generic: "Algemeen", platform: "Platform", app: "App", media: "Media" },
       variants: {
         platform: ["Je bouwt je platform met backend en gaat live.", "Je meet gebruik, funnels en waar het proces stokt.", "Je ziet welke stappen werken en welke afhaken.", "Je automatiseert meer en schaalt het platform op."],
@@ -264,10 +264,10 @@ const I18N = {
     loop: { eyebrow: "Flii Loop", h2: "Improve based on market demand.", center: "Always learning",
       lede: "A plan for launching and continuously improving your apps, platforms or media. In sync with your audience, better every month.",
       items: [
-        { k: "Test", body: "You build and launch your app, platform or campaign." },
-        { k: "Measure", body: "You measure what happens with real data and behaviour." },
-        { k: "Analyse", body: "The data shows what works and where money leaks." },
-        { k: "Optimize", body: "You strengthen what pays off and cut what does not." } ],
+        { k: "Go live", body: "The new app, campaign or platform reaches the market." },
+        { k: "Measure", body: "The response from users is mapped out." },
+        { k: "Analyse", body: "Data is turned into insights, opportunities and problems." },
+        { k: "Improve", body: "We improve, fix or set up a test." } ],
       lens: { generic: "General", platform: "Platform", app: "App", media: "Media" },
       variants: {
         platform: ["Your platform runs live with backend and real users.", "You measure usage, funnels and where the process stalls.", "You build on what works and automate more.", "Every iteration scales the platform further."],
