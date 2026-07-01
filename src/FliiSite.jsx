@@ -589,11 +589,11 @@ Een nieuw kanaal kost geld en tijd voordat het iets oplevert. Een groter budget 
 De teams die dit benutten, hebben geen geheim kanaal en geen groter budget. Ze hebben alleen de moeite genomen om hun eigen data te laten praten met hun eigen beslissingen. Het signaal was er al. De enige vraag is of je ernaar luistert.` },
 ];
 const DEFAULT_REVIEWS = [
-  { id: "bikefair", quote: "Resultaat geleverd: persoonlijke aanpak, kwaliteit van werk, korte lijntjes. Het zijn experts in hun veld.", name: "J. Pecník", role: "CEO", org: "BikeFair", rating: 5 },
-  { id: "soest-machinery", quote: "Erg tevreden over de kwaliteit, resultaten en betrokkenheid. Bedankt!", name: "M. van Soest", role: "CEO", org: "Soest Machinery", rating: 5 },
-  { id: "social-innovations", quote: "Creatieve denkers die zich goed kunnen verplaatsen in je bedrijf. En waar je van op aan kan.", name: "Tim Muller", role: "Head of Marketing", org: "Social Innovations", rating: 5 },
-  { id: "broadcast-magazine", quote: "Snel, ter zake kundig en met resultaat. Wat wil een mens nog meer?", name: "J. Te Nuijl", role: "Hoofdredacteur", org: "Broadcast Magazine", rating: 5 },
-  { id: "zeewind", quote: "Niets minder dan indrukwekkend. Ik kan hun diensten ten zeerste aanbevelen.", name: "H. Hasnaoui", role: "Eigenaar", org: "Zeewind", rating: 5 },
+  { id: "bikefair", logo: "bikefair.org", quote: "Resultaat geleverd: persoonlijke aanpak, kwaliteit van werk, korte lijntjes. Het zijn experts in hun veld.", name: "J. Pecník", role: "CEO", org: "BikeFair", rating: 5 },
+  { id: "soest-machinery", logo: "soestmachinery.nl", quote: "Erg tevreden over de kwaliteit, resultaten en betrokkenheid. Bedankt!", name: "M. van Soest", role: "CEO", org: "Soest Machinery", rating: 5 },
+  { id: "social-innovations", logo: "socialinnovations.nl", quote: "Creatieve denkers die zich goed kunnen verplaatsen in je bedrijf. En waar je van op aan kan.", name: "Tim Muller", role: "Head of Marketing", org: "Social Innovations", rating: 5 },
+  { id: "broadcast-magazine", logo: "broadcastmagazine.nl", quote: "Snel, ter zake kundig en met resultaat. Wat wil een mens nog meer?", name: "J. Te Nuijl", role: "Hoofdredacteur", org: "Broadcast Magazine", rating: 5 },
+  { id: "zeewind", logo: "zeewind.nl", quote: "Niets minder dan indrukwekkend. Ik kan hun diensten ten zeerste aanbevelen.", name: "H. Hasnaoui", role: "Eigenaar", org: "Zeewind", rating: 5 },
 ];
 const DEFAULT_CERTS = [
   { id: "webflow", name: "Webflow", tier: "Partner", blurb: "Gecertificeerd Webflow-buildpartner voor productiesites en CMS.", href: "#" },
@@ -1211,6 +1211,25 @@ function ServicePage({ id, openConsult }) {
     </>
   );
 }
+function OrgAvatar({ review, lg }) {
+  const [failed, setFailed] = useState(false);
+  const cls = "quote-avatar" + (lg ? " lg" : "");
+  if (review.logo && !failed) {
+    return (
+      <span className={cls + " has-logo"} aria-hidden>
+        <img src={`https://logo.clearbit.com/${review.logo}`} alt="" loading="lazy" onError={() => setFailed(true)} />
+      </span>
+    );
+  }
+  return <div className={cls} aria-hidden>{review.name.charAt(0)}</div>;
+}
+function FliiMark({ className }) {
+  return (
+    <svg className={className} viewBox="0 0 500 500" aria-hidden focusable="false">
+      <path fill="#E7255A" d="m 239.8092,332.68537 c -2.28447,-3.49286 -23.46567,-48.57731 -23.46567,-50.01464 0,-0.93415 13.88823,-0.66647 21.30481,-0.87484 7.75505,-0.21787 53.41913,-115.30501 53.06132,-114.03739 -1.54162,5.46154 -1.00892,4.30871 -0.54189,0.14626 L 322.17232,168.5 H 349.5 v 82.5 82.5 h -22 -22 l -0.26195,-38.32102 c -0.30405,-44.48 7.24157,-55.84478 -0.8773,-38.24361 -11.37304,20.61415 -25.02431,56.46612 -37.2072,76.63979 C 266.40468,334.4775 262.28909,334 253.90061,334 c -11.19087,0 -12.7022,0.80941 -14.09141,-1.31463 z m -82.3413,-2.91541 C 157.20134,329.07148 157.09952,292.5 157.24162,248.5 l 0.25838,-80 58.25,-0.25806 c 55.01074,-0.24371 59.35516,-1.52083 59.35032,0.13946 -0.003,0.96693 -4.62864,12.78964 -10.28528,24.20363 L 254.96003,214.35034 227.97492,214 201.5,214.5 v 13.5 13.5 l 19.3529,0.27195 19.3529,0.27196 0.91723,0.0629 c 1.38257,0.0949 -3.92785,10.20835 -7.20338,17.07342 l -6.24989,13.09893 -13.33998,-0.0597 L 201.5,272.5 l -0.5,29 -0.5,29 -21.27373,0.26996 c -16.47548,0.20907 -21.38304,-0.0165 -21.75837,-1 z" />
+    </svg>
+  );
+}
 function Home({ content, openConsult }) {
   const { t } = useLang();
   const { apps, articles, reviews, certs } = content;
@@ -1334,7 +1353,7 @@ function Home({ content, openConsult }) {
             <div className="byline">
               <div className="byline-brand"><FliiLogo variant="word" /></div>
               <a href="https://flii.nl" target="_blank" rel="noreferrer" className="byline-right">
-                <span className="byline-by">{t.byline.by} <span className="byline-name">{t.byline.name}</span> <span className="byline-arrow" aria-hidden>↗</span></span>
+                <span className="byline-by"><FliiMark className="byline-logo" />{t.byline.by} <span className="byline-name">{t.byline.name}</span> <span className="byline-arrow" aria-hidden>↗</span></span>
                 <span className="rating-badge"><span className="rating-stars" aria-hidden>★★★★★</span><span className="rating-meta"><strong>{avg}</strong><span className="mono">{reviews.length} {t.reviews.word}</span></span></span>
               </a>
             </div>
@@ -1344,7 +1363,7 @@ function Home({ content, openConsult }) {
               <Section key={q.id} className="quote-card" style={{ transitionDelay: `${i * 70}ms` }}>
                 <a href={`#/review/${q.id}`} className="quote-link">
                   <p className="quote-text">“{q.quote}”</p>
-                  <div className="quote-by"><div className="quote-avatar" aria-hidden>{q.name.charAt(0)}</div><div><div className="quote-name">{q.name}</div><div className="quote-role mono">{q.role} · {q.org}</div></div></div>
+                  <div className="quote-by"><OrgAvatar review={q} /><div><div className="quote-name">{q.name}</div><div className="quote-role mono">{q.role} · {q.org}</div></div></div>
                 </a>
               </Section>
             ))}
@@ -1519,7 +1538,7 @@ function ReviewDetail({ content, id }) {
       <a href="#/" className="back" onClick={(e) => { e.preventDefault(); window.location.hash = "#/"; }}>{t.detail.backHome}</a>
       <div className="rating-stars big" aria-hidden>{"★".repeat(r.rating || 5)}{"☆".repeat(5 - (r.rating || 5))}</div>
       <h1 className="display detail-quote">“{r.quote}”</h1>
-      <div className="detail-by"><div className="quote-avatar lg" aria-hidden>{r.name.charAt(0)}</div><div><div className="quote-name lg">{r.name}</div><div className="quote-role mono">{r.role} · {r.org}</div></div></div>
+      <div className="detail-by"><OrgAvatar review={r} lg /><div><div className="quote-name lg">{r.name}</div><div className="quote-role mono">{r.role} · {r.org}</div></div></div>
     </div></article>
   );
 }
@@ -1636,7 +1655,6 @@ function PriceCalculator({ openConsult }) {
   const toggleOpt = (k) => setOpts((s) => ({ ...s, [k]: !s[k] }));
   const optLabel = (k) => (p.typeOpts && p.typeOpts[k]) || k;
   const { once, mo, saving, allLoop, selected } = computeLoop({ types, phases, cats, dels });
-  const onceA = useCountUp(once); const moA = useCountUp(mo);
   const nothing = once === 0 && mo === 0;
   const steps = ["type", "details", "pakketten", "result"];
   const last = steps.length - 1;
@@ -1855,8 +1873,8 @@ function PriceCalculator({ openConsult }) {
                   {advice && <div className="receipt-row"><span className="receipt-l">{p.details.advice}</span><span className="receipt-p mono">{p.onRequest}</span></div>}
                 </div>
                 <div className="receipt-tot">
-                  <div className="receipt-row receipt-total"><span className="receipt-l">{p.once}</span><span className="receipt-p mono">{eur(onceA)}</span></div>
-                  {mo > 0 && <div className="receipt-row receipt-total"><span className="receipt-l">{p.perMonth}</span><span className="receipt-p mono">{eur(moA)}{p.mo}</span></div>}
+                  <div className="receipt-row receipt-total"><span className="receipt-l">{p.once}</span><span className="receipt-p mono">{eur(once)}</span></div>
+                  {mo > 0 && <div className="receipt-row receipt-total"><span className="receipt-l">{p.perMonth}</span><span className="receipt-p mono">{eur(mo)}{p.mo}</span></div>}
                 </div>
               </>}
               <button className="btn btn-primary cfg-cta" onClick={() => openConsult(null, summary())}>{p.cta}</button>
@@ -1866,7 +1884,7 @@ function PriceCalculator({ openConsult }) {
       </div>
       <div className="calc-nav">
         <button className="btn btn-ghost btn-sm" onClick={() => go(-1)} disabled={step === 0}>{p.back}</button>
-        <div className="calc-running mono">{!nothing && `${p.totalFrom} ${eur(onceA)}${mo ? ` \u00B7 ${eur(moA)}${p.mo}` : ""}`}</div>
+        <div className="calc-running mono">{!nothing && `${p.totalFrom} ${eur(once)}${mo ? ` \u00B7 ${eur(mo)}${p.mo}` : ""}`}</div>
         {step < last ? <button className="btn btn-primary btn-sm" onClick={() => go(1)}>{p.next}</button> : <button className="btn btn-ghost btn-sm" onClick={() => setStep(0)}>{p.startOver}</button>}
       </div>
     </div>
@@ -2534,6 +2552,9 @@ button{font-family:inherit;}
 .quote-text{font-size:16px;color:var(--ink);margin:0 0 22px;line-height:1.55;}
 .quote-by{display:flex;align-items:center;gap:12px;margin-top:auto;}
 .quote-avatar{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;color:var(--paper);font-weight:700;background:var(--ink);font-family:'Bricolage Grotesque',sans-serif;}
+.quote-avatar.has-logo{background:#fff;border:1px solid var(--line);overflow:hidden;padding:0;}
+.quote-avatar.has-logo img{width:100%;height:100%;object-fit:contain;padding:7px;box-sizing:border-box;display:block;}
+.byline-logo{width:17px;height:17px;flex:none;margin-right:5px;vertical-align:-3px;}
 .quote-avatar.lg{width:54px;height:54px;font-size:22px;}
 .quote-name{font-weight:600;font-size:14.5px;}.quote-name.lg{font-size:18px;}
 .quote-role{font-size:11.5px;color:var(--soft);margin-top:2px;}
