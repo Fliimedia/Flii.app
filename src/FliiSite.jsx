@@ -18,26 +18,55 @@ const I18N = {
     mega: {
       groups: [
         { group: "Bouwen", blurb: "Ontwerp en lanceer het product.", items: [
-          { label: "App-design & UX", desc: "Conversiegericht ontwerp", href: "#solutions" },
-          { label: "App-ontwikkeling", desc: "Snel naar productie", href: "#solutions" } ] },
+          { label: "App & UX design", desc: "Conversiegericht ontwerp", href: "#/dienst/app-ux" },
+          { label: "Platform development", desc: "Schaalbaar, met backend", href: "#/dienst/platform" },
+          { label: "AI-integratie", desc: "AI in je processen", href: "#/dienst/ai" } ] },
         { group: "Groeien", blurb: "Maak van het product groei.", items: [
-          { label: "AI-performance-marketing", desc: "Gebouwd op rendement", href: "#solutions" },
-          { label: "Optimalisatie & automatisering", desc: "CRO, analytics, AI-ops", href: "#solutions" } ] },
+          { label: "Marketing campagnes", desc: "Over de juiste kanalen", href: "#/dienst/campaigns" },
+          { label: "Media performance", desc: "Sturen op rendement", href: "#/dienst/media" } ] },
       ],
-      featureK: "Flii Loop", featureT: "Eén AI-fundament dat blijft leren →",
+      featureK: "Flii Loop", featureT: "Eén loop die blijft leren →",
     },
     hero: { pre: "AI architectuur als fundament van ", mark: "resultaat", post: "",
       sub: "Wij ontwerpen en ontwikkelen AI architectuur & apps. Gebouwd voor groei, gericht op rendement.",
       primary: "Plan een gesprek", secondary: "Bekijk Flii Loop ↘", loopCta: "Test Flii Loop" },
     brandsLabel: "Merken waarvoor we bouwden",
-    services: { eyebrow: "Wat we doen", h2: "Wat we bouwen",
+    services: { eyebrow: "Wat we doen", h2: "Vijf diensten, één loop",
       lede: "Design, development, marketing en automatisering. Eén team, één systeem, één doel om te halen.",
-      cta: "Start een project ↗",
+      cta: "Bekijk de dienst ↗",
+      helpH: "Hoe het helpt", execH: "Hoe wij het uitvoeren", outcomeK: "Resultaat",
       items: [
-        { title: "AI-chatbots & assistenten", body: "Slimme assistenten die altijd opnemen, vragen beantwoorden en leads kwalificeren." },
-        { title: "Websites & web-apps", body: "Snelle, strakke sites en apps die bezoekers omzetten in klanten." },
-        { title: "AI-automatisering", body: "Laat saai, repeterend werk door AI doen en houd tijd over voor groei." },
-        { title: "Performance-marketing", body: "Advertenties die meetbaar renderen, geen budget dat verdampt." } ] },
+        { slug: "app-ux", tag: "App & UX", title: "App & UX design",
+          body: "Apps en interfaces die mensen meteen snappen en blijven gebruiken.",
+          lede: "We ontwerpen en bouwen apps en interfaces waar mensen graag mee werken. Van eerste schets tot werkende PWA, met steeds dezelfde vraag: wat heeft de gebruiker echt nodig?",
+          help: [{ h: "Minder afhakers", b: "Een heldere flow haalt drempels weg, zodat meer bezoekers doen wat je wilt." }, { h: "Sneller iets echts", b: "We werken in werkende versies in plaats van eindeloze mockups." }, { h: "Klaar voor groei", b: "Een opzet die meegroeit met nieuwe functies en gebruikers." }],
+          exec: [{ h: "Onderzoek", b: "We brengen gebruikers, doelen en knelpunten in kaart." }, { h: "Ontwerp", b: "Wireframes en een strak, herkenbaar interfaceontwerp." }, { h: "Bouw", b: "Een responsive app of PWA, meteen hosting-klaar." }, { h: "Meten & verbeteren", b: "We meten gebruik en scherpen de interface aan." }],
+          outcome: "Een app die klopt, converteert en klaarstaat om door te ontwikkelen." },
+        { slug: "platform", tag: "Platform", title: "Platform development",
+          body: "Schaalbare platformen met backend, data en AI onder de motorkap.",
+          lede: "We bouwen volwaardige platformen: portals, webapps en sites met een echte backend, gebruikersrollen en waar nodig AI. Gemaakt om te schalen.",
+          help: [{ h: "Alles op één plek", b: "Data, gebruikers en processen in één systeem in plaats van losse tools." }, { h: "Minder handwerk", b: "Automatisering en koppelingen nemen repeterend werk uit handen." }, { h: "Schaalbaar", b: "Een architectuur die meegroeit met verkeer, features en teams." }],
+          exec: [{ h: "Architectuur", b: "We bepalen datamodel, rollen en koppelingen." }, { h: "Bouw", b: "Backend, database en interface, module voor module." }, { h: "Integraties", b: "API's, betalingen, AI en bestaande tools aan elkaar." }, { h: "Beheer", b: "Hosting, monitoring en doorontwikkeling." }],
+          outcome: "Een platform dat je bedrijf draagt in plaats van vertraagt." },
+        { slug: "ai", tag: "AI", title: "AI-integratie",
+          body: "AI die echt werk uit handen neemt, ingebed in je eigen processen.",
+          lede: "We integreren AI daar waar het rendeert: assistenten, automatisering en slimme functies die in je bestaande processen passen, niet ernaast.",
+          help: [{ h: "Tijd terug", b: "AI neemt repeterend werk over, je team houdt tijd over voor wat telt." }, { h: "Altijd bereikbaar", b: "Assistenten die vragen beantwoorden en leads kwalificeren, dag en nacht." }, { h: "Betere beslissingen", b: "Modellen die patronen zien die mensen missen." }],
+          exec: [{ h: "Kansen vinden", b: "We zoeken waar AI het meeste oplevert in jouw proces." }, { h: "Ontwerp", b: "We kiezen model, data en de plek in de flow." }, { h: "Integratie", b: "We bouwen het in je tools en koppelen de data." }, { h: "Bijsturen", b: "We meten de output en verbeteren de kwaliteit." }],
+          outcome: "AI die meedraait in je processen en elke maand slimmer wordt." },
+        { slug: "campaigns", tag: "Campagnes", title: "Marketing campagnes",
+          body: "Campagnes over de juiste kanalen, gestuurd op resultaat.",
+          lede: "We zetten campagnes op die renderen: search, social, display, video, outdoor en AI-vindbaarheid. Eén verhaal, over de kanalen waar jouw klant zit.",
+          help: [{ h: "De juiste kanalen", b: "We kiezen kanalen op basis van je doelgroep, niet op gewoonte." }, { h: "Meetbaar rendement", b: "Elke euro is te volgen van klik tot klant." }, { h: "Eén verhaal", b: "Consistente boodschap en creatives over alle kanalen." }],
+          exec: [{ h: "Strategie", b: "Doelgroep, boodschap en kanaalkeuze." }, { h: "Creatie", b: "Advertenties, teksten en visuals die opvallen." }, { h: "Lanceren", b: "Opzet, tracking en de eerste live campagnes." }, { h: "Optimaliseren", b: "We schalen wat werkt en snoeien de rest." }],
+          outcome: "Campagnes die te volgen zijn tot op de klant, en elke maand scherper." },
+        { slug: "media", tag: "Performance", title: "Media performance",
+          body: "Doorlopend sturen op data, zodat elke euro harder werkt.",
+          lede: "Beheer en optimalisatie van je media. We sturen doorlopend op de cijfers die tellen, verbeteren wat rendeert en schrappen wat niet werkt.",
+          help: [{ h: "Minder verspilling", b: "Budget verschuift naar wat het beste presteert." }, { h: "Grip op de cijfers", b: "Rapportage op omzet en waarde per bezoeker, geen ijdele cijfers." }, { h: "Continu beter", b: "Elke maand een iteratie op basis van echte data." }],
+          exec: [{ h: "Meten", b: "We zetten tracking en attributie goed neer." }, { h: "Analyseren", b: "We lezen de data en vinden de knelpunten." }, { h: "Bijsturen", b: "We optimaliseren biedingen, doelgroepen en creatives." }, { h: "Rapporteren", b: "Transparante rapportage op wat echt telt." }],
+          outcome: "Media die elke maand meetbaar beter presteert." }] },
+    loopCta: { k: "Flii Loop", h2: "Elke dienst draait in Flii Loop.", body: "We lanceren, meten, verbeteren en herhalen. Zo wordt elke dienst elke maand beter, in plaats van eenmalig af.", pricing: "Bekijk Flii Loop ↗", talk: "Plan een gesprek" },
     certsLabel: "Gecertificeerd & partner",
     stats: [
       { value: 21, suffix: " dagen", label: "Van brief tot live" },
@@ -78,9 +107,8 @@ const I18N = {
       primary: "Plan een gesprek", secondary: "Vraag een groei-audit ↗" },
     contact: [
       { k: "Locatie", v: "Amstelveen, NL", href: null },
-      { k: "Bericht", v: "WhatsApp ons", href: "https://wa.me/" },
-      { k: "E-mail", v: "hello@flii.app", href: "mailto:hello@flii.app" },
-      { k: "Aanmelden", v: "The Flii Signal", href: "mailto:hello@flii.app?subject=Aanmelden%20Flii%20Signal" } ],
+      { k: "Bericht", v: "WhatsApp ons", href: "https://wa.me/31640881169" },
+      { k: "E-mail", v: "hello@flii.app", href: "mailto:hello@flii.app" } ],
     consult: { eyebrow: "Plan een gesprek", h: "Waar kunnen we je mee helpen?",
       formH: "Vertel ons iets meer", name: "Naam", email: "E-mail", back: "← Terug", send: "Versturen",
       opts: [
@@ -156,26 +184,55 @@ const I18N = {
     mega: {
       groups: [
         { group: "Build", blurb: "Design and ship the product.", items: [
-          { label: "App Design & UX", desc: "Conversion-smart design", href: "#solutions" },
-          { label: "App Development", desc: "Production builds, fast", href: "#solutions" } ] },
+          { label: "App & UX design", desc: "Conversion-smart design", href: "#/dienst/app-ux" },
+          { label: "Platform development", desc: "Scalable, with backend", href: "#/dienst/platform" },
+          { label: "AI integration", desc: "AI in your processes", href: "#/dienst/ai" } ] },
         { group: "Grow", blurb: "Turn the product into growth.", items: [
-          { label: "AI Performance Marketing", desc: "Engineered for ROAS", href: "#solutions" },
-          { label: "Optimisation & Automation", desc: "CRO, analytics, AI ops", href: "#solutions" } ] },
+          { label: "Marketing campaigns", desc: "Across the right channels", href: "#/dienst/campaigns" },
+          { label: "Media performance", desc: "Steered on return", href: "#/dienst/media" } ] },
       ],
-      featureK: "Flii Loop", featureT: "One AI foundation that keeps learning →",
+      featureK: "Flii Loop", featureT: "One loop that keeps learning →",
     },
     hero: { pre: "AI architecture as the foundation of ", mark: "results", post: "",
       sub: "We design and build AI architecture & apps. Built for growth, focused on return.",
       primary: "Book a consultation", secondary: "See Flii Loop ↘", loopCta: "Test Flii Loop" },
     brandsLabel: "Brands we've shipped for",
-    services: { eyebrow: "What we do", h2: "What we build",
+    services: { eyebrow: "What we do", h2: "Five services, one loop",
       lede: "Design, development, marketing and automation. One team, one system, one number to hit.",
-      cta: "Start a project ↗",
+      cta: "See the service ↗",
+      helpH: "How it helps", execH: "How we do it", outcomeK: "Result",
       items: [
-        { title: "AI chatbots & assistants", body: "Smart assistants that always pick up, answer questions and qualify leads." },
-        { title: "Websites & web apps", body: "Fast, sharp sites and apps that turn visitors into customers." },
-        { title: "AI automation", body: "Let AI handle the boring, repetitive work so you can focus on growth." },
-        { title: "Performance marketing", body: "Ads that measurably pay back, not budget that evaporates." } ] },
+        { slug: "app-ux", tag: "App & UX", title: "App & UX design",
+          body: "Apps and interfaces people grasp instantly and keep using.",
+          lede: "We design and build apps and interfaces people enjoy using. From first sketch to working PWA, always asking: what does the user actually need?",
+          help: [{ h: "Fewer drop-offs", b: "A clear flow removes friction so more visitors do what you want." }, { h: "Something real, sooner", b: "We work in working versions instead of endless mockups." }, { h: "Ready to grow", b: "A setup that scales with new features and users." }],
+          exec: [{ h: "Research", b: "We map users, goals and pain points." }, { h: "Design", b: "Wireframes and a sharp, recognisable interface." }, { h: "Build", b: "A responsive app or PWA, hosting-ready." }, { h: "Measure & improve", b: "We measure usage and refine the interface." }],
+          outcome: "An app that fits, converts and is ready to build on." },
+        { slug: "platform", tag: "Platform", title: "Platform development",
+          body: "Scalable platforms with backend, data and AI under the hood.",
+          lede: "We build full platforms: portals, web apps and sites with a real backend, user roles and AI where needed. Made to scale.",
+          help: [{ h: "Everything in one place", b: "Data, users and processes in one system instead of scattered tools." }, { h: "Less manual work", b: "Automation and integrations take repetitive work off your hands." }, { h: "Scalable", b: "An architecture that grows with traffic, features and teams." }],
+          exec: [{ h: "Architecture", b: "We define the data model, roles and integrations." }, { h: "Build", b: "Backend, database and interface, module by module." }, { h: "Integrations", b: "APIs, payments, AI and existing tools connected." }, { h: "Operate", b: "Hosting, monitoring and further development." }],
+          outcome: "A platform that carries your business instead of slowing it." },
+        { slug: "ai", tag: "AI", title: "AI integration",
+          body: "AI that truly takes work off your hands, embedded in your processes.",
+          lede: "We integrate AI where it pays off: assistants, automation and smart features that fit inside your existing processes, not beside them.",
+          help: [{ h: "Time back", b: "AI takes over repetitive work so your team focuses on what matters." }, { h: "Always available", b: "Assistants that answer questions and qualify leads, day and night." }, { h: "Better decisions", b: "Models that spot patterns people miss." }],
+          exec: [{ h: "Find the opportunities", b: "We look for where AI pays off most in your process." }, { h: "Design", b: "We pick the model, data and place in the flow." }, { h: "Integration", b: "We build it into your tools and connect the data." }, { h: "Refine", b: "We measure output and improve quality." }],
+          outcome: "AI that runs inside your processes and gets smarter every month." },
+        { slug: "campaigns", tag: "Campaigns", title: "Marketing campaigns",
+          body: "Campaigns across the right channels, steered on results.",
+          lede: "We set up campaigns that pay back: search, social, display, video, outdoor and AI visibility. One story, across the channels where your customer is.",
+          help: [{ h: "The right channels", b: "We pick channels based on your audience, not habit." }, { h: "Measurable return", b: "Every euro is traceable from click to customer." }, { h: "One story", b: "Consistent message and creative across all channels." }],
+          exec: [{ h: "Strategy", b: "Audience, message and channel choice." }, { h: "Creative", b: "Ads, copy and visuals that stand out." }, { h: "Launch", b: "Setup, tracking and the first live campaigns." }, { h: "Optimise", b: "We scale what works and cut the rest." }],
+          outcome: "Campaigns traceable down to the customer, sharper every month." },
+        { slug: "media", tag: "Performance", title: "Media performance",
+          body: "Steering on data continuously, so every euro works harder.",
+          lede: "Management and optimisation of your media. We steer continuously on the numbers that matter, improve what pays off and cut what does not.",
+          help: [{ h: "Less waste", b: "Budget shifts to what performs best." }, { h: "Grip on the numbers", b: "Reporting on revenue and value per visitor, no vanity metrics." }, { h: "Continuously better", b: "An iteration every month based on real data." }],
+          exec: [{ h: "Measure", b: "We set up tracking and attribution properly." }, { h: "Analyse", b: "We read the data and find the bottlenecks." }, { h: "Adjust", b: "We optimise bids, audiences and creative." }, { h: "Report", b: "Transparent reporting on what really counts." }],
+          outcome: "Media that performs measurably better every month." }] },
+    loopCta: { k: "Flii Loop", h2: "Every service runs inside Flii Loop.", body: "We launch, measure, improve and repeat. So every service gets better every month, instead of shipping once and stopping.", pricing: "See Flii Loop ↗", talk: "Book a consultation" },
     certsLabel: "Certified & partnered",
     stats: [
       { value: 21, suffix: " days", label: "Brief to live" },
@@ -216,9 +273,8 @@ const I18N = {
       primary: "Book a consultation", secondary: "Get a growth audit ↗" },
     contact: [
       { k: "Location", v: "Amstelveen, NL", href: null },
-      { k: "Message", v: "WhatsApp us", href: "https://wa.me/" },
-      { k: "Email", v: "hello@flii.app", href: "mailto:hello@flii.app" },
-      { k: "Join", v: "The Flii Signal", href: "mailto:hello@flii.app?subject=Join%20Flii%20Signal" } ],
+      { k: "Message", v: "WhatsApp us", href: "https://wa.me/31640881169" },
+      { k: "Email", v: "hello@flii.app", href: "mailto:hello@flii.app" } ],
     consult: { eyebrow: "Book a consultation", h: "How can we help?",
       formH: "Tell us a bit more", name: "Name", email: "Email", back: "← Back", send: "Send",
       opts: [
@@ -565,6 +621,7 @@ function parseHash() {
   const [seg, id] = h.split("/");
   if (seg === "cms") return { name: "cms" };
   if (seg === "prijzen") return { name: "prijzen" };
+  if (seg === "dienst" && id) return { name: "service", id };
   if (["app", "insight", "review", "cert"].includes(seg) && id) return { name: seg, id };
   return { name: "home" };
 }
@@ -798,7 +855,7 @@ function Footer({ admin }) {
         <div><a href="#/" aria-label="Flii.app home"><FliiLogo dark variant="word" /></a><p className="footer-note">{t.slogan}.</p></div>
         <div className="footer-col"><div className="footer-h mono">{t.footer.solutions}</div>{t.mega.groups.flatMap((g) => g.items).map((c) => <a key={c.label} href={c.href}>{c.label}</a>)}</div>
         <div className="footer-col"><div className="footer-h mono">{t.footer.company}</div>{t.footer.company_links.filter((c) => c.href !== "#/cms" || admin).map((c) => <a key={c.label} href={c.href}>{c.label}</a>)}</div>
-        <div className="footer-col"><div className="footer-h mono">{t.footer.connect}</div><a href="#">LinkedIn</a><a href="#">Instagram</a><a href="mailto:hello@flii.app">hello@flii.app</a></div>
+        <div className="footer-col"><div className="footer-h mono">{t.footer.connect}</div><a href="https://wa.me/31640881169" target="_blank" rel="noreferrer">WhatsApp</a><a href="https://linkedin.com/company/flii-media" target="_blank" rel="noreferrer">LinkedIn</a><a href="mailto:hello@flii.app">hello@flii.app</a></div>
       </div>
       <div className="wrap footer-bottom"><span>© {new Date().getFullYear()} Flii.app</span><span className="mono">{t.footer.bottom}</span></div>
     </footer>
@@ -992,6 +1049,54 @@ function Marquee({ items, render, className = "", duration = 32 }) {
     </div>
   );
 }
+function LoopCTA({ openConsult }) {
+  const { t } = useLang(); const c = t.loopCta;
+  return (
+    <section className="band band-dark loop-cta-band">
+      <div className="wrap loop-cta-inner">
+        <FliiLoopMark />
+        <div className="eyebrow on-dark loop-cta-k">{c.k}</div>
+        <h2 className="display h2 on-dark loop-cta-h">{c.h2}</h2>
+        <p className="lede on-dark-soft loop-cta-body">{c.body}</p>
+        <div className="loop-cta-actions">
+          <a href="#/prijzen" className="btn btn-primary">{c.pricing}</a>
+          <button onClick={openConsult} className="btn btn-ghost on-dark">{c.talk}</button>
+        </div>
+      </div>
+    </section>
+  );
+}
+function ServicePage({ id, openConsult }) {
+  const { t } = useLang(); const svc = t.services;
+  const s = svc.items.find((x) => x.slug === id);
+  if (!s) return <NotFound back="#/" />;
+  return (
+    <>
+      <article className="detail service-page"><div className="wrap">
+        <a href="#/" className="back">{t.detail.backHome}</a>
+        <div className="detail-meta mono">{s.tag}</div>
+        <h1 className="display detail-h">{s.title}</h1>
+        <p className="detail-lede">{s.lede}</p>
+        <div className="svc-cols">
+          <div className="svc-col">
+            <div className="svc-col-h mono">{svc.helpH}</div>
+            <div className="svc-list">
+              {s.help.map((it, i) => <div key={i} className="svc-item"><div className="svc-item-h">{it.h}</div><p className="svc-item-b">{it.b}</p></div>)}
+            </div>
+          </div>
+          <div className="svc-col">
+            <div className="svc-col-h mono">{svc.execH}</div>
+            <div className="svc-steps">
+              {s.exec.map((it, i) => <div key={i} className="svc-step"><span className="svc-step-n mono">{String(i + 1).padStart(2, "0")}</span><div className="svc-step-main"><div className="svc-step-h">{it.h}</div><p className="svc-step-b">{it.b}</p></div></div>)}
+            </div>
+          </div>
+        </div>
+        <div className="svc-outcome"><span className="svc-outcome-k mono">{svc.outcomeK}</span><p className="svc-outcome-b">{s.outcome}</p></div>
+      </div></article>
+      <LoopCTA openConsult={openConsult} />
+    </>
+  );
+}
 function Home({ content, openConsult }) {
   const { t } = useLang();
   const { apps, articles, reviews, certs } = content;
@@ -1029,10 +1134,13 @@ function Home({ content, openConsult }) {
           <div className="service-grid">
             {t.services.items.map((s, i) => (
               <Section key={i} className="service" style={{ transitionDelay: `${i * 80}ms` }}>
-                <div className="service-n mono">{String(i + 1).padStart(2, "0")}</div>
-                <h3 className="service-title">{s.title}</h3>
-                <p className="service-body">{s.body}</p>
-                <button onClick={openConsult} className="service-link">{t.services.cta}</button>
+                <a href={`#/dienst/${s.slug}`} className="service-link-wrap">
+                  <div className="service-n mono">{String(i + 1).padStart(2, "0")}</div>
+                  <div className="service-tag mono">{s.tag}</div>
+                  <h3 className="service-title">{s.title}</h3>
+                  <p className="service-body">{s.body}</p>
+                  <span className="service-link">{t.services.cta}</span>
+                </a>
               </Section>
             ))}
           </div>
@@ -1874,6 +1982,7 @@ export default function FliiSite() {
         {route.name === "home" && <Home content={content.data} openConsult={openConsult} />}
         {route.name === "cms" && (admin ? <CMS content={content} /> : <LockedNotice onLogin={() => setLoginOpen(true)} />)}
         {route.name === "prijzen" && <Pricing openConsult={openConsult} />}
+        {route.name === "service" && <ServicePage id={route.id} openConsult={openConsult} />}
         {route.name === "app" && <AppDetail content={content.data} id={route.id} />}
         {route.name === "insight" && <ArticleDetail content={content.data} id={route.id} />}
         {route.name === "review" && <ReviewDetail content={content.data} id={route.id} />}
@@ -2022,14 +2131,40 @@ button{font-family:inherit;}
 .band-dark .lede{color:#BDBAB0;}
 
 /* services */
-.service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:48px;}
-.service{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;display:flex;flex-direction:column;min-height:230px;transition:transform .2s,box-shadow .2s;}
+.service-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin-top:48px;}
+.service{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:0;display:flex;flex-direction:column;min-height:230px;transition:transform .2s,box-shadow .2s;}
 .service:hover{transform:translateY(-4px);box-shadow:0 30px 50px -28px rgba(23,23,23,0.18);}
+.service-link-wrap{display:flex;flex-direction:column;flex:1;padding:26px;text-decoration:none;color:inherit;}
+.service-tag{font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--mag);margin-top:8px;}
 .service-n{font-size:13px;color:var(--mid);margin-bottom:auto;}
-.service-title{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;margin:26px 0 10px;letter-spacing:-0.01em;}
+.service-title{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;margin:14px 0 10px;letter-spacing:-0.01em;}
 .service-body{font-size:14.5px;color:var(--mid);margin:0 0 16px;}
 .service-link{background:none;border:none;padding:0;font:inherit;font-size:13.5px;font-weight:600;color:var(--ink);cursor:pointer;text-align:left;}
 .service-link:hover{color:var(--mag);}
+.service-link-wrap:hover .service-link{color:var(--mag);}
+/* service page */
+.service-page .detail-lede{max-width:60ch;}
+.svc-cols{display:grid;grid-template-columns:1fr 1fr;gap:44px;margin:46px 0 8px;}
+.svc-col-h{font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--soft);margin-bottom:20px;}
+.svc-list{display:flex;flex-direction:column;gap:22px;}
+.svc-item-h{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:18px;margin-bottom:5px;letter-spacing:-0.01em;}
+.svc-item-b{font-size:15px;color:var(--mid);margin:0;line-height:1.55;}
+.svc-steps{display:flex;flex-direction:column;gap:18px;}
+.svc-step{display:flex;gap:15px;align-items:flex-start;}
+.svc-step-n{color:var(--mag);font-size:13px;font-weight:600;padding-top:2px;flex:none;}
+.svc-step-h{font-weight:600;font-size:16px;margin-bottom:3px;}
+.svc-step-b{font-size:14.5px;color:var(--mid);margin:0;line-height:1.5;}
+.svc-outcome{display:flex;gap:16px;align-items:baseline;margin-top:42px;padding:24px 26px;background:var(--card);border:1px solid var(--line);border-radius:16px;}
+.svc-outcome-k{font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--mag);flex:none;}
+.svc-outcome-b{font-family:'Bricolage Grotesque',sans-serif;font-size:19px;font-weight:500;margin:0;letter-spacing:-0.01em;}
+/* loop CTA band */
+.loop-cta-band{text-align:center;}
+.loop-cta-inner{display:flex;flex-direction:column;align-items:center;}
+.loop-cta-inner .loopmark{width:58px;height:58px;margin-bottom:10px;}
+.loop-cta-k{margin-bottom:10px;}
+.loop-cta-h{max-width:20ch;}
+.loop-cta-body{max-width:52ch;margin:0 auto;}
+.loop-cta-actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:28px;}
 
 /* credential badges */
 .creds{padding:40px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
@@ -2453,6 +2588,8 @@ button{font-family:inherit;}
   .band,.cta-band{padding:64px 0;}
   .hero{padding:60px 0 72px;}
   .service-grid,.stats-grid,.aud-grid,.steps-grid,.footer-grid,.quote-grid,.contact-grid,.brandwall,.creds-row{grid-template-columns:1fr;}
+  .svc-cols{grid-template-columns:1fr;gap:32px;}
+  .svc-outcome{flex-direction:column;gap:8px;}
   .stat{text-align:center;}
   .cms-row{flex-direction:column;align-items:flex-start;}
   .cms-shell{grid-template-columns:1fr;gap:18px;}
