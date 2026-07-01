@@ -50,6 +50,12 @@ const I18N = {
         { k: "Analyse", body: "Meten wat er echt gebeurt. Data en gedrag laten zien wat werkt en waar het lekt." },
         { k: "Improve", body: "Bijsturen op basis van de data. Versterken wat rendeert, schrappen wat niet werkt." },
         { k: "Loop", body: "Elke ronde voedt de volgende. Het systeem leert en wordt elke maand slimmer." } ],
+      lens: { generic: "Algemeen", platform: "Platform", app: "App", media: "Media" },
+      variants: {
+        platform: ["Je platform draait live met backend en echte gebruikers.", "Je meet gebruik, funnels en waar het proces stokt.", "Je bouwt door op wat werkt en automatiseert meer.", "Elke iteratie schaalt het platform verder op."],
+        app: ["Je app of PWA gaat live bij de eerste gebruikers.", "Je ziet in de data hoe mensen de app echt gebruiken.", "Je verbetert flows en voegt toe wat gemist wordt.", "Elke release maakt de app sneller en slimmer."],
+        media: ["Je campagne gaat live op de gekozen kanalen.", "Je meet kliks, kosten en conversies per kanaal.", "Je schaalt op wat converteert en snoeit de rest.", "Elke maand scherpere targeting en creatives."],
+      },
       priceCta: "Stel je Loop samen en bekijk de prijzen ↘" },
     work: { eyebrow: "Showcase", h2: "Wat we lanceerden", manage: "Beheer showcase ↗", view: "Bekijk case ↗" },
     reviews: { eyebrow: "Reviews", h2: "Bewijs, geen beloftes.", word: "reviews" },
@@ -109,18 +115,22 @@ const I18N = {
       badge: "Meest gekozen", save: "Je bespaart",
       levelLabel: "Niveau", levels: { basis: "Basis", advanced: "Advanced" },
       phaseLabel: "Pakketten", phases: { plan: "Loop Start", build: "Loop Build", run: "Loop Run" },
-      phaseDesc: { plan: "Research & Plan: onderzoek, meting en strategie.", build: "Creatie: de app, het platform of de campagne wordt gebouwd.", run: "Beheer & verbeter: hosting, optimalisatie en doorontwikkeling." },
+      phaseDesc: { plan: "Research en plan van aanpak, om vervolgens zelf uit te voeren.", build: "Creatie: de app, het platform of de campagne wordt gebouwd.", run: "Beheer & verbeter: hosting, optimalisatie en doorontwikkeling." },
       mediaLabel: "Campagnes & media", packagesLabel: "Pakketten",
       addonsLabel: "Losse diensten",
-      addons: { search: "Search (Google Ads)", social: "Social (Meta, LinkedIn, TikTok)", llm: "AI-vindbaarheid (GEO)", print: "Print", outdoor: "Outdoor (DOOH)", video: "Video & CTV", lifecycle: "Lifecycle (e-mail & CRM)", content: "Content creatie" },
-      addonDesc: { search: "Zoekcampagnes op Google.", social: "Betaalde social campagnes.", llm: "Vindbaar in ChatGPT, Perplexity en Google AI.", print: "Ontwerp voor advertenties en drukwerk.", outdoor: "Digitale buitenreclame, creatie en planning.", video: "Video-advertenties en Connected TV.", lifecycle: "Retentie via e-mail, CRM en automations." },
+      addons: { search: "Search (Google Ads)", social: "Social (Meta, LinkedIn, TikTok)", display: "Display", llm: "AI-vindbaarheid (GEO)", print: "Print", outdoor: "Outdoor (DOOH)", video: "Video & CTV", lifecycle: "Lifecycle (e-mail & CRM)", content: "Content creatie" },
+      addonDesc: { search: "Zoekcampagnes op Google.", social: "Betaalde social campagnes.", display: "Display-advertenties op websites en apps.", llm: "Vindbaar in ChatGPT, Perplexity en Google AI.", print: "Ontwerp voor advertenties en drukwerk.", outdoor: "Digitale buitenreclame, creatie en planning.", video: "Video-advertenties en Connected TV.", lifecycle: "Retentie via e-mail, CRM en automations." },
       contentOpts: { none: "Geen", klein: "Klein", groot: "Groot" },
       once: "Eenmalig", perMonth: "Per maand", from: "vanaf", mo: "/mnd", once1: "eenmalig", setup: "Opzet", mgmt: "Beheer",
       comboNote: "Combinatievoordeel: de losse Loop Start-fee vervalt in de volledige loop.",
       empty: "Kies minimaal één type of dienst.", cta: "Plan een gesprek", summaryPrefix: "Interesse in",
-      steps: { type: "Type", pakketten: "Pakketten", media: "Campagnes", content: "Content", result: "Resultaat" },
-      stepHelp: { type: "Kies één type of combineer er meerdere.", pakketten: "Welke fases van de loop neem je af?", media: "Welke kanalen zet je in?", content: "Hoeveel content per maand?", result: "Je indicatieve investering." },
+      steps: { type: "Type", details: "Details", pakketten: "Pakketten", content: "Content", result: "Resultaat" },
+      stepHelp: { type: "Kies één type of combineer er meerdere.", details: "Verfijn je keuze per dienst.", pakketten: "Welke fases van de loop neem je af?", content: "Hoeveel content per maand?", result: "Je indicatieve investering." },
       typeNote: "Je kunt types combineren. AI-diensten zijn nieuw en als voorstel geprijsd.",
+      waived: "vervalt",
+      details: { pickType: "Kies eerst een type hierboven.", campagneQ: "Welke mediakanalen wil je inzetten?", advice: "Ik weet dit nog niet zeker en wil advies", platformQ: "Welke functionaliteit heeft het platform nodig?", appQ: "Wat voor app wil je?", appFeatures: "Gewenste functionaliteit", appFeaturesPh: "Beschrijf kort wat de app moet kunnen", aiNote: "AI-integratie of automatisering. We bepalen de exacte scope in het gesprek." },
+      appKinds: { webapp: "Webapp", software: "Software-app" },
+      platformFns: { website: "Website", ecommerce: "E-commerce", ai: "AI-functionaliteit" },
       next: "Volgende", back: "Terug", startOver: "Opnieuw", totalFrom: "Totaal vanaf",
       proposedNote: "Nieuw, als voorstel geprijsd: AI-vindbaarheid, print, outdoor, video en lifecycle.",
       excl: "Alle bedragen exclusief btw, op basis van vanaf-tarieven. Definitieve prijs hangt af van de scope. Mediabudget niet inbegrepen.",
@@ -178,6 +188,12 @@ const I18N = {
         { k: "Analyse", body: "Measure what actually happens. Data and behaviour show what works and where it leaks." },
         { k: "Improve", body: "Adjust based on the data. Strengthen what pays off, cut what does not." },
         { k: "Loop", body: "Every round feeds the next. The system learns and gets smarter every month." } ],
+      lens: { generic: "General", platform: "Platform", app: "App", media: "Media" },
+      variants: {
+        platform: ["Your platform runs live with backend and real users.", "You measure usage, funnels and where the process stalls.", "You build on what works and automate more.", "Every iteration scales the platform further."],
+        app: ["Your app or PWA goes live with the first users.", "You see in the data how people really use the app.", "You improve flows and add what people miss.", "Every release makes the app faster and smarter."],
+        media: ["Your campaign goes live on the chosen channels.", "You measure clicks, cost and conversions per channel.", "You scale what converts and cut the rest.", "Sharper targeting and creatives every month."],
+      },
       priceCta: "Configure your Loop and see pricing ↘" },
     work: { eyebrow: "Showcase", h2: "What we've shipped", manage: "Manage showcase ↗", view: "View case ↗" },
     reviews: { eyebrow: "Reviews", h2: "Proof, not promises.", word: "reviews" },
@@ -237,18 +253,22 @@ const I18N = {
       badge: "Most chosen", save: "You save",
       levelLabel: "Level", levels: { basis: "Basic", advanced: "Advanced" },
       phaseLabel: "Packages", phases: { plan: "Loop Start", build: "Loop Build", run: "Loop Run" },
-      phaseDesc: { plan: "Research & Plan: research, measurement and strategy.", build: "Creation: the app, platform or campaign gets built.", run: "Manage & improve: hosting, optimisation and further development." },
+      phaseDesc: { plan: "Research and plan of action, for you to execute yourself.", build: "Creation: the app, platform or campaign gets built.", run: "Manage & improve: hosting, optimisation and further development." },
       mediaLabel: "Campaigns & media", packagesLabel: "Packages",
       addonsLabel: "Add-on services",
-      addons: { search: "Search (Google Ads)", social: "Social (Meta, LinkedIn, TikTok)", llm: "AI visibility (GEO)", print: "Print", outdoor: "Outdoor (DOOH)", video: "Video & CTV", lifecycle: "Lifecycle (email & CRM)", content: "Content creation" },
-      addonDesc: { search: "Search campaigns on Google.", social: "Paid social campaigns.", llm: "Found in ChatGPT, Perplexity and Google AI.", print: "Design for ads and print.", outdoor: "Digital out-of-home, creative and planning.", video: "Video ads and Connected TV.", lifecycle: "Retention via email, CRM and automations." },
+      addons: { search: "Search (Google Ads)", social: "Social (Meta, LinkedIn, TikTok)", display: "Display", llm: "AI visibility (GEO)", print: "Print", outdoor: "Outdoor (DOOH)", video: "Video & CTV", lifecycle: "Lifecycle (email & CRM)", content: "Content creation" },
+      addonDesc: { search: "Search campaigns on Google.", social: "Paid social campaigns.", display: "Display ads across websites and apps.", llm: "Found in ChatGPT, Perplexity and Google AI.", print: "Design for ads and print.", outdoor: "Digital out-of-home, creative and planning.", video: "Video ads and Connected TV.", lifecycle: "Retention via email, CRM and automations." },
       contentOpts: { none: "None", klein: "Small", groot: "Large" },
       once: "One-time", perMonth: "Per month", from: "from", mo: "/mo", once1: "one-time", setup: "Setup", mgmt: "Management",
       comboNote: "Bundle benefit: the separate Loop Start fee is waived in the full loop.",
       empty: "Pick at least one type or service.", cta: "Book a consultation", summaryPrefix: "Interested in",
-      steps: { type: "Type", pakketten: "Packages", media: "Campaigns", content: "Content", result: "Result" },
-      stepHelp: { type: "Pick one type or combine several.", pakketten: "Which phases of the loop do you take?", media: "Which channels do you use?", content: "How much content per month?", result: "Your indicative investment." },
+      steps: { type: "Type", details: "Details", pakketten: "Packages", content: "Content", result: "Result" },
+      stepHelp: { type: "Pick one type or combine several.", details: "Refine your choice per service.", pakketten: "Which phases of the loop do you take?", content: "How much content per month?", result: "Your indicative investment." },
       typeNote: "You can combine types. AI services are new and priced as a proposal.",
+      waived: "waived",
+      details: { pickType: "Pick a type above first.", campagneQ: "Which media channels do you want to use?", advice: "I'm not sure yet and want advice", platformQ: "Which functionality does the platform need?", appQ: "What kind of app do you want?", appFeatures: "Desired functionality", appFeaturesPh: "Briefly describe what the app should do", aiNote: "AI integration or automation. We define the exact scope in the call." },
+      appKinds: { webapp: "Web app", software: "Software app" },
+      platformFns: { website: "Website", ecommerce: "E-commerce", ai: "AI functionality" },
       next: "Next", back: "Back", startOver: "Start over", totalFrom: "Total from",
       proposedNote: "New, priced as a proposal: AI visibility, print, outdoor, video and lifecycle.",
       excl: "All amounts exclude VAT, based on starting rates. Final price depends on scope. Media budget not included.",
@@ -854,9 +874,12 @@ function LoopRing() {
   const [active, setActive] = useState(null);
   const [reduce] = useState(() => typeof window !== "undefined" && window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
   const pos = ["top", "right", "bottom", "left"];
+  const [lens, setLens] = useState("generic");
   const select = (i) => setActive((a) => (a === i ? null : i));
   const cur = active != null ? items[active] : null;
+  const curBody = cur ? (lens !== "generic" && t.loop.variants[lens] ? t.loop.variants[lens][active] : cur.body) : "";
   return (
+    <>
     <div className={`loop-ring-stage ${active != null ? "open" : ""}`}>
       <div className={`loop-ring-tilt ${active != null && !reduce ? "tilted" : ""}`}>
         <svg className="loop-ring-svg" viewBox="0 0 100 100" aria-hidden>
@@ -896,7 +919,7 @@ function LoopRing() {
         {cur ? (
           <div className="loop-core-content" key={active}>
             <div className="loop-core-k mono">{cur.k}</div>
-            <p className="loop-core-b">{cur.body}</p>
+            <p className="loop-core-b">{curBody}</p>
           </div>
         ) : (
           <div className="loop-core-default">
@@ -912,6 +935,12 @@ function LoopRing() {
         </button>
       ))}
     </div>
+    <div className="loop-lens">
+      {["generic", "platform", "app", "media"].map((k) => (
+        <button key={k} className={`loop-lens-btn ${lens === k ? "on" : ""}`} onClick={() => setLens(k)}>{t.loop.lens[k]}</button>
+      ))}
+    </div>
+    </>
   );
 }
 
@@ -1273,18 +1302,21 @@ const PRICING = {
     platform: { plan: 4500, build: 18000, run: 2500 },
     ai: { plan: 2500, build: 6500, run: 850 },
   },
-  addons: { search: { once: 750, mo: 450 }, social: { once: 750, mo: 500 }, llm: { once: 950, mo: 550 }, print: { once: 650, mo: 0 }, outdoor: { once: 850, mo: 0 }, video: { once: 950, mo: 600 }, lifecycle: { once: 850, mo: 500 } },
+  addons: { search: { once: 750, mo: 450 }, social: { once: 750, mo: 500 }, display: { once: 700, mo: 450 }, llm: { once: 950, mo: 550 }, print: { once: 650, mo: 0 }, outdoor: { once: 850, mo: 0 }, video: { once: 950, mo: 600 }, lifecycle: { once: 850, mo: 500 }, tiktok: { once: 0, mo: 0 }, instagram: { once: 0, mo: 0 }, linkedin: { once: 0, mo: 0 }, youtube: { once: 0, mo: 0 }, website: { once: 0, mo: 0 }, pr: { once: 0, mo: 0 }, email: { once: 0, mo: 0 } },
   content: { none: 0, klein: 650, groot: 1200 },
   app: { basis: 3500, advanced: 8500, platform: 18000 },
 };
 const SCOPE_KEYS = ["campagne", "app", "platform", "ai"];
-const MEDIA_KEYS = ["search", "social", "llm", "print", "outdoor", "video", "lifecycle"];
+const SERVICE_KEYS = ["search", "social", "display", "llm", "print", "outdoor", "video", "lifecycle"];
+const CHANNEL_KEYS = ["search", "social", "display", "video", "tiktok", "instagram", "linkedin", "youtube", "website", "pr", "email", "llm", "print", "outdoor", "lifecycle"];
+const CHANNEL_LABELS = { display: "Display", tiktok: "TikTok", instagram: "Instagram", linkedin: "LinkedIn", youtube: "YouTube", website: "Website", pr: "PR", email: "E-mail" };
+const PLATFORM_FNS = ["website", "ecommerce", "ai"];
 function typePhasePrice(sk, pk, level) {
   const sc = PRICING.scopes[sk];
   if (pk === "build") return sk === "app" ? sc.build[level] : sc.build;
   return sc[pk];
 }
-function computeLoop({ types, level, phases, media, content }) {
+function computeLoop({ types, level, phases, channels, content }) {
   const selected = SCOPE_KEYS.filter((k) => types[k]);
   const allLoop = phases.plan && phases.build && phases.run;
   let once = 0, mo = 0, saving = 0;
@@ -1294,7 +1326,7 @@ function computeLoop({ types, level, phases, media, content }) {
     mo += phases.run ? typePhasePrice(sk, "run", level) : 0;
     if (allLoop) saving += PRICING.scopes[sk].plan;
   });
-  MEDIA_KEYS.forEach((k) => { if (media[k]) { once += PRICING.addons[k].once; mo += PRICING.addons[k].mo; } });
+  CHANNEL_KEYS.forEach((k) => { if (channels[k]) { once += PRICING.addons[k].once; mo += PRICING.addons[k].mo; } });
   mo += PRICING.content[content] || 0;
   return { once, mo, saving, allLoop, selected };
 }
@@ -1319,30 +1351,38 @@ function PriceCalculator({ openConsult }) {
   const [types, setTypes] = useState({ campagne: false, app: true, platform: false, ai: false });
   const [level, setLevel] = useState("advanced");
   const [phases, setPhases] = useState({ plan: true, build: true, run: true });
-  const [media, setMedia] = useState({ search: false, social: false, llm: false, print: false, outdoor: false, video: false, lifecycle: false });
+  const [channels, setChannels] = useState(() => Object.fromEntries(CHANNEL_KEYS.map((k) => [k, false])));
+  const [advice, setAdvice] = useState(false);
+  const [appKind, setAppKind] = useState("webapp");
+  const [appFeatures, setAppFeatures] = useState("");
+  const [platformFn, setPlatformFn] = useState({ website: false, ecommerce: false, ai: false });
   const [content, setContent] = useState("none");
-  const { once, mo, saving, allLoop, selected } = computeLoop({ types, level, phases, media, content });
+  const { once, mo, saving, allLoop, selected } = computeLoop({ types, level, phases, channels, content });
   const onceA = useCountUp(once); const moA = useCountUp(mo);
   const nothing = once === 0 && mo === 0;
-  const steps = ["type", "pakketten", "media", "content", "result"];
+  const steps = ["type", "details", "pakketten", "content", "result"];
   const last = steps.length - 1;
   const cur = steps[step];
   const go = (d) => setStep((s) => Math.min(last, Math.max(0, s + d)));
   const toggleType = (k) => setTypes((s) => ({ ...s, [k]: !s[k] }));
   const togglePhase = (k) => setPhases((s) => ({ ...s, [k]: !s[k] }));
-  const toggleMedia = (k) => setMedia((s) => ({ ...s, [k]: !s[k] }));
+  const toggleChannel = (k) => setChannels((s) => ({ ...s, [k]: !s[k] }));
+  const togglePlatformFn = (k) => setPlatformFn((s) => ({ ...s, [k]: !s[k] }));
+  const chLabel = (k) => p.addons[k] || CHANNEL_LABELS[k];
   const phaseSum = (pk) => selected.reduce((a, sk) => a + typePhasePrice(sk, pk, level), 0);
   const packagePrice = (k) => k === "run" ? eur(phaseSum("run")) + p.mo : eur(phaseSum(k));
-  const mediaPrice = (k) => { const a = PRICING.addons[k]; return a.mo ? `${eur(a.once)} ${p.once1} \u00B7 ${eur(a.mo)}${p.mo}` : `${eur(a.once)} ${p.once1}`; };
   const typeLabel = selected.map((s) => p.scopes[s] + (s === "app" ? ` (${p.levels[level]})` : "")).join(" \u00B7 ");
   const summary = () => {
     const parts = [];
     if (selected.length) parts.push(typeLabel);
     const ph = ["plan", "build", "run"].filter((k) => phases[k]).map((k) => p.phases[k]);
     if (ph.length) parts.push(ph.join(", "));
-    const ad = MEDIA_KEYS.filter((k) => media[k]).map((k) => p.addons[k]);
-    if (content !== "none") ad.push(p.addons.content + " " + p.contentOpts[content]);
-    if (ad.length) parts.push(ad.join(", "));
+    if (types.app) parts.push(p.appKinds[appKind] + (appFeatures.trim() ? `: ${appFeatures.trim()}` : ""));
+    if (types.platform) { const pf = PLATFORM_FNS.filter((k) => platformFn[k]).map((k) => p.platformFns[k]); if (pf.length) parts.push(pf.join(", ")); }
+    const ch = CHANNEL_KEYS.filter((k) => channels[k]).map(chLabel);
+    if (advice) ch.push(p.details.advice);
+    if (content !== "none") ch.push(p.addons.content + " " + p.contentOpts[content]);
+    if (ch.length) parts.push(ch.join(", "));
     return `${p.summaryPrefix}: ${parts.join(" \u00B7 ")}. ${p.once} ${p.from} ${eur(once)}${mo ? `, ${p.perMonth.toLowerCase()} ${p.from} ${eur(mo)}` : ""}.`;
   };
   return (
@@ -1377,6 +1417,48 @@ function PriceCalculator({ openConsult }) {
             <div className="calc-note mono">{p.typeNote}</div>
           </div>
         )}
+        {cur === "details" && (
+          <div className="calc-panel calc-details">
+            {selected.length === 0 && <div className="calc-note mono">{p.details.pickType}</div>}
+            {types.campagne && (
+              <div className="detail-block">
+                <div className="detail-block-q">{p.details.campagneQ}</div>
+                <div className="chips">
+                  {CHANNEL_KEYS.map((k) => (
+                    <button key={k} className={`chip ${channels[k] ? "on" : ""}`} onClick={() => toggleChannel(k)} aria-pressed={channels[k]}>
+                      {chLabel(k)}{PRICING.addons[k].once > 0 && <span className="chip-p"> {p.from} {eur(PRICING.addons[k].once)}</span>}
+                    </button>
+                  ))}
+                </div>
+                <button className={`toggle advice-toggle ${advice ? "on" : ""}`} onClick={() => setAdvice((v) => !v)} aria-pressed={advice}>
+                  <span className="switch" aria-hidden><span className="switch-knob" /></span>
+                  <span className="toggle-main"><span className="toggle-t">{p.details.advice}</span></span>
+                </button>
+                <p className="calc-note mono">{p.proposedNote}</p>
+              </div>
+            )}
+            {types.app && (
+              <div className="detail-block">
+                <div className="detail-block-q">{p.details.appQ}</div>
+                <div className="seg calc-seg">{["webapp", "software"].map((k) => <button key={k} className={`seg-btn ${appKind === k ? "on" : ""}`} onClick={() => setAppKind(k)}>{p.appKinds[k]}</button>)}</div>
+                <label className="detail-field"><span className="detail-field-l mono">{p.details.appFeatures}</span>
+                  <textarea className="detail-textarea" rows={3} value={appFeatures} placeholder={p.details.appFeaturesPh} onChange={(e) => setAppFeatures(e.target.value)} /></label>
+              </div>
+            )}
+            {types.platform && (
+              <div className="detail-block">
+                <div className="detail-block-q">{p.details.platformQ}</div>
+                <div className="chips">{PLATFORM_FNS.map((k) => <button key={k} className={`chip ${platformFn[k] ? "on" : ""}`} onClick={() => togglePlatformFn(k)} aria-pressed={platformFn[k]}>{p.platformFns[k]}</button>)}</div>
+              </div>
+            )}
+            {types.ai && (
+              <div className="detail-block">
+                <div className="detail-block-q">{p.scopes.ai}</div>
+                <p className="calc-note mono">{p.details.aiNote}</p>
+              </div>
+            )}
+          </div>
+        )}
         {cur === "pakketten" && (
           <div className="calc-panel">
             <div className="cfg-toggles">
@@ -1384,24 +1466,11 @@ function PriceCalculator({ openConsult }) {
                 <button key={k} className={`toggle ${phases[k] ? "on" : ""}`} onClick={() => togglePhase(k)} aria-pressed={phases[k]}>
                   <span className="switch" aria-hidden><span className="switch-knob" /></span>
                   <span className="toggle-main"><span className="toggle-t">{p.phases[k]}</span><span className="toggle-d">{p.phaseDesc[k]}</span></span>
-                  <span className="toggle-p mono">{packagePrice(k)}</span>
+                  <span className="toggle-p mono">{k === "plan" && allLoop && selected.length > 0 ? <><span className="waived">{packagePrice("plan")}</span> <span className="waived-note">{p.waived}</span></> : packagePrice(k)}</span>
                 </button>
               ))}
             </div>
             {allLoop && selected.length > 0 && <div className="combo-note mono">{p.comboNote}</div>}
-          </div>
-        )}
-        {cur === "media" && (
-          <div className="calc-panel">
-            <div className="cfg-toggles">
-              {MEDIA_KEYS.map((k) => (
-                <button key={k} className={`toggle ${media[k] ? "on" : ""}`} onClick={() => toggleMedia(k)} aria-pressed={media[k]}>
-                  <span className="switch" aria-hidden><span className="switch-knob" /></span>
-                  <span className="toggle-main"><span className="toggle-t">{p.addons[k]}</span><span className="toggle-d">{p.addonDesc[k]} {mediaPrice(k)}</span></span>
-                </button>
-              ))}
-            </div>
-            <div className="calc-note mono">{p.proposedNote}</div>
           </div>
         )}
         {cur === "content" && (
@@ -1476,7 +1545,7 @@ function Pricing({ openConsult }) {
           <div className="ref-block">
             <div className="ref-block-h"><h3 className="ref-t">{p.looseRef}</h3></div>
             <div className="ref-grid">
-              {MEDIA_KEYS.map((k) => (
+              {SERVICE_KEYS.map((k) => (
                 <div key={k} className="ref-card">
                   <div className="ref-card-t">{p.addons[k]}</div>
                   <div className="ref-card-price mono">{PRICING.addons[k].mo ? `${p.setup} ${eur(PRICING.addons[k].once)} \u00B7 ${p.mgmt} ${eur(PRICING.addons[k].mo)}${p.mo}` : `${p.setup} ${eur(PRICING.addons[k].once)}`}</div>
@@ -2204,7 +2273,7 @@ button{font-family:inherit;}
 .editor-bar{position:sticky;bottom:0;display:flex;justify-content:flex-end;gap:10px;padding:16px 24px;background:var(--card);border-top:1px solid var(--line);}
 .pricing{padding:36px 0 96px;}
 .loop-foot{margin-top:30px;text-align:center;}
-.loop-ring-wrap{display:flex;justify-content:center;}
+.loop-ring-wrap{display:flex;flex-direction:column;align-items:center;}
 .loop-ring-stage{position:relative;width:min(500px,90vw);margin:48px auto 8px;aspect-ratio:1;perspective:1200px;}
 .loop-ring-tilt{position:absolute;inset:70px;transform-origin:center center;transition:transform .7s cubic-bezier(.2,.7,.2,1),opacity .7s;will-change:transform;}
 .loop-ring-stage.open .loop-ring-tilt.tilted{transform:rotateX(34deg) scale(.97);opacity:.9;}
@@ -2280,6 +2349,27 @@ button{font-family:inherit;}
 .calc-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;border-top:1px solid var(--line);background:var(--paper);}
 .calc-running{font-size:12.5px;color:var(--mid);text-align:center;flex:1;}
 .calc-nav .btn[disabled]{opacity:0.4;cursor:default;pointer-events:none;}
+.calc-details{gap:22px;}
+.detail-block{display:flex;flex-direction:column;gap:12px;border-top:1px solid var(--line);padding-top:18px;}
+.calc-details .detail-block:first-child{border-top:none;padding-top:0;}
+.detail-block-q{font-size:15px;font-weight:600;color:var(--ink);}
+.chips{display:flex;flex-wrap:wrap;gap:8px;}
+.chip{display:inline-flex;align-items:center;gap:2px;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:8px 14px;font:inherit;font-size:13px;font-weight:600;color:var(--ink);cursor:pointer;transition:background .14s,border-color .14s,color .14s;}
+.chip:hover{border-color:var(--soft);}
+.chip.on{background:var(--mag);border-color:var(--mag);color:#fff;}
+.chip-p{font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:500;opacity:0.7;}
+.advice-toggle{margin-top:2px;}
+.detail-field{display:flex;flex-direction:column;gap:6px;}
+.detail-field-l{font-size:11px;letter-spacing:0.04em;color:var(--soft);}
+.detail-textarea{width:100%;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:11px 13px;font:inherit;font-size:14px;color:var(--ink);resize:vertical;min-height:70px;}
+.detail-textarea:focus{outline:none;border-color:var(--mag);}
+.detail-textarea::placeholder{color:var(--soft);}
+.waived{text-decoration:line-through;opacity:0.45;}
+.waived-note{color:#1FAE5A;font-size:11px;}
+.loop-lens{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin:26px auto 0;}
+.loop-lens-btn{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.16);color:rgba(255,255,255,0.72);border-radius:999px;padding:7px 16px;font:inherit;font-size:12.5px;font-weight:600;cursor:pointer;transition:background .15s,color .15s,border-color .15s;}
+.loop-lens-btn:hover{color:#fff;border-color:rgba(255,255,255,0.34);}
+.loop-lens-btn.on{background:var(--mag);border-color:var(--mag);color:#fff;}
 .toggle-main{flex:1;display:flex;flex-direction:column;gap:2px;min-width:0;}
 .toggle-t{font-weight:600;font-size:15px;color:var(--ink);}
 .toggle-d{font-size:12.5px;color:var(--soft);}
