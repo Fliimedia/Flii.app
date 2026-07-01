@@ -92,8 +92,9 @@ const I18N = {
         { k: "Aware", desc: "Je merk verschijnt bij algemene en in-market doelgroepen. Doel: van onbekend met je merk naar aware." },
         { k: "Engaged", desc: "Mensen reageren, klikken en verdiepen zich. Doel: van bekend naar betrokken." },
         { k: "Nudged", desc: "Je overtuigt met bewijs, aanbod en herhaling. Doel: van betrokken naar overtuigd." },
-        { k: "Signed", desc: "De klant zet de stap en koopt. Doel: van overtuigd naar aankoop." },
-        { k: "Loyal", desc: "Klanten blijven, bevelen aan en groeien in waarde. Doel: van aankoop naar ambassadeur." } ] },
+        { k: "Signed", desc: "De klant zet de stap en koopt. Doel: van overtuigd naar conversie." },
+        { k: "Loyal", desc: "Klanten blijven en groeien in waarde met herhaalaankopen. Doel: van conversie naar loyaal." },
+        { k: "Ambassador", desc: "Klanten bevelen je actief aan en brengen nieuwe klanten binnen. Doel: van loyaal naar ambassadeur." } ] },
     work: { eyebrow: "Showcase", h2: "Wat we lanceerden", manage: "Beheer showcase ↗", view: "Bekijk case ↗" },
     reviews: { eyebrow: "Reviews", h2: "Bewijs, geen beloftes.", word: "reviews" },
     byline: { by: "by", name: "Flii Media" },
@@ -280,8 +281,9 @@ const I18N = {
         { k: "Aware", desc: "Your brand shows up for broad and in-market audiences. Goal: from unaware to aware." },
         { k: "Engaged", desc: "People respond, click and dig deeper. Goal: from aware to engaged." },
         { k: "Nudged", desc: "You convince with proof, offer and repetition. Goal: from engaged to convinced." },
-        { k: "Signed", desc: "The customer takes the step and buys. Goal: from convinced to purchase." },
-        { k: "Loyal", desc: "Customers stay, refer and grow in value. Goal: from purchase to advocate." } ] },
+        { k: "Signed", desc: "The customer takes the step and buys. Goal: from convinced to conversion." },
+        { k: "Loyal", desc: "Customers stay and grow in value with repeat purchases. Goal: from conversion to loyal." },
+        { k: "Ambassador", desc: "Customers actively refer you and bring in new customers. Goal: from loyal to advocate." } ] },
     work: { eyebrow: "Showcase", h2: "What we've shipped", manage: "Manage showcase ↗", view: "View case ↗" },
     reviews: { eyebrow: "Reviews", h2: "Proof, not promises.", word: "reviews" },
     byline: { by: "by", name: "Flii Media" },
@@ -473,7 +475,7 @@ Hetzelfde budget, hetzelfde verkeer, een totaal andere uitkomst. Het verschil zi
 Als de overdracht strak staat, de pagina snel en helder is, en de aanbieding klopt, dan, en pas dan, is opschalen verstandig. Nu werkt de vermenigvuldiger in je voordeel. Elke extra euro raakt een pad dat bewezen omzet oplevert, en je weet binnen een week of het kanaal blijft presteren op schaal.
 
 Dit is geen pleidooi tegen adverteren. Het is een pleidooi voor volgorde. Eerst converteren, dan schalen. De teams die we het hardst zien groeien, hebben zelden de grootste budgetten. Het zijn de teams die hun funnel behandelen als een product: ze meten waar het lekt, repareren in de juiste volgorde, en geven pas gas als het pad van klik naar omzet aantoonbaar dicht is. Saai, methodisch, en veel winstgevender dan nog een budgetverhoging die je teleurstelling alleen maar opschaalt.` },
-  { id: "lanceren-21-dagen", title: "Lanceren in 21 dagen met AI in de loop", cat: "AI Build", date: "jun 2026", read: "7 min", cover: "build",
+  { id: "lanceren-21-dagen", title: "Lanceren in 21 dagen met AI in de loop", cat: "AI Build", date: "jun 2026", read: "7 min", cover: "launch",
     excerpt: "Wat verandert er als AI de bouwer is en jij regisseert, en waar wint de mens nog?",
     body: `Drie weken klinkt te kort om iets echts te lanceren. Dat was het ook, tot voor kort. De afstand tussen een idee en werkende software werd altijd bepaald door hoe snel mensen konden typen, testen en herstellen. Die afstand is in elkaar geklapt. Niet omdat mensen sneller typen, maar omdat AI het typen heeft overgenomen. Wat overblijft, is oordeel. En oordeel is precies waar de mens nog wint.
 
@@ -528,7 +530,7 @@ Geen van deze valkuilen is een reden om langzamer te werken. Ze zijn een reden o
 Lanceren in eenentwintig dagen is geen wedstrijd in hard rennen. Het is een manier om sneller te leren of een idee deugt, tegen veel lagere kosten dan vroeger. Je zet niet drie maanden in op een aanname, je test hem in drie weken en je weet het.
 
 De teams die hier winnen, zijn niet de teams die het snelst bouwen. Het zijn de teams die het scherpst kiezen, het strengst weglaten, en het beste zien wanneer iets af is. AI levert het tempo. De mens levert de richting. En richting, niet snelheid, is wat een lancering laat slagen.` },
-  { id: "analytics-weet-al", title: "Je analytics weet al wat te doen", cat: "RevOps", date: "mei 2026", read: "6 min", cover: "signal",
+  { id: "analytics-weet-al", title: "Je analytics weet al wat te doen", cat: "RevOps", date: "mei 2026", read: "6 min", cover: "analytics",
     excerpt: "De data die je product verzamelt is de goedkoopste groeiknop die je niet gebruikt.",
     body: `De meeste teams zoeken hun volgende groeiknop buiten de deur. Een nieuw kanaal, een nieuwe campagne, een nieuw budget. Ondertussen zitten ze op een berg gedragsdata die ze zelf verzamelen en nooit gebruiken. Elk klik, elke sessie, elk moment waarop een gebruiker afhaakt of juist doorgaat, is een signaal. Het signaal is er al. Het wordt alleen zelden omgezet in een beslissing.
 
@@ -1272,10 +1274,15 @@ function FunnelViz() {
   const f = t.funnel;
   const stages = f.stages;
   const [active, setActive] = useState(0);
-  const W = 1000, N = stages.length, segW = W / N;
-  const yTop = (x) => 30 + 0.10 * x;
-  const yBot = (x) => 330 - 0.10 * x;
-  const perim = `M0,${yTop(0)} L${W},${yTop(W)} L${W},${yBot(W)} L0,${yBot(0)} Z`;
+  const W = 1000, N = stages.length, segW = W / N, CY = 180;
+  // half-heights at N+1 boundaries: taller start, narrowest at conversion (Signed|Loyal), then reopening
+  const HALF = [175, 140, 102, 66, 39, 80, 118];
+  const topY = (i) => CY - HALF[i];
+  const botY = (i) => CY + HALF[i];
+  const bnd = HALF.map((_, i) => i);
+  const topPath = "M" + bnd.map((i) => `${i * segW},${topY(i)}`).join(" L");
+  const botPath = "M" + bnd.map((i) => `${i * segW},${botY(i)}`).join(" L");
+  const perim = "M" + bnd.map((i) => `${i * segW},${topY(i)}`).join(" L") + " L" + [...bnd].reverse().map((i) => `${i * segW},${botY(i)}`).join(" L") + " Z";
   return (
     <div className="fnl">
       <svg className="fnl-svg" viewBox="0 0 1000 360" role="img" aria-label={f.h2}>
@@ -1284,23 +1291,25 @@ function FunnelViz() {
             <stop offset="0" stopColor="#DA3E68" />
             <stop offset="1" stopColor="#AE2249" />
           </linearGradient>
-          <filter id="fnlSoft" x="-60%" y="-120%" width="220%" height="340%">
-            <feGaussianBlur stdDeviation="4" />
+          <filter id="fnlGlowF" x="-10%" y="-70%" width="120%" height="240%">
+            <feGaussianBlur stdDeviation="4" result="b" />
+            <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
           </filter>
         </defs>
         {stages.map((st, i) => {
           const x0 = i * segW, x1 = (i + 1) * segW, cx = (x0 + x1) / 2;
-          const d = `M${x0},${yTop(x0)} L${x1},${yTop(x1)} L${x1},${yBot(x1)} L${x0},${yBot(x0)} Z`;
+          const d = `M${x0},${topY(i)} L${x1},${topY(i + 1)} L${x1},${botY(i + 1)} L${x0},${botY(i)} Z`;
           return (
             <g key={i} className={`fnl-seg ${active === i ? "on" : ""}`} onClick={() => setActive(i)} role="button" tabIndex={0}
                aria-label={st.k} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setActive(i); } }}>
               <path className="fnl-slice" d={d} />
-              <text className="fnl-letter" x={cx} y="180" textAnchor="middle" dominantBaseline="central">{st.k.charAt(0)}</text>
+              <text className="fnl-letter" x={cx} y={CY} textAnchor="middle" dominantBaseline="central">{st.k.charAt(0)}</text>
             </g>
           );
         })}
         <path className="fnl-outline" d={perim} />
-        <path className="fnl-glint" d={`M735,${yTop(735)} L1000,${yTop(1000)} L1000,184`} />
+        <path className="fnl-build" pathLength="1" d={topPath} />
+        <path className="fnl-build" pathLength="1" d={botPath} />
       </svg>
       <div className="fnl-desc" key={active}>
         <span className="fnl-desc-k">{stages[active].k}</span>
@@ -1411,7 +1420,7 @@ function Home({ content, openConsult }) {
 
       <section className="band" id="work">
         <div className="wrap">
-          <Section className="work-head"><div><div className="eyebrow">{t.work.eyebrow}</div><h2 className="display h2">{t.work.h2}</h2></div><a href="#/cms" className="btn btn-ghost">{t.work.manage}</a></Section>
+          <Section className="work-head"><div><div className="eyebrow">{t.work.eyebrow}</div><h2 className="display h2">{t.work.h2}</h2></div></Section>
           <div className="work-grid">
             {apps.slice(0, 4).map((w, i) => (
               <Section key={w.id} className="work-card" style={{ transitionDelay: `${i * 70}ms` }}>
@@ -1554,28 +1563,28 @@ function ArticleArt({ variant = "default", mode = "thumb" }) {
   const motifs = {
     funnel: (
       <>
-        <rect className="art-line-f" x="110" y="52" width="180" height="17" rx="5" />
-        <rect className="art-line-f" x="140" y="86" width="120" height="17" rx="5" />
-        <rect className="art-stroke-f" x="164" y="120" width="72" height="17" rx="5" />
-        <rect className="art-acc-f" x="184" y="154" width="32" height="17" rx="5" />
+        <path className="art-stroke" d="M92 52 H308 L216 134 V154 H184 V134 Z" fill="none" strokeWidth="2.5" strokeLinejoin="round" />
+        <path className="art-acc" d="M188 168 H212" fill="none" strokeWidth="2.5" strokeLinecap="round" />
+        <circle className="art-acc-f" cx="200" cy="182" r="4" />
       </>
     ),
-    build: (
+    launch: (
       <>
-        <rect className="art-line-f" x="118" y="120" width="30" height="40" rx="4" />
-        <rect className="art-line-f" x="160" y="102" width="30" height="58" rx="4" />
-        <rect className="art-stroke-f" x="202" y="82" width="30" height="78" rx="4" />
-        <rect className="art-stroke-f" x="244" y="62" width="30" height="98" rx="4" />
-        <rect className="art-acc-f" x="286" y="42" width="30" height="118" rx="4" />
+        <path className="art-stroke" d="M200 40 C222 66 222 106 210 132 H190 C178 106 178 66 200 40 Z" fill="none" strokeWidth="2.5" strokeLinejoin="round" />
+        <circle className="art-acc-f" cx="200" cy="86" r="8" />
+        <path className="art-stroke" d="M190 118 L172 148 L190 138 M210 118 L228 148 L210 138" fill="none" strokeWidth="2.5" strokeLinejoin="round" />
+        <path className="art-acc" d="M192 134 L200 168 L208 134" fill="none" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
       </>
     ),
-    signal: (
+    analytics: (
       <>
-        <circle className="art-line" cx="200" cy="100" r="62" fill="none" />
-        <circle className="art-stroke" cx="200" cy="100" r="40" fill="none" strokeWidth="1.5" />
-        <circle className="art-acc-r" cx="200" cy="100" r="20" fill="none" />
-        <circle className="art-acc-f" cx="200" cy="100" r="7" />
-        <circle className="art-dot" cx="262" cy="100" r="4" />
+        <path className="art-line" d="M92 152 H308" strokeWidth="1.5" />
+        <rect className="art-line-f" x="118" y="122" width="26" height="30" rx="2" />
+        <rect className="art-stroke-f" x="160" y="100" width="26" height="52" rx="2" />
+        <rect className="art-line-f" x="202" y="112" width="26" height="40" rx="2" />
+        <rect className="art-stroke-f" x="244" y="80" width="26" height="72" rx="2" />
+        <path className="art-acc" d="M131 118 L173 96 L215 106 L257 74" fill="none" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+        <circle className="art-acc-f" cx="257" cy="74" r="4.5" />
       </>
     ),
     default: (<><circle className="art-acc-f" cx="200" cy="100" r="8" /><circle className="art-acc-r" cx="200" cy="100" r="22" fill="none" /></>),
@@ -2471,16 +2480,16 @@ button{font-family:inherit;}
 .fnl-seg:hover .fnl-slice{opacity:0.92;}
 .fnl-seg.on .fnl-slice{opacity:1;filter:brightness(1.12);}
 .fnl-seg:focus-visible .fnl-slice{opacity:0.95;}
-.fnl-letter{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:42px;fill:#fff;opacity:0.88;pointer-events:none;transition:opacity .2s;}
+.fnl-letter{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:38px;fill:#fff;opacity:0.9;pointer-events:none;transition:opacity .2s;}
 .fnl-seg.on .fnl-letter{opacity:1;}
-.fnl-outline{fill:none;stroke:rgba(174,34,73,0.45);stroke-width:1.5;stroke-linejoin:round;pointer-events:none;}
-.fnl-glint{fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;opacity:0;filter:url(#fnlSoft);pointer-events:none;animation:fnlGlint 6.5s ease-in-out infinite;}
-@keyframes fnlGlint{0%,74%,100%{opacity:0;}83%{opacity:0.75;}93%{opacity:0.2;}}
+.fnl-outline{fill:none;stroke:rgba(174,34,73,0.42);stroke-width:1.4;stroke-linejoin:round;pointer-events:none;}
+.fnl-build{fill:none;stroke:#FF4D8D;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;filter:url(#fnlGlowF);stroke-dasharray:1;stroke-dashoffset:1;opacity:0;pointer-events:none;animation:fnlBuild 5.6s ease-in-out infinite;}
+@keyframes fnlBuild{0%{stroke-dashoffset:1;opacity:0;}6%{opacity:1;}46%{stroke-dashoffset:0;opacity:1;}72%{opacity:1;}100%{stroke-dashoffset:0;opacity:0;}}
 .fnl-desc{margin:24px auto 0;max-width:640px;text-align:center;display:flex;flex-direction:column;gap:6px;animation:fnlFade .3s ease;}
 .fnl-desc-k{font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--mag);font-weight:600;}
 .fnl-desc-b{font-size:15px;color:var(--mid);line-height:1.5;}
 @keyframes fnlFade{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:none;}}
-@media (prefers-reduced-motion: reduce){.fnl-glint{animation:none;}}
+@media (prefers-reduced-motion: reduce){.fnl-build{animation:none;opacity:0;}}
 .funnel-stage{width:var(--fw,100%);max-width:660px;}
 .funnel-bar{display:flex;align-items:center;gap:18px;background:var(--card);border:1px solid var(--line);border-radius:15px;padding:17px 22px;transition:border-color .16s;}
 .funnel-stage:last-child .funnel-bar{background:var(--ink);border-color:var(--ink);}
@@ -2659,7 +2668,7 @@ button{font-family:inherit;}
 .quote-avatar.lg{width:54px;height:54px;}
 .quote-avatar.has-logo{background:#fff;border:1px solid var(--line);padding:0;}
 .quote-avatar.has-logo img{width:100%;height:100%;object-fit:contain;padding:8px;box-sizing:border-box;display:block;}
-.byline-logo{width:17px;height:17px;flex:none;margin-right:5px;vertical-align:-3px;}
+.byline-logo{width:30px;height:30px;flex:none;margin-right:8px;vertical-align:-8px;}
 .quote-avatar.lg{width:54px;height:54px;font-size:22px;}
 .quote-name{font-weight:600;font-size:14.5px;}.quote-name.lg{font-size:18px;}
 .quote-role{font-size:11.5px;color:var(--soft);margin-top:2px;}
@@ -2835,7 +2844,7 @@ button{font-family:inherit;}
 .pricing{padding:36px 0 96px;}
 .loop-foot{margin-top:30px;text-align:center;}
 .loop-ring-wrap{display:flex;flex-direction:column;align-items:center;}
-.loop-ring-stage{position:relative;width:min(500px,90vw);margin:48px auto 8px;aspect-ratio:1;perspective:1200px;}
+.loop-ring-stage{position:relative;width:min(500px,calc(100vw - 60px));margin:48px auto 8px;aspect-ratio:1;perspective:1200px;}
 .loop-ring-tilt{position:absolute;inset:70px;transform-origin:center center;transition:transform .7s cubic-bezier(.2,.7,.2,1),opacity .7s;will-change:transform;}
 .loop-ring-stage.open .loop-ring-tilt.tilted{transform:rotateX(34deg) scale(.97);opacity:.9;}
 .loop-ring-svg{width:100%;height:100%;display:block;overflow:visible;}
