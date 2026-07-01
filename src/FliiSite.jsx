@@ -86,6 +86,14 @@ const I18N = {
         media: ["Je zet je campagne live op de gekozen kanalen.", "Je meet kliks, kosten en conversies per kanaal.", "Je ziet wat converteert en wat budget verspilt.", "Je schaalt de winnaars en scherpt de targeting aan."],
       },
       priceCta: "Stel Loop samen en bekijk de prijzen ↘" },
+    funnel: { eyebrow: "Campagnes", h2: "Van onbekend tot ambassadeur.",
+      lede: "Elke campagne begeleidt je doelgroep stap voor stap door de funnel, van de eerste kennismaking tot herhaalaankopen en aanbevelingen.",
+      stages: [
+        { k: "Awareness", note: "Algemene & in-market doelgroepen", goal: "Van onbekend met je merk naar aware." },
+        { k: "Interactie", goal: "Van bekend naar engaged." },
+        { k: "Overtuiging", goal: "Van engaged naar overtuigd." },
+        { k: "Conversie", goal: "Van overtuigd naar aankoop." },
+        { k: "Loyaliteit", goal: "Van aankoop naar referrals en klantwaardeverhoging." } ] },
     work: { eyebrow: "Showcase", h2: "Wat we lanceerden", manage: "Beheer showcase ↗", view: "Bekijk case ↗" },
     reviews: { eyebrow: "Reviews", h2: "Bewijs, geen beloftes.", word: "reviews" },
     byline: { by: "by", name: "Flii Media" },
@@ -265,6 +273,14 @@ const I18N = {
         media: ["Your campaign goes live on the chosen channels.", "You measure clicks, cost and conversions per channel.", "You scale what converts and cut the rest.", "Sharper targeting and creatives every month."],
       },
       priceCta: "Configure your Loop and see pricing ↘" },
+    funnel: { eyebrow: "Campaigns", h2: "From stranger to advocate.",
+      lede: "Every campaign guides your audience step by step through the funnel, from the first introduction to repeat purchases and referrals.",
+      stages: [
+        { k: "Awareness", note: "Broad & in-market audiences", goal: "From unaware of your brand to aware." },
+        { k: "Interaction", goal: "From aware to engaged." },
+        { k: "Persuasion", goal: "From engaged to convinced." },
+        { k: "Conversion", goal: "From convinced to purchase." },
+        { k: "Loyalty", goal: "From purchase to referrals and higher customer value." } ] },
     work: { eyebrow: "Showcase", h2: "What we've shipped", manage: "Manage showcase ↗", view: "View case ↗" },
     reviews: { eyebrow: "Reviews", h2: "Proof, not promises.", word: "reviews" },
     byline: { by: "by", name: "Flii Media" },
@@ -1245,30 +1261,22 @@ function Home({ content, openConsult }) {
         </div>
       </section>
 
-      {/* CREDENTIAL BADGES */}
-      <Section className="creds">
+      <section className="band band-mist" id="campagnes">
         <div className="wrap">
-          <div className="creds-label mono">{t.certsLabel}</div>
-          <Marquee className="cred-marquee" items={certs} duration={28} render={(c, dup) => (
-            <a href={`#/cert/${c.id}`} className="marquee-cred" tabIndex={dup ? -1 : undefined}>
-              <span className="cred-seal cred-seal-logo" aria-hidden>
-                <CredLogo slug={c.logo || c.id} />
-              </span>
-              <span className="marquee-cred-name">{c.name}</span>
-              <span className="marquee-cred-tier mono">{c.tier}</span>
-            </a>
-          )} />
-        </div>
-      </Section>
-
-      <section className="stats">
-        <div className="wrap stats-grid">
-          {t.stats.map((s, i) => (
-            <Section key={i} className="stat" style={{ transitionDelay: `${i * 90}ms` }}>
-              <div className="display stat-value"><Counter value={s.value} suffix={s.suffix} /></div>
-              <div className="stat-label mono">{s.label}</div>
-            </Section>
-          ))}
+          <Section><div className="eyebrow">{t.funnel.eyebrow}</div><h2 className="display h2">{t.funnel.h2}</h2><p className="lede">{t.funnel.lede}</p></Section>
+          <div className="funnel">
+            {t.funnel.stages.map((st, i) => (
+              <Section key={i} className="funnel-stage" style={{ transitionDelay: `${i * 70}ms`, ["--fw"]: `${100 - i * 12}%` }}>
+                <div className="funnel-bar">
+                  <span className="funnel-n mono">{String(i + 1).padStart(2, "0")}</span>
+                  <div className="funnel-txt">
+                    <div className="funnel-top"><span className="funnel-k">{st.k}</span>{st.note ? <span className="funnel-note">{st.note}</span> : null}</div>
+                    <span className="funnel-goal">{st.goal}</span>
+                  </div>
+                </div>
+              </Section>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -1284,6 +1292,17 @@ function Home({ content, openConsult }) {
             </button>
             {priceOpen && <div className="price-fold-panel"><PriceCalculator openConsult={openConsult} /></div>}
           </Section>
+        </div>
+      </section>
+
+      <section className="stats">
+        <div className="wrap stats-grid">
+          {t.stats.map((s, i) => (
+            <Section key={i} className="stat" style={{ transitionDelay: `${i * 90}ms` }}>
+              <div className="display stat-value"><Counter value={s.value} suffix={s.suffix} /></div>
+              <div className="stat-label mono">{s.label}</div>
+            </Section>
+          ))}
         </div>
       </section>
 
@@ -1332,6 +1351,22 @@ function Home({ content, openConsult }) {
           </div>
         </div>
       </section>
+
+      {/* CREDENTIAL BADGES */}
+      <Section className="creds">
+        <div className="wrap">
+          <div className="creds-label mono">{t.certsLabel}</div>
+          <Marquee className="cred-marquee" items={certs} duration={28} render={(c, dup) => (
+            <a href={`#/cert/${c.id}`} className="marquee-cred" tabIndex={dup ? -1 : undefined}>
+              <span className="cred-seal cred-seal-logo" aria-hidden>
+                <CredLogo slug={c.logo || c.id} />
+              </span>
+              <span className="marquee-cred-name">{c.name}</span>
+              <span className="marquee-cred-tier mono">{c.tier}</span>
+            </a>
+          )} />
+        </div>
+      </Section>
 
       <section className="band" id="about">
         <div className="wrap">
@@ -2317,6 +2352,19 @@ button{font-family:inherit;}
 /* brand wall */
 .brandwall-wrap{padding:8px 0 0;}
 .brandwall-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--soft);text-align:center;margin-bottom:20px;}
+.funnel{display:flex;flex-direction:column;align-items:center;gap:9px;margin-top:44px;}
+.funnel-stage{width:var(--fw,100%);max-width:660px;}
+.funnel-bar{display:flex;align-items:center;gap:18px;background:var(--card);border:1px solid var(--line);border-radius:15px;padding:17px 22px;transition:border-color .16s;}
+.funnel-stage:last-child .funnel-bar{background:var(--ink);border-color:var(--ink);}
+.funnel-n{font-size:12px;color:var(--soft);flex:none;letter-spacing:0.04em;}
+.funnel-stage:last-child .funnel-n{color:rgba(243,241,235,0.55);}
+.funnel-txt{display:flex;flex-direction:column;gap:3px;min-width:0;flex:1;}
+.funnel-top{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;}
+.funnel-k{font-size:16px;font-weight:600;color:var(--ink);}
+.funnel-stage:last-child .funnel-k{color:var(--paper);}
+.funnel-note{font-size:10.5px;letter-spacing:0.05em;text-transform:uppercase;color:var(--soft);}
+.funnel-goal{font-size:13.5px;color:var(--mid);line-height:1.4;}
+.funnel-stage:last-child .funnel-goal{color:rgba(243,241,235,0.72);}
 .marquee{overflow:hidden;position:relative;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);}
 .marquee-track{display:flex;width:max-content;animation:marquee-scroll linear infinite;will-change:transform;}
 @keyframes marquee-scroll{to{transform:translateX(-50%);}}
@@ -2868,6 +2916,8 @@ button{font-family:inherit;}
 @media(max-width:720px){
   .nav-cta{display:none;}
   .band,.cta-band{padding:64px 0;}
+  .funnel-stage{width:100%;}
+  .funnel-bar{padding:14px 16px;gap:13px;}
   .hero{padding:60px 0 72px;}
   .service-grid,.stats-grid,.aud-grid,.steps-grid,.footer-grid,.quote-grid,.contact-grid,.brandwall,.creds-row{grid-template-columns:1fr;}
   .svc-cols{grid-template-columns:1fr;gap:32px;}
