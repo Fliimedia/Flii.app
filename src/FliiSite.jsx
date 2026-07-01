@@ -1632,16 +1632,16 @@ function typePhasePrice(sk, pk) {
   return pk === "build" ? sc.build : sc[pk];
 }
 const DEL_PRICE = {
-  seoContent: 350, seoTech: 300, sea: 400, linkbuilding: 250,
-  socialContent: 400, community: 350, paidSocial: 400, socialInfluencer: 300,
-  bannerCreatie: 250, programmaticBuy: 350, retargetingSetup: 200,
-  videoProductie: 600, videoMontage: 300, videoBuy: 350,
-  spotProductie: 400, podcastProductie: 450, audioBuy: 300,
-  templateDesign: 250, emailFlows: 350, crmSetup: 300,
-  flowSetup: 250, msgCopy: 150, msgIntegratie: 300,
-  oohOntwerp: 300, oohBuy: 400, oohProductie: 350,
-  printOntwerp: 250, drukwerk: 300, printDistributie: 200,
-  persstrategie: 400, influencerMgmt: 350, affiliateSetup: 300,
+  seoContent: { mo: 450 }, seoTech: { mo: 400 }, sea: { mo: 500 }, linkbuilding: { mo: 350 },
+  socialContent: { mo: 550 }, community: { mo: 450 }, paidSocial: { mo: 500 }, socialInfluencer: { mo: 400 },
+  bannerCreatie: { once: 750 }, programmaticBuy: { mo: 500 }, retargetingSetup: { once: 500 },
+  videoProductie: { once: 4500 }, videoMontage: { once: 900 }, videoBuy: { mo: 450 },
+  spotProductie: { once: 1500 }, podcastProductie: { once: 1500 }, audioBuy: { mo: 400 },
+  templateDesign: { once: 650 }, emailFlows: { once: 1200 }, crmSetup: { once: 1500 },
+  flowSetup: { once: 850 }, msgCopy: { mo: 250 }, msgIntegratie: { once: 1200 },
+  oohOntwerp: { once: 750 }, oohBuy: { mo: 500 }, oohProductie: { once: 1500 },
+  printOntwerp: { once: 650 }, drukwerk: { once: 750 }, printDistributie: { once: 600 },
+  persstrategie: { mo: 500 }, influencerMgmt: { mo: 450 }, affiliateSetup: { once: 1200 },
 };
 function computeLoop({ types, phases, cats, dels }) {
   const selected = SCOPE_KEYS.filter((k) => types[k]);
@@ -1657,7 +1657,7 @@ function computeLoop({ types, phases, cats, dels }) {
     if (cats[k]) {
       const c = CAT_BY_KEY[k];
       once += c.once; mo += c.mo;
-      c.dels.forEach((d) => { if (dels && dels[d]) mo += DEL_PRICE[d] || 0; });
+      c.dels.forEach((d) => { if (dels && dels[d]) { const dp = DEL_PRICE[d] || {}; once += dp.once || 0; mo += dp.mo || 0; } });
     }
   });
   return { once, mo, saving, allLoop, selected };
@@ -1709,6 +1709,7 @@ function PriceCalculator({ openConsult }) {
   const catLabel = (k) => (p.cats && p.cats[k]) || k;
   const subLabel = (k) => (p.subs && p.subs[k]) || k;
   const delLabel = (k) => (p.dels && p.dels[k]) || k;
+  const delPriceLabel = (d) => { const dp = DEL_PRICE[d] || {}; return [dp.once ? eur(dp.once) : null, dp.mo ? `${eur(dp.mo)}${p.mo}` : null].filter(Boolean).join(" + "); };
   const catRefine = (c) => {
     const chans = c.subs.filter((x) => subs[x]).map(subLabel);
     const svcs = c.dels.filter((x) => dels[x]).map(delLabel);
@@ -1735,9 +1736,10 @@ function PriceCalculator({ openConsult }) {
       const chans = c.subs.filter((x) => subs[x]).map(subLabel);
       const parts = [];
       if (!req) parts.push({ label: p.catBase, once: c.once, mo: c.mo });
-      selDels.forEach((d) => parts.push({ label: delLabel(d), once: 0, mo: DEL_PRICE[d] || 0 }));
-      const totMo = c.mo + selDels.reduce((a, d) => a + (DEL_PRICE[d] || 0), 0);
-      items.push({ cat: true, label: catLabel(k), once: c.once, mo: totMo, req, parts, chans });
+      selDels.forEach((d) => { const dp = DEL_PRICE[d] || {}; parts.push({ label: delLabel(d), once: dp.once || 0, mo: dp.mo || 0 }); });
+      const totMo = c.mo + selDels.reduce((a, d) => a + ((DEL_PRICE[d] && DEL_PRICE[d].mo) || 0), 0);
+      const totOnce = c.once + selDels.reduce((a, d) => a + ((DEL_PRICE[d] && DEL_PRICE[d].once) || 0), 0);
+      items.push({ cat: true, label: catLabel(k), once: totOnce, mo: totMo, req, parts, chans });
     });
     return items;
   };
@@ -1833,7 +1835,7 @@ function PriceCalculator({ openConsult }) {
                             {c.dels.map((d) => (
                               <button key={d} className={`toggle toggle-sm ${dels[d] ? "on" : ""}`} onClick={() => toggleDel(d)} aria-pressed={dels[d]}>
                                 <span className="toggle-main"><span className="toggle-t">{delLabel(d)}</span></span>
-                                <span className="toggle-p mono">{eur(DEL_PRICE[d])}{p.mo}</span>
+                                <span className="toggle-p mono">{delPriceLabel(d)}</span>
                                 <span className="switch" aria-hidden><span className="switch-knob" /></span>
                               </button>
                             ))}
@@ -1870,9 +1872,9 @@ function PriceCalculator({ openConsult }) {
             <div className="cfg-toggles">
               {["plan", "build", "run"].map((k) => (
                 <button key={k} className={`toggle ${phases[k] ? "on" : ""}`} onClick={() => togglePhase(k)} aria-pressed={phases[k]}>
-                  <span className="switch" aria-hidden><span className="switch-knob" /></span>
                   <span className="toggle-main"><span className="toggle-t">{p.phases[k]}</span><span className="toggle-d">{phaseDescFor(k)}</span></span>
                   <span className="toggle-p mono">{k === "plan" && allLoop && selected.length > 0 ? <span className="waived">{packagePrice("plan")}</span> : packagePrice(k)}</span>
+                  <span className="switch" aria-hidden><span className="switch-knob" /></span>
                 </button>
               ))}
             </div>
