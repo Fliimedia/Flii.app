@@ -43,13 +43,13 @@ const I18N = {
       { value: 21, suffix: " dagen", label: "Van brief tot live" },
       { value: 100, suffix: "%", label: "AI-native oplevering" },
       { value: 12, suffix: "+", label: "Producten gelanceerd" } ],
-    loop: { eyebrow: "Flii Loop", h2: "Eén AI-fundament. Elke maand slimmer.", center: "elke maand beter",
-      lede: "Flii Loop legt een AI-fundament onder je bedrijf. Daarop verbeteren we wat je al doet en sluiten we slimme marketing-apps aan. Elk resultaat komt terug als data, en het hele systeem wordt scherper.",
+    loop: { eyebrow: "Flii Loop", h2: "Opstarten, ontwikkelen en verbeteren. In één lus.", center: "de lus die blijft leren",
+      lede: "Flii Loop is een plan voor het opstarten, ontwikkelen en verbeteren van apps, platformen en media. Je lanceert, meet wat er gebeurt, verbetert op basis van de data, en begint opnieuw. Elke ronde maakt het geheel scherper.",
       items: [
-        { k: "Fundament", body: "We koppelen je data en tools tot één AI-fundament: de basis waar alles op draait." },
-        { k: "Verbeteren", body: "Daarop maken we je bestaande diensten slimmer: sneller werk, betere keuzes, minder handwerk." },
-        { k: "Aansluiten", body: "We pluggen kant-en-klare marketing-apps in die meteen meedraaien en resultaat opleveren." },
-        { k: "Loop", body: "Elk resultaat voedt het fundament terug. Het systeem leert en wordt elke maand beter." } ],
+        { k: "Launch", body: "Live gaan met een scherp startpunt. Je app, platform of campagne draait en levert de eerste data." },
+        { k: "Analyse", body: "Meten wat er echt gebeurt. Data en gedrag laten zien wat werkt en waar het lekt." },
+        { k: "Improve", body: "Bijsturen op basis van de data. Versterken wat rendeert, schrappen wat niet werkt." },
+        { k: "Loop", body: "Elke ronde voedt de volgende. Het systeem leert en wordt elke maand slimmer." } ],
       priceCta: "Stel je Loop samen en bekijk de prijzen ↘" },
     work: { eyebrow: "Showcase", h2: "Wat we lanceerden", manage: "Beheer showcase ↗", view: "Bekijk case ↗" },
     reviews: { eyebrow: "Reviews", h2: "Bewijs, geen beloftes.", word: "reviews" },
@@ -108,22 +108,30 @@ const I18N = {
       scopeDesc: { campagne: "Een advertentiecampagne, opgezet en gestuurd op resultaat.", app: "Een werkende app of PWA, van één functie tot meerdere modules.", platform: "Een volwaardig, schaalbaar platform met backend en AI." },
       badge: "Meest gekozen", save: "Je bespaart",
       levelLabel: "Niveau", levels: { basis: "Basis", advanced: "Advanced" },
-      phaseLabel: "Loop-fases", phases: { plan: "Plan", build: "Build", run: "Run" },
-      phaseDesc: { plan: "Onderzoek, meting en plan", build: "Ontwikkeling met meting", run: "Beheer en optimalisatie" },
-      addonsLabel: "Losse diensten", addons: { search: "Zoekcampagne (Search)", social: "Social campagne", content: "Content creatie" },
+      phaseLabel: "Pakketten", phases: { plan: "Loop Start", build: "Loop Build", run: "Loop Run" },
+      phaseDesc: { plan: "Research & Plan: onderzoek, meting en strategie.", build: "Creatie: de app, het platform of de campagne wordt gebouwd.", run: "Beheer & verbeter: hosting, optimalisatie en doorontwikkeling." },
+      mediaLabel: "Campagnes & media", packagesLabel: "Pakketten",
+      addonsLabel: "Losse diensten",
+      addons: { search: "Search (Google Ads)", social: "Social (Meta, LinkedIn, TikTok)", llm: "AI-vindbaarheid (GEO)", print: "Print", outdoor: "Outdoor (DOOH)", content: "Content creatie" },
+      addonDesc: { search: "Zoekcampagnes op Google.", social: "Betaalde social campagnes.", llm: "Vindbaar in ChatGPT, Perplexity en Google AI.", print: "Ontwerp voor advertenties en drukwerk.", outdoor: "Digitale buitenreclame, creatie en planning." },
       contentOpts: { none: "Geen", klein: "Klein", groot: "Groot" },
       once: "Eenmalig", perMonth: "Per maand", from: "vanaf", mo: "/mnd", once1: "eenmalig", setup: "Opzet", mgmt: "Beheer",
-      comboNote: "Combinatievoordeel: de losse Plan-fee vervalt in de volledige loop.",
-      empty: "Kies minimaal één fase of dienst.", cta: "Plan een gesprek", summaryPrefix: "Interesse in",
+      comboNote: "Combinatievoordeel: de losse Loop Start-fee vervalt in de volledige loop.",
+      empty: "Kies minimaal één pakket of dienst.", cta: "Plan een gesprek", summaryPrefix: "Interesse in",
+      steps: { type: "Type", pakketten: "Pakketten", media: "Campagnes", content: "Content", result: "Resultaat" },
+      stepHelp: { type: "Waar wil je mee starten?", pakketten: "Welke fases van de loop neem je af?", media: "Welke kanalen zet je in?", content: "Hoeveel content per maand?", result: "Je indicatieve investering." },
+      next: "Volgende", back: "Terug", startOver: "Opnieuw", totalFrom: "Totaal vanaf",
+      proposedNote: "Nieuw, als voorstel geprijsd: AI-vindbaarheid, print en outdoor.",
       excl: "Alle bedragen exclusief btw, op basis van vanaf-tarieven. Definitieve prijs hangt af van de scope. Mediabudget niet inbegrepen.",
-      refTitle: "Prijsreferentie", loopRef: "Flii Loop", loopRefDesc: "Drie fases, per campagne, app of platform. Neem de hele loop of losse fases.",
-      appRef: "App ontwikkeling", appRefDesc: "Drie niveaus. De prijs is de Build-fee; Plan en Run reken je apart.", looseRef: "Losse diensten",
+      refTitle: "Prijsreferentie", loopRef: "Flii Loop", loopRefDesc: "Drie pakketten, per campagne, app of platform. Neem de hele loop of losse pakketten.",
+      appRef: "App ontwikkeling", appRefDesc: "Drie niveaus. De prijs is de Loop Build-fee; Loop Start en Loop Run reken je apart.", looseRef: "Losse diensten",
       searchRef: "Keyword- en concurrentieonderzoek, structuur, advertentieteksten, conversietracking, optimalisatie en rapportage.",
       socialRef: "Doelgroepbepaling, opzet, A/B-tests, conversietracking, optimalisatie en rapportage. Creatives lopen via content.",
       contentLos: "Los: blog vanaf € 300, visual vanaf € 95, reel of korte video vanaf € 350.",
       appBasis: "Eén kernfunctie, responsive PWA, basismeting, hosting-klaar op Vercel.",
       appAdvanced: "Meerdere modules, gebruikersaccounts, API-koppelingen, dashboard en uitgebreide meting.",
       appPlatform: "Gebruikersrollen, backend en database, AI- of LLM-integratie, beheer-CMS en schaalbaar." },
+    calc: { eyebrow: "Prijsindicatie", h2: "Bereken je Loop.", lede: "Klik snel door de stappen en zie meteen wat jouw Loop kost. Een indicatie op basis van vanaf-tarieven, geen offerte." },
     detail: { backShowcase: "← Showcase", backInsights: "← Inzichten", backHome: "← Home",
       notFound: "Niet gevonden", notFoundSub: "Dit item is mogelijk verwijderd in het CMS.",
       visit: "Bezoek", credential: "Bekijk certificaat ↗" },
@@ -162,13 +170,13 @@ const I18N = {
       { value: 21, suffix: " days", label: "Brief to live" },
       { value: 100, suffix: "%", label: "AI-native delivery" },
       { value: 12, suffix: "+", label: "Products shipped" } ],
-    loop: { eyebrow: "Flii Loop", h2: "One AI foundation. Smarter every month.", center: "smarter monthly",
-      lede: "Flii Loop lays an AI foundation under your business. On top of it we sharpen what you already do and plug in smart marketing apps. Every result comes back as data, and the whole system gets sharper.",
+    loop: { eyebrow: "Flii Loop", h2: "Launch, develop and improve. In one loop.", center: "the loop that keeps learning",
+      lede: "Flii Loop is a plan for launching, developing and improving apps, platforms and media. You launch, measure what happens, improve on the data, and start again. Every round sharpens the whole.",
       items: [
-        { k: "Foundation", body: "We connect your data and tools into one AI foundation: the base everything runs on." },
-        { k: "Improve", body: "On top of it we make your existing services smarter: faster work, better calls, less manual effort." },
-        { k: "Connect", body: "We plug in ready-made marketing apps that start working and paying back right away." },
-        { k: "Loop", body: "Every result feeds the foundation back. The system learns and gets better every month." } ],
+        { k: "Launch", body: "Go live with a sharp starting point. Your app, platform or campaign runs and produces the first data." },
+        { k: "Analyse", body: "Measure what actually happens. Data and behaviour show what works and where it leaks." },
+        { k: "Improve", body: "Adjust based on the data. Strengthen what pays off, cut what does not." },
+        { k: "Loop", body: "Every round feeds the next. The system learns and gets smarter every month." } ],
       priceCta: "Configure your Loop and see pricing ↘" },
     work: { eyebrow: "Showcase", h2: "What we've shipped", manage: "Manage showcase ↗", view: "View case ↗" },
     reviews: { eyebrow: "Reviews", h2: "Proof, not promises.", word: "reviews" },
@@ -227,22 +235,30 @@ const I18N = {
       scopeDesc: { campagne: "An ad campaign, set up and steered on results.", app: "A working app or PWA, from one feature to several modules.", platform: "A full, scalable platform with backend and AI." },
       badge: "Most chosen", save: "You save",
       levelLabel: "Level", levels: { basis: "Basic", advanced: "Advanced" },
-      phaseLabel: "Loop phases", phases: { plan: "Plan", build: "Build", run: "Run" },
-      phaseDesc: { plan: "Research, measurement and plan", build: "Development with measurement", run: "Management and optimisation" },
-      addonsLabel: "Add-on services", addons: { search: "Search campaign", social: "Social campaign", content: "Content creation" },
+      phaseLabel: "Packages", phases: { plan: "Loop Start", build: "Loop Build", run: "Loop Run" },
+      phaseDesc: { plan: "Research & Plan: research, measurement and strategy.", build: "Creation: the app, platform or campaign gets built.", run: "Manage & improve: hosting, optimisation and further development." },
+      mediaLabel: "Campaigns & media", packagesLabel: "Packages",
+      addonsLabel: "Add-on services",
+      addons: { search: "Search (Google Ads)", social: "Social (Meta, LinkedIn, TikTok)", llm: "AI visibility (GEO)", print: "Print", outdoor: "Outdoor (DOOH)", content: "Content creation" },
+      addonDesc: { search: "Search campaigns on Google.", social: "Paid social campaigns.", llm: "Found in ChatGPT, Perplexity and Google AI.", print: "Design for ads and print.", outdoor: "Digital out-of-home, creative and planning." },
       contentOpts: { none: "None", klein: "Small", groot: "Large" },
       once: "One-time", perMonth: "Per month", from: "from", mo: "/mo", once1: "one-time", setup: "Setup", mgmt: "Management",
-      comboNote: "Bundle benefit: the separate Plan fee is waived in the full loop.",
-      empty: "Pick at least one phase or service.", cta: "Book a consultation", summaryPrefix: "Interested in",
+      comboNote: "Bundle benefit: the separate Loop Start fee is waived in the full loop.",
+      empty: "Pick at least one package or service.", cta: "Book a consultation", summaryPrefix: "Interested in",
+      steps: { type: "Type", pakketten: "Packages", media: "Campaigns", content: "Content", result: "Result" },
+      stepHelp: { type: "What do you want to start with?", pakketten: "Which phases of the loop do you take?", media: "Which channels do you use?", content: "How much content per month?", result: "Your indicative investment." },
+      next: "Next", back: "Back", startOver: "Start over", totalFrom: "Total from",
+      proposedNote: "New, priced as a proposal: AI visibility, print and outdoor.",
       excl: "All amounts exclude VAT, based on starting rates. Final price depends on scope. Media budget not included.",
-      refTitle: "Price reference", loopRef: "Flii Loop", loopRefDesc: "Three phases, per campaign, app or platform. Take the full loop or single phases.",
-      appRef: "App development", appRefDesc: "Three levels. The price is the Build fee; Plan and Run are billed separately.", looseRef: "Add-on services",
+      refTitle: "Price reference", loopRef: "Flii Loop", loopRefDesc: "Three packages, per campaign, app or platform. Take the full loop or single packages.",
+      appRef: "App development", appRefDesc: "Three levels. The price is the Loop Build fee; Loop Start and Loop Run are billed separately.", looseRef: "Add-on services",
       searchRef: "Keyword and competitor research, structure, ad copy, conversion tracking, optimisation and reporting.",
       socialRef: "Audience targeting, setup, A/B tests, conversion tracking, optimisation and reporting. Creatives run via content.",
       contentLos: "Single: blog from € 300, visual from € 95, reel or short video from € 350.",
       appBasis: "One core feature, responsive PWA, basic measurement, hosting-ready on Vercel.",
       appAdvanced: "Multiple modules, user accounts, API integrations, dashboard and extended measurement.",
       appPlatform: "User roles, backend and database, AI or LLM integration, admin CMS and scalable." },
+    calc: { eyebrow: "Price estimate", h2: "Calculate your Loop.", lede: "Click through the steps and instantly see what your Loop costs. An estimate based on starting rates, not a quote." },
     detail: { backShowcase: "← Showcase", backInsights: "← Insights", backHome: "← Home",
       notFound: "Not found", notFoundSub: "This item may have been removed in the CMS.",
       visit: "Visit", credential: "View credential ↗" },
@@ -1019,6 +1035,13 @@ function Home({ content, openConsult }) {
         </div>
       </section>
 
+      <section className="band band-calc" id="calculator">
+        <div className="wrap">
+          <Section><div className="eyebrow">{t.calc.eyebrow}</div><h2 className="display h2">{t.calc.h2}</h2><p className="lede">{t.calc.lede}</p></Section>
+          <Section><PriceCalculator openConsult={openConsult} /></Section>
+        </div>
+      </section>
+
       <section className="band" id="work">
         <div className="wrap">
           <Section className="work-head"><div><div className="eyebrow">{t.work.eyebrow}</div><h2 className="display h2">{t.work.h2}</h2></div><a href="#/cms" className="btn btn-ghost">{t.work.manage}</a></Section>
@@ -1239,10 +1262,22 @@ const PRICING = {
     app: { plan: 2500, build: { basis: 3500, advanced: 8500 }, run: 750 },
     platform: { plan: 4500, build: 18000, run: 2500 },
   },
-  addons: { search: { once: 750, mo: 450 }, social: { once: 750, mo: 500 } },
+  addons: { search: { once: 750, mo: 450 }, social: { once: 750, mo: 500 }, llm: { once: 950, mo: 550 }, print: { once: 650, mo: 0 }, outdoor: { once: 850, mo: 0 } },
   content: { none: 0, klein: 650, groot: 1200 },
   app: { basis: 3500, advanced: 8500, platform: 18000 },
 };
+const MEDIA_KEYS = ["search", "social", "llm", "print", "outdoor"];
+function computeLoop({ scope, level, phases, media, content }) {
+  const sc = PRICING.scopes[scope];
+  const buildBase = scope === "app" ? sc.build[level] : sc.build;
+  const allLoop = phases.plan && phases.build && phases.run;
+  const planApplied = allLoop ? 0 : (phases.plan ? sc.plan : 0);
+  let once = planApplied + (phases.build ? buildBase : 0);
+  let mo = phases.run ? sc.run : 0;
+  MEDIA_KEYS.forEach((k) => { if (media[k]) { once += PRICING.addons[k].once; mo += PRICING.addons[k].mo; } });
+  mo += PRICING.content[content] || 0;
+  return { once, mo, saving: allLoop ? sc.plan : 0, buildBase, allLoop };
+}
 const eur = (n) => "\u20AC\u00A0" + (n || 0).toLocaleString("nl-NL");
 function useCountUp(value, dur = 460) {
   const [disp, setDisp] = useState(value);
@@ -1258,97 +1293,100 @@ function useCountUp(value, dur = 460) {
   }, [value, dur]);
   return disp;
 }
-function Pricing({ openConsult }) {
+function PriceCalculator({ openConsult }) {
   const { t } = useLang(); const p = t.pricing;
+  const [step, setStep] = useState(0);
   const [scope, setScope] = useState("app");
   const [level, setLevel] = useState("advanced");
   const [phases, setPhases] = useState({ plan: true, build: true, run: true });
-  const [search, setSearch] = useState(false);
-  const [social, setSocial] = useState(false);
+  const [media, setMedia] = useState({ search: false, social: false, llm: false, print: false, outdoor: false });
   const [content, setContent] = useState("none");
-  useEffect(() => { window.scrollTo(0, 0); }, []);
   const sc = PRICING.scopes[scope];
-  const buildBase = scope === "app" ? sc.build[level] : sc.build;
-  const allLoop = phases.plan && phases.build && phases.run;
-  const planApplied = allLoop ? 0 : (phases.plan ? sc.plan : 0);
-  const once = planApplied + (phases.build ? buildBase : 0) + (search ? PRICING.addons.search.once : 0) + (social ? PRICING.addons.social.once : 0);
-  const mo = (phases.run ? sc.run : 0) + (search ? PRICING.addons.search.mo : 0) + (social ? PRICING.addons.social.mo : 0) + PRICING.content[content];
+  const { once, mo, saving, buildBase, allLoop } = computeLoop({ scope, level, phases, media, content });
+  const onceA = useCountUp(once); const moA = useCountUp(mo);
   const nothing = once === 0 && mo === 0;
-  const onceA = useCountUp(once);
-  const moA = useCountUp(mo);
-  const saving = allLoop ? sc.plan : 0;
+  const steps = ["type", "pakketten", "media", "content", "result"];
+  const last = steps.length - 1;
+  const cur = steps[step];
+  const go = (d) => setStep((s) => Math.min(last, Math.max(0, s + d)));
   const togglePhase = (k) => setPhases((s) => ({ ...s, [k]: !s[k] }));
+  const toggleMedia = (k) => setMedia((s) => ({ ...s, [k]: !s[k] }));
   const phasePrice = (k) => k === "run" ? eur(sc.run) + p.mo : k === "build" ? eur(buildBase) : eur(sc.plan);
-  const refPrice = (sk, pk) => pk === "build" ? (sk === "app" ? PRICING.scopes.app.build.basis : PRICING.scopes[sk].build) : PRICING.scopes[sk][pk];
+  const mediaPrice = (k) => { const a = PRICING.addons[k]; return a.mo ? `${eur(a.once)} ${p.once1} \u00B7 ${eur(a.mo)}${p.mo}` : `${eur(a.once)} ${p.once1}`; };
   const summary = () => {
     const parts = [p.scopes[scope] + (scope === "app" ? ` (${p.levels[level]})` : "")];
     const ph = ["plan", "build", "run"].filter((k) => phases[k]).map((k) => p.phases[k]);
-    if (ph.length) parts.push("Loop: " + ph.join(", "));
-    const ad = [];
-    if (search) ad.push(p.addons.search);
-    if (social) ad.push(p.addons.social);
+    if (ph.length) parts.push(ph.join(", "));
+    const ad = MEDIA_KEYS.filter((k) => media[k]).map((k) => p.addons[k]);
     if (content !== "none") ad.push(p.addons.content + " " + p.contentOpts[content]);
     if (ad.length) parts.push(ad.join(", "));
     return `${p.summaryPrefix}: ${parts.join(" \u00B7 ")}. ${p.once} ${p.from} ${eur(once)}${mo ? `, ${p.perMonth.toLowerCase()} ${p.from} ${eur(mo)}` : ""}.`;
   };
   return (
-    <section className="pricing">
-      <div className="wrap">
-        <a href="#/" className="back">{t.cms.back}</a>
-        <div className="eyebrow">{p.eyebrow}</div>
-        <h1 className="display detail-h">{p.h1}</h1>
-        <p className="detail-lede">{p.intro}</p>
-        <div className="cfg">
-          <div className="cfg-form">
-            <div className="cfg-block">
-              <div className="cfg-label mono">{p.scopeLabel}</div>
-              <div className="scope-cards">
-                {["campagne", "app", "platform"].map((s) => (
-                  <button key={s} className={`scope-card ${scope === s ? "on" : ""}`} onClick={() => setScope(s)} aria-pressed={scope === s}>
-                    {s === "app" && <span className="scope-badge mono">{p.badge}</span>}
-                    <span className="scope-card-t">{p.scopes[s]}</span>
-                    <span className="scope-card-d">{p.scopeDesc[s]}</span>
-                    <span className="scope-card-p mono">{p.from} {eur(s === "app" ? PRICING.scopes.app.build.basis : PRICING.scopes[s].build)}</span>
-                  </button>
-                ))}
-              </div>
-              {scope === "app" && (
-                <div className="cfg-sub-row">
-                  <span className="cfg-label mono">{p.levelLabel}</span>
-                  <div className="seg">{["basis", "advanced"].map((l) => <button key={l} className={`seg-btn ${level === l ? "on" : ""}`} onClick={() => setLevel(l)}>{p.levels[l]}</button>)}</div>
-                </div>
-              )}
-            </div>
-            <div className="cfg-block">
-              <div className="cfg-label mono">{p.phaseLabel}</div>
-              <div className="cfg-toggles">
-                {["plan", "build", "run"].map((k) => (
-                  <button key={k} className={`toggle ${phases[k] ? "on" : ""}`} onClick={() => togglePhase(k)} aria-pressed={phases[k]}>
-                    <span className="switch" aria-hidden><span className="switch-knob" /></span>
-                    <span className="toggle-main"><span className="toggle-t">{p.phases[k]}</span><span className="toggle-d">{p.phaseDesc[k]}</span></span>
-                    <span className="toggle-p mono">{phasePrice(k)}</span>
-                  </button>
-                ))}
-              </div>
-              {allLoop && <div className="combo-note mono">{p.comboNote}</div>}
-            </div>
-            <div className="cfg-block">
-              <div className="cfg-label mono">{p.addonsLabel}</div>
-              <div className="cfg-toggles">
-                <button className={`toggle ${search ? "on" : ""}`} onClick={() => setSearch((v) => !v)} aria-pressed={search}>
-                  <span className="switch" aria-hidden><span className="switch-knob" /></span>
-                  <span className="toggle-main"><span className="toggle-t">{p.addons.search}</span><span className="toggle-d">{eur(PRICING.addons.search.once)} {p.once1} \u00B7 {eur(PRICING.addons.search.mo)}{p.mo}</span></span>
+    <div className="calc">
+      <div className="calc-steps">
+        {steps.map((s, i) => (
+          <button key={s} className={`calc-dot ${i === step ? "on" : ""} ${i < step ? "done" : ""}`} onClick={() => setStep(i)}>
+            <span className="calc-dot-n">{i + 1}</span><span className="calc-dot-l">{p.steps[s]}</span>
+          </button>
+        ))}
+      </div>
+      <div className="calc-slide" key={cur}>
+        <div className="calc-slide-help mono">{p.stepHelp[cur]}</div>
+        {cur === "type" && (
+          <div className="calc-panel">
+            <div className="scope-cards">
+              {["campagne", "app", "platform"].map((s) => (
+                <button key={s} className={`scope-card ${scope === s ? "on" : ""}`} onClick={() => setScope(s)} aria-pressed={scope === s}>
+                  {s === "app" && <span className="scope-badge mono">{p.badge}</span>}
+                  <span className="scope-card-t">{p.scopes[s]}</span>
+                  <span className="scope-card-d">{p.scopeDesc[s]}</span>
+                  <span className="scope-card-p mono">{p.from} {eur(s === "app" ? PRICING.scopes.app.build.basis : PRICING.scopes[s].build)}</span>
                 </button>
-                <button className={`toggle ${social ? "on" : ""}`} onClick={() => setSocial((v) => !v)} aria-pressed={social}>
-                  <span className="switch" aria-hidden><span className="switch-knob" /></span>
-                  <span className="toggle-main"><span className="toggle-t">{p.addons.social}</span><span className="toggle-d">{eur(PRICING.addons.social.once)} {p.once1} \u00B7 {eur(PRICING.addons.social.mo)}{p.mo}</span></span>
-                </button>
-              </div>
-              <div className="cfg-sub mono">{p.addons.content}</div>
-              <div className="seg">{["none", "klein", "groot"].map((cv) => <button key={cv} className={`seg-btn ${content === cv ? "on" : ""}`} onClick={() => setContent(cv)}>{p.contentOpts[cv]}{cv !== "none" ? ` \u00B7 ${eur(PRICING.content[cv])}${p.mo}` : ""}</button>)}</div>
+              ))}
             </div>
+            {scope === "app" && (
+              <div className="cfg-sub-row"><span className="cfg-label mono">{p.levelLabel}</span>
+                <div className="seg">{["basis", "advanced"].map((l) => <button key={l} className={`seg-btn ${level === l ? "on" : ""}`} onClick={() => setLevel(l)}>{p.levels[l]}</button>)}</div>
+              </div>
+            )}
           </div>
-          <aside className="cfg-out">
+        )}
+        {cur === "pakketten" && (
+          <div className="calc-panel">
+            <div className="cfg-toggles">
+              {["plan", "build", "run"].map((k) => (
+                <button key={k} className={`toggle ${phases[k] ? "on" : ""}`} onClick={() => togglePhase(k)} aria-pressed={phases[k]}>
+                  <span className="switch" aria-hidden><span className="switch-knob" /></span>
+                  <span className="toggle-main"><span className="toggle-t">{p.phases[k]}</span><span className="toggle-d">{p.phaseDesc[k]}</span></span>
+                  <span className="toggle-p mono">{phasePrice(k)}</span>
+                </button>
+              ))}
+            </div>
+            {allLoop && <div className="combo-note mono">{p.comboNote}</div>}
+          </div>
+        )}
+        {cur === "media" && (
+          <div className="calc-panel">
+            <div className="cfg-toggles">
+              {MEDIA_KEYS.map((k) => (
+                <button key={k} className={`toggle ${media[k] ? "on" : ""}`} onClick={() => toggleMedia(k)} aria-pressed={media[k]}>
+                  <span className="switch" aria-hidden><span className="switch-knob" /></span>
+                  <span className="toggle-main"><span className="toggle-t">{p.addons[k]}</span><span className="toggle-d">{p.addonDesc[k]} {mediaPrice(k)}</span></span>
+                </button>
+              ))}
+            </div>
+            <div className="calc-note mono">{p.proposedNote}</div>
+          </div>
+        )}
+        {cur === "content" && (
+          <div className="calc-panel">
+            <div className="seg calc-seg">{["none", "klein", "groot"].map((cv) => <button key={cv} className={`seg-btn ${content === cv ? "on" : ""}`} onClick={() => setContent(cv)}>{p.contentOpts[cv]}{cv !== "none" ? ` \u00B7 ${eur(PRICING.content[cv])}${p.mo}` : ""}</button>)}</div>
+            <p className="calc-note mono">{p.contentLos}</p>
+          </div>
+        )}
+        {cur === "result" && (
+          <div className="calc-panel calc-result">
             <div className="cfg-out-card">
               <div className="cfg-out-h mono">{p.scopes[scope]}{scope === "app" ? ` \u00B7 ${p.levels[level]}` : ""}</div>
               {nothing ? <div className="cfg-empty">{p.empty}</div> : <>
@@ -1359,8 +1397,29 @@ function Pricing({ openConsult }) {
               <button className="btn btn-primary cfg-cta" onClick={() => openConsult(null, summary())}>{p.cta}</button>
               <p className="cfg-excl mono">{p.excl}</p>
             </div>
-          </aside>
-        </div>
+          </div>
+        )}
+      </div>
+      <div className="calc-nav">
+        <button className="btn btn-ghost btn-sm" onClick={() => go(-1)} disabled={step === 0}>{p.back}</button>
+        <div className="calc-running mono">{!nothing && `${p.totalFrom} ${eur(onceA)}${mo ? ` \u00B7 ${eur(moA)}${p.mo}` : ""}`}</div>
+        {step < last ? <button className="btn btn-primary btn-sm" onClick={() => go(1)}>{p.next}</button> : <button className="btn btn-ghost btn-sm" onClick={() => setStep(0)}>{p.startOver}</button>}
+      </div>
+    </div>
+  );
+}
+function Pricing({ openConsult }) {
+  const { t } = useLang(); const p = t.pricing;
+  useEffect(() => { window.scrollTo(0, 0); }, []);
+  const refPrice = (sk, pk) => pk === "build" ? (sk === "app" ? PRICING.scopes.app.build.basis : PRICING.scopes[sk].build) : PRICING.scopes[sk][pk];
+  return (
+    <section className="pricing">
+      <div className="wrap">
+        <a href="#/" className="back">{t.cms.back}</a>
+        <div className="eyebrow">{p.eyebrow}</div>
+        <h1 className="display detail-h">{p.h1}</h1>
+        <p className="detail-lede">{p.intro}</p>
+        <PriceCalculator openConsult={openConsult} />
         <div className="ref">
           <h2 className="display ref-h">{p.refTitle}</h2>
           <div className="ref-block">
@@ -1392,16 +1451,13 @@ function Pricing({ openConsult }) {
           <div className="ref-block">
             <div className="ref-block-h"><h3 className="ref-t">{p.looseRef}</h3></div>
             <div className="ref-grid">
-              <div className="ref-card">
-                <div className="ref-card-t">{p.addons.search}</div>
-                <div className="ref-card-price mono">{p.setup} {eur(750)} \u00B7 {p.mgmt} {eur(450)}{p.mo}</div>
-                <div className="ref-card-d">{p.searchRef}</div>
-              </div>
-              <div className="ref-card">
-                <div className="ref-card-t">{p.addons.social}</div>
-                <div className="ref-card-price mono">{p.setup} {eur(750)} \u00B7 {p.mgmt} {eur(500)}{p.mo}</div>
-                <div className="ref-card-d">{p.socialRef}</div>
-              </div>
+              {MEDIA_KEYS.map((k) => (
+                <div key={k} className="ref-card">
+                  <div className="ref-card-t">{p.addons[k]}</div>
+                  <div className="ref-card-price mono">{PRICING.addons[k].mo ? `${p.setup} ${eur(PRICING.addons[k].once)} \u00B7 ${p.mgmt} ${eur(PRICING.addons[k].mo)}${p.mo}` : `${p.setup} ${eur(PRICING.addons[k].once)}`}</div>
+                  <div className="ref-card-d">{p.addonDesc[k]}</div>
+                </div>
+              ))}
               <div className="ref-card">
                 <div className="ref-card-t">{p.addons.content}</div>
                 <div className="ref-card-price mono">{p.contentOpts.klein} {eur(650)}{p.mo} \u00B7 {p.contentOpts.groot} {eur(1200)}{p.mo}</div>
@@ -2173,6 +2229,27 @@ button{font-family:inherit;}
 .scope-badge{position:absolute;top:-9px;right:12px;background:var(--mag);color:#fff;font-size:9px;letter-spacing:0.08em;text-transform:uppercase;padding:3px 8px;border-radius:999px;}
 .cfg-sub-row{display:flex;align-items:center;gap:12px;margin-top:4px;}
 .cfg-save{margin-top:6px;font-size:12px;color:#1FAE5A;}
+.band-calc{background:var(--mist);}
+.calc{max-width:720px;margin:34px auto 0;background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 30px 60px -52px rgba(23,23,23,0.55);}
+.calc-steps{display:flex;gap:2px;padding:13px 14px;border-bottom:1px solid var(--line);overflow-x:auto;}
+.calc-dot{display:flex;align-items:center;gap:8px;background:none;border:none;cursor:pointer;font:inherit;color:var(--soft);padding:6px 9px;border-radius:9px;white-space:nowrap;transition:color .15s;}
+.calc-dot:hover{color:var(--ink);}
+.calc-dot-n{width:22px;height:22px;flex:none;border-radius:50%;border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:11px;transition:background .15s,border-color .15s,color .15s;}
+.calc-dot-l{font-size:13px;font-weight:600;}
+.calc-dot.on{color:var(--ink);}
+.calc-dot.on .calc-dot-n{border-color:var(--mag);background:var(--mag);color:#fff;}
+.calc-dot.done .calc-dot-n{border-color:var(--ink);background:var(--ink);color:var(--paper);}
+.calc-slide{padding:26px;min-height:286px;animation:slideIn .34s ease both;}
+@keyframes slideIn{from{opacity:0;transform:translateX(12px);}to{opacity:1;transform:none;}}
+.calc-slide-help{font-size:12px;letter-spacing:0.03em;color:var(--soft);margin-bottom:18px;}
+.calc-panel{display:flex;flex-direction:column;gap:14px;}
+.calc-seg{align-self:flex-start;}
+.calc-note{font-size:11.5px;color:var(--soft);margin:2px 0 0;line-height:1.5;}
+.calc-result{align-items:center;}
+.calc-result .cfg-out-card{width:100%;max-width:430px;}
+.calc-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;border-top:1px solid var(--line);background:var(--paper);}
+.calc-running{font-size:12.5px;color:var(--mid);text-align:center;flex:1;}
+.calc-nav .btn[disabled]{opacity:0.4;cursor:default;pointer-events:none;}
 .toggle-main{flex:1;display:flex;flex-direction:column;gap:2px;min-width:0;}
 .toggle-t{font-weight:600;font-size:15px;color:var(--ink);}
 .toggle-d{font-size:12.5px;color:var(--soft);}
@@ -2250,6 +2327,10 @@ button{font-family:inherit;}
   .field-grid.two{grid-template-columns:1fr;}
   .cfg{grid-template-columns:1fr;gap:22px;}
   .scope-cards{grid-template-columns:1fr;}
+  .calc-dot-l{display:none;}
+  .calc-dot-n{width:26px;height:26px;}
+  .calc-slide{padding:20px;min-height:250px;}
+  .calc-running{display:none;}
   .cfg-out{position:static;}
   .ref-grid{grid-template-columns:1fr;}
   .modal{padding:28px 22px;}
@@ -2269,5 +2350,6 @@ button{font-family:inherit;}
   .hero-dot,.hero-scroll-line,.loop-spin,.lm-rot,.lm-rot2,.marquee-track{animation:none;}
   .loop-ring-tilt{transition:none;}
   .loop-core-content{animation:none;}
+  .calc-slide{animation:none;}
 }
 `;
