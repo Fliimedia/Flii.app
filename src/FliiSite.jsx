@@ -143,7 +143,7 @@ const I18N = {
       badge: "Meest gekozen", save: "Je bespaart",
       levelLabel: "Niveau", levels: { basis: "Basis", advanced: "Advanced" },
       phaseLabel: "Pakketten", phases: { plan: "Loop Start", build: "Loop Build", run: "Loop Run" },
-      phaseDesc: { plan: "Research en plan van aanpak, om vervolgens zelf uit te voeren.", build: "Creatie: de app, het platform of de campagne wordt gebouwd.", run: "Beheer & verbeter: hosting, optimalisatie en doorontwikkeling." },
+      phaseDesc: { plan: "Research en plan van aanpak, met de optie om dit zelf uit te voeren.", build: "Creatie: de app, het platform of de campagne wordt gebouwd.", run: "Beheer & verbeter: hosting, optimalisatie en doorontwikkeling." },
       mediaLabel: "Campagnes & media", packagesLabel: "Pakketten",
       addonsLabel: "Losse diensten",
       addons: { search: "Search (Google Ads)", social: "Social (Meta, LinkedIn, TikTok)", display: "Display", llm: "AI-vindbaarheid (GEO)", print: "Print", outdoor: "Outdoor (DOOH)", video: "Video & CTV", lifecycle: "Lifecycle (e-mail & CRM)", content: "Content creatie" },
@@ -312,7 +312,7 @@ const I18N = {
       badge: "Most chosen", save: "You save",
       levelLabel: "Level", levels: { basis: "Basic", advanced: "Advanced" },
       phaseLabel: "Packages", phases: { plan: "Loop Start", build: "Loop Build", run: "Loop Run" },
-      phaseDesc: { plan: "Research and plan of action, for you to execute yourself.", build: "Creation: the app, platform or campaign gets built.", run: "Manage & improve: hosting, optimisation and further development." },
+      phaseDesc: { plan: "Research and plan of action, with the option to execute it yourself.", build: "Creation: the app, platform or campaign gets built.", run: "Manage & improve: hosting, optimisation and further development." },
       mediaLabel: "Campaigns & media", packagesLabel: "Packages",
       addonsLabel: "Add-on services",
       addons: { search: "Search (Google Ads)", social: "Social (Meta, LinkedIn, TikTok)", display: "Display", llm: "AI visibility (GEO)", print: "Print", outdoor: "Outdoor (DOOH)", video: "Video & CTV", lifecycle: "Lifecycle (email & CRM)", content: "Content creation" },
@@ -1695,11 +1695,10 @@ function PriceCalculator({ openConsult }) {
                 <button key={k} className={`toggle ${phases[k] ? "on" : ""}`} onClick={() => togglePhase(k)} aria-pressed={phases[k]}>
                   <span className="switch" aria-hidden><span className="switch-knob" /></span>
                   <span className="toggle-main"><span className="toggle-t">{p.phases[k]}</span><span className="toggle-d">{p.phaseDesc[k]}</span></span>
-                  <span className="toggle-p mono">{k === "plan" && allLoop && selected.length > 0 ? <><span className="waived">{packagePrice("plan")}</span> <span className="waived-note">{p.waived}</span></> : packagePrice(k)}</span>
+                  <span className="toggle-p mono">{k === "plan" && allLoop && selected.length > 0 ? <span className="waived">{packagePrice("plan")}</span> : packagePrice(k)}</span>
                 </button>
               ))}
             </div>
-            {allLoop && selected.length > 0 && <div className="combo-note mono">{p.comboNote}</div>}
           </div>
         )}
         {cur === "result" && (
@@ -1707,18 +1706,19 @@ function PriceCalculator({ openConsult }) {
             <div className="cfg-out-card">
               <div className="cfg-out-h mono">{selected.length ? typeLabel : p.empty}</div>
               {nothing ? <div className="cfg-empty">{p.empty}</div> : <>
-                <div className="invoice">
+                <div className="receipt-items">
                   {lineItems().map((it, i) => (
-                    <div key={i} className="invoice-row">
-                      <span className="invoice-l">{it.label}</span>
-                      <span className="invoice-p mono">{it.req ? p.onRequest : [it.once > 0 && eur(it.once), it.mo > 0 && `${eur(it.mo)}${p.mo}`].filter(Boolean).join(" + ")}</span>
+                    <div key={i} className="receipt-row">
+                      <span className="receipt-l">{it.label}</span>
+                      <span className="receipt-p mono">{it.req ? p.onRequest : [it.once > 0 && eur(it.once), it.mo > 0 && `${eur(it.mo)}${p.mo}`].filter(Boolean).join(" + ")}</span>
                     </div>
                   ))}
-                  {advice && <div className="invoice-row"><span className="invoice-l">{p.details.advice}</span><span className="invoice-p mono">{p.onRequest}</span></div>}
+                  {advice && <div className="receipt-row"><span className="receipt-l">{p.details.advice}</span><span className="receipt-p mono">{p.onRequest}</span></div>}
                 </div>
-                <div className="cfg-amount cfg-total"><span className="cfg-amount-l mono">{p.once}</span><span className="cfg-amount-v display">{eur(onceA)}</span></div>
-                {mo > 0 && <div className="cfg-amount"><span className="cfg-amount-l mono">{p.perMonth}</span><span className="cfg-amount-v display">{eur(moA)}<span className="cfg-mo">{p.mo}</span></span></div>}
-                {saving > 0 && <div className="cfg-save mono">{p.save} {eur(saving)}</div>}
+                <div className="receipt-tot">
+                  <div className="receipt-row receipt-total"><span className="receipt-l">{p.once}</span><span className="receipt-p mono">{eur(onceA)}</span></div>
+                  {mo > 0 && <div className="receipt-row receipt-total"><span className="receipt-l">{p.perMonth}</span><span className="receipt-p mono">{eur(moA)}{p.mo}</span></div>}
+                </div>
               </>}
               <button className="btn btn-primary cfg-cta" onClick={() => openConsult(null, summary())}>{p.cta}</button>
             </div>
@@ -2614,7 +2614,7 @@ button{font-family:inherit;}
 .cfg-save{margin-top:6px;font-size:12px;color:#1FAE5A;}
 .cfg-incl{margin-top:10px;padding-top:10px;border-top:1px solid var(--line);font-size:11.5px;color:var(--soft);line-height:1.55;}
 .band-calc{background:var(--mist);}
-.calc{max-width:720px;margin:34px auto 0;background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 30px 60px -52px rgba(23,23,23,0.55);}
+.calc{max-width:720px;margin:34px auto 0;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 30px 60px -52px rgba(23,23,23,0.55);}
 .calc-steps{display:flex;gap:2px;padding:13px 14px;border-bottom:1px solid var(--line);overflow-x:auto;}
 .calc-dot{display:flex;align-items:center;gap:8px;background:none;border:none;cursor:pointer;font:inherit;color:var(--soft);padding:6px 9px;border-radius:9px;white-space:nowrap;transition:color .15s;}
 .calc-dot:hover{color:var(--ink);}
@@ -2663,6 +2663,15 @@ button{font-family:inherit;}
 .invoice-l{font-weight:600;font-size:14.5px;color:var(--ink);}
 .invoice-p{font-size:13px;color:var(--mid);white-space:nowrap;}
 .cfg-total{margin-top:4px;}
+.receipt-items{display:flex;flex-direction:column;margin:2px 0 4px;}
+.receipt-row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:10px 0;}
+.receipt-items .receipt-row+.receipt-row{border-top:1px dashed var(--line);}
+.receipt-l{color:var(--ink);font-weight:500;font-size:14px;line-height:1.35;}
+.receipt-p{color:var(--mid);white-space:nowrap;font-size:13px;font-variant-numeric:tabular-nums;}
+.receipt-tot{margin-top:8px;border-top:1.5px solid var(--ink);padding-top:6px;}
+.receipt-total{padding:8px 0;}
+.receipt-total .receipt-l{font-size:11px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:var(--soft);}
+.receipt-total .receipt-p{font-size:19px;font-weight:800;color:var(--ink);}
 .advice-toggle{margin-top:2px;}
 .detail-field{display:flex;flex-direction:column;gap:6px;}
 .detail-field-l{font-size:11px;letter-spacing:0.04em;color:var(--soft);}
