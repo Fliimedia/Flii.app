@@ -75,10 +75,10 @@ const I18N = {
     loop: { eyebrow: "Flii Loop", h2: "Opstarten, ontwikkelen en verbeteren. In één loop.", center: "de loop die blijft leren",
       lede: "Flii Loop is een plan voor het opstarten, ontwikkelen en verbeteren van apps, platformen en media. Je lanceert, meet wat er gebeurt, verbetert op basis van de data, en begint opnieuw. Elke ronde maakt het geheel scherper.",
       items: [
-        { k: "Launch", body: "Live gaan met een scherp startpunt. Je app, platform of campagne draait en levert de eerste data." },
-        { k: "Analyse", body: "Meten wat er echt gebeurt. Data en gedrag laten zien wat werkt en waar het lekt." },
-        { k: "Improve", body: "Bijsturen op basis van de data. Versterken wat rendeert, schrappen wat niet werkt." },
-        { k: "Loop", body: "Elke ronde voedt de volgende. Het systeem leert en wordt elke maand slimmer." } ],
+        { k: "Launch", body: "Je app, platform of campagne gaat live en levert de eerste data." },
+        { k: "Analyse", body: "Data en gedrag laten zien wat werkt en waar het geld lekt." },
+        { k: "Improve", body: "Je versterkt wat rendeert en schrapt wat niet werkt." },
+        { k: "Loop", body: "Elke ronde voedt de volgende, zodat het systeem blijft leren." } ],
       lens: { generic: "Algemeen", platform: "Platform", app: "App", media: "Media" },
       variants: {
         platform: ["Je platform draait live met backend en echte gebruikers.", "Je meet gebruik, funnels en waar het proces stokt.", "Je bouwt door op wat werkt en automatiseert meer.", "Elke iteratie schaalt het platform verder op."],
@@ -244,10 +244,10 @@ const I18N = {
     loop: { eyebrow: "Flii Loop", h2: "Launch, develop and improve. In one loop.", center: "the loop that keeps learning",
       lede: "Flii Loop is a plan for launching, developing and improving apps, platforms and media. You launch, measure what happens, improve on the data, and start again. Every round sharpens the whole.",
       items: [
-        { k: "Launch", body: "Go live with a sharp starting point. Your app, platform or campaign runs and produces the first data." },
-        { k: "Analyse", body: "Measure what actually happens. Data and behaviour show what works and where it leaks." },
-        { k: "Improve", body: "Adjust based on the data. Strengthen what pays off, cut what does not." },
-        { k: "Loop", body: "Every round feeds the next. The system learns and gets smarter every month." } ],
+        { k: "Launch", body: "Your app, platform or campaign goes live and produces the first data." },
+        { k: "Analyse", body: "Data and behaviour show what works and where money leaks." },
+        { k: "Improve", body: "You double down on what pays off and cut what does not." },
+        { k: "Loop", body: "Every round feeds the next, so the system keeps learning." } ],
       lens: { generic: "General", platform: "Platform", app: "App", media: "Media" },
       variants: {
         platform: ["Your platform runs live with backend and real users.", "You measure usage, funnels and where the process stalls.", "You build on what works and automate more.", "Every iteration scales the platform further."],
@@ -937,6 +937,11 @@ function LoopDiagram() {
 }
 
 /* ---------- Flii Loop glowing ring mark ---------- */
+const LENS_ICONS = {
+  platform: (<svg viewBox="0 0 24 24" aria-hidden><path d="M12 3 3 8l9 5 9-5-9-5Z" /><path d="M3 12l9 5 9-5" /><path d="M3 16l9 5 9-5" /></svg>),
+  app: (<svg viewBox="0 0 24 24" aria-hidden><rect x="7" y="3" width="10" height="18" rx="2.5" /><path d="M11 18h2" /></svg>),
+  media: (<svg viewBox="0 0 24 24" aria-hidden><path d="M4 10v4h3l6 4V6L7 10H4Z" /><path d="M17 9.5a4 4 0 0 1 0 5" /></svg>),
+};
 function LoopRing() {
   const { t } = useLang();
   const items = t.loop.items;
@@ -949,6 +954,14 @@ function LoopRing() {
   const curBody = cur ? (lens !== "generic" && t.loop.variants[lens] ? t.loop.variants[lens][active] : cur.body) : "";
   return (
     <>
+    <div className="loop-lens loop-lens-top">
+      {["platform", "app", "media"].map((k) => (
+        <button key={k} className={`loop-lens-btn ${lens === k ? "on" : ""}`} onClick={() => setLens((v) => (v === k ? "generic" : k))} aria-pressed={lens === k}>
+          <span className="loop-lens-ic" aria-hidden>{LENS_ICONS[k]}</span>
+          <span className="loop-lens-l">{t.loop.lens[k]}</span>
+        </button>
+      ))}
+    </div>
     <div className={`loop-ring-stage ${active != null ? "open" : ""}`}>
       <div className={`loop-ring-tilt ${active != null && !reduce ? "tilted" : ""}`}>
         <svg className="loop-ring-svg" viewBox="0 0 100 100" aria-hidden>
@@ -978,10 +991,12 @@ function LoopRing() {
           </g>
           {!reduce && (
             <g className="lr-orbit">
-              <g className="lr-star">
-                <circle cx="50" cy="12" r="3.6" fill="#FF6FA6" filter="url(#lrGlow)" opacity="0.5" />
-                <path d="M50 5.2 L50.95 10.9 L56.8 12 L50.95 13.1 L50 18.8 L49.05 13.1 L43.2 12 L49.05 10.9 Z" fill="#FFEAF2" />
-                <circle cx="50" cy="12" r="0.7" fill="#fff" />
+              <path className="lr-trail" d="M50 11 L38 12 L50 13 Z" fill="#FFD8E7" filter="url(#lrGlow)" />
+              <circle className="lr-spark" cx="50" cy="12" r="1.4" fill="#FFEAF2" filter="url(#lrGlow)" />
+              <g className="lr-burst">
+                <path d="M50 4 L50.5 11.5 L58 12 L50.5 12.5 L50 20 L49.5 12.5 L42 12 L49.5 11.5 Z" fill="#fff" />
+                <path d="M53.2 8.8 L50.4 12 L53.2 15.2 L50 12.6 L46.8 15.2 L49.6 12 L46.8 8.8 L50 11.4 Z" fill="#FFEAF2" />
+                <circle cx="50" cy="12" r="1.9" fill="#fff" filter="url(#lrGlow)" />
               </g>
             </g>
           )}
@@ -1005,11 +1020,6 @@ function LoopRing() {
           <span className="loop-step-dot" aria-hidden />
           <span className="loop-step-k">{l.k}</span>
         </button>
-      ))}
-    </div>
-    <div className="loop-lens">
-      {["generic", "platform", "app", "media"].map((k) => (
-        <button key={k} className={`loop-lens-btn ${lens === k ? "on" : ""}`} onClick={() => setLens(k)}>{t.loop.lens[k]}</button>
       ))}
     </div>
     </>
@@ -2164,8 +2174,10 @@ button{font-family:inherit;}
 .lm-rot{transform-box:view-box;transform-origin:50px 50px;animation:loopmark-spin 7s linear infinite;}
 .lm-rot2{transform-box:view-box;transform-origin:50px 50px;animation:loopmark-spin 10s linear infinite reverse;}
 .lr-orbit{transform-box:view-box;transform-origin:50px 50px;animation:loopmark-spin 16s linear infinite;}
-.lr-star{transform-box:view-box;transform-origin:50px 12px;animation:lr-twinkle 4s ease-in-out infinite;}
-@keyframes lr-twinkle{0%{opacity:0.95;transform:scale(1);}50%{opacity:0.14;transform:scale(0.45);}100%{opacity:0.95;transform:scale(1);}}
+.lr-spark{opacity:0.6;}
+.lr-trail{opacity:0.32;}
+.lr-burst{transform-box:view-box;transform-origin:50px 12px;animation:lr-flash 4s ease-out infinite;}
+@keyframes lr-flash{0%{opacity:1;transform:scale(1.15);}10%{opacity:0.25;transform:scale(0.7);}20%{opacity:0;transform:scale(0.4);}82%{opacity:0;transform:scale(0.4);}93%{opacity:0.5;transform:scale(0.78);}100%{opacity:1;transform:scale(1.15);}}
 @keyframes loopmark-spin{to{transform:rotate(360deg);}}
 .loop-cta:hover .loopmark-svg{filter:saturate(1.2) brightness(1.06);}
 .hero-h1{font-size:clamp(44px,8vw,84px);margin:0 0 20px;}
@@ -2513,10 +2525,10 @@ button{font-family:inherit;}
 .loop-core-default,.loop-core-content{display:flex;flex-direction:column;gap:9px;align-items:center;}
 .loop-core-content{animation:coreIn .5s ease both;}
 @keyframes coreIn{from{opacity:0;transform:translateY(8px) scale(.96);}to{opacity:1;transform:none;}}
-.loop-core-k{font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--mag);}
-.loop-core-b{font-size:15px;line-height:1.5;color:var(--paper);margin:0;max-width:28ch;}
-.loop-core-mark{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(243,241,235,0.45);}
-.loop-core-hint{font-family:'Bricolage Grotesque',sans-serif;font-size:19px;color:rgba(243,241,235,0.82);}
+.loop-core-k{font-size:9.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--mag);font-weight:700;}
+.loop-core-b{font-size:13px;line-height:1.42;color:var(--paper);margin:0;max-width:22ch;font-weight:500;}
+.loop-core-mark{font-size:9.5px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(243,241,235,0.5);}
+.loop-core-hint{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:600;color:rgba(243,241,235,0.9);}
 .loop-step-label{position:absolute;display:flex;align-items:center;gap:7px;background:none;border:none;cursor:pointer;font:inherit;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.11em;text-transform:uppercase;color:rgba(243,241,235,0.6);white-space:nowrap;padding:6px;transition:color .15s;text-shadow:0 1px 8px rgba(0,0,0,0.45);z-index:4;}
 .loop-step-label:hover,.loop-step-label:focus-visible{color:var(--paper);outline:none;}
 .loop-step-label.on{color:#fff;}
@@ -2628,10 +2640,13 @@ button{font-family:inherit;}
 .detail-textarea::placeholder{color:var(--soft);}
 .waived{text-decoration:line-through;opacity:0.45;}
 .waived-note{color:#1FAE5A;font-size:11px;}
-.loop-lens{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin:26px auto 0;}
-.loop-lens-btn{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.16);color:rgba(255,255,255,0.72);border-radius:999px;padding:7px 16px;font:inherit;font-size:12.5px;font-weight:600;cursor:pointer;transition:background .15s,color .15s,border-color .15s;}
-.loop-lens-btn:hover{color:#fff;border-color:rgba(255,255,255,0.34);}
+.loop-lens{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:0 auto 32px;}
+.loop-lens-btn{display:flex;flex-direction:column;align-items:center;gap:7px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.14);color:rgba(255,255,255,0.72);border-radius:14px;padding:12px 20px;min-width:88px;font:inherit;font-size:12px;font-weight:600;cursor:pointer;transition:background .15s,color .15s,border-color .15s;}
+.loop-lens-btn:hover{color:#fff;border-color:rgba(255,255,255,0.32);}
 .loop-lens-btn.on{background:var(--mag);border-color:var(--mag);color:#fff;}
+.loop-lens-ic{display:flex;}
+.loop-lens-ic svg{width:23px;height:23px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;}
+.loop-lens-l{letter-spacing:0.01em;}
 .toggle-main{flex:1;display:flex;flex-direction:column;gap:2px;min-width:0;}
 .toggle-t{font-weight:600;font-size:15px;color:var(--ink);}
 .toggle-d{font-size:12.5px;color:var(--soft);}
@@ -2687,8 +2702,8 @@ button{font-family:inherit;}
   .loop-cycle{grid-template-columns:1fr;gap:36px;}
   .loop-ring-tilt,.loop-ring-core{inset:54px;}
   .loop-step-label{font-size:9.5px;letter-spacing:0.08em;}
-  .loop-core-b{font-size:14px;}
-  .loop-core-hint{font-size:17px;}
+  .loop-core-b{font-size:12px;}
+  .loop-core-hint{font-size:13.5px;}
   .loop-svg{max-width:360px;}
   .creds-row{grid-template-columns:repeat(2,1fr);}
   .work-grid,.post-grid{grid-template-columns:1fr;}
