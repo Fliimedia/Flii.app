@@ -164,6 +164,8 @@ const I18N = {
       catDesc: { search: "Gevonden worden bij een zoekintentie, in zoekmachines en AI.", social: "Organisch en betaald op de platformen waar je doelgroep scrolt.", display: "Banners en native over web en apps.", videotv: "Bewegend beeld, van online video tot Connected TV.", audio: "Radio, streaming audio en podcasts.", email: "Je eigen publiek: e-mail, automation en CRM.", messaging: "Directe 1-op-1 kanalen zoals WhatsApp en SMS.", ooh: "Buitenreclame, van billboards tot digitale schermen.", print: "Gedrukt: van visitekaartjes tot brochures.", pr: "Verdiende aandacht via pers, influencers en partners." },
       onRequest: "Op aanvraag",
       svcCol: "Dienst", priceCol: "Prijs vanaf", contentCreatie: "Content creatie", contentCreatieNote: "Posts, visuals en video in je merkstem.",
+      dels: { seoContent: "SEO (content)", seoTech: "SEO (technisch)", sea: "SEA / Google Ads", linkbuilding: "Linkbuilding", socialContent: "Contentcreatie", community: "Community management", paidSocial: "Paid social", socialInfluencer: "Influencer", bannerCreatie: "Bannercreatie", programmaticBuy: "Programmatic inkoop", retargetingSetup: "Retargeting-setup", videoProductie: "Videoproductie", videoMontage: "Montage", videoBuy: "Media-inkoop", spotProductie: "Spotproductie", podcastProductie: "Podcastproductie", audioBuy: "Media-inkoop", templateDesign: "Template-design", emailFlows: "Flows / automation", crmSetup: "CRM-inrichting", flowSetup: "Flow-opzet", msgCopy: "Copy", msgIntegratie: "Integratie", oohOntwerp: "Ontwerp", oohBuy: "Inkoop & planning", oohProductie: "Productie", printOntwerp: "Ontwerp", drukwerk: "Drukwerk", printDistributie: "Distributie", persstrategie: "Persstrategie", influencerMgmt: "Influencer-management", affiliateSetup: "Affiliate-setup" },
+      chansH: "Kanalen", delsH: "Diensten",
       next: "Volgende", back: "Terug", startOver: "Opnieuw", totalFrom: "Totaal vanaf",
       refTitle: "Prijsreferentie", loopRef: "Flii Loop", loopRefDesc: "Drie pakketten, per campagne, app, platform of AI. Neem de hele loop of losse pakketten.",
       appRef: "App ontwikkeling", appRefDesc: "Drie niveaus. De prijs is de Loop Build-fee; Loop Start en Loop Run reken je apart.", looseRef: "Losse diensten",
@@ -333,6 +335,8 @@ const I18N = {
       catDesc: { search: "Getting found on search intent, in engines and AI.", social: "Organic and paid on the platforms where your audience scrolls.", display: "Banners and native across web and apps.", videotv: "Moving image, from online video to Connected TV.", audio: "Radio, streaming audio and podcasts.", email: "Your own audience: email, automation and CRM.", messaging: "Direct 1-to-1 channels like WhatsApp and SMS.", ooh: "Out-of-home, from billboards to digital screens.", print: "Print, from business cards to brochures.", pr: "Earned attention via press, influencers and partners." },
       onRequest: "On request",
       svcCol: "Service", priceCol: "From", contentCreatie: "Content creation", contentCreatieNote: "Posts, visuals and video in your brand voice.",
+      dels: { seoContent: "SEO (content)", seoTech: "SEO (technical)", sea: "SEA / Google Ads", linkbuilding: "Link building", socialContent: "Content creation", community: "Community management", paidSocial: "Paid social", socialInfluencer: "Influencer", bannerCreatie: "Banner creative", programmaticBuy: "Programmatic buying", retargetingSetup: "Retargeting setup", videoProductie: "Video production", videoMontage: "Editing", videoBuy: "Media buying", spotProductie: "Spot production", podcastProductie: "Podcast production", audioBuy: "Media buying", templateDesign: "Template design", emailFlows: "Flows / automation", crmSetup: "CRM setup", flowSetup: "Flow setup", msgCopy: "Copy", msgIntegratie: "Integration", oohOntwerp: "Design", oohBuy: "Buying & planning", oohProductie: "Production", printOntwerp: "Design", drukwerk: "Print", printDistributie: "Distribution", persstrategie: "PR strategy", influencerMgmt: "Influencer management", affiliateSetup: "Affiliate setup" },
+      chansH: "Channels", delsH: "Services",
       next: "Next", back: "Back", startOver: "Start over", totalFrom: "Total from",
       refTitle: "Price reference", loopRef: "Flii Loop", loopRefDesc: "Three packages, per campaign, app, platform or AI. Take the full loop or single packages.",
       appRef: "App development", appRefDesc: "Three levels. The price is the Loop Build fee; Loop Start and Loop Run are billed separately.", looseRef: "Add-on services",
@@ -1496,20 +1500,21 @@ const PRICING = {
 const SCOPE_KEYS = ["campagne", "app", "platform", "ai"];
 const PLATFORM_FNS = ["website", "ecommerce", "ai"];
 const CHANNEL_TREE = [
-  { key: "search", once: 850, mo: 500, subs: ["searchEngines", "aiSearch", "socialSearch", "appStore"] },
-  { key: "social", once: 750, mo: 500, subs: ["meta", "tiktok", "linkedin", "pinterest", "otherSocial"] },
-  { key: "display", once: 700, mo: 450, subs: ["programmatic", "gdn", "native", "retargeting"] },
-  { key: "videotv", once: 950, mo: 600, subs: ["onlineVideo", "ctv", "linearTv"] },
-  { key: "audio", once: 0, mo: 0, subs: ["radio", "streamingAudio", "podcasts"] },
-  { key: "email", once: 850, mo: 500, subs: ["newsletters", "automation", "loyalty"] },
-  { key: "messaging", once: 0, mo: 0, subs: ["whatsapp", "sms", "push"] },
-  { key: "ooh", once: 850, mo: 0, subs: ["billboards", "dooh", "transit", "retail"] },
-  { key: "print", once: 650, mo: 0, subs: ["stationery", "flyers", "directMail", "merch"] },
-  { key: "pr", once: 0, mo: 0, subs: ["earned", "influencer", "affiliate", "sponsoring"] },
+  { key: "search", once: 850, mo: 500, subs: ["searchEngines", "aiSearch", "socialSearch", "appStore"], dels: ["seoContent", "seoTech", "sea", "linkbuilding"] },
+  { key: "social", once: 750, mo: 500, subs: ["meta", "tiktok", "linkedin", "pinterest", "otherSocial"], dels: ["socialContent", "community", "paidSocial", "socialInfluencer"] },
+  { key: "display", once: 700, mo: 450, subs: ["programmatic", "gdn", "native", "retargeting"], dels: ["bannerCreatie", "programmaticBuy", "retargetingSetup"] },
+  { key: "videotv", once: 950, mo: 600, subs: ["onlineVideo", "ctv", "linearTv"], dels: ["videoProductie", "videoMontage", "videoBuy"] },
+  { key: "audio", once: 0, mo: 0, subs: ["radio", "streamingAudio", "podcasts"], dels: ["spotProductie", "podcastProductie", "audioBuy"] },
+  { key: "email", once: 850, mo: 500, subs: ["newsletters", "automation", "loyalty"], dels: ["templateDesign", "emailFlows", "crmSetup"] },
+  { key: "messaging", once: 0, mo: 0, subs: ["whatsapp", "sms", "push"], dels: ["flowSetup", "msgCopy", "msgIntegratie"] },
+  { key: "ooh", once: 850, mo: 0, subs: ["billboards", "dooh", "transit", "retail"], dels: ["oohOntwerp", "oohBuy", "oohProductie"] },
+  { key: "print", once: 650, mo: 0, subs: ["stationery", "flyers", "directMail", "merch"], dels: ["printOntwerp", "drukwerk", "printDistributie"] },
+  { key: "pr", once: 0, mo: 0, subs: ["earned", "influencer", "affiliate", "sponsoring"], dels: ["persstrategie", "influencerMgmt", "affiliateSetup"] },
 ];
 const CAT_KEYS = CHANNEL_TREE.map((c) => c.key);
 const CAT_BY_KEY = Object.fromEntries(CHANNEL_TREE.map((c) => [c.key, c]));
 const ALL_SUBS = CHANNEL_TREE.flatMap((c) => c.subs);
+const ALL_DELS = CHANNEL_TREE.flatMap((c) => c.dels);
 const PRICED_CATS = CHANNEL_TREE.filter((c) => c.once > 0 || c.mo > 0).map((c) => c.key);
 function typePhasePrice(sk, pk) {
   const sc = PRICING.scopes[sk];
@@ -1551,6 +1556,7 @@ function PriceCalculator({ openConsult }) {
   const [phases, setPhases] = useState({ plan: true, build: true, run: true });
   const [cats, setCats] = useState(() => Object.fromEntries(CAT_KEYS.map((k) => [k, false])));
   const [subs, setSubs] = useState(() => Object.fromEntries(ALL_SUBS.map((k) => [k, false])));
+  const [dels, setDels] = useState(() => Object.fromEntries(ALL_DELS.map((k) => [k, false])));
   const [advice, setAdvice] = useState(false);
   const [contentCreatie, setContentCreatie] = useState(true);
   const [appKind, setAppKind] = useState("webapp");
@@ -1567,12 +1573,19 @@ function PriceCalculator({ openConsult }) {
   const togglePhase = (k) => setPhases((s) => ({ ...s, [k]: !s[k] }));
   const toggleCat = (k) => setCats((s) => ({ ...s, [k]: !s[k] }));
   const toggleSub = (k) => setSubs((s) => ({ ...s, [k]: !s[k] }));
+  const toggleDel = (k) => setDels((s) => ({ ...s, [k]: !s[k] }));
   const togglePlatformFn = (k) => setPlatformFn((s) => ({ ...s, [k]: !s[k] }));
   const catLabel = (k) => (p.cats && p.cats[k]) || k;
   const subLabel = (k) => (p.subs && p.subs[k]) || k;
+  const delLabel = (k) => (p.dels && p.dels[k]) || k;
+  const catRefine = (c) => {
+    const chans = c.subs.filter((x) => subs[x]).map(subLabel);
+    const svcs = c.dels.filter((x) => dels[x]).map(delLabel);
+    return [...chans, ...svcs];
+  };
   const catBits = () => CAT_KEYS.filter((k) => cats[k]).map((k) => {
-    const sl = CAT_BY_KEY[k].subs.filter((x) => subs[x]).map(subLabel);
-    return catLabel(k) + (sl.length ? ` (${sl.join(", ")})` : "");
+    const r = catRefine(CAT_BY_KEY[k]);
+    return catLabel(k) + (r.length ? ` (${r.join(", ")})` : "");
   });
   const lineItems = () => {
     const items = [];
@@ -1584,7 +1597,7 @@ function PriceCalculator({ openConsult }) {
     });
     CAT_KEYS.filter((k) => cats[k]).forEach((k) => {
       const c = CAT_BY_KEY[k];
-      items.push({ label: catLabel(k), once: c.once, mo: c.mo, req: c.once === 0 && c.mo === 0 });
+      items.push({ label: catLabel(k), once: c.once, mo: c.mo, req: c.once === 0 && c.mo === 0, detail: catRefine(c).join(", ") });
     });
     if (types.campagne && contentCreatie) items.push({ label: p.contentCreatie, once: 0, mo: PRICING.contentCreatie, req: false });
     return items;
@@ -1656,10 +1669,23 @@ function PriceCalculator({ openConsult }) {
                         <span className="svc-row-p mono">{c.once > 0 ? eur(c.once) : p.onRequest}</span>
                       </button>
                       {cats[c.key] && (
-                        <div className="sub-chips">
-                          {c.subs.map((sub) => (
-                            <button key={sub} className={`chip chip-sub ${subs[sub] ? "on" : ""}`} onClick={() => toggleSub(sub)} aria-pressed={subs[sub]}>{subLabel(sub)}</button>
-                          ))}
+                        <div className="cat-refine">
+                          <div className="refine-group">
+                            <span className="refine-h mono">{p.chansH}</span>
+                            <div className="sub-chips">
+                              {c.subs.map((sub) => (
+                                <button key={sub} className={`chip chip-sub ${subs[sub] ? "on" : ""}`} onClick={() => toggleSub(sub)} aria-pressed={subs[sub]}>{subLabel(sub)}</button>
+                              ))}
+                            </div>
+                          </div>
+                          <div className="refine-group">
+                            <span className="refine-h mono">{p.delsH}</span>
+                            <div className="sub-chips">
+                              {c.dels.map((d) => (
+                                <button key={d} className={`chip chip-sub ${dels[d] ? "on" : ""}`} onClick={() => toggleDel(d)} aria-pressed={dels[d]}>{delLabel(d)}</button>
+                              ))}
+                            </div>
+                          </div>
                         </div>
                       )}
                     </div>
@@ -1719,7 +1745,7 @@ function PriceCalculator({ openConsult }) {
                 <div className="receipt-items">
                   {lineItems().map((it, i) => (
                     <div key={i} className="receipt-row">
-                      <span className="receipt-l">{it.label}</span>
+                      <span className="receipt-l">{it.label}{it.detail ? <span className="receipt-d">{it.detail}</span> : null}</span>
                       <span className="receipt-p mono">{it.req ? p.onRequest : [it.once > 0 && eur(it.once), it.mo > 0 && `${eur(it.mo)}${p.mo}`].filter(Boolean).join(" + ")}</span>
                     </div>
                   ))}
@@ -2664,7 +2690,10 @@ button{font-family:inherit;}
 .svc-row.on .svc-row-n{color:var(--mag);}
 .svc-row-p{font-size:12.5px;color:var(--mid);font-weight:500;white-space:nowrap;}
 .svc-row.on .svc-row-p{color:var(--ink);}
-.svc-item .sub-chips{display:flex;flex-wrap:wrap;gap:7px;padding:0 2px 15px 32px;}
+.svc-item .sub-chips{display:flex;flex-wrap:wrap;gap:7px;}
+.cat-refine{display:flex;flex-direction:column;gap:13px;padding:2px 2px 16px 32px;}
+.refine-group{display:flex;flex-direction:column;gap:8px;}
+.refine-h{font-size:10px;letter-spacing:0.11em;text-transform:uppercase;color:var(--soft);}
 .chip-sub{font-size:12.5px;padding:6px 12px;}
 .chip-sub.on{background:var(--ink);border-color:var(--ink);color:#fff;}
 .invoice{display:flex;flex-direction:column;margin:4px 0 20px;}
@@ -2676,7 +2705,8 @@ button{font-family:inherit;}
 .receipt-items{display:flex;flex-direction:column;margin:2px 0 4px;}
 .receipt-row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:10px 0;}
 .receipt-items .receipt-row+.receipt-row{border-top:1px dashed var(--line);}
-.receipt-l{color:var(--ink);font-weight:500;font-size:14px;line-height:1.35;}
+.receipt-l{display:flex;flex-direction:column;color:var(--ink);font-weight:500;font-size:14px;line-height:1.35;}
+.receipt-d{font-size:11.5px;color:var(--soft);font-weight:400;margin-top:3px;line-height:1.4;}
 .receipt-p{color:var(--mid);white-space:nowrap;font-size:13px;font-variant-numeric:tabular-nums;}
 .receipt-tot{margin-top:8px;border-top:1.5px solid var(--ink);padding-top:6px;}
 .receipt-total{padding:8px 0;}
