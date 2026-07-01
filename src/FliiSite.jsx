@@ -34,38 +34,38 @@ const I18N = {
     services: { eyebrow: "Wat we doen", h2: "Klaar om te bouwen?",
       lede: "Eén aanbod als fundament van resultaat. We bedenken en bouwen jouw blauwdruk voor succes.",
       cta: "Bekijk de dienst ↗",
-      helpH: "Hoe het helpt", execH: "Hoe wij het uitvoeren", outcomeK: "Resultaat", channelsH: "Kanalen waarmee we werken",
+      helpH: "Hoe het helpt", execH: "Hoe wij het uitvoeren", outcomeK: "Resultaat", channelsH: "Kanalen waarmee we werken", loopH: "In de Loop",
       items: [
         { slug: "app-ux", tag: "App & UX", title: "App & UX design",
           body: "Apps en interfaces die doen wat gebruikers willen.",
           lede: "We ontwerpen en bouwen apps en interfaces waar mensen graag mee werken. Van eerste schets tot werkende PWA, met steeds dezelfde vraag: wat heeft de gebruiker echt nodig?",
           help: [{ h: "Minder afhakers", b: "Een heldere flow haalt drempels weg, zodat meer bezoekers doen wat je wilt." }, { h: "Sneller iets echts", b: "We werken in werkende versies in plaats van eindeloze mockups." }, { h: "Klaar voor groei", b: "Een opzet die meegroeit met nieuwe functies en gebruikers." }],
           exec: [{ h: "Onderzoek", b: "We brengen gebruikers, doelen en knelpunten in kaart." }, { h: "Ontwerp", b: "Wireframes en een strak, herkenbaar interfaceontwerp." }, { h: "Bouw", b: "Een responsive app of PWA, meteen hosting-klaar." }, { h: "Meten & verbeteren", b: "We meten gebruik en scherpen de interface aan." }],
-          outcome: "Een app die klopt, converteert en klaarstaat om door te ontwikkelen." },
+          outcome: "Een app die klopt, converteert en klaarstaat om door te ontwikkelen.", loop: ["Je app of PWA gaat live bij de eerste gebruikers.", "Je ziet in de data hoe mensen de app echt gebruiken.", "Je verbetert flows en voegt toe wat gemist wordt.", "Elke release maakt de app sneller en slimmer."] },
         { slug: "platform", tag: "Platform", title: "Platform development",
           body: "Schaalbare platformen met backend, data en AI onder de motorkap.",
           lede: "We bouwen volwaardige platformen: portals, webapps en sites met een echte backend, gebruikersrollen en waar nodig AI. Gemaakt om te schalen.",
           help: [{ h: "Alles op één plek", b: "Data, gebruikers en processen in één systeem in plaats van losse tools." }, { h: "Minder handwerk", b: "Automatisering en koppelingen nemen repeterend werk uit handen." }, { h: "Schaalbaar", b: "Een architectuur die meegroeit met verkeer, features en teams." }],
           exec: [{ h: "Architectuur", b: "We bepalen datamodel, rollen en koppelingen." }, { h: "Bouw", b: "Backend, database en interface, module voor module." }, { h: "Integraties", b: "API's, betalingen, AI en bestaande tools aan elkaar." }, { h: "Beheer", b: "Hosting, monitoring en doorontwikkeling." }],
-          outcome: "Een platform dat je bedrijf draagt in plaats van vertraagt." },
+          outcome: "Een platform dat je bedrijf draagt in plaats van vertraagt.", loop: ["Je platform draait live met backend en echte gebruikers.", "Je meet gebruik, funnels en waar het proces stokt.", "Je bouwt door op wat werkt en automatiseert meer.", "Elke iteratie schaalt het platform verder op."] },
         { slug: "ai", tag: "AI", title: "AI integratie",
           body: "AI die echt werk uit handen neemt, ingebed in je eigen processen.",
           lede: "We integreren AI daar waar het rendeert: assistenten, automatisering en slimme functies die in je bestaande processen passen, niet ernaast.",
           help: [{ h: "Tijd terug", b: "AI neemt repeterend werk over, je team houdt tijd over voor wat telt." }, { h: "Altijd bereikbaar", b: "Assistenten die vragen beantwoorden en leads kwalificeren, dag en nacht." }, { h: "Betere beslissingen", b: "Modellen die patronen zien die mensen missen." }],
           exec: [{ h: "Kansen vinden", b: "We zoeken waar AI het meeste oplevert in jouw proces." }, { h: "Ontwerp", b: "We kiezen model, data en de plek in de flow." }, { h: "Integratie", b: "We bouwen het in je tools en koppelen de data." }, { h: "Bijsturen", b: "We meten de output en verbeteren de kwaliteit." }],
-          outcome: "AI die meedraait in je processen en elke maand slimmer wordt." },
+          outcome: "AI die meedraait in je processen en elke maand slimmer wordt.", loop: ["Je eerste AI-functie draait live in je eigen proces.", "Je meet waar hij tijd wint en waar hij mist.", "Je scherpt de prompts, data en logica aan.", "Elke ronde neemt de AI meer werk uit handen."] },
         { slug: "campaigns", tag: "Campagnes", title: "Marketing campagnes",
           body: "Content en campagnes voor elk kanaal. In de stem van jouw merk, gericht op resultaat.",
           lede: "We zetten campagnes op die renderen: search, social, display, video, outdoor en AI-vindbaarheid. Eén verhaal, over de kanalen waar jouw klant zit.",
           help: [{ h: "De juiste kanalen", b: "We kiezen kanalen op basis van je doelgroep, niet op gewoonte." }, { h: "Meetbaar rendement", b: "Elke euro is te volgen van klik tot klant." }, { h: "Eén verhaal", b: "Consistente boodschap en creatives over alle kanalen." }],
           exec: [{ h: "Strategie", b: "Doelgroep, boodschap en kanaalkeuze." }, { h: "Creatie", b: "Advertenties, teksten en visuals die opvallen." }, { h: "Lanceren", b: "Opzet, tracking en de eerste live campagnes." }, { h: "Optimaliseren", b: "We schalen wat werkt en snoeien de rest." }],
-          outcome: "Campagnes die te volgen zijn tot op de klant, en elke maand scherper." },
+          outcome: "Campagnes die te volgen zijn tot op de klant, en elke maand scherper.", loop: ["Je campagne gaat live over de gekozen kanalen.", "Je meet bereik, kliks en conversies per kanaal.", "Je schaalt de winnende creatives en boodschappen op.", "Elke ronde scherpere targeting en content."] },
         { slug: "media", tag: "Performance", title: "Media performance",
           body: "Organische inzet en adverteren op 20+ media kanalen. Gedreven door data, gericht op resultaat.",
           lede: "Beheer en optimalisatie van je media. We sturen doorlopend op de cijfers die tellen, verbeteren wat rendeert en schrappen wat niet werkt.",
           help: [{ h: "Minder verspilling", b: "Budget verschuift naar wat het beste presteert." }, { h: "Grip op de cijfers", b: "Rapportage op omzet en waarde per bezoeker, geen ijdele cijfers." }, { h: "Continu beter", b: "Elke maand een iteratie op basis van echte data." }],
           exec: [{ h: "Meten", b: "We zetten tracking en attributie goed neer." }, { h: "Analyseren", b: "We lezen de data en vinden de knelpunten." }, { h: "Bijsturen", b: "We optimaliseren biedingen, doelgroepen en creatives." }, { h: "Rapporteren", b: "Transparante rapportage op wat echt telt." }],
-          outcome: "Media die elke maand meetbaar beter presteert." }] },
+          outcome: "Media die elke maand meetbaar beter presteert.", loop: ["Je media draait live op de gekozen kanalen.", "Je meet kliks, kosten en conversies per kanaal.", "Je schaalt op wat converteert en snoeit de rest.", "Elke maand scherpere targeting en creatives."] }] },
     loopCta: { k: "Flii Loop", h2: "Elke dienst draait in Flii Loop.", body: "We lanceren, meten, verbeteren en herhalen. Zo wordt elke dienst elke maand beter, in plaats van eenmalig af.", pricing: "Bekijk Flii Loop ↗", talk: "Plan een gesprek" },
     certsLabel: "Gecertificeerd & partner",
     stats: [
@@ -203,38 +203,38 @@ const I18N = {
     services: { eyebrow: "What we do", h2: "Ready to build?",
       lede: "One offering as the foundation of results. We design and build your blueprint for success.",
       cta: "See the service ↗",
-      helpH: "How it helps", execH: "How we do it", outcomeK: "Result", channelsH: "Channels we work with",
+      helpH: "How it helps", execH: "How we do it", outcomeK: "Result", channelsH: "Channels we work with", loopH: "In the Loop",
       items: [
         { slug: "app-ux", tag: "App & UX", title: "App & UX design",
           body: "Apps and interfaces that do what users want.",
           lede: "We design and build apps and interfaces people enjoy using. From first sketch to working PWA, always asking: what does the user actually need?",
           help: [{ h: "Fewer drop-offs", b: "A clear flow removes friction so more visitors do what you want." }, { h: "Something real, sooner", b: "We work in working versions instead of endless mockups." }, { h: "Ready to grow", b: "A setup that scales with new features and users." }],
           exec: [{ h: "Research", b: "We map users, goals and pain points." }, { h: "Design", b: "Wireframes and a sharp, recognisable interface." }, { h: "Build", b: "A responsive app or PWA, hosting-ready." }, { h: "Measure & improve", b: "We measure usage and refine the interface." }],
-          outcome: "An app that fits, converts and is ready to build on." },
+          outcome: "An app that fits, converts and is ready to build on.", loop: ["Your app or PWA goes live with the first users.", "You see in the data how people really use the app.", "You improve flows and add what is missing.", "Every release makes the app faster and smarter."] },
         { slug: "platform", tag: "Platform", title: "Platform development",
           body: "Scalable platforms with backend, data and AI under the hood.",
           lede: "We build full platforms: portals, web apps and sites with a real backend, user roles and AI where needed. Made to scale.",
           help: [{ h: "Everything in one place", b: "Data, users and processes in one system instead of scattered tools." }, { h: "Less manual work", b: "Automation and integrations take repetitive work off your hands." }, { h: "Scalable", b: "An architecture that grows with traffic, features and teams." }],
           exec: [{ h: "Architecture", b: "We define the data model, roles and integrations." }, { h: "Build", b: "Backend, database and interface, module by module." }, { h: "Integrations", b: "APIs, payments, AI and existing tools connected." }, { h: "Operate", b: "Hosting, monitoring and further development." }],
-          outcome: "A platform that carries your business instead of slowing it." },
+          outcome: "A platform that carries your business instead of slowing it.", loop: ["Your platform runs live with a backend and real users.", "You measure usage, funnels and where the process stalls.", "You build on what works and automate more.", "Every iteration scales the platform further."] },
         { slug: "ai", tag: "AI", title: "AI integration",
           body: "AI that truly takes work off your hands, embedded in your processes.",
           lede: "We integrate AI where it pays off: assistants, automation and smart features that fit inside your existing processes, not beside them.",
           help: [{ h: "Time back", b: "AI takes over repetitive work so your team focuses on what matters." }, { h: "Always available", b: "Assistants that answer questions and qualify leads, day and night." }, { h: "Better decisions", b: "Models that spot patterns people miss." }],
           exec: [{ h: "Find the opportunities", b: "We look for where AI pays off most in your process." }, { h: "Design", b: "We pick the model, data and place in the flow." }, { h: "Integration", b: "We build it into your tools and connect the data." }, { h: "Refine", b: "We measure output and improve quality." }],
-          outcome: "AI that runs inside your processes and gets smarter every month." },
+          outcome: "AI that runs inside your processes and gets smarter every month.", loop: ["Your first AI feature runs live inside your own process.", "You measure where it saves time and where it misses.", "You sharpen the prompts, data and logic.", "Every round has the AI take on more work."] },
         { slug: "campaigns", tag: "Campaigns", title: "Marketing campaigns",
           body: "Content and campaigns for every channel. In your brand's voice, built for results.",
           lede: "We set up campaigns that pay back: search, social, display, video, outdoor and AI visibility. One story, across the channels where your customer is.",
           help: [{ h: "The right channels", b: "We pick channels based on your audience, not habit." }, { h: "Measurable return", b: "Every euro is traceable from click to customer." }, { h: "One story", b: "Consistent message and creative across all channels." }],
           exec: [{ h: "Strategy", b: "Audience, message and channel choice." }, { h: "Creative", b: "Ads, copy and visuals that stand out." }, { h: "Launch", b: "Setup, tracking and the first live campaigns." }, { h: "Optimise", b: "We scale what works and cut the rest." }],
-          outcome: "Campaigns traceable down to the customer, sharper every month." },
+          outcome: "Campaigns traceable down to the customer, sharper every month.", loop: ["Your campaign goes live across the chosen channels.", "You measure reach, clicks and conversions per channel.", "You scale the winning creatives and messages.", "Every round means sharper targeting and content."] },
         { slug: "media", tag: "Performance", title: "Media performance",
           body: "Organic and paid across 20+ media channels. Driven by data, focused on results.",
           lede: "Management and optimisation of your media. We steer continuously on the numbers that matter, improve what pays off and cut what does not.",
           help: [{ h: "Less waste", b: "Budget shifts to what performs best." }, { h: "Grip on the numbers", b: "Reporting on revenue and value per visitor, no vanity metrics." }, { h: "Continuously better", b: "An iteration every month based on real data." }],
           exec: [{ h: "Measure", b: "We set up tracking and attribution properly." }, { h: "Analyse", b: "We read the data and find the bottlenecks." }, { h: "Adjust", b: "We optimise bids, audiences and creative." }, { h: "Report", b: "Transparent reporting on what really counts." }],
-          outcome: "Media that performs measurably better every month." }] },
+          outcome: "Media that performs measurably better every month.", loop: ["Your media runs live on the chosen channels.", "You measure clicks, cost and conversions per channel.", "You scale what converts and cut the rest.", "Every month sharper targeting and creatives."] }] },
     loopCta: { k: "Flii Loop", h2: "Every service runs inside Flii Loop.", body: "We launch, measure, improve and repeat. So every service gets better every month, instead of shipping once and stopping.", pricing: "See Flii Loop ↗", talk: "Book a consultation" },
     certsLabel: "Certified & partnered",
     stats: [
@@ -1151,6 +1151,19 @@ function ServicePage({ id, openConsult }) {
           </div>
         </div>
         <div className="svc-outcome"><span className="svc-outcome-k mono">{svc.outcomeK}</span><p className="svc-outcome-b">{s.outcome}</p></div>
+        {s.loop && (
+          <div className="svc-loop">
+            <div className="svc-col-h mono">{svc.loopH}</div>
+            <div className="svc-loop-grid">
+              {s.loop.map((line, i) => (
+                <div key={i} className="svc-loop-step">
+                  <span className="svc-loop-k mono">{t.loop.items[i].k}</span>
+                  <p className="svc-loop-b">{line}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
         {SERVICE_LOGOS[s.slug] && (
           <div className="svc-logos">
             <div className="svc-col-h mono">{svc.channelsH}</div>
@@ -2267,6 +2280,14 @@ button{font-family:inherit;}
 .svc-outcome{display:flex;gap:16px;align-items:baseline;margin-top:42px;padding:24px 26px;background:var(--card);border:1px solid var(--line);border-radius:16px;}
 .svc-outcome-k{font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--mag);flex:none;}
 .svc-outcome-b{font-family:'Bricolage Grotesque',sans-serif;font-size:19px;font-weight:500;margin:0;letter-spacing:-0.01em;}
+.svc-loop{margin-top:42px;}
+.svc-loop .svc-col-h{margin-bottom:18px;}
+.svc-loop-grid{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--card);}
+.svc-loop-step{padding:20px;border-right:1px solid var(--line);}
+.svc-loop-step:last-child{border-right:none;}
+.svc-loop-k{display:block;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--mag);margin-bottom:9px;}
+.svc-loop-b{font-size:14px;line-height:1.45;color:var(--ink);margin:0;}
+@media(max-width:720px){.svc-loop-grid{grid-template-columns:1fr;}.svc-loop-step{border-right:none;border-bottom:1px solid var(--line);}.svc-loop-step:last-child{border-bottom:none;}}
 .svc-logos{margin-top:40px;}
 .svc-logos-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:16px;}
 .brand-logo{display:inline-flex;width:34px;height:34px;flex:none;filter:grayscale(1);opacity:0.72;transition:filter .2s,opacity .2s;}
