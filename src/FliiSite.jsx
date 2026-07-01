@@ -1213,13 +1213,26 @@ function ServicePage({ id, openConsult }) {
     </>
   );
 }
+const REVIEW_LOGOS = {
+  "bikefair": "bikefair.org",
+  "soest-machinery": "soestmachinery.com",
+  "social-innovations": "socialinnovations.nl",
+  "broadcast-magazine": "broadcastmagazine.nl",
+  "zeewind": "zeewind.nl",
+};
 function OrgAvatar({ review, lg }) {
-  const [failed, setFailed] = useState(false);
+  const [stage, setStage] = useState(0);
   const cls = "quote-avatar" + (lg ? " lg" : "");
-  if (review.logo && !failed) {
+  const domain = REVIEW_LOGOS[review.id] || review.logo;
+  const srcs = domain ? [
+    `https://logo.clearbit.com/${domain}`,
+    `https://icons.duckduckgo.com/ip3/${domain}.ico`,
+    `https://www.google.com/s2/favicons?domain=${domain}&sz=128`,
+  ] : [];
+  if (srcs.length && stage < srcs.length) {
     return (
       <span className={cls + " has-logo"} aria-hidden>
-        <img src={`https://www.google.com/s2/favicons?domain=${review.logo}&sz=128`} alt="" loading="lazy" onError={() => setFailed(true)} />
+        <img src={srcs[stage]} alt="" loading="lazy" onError={() => setStage((s) => s + 1)} />
       </span>
     );
   }
@@ -1752,7 +1765,6 @@ function PriceCalculator({ openConsult }) {
       const req = c.once === 0 && c.mo === 0;
       const selDels = c.dels.filter((d) => dels[d]);
       const sub = [];
-      if (!req) sub.push({ label: p.catBase, once: c.once, mo: c.mo });
       selDels.forEach((d) => { const dp = DEL_PRICE[d] || {}; sub.push({ label: delLabel(d), once: dp.once || 0, mo: dp.mo || 0 }); });
       c.subs.filter((x) => subs[x]).forEach((x) => sub.push({ label: subLabel(x), free: true }));
       const totMo = c.mo + selDels.reduce((a, d) => a + ((DEL_PRICE[d] && DEL_PRICE[d].mo) || 0), 0);
