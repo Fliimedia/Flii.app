@@ -163,10 +163,8 @@ const I18N = {
       subs: { searchEngines: "Zoekmachines (Google, Bing)", aiSearch: "AI-search / LLM's", socialSearch: "Social search", appStore: "App store (ASO)", meta: "Meta (Facebook, Instagram)", tiktok: "TikTok", linkedin: "LinkedIn", pinterest: "Pinterest", otherSocial: "X, Snapchat, Reddit", programmatic: "Programmatic display", gdn: "Google Display Network", native: "Native advertising", retargeting: "Retargeting", onlineVideo: "Online video (YouTube Ads)", ctv: "Connected TV / streaming", linearTv: "Lineaire TV", radio: "Radio", streamingAudio: "Streaming audio (Spotify)", podcasts: "Podcasts", newsletters: "Nieuwsbrieven", automation: "Marketing automation", loyalty: "Loyaliteit / CRM", whatsapp: "WhatsApp", sms: "SMS", push: "Push-notificaties", billboards: "Billboards & abri's", dooh: "Digital OOH (DOOH)", transit: "Transit (trein, bus)", retail: "Retail / in-store", stationery: "Visitekaartjes & briefpapier", flyers: "Flyers, folders, brochures", directMail: "Direct mail (post)", merch: "Branded gear / merchandise", earned: "Persrelaties / earned media", influencer: "Influencer marketing", affiliate: "Affiliate / partnerships", sponsoring: "Sponsoring & events" },
       catDesc: { search: "Gevonden worden bij een zoekintentie, in zoekmachines en AI.", social: "Organisch en betaald op de platformen waar je doelgroep scrolt.", display: "Banners en native over web en apps.", videotv: "Bewegend beeld, van online video tot Connected TV.", audio: "Radio, streaming audio en podcasts.", email: "Je eigen publiek: e-mail, automation en CRM.", messaging: "Directe 1-op-1 kanalen zoals WhatsApp en SMS.", ooh: "Buitenreclame, van billboards tot digitale schermen.", print: "Gedrukt: van visitekaartjes tot brochures.", pr: "Verdiende aandacht via pers, influencers en partners." },
       onRequest: "Op aanvraag",
-      approach: { paid: "Betaald", organic: "Organisch", both: "Beide" }, approachH: "Aanpak",
+      svcCol: "Dienst", priceCol: "Prijs vanaf",
       next: "Volgende", back: "Terug", startOver: "Opnieuw", totalFrom: "Totaal vanaf",
-      proposedNote: "Sommige kanalen zijn nieuw en als voorstel geprijsd. Categorieën zonder tarief zijn op aanvraag.",
-      excl: "Alle bedragen exclusief btw, op basis van vanaf-tarieven. Definitieve prijs hangt af van de scope. Mediabudget niet inbegrepen.",
       refTitle: "Prijsreferentie", loopRef: "Flii Loop", loopRefDesc: "Drie pakketten, per campagne, app, platform of AI. Neem de hele loop of losse pakketten.",
       appRef: "App ontwikkeling", appRefDesc: "Drie niveaus. De prijs is de Loop Build-fee; Loop Start en Loop Run reken je apart.", looseRef: "Losse diensten",
       searchRef: "Keyword- en concurrentieonderzoek, structuur, advertentieteksten, conversietracking, optimalisatie en rapportage.",
@@ -334,10 +332,8 @@ const I18N = {
       subs: { searchEngines: "Search engines (Google, Bing)", aiSearch: "AI search / LLMs", socialSearch: "Social search", appStore: "App store (ASO)", meta: "Meta (Facebook, Instagram)", tiktok: "TikTok", linkedin: "LinkedIn", pinterest: "Pinterest", otherSocial: "X, Snapchat, Reddit", programmatic: "Programmatic display", gdn: "Google Display Network", native: "Native advertising", retargeting: "Retargeting", onlineVideo: "Online video (YouTube Ads)", ctv: "Connected TV / streaming", linearTv: "Linear TV", radio: "Radio", streamingAudio: "Streaming audio (Spotify)", podcasts: "Podcasts", newsletters: "Newsletters", automation: "Marketing automation", loyalty: "Loyalty / CRM", whatsapp: "WhatsApp", sms: "SMS", push: "Push notifications", billboards: "Billboards & panels", dooh: "Digital OOH (DOOH)", transit: "Transit (train, bus)", retail: "Retail / in-store", stationery: "Business cards & stationery", flyers: "Flyers, leaflets, brochures", directMail: "Direct mail", merch: "Branded gear / merch", earned: "PR / earned media", influencer: "Influencer marketing", affiliate: "Affiliate / partnerships", sponsoring: "Sponsoring & events" },
       catDesc: { search: "Getting found on search intent, in engines and AI.", social: "Organic and paid on the platforms where your audience scrolls.", display: "Banners and native across web and apps.", videotv: "Moving image, from online video to Connected TV.", audio: "Radio, streaming audio and podcasts.", email: "Your own audience: email, automation and CRM.", messaging: "Direct 1-to-1 channels like WhatsApp and SMS.", ooh: "Out-of-home, from billboards to digital screens.", print: "Print, from business cards to brochures.", pr: "Earned attention via press, influencers and partners." },
       onRequest: "On request",
-      approach: { paid: "Paid", organic: "Organic", both: "Both" }, approachH: "Approach",
+      svcCol: "Service", priceCol: "From",
       next: "Next", back: "Back", startOver: "Start over", totalFrom: "Total from",
-      proposedNote: "Some channels are new and priced as a proposal. Categories without a rate are on request.",
-      excl: "All amounts exclude VAT, based on starting rates. Final price depends on scope. Media budget not included.",
       refTitle: "Price reference", loopRef: "Flii Loop", loopRefDesc: "Three packages, per campaign, app, platform or AI. Take the full loop or single packages.",
       appRef: "App development", appRefDesc: "Three levels. The price is the Loop Build fee; Loop Start and Loop Run are billed separately.", looseRef: "Add-on services",
       searchRef: "Keyword and competitor research, structure, ad copy, conversion tracking, optimisation and reporting.",
@@ -1457,16 +1453,16 @@ const PRICING = {
 const SCOPE_KEYS = ["campagne", "app", "platform", "ai"];
 const PLATFORM_FNS = ["website", "ecommerce", "ai"];
 const CHANNEL_TREE = [
-  { key: "search", once: 850, mo: 500, mix: true, subs: ["searchEngines", "aiSearch", "socialSearch", "appStore"] },
-  { key: "social", once: 750, mo: 500, mix: true, subs: ["meta", "tiktok", "linkedin", "pinterest", "otherSocial"] },
+  { key: "search", once: 850, mo: 500, subs: ["searchEngines", "aiSearch", "socialSearch", "appStore"] },
+  { key: "social", once: 750, mo: 500, subs: ["meta", "tiktok", "linkedin", "pinterest", "otherSocial"] },
   { key: "display", once: 700, mo: 450, subs: ["programmatic", "gdn", "native", "retargeting"] },
-  { key: "videotv", once: 950, mo: 600, mix: true, subs: ["onlineVideo", "ctv", "linearTv"] },
-  { key: "audio", once: 0, mo: 0, mix: true, subs: ["radio", "streamingAudio", "podcasts"] },
+  { key: "videotv", once: 950, mo: 600, subs: ["onlineVideo", "ctv", "linearTv"] },
+  { key: "audio", once: 0, mo: 0, subs: ["radio", "streamingAudio", "podcasts"] },
   { key: "email", once: 850, mo: 500, subs: ["newsletters", "automation", "loyalty"] },
   { key: "messaging", once: 0, mo: 0, subs: ["whatsapp", "sms", "push"] },
   { key: "ooh", once: 850, mo: 0, subs: ["billboards", "dooh", "transit", "retail"] },
   { key: "print", once: 650, mo: 0, subs: ["stationery", "flyers", "directMail", "merch"] },
-  { key: "pr", once: 0, mo: 0, mix: true, subs: ["earned", "influencer", "affiliate", "sponsoring"] },
+  { key: "pr", once: 0, mo: 0, subs: ["earned", "influencer", "affiliate", "sponsoring"] },
 ];
 const CAT_KEYS = CHANNEL_TREE.map((c) => c.key);
 const CAT_BY_KEY = Object.fromEntries(CHANNEL_TREE.map((c) => [c.key, c]));
@@ -1476,7 +1472,7 @@ function typePhasePrice(sk, pk) {
   const sc = PRICING.scopes[sk];
   return pk === "build" ? sc.build : sc[pk];
 }
-function computeLoop({ types, phases, cats, content }) {
+function computeLoop({ types, phases, cats }) {
   const selected = SCOPE_KEYS.filter((k) => types[k]);
   const allLoop = phases.plan && phases.build && phases.run;
   let once = 0, mo = 0, saving = 0;
@@ -1487,7 +1483,6 @@ function computeLoop({ types, phases, cats, content }) {
     if (allLoop) saving += PRICING.scopes[sk].plan;
   });
   CAT_KEYS.forEach((k) => { if (cats[k]) { const c = CAT_BY_KEY[k]; once += c.once; mo += c.mo; } });
-  mo += PRICING.content[content] || 0;
   return { once, mo, saving, allLoop, selected };
 }
 const eur = (n) => "\u20AC\u00A0" + (n || 0).toLocaleString("nl-NL");
@@ -1512,16 +1507,14 @@ function PriceCalculator({ openConsult }) {
   const [phases, setPhases] = useState({ plan: true, build: true, run: true });
   const [cats, setCats] = useState(() => Object.fromEntries(CAT_KEYS.map((k) => [k, false])));
   const [subs, setSubs] = useState(() => Object.fromEntries(ALL_SUBS.map((k) => [k, false])));
-  const [approach, setApproach] = useState({});
   const [advice, setAdvice] = useState(false);
   const [appKind, setAppKind] = useState("webapp");
   const [appFeatures, setAppFeatures] = useState("");
   const [platformFn, setPlatformFn] = useState({ website: false, ecommerce: false, ai: false });
-  const [content, setContent] = useState("none");
-  const { once, mo, saving, allLoop, selected } = computeLoop({ types, phases, cats, content });
+  const { once, mo, saving, allLoop, selected } = computeLoop({ types, phases, cats });
   const onceA = useCountUp(once); const moA = useCountUp(mo);
   const nothing = once === 0 && mo === 0;
-  const steps = ["type", "details", "pakketten", "content", "result"];
+  const steps = ["type", "details", "pakketten", "result"];
   const last = steps.length - 1;
   const cur = steps[step];
   const go = (d) => setStep((s) => Math.min(last, Math.max(0, s + d)));
@@ -1529,17 +1522,27 @@ function PriceCalculator({ openConsult }) {
   const togglePhase = (k) => setPhases((s) => ({ ...s, [k]: !s[k] }));
   const toggleCat = (k) => setCats((s) => ({ ...s, [k]: !s[k] }));
   const toggleSub = (k) => setSubs((s) => ({ ...s, [k]: !s[k] }));
-  const setAp = (k, v) => setApproach((s) => ({ ...s, [k]: v }));
   const togglePlatformFn = (k) => setPlatformFn((s) => ({ ...s, [k]: !s[k] }));
   const catLabel = (k) => (p.cats && p.cats[k]) || k;
   const subLabel = (k) => (p.subs && p.subs[k]) || k;
   const catBits = () => CAT_KEYS.filter((k) => cats[k]).map((k) => {
-    const extra = [];
-    const ap = approach[k];
-    if (CAT_BY_KEY[k].mix && ap && ap !== "both") extra.push(p.approach[ap]);
-    CAT_BY_KEY[k].subs.filter((x) => subs[x]).forEach((x) => extra.push(subLabel(x)));
-    return catLabel(k) + (extra.length ? ` (${extra.join(", ")})` : "");
+    const sl = CAT_BY_KEY[k].subs.filter((x) => subs[x]).map(subLabel);
+    return catLabel(k) + (sl.length ? ` (${sl.join(", ")})` : "");
   });
+  const lineItems = () => {
+    const items = [];
+    selected.forEach((sk) => {
+      const planFee = allLoop ? 0 : (phases.plan ? typePhasePrice(sk, "plan") : 0);
+      const onceItem = planFee + (phases.build ? typePhasePrice(sk, "build") : 0);
+      const moItem = phases.run ? typePhasePrice(sk, "run") : 0;
+      items.push({ label: p.scopes[sk], once: onceItem, mo: moItem, req: false });
+    });
+    CAT_KEYS.filter((k) => cats[k]).forEach((k) => {
+      const c = CAT_BY_KEY[k];
+      items.push({ label: catLabel(k), once: c.once, mo: c.mo, req: c.once === 0 && c.mo === 0 });
+    });
+    return items;
+  };
   const phaseSum = (pk) => selected.reduce((a, sk) => a + typePhasePrice(sk, pk), 0);
   const packagePrice = (k) => k === "run" ? eur(phaseSum("run")) + p.mo : eur(phaseSum(k));
   const typeLabel = selected.map((s) => p.scopes[s]).join(" \u00B7 ");
@@ -1552,7 +1555,6 @@ function PriceCalculator({ openConsult }) {
     if (types.platform) { const pf = PLATFORM_FNS.filter((k) => platformFn[k]).map((k) => p.platformFns[k]); if (pf.length) parts.push(pf.join(", ")); }
     const ch = catBits();
     if (advice) ch.push(p.details.advice);
-    if (content !== "none") ch.push(p.addons.content + " " + p.contentOpts[content]);
     if (ch.length) parts.push(ch.join(" \u00B7 "));
     return `${p.summaryPrefix}: ${parts.join(" \u00B7 ")}. ${p.once} ${p.from} ${eur(once)}${mo ? `, ${p.perMonth.toLowerCase()} ${p.from} ${eur(mo)}` : ""}.`;
   };
@@ -1561,7 +1563,6 @@ function PriceCalculator({ openConsult }) {
     const ph = ["plan", "build", "run"].filter((k) => phases[k]).map((k) => p.phases[k]);
     if (ph.length) bits.push(ph.join(", "));
     const ch = catBits();
-    if (content !== "none") ch.push(p.addons.content + " " + p.contentOpts[content]);
     if (advice) ch.push(p.details.advice);
     if (ch.length) bits.push(ch.join(" \u00B7 "));
     return bits.join(" \u00B7 ");
@@ -1598,31 +1599,20 @@ function PriceCalculator({ openConsult }) {
             {types.campagne && (
               <div className="detail-block">
                 <div className="detail-block-q">{p.details.campagneQ}</div>
-                <div className="cat-tree">
+                <div className="svc-list">
+                  <div className="svc-list-head mono"><span>{p.svcCol}</span><span>{p.priceCol}</span></div>
                   {CHANNEL_TREE.map((c) => (
-                    <div key={c.key} className="cat-row">
-                      <button className={`chip cat-chip ${cats[c.key] ? "on" : ""}`} onClick={() => toggleCat(c.key)} aria-pressed={cats[c.key]}>
-                        <span className="cat-chip-x" aria-hidden>{cats[c.key] ? "\u2212" : "+"}</span>
-                        {catLabel(c.key)}
-                        {c.once > 0 && <span className="chip-p"> {p.from} {eur(c.once)}</span>}
+                    <div key={c.key} className="svc-item">
+                      <button className={`svc-row ${cats[c.key] ? "on" : ""}`} onClick={() => toggleCat(c.key)} aria-pressed={cats[c.key]}>
+                        <span className="svc-row-x" aria-hidden>{cats[c.key] ? "\u2212" : "+"}</span>
+                        <span className="svc-row-n">{catLabel(c.key)}</span>
+                        <span className="svc-row-p mono">{c.once > 0 ? eur(c.once) : p.onRequest}</span>
                       </button>
                       {cats[c.key] && (
-                        <div className="cat-expand">
-                          {c.mix && (
-                            <div className="approach-seg" role="group" aria-label={p.approachH}>
-                              <span className="approach-l mono">{p.approachH}</span>
-                              <div className="seg seg-sm">
-                                {["paid", "organic", "both"].map((a) => (
-                                  <button key={a} className={`seg-btn ${(approach[c.key] || "both") === a ? "on" : ""}`} onClick={() => setAp(c.key, a)}>{p.approach[a]}</button>
-                                ))}
-                              </div>
-                            </div>
-                          )}
-                          <div className="sub-chips">
-                            {c.subs.map((sub) => (
-                              <button key={sub} className={`chip chip-sub ${subs[sub] ? "on" : ""}`} onClick={() => toggleSub(sub)} aria-pressed={subs[sub]}>{subLabel(sub)}</button>
-                            ))}
-                          </div>
+                        <div className="sub-chips">
+                          {c.subs.map((sub) => (
+                            <button key={sub} className={`chip chip-sub ${subs[sub] ? "on" : ""}`} onClick={() => toggleSub(sub)} aria-pressed={subs[sub]}>{subLabel(sub)}</button>
+                          ))}
                         </div>
                       )}
                     </div>
@@ -1632,7 +1622,6 @@ function PriceCalculator({ openConsult }) {
                   <span className="switch" aria-hidden><span className="switch-knob" /></span>
                   <span className="toggle-main"><span className="toggle-t">{p.details.advice}</span></span>
                 </button>
-                <p className="calc-note mono">{p.proposedNote}</p>
               </div>
             )}
             {types.app && (
@@ -1671,24 +1660,25 @@ function PriceCalculator({ openConsult }) {
             {allLoop && selected.length > 0 && <div className="combo-note mono">{p.comboNote}</div>}
           </div>
         )}
-        {cur === "content" && (
-          <div className="calc-panel">
-            <div className="seg calc-seg">{["none", "klein", "groot"].map((cv) => <button key={cv} className={`seg-btn ${content === cv ? "on" : ""}`} onClick={() => setContent(cv)}>{p.contentOpts[cv]}{cv !== "none" ? ` \u00B7 ${eur(PRICING.content[cv])}${p.mo}` : ""}</button>)}</div>
-            <p className="calc-note mono">{p.contentLos}</p>
-          </div>
-        )}
         {cur === "result" && (
           <div className="calc-panel calc-result">
             <div className="cfg-out-card">
               <div className="cfg-out-h mono">{selected.length ? typeLabel : p.empty}</div>
               {nothing ? <div className="cfg-empty">{p.empty}</div> : <>
-                <div className="cfg-amount"><span className="cfg-amount-l mono">{p.once} {p.from}</span><span className="cfg-amount-v display">{eur(onceA)}</span></div>
-                {mo > 0 && <div className="cfg-amount"><span className="cfg-amount-l mono">{p.perMonth} {p.from}</span><span className="cfg-amount-v display">{eur(moA)}<span className="cfg-mo">{p.mo}</span></span></div>}
+                <div className="invoice">
+                  {lineItems().map((it, i) => (
+                    <div key={i} className="invoice-row">
+                      <span className="invoice-l">{it.label}</span>
+                      <span className="invoice-p mono">{it.req ? p.onRequest : [it.once > 0 && eur(it.once), it.mo > 0 && `${eur(it.mo)}${p.mo}`].filter(Boolean).join(" + ")}</span>
+                    </div>
+                  ))}
+                  {advice && <div className="invoice-row"><span className="invoice-l">{p.details.advice}</span><span className="invoice-p mono">{p.onRequest}</span></div>}
+                </div>
+                <div className="cfg-amount cfg-total"><span className="cfg-amount-l mono">{p.once}</span><span className="cfg-amount-v display">{eur(onceA)}</span></div>
+                {mo > 0 && <div className="cfg-amount"><span className="cfg-amount-l mono">{p.perMonth}</span><span className="cfg-amount-v display">{eur(moA)}<span className="cfg-mo">{p.mo}</span></span></div>}
                 {saving > 0 && <div className="cfg-save mono">{p.save} {eur(saving)}</div>}
-                {selLine() && <div className="cfg-incl mono">{selLine()}</div>}
               </>}
               <button className="btn btn-primary cfg-cta" onClick={() => openConsult(null, summary())}>{p.cta}</button>
-              <p className="cfg-excl mono">{p.excl}</p>
             </div>
           </div>
         )}
@@ -1751,14 +1741,8 @@ function Pricing({ openConsult }) {
                   <div className="ref-card-d">{p.catDesc[c.key]}</div>
                 </div>
               ))}
-              <div className="ref-card">
-                <div className="ref-card-t">{p.addons.content}</div>
-                <div className="ref-card-price mono">{p.contentOpts.klein} {eur(650)}{p.mo} \u00B7 {p.contentOpts.groot} {eur(1200)}{p.mo}</div>
-                <div className="ref-card-d">{p.contentLos}</div>
-              </div>
             </div>
           </div>
-          <p className="ref-excl mono">{p.excl}</p>
         </div>
       </div>
     </section>
@@ -2605,21 +2589,26 @@ button{font-family:inherit;}
 .chip:hover{border-color:var(--soft);}
 .chip.on{background:var(--mag);border-color:var(--mag);color:#fff;}
 .chip-p{font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:500;opacity:0.7;}
-.cat-tree{display:flex;flex-direction:column;gap:9px;}
-.cat-row{display:flex;flex-direction:column;gap:9px;}
-.cat-chip{align-self:flex-start;}
-.cat-chip-x{display:inline-flex;width:14px;justify-content:center;font-weight:700;margin-right:3px;opacity:0.65;}
-.cat-chip.on .cat-chip-x{opacity:1;}
-.sub-chips{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 4px 15px;padding-left:15px;border-left:2px solid var(--line);}
+.svc-list{display:flex;flex-direction:column;}
+.svc-list-head{display:flex;justify-content:space-between;font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--soft);padding:0 2px 10px;}
+.svc-item{border-top:1px solid var(--line);}
+.svc-item:last-child{border-bottom:1px solid var(--line);}
+.svc-row{display:flex;align-items:center;gap:12px;width:100%;background:none;border:none;padding:14px 2px;font:inherit;cursor:pointer;text-align:left;color:var(--ink);}
+.svc-row-x{display:inline-flex;width:20px;height:20px;flex:none;align-items:center;justify-content:center;font-weight:700;font-size:15px;line-height:1;color:var(--soft);border:1px solid var(--line);border-radius:6px;transition:background .14s,border-color .14s,color .14s;}
+.svc-row.on .svc-row-x{background:var(--mag);border-color:var(--mag);color:#fff;}
+.svc-row-n{flex:1;font-weight:600;font-size:15px;transition:color .14s;}
+.svc-row.on .svc-row-n{color:var(--mag);}
+.svc-row-p{font-size:12.5px;color:var(--mid);font-weight:500;white-space:nowrap;}
+.svc-row.on .svc-row-p{color:var(--ink);}
+.svc-item .sub-chips{display:flex;flex-wrap:wrap;gap:7px;padding:0 2px 15px 32px;}
 .chip-sub{font-size:12.5px;padding:6px 12px;}
 .chip-sub.on{background:var(--ink);border-color:var(--ink);color:#fff;}
-.cat-expand{display:flex;flex-direction:column;gap:11px;margin:0 0 6px 15px;padding-left:15px;border-left:2px solid var(--line);}
-.cat-expand .sub-chips{margin:0;padding:0;border:none;}
-.approach-seg{display:flex;align-items:center;gap:11px;flex-wrap:wrap;}
-.approach-l{font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--soft);}
-.seg-sm{padding:4px;border-radius:10px;gap:4px;}
-.seg-sm .seg-btn{padding:6px 12px;font-size:12.5px;border-radius:7px;}
-.seg-sm .seg-btn.on{background:var(--card);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,0.05);}
+.invoice{display:flex;flex-direction:column;margin:4px 0 20px;}
+.invoice-row{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:11px 0;border-bottom:1px solid var(--line);}
+.invoice-row:first-child{border-top:1px solid var(--line);}
+.invoice-l{font-weight:600;font-size:14.5px;color:var(--ink);}
+.invoice-p{font-size:13px;color:var(--mid);white-space:nowrap;}
+.cfg-total{margin-top:4px;}
 .advice-toggle{margin-top:2px;}
 .detail-field{display:flex;flex-direction:column;gap:6px;}
 .detail-field-l{font-size:11px;letter-spacing:0.04em;color:var(--soft);}
