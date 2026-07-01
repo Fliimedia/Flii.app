@@ -30,7 +30,7 @@ const I18N = {
     hero: { pre: "AI architectuur als fundament van ", mark: "resultaat", post: "",
       sub: "Wij ontwerpen en ontwikkelen AI architectuur & apps.",
       primary: "Plan een gesprek", secondary: "Bekijk Flii Loop ↘", loopCta: "Test Flii Loop" },
-    brandsLabel: "Merken waarvoor we bouwden",
+    brandsLabel: "Merken waarvoor we bouwen",
     services: { eyebrow: "Wat we doen", h2: "Klaar om te bouwen?",
       lede: "Eén aanbod als fundament van resultaat. We bedenken en bouwen jouw blauwdruk voor succes.",
       cta: "Bekijk de dienst ↗",
@@ -103,7 +103,7 @@ const I18N = {
         { n: "Stap 3", h: "Afstemmen", b: "Slimme vervolgvragen, daarna leggen we de opdracht vast." },
         { n: "Stap 4", h: "Bouwen", b: "Heldere scope, gedeelde verwachtingen, een build die live gaat." } ] },
     insights: { eyebrow: "Inzichten", h2: "Scherpe inzichten.", manage: "Beheer inzichten ↗", read: "Lees ↗" },
-    cta: { h2: "Laten we bouwen.", sub: "Vertel ons jouw doel - en ontvang een gericht plan, met planning en heldere deliverables.",
+    cta: { h2: "De kracht van feedback.", sub: "Wie betaalt, bepaalt: de markt is je ijkpunt. Feedback loops zijn je directe verbinding met die markt en de enige echte bron van verbetering. Dat is de kern van Loop.",
       primary: "Plan een gesprek", secondary: "Vraag een groei-audit ↗" },
     contact: [
       { k: "Locatie", v: "Amstelveen, NL", href: null },
@@ -173,7 +173,7 @@ const I18N = {
       onRequest: "Op aanvraag",
       svcCol: "Dienst", priceCol: "Prijs vanaf", contentCreatie: "Content creatie", contentCreatieNote: "Posts, visuals en video in je merkstem.",
       dels: { seoContent: "SEO (content)", seoTech: "SEO (technisch)", sea: "SEA / Google Ads", linkbuilding: "Linkbuilding", socialContent: "Contentcreatie", community: "Community management", paidSocial: "Paid social", socialInfluencer: "Influencer", bannerCreatie: "Bannercreatie", programmaticBuy: "Programmatic inkoop", retargetingSetup: "Retargeting-setup", videoProductie: "Videoproductie", videoMontage: "Montage", videoBuy: "Media-inkoop", spotProductie: "Spotproductie", podcastProductie: "Podcastproductie", audioBuy: "Media-inkoop", templateDesign: "Template-design", emailFlows: "Flows / automation", crmSetup: "CRM-inrichting", flowSetup: "Flow-opzet", msgCopy: "Copy", msgIntegratie: "Integratie", oohOntwerp: "Ontwerp", oohBuy: "Inkoop & planning", oohProductie: "Productie", printOntwerp: "Ontwerp", drukwerk: "Drukwerk", printDistributie: "Distributie", persstrategie: "Persstrategie", influencerMgmt: "Influencer-management", affiliateSetup: "Affiliate-setup" },
-      chansH: "Kanalen", delsH: "Diensten",
+      chansH: "Kanalen", delsH: "Diensten", catBase: "Basis", inclFree: "inbegrepen",
       next: "Volgende", back: "Terug", startOver: "Opnieuw", totalFrom: "Totaal vanaf",
       refTitle: "Prijsreferentie", loopRef: "Flii Loop", loopRefDesc: "Drie pakketten, per campagne, app, platform of AI. Neem de hele loop of losse pakketten.",
       appRef: "App ontwikkeling", appRefDesc: "Drie niveaus. De prijs is de Loop Build-fee; Loop Start en Loop Run reken je apart.", looseRef: "Losse diensten",
@@ -282,7 +282,7 @@ const I18N = {
         { n: "Step 3", h: "Align", b: "Smart follow-ups, then we lock the engagement." },
         { n: "Step 4", h: "Build", b: "Clear scope, shared expectations, a build that ships." } ] },
     insights: { eyebrow: "Insights", h2: "Sharp takes.", manage: "Manage insights ↗", read: "Read ↗" },
-    cta: { h2: "Let's build.", sub: "Tell us your goal, and get a focused plan with timeline and clear deliverables.",
+    cta: { h2: "The power of feedback.", sub: "Whoever pays, decides: the market is your benchmark. Feedback loops are your direct link to that market and the only real source of improvement. That is the heart of Loop.",
       primary: "Book a consultation", secondary: "Get a growth audit ↗" },
     contact: [
       { k: "Location", v: "Amstelveen, NL", href: null },
@@ -352,7 +352,7 @@ const I18N = {
       onRequest: "On request",
       svcCol: "Service", priceCol: "From", contentCreatie: "Content creation", contentCreatieNote: "Posts, visuals and video in your brand voice.",
       dels: { seoContent: "SEO (content)", seoTech: "SEO (technical)", sea: "SEA / Google Ads", linkbuilding: "Link building", socialContent: "Content creation", community: "Community management", paidSocial: "Paid social", socialInfluencer: "Influencer", bannerCreatie: "Banner creative", programmaticBuy: "Programmatic buying", retargetingSetup: "Retargeting setup", videoProductie: "Video production", videoMontage: "Editing", videoBuy: "Media buying", spotProductie: "Spot production", podcastProductie: "Podcast production", audioBuy: "Media buying", templateDesign: "Template design", emailFlows: "Flows / automation", crmSetup: "CRM setup", flowSetup: "Flow setup", msgCopy: "Copy", msgIntegratie: "Integration", oohOntwerp: "Design", oohBuy: "Buying & planning", oohProductie: "Production", printOntwerp: "Design", drukwerk: "Print", printDistributie: "Distribution", persstrategie: "PR strategy", influencerMgmt: "Influencer management", affiliateSetup: "Affiliate setup" },
-      chansH: "Channels", delsH: "Services",
+      chansH: "Channels", delsH: "Services", catBase: "Base", inclFree: "included",
       next: "Next", back: "Back", startOver: "Start over", totalFrom: "Total from",
       refTitle: "Price reference", loopRef: "Flii Loop", loopRefDesc: "Three packages, per campaign, app, platform or AI. Take the full loop or single packages.",
       appRef: "App development", appRefDesc: "Three levels. The price is the Loop Build fee; Loop Start and Loop Run are billed separately.", looseRef: "Add-on services",
@@ -1107,11 +1107,11 @@ function Marquee({ items, render, className = "", duration = 32 }) {
 }
 const BRAND_SVGS = {
   google: (<svg viewBox="0 0 24 24"><path fill="#4285F4" d="M21.6 12.2c0-.66-.06-1.3-.17-1.9H12v3.6h5.4a4.6 4.6 0 01-2 3v2.5h3.2c1.9-1.75 3-4.3 3-7.2z" /><path fill="#34A853" d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 .95-3.4.95-2.6 0-4.8-1.75-5.6-4.1H3.1v2.6A10 10 0 0012 22z" /><path fill="#FBBC05" d="M6.4 13.95a6 6 0 010-3.9V7.45H3.1a10 10 0 000 9.1z" /><path fill="#EA4335" d="M12 6.05c1.47 0 2.8.5 3.84 1.5l2.85-2.85A10 10 0 003.1 7.45L6.4 10.05C7.2 7.7 9.4 6.05 12 6.05z" /></svg>),
-  facebook: (<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#1877F2" /><path fill="#fff" d="M15 8h-1.6c-.3 0-.6.3-.6.7V11H15l-.3 2.3h-1.9V20h-2.4v-6.7H8.5V11h1.9V9.15c0-1.68 1.02-2.9 2.72-2.9H15z" /></svg>),
+  facebook: (<svg viewBox="0 0 24 24"><path fill="#1877F2" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" /></svg>),
   instagram: (<svg viewBox="0 0 24 24"><defs><linearGradient id="fbl-ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stopColor="#FEDA75" /><stop offset=".3" stopColor="#FA7E1E" /><stop offset=".6" stopColor="#D62976" /><stop offset="1" stopColor="#4F5BD5" /></linearGradient></defs><rect x="2" y="2" width="20" height="20" rx="6" fill="url(#fbl-ig)" /><rect x="6" y="6" width="12" height="12" rx="4" fill="none" stroke="#fff" strokeWidth="1.6" /><circle cx="12" cy="12" r="3" fill="none" stroke="#fff" strokeWidth="1.6" /><circle cx="16.4" cy="7.6" r="1" fill="#fff" /></svg>),
   tiktok: (<svg viewBox="0 0 24 24"><path fill="#010101" d="M16.5 3c.3 1.9 1.4 3.3 3.5 3.6v2.5c-1.2.1-2.4-.2-3.5-.8v5.2c0 3.1-2.3 5.3-5.2 5.3A5 5 0 016 13.9c.2-2.5 2.2-4.4 4.9-4.3v2.6c-.4-.1-.8-.1-1.2 0-1 .3-1.7 1.1-1.6 2.2.1 1 1 1.9 2 1.9 1.2 0 2.1-.9 2.1-2.3V3z" /></svg>),
   youtube: (<svg viewBox="0 0 24 24"><rect x="1" y="5" width="22" height="14" rx="4" fill="#FF0000" /><path d="M10 8.5l6 3.5-6 3.5z" fill="#fff" /></svg>),
-  linkedin: (<svg viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#0A66C2" /><path fill="#fff" d="M7 9.5H4.5V19H7zM5.75 5.6a1.45 1.45 0 100 2.9 1.45 1.45 0 000-2.9zM19.5 19H17v-4.8c0-1.2-.43-2-1.5-2-.8 0-1.27.54-1.48 1.06-.08.19-.1.45-.1.71V19h-2.5s.03-8.13 0-9h2.5v1.27c.33-.51.93-1.24 2.25-1.24 1.64 0 2.83 1.07 2.83 3.38z" /></svg>),
+  linkedin: (<svg viewBox="0 0 24 24"><path fill="#0A66C2" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z" /></svg>),
   spotify: (<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#1DB954" /><g fill="none" stroke="#000" strokeWidth="1.6" strokeLinecap="round"><path d="M7 9.5c3-.9 6.6-.6 9.1 1" /><path d="M7.6 12.4c2.6-.7 5.5-.4 7.5 1" /><path d="M8.1 15.2c2-.5 4.1-.3 5.8.8" /></g></svg>),
 };
 const SERVICE_LOGOS = {
@@ -1408,32 +1408,28 @@ function ArticleArt({ variant = "default", mode = "thumb" }) {
   const motifs = {
     funnel: (
       <>
-        <path className="art-line" d="M28 56 H372 M28 100 H372 M28 144 H372" />
-        <path className="art-stroke" d="M46 52 L250 96 L250 104 L46 148" fill="none" strokeWidth="2" />
-        <path className="art-stroke" d="M250 96 L330 100 L250 104" fill="none" strokeWidth="2" />
-        <circle className="art-dot" cx="66" cy="56" r="3.5" /><circle className="art-dot" cx="92" cy="100" r="3.5" /><circle className="art-dot" cx="74" cy="144" r="3.5" />
-        <circle className="art-dot" cx="138" cy="80" r="3" /><circle className="art-dot" cx="150" cy="120" r="3" /><circle className="art-dot" cx="120" cy="100" r="3" />
-        <circle className="art-acc-r" cx="332" cy="100" r="13" fill="none" /><circle className="art-acc-f" cx="332" cy="100" r="6" />
+        <rect className="art-line-f" x="110" y="52" width="180" height="17" rx="5" />
+        <rect className="art-line-f" x="140" y="86" width="120" height="17" rx="5" />
+        <rect className="art-stroke-f" x="164" y="120" width="72" height="17" rx="5" />
+        <rect className="art-acc-f" x="184" y="154" width="32" height="17" rx="5" />
       </>
     ),
     build: (
       <>
-        <rect className="art-stroke-o" x="46" y="44" width="64" height="18" rx="5" fill="none" strokeWidth="2" />
-        <rect className="art-line-f" x="120" y="48" width="120" height="10" rx="5" />
-        <path className="art-acc" d="M356 70 C 372 30, 60 26, 46 64" fill="none" strokeWidth="2" />
-        <path className="art-acc-f" d="M46 64 l9 -3 l-1 8 z" />
-        {Array.from({ length: 21 }).map((_, k) => {
-          const x = 48 + k * 15.4, on = k <= 9, cur = k === 9, h = cur ? 30 : on ? 22 : 16;
-          return <rect key={k} className={cur ? "art-acc-f" : on ? "art-stroke-f" : "art-line-f"} x={x} y={158 - h} width="6" height={h} rx="2" />;
-        })}
+        <rect className="art-line-f" x="118" y="120" width="30" height="40" rx="4" />
+        <rect className="art-line-f" x="160" y="102" width="30" height="58" rx="4" />
+        <rect className="art-stroke-f" x="202" y="82" width="30" height="78" rx="4" />
+        <rect className="art-stroke-f" x="244" y="62" width="30" height="98" rx="4" />
+        <rect className="art-acc-f" x="286" y="42" width="30" height="118" rx="4" />
       </>
     ),
     signal: (
       <>
-        {[[58, 54], [74, 92], [56, 130], [104, 70], [110, 122], [138, 100], [92, 156]].map(([x, y], k) => (
-          <g key={k}><path className="art-line" d={`M${x} ${y} L 312 100`} /><circle className="art-dot" cx={x} cy={y} r={k % 2 ? 3 : 4} /></g>
-        ))}
-        <circle className="art-acc-r" cx="312" cy="100" r="26" fill="none" opacity="0.35" /><circle className="art-acc-r" cx="312" cy="100" r="17" fill="none" /><circle className="art-acc-f" cx="312" cy="100" r="8" />
+        <circle className="art-line" cx="200" cy="100" r="62" fill="none" />
+        <circle className="art-stroke" cx="200" cy="100" r="40" fill="none" strokeWidth="1.5" />
+        <circle className="art-acc-r" cx="200" cy="100" r="20" fill="none" />
+        <circle className="art-acc-f" cx="200" cy="100" r="7" />
+        <circle className="art-dot" cx="262" cy="100" r="4" />
       </>
     ),
     default: (<><circle className="art-acc-f" cx="200" cy="100" r="8" /><circle className="art-acc-r" cx="200" cy="100" r="22" fill="none" /></>),
@@ -1540,7 +1536,19 @@ function typePhasePrice(sk, pk) {
   const sc = PRICING.scopes[sk];
   return pk === "build" ? sc.build : sc[pk];
 }
-function computeLoop({ types, phases, cats }) {
+const DEL_PRICE = {
+  seoContent: 350, seoTech: 300, sea: 400, linkbuilding: 250,
+  socialContent: 400, community: 350, paidSocial: 400, socialInfluencer: 300,
+  bannerCreatie: 250, programmaticBuy: 350, retargetingSetup: 200,
+  videoProductie: 600, videoMontage: 300, videoBuy: 350,
+  spotProductie: 400, podcastProductie: 450, audioBuy: 300,
+  templateDesign: 250, emailFlows: 350, crmSetup: 300,
+  flowSetup: 250, msgCopy: 150, msgIntegratie: 300,
+  oohOntwerp: 300, oohBuy: 400, oohProductie: 350,
+  printOntwerp: 250, drukwerk: 300, printDistributie: 200,
+  persstrategie: 400, influencerMgmt: 350, affiliateSetup: 300,
+};
+function computeLoop({ types, phases, cats, dels }) {
   const selected = SCOPE_KEYS.filter((k) => types[k]);
   const allLoop = phases.plan && phases.build && phases.run;
   let once = 0, mo = 0, saving = 0;
@@ -1550,7 +1558,13 @@ function computeLoop({ types, phases, cats }) {
     mo += phases.run ? typePhasePrice(sk, "run") : 0;
     if (allLoop) saving += PRICING.scopes[sk].plan;
   });
-  CAT_KEYS.forEach((k) => { if (cats[k]) { const c = CAT_BY_KEY[k]; once += c.once; mo += c.mo; } });
+  CAT_KEYS.forEach((k) => {
+    if (cats[k]) {
+      const c = CAT_BY_KEY[k];
+      once += c.once; mo += c.mo;
+      c.dels.forEach((d) => { if (dels && dels[d]) mo += DEL_PRICE[d] || 0; });
+    }
+  });
   return { once, mo, saving, allLoop, selected };
 }
 const eur = (n) => "\u20AC\u00A0" + (n || 0).toLocaleString("nl-NL");
@@ -1580,7 +1594,7 @@ function PriceCalculator({ openConsult }) {
   const [opts, setOpts] = useState({});
   const toggleOpt = (k) => setOpts((s) => ({ ...s, [k]: !s[k] }));
   const optLabel = (k) => (p.typeOpts && p.typeOpts[k]) || k;
-  const { once, mo, saving, allLoop, selected } = computeLoop({ types, phases, cats });
+  const { once, mo, saving, allLoop, selected } = computeLoop({ types, phases, cats, dels });
   const onceA = useCountUp(once); const moA = useCountUp(mo);
   const nothing = once === 0 && mo === 0;
   const steps = ["type", "details", "pakketten", "result"];
@@ -1622,7 +1636,14 @@ function PriceCalculator({ openConsult }) {
     });
     CAT_KEYS.filter((k) => cats[k]).forEach((k) => {
       const c = CAT_BY_KEY[k];
-      items.push({ label: catLabel(k), once: c.once, mo: c.mo, req: c.once === 0 && c.mo === 0, detail: catRefine(c).join(", ") });
+      const req = c.once === 0 && c.mo === 0;
+      const selDels = c.dels.filter((d) => dels[d]);
+      const chans = c.subs.filter((x) => subs[x]).map(subLabel);
+      const parts = [];
+      if (!req) parts.push({ label: p.catBase, once: c.once, mo: c.mo });
+      selDels.forEach((d) => parts.push({ label: delLabel(d), once: 0, mo: DEL_PRICE[d] || 0 }));
+      const totMo = c.mo + selDels.reduce((a, d) => a + (DEL_PRICE[d] || 0), 0);
+      items.push({ cat: true, label: catLabel(k), once: c.once, mo: totMo, req, parts, chans });
     });
     return items;
   };
@@ -1688,8 +1709,8 @@ function PriceCalculator({ openConsult }) {
             {types.campagne && (
               <div className="detail-block">
                 <button className={`toggle advice-toggle ${advice ? "on" : ""}`} onClick={() => setAdvice((v) => !v)} aria-pressed={advice}>
-                  <span className="switch" aria-hidden><span className="switch-knob" /></span>
                   <span className="toggle-main"><span className="toggle-t">{p.details.advice}</span></span>
+                  <span className="switch" aria-hidden><span className="switch-knob" /></span>
                 </button>
                 <div className="detail-block-q">{p.details.campagneQ}</div>
                 <div className="svc-list">
@@ -1703,12 +1724,13 @@ function PriceCalculator({ openConsult }) {
                       </button>
                       {cats[c.key] && (
                         <div className="cat-refine">
+                          <p className="cat-explain">{p.catDesc[c.key]}</p>
                           <div className="refine-group">
                             <span className="refine-h mono">{p.chansH}</span>
                             {c.subs.map((sub) => (
                               <button key={sub} className={`toggle toggle-sm ${subs[sub] ? "on" : ""}`} onClick={() => toggleSub(sub)} aria-pressed={subs[sub]}>
-                                <span className="switch" aria-hidden><span className="switch-knob" /></span>
                                 <span className="toggle-main"><span className="toggle-t">{subLabel(sub)}</span></span>
+                                <span className="switch" aria-hidden><span className="switch-knob" /></span>
                               </button>
                             ))}
                           </div>
@@ -1716,8 +1738,9 @@ function PriceCalculator({ openConsult }) {
                             <span className="refine-h mono">{p.delsH}</span>
                             {c.dels.map((d) => (
                               <button key={d} className={`toggle toggle-sm ${dels[d] ? "on" : ""}`} onClick={() => toggleDel(d)} aria-pressed={dels[d]}>
-                                <span className="switch" aria-hidden><span className="switch-knob" /></span>
                                 <span className="toggle-main"><span className="toggle-t">{delLabel(d)}</span></span>
+                                <span className="toggle-p mono">{eur(DEL_PRICE[d])}{p.mo}</span>
+                                <span className="switch" aria-hidden><span className="switch-knob" /></span>
                               </button>
                             ))}
                           </div>
@@ -1768,9 +1791,24 @@ function PriceCalculator({ openConsult }) {
               {nothing ? <div className="cfg-empty">{p.empty}</div> : <>
                 <div className="receipt-items">
                   {lineItems().map((it, i) => (
-                    <div key={i} className="receipt-row">
-                      <span className="receipt-l">{it.label}{it.detail ? <span className="receipt-d">{it.detail}</span> : null}</span>
-                      <span className="receipt-p mono">{it.req ? p.onRequest : [it.once > 0 && eur(it.once), it.mo > 0 && `${eur(it.mo)}${p.mo}`].filter(Boolean).join(" + ")}</span>
+                    <div key={i} className="receipt-line">
+                      <div className="receipt-row">
+                        <span className="receipt-l">{it.label}{it.detail ? <span className="receipt-d">{it.detail}</span> : null}</span>
+                        <span className="receipt-p mono">{it.req ? p.onRequest : [it.once > 0 && eur(it.once), it.mo > 0 && `${eur(it.mo)}${p.mo}`].filter(Boolean).join(" + ")}</span>
+                      </div>
+                      {it.cat && it.parts && it.parts.length > 0 && (
+                        <div className="receipt-break">
+                          {it.parts.map((pt, j) => (
+                            <div key={j} className="receipt-brow">
+                              <span className="receipt-bl">{pt.label}</span>
+                              <span className="receipt-bp mono">{[pt.once > 0 && eur(pt.once), pt.mo > 0 && `${eur(pt.mo)}${p.mo}`].filter(Boolean).join(" + ") || p.onRequest}</span>
+                            </div>
+                          ))}
+                          {it.chans && it.chans.length > 0 && (
+                            <div className="receipt-brow"><span className="receipt-bl receipt-free">{p.chansH}: {it.chans.join(", ")}</span><span className="receipt-bp mono receipt-free">{p.inclFree}</span></div>
+                          )}
+                        </div>
+                      )}
                     </div>
                   ))}
                   {advice && <div className="receipt-row"><span className="receipt-l">{p.details.advice}</span><span className="receipt-p mono">{p.onRequest}</span></div>}
@@ -2245,7 +2283,7 @@ button{font-family:inherit;}
 .node-net-canvas{display:block;width:100%;height:100%;-webkit-mask-image:linear-gradient(102deg,transparent 0%,rgba(0,0,0,0.08) 34%,#000 68%);mask-image:linear-gradient(102deg,transparent 0%,rgba(0,0,0,0.08) 34%,#000 68%);}
 .band-loop{position:relative;overflow:hidden;}
 .band-loop>.wrap{position:relative;z-index:2;}
-.loop-bg{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);height:50%;z-index:0;opacity:0.64;}
+.loop-bg{position:absolute;left:0;right:0;top:58%;transform:translateY(-50%);height:52%;z-index:0;opacity:0.64;}
 .node-net-loop .node-net-canvas{-webkit-mask-image:radial-gradient(84% 84% at 50% 50%,#000 40%,rgba(0,0,0,0.24) 72%,transparent 100%);mask-image:radial-gradient(84% 84% at 50% 50%,#000 40%,rgba(0,0,0,0.24) 72%,transparent 100%);}
 .hero-inner{position:relative;z-index:2;max-width:740px;}
 .loop-cta{display:inline-flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink);font-weight:600;font-size:15px;}
@@ -2721,6 +2759,8 @@ button{font-family:inherit;}
 .svc-row.on .svc-row-p{color:var(--ink);}
 .svc-item .sub-chips{display:flex;flex-wrap:wrap;gap:7px;}
 .cat-refine{display:flex;flex-direction:column;gap:13px;padding:2px 2px 16px 32px;}
+.cat-explain{font-size:12.5px;color:var(--soft);line-height:1.5;margin:0;}
+.toggle-sm .toggle-p{font-size:12px;}
 .refine-group{display:flex;flex-direction:column;gap:8px;}
 .refine-h{font-size:10px;letter-spacing:0.11em;text-transform:uppercase;color:var(--soft);}
 .chip-sub{font-size:12.5px;padding:6px 12px;}
@@ -2733,7 +2773,12 @@ button{font-family:inherit;}
 .cfg-total{margin-top:4px;}
 .receipt-items{display:flex;flex-direction:column;margin:2px 0 4px;}
 .receipt-row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:10px 0;}
-.receipt-items .receipt-row+.receipt-row{border-top:1px dashed var(--line);}
+.receipt-items .receipt-line+.receipt-line{border-top:1px dashed var(--line);}
+.receipt-break{display:flex;flex-direction:column;gap:5px;margin:0 0 8px 12px;padding-left:12px;border-left:1px solid var(--line);}
+.receipt-brow{display:flex;justify-content:space-between;gap:12px;align-items:baseline;}
+.receipt-bl{font-size:12px;color:var(--mid);}
+.receipt-bp{font-size:11.5px;color:var(--soft);white-space:nowrap;font-variant-numeric:tabular-nums;}
+.receipt-free{color:var(--soft);font-style:italic;}
 .receipt-l{display:flex;flex-direction:column;color:var(--ink);font-weight:500;font-size:14px;line-height:1.35;}
 .receipt-d{font-size:11.5px;color:var(--soft);font-weight:400;margin-top:3px;line-height:1.4;}
 .receipt-p{color:var(--mid);white-space:nowrap;font-size:13px;font-variant-numeric:tabular-nums;}
