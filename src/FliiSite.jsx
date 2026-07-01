@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, createContext, useContext } from "react";
 
 // ============================================================
-// Flii.app : AI-architectuur & marketing-apps
+// Flii.app : AI architectuur & marketing apps
 // Dutch by default, EN toggle in the fixed bottom dock bar.
 // Hash routing: #/ home · #/cms · #/app|insight|review|cert/:id
 // Content via Supabase REST (fetch) with localStorage fallback.
@@ -13,7 +13,7 @@ const BRANDS = ["Weddy", "Aperture", "Populos", "Waryte", "FC Data"];
 /* ---------- i18n ---------- */
 const I18N = {
   nl: {
-    slogan: "AI-architectuur & marketing-apps",
+    slogan: "AI architectuur & marketing apps",
     nav: { solutions: "Diensten", work: "Werk", approach: "Aanpak", about: "Over ons", insights: "Inzichten", pricing: "Prijzen", contact: "Contact", consult: "Plan een gesprek", manage: "CMS" },
     mega: {
       groups: [
@@ -1540,7 +1540,7 @@ function typePhasePrice(sk, pk) {
   const sc = PRICING.scopes[sk];
   return pk === "build" ? sc.build : sc[pk];
 }
-function computeLoop({ types, phases, cats, contentCreatie }) {
+function computeLoop({ types, phases, cats }) {
   const selected = SCOPE_KEYS.filter((k) => types[k]);
   const allLoop = phases.plan && phases.build && phases.run;
   let once = 0, mo = 0, saving = 0;
@@ -1551,7 +1551,6 @@ function computeLoop({ types, phases, cats, contentCreatie }) {
     if (allLoop) saving += PRICING.scopes[sk].plan;
   });
   CAT_KEYS.forEach((k) => { if (cats[k]) { const c = CAT_BY_KEY[k]; once += c.once; mo += c.mo; } });
-  if (types.campagne && contentCreatie) mo += PRICING.contentCreatie;
   return { once, mo, saving, allLoop, selected };
 }
 const eur = (n) => "\u20AC\u00A0" + (n || 0).toLocaleString("nl-NL");
@@ -1578,16 +1577,21 @@ function PriceCalculator({ openConsult }) {
   const [subs, setSubs] = useState(() => Object.fromEntries(ALL_SUBS.map((k) => [k, false])));
   const [dels, setDels] = useState(() => Object.fromEntries(ALL_DELS.map((k) => [k, false])));
   const [advice, setAdvice] = useState(false);
-  const [contentCreatie, setContentCreatie] = useState(true);
   const [opts, setOpts] = useState({});
   const toggleOpt = (k) => setOpts((s) => ({ ...s, [k]: !s[k] }));
   const optLabel = (k) => (p.typeOpts && p.typeOpts[k]) || k;
-  const { once, mo, saving, allLoop, selected } = computeLoop({ types, phases, cats, contentCreatie });
+  const { once, mo, saving, allLoop, selected } = computeLoop({ types, phases, cats });
   const onceA = useCountUp(once); const moA = useCountUp(mo);
   const nothing = once === 0 && mo === 0;
   const steps = ["type", "details", "pakketten", "result"];
   const last = steps.length - 1;
   const cur = steps[step];
+  const calcRef = useRef(null);
+  const calcMounted = useRef(false);
+  useEffect(() => {
+    if (!calcMounted.current) { calcMounted.current = true; return; }
+    if (calcRef.current) calcRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [step]);
   const go = (d) => setStep((s) => Math.min(last, Math.max(0, s + d)));
   const toggleType = (k) => setTypes((s) => ({ ...s, [k]: !s[k] }));
   const togglePhase = (k) => setPhases((s) => ({ ...s, [k]: !s[k] }));
@@ -1620,7 +1624,6 @@ function PriceCalculator({ openConsult }) {
       const c = CAT_BY_KEY[k];
       items.push({ label: catLabel(k), once: c.once, mo: c.mo, req: c.once === 0 && c.mo === 0, detail: catRefine(c).join(", ") });
     });
-    if (types.campagne && contentCreatie) items.push({ label: p.contentCreatie, once: 0, mo: PRICING.contentCreatie, req: false });
     return items;
   };
   const phaseSum = (pk) => selected.reduce((a, sk) => a + typePhasePrice(sk, pk), 0);
@@ -1642,7 +1645,6 @@ function PriceCalculator({ openConsult }) {
     if (types.ai) activeOpts.push(...AI_OPTS.filter((k) => opts[k]));
     if (activeOpts.length) parts.push(activeOpts.map(optLabel).join(", "));
     const ch = catBits();
-    if (types.campagne && contentCreatie) ch.push(p.contentCreatie);
     if (advice) ch.push(p.details.advice);
     if (ch.length) parts.push(ch.join(" \u00B7 "));
     return `${p.summaryPrefix}: ${parts.join(" \u00B7 ")}. ${p.once} ${p.from} ${eur(once)}${mo ? `, ${p.perMonth.toLowerCase()} ${p.from} ${eur(mo)}` : ""}.`;
@@ -1657,7 +1659,7 @@ function PriceCalculator({ openConsult }) {
     return bits.join(" \u00B7 ");
   };
   return (
-    <div className="calc">
+    <div className="calc" ref={calcRef}>
       <div className="calc-steps">
         {steps.map((s, i) => (
           <button key={s} className={`calc-dot ${i === step ? "on" : ""} ${i < step ? "done" : ""}`} onClick={() => setStep(i)}>
@@ -1685,6 +1687,10 @@ function PriceCalculator({ openConsult }) {
             {selected.length === 0 && <div className="calc-note mono">{p.details.pickType}</div>}
             {types.campagne && (
               <div className="detail-block">
+                <button className={`toggle advice-toggle ${advice ? "on" : ""}`} onClick={() => setAdvice((v) => !v)} aria-pressed={advice}>
+                  <span className="switch" aria-hidden><span className="switch-knob" /></span>
+                  <span className="toggle-main"><span className="toggle-t">{p.details.advice}</span></span>
+                </button>
                 <div className="detail-block-q">{p.details.campagneQ}</div>
                 <div className="svc-list">
                   <div className="svc-list-head mono"><span>{p.svcCol}</span><span>{p.priceCol}</span></div>
@@ -1699,34 +1705,27 @@ function PriceCalculator({ openConsult }) {
                         <div className="cat-refine">
                           <div className="refine-group">
                             <span className="refine-h mono">{p.chansH}</span>
-                            <div className="sub-chips">
-                              {c.subs.map((sub) => (
-                                <button key={sub} className={`chip chip-sub ${subs[sub] ? "on" : ""}`} onClick={() => toggleSub(sub)} aria-pressed={subs[sub]}>{subLabel(sub)}</button>
-                              ))}
-                            </div>
+                            {c.subs.map((sub) => (
+                              <button key={sub} className={`toggle toggle-sm ${subs[sub] ? "on" : ""}`} onClick={() => toggleSub(sub)} aria-pressed={subs[sub]}>
+                                <span className="switch" aria-hidden><span className="switch-knob" /></span>
+                                <span className="toggle-main"><span className="toggle-t">{subLabel(sub)}</span></span>
+                              </button>
+                            ))}
                           </div>
                           <div className="refine-group">
                             <span className="refine-h mono">{p.delsH}</span>
-                            <div className="sub-chips">
-                              {c.dels.map((d) => (
-                                <button key={d} className={`chip chip-sub ${dels[d] ? "on" : ""}`} onClick={() => toggleDel(d)} aria-pressed={dels[d]}>{delLabel(d)}</button>
-                              ))}
-                            </div>
+                            {c.dels.map((d) => (
+                              <button key={d} className={`toggle toggle-sm ${dels[d] ? "on" : ""}`} onClick={() => toggleDel(d)} aria-pressed={dels[d]}>
+                                <span className="switch" aria-hidden><span className="switch-knob" /></span>
+                                <span className="toggle-main"><span className="toggle-t">{delLabel(d)}</span></span>
+                              </button>
+                            ))}
                           </div>
                         </div>
                       )}
                     </div>
                   ))}
                 </div>
-                <button className={`toggle ${contentCreatie ? "on" : ""}`} onClick={() => setContentCreatie((v) => !v)} aria-pressed={contentCreatie}>
-                  <span className="switch" aria-hidden><span className="switch-knob" /></span>
-                  <span className="toggle-main"><span className="toggle-t">{p.contentCreatie}</span></span>
-                  <span className="toggle-p mono">{eur(PRICING.contentCreatie)}{p.mo}</span>
-                </button>
-                <button className={`toggle advice-toggle ${advice ? "on" : ""}`} onClick={() => setAdvice((v) => !v)} aria-pressed={advice}>
-                  <span className="switch" aria-hidden><span className="switch-knob" /></span>
-                  <span className="toggle-main"><span className="toggle-t">{p.details.advice}</span></span>
-                </button>
               </div>
             )}
             {types.app && (
@@ -2660,6 +2659,11 @@ button{font-family:inherit;}
 .switch-knob{position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:var(--paper);box-shadow:0 1px 2px rgba(23,23,23,0.25);transition:transform .18s;}
 .toggle.on .switch{background:var(--mag);border-color:var(--mag);}
 .toggle.on .switch-knob{transform:translateX(16px);background:#fff;}
+.toggle-sm{padding:9px 12px;gap:11px;border-radius:11px;}
+.toggle-sm .switch{width:32px;height:19px;}
+.toggle-sm .switch-knob{width:13px;height:13px;}
+.toggle-sm.on .switch-knob{transform:translateX(13px);}
+.toggle-sm .toggle-t{font-size:13.5px;font-weight:500;}
 .scope-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
 .scope-card{position:relative;display:flex;flex-direction:column;gap:5px;text-align:left;background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:15px;font:inherit;cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .15s;}
 .scope-card:hover{border-color:var(--soft);}
