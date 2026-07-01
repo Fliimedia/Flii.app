@@ -72,7 +72,7 @@ const I18N = {
       { value: 21, suffix: " dagen", label: "Van brief tot live" },
       { value: 100, suffix: "%", label: "AI-native oplevering" },
       { value: 12, suffix: "+", label: "Producten gelanceerd" } ],
-    loop: { eyebrow: "Flii Loop", h2: "Opstarten, ontwikkelen en verbeteren. In één loop.", center: "de loop die blijft leren",
+    loop: { eyebrow: "Flii Loop", h2: "Opstarten, ontwikkelen en verbeteren. In één loop.", center: "Altijd lerend",
       lede: "Flii Loop is een plan voor het opstarten, ontwikkelen en verbeteren van apps, platformen en media. Je lanceert, meet wat er gebeurt, verbetert op basis van de data, en begint opnieuw. Elke ronde maakt het geheel scherper.",
       items: [
         { k: "Launch", body: "Je app, platform of campagne gaat live en levert de eerste data." },
@@ -241,7 +241,7 @@ const I18N = {
       { value: 21, suffix: " days", label: "Brief to live" },
       { value: 100, suffix: "%", label: "AI-native delivery" },
       { value: 12, suffix: "+", label: "Products shipped" } ],
-    loop: { eyebrow: "Flii Loop", h2: "Launch, develop and improve. In one loop.", center: "the loop that keeps learning",
+    loop: { eyebrow: "Flii Loop", h2: "Launch, develop and improve. In one loop.", center: "Always learning",
       lede: "Flii Loop is a plan for launching, developing and improving apps, platforms and media. You launch, measure what happens, improve on the data, and start again. Every round sharpens the whole.",
       items: [
         { k: "Launch", body: "Your app, platform or campaign goes live and produces the first data." },
@@ -359,25 +359,25 @@ const useLang = () => useContext(LangCtx);
 const shotUrl = (url) => `https://s.wordpress.com/mshots/v1/${encodeURIComponent(url)}?w=1200&h=900`;
 const DEFAULT_APPS = [
   { id: "waryte", title: "Waryte", client: "Flii Media", tag: "Product / SaaS",
-    summary: "Social-content-automatisering met een AI-composer en een live publicatiepijplijn.",
+    summary: "Van trending signaal naar publicatieklare social post, in drie stappen.",
     link: "https://waryte.vercel.app",
-    metrics: [{ label: "Composer-stappen", value: "3" }, { label: "Bronnen", value: "Reddit + Web" }, { label: "Publiceren", value: "Webflow" }],
-    body: "Waryte zet ruwe signalen om in publicatieklare social content. Een AI-composer in drie stappen schrijft, verfijnt en maakt posts op, met context uit een Reddit-datapijplijn, en publiceert direct naar Webflow.\n\nDe build verving een fragiele scraping-opzet door een robuuste Apify-pijplijn, met daarbovenop een goedkeuringsflow zodat er niets live gaat zonder mens in de loop." },
-  { id: "wk2026", title: "WK2026 Voorspellingen", client: "Flii Labs", tag: "Sport / Realtime",
-    summary: "Een WK-voorspellingsapp met live wedstrijden, animatie en een resultatenengine.",
+    metrics: [{ label: "Composer", value: "3 stappen" }, { label: "Bronnen", value: "Reddit + web" }, { label: "Publiceren", value: "1 klik" }],
+    body: "Waryte vangt actuele signalen uit Reddit en het web en zet ze met een AI-composer in drie stappen om naar merkklare social posts: schrijven, verfijnen, opmaken. Een ingebouwde goedkeuringsflow houdt de mens in de regie, en publiceren gebeurt met een klik rechtstreeks naar Webflow.\n\nGebouwd voor teams die elke dag relevant willen zijn, zonder elke dag vanaf nul te beginnen." },
+  { id: "wk2026", title: "WK2026 Voorspellingen", client: "Flii Labs", tag: "Sport / PWA",
+    summary: "Voorspel het WK 2026, volg live standen en reken punten af per wedstrijd.",
     link: "https://wk2026-voorspellingen.vercel.app/",
-    metrics: [{ label: "Wedstrijden", value: "Live" }, { label: "Stack", value: "React" }, { label: "Deploy", value: "Vercel" }],
-    body: "Een voorspellingsspel rond echte WK 2026-wedstrijddata, met een sterk geanimeerde UI en een resultatenengine die voorspellingen afrekent zodra wedstrijden klaar zijn.\n\nMobile-first ontworpen, continu naar Vercel gelanceerd." },
+    metrics: [{ label: "Wedstrijden", value: "Live data" }, { label: "Type", value: "PWA" }, { label: "Deploy", value: "Vercel" }],
+    body: "Een speelse voorspellingsapp rond het WK 2026: zet je voorspellingen, stel je poules samen en zie de stand realtime meebewegen met echte wedstrijddata. Een resultatenengine rekent automatisch punten af, compleet met vlaggen, groepsstanden en vloeiende intro-animaties.\n\nMobile-first, installeerbaar als PWA en continu gelanceerd via Vercel." },
   { id: "social-os", title: "Flii Social OS", client: "Flii Media", tag: "Marketingsite",
-    summary: "Een op zichzelf staande productervaring voor de Flii Social, Performance en Web OS.",
+    summary: "De propositie van Flii: strategie, media en platform in een helder verhaal.",
     link: "https://flii.nl",
-    metrics: [{ label: "Type", value: "SPA" }, { label: "Pagina's", value: "1" }, { label: "Focus", value: "Conversie" }],
-    body: "Een one-page productmarketingervaring die de Flii-besturingssystemen als één verhaal presenteert, gebouwd om bezoekers om te zetten in gesprekken." },
+    metrics: [{ label: "Kanalen", value: "20+" }, { label: "Tools", value: "50+" }, { label: "Focus", value: "Groei" }],
+    body: "De publieke site van Flii Media brengt strategie, media-inkoop, contentcreatie en platformbouw samen in een ervaring. Van planning en adverteren op 20+ mediakanalen tot development op maat en een eigen client-dashboard voor data.\n\nGebouwd om ambitieuze merken te laten zien hoe media, creatie en techniek samen resultaat opleveren." },
   { id: "wedding-pwa", title: "Weddy", client: "Privé", tag: "PWA",
-    summary: "Een React-PWA voor taken, budget, gasten en de dagplanning.",
+    summary: "Alles voor de trouwdag op een plek: taken, budget, gasten en dagplanning.",
     link: "https://wedding-app-flii-media.vercel.app/",
     metrics: [{ label: "Modules", value: "4" }, { label: "Offline", value: "Ja" }, { label: "Installeren", value: "PWA" }],
-    body: "Een installeerbaar planning-dashboard voor taken, budget, gastenlijst en een dagplanning, module voor module uitgebouwd en via Vercel gelanceerd." },
+    body: "Weddy brengt de complete trouwplanning samen in een rustige app: takenlijst, budgetbewaking, gastenlijst en een minuut-voor-minuut dagplanning. Installeerbaar als PWA en offline te gebruiken, zodat alles bij de hand is, ook zonder verbinding.\n\nModule voor module opgebouwd en gelanceerd via Vercel, ontworpen om de stress uit het plannen te halen." },
 ];
 const DEFAULT_ARTICLES = [
   { id: "stop-kapotte-funnels", title: "Stop met kapotte funnels opschalen", cat: "Performance", date: "jun 2026", read: "6 min", cover: "funnel",
@@ -587,7 +587,7 @@ const TABLES = ["reviews", "certs", "apps", "articles"];
 const DEFAULTS = { apps: DEFAULT_APPS, articles: DEFAULT_ARTICLES, reviews: DEFAULT_REVIEWS, certs: DEFAULT_CERTS };
 
 const LS_KEY = "flii_cms_v2";
-const SEED_VERSION = 3;
+const SEED_VERSION = 4;
 function loadStore() { try { const r = localStorage.getItem(LS_KEY); return r ? JSON.parse(r) : null; } catch (e) { return null; } }
 function saveStore(d) { try { localStorage.setItem(LS_KEY, JSON.stringify(d)); } catch (e) {} }
 
@@ -1262,7 +1262,6 @@ function Home({ content, openConsult }) {
               <FliiLoopMark />
               <span className="price-fold-t">{t.calc.eyebrow} <span className="price-fold-arrow" aria-hidden>↘</span></span>
             </button>
-            <p className="price-fold-sub on-dark-soft">{t.pricing.typeNote}</p>
             {priceOpen && <div className="price-fold-panel"><PriceCalculator openConsult={openConsult} /></div>}
           </Section>
         </div>
@@ -2672,13 +2671,14 @@ button{font-family:inherit;}
 .detail-textarea::placeholder{color:var(--soft);}
 .waived{text-decoration:line-through;opacity:0.45;}
 .waived-note{color:#1FAE5A;font-size:11px;}
-.loop-lens{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:0 auto 32px;}
-.loop-lens-btn{display:flex;flex-direction:column;align-items:center;gap:7px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.14);color:rgba(255,255,255,0.72);border-radius:14px;padding:12px 20px;min-width:88px;font:inherit;font-size:12px;font-weight:600;cursor:pointer;transition:background .15s,color .15s,border-color .15s;}
-.loop-lens-btn:hover{color:#fff;border-color:rgba(255,255,255,0.32);}
-.loop-lens-btn.on{background:var(--mag);border-color:var(--mag);color:#fff;}
-.loop-lens-ic{display:flex;}
-.loop-lens-ic svg{width:23px;height:23px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;}
-.loop-lens-l{letter-spacing:0.01em;}
+.loop-lens{display:flex;justify-content:center;flex-wrap:wrap;gap:32px;margin:38px auto 36px;}
+.loop-lens-btn{display:flex;flex-direction:column;align-items:center;gap:8px;background:none;border:none;padding:6px 4px;color:rgba(255,255,255,0.58);font:inherit;font-size:12px;font-weight:600;cursor:pointer;transition:color .15s;}
+.loop-lens-btn:hover{color:rgba(255,255,255,0.9);}
+.loop-lens-btn.on{color:#fff;}
+.loop-lens-ic{display:flex;color:inherit;}
+.loop-lens-ic svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}
+.loop-lens-btn.on .loop-lens-ic{color:var(--mag);}
+.loop-lens-l{letter-spacing:0.02em;}
 .toggle-main{flex:1;display:flex;flex-direction:column;gap:2px;min-width:0;}
 .toggle-t{font-weight:600;font-size:15px;color:var(--ink);}
 .toggle-d{font-size:12.5px;color:var(--soft);}
