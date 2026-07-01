@@ -373,7 +373,7 @@ const DEFAULT_APPS = [
     link: "https://flii.nl",
     metrics: [{ label: "Type", value: "SPA" }, { label: "Pagina's", value: "1" }, { label: "Focus", value: "Conversie" }],
     body: "Een one-page productmarketingervaring die de Flii-besturingssystemen als één verhaal presenteert, gebouwd om bezoekers om te zetten in gesprekken." },
-  { id: "wedding-pwa", title: "Planning-dashboard", client: "Privé", tag: "PWA",
+  { id: "wedding-pwa", title: "Weddy", client: "Privé", tag: "PWA",
     summary: "Een React-PWA voor taken, budget, gasten en de dagplanning.",
     link: "https://wedding-app-flii-media.vercel.app/",
     metrics: [{ label: "Modules", value: "4" }, { label: "Offline", value: "Ja" }, { label: "Installeren", value: "PWA" }],
@@ -587,6 +587,7 @@ const TABLES = ["reviews", "certs", "apps", "articles"];
 const DEFAULTS = { apps: DEFAULT_APPS, articles: DEFAULT_ARTICLES, reviews: DEFAULT_REVIEWS, certs: DEFAULT_CERTS };
 
 const LS_KEY = "flii_cms_v2";
+const SEED_VERSION = 3;
 function loadStore() { try { const r = localStorage.getItem(LS_KEY); return r ? JSON.parse(r) : null; } catch (e) { return null; } }
 function saveStore(d) { try { localStorage.setItem(LS_KEY, JSON.stringify(d)); } catch (e) {} }
 
@@ -597,7 +598,12 @@ async function sbDelete(table, id) { const r = await fetch(`${SB_URL}/rest/v1/${
 async function seedRemote(coll, items) { for (const it of items) { try { await sbUpsert(coll, it); } catch (e) {} } }
 
 function useContent() {
-  const [data, setData] = useState(() => ({ ...DEFAULTS, ...(loadStore() || {}) }));
+  const [data, setData] = useState(() => {
+    const stored = loadStore();
+    if (!stored) return { ...DEFAULTS, _seedV: SEED_VERSION };
+    if (stored._seedV !== SEED_VERSION) return { ...DEFAULTS, ...stored, apps: DEFAULT_APPS, _seedV: SEED_VERSION };
+    return { ...DEFAULTS, ...stored };
+  });
   const [status, setStatus] = useState(REMOTE ? "loading" : "local");
   useEffect(() => {
     if (!REMOTE) return; let alive = true;
@@ -973,8 +979,9 @@ function LoopRing() {
           {!reduce && (
             <g className="lr-orbit">
               <g className="lr-star">
-                <path className="lr-star-p" d="M50 7.6 L51 11 L54.4 12 L51 13 L50 16.4 L49 13 L45.6 12 L49 11 Z" fill="#FFD8E7" filter="url(#lrGlow)" />
-                <circle cx="50" cy="12" r="0.9" fill="#fff" />
+                <circle cx="50" cy="12" r="3.6" fill="#FF6FA6" filter="url(#lrGlow)" opacity="0.5" />
+                <path d="M50 5.2 L50.95 10.9 L56.8 12 L50.95 13.1 L50 18.8 L49.05 13.1 L43.2 12 L49.05 10.9 Z" fill="#FFEAF2" />
+                <circle cx="50" cy="12" r="0.7" fill="#fff" />
               </g>
             </g>
           )}
@@ -2157,8 +2164,8 @@ button{font-family:inherit;}
 .lm-rot{transform-box:view-box;transform-origin:50px 50px;animation:loopmark-spin 7s linear infinite;}
 .lm-rot2{transform-box:view-box;transform-origin:50px 50px;animation:loopmark-spin 10s linear infinite reverse;}
 .lr-orbit{transform-box:view-box;transform-origin:50px 50px;animation:loopmark-spin 16s linear infinite;}
-.lr-star{animation:lr-twinkle 4s ease-in-out infinite;}
-@keyframes lr-twinkle{0%{opacity:0.7;}50%{opacity:0.12;}100%{opacity:0.7;}}
+.lr-star{transform-box:view-box;transform-origin:50px 12px;animation:lr-twinkle 4s ease-in-out infinite;}
+@keyframes lr-twinkle{0%{opacity:0.95;transform:scale(1);}50%{opacity:0.14;transform:scale(0.45);}100%{opacity:0.95;transform:scale(1);}}
 @keyframes loopmark-spin{to{transform:rotate(360deg);}}
 .loop-cta:hover .loopmark-svg{filter:saturate(1.2) brightness(1.06);}
 .hero-h1{font-size:clamp(44px,8vw,84px);margin:0 0 20px;}
