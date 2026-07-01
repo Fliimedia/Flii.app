@@ -113,10 +113,11 @@ const I18N = {
     insights: { eyebrow: "Inzichten", h2: "Scherpe inzichten.", manage: "Beheer inzichten ↗", read: "Lees ↗" },
     cta: { h2: "De kracht van feedback.", sub: "Moderne bedrijven passen zich real-time aan op de markt. Gebruik Loop als jouw motor voor verbetering.",
       primary: "Plan een gesprek", secondary: "Vraag een groei-audit ↗" },
+    callback: { ph: "Je telefoonnummer", cta: "Bel mij terug", subject: "Bel mij terug", bodyPre: "Bel mij graag terug op:" },
     contact: [
       { k: "Locatie", v: "Amstelveen, NL", href: null },
       { k: "Bericht", v: "WhatsApp ons", href: "https://wa.me/31640881169" },
-      { k: "E-mail", v: "hello@flii.app", href: "mailto:hello@flii.app" } ],
+      { k: "E-mail", v: "hello@flii.nl", href: "mailto:hello@flii.nl" } ],
     consult: { eyebrow: "Plan een gesprek", h: "Waar kunnen we je mee helpen?",
       formH: "Vertel ons iets meer", name: "Naam", email: "E-mail", back: "← Terug", send: "Versturen",
       opts: [
@@ -164,7 +165,7 @@ const I18N = {
       addons: { search: "Search (Google Ads)", social: "Social (Meta, LinkedIn, TikTok)", display: "Display", llm: "AI-vindbaarheid (GEO)", print: "Print", outdoor: "Outdoor (DOOH)", video: "Video & CTV", lifecycle: "Lifecycle (e-mail & CRM)", content: "Content creatie" },
       addonDesc: { search: "Zoekcampagnes op Google.", social: "Betaalde social campagnes.", display: "Display-advertenties op websites en apps.", llm: "Vindbaar in ChatGPT, Perplexity en Google AI.", print: "Ontwerp voor advertenties en drukwerk.", outdoor: "Digitale buitenreclame, creatie en planning.", video: "Video-advertenties en Connected TV.", lifecycle: "Retentie via e-mail, CRM en automations." },
       contentOpts: { none: "Geen", klein: "Klein", groot: "Groot" },
-      once: "Eenmalig", perMonth: "Per maand", from: "vanaf", mo: "/mnd", once1: "eenmalig", setup: "Opzet", mgmt: "Beheer",
+      once: "Eenmalig", perMonth: "Per maand", monthCol: "Maand", totalWord: "Totaal", from: "vanaf", mo: "/mnd", once1: "eenmalig", setup: "Opzet", mgmt: "Beheer",
       comboNote: "Combinatievoordeel: de losse Loop Start-fee vervalt in de volledige loop.",
       empty: "Kies minimaal één type of dienst.", cta: "Plan een gesprek", summaryPrefix: "Interesse in",
       steps: { type: "Type", details: "Details", pakketten: "Pakketten", content: "Content", result: "Resultaat" },
@@ -300,10 +301,11 @@ const I18N = {
     insights: { eyebrow: "Insights", h2: "Sharp takes.", manage: "Manage insights ↗", read: "Read ↗" },
     cta: { h2: "The power of feedback.", sub: "Modern companies adapt to the market in real time. Use Loop as your engine for improvement.",
       primary: "Book a consultation", secondary: "Get a growth audit ↗" },
+    callback: { ph: "Your phone number", cta: "Call me back", subject: "Call me back", bodyPre: "Please call me back on:" },
     contact: [
       { k: "Location", v: "Amstelveen, NL", href: null },
       { k: "Message", v: "WhatsApp us", href: "https://wa.me/31640881169" },
-      { k: "Email", v: "hello@flii.app", href: "mailto:hello@flii.app" } ],
+      { k: "Email", v: "hello@flii.nl", href: "mailto:hello@flii.nl" } ],
     consult: { eyebrow: "Book a consultation", h: "How can we help?",
       formH: "Tell us a bit more", name: "Name", email: "Email", back: "← Back", send: "Send",
       opts: [
@@ -351,7 +353,7 @@ const I18N = {
       addons: { search: "Search (Google Ads)", social: "Social (Meta, LinkedIn, TikTok)", display: "Display", llm: "AI visibility (GEO)", print: "Print", outdoor: "Outdoor (DOOH)", video: "Video & CTV", lifecycle: "Lifecycle (email & CRM)", content: "Content creation" },
       addonDesc: { search: "Search campaigns on Google.", social: "Paid social campaigns.", display: "Display ads across websites and apps.", llm: "Found in ChatGPT, Perplexity and Google AI.", print: "Design for ads and print.", outdoor: "Digital out-of-home, creative and planning.", video: "Video ads and Connected TV.", lifecycle: "Retention via email, CRM and automations." },
       contentOpts: { none: "None", klein: "Small", groot: "Large" },
-      once: "One-time", perMonth: "Per month", from: "from", mo: "/mo", once1: "one-time", setup: "Setup", mgmt: "Management",
+      once: "One-time", perMonth: "Per month", monthCol: "Month", totalWord: "Total", from: "from", mo: "/mo", once1: "one-time", setup: "Setup", mgmt: "Management",
       comboNote: "Bundle benefit: the separate Loop Start fee is waived in the full loop.",
       empty: "Pick at least one type or service.", cta: "Book a consultation", summaryPrefix: "Interested in",
       steps: { type: "Type", details: "Details", pakketten: "Packages", content: "Content", result: "Result" },
@@ -903,7 +905,7 @@ function Footer({ admin }) {
         <div><a href="#/" aria-label="Flii.app home"><FliiLogo dark variant="word" /></a><p className="footer-note">{t.slogan}.</p></div>
         <div className="footer-col"><div className="footer-h mono">{t.footer.solutions}</div>{t.mega.groups.flatMap((g) => g.items).map((c) => <a key={c.label} href={c.href}>{c.label}</a>)}</div>
         <div className="footer-col"><div className="footer-h mono">{t.footer.company}</div>{t.footer.company_links.filter((c) => c.href !== "#/cms" || admin).map((c) => <a key={c.label} href={c.href}>{c.label}</a>)}</div>
-        <div className="footer-col"><div className="footer-h mono">{t.footer.connect}</div><a href="https://wa.me/31640881169" target="_blank" rel="noreferrer">WhatsApp</a><a href="https://linkedin.com/company/flii-media" target="_blank" rel="noreferrer">LinkedIn</a><a href="mailto:hello@flii.app">hello@flii.app</a></div>
+        <div className="footer-col"><div className="footer-h mono">{t.footer.connect}</div><a href="https://wa.me/31640881169" target="_blank" rel="noreferrer">WhatsApp</a><a href="https://linkedin.com/company/flii-media" target="_blank" rel="noreferrer">LinkedIn</a><a href="mailto:hello@flii.nl">hello@flii.nl</a></div>
       </div>
       <div className="wrap footer-bottom"><span>© {new Date().getFullYear()} Flii.app</span><span className="mono">{t.footer.bottom}</span></div>
     </footer>
@@ -1235,44 +1237,57 @@ function FunnelViz() {
   const f = t.funnel;
   const stages = f.stages;
   const [active, setActive] = useState(0);
-  const [sweep, setSweep] = useState(0);
   const W = 1000, N = stages.length, segW = W / N;
   const yTop = (x) => 30 + 0.10 * x;
   const yBot = (x) => 330 - 0.10 * x;
   const perim = `M0,${yTop(0)} L${W},${yTop(W)} L${W},${yBot(W)} L0,${yBot(0)} Z`;
-  const pick = (i) => { setActive(i); setSweep((s) => s + 1); };
   return (
     <div className="fnl">
       <svg className="fnl-svg" viewBox="0 0 1000 360" role="img" aria-label={f.h2}>
         <defs>
-          <linearGradient id="fnlGloss" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stopColor="#F4739B" />
-            <stop offset="0.5" stopColor="#E7255A" />
-            <stop offset="1" stopColor="#B81846" />
+          <linearGradient id="fnlFill" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stopColor="#DA3E68" />
+            <stop offset="1" stopColor="#AE2249" />
           </linearGradient>
-          <filter id="fnlGlow" x="-20%" y="-50%" width="140%" height="200%">
-            <feGaussianBlur stdDeviation="5" result="b" />
-            <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+          <filter id="fnlSoft" x="-60%" y="-120%" width="220%" height="340%">
+            <feGaussianBlur stdDeviation="4" />
           </filter>
         </defs>
         {stages.map((st, i) => {
           const x0 = i * segW, x1 = (i + 1) * segW, cx = (x0 + x1) / 2;
           const d = `M${x0},${yTop(x0)} L${x1},${yTop(x1)} L${x1},${yBot(x1)} L${x0},${yBot(x0)} Z`;
           return (
-            <g key={i} className={`fnl-seg ${active === i ? "on" : ""}`} onClick={() => pick(i)} role="button" tabIndex={0}
-               aria-label={st.k} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pick(i); } }}>
+            <g key={i} className={`fnl-seg ${active === i ? "on" : ""}`} onClick={() => setActive(i)} role="button" tabIndex={0}
+               aria-label={st.k} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setActive(i); } }}>
               <path className="fnl-slice" d={d} />
               <text className="fnl-letter" x={cx} y="180" textAnchor="middle" dominantBaseline="central">{st.k.charAt(0)}</text>
             </g>
           );
         })}
         <path className="fnl-outline" d={perim} />
-        <path key={sweep} className="fnl-sweep" pathLength="1" d={perim} />
+        <path className="fnl-glint" d={`M735,${yTop(735)} L1000,${yTop(1000)} L1000,184`} />
       </svg>
       <div className="fnl-desc" key={active}>
         <span className="fnl-desc-k">{stages[active].k}</span>
         <span className="fnl-desc-b">{stages[active].desc}</span>
       </div>
+    </div>
+  );
+}
+function CallbackForm() {
+  const { t } = useLang();
+  const [tel, setTel] = useState("");
+  const cb = t.callback;
+  const submit = () => {
+    const n = tel.trim();
+    if (!n) return;
+    window.location.href = `mailto:hello@flii.nl?subject=${encodeURIComponent(cb.subject)}&body=${encodeURIComponent(cb.bodyPre + " " + n)}`;
+  };
+  return (
+    <div className="callback">
+      <input className="callback-input" type="tel" inputMode="tel" value={tel} placeholder={cb.ph} aria-label={cb.ph}
+        onChange={(e) => setTel(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter") submit(); }} />
+      <button className="btn callback-btn" onClick={submit}>{cb.cta}</button>
     </div>
   );
 }
@@ -1460,6 +1475,7 @@ function Home({ content, openConsult }) {
           <Section>
             <h2 className="display cta-h">{t.cta.h2}</h2>
             <p className="cta-sub">{t.cta.sub}</p>
+            <CallbackForm />
             <div className="hero-actions">
               <button onClick={openConsult} className="btn btn-primary">{t.cta.primary}</button>
               <a href="#loop" className="loop-cta" aria-label={t.hero.loopCta}>
@@ -1680,6 +1696,8 @@ function useCountUp(value, dur = 460) {
 function PriceCalculator({ openConsult }) {
   const { t } = useLang(); const p = t.pricing;
   const [step, setStep] = useState(0);
+  const [openRows, setOpenRows] = useState({});
+  const toggleRow = (i) => setOpenRows((s) => ({ ...s, [i]: !s[i] }));
   const [types, setTypes] = useState({ campagne: false, app: true, platform: false, ai: false });
   const [phases, setPhases] = useState({ plan: true, build: true, run: true });
   const [cats, setCats] = useState(() => Object.fromEntries(CAT_KEYS.map((k) => [k, false])));
@@ -1726,20 +1744,20 @@ function PriceCalculator({ openConsult }) {
       const onceItem = planFee + (phases.build ? typePhasePrice(sk, "build") : 0);
       const moItem = phases.run ? typePhasePrice(sk, "run") : 0;
       const optList = sk === "app" ? APP_OPTS : sk === "platform" ? PLATFORM_OPTS : sk === "ai" ? AI_OPTS : null;
-      const detail = optList ? optList.filter((k) => opts[k]).map(optLabel).join(", ") : "";
-      items.push({ label: p.scopes[sk], once: onceItem, mo: moItem, req: false, detail });
+      const sub = optList ? optList.filter((k) => opts[k]).map((k) => ({ label: optLabel(k), free: true })) : [];
+      items.push({ label: p.scopes[sk], once: onceItem, mo: moItem, req: false, sub });
     });
     CAT_KEYS.filter((k) => cats[k]).forEach((k) => {
       const c = CAT_BY_KEY[k];
       const req = c.once === 0 && c.mo === 0;
       const selDels = c.dels.filter((d) => dels[d]);
-      const chans = c.subs.filter((x) => subs[x]).map(subLabel);
-      const parts = [];
-      if (!req) parts.push({ label: p.catBase, once: c.once, mo: c.mo });
-      selDels.forEach((d) => { const dp = DEL_PRICE[d] || {}; parts.push({ label: delLabel(d), once: dp.once || 0, mo: dp.mo || 0 }); });
+      const sub = [];
+      if (!req) sub.push({ label: p.catBase, once: c.once, mo: c.mo });
+      selDels.forEach((d) => { const dp = DEL_PRICE[d] || {}; sub.push({ label: delLabel(d), once: dp.once || 0, mo: dp.mo || 0 }); });
+      c.subs.filter((x) => subs[x]).forEach((x) => sub.push({ label: subLabel(x), free: true }));
       const totMo = c.mo + selDels.reduce((a, d) => a + ((DEL_PRICE[d] && DEL_PRICE[d].mo) || 0), 0);
       const totOnce = c.once + selDels.reduce((a, d) => a + ((DEL_PRICE[d] && DEL_PRICE[d].once) || 0), 0);
-      items.push({ cat: true, label: catLabel(k), once: totOnce, mo: totMo, req, parts, chans });
+      items.push({ label: catLabel(k), once: totOnce, mo: totMo, req, sub });
     });
     return items;
   };
@@ -1885,33 +1903,30 @@ function PriceCalculator({ openConsult }) {
             <div className="cfg-out-card">
               <div className="cfg-out-h mono">{selected.length ? typeLabel : p.empty}</div>
               {nothing ? <div className="cfg-empty">{p.empty}</div> : <>
-                <div className="receipt-items">
-                  {lineItems().map((it, i) => (
-                    <div key={i} className="receipt-line">
-                      <div className="receipt-row">
-                        <span className="receipt-l">{it.label}{it.detail ? <span className="receipt-d">{it.detail}</span> : null}</span>
-                        <span className="receipt-p mono">{it.req ? p.onRequest : [it.once > 0 && eur(it.once), it.mo > 0 && `${eur(it.mo)}${p.mo}`].filter(Boolean).join(" + ")}</span>
-                      </div>
-                      {it.cat && it.parts && it.parts.length > 0 && (
-                        <div className="receipt-break">
-                          {it.parts.map((pt, j) => (
-                            <div key={j} className="receipt-brow">
-                              <span className="receipt-bl">{pt.label}</span>
-                              <span className="receipt-bp mono">{[pt.once > 0 && eur(pt.once), pt.mo > 0 && `${eur(pt.mo)}${p.mo}`].filter(Boolean).join(" + ") || p.onRequest}</span>
-                            </div>
-                          ))}
-                          {it.chans && it.chans.length > 0 && (
-                            <div className="receipt-brow"><span className="receipt-bl receipt-free">{p.chansH}: {it.chans.join(", ")}</span><span className="receipt-bp mono receipt-free">{p.inclFree}</span></div>
-                          )}
+                <div className="rcp">
+                  <div className="rcp-head mono"><span>{p.svcCol}</span><span>{p.once}</span><span>{p.monthCol}</span></div>
+                  {lineItems().map((it, i) => {
+                    const open = !!openRows[i];
+                    const has = it.sub && it.sub.length > 0;
+                    return (
+                      <div key={i} className="rcp-line">
+                        <div className={`rcp-row ${has ? "rcp-row-btn" : ""}`} onClick={has ? () => toggleRow(i) : undefined} role={has ? "button" : undefined} aria-expanded={has ? open : undefined}>
+                          <span className="rcp-l">{has && <span className={`rcp-caret ${open ? "on" : ""}`} aria-hidden>{"\u203A"}</span>}{it.label}</span>
+                          <span className="rcp-v mono">{it.req ? p.onRequest : (it.once > 0 ? eur(it.once) : "")}</span>
+                          <span className="rcp-v mono">{it.req ? "" : (it.mo > 0 ? eur(it.mo) : "")}</span>
                         </div>
-                      )}
-                    </div>
-                  ))}
-                  {advice && <div className="receipt-row"><span className="receipt-l">{p.details.advice}</span><span className="receipt-p mono">{p.onRequest}</span></div>}
-                </div>
-                <div className="receipt-tot">
-                  <div className="receipt-row receipt-total"><span className="receipt-l">{p.once}</span><span className="receipt-p mono">{eur(once)}</span></div>
-                  {mo > 0 && <div className="receipt-row receipt-total"><span className="receipt-l">{p.perMonth}</span><span className="receipt-p mono">{eur(mo)}{p.mo}</span></div>}
+                        {has && open && it.sub.map((s, j) => (
+                          <div key={j} className="rcp-row rcp-srow">
+                            <span className="rcp-l">{s.label}</span>
+                            <span className="rcp-v mono">{s.free ? <em className="rcp-free">{p.inclFree}</em> : (s.once > 0 ? eur(s.once) : "")}</span>
+                            <span className="rcp-v mono">{s.free ? "" : (s.mo > 0 ? eur(s.mo) : "")}</span>
+                          </div>
+                        ))}
+                      </div>
+                    );
+                  })}
+                  {advice && <div className="rcp-row"><span className="rcp-l">{p.details.advice}</span><span className="rcp-v mono">{p.onRequest}</span><span className="rcp-v" /></div>}
+                  <div className="rcp-row rcp-tot"><span className="rcp-l">{p.totalWord}</span><span className="rcp-v mono">{eur(once)}</span><span className="rcp-v mono">{mo > 0 ? eur(mo) : ""}</span></div>
                 </div>
               </>}
               <button className="btn btn-primary cfg-cta" onClick={() => openConsult(null, summary())}>{p.cta}</button>
@@ -2223,7 +2238,7 @@ function ConsultModal({ onClose, prefill }) {
       `${c.detail[reason]}:`,
       detail,
     ].join("\n");
-    window.location.href = `mailto:hello@flii.app?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:hello@flii.nl?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     onClose();
   };
   return (
@@ -2418,20 +2433,20 @@ button{font-family:inherit;}
 .fnl{max-width:920px;margin:44px auto 0;}
 .fnl-svg{width:100%;height:auto;display:block;overflow:visible;}
 .fnl-seg{cursor:pointer;outline:none;}
-.fnl-slice{fill:var(--card);stroke:rgba(231,37,90,0.30);stroke-width:1.5;transition:fill .2s;}
-.fnl-seg:hover .fnl-slice{fill:rgba(231,37,90,0.06);}
-.fnl-seg.on .fnl-slice{fill:rgba(231,37,90,0.13);}
-.fnl-seg:focus-visible .fnl-slice{fill:rgba(231,37,90,0.09);}
-.fnl-letter{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:64px;fill:var(--soft);transition:fill .2s;pointer-events:none;}
-.fnl-seg.on .fnl-letter{fill:var(--mag);}
-.fnl-outline{fill:none;stroke:url(#fnlGloss);stroke-width:3;stroke-linejoin:round;filter:url(#fnlGlow);pointer-events:none;}
-.fnl-sweep{fill:none;stroke:#fff;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.16 0.84;stroke-dashoffset:1;opacity:0;pointer-events:none;animation:fnlSweep 0.95s ease-out;}
-@keyframes fnlSweep{0%{stroke-dashoffset:1;opacity:0;}12%{opacity:0.95;}88%{opacity:0.95;}100%{stroke-dashoffset:0;opacity:0;}}
-.fnl-desc{margin:22px auto 0;max-width:640px;text-align:center;display:flex;flex-direction:column;gap:6px;animation:fnlFade .3s ease;}
+.fnl-slice{fill:url(#fnlFill);stroke:rgba(255,255,255,0.26);stroke-width:1;opacity:0.82;transition:opacity .2s,filter .2s;}
+.fnl-seg:hover .fnl-slice{opacity:0.92;}
+.fnl-seg.on .fnl-slice{opacity:1;filter:brightness(1.12);}
+.fnl-seg:focus-visible .fnl-slice{opacity:0.95;}
+.fnl-letter{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:42px;fill:#fff;opacity:0.88;pointer-events:none;transition:opacity .2s;}
+.fnl-seg.on .fnl-letter{opacity:1;}
+.fnl-outline{fill:none;stroke:rgba(174,34,73,0.45);stroke-width:1.5;stroke-linejoin:round;pointer-events:none;}
+.fnl-glint{fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;opacity:0;filter:url(#fnlSoft);pointer-events:none;animation:fnlGlint 6.5s ease-in-out infinite;}
+@keyframes fnlGlint{0%,74%,100%{opacity:0;}83%{opacity:0.75;}93%{opacity:0.2;}}
+.fnl-desc{margin:24px auto 0;max-width:640px;text-align:center;display:flex;flex-direction:column;gap:6px;animation:fnlFade .3s ease;}
 .fnl-desc-k{font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--mag);font-weight:600;}
 .fnl-desc-b{font-size:15px;color:var(--mid);line-height:1.5;}
 @keyframes fnlFade{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:none;}}
-@media (prefers-reduced-motion: reduce){.fnl-sweep{animation:none;}}
+@media (prefers-reduced-motion: reduce){.fnl-glint{animation:none;}}
 .funnel-stage{width:var(--fw,100%);max-width:660px;}
 .funnel-bar{display:flex;align-items:center;gap:18px;background:var(--card);border:1px solid var(--line);border-radius:15px;padding:17px 22px;transition:border-color .16s;}
 .funnel-stage:last-child .funnel-bar{background:var(--ink);border-color:var(--ink);}
@@ -2652,6 +2667,12 @@ button{font-family:inherit;}
 .cta-band{background:var(--ink);color:var(--paper);padding:104px 0;position:relative;}
 .cta-chip{position:absolute;top:0;left:50%;transform:translate(-50%,-50%);z-index:2;font-size:12px;font-weight:600;letter-spacing:0.02em;color:var(--ink);padding:9px 20px;border-radius:999px;border:1px solid transparent;background:linear-gradient(#fff,#fff) padding-box, var(--gloss) border-box;box-shadow:0 6px 22px -8px rgba(231,37,90,0.45);white-space:nowrap;}
 .cta-inner{text-align:center;}
+.callback{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:18px;}
+.callback-input{background:transparent;border:1px solid #3A3A3A;border-radius:11px;padding:11px 15px;color:var(--paper);font:inherit;font-size:14px;min-width:210px;transition:border-color .15s;}
+.callback-input::placeholder{color:#8B887E;}
+.callback-input:focus{outline:none;border-color:var(--paper);}
+.callback-btn{color:var(--paper);border:1px solid transparent;background:linear-gradient(var(--ink),var(--ink)) padding-box, var(--gloss) border-box;}
+.callback-btn:hover{color:#fff;box-shadow:0 6px 18px -8px rgba(231,37,90,0.5);}
 .cta-h{font-size:clamp(36px,6vw,64px);margin:0 auto 14px;}
 .cta-sub{font-size:18px;color:#B5B2A8;max-width:42ch;margin:0 auto 30px;}
 .cta-band .hero-actions{justify-content:center;}
@@ -2906,6 +2927,23 @@ button{font-family:inherit;}
 .invoice-p{font-size:13px;color:var(--mid);white-space:nowrap;}
 .cfg-total{margin-top:4px;}
 .receipt-items{display:flex;flex-direction:column;margin:2px 0 4px;}
+.rcp{display:flex;flex-direction:column;margin:2px 0 6px;text-align:left;}
+.rcp-head{display:grid;grid-template-columns:1fr 90px 90px;gap:10px;font-size:10px;letter-spacing:0.07em;text-transform:uppercase;color:var(--soft);padding-bottom:9px;border-bottom:1px solid var(--line);}
+.rcp-row{display:grid;grid-template-columns:1fr 90px 90px;gap:10px;align-items:baseline;padding:11px 0;width:100%;text-align:left;background:none;border:none;font:inherit;}
+.rcp-line+.rcp-line{border-top:1px dashed var(--line);}
+.rcp-row-btn{cursor:pointer;}
+.rcp-l{color:var(--ink);font-weight:500;font-size:14px;line-height:1.35;display:flex;align-items:baseline;gap:7px;text-align:left;}
+.rcp-v{font-size:13px;color:var(--mid);text-align:left;font-variant-numeric:tabular-nums;}
+.rcp-caret{color:var(--mag);font-size:13px;line-height:1;transition:transform .18s;display:inline-block;}
+.rcp-caret.on{transform:rotate(90deg);}
+.rcp-srow{padding:6px 0;}
+.rcp-srow:first-of-type{padding-top:2px;}
+.rcp-srow .rcp-l{font-weight:400;font-size:12.5px;color:var(--mid);padding-left:19px;}
+.rcp-srow .rcp-v{font-size:12px;color:var(--soft);}
+.rcp-free{font-style:italic;color:var(--soft);}
+.rcp-tot{border-top:1px solid var(--line);margin-top:3px;padding-top:13px;}
+.rcp-tot .rcp-l{font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--soft);font-weight:700;}
+.rcp-tot .rcp-v{color:var(--ink);font-weight:700;font-size:14px;}
 .receipt-row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:10px 0;}
 .receipt-items .receipt-line+.receipt-line{border-top:1px dashed var(--line);}
 .receipt-break{display:flex;flex-direction:column;gap:5px;margin:0 0 8px 12px;padding-left:12px;border-left:1px solid var(--line);}
