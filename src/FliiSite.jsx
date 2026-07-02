@@ -194,7 +194,7 @@ const I18N = {
       appBasis: "Eén kernfunctie, responsive PWA, basismeting, hosting-klaar op Vercel.",
       appAdvanced: "Meerdere modules, gebruikersaccounts, API-koppelingen, dashboard en uitgebreide meting.",
       appPlatform: "Gebruikersrollen, backend en database, AI- of LLM-integratie, beheer-CMS en schaalbaar." },
-    calc: { eyebrow: "Prijsindicatie", h2: "Bereken Loop.", lede: "Klik snel door de stappen en zie meteen wat Loop kost. Een indicatie op basis van vanaf-tarieven, geen offerte." },
+    calc: { eyebrow: "Prijs indicator", h2: "Bereken Loop.", lede: "Klik snel door de stappen en zie meteen wat Loop kost. Een indicatie op basis van vanaf-tarieven, geen offerte." },
     detail: { backShowcase: "← Showcase", backInsights: "← Inzichten", backHome: "← Home",
       notFound: "Niet gevonden", notFoundSub: "Dit item is mogelijk verwijderd in het CMS.",
       visit: "Bezoek", credential: "Bekijk certificaat ↗" },
@@ -384,7 +384,7 @@ const I18N = {
       appBasis: "One core feature, responsive PWA, basic measurement, hosting-ready on Vercel.",
       appAdvanced: "Multiple modules, user accounts, API integrations, dashboard and extended measurement.",
       appPlatform: "User roles, backend and database, AI or LLM integration, admin CMS and scalable." },
-    calc: { eyebrow: "Price estimate", h2: "Calculate your Loop.", lede: "Click through the steps and instantly see what your Loop costs. An estimate based on starting rates, not a quote." },
+    calc: { eyebrow: "Price indicator", h2: "Calculate your Loop.", lede: "Click through the steps and instantly see what your Loop costs. An estimate based on starting rates, not a quote." },
     detail: { backShowcase: "← Showcase", backInsights: "← Insights", backHome: "← Home",
       notFound: "Not found", notFoundSub: "This item may have been removed in the CMS.",
       visit: "Visit", credential: "View credential ↗" },
@@ -1870,7 +1870,6 @@ function PriceCalculator({ openConsult }) {
                   {s === "app" && <span className="scope-badge mono">{p.badge}</span>}
                   <span className="scope-check" aria-hidden>{types[s] ? "\u2713" : ""}</span>
                   <span className="scope-card-t">{p.scopes[s]}</span>
-                  <span className="scope-card-p mono">{p.from} {eur(typePhasePrice(s, "build"))}</span>
                 </button>
               ))}
             </div>
@@ -1883,7 +1882,7 @@ function PriceCalculator({ openConsult }) {
               <div className="detail-block">
                 <button className={`toggle advice-toggle ${advice ? "on" : ""}`} onClick={() => setAdvice((v) => !v)} aria-pressed={advice}>
                   <span className="toggle-main"><span className="toggle-t">{p.details.advice}</span></span>
-                  <span className="switch" aria-hidden><span className="switch-knob" /></span>
+                  <span className="tgt" aria-hidden><span className="tgt-dot" /></span>
                 </button>
                 <div className="detail-block-q">{p.details.campagneQ}</div>
                 <div className="svc-list">
@@ -1903,7 +1902,7 @@ function PriceCalculator({ openConsult }) {
                             {c.subs.map((sub) => (
                               <button key={sub} className={`toggle toggle-sm ${subs[sub] ? "on" : ""}`} onClick={() => toggleSub(sub)} aria-pressed={subs[sub]}>
                                 <span className="toggle-main"><span className="toggle-t">{subLabel(sub)}</span></span>
-                                <span className="switch" aria-hidden><span className="switch-knob" /></span>
+                                <span className="tgt" aria-hidden><span className="tgt-dot" /></span>
                               </button>
                             ))}
                           </div>
@@ -1913,7 +1912,7 @@ function PriceCalculator({ openConsult }) {
                               <button key={d} className={`toggle toggle-sm ${dels[d] ? "on" : ""}`} onClick={() => toggleDel(d)} aria-pressed={dels[d]}>
                                 <span className="toggle-main"><span className="toggle-t">{delLabel(d)}</span></span>
                                 <span className="toggle-p mono">{delPriceLabel(d)}</span>
-                                <span className="switch" aria-hidden><span className="switch-knob" /></span>
+                                <span className="tgt" aria-hidden><span className="tgt-dot" /></span>
                               </button>
                             ))}
                           </div>
@@ -1951,7 +1950,7 @@ function PriceCalculator({ openConsult }) {
                 <button key={k} className={`toggle ${phases[k] ? "on" : ""}`} onClick={() => togglePhase(k)} aria-pressed={phases[k]}>
                   <span className="toggle-main"><span className="toggle-t">{p.phases[k]}</span><span className="toggle-d">{phaseDescFor(k)}</span></span>
                   <span className="toggle-p mono">{k === "plan" && allLoop && selected.length > 0 ? <span className="waived">{packagePrice("plan")}</span> : packagePrice(k)}</span>
-                  <span className="switch" aria-hidden><span className="switch-knob" /></span>
+                  <span className="tgt" aria-hidden><span className="tgt-dot" /></span>
                 </button>
               ))}
             </div>
@@ -2939,6 +2938,14 @@ button{font-family:inherit;}
 .toggle-sm .switch{width:32px;height:19px;}
 .toggle-sm .switch-knob{width:13px;height:13px;}
 .toggle-sm.on .switch-knob{transform:translateX(13px);}
+.tgt{width:19px;height:19px;flex:none;border-radius:50%;border:1.5px solid rgba(231,37,90,0.35);position:relative;transition:border-color .15s;}
+.toggle.on .tgt{border-color:var(--mag);animation:tgtPulse .45s ease-out;}
+.tgt-dot{position:absolute;inset:3.5px;border-radius:50%;background:var(--mag);transform:scale(0);transition:transform .2s cubic-bezier(.34,1.56,.64,1);}
+.toggle.on .tgt-dot{transform:scale(1);}
+.toggle:active .tgt{transform:scale(0.9);}
+@keyframes tgtPulse{0%{box-shadow:0 0 0 0 rgba(231,37,90,0.45);}100%{box-shadow:0 0 0 8px rgba(231,37,90,0);}}
+.toggle-sm .tgt{width:16px;height:16px;}
+.toggle-sm .tgt-dot{inset:3px;}
 .toggle-sm .toggle-t{font-size:13.5px;font-weight:500;}
 .scope-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
 .scope-card{position:relative;display:flex;flex-direction:column;gap:5px;text-align:left;background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:15px;font:inherit;cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .15s;}
@@ -3011,12 +3018,13 @@ button{font-family:inherit;}
 .cfg-total{margin-top:4px;}
 .receipt-items{display:flex;flex-direction:column;margin:2px 0 4px;}
 .rcp{display:flex;flex-direction:column;margin:2px 0 6px;text-align:left;}
-.rcp-head{display:grid;grid-template-columns:1fr 90px 90px;gap:10px;font-size:10px;letter-spacing:0.07em;text-transform:uppercase;color:var(--soft);padding-bottom:9px;border-bottom:1px solid var(--line);}
-.rcp-row{display:grid;grid-template-columns:1fr 90px 90px;gap:10px;align-items:baseline;padding:11px 0;width:100%;text-align:left;background:none;border:none;font:inherit;}
+.rcp-head{display:grid;grid-template-columns:1fr 78px 78px;gap:8px;font-size:10px;letter-spacing:0.07em;text-transform:uppercase;color:var(--soft);padding-bottom:9px;border-bottom:1px solid var(--line);}
+.rcp-head span+span{text-align:right;}
+.rcp-row{display:grid;grid-template-columns:1fr 78px 78px;gap:8px;align-items:baseline;padding:11px 0;width:100%;text-align:left;background:none;border:none;font:inherit;}
 .rcp-line+.rcp-line{border-top:1px dashed var(--line);}
 .rcp-row-btn{cursor:pointer;}
-.rcp-l{color:var(--ink);font-weight:500;font-size:14px;line-height:1.35;display:flex;align-items:baseline;gap:7px;text-align:left;}
-.rcp-v{font-size:13px;color:var(--mid);text-align:left;font-variant-numeric:tabular-nums;}
+.rcp-l{color:var(--ink);font-weight:500;font-size:14px;line-height:1.35;display:flex;align-items:baseline;gap:7px;text-align:left;overflow-wrap:break-word;word-break:normal;hyphens:none;}
+.rcp-v{font-size:13px;color:var(--mid);text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;}
 .rcp-caret{color:var(--mag);font-size:13px;line-height:1;transition:transform .18s;display:inline-block;}
 .rcp-caret.on{transform:rotate(90deg);}
 .rcp-srow{padding:6px 0;}
