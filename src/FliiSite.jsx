@@ -88,7 +88,7 @@ const I18N = {
       priceCta: "Stel Loop samen en bekijk de prijzen ↘" },
     funnel: { eyebrow: "Campagnes", h2: "Van onbekend tot ambassadeur.",
       lede: "Elke campagne begeleidt je doelgroep stap voor stap door de funnel, van de eerste kennismaking tot herhaalaankopen en aanbevelingen.",
-      goalLabel: "Doel", exampleLabel: "Voorbeeld",
+      goalLabel: "Doel", exampleLabel: "Voorbeeld", tapHint: "Tik voor beschrijving",
       stages: [
         { k: "Aware", goal: "Van onbekend met je merk naar aware, bij algemene en in-market doelgroepen.", example: "Een pakkende video-hook op YouTube en TikTok die in drie seconden het probleem raakt." },
         { k: "Engaged", goal: "Van aware naar betrokken.", example: "Retarget kijkers met een gratis checklist of tool die meteen waarde geeft." },
@@ -278,7 +278,7 @@ const I18N = {
       priceCta: "Configure your Loop and see pricing ↘" },
     funnel: { eyebrow: "Campaigns", h2: "From stranger to advocate.",
       lede: "Every campaign guides your audience step by step through the funnel, from the first introduction to repeat purchases and referrals.",
-      goalLabel: "Goal", exampleLabel: "Example",
+      goalLabel: "Goal", exampleLabel: "Example", tapHint: "Tap for description",
       stages: [
         { k: "Aware", goal: "From unaware of your brand to aware, among broad and in-market audiences.", example: "A punchy video hook on YouTube and TikTok that nails the problem in three seconds." },
         { k: "Engaged", goal: "From aware to engaged.", example: "Retarget viewers with a free checklist or tool that delivers value right away." },
@@ -1001,7 +1001,7 @@ function LoopRing() {
     setActive(next);
     setSpinning(true);
     setSpinTick((tk) => tk + 1);
-    spinTimer.current = setTimeout(() => setSpinning(false), 1200);
+    spinTimer.current = setTimeout(() => setSpinning(false), 1600);
   };
   useEffect(() => () => clearTimeout(spinTimer.current), []);
   const cur = active != null ? items[active] : null;
@@ -1019,7 +1019,7 @@ function LoopRing() {
     <div className={`loop-ring-stage ${active != null ? "open" : ""}`}>
       <div className={`loop-ring-tilt ${active != null && !reduce ? "tilted" : ""}`}>
         <div className="loop-ring-spin">
-        <svg className="loop-ring-svg" viewBox="0 0 100 100" aria-hidden>
+        <svg className={`loop-ring-svg ${spinning && !reduce ? "dim" : ""}`} viewBox="0 0 100 100" aria-hidden>
           <defs>
             <linearGradient id="lrGrad" x1="0" y1="0" x2="1" y2="1">
               <stop offset="0%" stopColor="#B14BFF" /><stop offset="28%" stopColor="#E7255A" /><stop offset="50%" stopColor="#FF5E9A" />
@@ -1044,11 +1044,11 @@ function LoopRing() {
             <filter id="lrSoft" x="-120%" y="-120%" width="340%" height="340%"><feGaussianBlur stdDeviation="0.7" /></filter>
           </defs>
           <circle cx="50" cy="50" r="38" fill="none" stroke="url(#lrGrad)" strokeWidth="2.2" opacity="0.34" />
-          <g key={`o${spinTick}`} className={reduce ? "" : `lm-rot ${spinning ? "crossing" : ""}`}>
+          <g className={reduce ? "" : "lm-rot"}>
             <circle cx="50" cy="50" r="38" fill="none" stroke="url(#lrGrad)" strokeWidth="7" filter="url(#lrGlow)" opacity="0.55" />
             <circle cx="50" cy="50" r="38" fill="none" stroke="url(#lrGrad)" strokeWidth="5.2" filter="url(#lrFire)" />
           </g>
-          <g key={`i${spinTick}`} className={reduce ? "" : `lm-rot2 ${spinning ? "crossing" : ""}`}>
+          <g className={reduce ? "" : "lm-rot2"}>
             <circle cx="50" cy="50" r="35" fill="none" stroke="url(#lrGrad)" strokeWidth="3" filter="url(#lrFire)" opacity="0.9" />
           </g>
           {!reduce && (
@@ -1067,6 +1067,10 @@ function LoopRing() {
             </g>
           )}
         </svg>
+        <div key={spinTick} className={`loop-ring-gyro ${spinning && !reduce ? "on" : ""}`} aria-hidden>
+          <div className="gyro-ring gyro-a"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="38" fill="none" stroke="url(#lrGrad)" strokeWidth="4.5" filter="url(#lrGlow)" /></svg></div>
+          <div className="gyro-ring gyro-b"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="38" fill="none" stroke="url(#lrGrad)" strokeWidth="4.5" filter="url(#lrGlow)" /></svg></div>
+        </div>
         </div>
       </div>
       <div className="loop-ring-core" aria-live="polite">
@@ -1267,7 +1271,7 @@ function FunnelViz() {
   const { t } = useLang();
   const f = t.funnel;
   const stages = f.stages;
-  const [active, setActive] = useState(0);
+  const [active, setActive] = useState(null);
   const W = 1000, N = stages.length, segW = W / N, CY = 180;
   // half-heights at N+1 boundaries: taller start, narrowest at conversion (Signed|Loyal), then reopening
   const HALF = [175, 140, 102, 66, 39, 80, 118];
@@ -1306,9 +1310,15 @@ function FunnelViz() {
         <path className="fnl-build" pathLength="1" d={botPath} />
       </svg>
       <div className="fnl-desc" key={active}>
-        <span className="fnl-desc-k">{stages[active].k}</span>
-        <span className="fnl-desc-g"><strong>{f.goalLabel}:</strong> {stages[active].goal}</span>
-        <span className="fnl-desc-ex"><strong>{f.exampleLabel}:</strong> {stages[active].example}</span>
+        {active == null ? (
+          <span className="fnl-desc-hint mono">{f.tapHint}</span>
+        ) : (
+          <>
+            <span className="fnl-desc-k">{stages[active].k}</span>
+            <span className="fnl-desc-g"><strong>{f.goalLabel}:</strong> {stages[active].goal}</span>
+            <span className="fnl-desc-ex"><strong>{f.exampleLabel}:</strong> {stages[active].example}</span>
+          </>
+        )}
       </div>
     </div>
   );
@@ -2486,6 +2496,7 @@ button{font-family:inherit;}
 .fnl-desc-g strong{color:var(--mag);font-weight:600;}
 .fnl-desc-ex{font-size:13.5px;color:var(--soft);line-height:1.5;}
 .fnl-desc-ex strong{color:var(--mid);font-weight:600;}
+.fnl-desc-hint{font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--soft);}
 @keyframes fnlFade{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:none;}}
 @media (prefers-reduced-motion: reduce){.fnl-build{animation:none;opacity:0;}}
 .funnel-stage{width:var(--fw,100%);max-width:660px;}
@@ -2845,13 +2856,18 @@ button{font-family:inherit;}
 .loop-ring-stage{position:relative;width:min(500px,calc(100vw - 60px));margin:48px auto 8px;aspect-ratio:1;perspective:1200px;}
 .loop-ring-tilt{position:absolute;inset:70px;transform-origin:center center;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.2,.7,.2,1),opacity .7s;will-change:transform;}
 .loop-ring-stage.open .loop-ring-tilt.tilted{transform:rotateX(34deg) scale(.97);opacity:.9;}
-.loop-ring-svg{width:100%;height:100%;display:block;overflow:visible;}
+.loop-ring-svg{width:100%;height:100%;display:block;overflow:visible;transition:opacity .35s;}
 .loop-ring-spin{width:100%;height:100%;transform-origin:50% 50%;transform-style:preserve-3d;}
 .loop-ring-spin{position:absolute;inset:0;transform-origin:50% 50%;transform-style:preserve-3d;}
-.lm-rot.crossing{animation:lrCrossOuter 1.2s ease-in-out;}
-.lm-rot2.crossing{animation:lrCrossInner 1.2s ease-in-out;}
-@keyframes lrCrossOuter{from{transform:rotateY(0deg);}to{transform:rotateY(360deg);}}
-@keyframes lrCrossInner{from{transform:rotateX(0deg);}to{transform:rotateX(360deg);}}
+.loop-ring-svg.dim{opacity:0.12;}
+.loop-ring-gyro{position:absolute;inset:0;transform-style:preserve-3d;opacity:0;pointer-events:none;transition:opacity .35s;}
+.loop-ring-gyro.on{opacity:1;}
+.gyro-ring{position:absolute;inset:0;transform-style:preserve-3d;transform-origin:50% 50%;}
+.gyro-ring svg{width:100%;height:100%;display:block;overflow:visible;}
+.loop-ring-gyro.on .gyro-a{animation:gyroA 1.6s ease-in-out;}
+.loop-ring-gyro.on .gyro-b{animation:gyroB 1.6s ease-in-out;}
+@keyframes gyroA{from{transform:rotateY(0deg);}to{transform:rotateY(180deg);}}
+@keyframes gyroB{from{transform:rotateX(0deg);}to{transform:rotateX(-180deg);}}
 .loop-ring-core{position:absolute;inset:70px;display:flex;align-items:center;justify-content:center;text-align:center;padding:13%;pointer-events:none;z-index:3;}
 .loop-core-default,.loop-core-content{display:flex;flex-direction:column;gap:9px;align-items:center;}
 .loop-core-content{animation:coreIn .5s ease both;}
