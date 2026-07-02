@@ -1001,7 +1001,7 @@ function LoopRing() {
     setActive(next);
     setSpinning(true);
     setSpinTick((tk) => tk + 1);
-    spinTimer.current = setTimeout(() => setSpinning(false), 1600);
+    spinTimer.current = setTimeout(() => setSpinning(false), 520);
   };
   useEffect(() => () => clearTimeout(spinTimer.current), []);
   const cur = active != null ? items[active] : null;
@@ -1019,7 +1019,7 @@ function LoopRing() {
     <div className={`loop-ring-stage ${active != null ? "open" : ""}`}>
       <div className={`loop-ring-tilt ${active != null && !reduce ? "tilted" : ""}`}>
         <div className="loop-ring-spin">
-        <svg className={`loop-ring-svg ${spinning && !reduce ? "dim" : ""}`} viewBox="0 0 100 100" aria-hidden>
+        <svg className="loop-ring-svg" viewBox="0 0 100 100" aria-hidden>
           <defs>
             <linearGradient id="lrGrad" x1="0" y1="0" x2="1" y2="1">
               <stop offset="0%" stopColor="#B14BFF" /><stop offset="28%" stopColor="#E7255A" /><stop offset="50%" stopColor="#FF5E9A" />
@@ -1043,34 +1043,35 @@ function LoopRing() {
             </radialGradient>
             <filter id="lrSoft" x="-120%" y="-120%" width="340%" height="340%"><feGaussianBlur stdDeviation="0.7" /></filter>
           </defs>
-          <circle cx="50" cy="50" r="38" fill="none" stroke="url(#lrGrad)" strokeWidth="2.2" opacity="0.34" />
-          <g className={reduce ? "" : "lm-rot"}>
-            <circle cx="50" cy="50" r="38" fill="none" stroke="url(#lrGrad)" strokeWidth="7" filter="url(#lrGlow)" opacity="0.55" />
-            <circle cx="50" cy="50" r="38" fill="none" stroke="url(#lrGrad)" strokeWidth="5.2" filter="url(#lrFire)" />
+          <defs>
+            <radialGradient id="lrBody" cx="50%" cy="48%" r="52%">
+              <stop offset="0%" stopColor="#0C0207" /><stop offset="58%" stopColor="#160410" /><stop offset="84%" stopColor="#360A22" /><stop offset="96%" stopColor="#8A1A48" /><stop offset="100%" stopColor="#0C0207" />
+            </radialGradient>
+            <filter id="lrRimSoft" x="-70%" y="-70%" width="240%" height="240%"><feGaussianBlur stdDeviation="3.4" /></filter>
+            <filter id="lrWisp" x="-10%" y="-10%" width="120%" height="120%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.85 0.02" numOctaves="2" seed="7" result="n">
+                {!reduce && <animate attributeName="baseFrequency" dur="16s" values="0.85 0.02;0.8 0.03;0.85 0.02" repeatCount="indefinite" />}
+              </feTurbulence>
+              <feColorMatrix in="n" type="matrix" values="0 0 0 0 1  0 0 0 0 0.36  0 0 0 0 0.62  0 0 0 0.7 0" />
+            </filter>
+            <radialGradient id="lrWispFade" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="#fff" stopOpacity="0" /><stop offset="58%" stopColor="#fff" stopOpacity="0" /><stop offset="90%" stopColor="#fff" stopOpacity="0.55" /><stop offset="100%" stopColor="#fff" stopOpacity="0" />
+            </radialGradient>
+            <mask id="lrWispMask"><circle cx="50" cy="50" r="39" fill="url(#lrWispFade)" /></mask>
+          </defs>
+          <circle cx="50" cy="50" r="39" fill="url(#lrBody)" />
+          <g className={reduce ? "" : "lr-orb-rot"}>
+            <g mask="url(#lrWispMask)"><rect x="8" y="8" width="84" height="84" filter="url(#lrWisp)" opacity="0.55" /></g>
           </g>
-          <g className={reduce ? "" : "lm-rot2"}>
-            <circle cx="50" cy="50" r="35" fill="none" stroke="url(#lrGrad)" strokeWidth="3" filter="url(#lrFire)" opacity="0.9" />
+          <g className={reduce ? "" : "lr-orb-rot2"}>
+            <circle cx="48.7" cy="50" r="38.3" fill="none" stroke="#B14BFF" strokeWidth="1.1" filter="url(#lrRimSoft)" opacity="0.6" />
+            <circle cx="51.3" cy="50" r="38.3" fill="none" stroke="#FF5E9A" strokeWidth="1.1" filter="url(#lrRimSoft)" opacity="0.6" />
+            <circle cx="50" cy="50" r="38.6" fill="none" stroke="url(#lrGrad)" strokeWidth="2.6" filter="url(#lrRimSoft)" opacity="0.85" />
+            <circle cx="50" cy="50" r="38.7" fill="none" stroke="url(#lrGrad)" strokeWidth="0.9" filter="url(#lrGlow)" />
+            <circle cx="50" cy="50" r="38.8" fill="none" stroke="#FFEAF3" strokeWidth="0.4" opacity="0.8" />
           </g>
-          {!reduce && (
-            <g className="lr-orbit">
-              <path className="lr-trail" d="M50 11 L38 12 L50 13 Z" fill="#FFD8E7" filter="url(#lrGlow)" />
-              <circle className="lr-spark" cx="50" cy="12" r="1.4" fill="#FFEAF2" filter="url(#lrGlow)" />
-              <g className="lr-burst">
-                <circle cx="50" cy="12" r="10" fill="url(#lrStarGlow)" />
-                <g filter="url(#lrSoft)">
-                  <path d="M50 2.5 L50.35 11.6 L59.5 12 L50.35 12.4 L50 21.5 L49.65 12.4 L40.5 12 L49.65 11.6 Z" fill="#fff" />
-                  <path d="M53.89 8.11 L50.35 12 L53.89 15.89 L50 12.35 L46.11 15.89 L49.65 12 L46.11 8.11 L50 11.65 Z" fill="#FFE3EE" opacity="0.85" />
-                </g>
-                <circle cx="50" cy="12" r="1.5" fill="#fff" filter="url(#lrGlow)" />
-                <circle cx="50" cy="12" r="0.8" fill="#fff" />
-              </g>
-            </g>
-          )}
+          <circle key={spinTick} className={spinning && !reduce ? "lr-flash on" : "lr-flash"} cx="50" cy="50" r="38.6" fill="none" stroke="url(#lrGrad)" strokeWidth="3" filter="url(#lrRimSoft)" />
         </svg>
-        <div key={spinTick} className={`loop-ring-gyro ${spinning && !reduce ? "on" : ""}`} aria-hidden>
-          <div className="gyro-ring gyro-a"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="38" fill="none" stroke="url(#lrGrad)" strokeWidth="4.5" filter="url(#lrGlow)" /></svg></div>
-          <div className="gyro-ring gyro-b"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="38" fill="none" stroke="url(#lrGrad)" strokeWidth="4.5" filter="url(#lrGlow)" /></svg></div>
-        </div>
         </div>
       </div>
       <div className="loop-ring-core" aria-live="polite">
@@ -2455,6 +2456,12 @@ button{font-family:inherit;}
 .lm-rot{transform-box:view-box;transform-origin:50px 50px;animation:loopmark-spin 7s linear infinite;}
 .lm-rot2{transform-box:view-box;transform-origin:50px 50px;animation:loopmark-spin 10s linear infinite reverse;}
 .lr-orbit{transform-box:view-box;transform-origin:50px 50px;animation:loopmark-spin 16s linear infinite;}
+.lr-orb-rot{transform-box:view-box;transform-origin:50px 50px;animation:lrOrbRot 26s linear infinite;}
+.lr-orb-rot2{transform-box:view-box;transform-origin:50px 50px;animation:lrOrbRot 34s linear infinite reverse;}
+@keyframes lrOrbRot{to{transform:rotate(360deg);}}
+.lr-flash{opacity:0;}
+.lr-flash.on{animation:lrFlash .6s ease-out;}
+@keyframes lrFlash{0%{opacity:0;}25%{opacity:0.85;}100%{opacity:0;}}
 .lr-spark{opacity:0.6;}
 .lr-trail{opacity:0.32;}
 .lr-burst{transform-box:view-box;transform-origin:50px 12px;animation:lr-flash 4s ease-out infinite;}
