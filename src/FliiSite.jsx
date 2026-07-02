@@ -88,13 +88,14 @@ const I18N = {
       priceCta: "Stel Loop samen en bekijk de prijzen ↘" },
     funnel: { eyebrow: "Campagnes", h2: "Van onbekend tot ambassadeur.",
       lede: "Elke campagne begeleidt je doelgroep stap voor stap door de funnel, van de eerste kennismaking tot herhaalaankopen en aanbevelingen.",
+      goalLabel: "Doel", exampleLabel: "Voorbeeld",
       stages: [
-        { k: "Aware", desc: "Je merk verschijnt bij algemene en in-market doelgroepen. Doel: van onbekend met je merk naar aware." },
-        { k: "Engaged", desc: "Mensen reageren, klikken en verdiepen zich. Doel: van bekend naar betrokken." },
-        { k: "Nudged", desc: "Je overtuigt met bewijs, aanbod en herhaling. Doel: van betrokken naar overtuigd." },
-        { k: "Signed", desc: "De klant zet de stap en koopt. Doel: van overtuigd naar conversie." },
-        { k: "Loyal", desc: "Klanten blijven en groeien in waarde met herhaalaankopen. Doel: van conversie naar loyaal." },
-        { k: "Ambassador", desc: "Klanten bevelen je actief aan en brengen nieuwe klanten binnen. Doel: van loyaal naar ambassadeur." } ] },
+        { k: "Aware", goal: "Van onbekend met je merk naar aware, bij algemene en in-market doelgroepen.", example: "Een pakkende video-hook op YouTube en TikTok die in drie seconden het probleem raakt." },
+        { k: "Engaged", goal: "Van aware naar betrokken.", example: "Retarget kijkers met een gratis checklist of tool die meteen waarde geeft." },
+        { k: "Nudged", goal: "Van betrokken naar overtuigd.", example: "Toon reviews en een concrete case op je landingspagina, met een scherpe vergelijking met alternatieven." },
+        { k: "Signed", goal: "Van overtuigd naar conversie.", example: "Haal wrijving weg met een korte checkout en een tijdelijke bonus bij direct afrekenen." },
+        { k: "Loyal", goal: "Van conversie naar loyaal.", example: "Een geautomatiseerde onboarding-flow via e-mail die het product in de eerste week laat renderen." },
+        { k: "Ambassador", goal: "Van loyaal naar ambassadeur.", example: "Een referral-actie waarbij klanten korting krijgen voor elke aangebrachte nieuwe klant." } ] },
     work: { eyebrow: "Showcase", h2: "Wat we lanceerden", manage: "Beheer showcase ↗", view: "Bekijk case ↗" },
     reviews: { eyebrow: "Reviews", h2: "Bewijs, geen beloftes.", word: "reviews" },
     byline: { by: "by", name: "Flii Media" },
@@ -277,13 +278,14 @@ const I18N = {
       priceCta: "Configure your Loop and see pricing ↘" },
     funnel: { eyebrow: "Campaigns", h2: "From stranger to advocate.",
       lede: "Every campaign guides your audience step by step through the funnel, from the first introduction to repeat purchases and referrals.",
+      goalLabel: "Goal", exampleLabel: "Example",
       stages: [
-        { k: "Aware", desc: "Your brand shows up for broad and in-market audiences. Goal: from unaware to aware." },
-        { k: "Engaged", desc: "People respond, click and dig deeper. Goal: from aware to engaged." },
-        { k: "Nudged", desc: "You convince with proof, offer and repetition. Goal: from engaged to convinced." },
-        { k: "Signed", desc: "The customer takes the step and buys. Goal: from convinced to conversion." },
-        { k: "Loyal", desc: "Customers stay and grow in value with repeat purchases. Goal: from conversion to loyal." },
-        { k: "Ambassador", desc: "Customers actively refer you and bring in new customers. Goal: from loyal to advocate." } ] },
+        { k: "Aware", goal: "From unaware of your brand to aware, among broad and in-market audiences.", example: "A punchy video hook on YouTube and TikTok that nails the problem in three seconds." },
+        { k: "Engaged", goal: "From aware to engaged.", example: "Retarget viewers with a free checklist or tool that delivers value right away." },
+        { k: "Nudged", goal: "From engaged to convinced.", example: "Show reviews and a concrete case on your landing page, with a sharp comparison to alternatives." },
+        { k: "Signed", goal: "From convinced to conversion.", example: "Remove friction with a short checkout and a limited bonus for buying now." },
+        { k: "Loyal", goal: "From conversion to loyal.", example: "An automated email onboarding flow that makes the product pay off in the first week." },
+        { k: "Ambassador", goal: "From loyal to advocate.", example: "A referral program where customers get a discount for every new customer they bring in." } ] },
     work: { eyebrow: "Showcase", h2: "What we've shipped", manage: "Manage showcase ↗", view: "View case ↗" },
     reviews: { eyebrow: "Reviews", h2: "Proof, not promises.", word: "reviews" },
     byline: { by: "by", name: "Flii Media" },
@@ -1025,6 +1027,7 @@ function LoopRing() {
     <div className={`loop-ring-stage ${active != null ? "open" : ""}`}>
       <div className={`loop-ring-tilt ${active != null && !reduce ? "tilted" : ""}`}>
         <div className={`loop-ring-spin ${spinning ? "spin" : ""}`} ref={spinRef}>
+        <div className="loop-ring-3d">
         <svg className="loop-ring-svg" viewBox="0 0 100 100" aria-hidden>
           <defs>
             <linearGradient id="lrGrad" x1="0" y1="0" x2="1" y2="1">
@@ -1073,6 +1076,7 @@ function LoopRing() {
             </g>
           )}
         </svg>
+        </div>
         </div>
       </div>
       <div className="loop-ring-core" aria-live="polite">
@@ -1313,7 +1317,8 @@ function FunnelViz() {
       </svg>
       <div className="fnl-desc" key={active}>
         <span className="fnl-desc-k">{stages[active].k}</span>
-        <span className="fnl-desc-b">{stages[active].desc}</span>
+        <span className="fnl-desc-g"><strong>{f.goalLabel}:</strong> {stages[active].goal}</span>
+        <span className="fnl-desc-ex"><strong>{f.exampleLabel}:</strong> {stages[active].example}</span>
       </div>
     </div>
   );
@@ -2485,9 +2490,12 @@ button{font-family:inherit;}
 .fnl-outline{fill:none;stroke:rgba(174,34,73,0.42);stroke-width:1.4;stroke-linejoin:round;pointer-events:none;}
 .fnl-build{fill:none;stroke:#FF4D8D;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;filter:url(#fnlGlowF);stroke-dasharray:1;stroke-dashoffset:1;opacity:0;pointer-events:none;animation:fnlBuild 5.6s ease-in-out infinite;}
 @keyframes fnlBuild{0%{stroke-dashoffset:1;opacity:0;}6%{opacity:1;}46%{stroke-dashoffset:0;opacity:1;}72%{opacity:1;}100%{stroke-dashoffset:0;opacity:0;}}
-.fnl-desc{margin:24px auto 0;max-width:640px;text-align:center;display:flex;flex-direction:column;gap:6px;animation:fnlFade .3s ease;}
+.fnl-desc{margin:24px auto 0;max-width:680px;text-align:center;display:flex;flex-direction:column;gap:7px;animation:fnlFade .3s ease;}
 .fnl-desc-k{font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--mag);font-weight:600;}
-.fnl-desc-b{font-size:15px;color:var(--mid);line-height:1.5;}
+.fnl-desc-g{font-size:15px;color:var(--ink);line-height:1.5;}
+.fnl-desc-g strong{color:var(--mag);font-weight:600;}
+.fnl-desc-ex{font-size:13.5px;color:var(--soft);line-height:1.5;}
+.fnl-desc-ex strong{color:var(--mid);font-weight:600;}
 @keyframes fnlFade{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:none;}}
 @media (prefers-reduced-motion: reduce){.fnl-build{animation:none;opacity:0;}}
 .funnel-stage{width:var(--fw,100%);max-width:660px;}
@@ -2845,10 +2853,13 @@ button{font-family:inherit;}
 .loop-foot{margin-top:30px;text-align:center;}
 .loop-ring-wrap{display:flex;flex-direction:column;align-items:center;}
 .loop-ring-stage{position:relative;width:min(500px,calc(100vw - 60px));margin:48px auto 8px;aspect-ratio:1;perspective:1200px;}
-.loop-ring-tilt{position:absolute;inset:70px;transform-origin:center center;transition:transform .7s cubic-bezier(.2,.7,.2,1),opacity .7s;will-change:transform;}
+.loop-ring-tilt{position:absolute;inset:70px;transform-origin:center center;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.2,.7,.2,1),opacity .7s;will-change:transform;}
 .loop-ring-stage.open .loop-ring-tilt.tilted{transform:rotateX(34deg) scale(.97);opacity:.9;}
 .loop-ring-svg{width:100%;height:100%;display:block;overflow:visible;}
-.loop-ring-spin{width:100%;height:100%;transform-origin:50% 50%;}
+.loop-ring-spin{width:100%;height:100%;transform-origin:50% 50%;transform-style:preserve-3d;}
+.loop-ring-3d{width:100%;height:100%;transform-style:preserve-3d;animation:lrTumble 15s linear infinite;}
+@keyframes lrTumble{from{transform:rotateX(0deg);}to{transform:rotateX(360deg);}}
+@media (prefers-reduced-motion: reduce){.loop-ring-3d{animation:none;}}
 .loop-ring-spin.spin{animation:lrStepSpin .62s cubic-bezier(.45,0,.15,1);}
 @keyframes lrStepSpin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
 .loop-ring-core{position:absolute;inset:70px;display:flex;align-items:center;justify-content:center;text-align:center;padding:13%;pointer-events:none;z-index:3;}
