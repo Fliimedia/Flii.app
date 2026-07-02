@@ -1828,7 +1828,7 @@ function CertDetail({ content, id }) {
 /* ---------- pricing ---------- */
 const PRICING = {
   scopes: {
-    campagne: { plan: 1500, build: 3500, run: 450 },
+    campagne: { plan: 1500, build: 0, run: 0 },
     app: { plan: 2500, build: 3500, run: 750 },
     platform: { plan: 4500, build: 18000, run: 2500 },
     ai: { plan: 2500, build: 6500, run: 850 },
@@ -1963,7 +1963,7 @@ function PriceCalculator({ openConsult }) {
       const moItem = phases.run ? typePhasePrice(sk, "run") : 0;
       const optList = sk === "app" ? APP_OPTS : sk === "platform" ? PLATFORM_OPTS : sk === "ai" ? AI_OPTS : null;
       const sub = optList ? optList.filter((k) => opts[k]).map((k) => ({ label: optLabel(k), free: true })) : [];
-      items.push({ label: p.scopes[sk], once: onceItem, mo: moItem, req: false, sub });
+      if (onceItem > 0 || moItem > 0 || sub.length > 0) items.push({ label: p.scopes[sk], once: onceItem, mo: moItem, req: false, sub });
     });
     const bf = phases.build ? 1 : 0, rf = phases.run ? 1 : 0;
     (types.campagne ? CAT_KEYS.filter((k) => cats[k]) : []).forEach((k) => {
@@ -1979,7 +1979,9 @@ function PriceCalculator({ openConsult }) {
     });
     return items;
   };
-  const phaseSum = (pk) => selected.reduce((a, sk) => a + typePhasePrice(sk, pk), 0);
+  const mediaOnce = types.campagne ? CAT_KEYS.filter((k) => cats[k]).reduce((a, k) => { const c = CAT_BY_KEY[k]; return a + c.once + c.dels.filter((d) => dels[d]).reduce((b, d) => b + ((DEL_PRICE[d] && DEL_PRICE[d].once) || 0), 0); }, 0) : 0;
+  const mediaMo = types.campagne ? CAT_KEYS.filter((k) => cats[k]).reduce((a, k) => { const c = CAT_BY_KEY[k]; return a + c.mo + c.dels.filter((d) => dels[d]).reduce((b, d) => b + ((DEL_PRICE[d] && DEL_PRICE[d].mo) || 0), 0); }, 0) : 0;
+  const phaseSum = (pk) => selected.reduce((a, sk) => a + typePhasePrice(sk, pk), 0) + (pk === "build" ? mediaOnce : pk === "run" ? mediaMo : 0);
   const packagePrice = (k) => k === "run" ? eur(phaseSum("run")) + p.mo : eur(phaseSum(k));
   const phaseDescFor = (k) => {
     if (selected.length === 1 && p.phaseByType && p.phaseByType[selected[0]]) return p.phaseByType[selected[0]][k];
