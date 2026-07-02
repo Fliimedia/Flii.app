@@ -1495,6 +1495,34 @@ function ModelSection() {
     </section>
   );
 }
+function ShowcaseList({ apps }) {
+  const { t } = useLang();
+  const [open, setOpen] = useState(null);
+  return (
+    <div className="wacc">
+      {apps.slice(0, 6).map((w) => {
+        const isOpen = open === w.id;
+        const hasLink = w.link && w.link !== "#";
+        return (
+          <div key={w.id} className={`wacc-item ${isOpen ? "open" : ""}`}>
+            <button className="wacc-head" onClick={() => setOpen((o) => (o === w.id ? null : w.id))} aria-expanded={isOpen}>
+              <span className="wacc-title">{w.title}</span>
+              <span className="wacc-client mono">{w.client}</span>
+              <span className="wacc-arrow" aria-hidden>↘</span>
+            </button>
+            {isOpen && (
+              <div className="wacc-body">
+                {hasLink && <div className="wacc-shot"><img src={shotUrl(w.link)} alt={w.title} loading="lazy" /></div>}
+                <div className="wacc-desc">{paras(w.body).map((pp, j) => <p key={j}>{pp}</p>)}</div>
+                {hasLink && <a href={w.link} target="_blank" rel="noreferrer" className="wacc-visit">{t.detail.visit} {w.title} ↗</a>}
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
 function Home({ content, openConsult }) {
   const { t } = useLang();
   const { apps, articles, reviews, certs } = content;
@@ -1576,19 +1604,7 @@ function Home({ content, openConsult }) {
       <section className="band" id="work">
         <div className="wrap">
           <Section className="work-head"><div><div className="eyebrow">{t.work.eyebrow}</div><h2 className="display h2">{t.work.h2}</h2></div></Section>
-          <div className="work-grid">
-            {apps.slice(0, 4).map((w, i) => (
-              <Section key={w.id} className="work-card" style={{ transitionDelay: `${i * 70}ms` }}>
-                <a href={`#/app/${w.id}`} className="work-link">
-                  <div className="work-meta mono">{w.client} · {w.tag}</div>
-                  <h3 className="work-title">{w.title}</h3>
-                  <p className="work-note">{w.summary}</p>
-                  <div className="work-thumb" aria-hidden>{w.link && w.link !== "#" && <img className="work-shot" src={shotUrl(w.link)} alt="" loading="lazy" />}</div>
-                  <span className="work-cta">{t.work.view}</span>
-                </a>
-              </Section>
-            ))}
-          </div>
+          <Section><ShowcaseList apps={apps} /></Section>
         </div>
       </section>
 
@@ -1599,11 +1615,14 @@ function Home({ content, openConsult }) {
           </Section>
           <Section>
             <div className="byline">
-              <div className="byline-brand"><FliiLogo variant="word" /></div>
-              <a href="https://flii.nl" target="_blank" rel="noreferrer" className="byline-right">
-                <span className="byline-by"><FliiMark className="byline-logo" />{t.byline.by} <span className="byline-name">{t.byline.name}</span> <span className="byline-arrow" aria-hidden>↗</span></span>
-                <span className="rating-badge"><span className="rating-stars" aria-hidden>★★★★★</span><span className="rating-meta"><strong>{avg}</strong><span className="mono">{reviews.length} {t.reviews.word}</span></span></span>
+              <a href="https://flii.nl" target="_blank" rel="noreferrer" className="byline-lock">
+                <FliiMark className="byline-mark" />
+                <span className="byline-txt"><strong>flii.app</strong> <span className="byline-by-t">{t.byline.by} {t.byline.name}</span><span className="byline-arrow" aria-hidden> ↗</span></span>
               </a>
+              <div className="byline-rating">
+                <span className="byline-stars" aria-hidden>★★★★★</span>
+                <span className="byline-rate"><strong>{avg}</strong> · {reviews.length} {t.reviews.word}</span>
+              </div>
             </div>
           </Section>
           <div className="quote-grid">
@@ -1674,7 +1693,6 @@ function Home({ content, openConsult }) {
           <Section>
             <h2 className="display cta-h">{t.cta.h2}</h2>
             <p className="cta-sub">{t.cta.sub}</p>
-            <CallbackForm />
             <div className="hero-actions">
               <button onClick={openConsult} className="btn btn-primary">{t.cta.primary}</button>
               <a href="#loop" className="loop-cta" aria-label={t.hero.loopCta}>
@@ -2126,6 +2144,7 @@ function PriceCalculator({ openConsult }) {
                   <div className="rcp-row rcp-tot"><span className="rcp-l">{p.totalWord}</span><span className="rcp-v mono">{eur(once)}</span><span className="rcp-v mono">{mo > 0 ? eur(mo) : ""}</span></div>
                 </div>
               </>}
+              <CallbackForm />
               <button className="btn btn-primary cfg-cta" onClick={() => openConsult(null, summary())}>{p.cta}</button>
             </div>
           </div>
@@ -2856,15 +2875,32 @@ button{font-family:inherit;}
 
 /* quotes */
 .quote-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-.byline{display:flex;align-items:center;justify-content:space-between;gap:16px 28px;flex-wrap:wrap;padding:18px 24px;border:1px solid var(--line);border-radius:16px;background:var(--card);margin-bottom:40px;}
-.byline-brand{display:inline-flex;align-items:center;}
-.byline-brand .brand{font-size:24px;}
-.byline-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px;text-decoration:none;}
-.byline-by{display:inline-flex;align-items:center;gap:7px;font-size:15px;color:var(--mid);font-weight:600;}
-.byline-name{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:18px;color:var(--mag);letter-spacing:-0.01em;}
+.byline{display:flex;align-items:center;justify-content:space-between;gap:14px 24px;flex-wrap:wrap;padding:16px 22px;border:1px solid var(--line);border-radius:16px;background:var(--card);margin-bottom:40px;}
+.byline-lock{display:inline-flex;align-items:center;gap:10px;text-decoration:none;}
+.byline-mark{width:26px;height:26px;flex:none;}
+.byline-txt{font-size:15px;color:var(--ink);font-weight:600;line-height:1.3;}
+.byline-txt strong{font-weight:700;}
+.byline-by-t{color:var(--soft);font-weight:500;}
+.byline-lock:hover .byline-by-t{color:var(--mag);}
 .byline-arrow{color:var(--mag);font-weight:700;}
-.byline-right:hover .byline-name{text-decoration:underline;text-underline-offset:3px;}
-.byline .rating-badge{border:none;background:transparent;padding:0;}
+.byline-rating{display:inline-flex;align-items:center;gap:9px;}
+.byline-stars{color:var(--mag);font-size:14px;letter-spacing:1.5px;}
+.byline-rate{font-size:13px;color:var(--mid);white-space:nowrap;}
+.byline-rate strong{color:var(--ink);font-weight:700;}
+.wacc{display:flex;flex-direction:column;gap:12px;}
+.wacc-item{border:1px solid var(--line);border-radius:16px;background:var(--card);overflow:hidden;transition:border-color .18s,box-shadow .18s;}
+.wacc-item.open{border-color:transparent;background:linear-gradient(var(--card),var(--card)) padding-box, var(--gloss) border-box;box-shadow:0 16px 36px -22px rgba(231,37,90,0.45);}
+.wacc-head{display:flex;align-items:center;gap:14px;width:100%;background:none;border:none;padding:19px 22px;cursor:pointer;font:inherit;text-align:left;}
+.wacc-title{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:19px;color:var(--ink);flex:1;min-width:0;}
+.wacc-client{font-size:11.5px;color:var(--soft);white-space:nowrap;}
+.wacc-arrow{color:var(--mag);font-size:17px;flex:none;transition:transform .2s;}
+.wacc-item.open .wacc-arrow{transform:rotate(90deg);}
+.wacc-body{padding:2px 22px 22px;animation:fnlFade .3s ease;}
+.wacc-shot{border-radius:12px;overflow:hidden;border:1px solid var(--line);aspect-ratio:16 / 10;background:var(--mist);margin-bottom:16px;}
+.wacc-shot img{width:100%;height:100%;object-fit:cover;display:block;}
+.wacc-desc{color:var(--mid);font-size:14.5px;line-height:1.6;display:flex;flex-direction:column;gap:12px;}
+.wacc-visit{display:inline-block;margin-top:16px;color:var(--mag);font-weight:600;font-size:14px;text-decoration:none;}
+.wacc-visit:hover{text-decoration:underline;text-underline-offset:3px;}
 .quote-card{background:var(--card);border:1px solid var(--line);border-radius:18px;transition:transform .2s,box-shadow .2s;}
 .quote-card:hover{transform:translateY(-4px);box-shadow:0 30px 50px -28px rgba(23,23,23,0.16);}
 .quote-link{display:flex;flex-direction:column;height:100%;padding:26px;}
@@ -2916,12 +2952,12 @@ button{font-family:inherit;}
 .cta-band{background:var(--ink);color:var(--paper);padding:104px 0;position:relative;}
 .cta-chip{position:absolute;top:0;left:50%;transform:translate(-50%,-50%);z-index:2;font-size:12px;font-weight:600;letter-spacing:0.02em;color:var(--ink);padding:9px 20px;border-radius:999px;border:1px solid transparent;background:linear-gradient(#fff,#fff) padding-box, var(--gloss) border-box;box-shadow:0 6px 22px -8px rgba(231,37,90,0.45);white-space:nowrap;}
 .cta-inner{text-align:center;}
-.callback{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:18px;}
-.callback-input{background:transparent;border:1px solid #3A3A3A;border-radius:11px;padding:11px 15px;color:var(--paper);font:inherit;font-size:14px;min-width:210px;transition:border-color .15s;}
-.callback-input::placeholder{color:#8B887E;}
-.callback-input:focus{outline:none;border-color:var(--paper);}
-.callback-btn{color:var(--paper);border:1px solid transparent;background:linear-gradient(var(--ink),var(--ink)) padding-box, var(--gloss) border-box;}
-.callback-btn:hover{color:#fff;box-shadow:0 6px 18px -8px rgba(231,37,90,0.5);}
+.callback{display:flex;gap:8px;flex-wrap:wrap;margin:2px 0 10px;}
+.callback-input{flex:1;min-width:0;background:var(--card);border:1px solid var(--line);border-radius:11px;padding:11px 14px;color:var(--ink);font:inherit;font-size:14px;transition:border-color .15s;}
+.callback-input::placeholder{color:var(--soft);}
+.callback-input:focus{outline:none;border-color:var(--mag);}
+.callback-btn{white-space:nowrap;color:var(--ink);border:1px solid transparent;background:linear-gradient(var(--card),var(--card)) padding-box, var(--gloss) border-box;}
+.callback-btn:hover{box-shadow:0 6px 16px -8px rgba(231,37,90,0.5);}
 .cta-h{font-size:clamp(36px,6vw,64px);margin:0 auto 14px;}
 .cta-sub{font-size:18px;color:#B5B2A8;max-width:42ch;margin:0 auto 30px;}
 .cta-band .hero-actions{justify-content:center;}
