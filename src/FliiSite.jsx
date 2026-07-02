@@ -2103,11 +2103,11 @@ function PriceCalculator({ openConsult }) {
                 <div className="rcp">
                   <div className="rcp-head mono"><span>{p.svcCol}</span><span>{p.once}</span><span>{p.monthCol}</span></div>
                   {lineItems().map((it, i) => {
-                    const open = !!openRows[i];
+                    const open = !!openRows[it.label];
                     const has = it.sub && it.sub.length > 0;
                     return (
-                      <div key={i} className="rcp-line">
-                        <div className={`rcp-row ${has ? "rcp-row-btn" : ""}`} onClick={has ? () => toggleRow(i) : undefined} role={has ? "button" : undefined} aria-expanded={has ? open : undefined}>
+                      <div key={it.label} className="rcp-line">
+                        <div className={`rcp-row ${has ? "rcp-row-btn" : ""}`} onClick={has ? () => toggleRow(it.label) : undefined} role={has ? "button" : undefined} aria-expanded={has ? open : undefined}>
                           <span className="rcp-l">{has && <span className={`rcp-caret ${open ? "on" : ""}`} aria-hidden>{"\u203A"}</span>}{it.label}</span>
                           <span className="rcp-v mono">{it.req ? p.onRequest : (it.once > 0 ? eur(it.once) : "")}</span>
                           <span className="rcp-v mono">{it.req ? "" : (it.mo > 0 ? eur(it.mo) : "")}</span>
