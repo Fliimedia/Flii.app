@@ -1868,7 +1868,7 @@ function computeLoop({ types, phases, cats, dels }) {
     mo += phases.run ? typePhasePrice(sk, "run") : 0;
     if (allLoop) saving += PRICING.scopes[sk].plan;
   });
-  CAT_KEYS.forEach((k) => {
+  if (types.campagne) CAT_KEYS.forEach((k) => {
     if (cats[k]) {
       const c = CAT_BY_KEY[k];
       once += c.once; mo += c.mo;
@@ -1932,7 +1932,7 @@ function PriceCalculator({ openConsult }) {
     const svcs = c.dels.filter((x) => dels[x]).map(delLabel);
     return [...chans, ...svcs];
   };
-  const catBits = () => CAT_KEYS.filter((k) => cats[k]).map((k) => {
+  const catBits = () => (types.campagne ? CAT_KEYS.filter((k) => cats[k]) : []).map((k) => {
     const r = catRefine(CAT_BY_KEY[k]);
     return catLabel(k) + (r.length ? ` (${r.join(", ")})` : "");
   });
@@ -1946,7 +1946,7 @@ function PriceCalculator({ openConsult }) {
       const sub = optList ? optList.filter((k) => opts[k]).map((k) => ({ label: optLabel(k), free: true })) : [];
       items.push({ label: p.scopes[sk], once: onceItem, mo: moItem, req: false, sub });
     });
-    CAT_KEYS.filter((k) => cats[k]).forEach((k) => {
+    (types.campagne ? CAT_KEYS.filter((k) => cats[k]) : []).forEach((k) => {
       const c = CAT_BY_KEY[k];
       const req = c.once === 0 && c.mo === 0;
       const selDels = c.dels.filter((d) => dels[d]);
