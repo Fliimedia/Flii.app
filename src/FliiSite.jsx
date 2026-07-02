@@ -89,10 +89,11 @@ const I18N = {
     model: { tabCampagnes: "Campagnes", tabApp: "App", tabPlatform: "Platform", eyeCampagnes: "De funnel", eyeApp: "De stack", eyePlatform: "Het netwerk" },
     appStack: { h2: "Gebouwd van fundament tot interface.", lede: "Een app is een stack: elke laag draagt de laag erboven. Wij bouwen ze alle vier, zodat het geheel klopt en meegroeit.", tapHint: "Tik voor uitleg",
       layers: [
-        { k: "Codebase", desc: "De applicatiecode zelf, web, native of PWA, opgebouwd rond een schone en onderhoudbare architectuur." },
-        { k: "Databases", desc: "Waar je data leeft: veilig, gestructureerd en klaar om op te schalen." },
+        { k: "Front end", desc: "De interface die gebruikers zien en bedienen: web, native of PWA, snel en toegankelijk." },
         { k: "Integrations", desc: "Koppelingen met externe systemen en API's, zodat de app meedraait in je bestaande landschap." },
-        { k: "Hosting", desc: "Het fundament: betrouwbare, schaalbare hosting en geautomatiseerde deployment." } ] },
+        { k: "Databases", desc: "Waar je data leeft: veilig, gestructureerd en klaar om op te schalen." },
+        { k: "Hosting", desc: "De draaiende omgeving: betrouwbare, schaalbare hosting en geautomatiseerde deployment." },
+        { k: "Codebase", desc: "Het fundament: schone, onderhoudbare applicatiecode waar alles op rust." } ] },
     platformNet: { h2: "Je platform als spil van je media.", lede: "Het platform staat centraal en verbindt al je kanalen. Data stroomt heen en weer, elk kanaal voedt het geheel.", tapHint: "Tik voor uitleg", center: "Platform",
       nodes: [
         { k: "CRM", desc: "Klantdata en segmenten stromen tussen je platform en je CRM." },
@@ -189,6 +190,7 @@ const I18N = {
       empty: "Kies minimaal één type of dienst.", cta: "Plan een gesprek", summaryPrefix: "Interesse in",
       steps: { type: "Type", details: "Details", pakketten: "Pakketten", content: "Content", result: "Resultaat" },
       stepHelp: { type: "Kies één type of combineer er meerdere.", details: "Verfijn je keuze per dienst.", pakketten: "Welke fases van de loop neem je af?", content: "Hoeveel content per maand?", result: "Je indicatieve investering." },
+      stepTitle: { type: "Wat wil je bouwen?", details: "Stel je scope samen.", pakketten: "Kies je Loop-fases.", content: "Kies je content.", result: "Jouw indicatie." },
       typeNote: "Je kunt types combineren. AI-diensten zijn nieuw en als voorstel geprijsd.",
       waived: "vervalt",
       details: { pickType: "Kies eerst een type hierboven.", campagneQ: "Welke mediakanalen wil je inzetten?", advice: "Ik weet dit nog niet zeker en wil advies", platformQ: "Welke functionaliteit heeft het platform nodig?", appQ: "Wat voor app wil je?", appFeatures: "Gewenste functionaliteit", appFeaturesPh: "Beschrijf kort wat de app moet kunnen", aiNote: "AI integratie of automatisering. We bepalen de exacte scope in het gesprek." },
@@ -296,10 +298,11 @@ const I18N = {
     model: { tabCampagnes: "Campaigns", tabApp: "App", tabPlatform: "Platform", eyeCampagnes: "The funnel", eyeApp: "The stack", eyePlatform: "The network" },
     appStack: { h2: "Built from foundation to interface.", lede: "An app is a stack: each layer carries the one above it. We build all four, so the whole thing holds up and scales.", tapHint: "Tap for details",
       layers: [
-        { k: "Codebase", desc: "The application code itself, web, native or PWA, built on a clean, maintainable architecture." },
-        { k: "Databases", desc: "Where your data lives: secure, structured and ready to scale." },
+        { k: "Front end", desc: "The interface users see and operate: web, native or PWA, fast and accessible." },
         { k: "Integrations", desc: "Connections to external systems and APIs, so the app fits your existing landscape." },
-        { k: "Hosting", desc: "The foundation: reliable, scalable hosting and automated deployment." } ] },
+        { k: "Databases", desc: "Where your data lives: secure, structured and ready to scale." },
+        { k: "Hosting", desc: "The running environment: reliable, scalable hosting and automated deployment." },
+        { k: "Codebase", desc: "The foundation: clean, maintainable application code everything rests on." } ] },
     platformNet: { h2: "Your platform at the heart of your media.", lede: "The platform sits at the centre and connects all your channels. Data flows both ways, every channel feeds the whole.", tapHint: "Tap for details", center: "Platform",
       nodes: [
         { k: "CRM", desc: "Customer data and segments flow between your platform and your CRM." },
@@ -396,6 +399,7 @@ const I18N = {
       empty: "Pick at least one type or service.", cta: "Book a consultation", summaryPrefix: "Interested in",
       steps: { type: "Type", details: "Details", pakketten: "Packages", content: "Content", result: "Result" },
       stepHelp: { type: "Pick one type or combine several.", details: "Refine your choice per service.", pakketten: "Which phases of the loop do you take?", content: "How much content per month?", result: "Your indicative investment." },
+      stepTitle: { type: "What do you want to build?", details: "Build your scope.", pakketten: "Choose your Loop phases.", content: "Choose your content.", result: "Your estimate." },
       typeNote: "You can combine types. AI services are new and priced as a proposal.",
       waived: "waived",
       details: { pickType: "Pick a type above first.", campagneQ: "Which media channels do you want to use?", advice: "I'm not sure yet and want advice", platformQ: "Which functionality does the platform need?", appQ: "What kind of app do you want?", appFeatures: "Desired functionality", appFeaturesPh: "Briefly describe what the app should do", aiNote: "AI integration or automation. We define the exact scope in the call." },
@@ -763,7 +767,7 @@ function NodeNetwork({ mono = false, spread = false }) {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const BASE = mono ? [233, 230, 222] : [156, 150, 136], ACC = mono ? [233, 230, 222] : [231, 37, 90];
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    let W = 0, H = 0, layers = [];
+    let W = 0, H = 0, layers = [], edges = [];
     const ptr = { x: -9999, y: -9999, on: false };
 
     function build() {
@@ -787,6 +791,11 @@ function NodeNetwork({ mono = false, spread = false }) {
             accent: li === L - 1 };
         });
       });
+      edges = [];
+      for (let li = 0; li < layers.length - 1; li++) {
+        for (const a of layers[li]) for (const b of layers[li + 1]) edges.push([a, b]);
+      }
+      if (spread) edges = edges.filter((_, k) => ((k * 1103515245 + 12345) >>> 8) % 100 >= 35);
     }
     function size() {
       const r = wrap.getBoundingClientRect();
@@ -807,12 +816,8 @@ function NodeNetwork({ mono = false, spread = false }) {
       }
       // faint static edges
       ctx.lineWidth = 1;
-      for (let li = 0; li < layers.length - 1; li++) {
-        for (const a of layers[li]) for (const b of layers[li + 1]) {
-          ctx.strokeStyle = `rgba(${BASE[0]},${BASE[1]},${BASE[2]},0.07)`;
-          ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
-        }
-      }
+      ctx.strokeStyle = `rgba(${BASE[0]},${BASE[1]},${BASE[2]},0.07)`;
+      for (const [a, b] of edges) { ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke(); }
       // sparse, slow glow: each node peaks briefly and rarely, out of phase
       for (const layer of layers) for (const n of layer) {
         const c = n.accent ? ACC : BASE;
@@ -1400,24 +1405,27 @@ function AppStack() {
   const a = t.appStack;
   const layers = a.layers;
   const [active, setActive] = useState(null);
-  const N = layers.length, W = 1000, H = 380, x = 190, w = 620, padY = 20, gap = 18;
+  const N = layers.length, W = 1000, H = 400, padY = 16, gap = 14;
   const slabH = (H - 2 * padY - gap * (N - 1)) / N;
+  const minW = 340, maxW = 780;
   return (
     <div className="stk-wrap">
-      <svg className="stk-svg" viewBox="0 0 1000 380" role="img" aria-label={a.h2}>
+      <svg className="stk-svg" viewBox="0 0 1000 400" role="img" aria-label={a.h2}>
         <defs>
           <linearGradient id="stkFill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#DA3E68" /><stop offset="1" stopColor="#AE2249" /></linearGradient>
         </defs>
         {layers.map((l, i) => {
-          const y = padY + i * (slabH + gap), cy = y + slabH / 2;
+          const w = minW + (maxW - minW) * (i / (N - 1));
+          const x = (W - w) / 2, y = padY + i * (slabH + gap), cy = y + slabH / 2;
+          const vRight = x + w - 24;
           return (
             <g key={i} className={`stk-seg ${active === i ? "on" : ""}`} onClick={() => setActive(i)} role="button" tabIndex={0}
                aria-label={l.k} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setActive(i); } }}>
-              <rect className="stk-slab" x={x} y={y} width={w} height={slabH} rx="10" />
-              <circle className="stk-led" cx={x + 26} cy={cy} r="4.5" />
-              <circle className="stk-led2" cx={x + 43} cy={cy} r="4.5" />
-              <text className="stk-label" x={x + 64} y={cy} textAnchor="start" dominantBaseline="central">{l.k}</text>
-              {Array.from({ length: 9 }).map((_, v) => <line key={v} className="stk-vent" x1={x + w - 150 + v * 15} x2={x + w - 150 + v * 15} y1={cy - 16} y2={cy + 16} />)}
+              <rect className="stk-slab" x={x} y={y} width={w} height={slabH} rx="9" />
+              <circle className="stk-led" cx={x + 20} cy={cy} r="3.8" />
+              <circle className="stk-led2" cx={x + 33} cy={cy} r="3.8" />
+              <text className="stk-label" x={W / 2} y={cy} textAnchor="middle" dominantBaseline="central">{l.k}</text>
+              {Array.from({ length: 5 }).map((_, v) => <line key={v} className="stk-vent" x1={vRight - v * 11} x2={vRight - v * 11} y1={cy - 12} y2={cy + 12} />)}
             </g>
           );
         })}
@@ -1945,7 +1953,7 @@ function PriceCalculator({ openConsult }) {
   const catLabel = (k) => (p.cats && p.cats[k]) || k;
   const subLabel = (k) => (p.subs && p.subs[k]) || k;
   const delLabel = (k) => (p.dels && p.dels[k]) || k;
-  const delPriceLabel = (d) => { const dp = DEL_PRICE[d] || {}; return [dp.once ? eur(dp.once) : null, dp.mo ? `${eur(dp.mo)}${p.mo}` : null].filter(Boolean).join(" + "); };
+  const delPriceLabel = (d) => { const dp = DEL_PRICE[d] || {}; const parts = [dp.once ? eur(dp.once) : null, dp.mo ? `${eur(dp.mo)}${p.mo}` : null].filter(Boolean); return parts.length ? `${p.from} ${parts.join(" + ")}` : ""; };
   const catRefine = (c) => {
     const chans = c.subs.filter((x) => subs[x]).map(subLabel);
     const svcs = c.dels.filter((x) => dels[x]).map(delLabel);
@@ -2023,6 +2031,7 @@ function PriceCalculator({ openConsult }) {
         ))}
       </div>
       <div className="calc-slide" key={cur}>
+        <div className="calc-slide-head"><div className="calc-slide-title">{p.stepTitle[cur]}</div><div className="calc-slide-help">{p.stepHelp[cur]}</div></div>
         {cur === "type" && (
           <div className="calc-panel">
             <div className="scope-cards type-cards">
@@ -2047,13 +2056,12 @@ function PriceCalculator({ openConsult }) {
                 </button>
                 <div className="detail-block-q">{p.details.campagneQ}</div>
                 <div className="svc-list">
-                  <div className="svc-list-head mono"><span>{p.svcCol}</span><span>{p.priceCol}</span></div>
                   {CHANNEL_TREE.map((c) => (
                     <div key={c.key} className="svc-item">
                       <button className={`svc-row ${cats[c.key] ? "on" : ""}`} onClick={() => toggleCat(c.key)} aria-pressed={cats[c.key]}>
                         <span className="svc-row-x" aria-hidden>{cats[c.key] ? "\u2212" : "+"}</span>
                         <span className="svc-row-n">{catLabel(c.key)}</span>
-                        <span className="svc-row-p mono">{c.once > 0 ? eur(c.once) : p.onRequest}</span>
+                        <span className="svc-row-p mono">{c.once > 0 ? `${p.from} ${eur(c.once)}` : p.onRequest}</span>
                       </button>
                       {cats[c.key] && (
                         <div className="cat-refine">
@@ -2148,7 +2156,6 @@ function PriceCalculator({ openConsult }) {
                   <div className="rcp-row rcp-tot"><span className="rcp-l">{p.totalWord}</span><span className="rcp-v mono">{eur(once)}</span><span className="rcp-v mono">{mo > 0 ? eur(mo) : ""}</span></div>
                 </div>
               </>}
-              <CallbackForm />
               <button className="btn btn-primary cfg-cta" onClick={() => openConsult(null, summary())}>{p.cta}</button>
             </div>
           </div>
@@ -2686,7 +2693,7 @@ button{font-family:inherit;}
 .stk-seg:hover .stk-slab{opacity:0.92;}
 .stk-seg.on .stk-slab{opacity:1;filter:brightness(1.13);stroke:rgba(255,255,255,0.55);}
 .stk-seg:focus-visible .stk-slab{opacity:0.95;}
-.stk-label{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:26px;fill:#fff;opacity:0.92;pointer-events:none;}
+.stk-label{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:22px;fill:#fff;opacity:0.92;pointer-events:none;}
 .stk-seg.on .stk-label{opacity:1;}
 .stk-led{fill:#FFE3EE;opacity:0.9;pointer-events:none;}
 .stk-led2{fill:#7A1030;opacity:0.9;pointer-events:none;}
@@ -2715,7 +2722,7 @@ button{font-family:inherit;}
 .pnet-node.on .pnet-ic{filter:brightness(1.12);box-shadow:0 8px 22px -8px rgba(231,37,90,0.75),0 0 0 3px rgba(231,37,90,0.18);}
 .pnet-lbl{font-size:11.5px;font-weight:600;color:var(--mid);letter-spacing:0.01em;text-align:center;line-height:1.2;}
 .pnet-node.on .pnet-lbl{color:var(--mag);}
-@media (max-width:600px){.pnet-node{width:62px;}.pnet-ic{width:40px;height:40px;border-radius:11px;}.pnet-ic svg{width:21px;height:21px;}.pnet-lbl{font-size:10px;}.pnet-name{font-size:10px;}.stk-label{font-size:21px;}}
+@media (max-width:600px){.pnet-node{width:62px;}.pnet-ic{width:40px;height:40px;border-radius:11px;}.pnet-ic svg{width:21px;height:21px;}.pnet-lbl{font-size:10px;}.pnet-name{font-size:10px;}.stk-label{font-size:18px;}}
 .fnl-desc-hint{font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--soft);}
 @keyframes fnlFade{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:none;}}
 @media (prefers-reduced-motion: reduce){.fnl-build{animation:none;opacity:0;}}
@@ -3192,9 +3199,12 @@ button{font-family:inherit;}
 .calc-dot.on{color:var(--ink);}
 .calc-dot.on .calc-dot-n{border-color:var(--mag);background:var(--mag);color:#fff;}
 .calc-dot.done .calc-dot-n{border-color:var(--ink);background:var(--ink);color:var(--paper);}
+.calc{scroll-margin-top:88px;}
 .calc-slide{padding:26px;min-height:286px;animation:slideIn .34s ease both;}
 @keyframes slideIn{from{opacity:0;transform:translateX(12px);}to{opacity:1;transform:none;}}
-.calc-slide-help{font-size:12px;letter-spacing:0.03em;color:var(--soft);margin-bottom:18px;}
+.calc-slide-head{margin-bottom:20px;}
+.calc-slide-title{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:19px;color:var(--ink);letter-spacing:-0.01em;margin-bottom:5px;}
+.calc-slide-help{font-size:12.5px;letter-spacing:0.02em;color:var(--soft);line-height:1.5;}
 .calc-panel{display:flex;flex-direction:column;gap:14px;}
 .calc-seg{align-self:flex-start;}
 .calc-note{font-size:11.5px;color:var(--soft);margin:2px 0 0;line-height:1.5;}
