@@ -1889,8 +1889,9 @@ function computeLoop({ types, phases, cats, dels }) {
   if (types.campagne) CAT_KEYS.forEach((k) => {
     if (cats[k]) {
       const c = CAT_BY_KEY[k];
-      once += c.once; mo += c.mo;
-      c.dels.forEach((d) => { if (dels && dels[d]) { const dp = DEL_PRICE[d] || {}; once += dp.once || 0; mo += dp.mo || 0; } });
+      if (phases.build) once += c.once;
+      if (phases.run) mo += c.mo;
+      c.dels.forEach((d) => { if (dels && dels[d]) { const dp = DEL_PRICE[d] || {}; if (phases.build) once += dp.once || 0; if (phases.run) mo += dp.mo || 0; } });
     }
   });
   return { once, mo, saving, allLoop, selected };
@@ -1964,15 +1965,16 @@ function PriceCalculator({ openConsult }) {
       const sub = optList ? optList.filter((k) => opts[k]).map((k) => ({ label: optLabel(k), free: true })) : [];
       items.push({ label: p.scopes[sk], once: onceItem, mo: moItem, req: false, sub });
     });
+    const bf = phases.build ? 1 : 0, rf = phases.run ? 1 : 0;
     (types.campagne ? CAT_KEYS.filter((k) => cats[k]) : []).forEach((k) => {
       const c = CAT_BY_KEY[k];
       const req = c.once === 0 && c.mo === 0;
       const selDels = c.dels.filter((d) => dels[d]);
       const sub = [];
-      selDels.forEach((d) => { const dp = DEL_PRICE[d] || {}; sub.push({ label: delLabel(d), once: dp.once || 0, mo: dp.mo || 0 }); });
+      selDels.forEach((d) => { const dp = DEL_PRICE[d] || {}; sub.push({ label: delLabel(d), once: (dp.once || 0) * bf, mo: (dp.mo || 0) * rf }); });
       c.subs.filter((x) => subs[x]).forEach((x) => sub.push({ label: subLabel(x), free: true }));
-      const totMo = c.mo + selDels.reduce((a, d) => a + ((DEL_PRICE[d] && DEL_PRICE[d].mo) || 0), 0);
-      const totOnce = c.once + selDels.reduce((a, d) => a + ((DEL_PRICE[d] && DEL_PRICE[d].once) || 0), 0);
+      const totMo = (c.mo + selDels.reduce((a, d) => a + ((DEL_PRICE[d] && DEL_PRICE[d].mo) || 0), 0)) * rf;
+      const totOnce = (c.once + selDels.reduce((a, d) => a + ((DEL_PRICE[d] && DEL_PRICE[d].once) || 0), 0)) * bf;
       items.push({ label: catLabel(k), once: totOnce, mo: totMo, req, sub });
     });
     return items;
