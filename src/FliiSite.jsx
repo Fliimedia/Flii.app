@@ -86,6 +86,23 @@ const I18N = {
         media: ["Je zet je campagne live op de gekozen kanalen.", "Je meet kliks, kosten en conversies per kanaal.", "Je ziet wat converteert en wat budget verspilt.", "Je schaalt de winnaars en scherpt de targeting aan."],
       },
       priceCta: "Stel Loop samen en bekijk de prijzen ↘" },
+    model: { eyebrow: "Onze aanpak", tabCampagnes: "Campagnes", tabApp: "App", tabPlatform: "Platform" },
+    appStack: { h2: "Gebouwd van fundament tot interface.", lede: "Een app is een stack: elke laag draagt de laag erboven. Wij bouwen ze alle vier, zodat het geheel klopt en meegroeit.", tapHint: "Tik voor uitleg",
+      layers: [
+        { k: "Codebase", desc: "De applicatiecode zelf, web, native of PWA, opgebouwd rond een schone en onderhoudbare architectuur." },
+        { k: "Databases", desc: "Waar je data leeft: veilig, gestructureerd en klaar om op te schalen." },
+        { k: "Integrations", desc: "Koppelingen met externe systemen en API's, zodat de app meedraait in je bestaande landschap." },
+        { k: "Hosting", desc: "Het fundament: betrouwbare, schaalbare hosting en geautomatiseerde deployment." } ] },
+    platformNet: { h2: "Je platform als spil van je media.", lede: "Het platform staat centraal en verbindt al je kanalen. Data stroomt heen en weer, elk kanaal voedt het geheel.", tapHint: "Tik voor uitleg", center: "Platform",
+      nodes: [
+        { k: "CRM", desc: "Klantdata en segmenten stromen tussen je platform en je CRM." },
+        { k: "Mail", desc: "Geautomatiseerde e-mail en flows, gevoed door platformdata." },
+        { k: "Social", desc: "Organische en betaalde social, gekoppeld aan je content en publiek." },
+        { k: "PR", desc: "Verdiende aandacht en persrelaties rond je platform." },
+        { k: "Search/LLM", desc: "Vindbaarheid in zoekmachines en AI-assistenten." },
+        { k: "Paid media", desc: "Betaald bereik dat verkeer en conversie naar het platform stuurt." },
+        { k: "Outdoor", desc: "Buitenreclame die offline bereik koppelt aan je online platform." },
+        { k: "Print", desc: "Gedrukte uitingen die mensen naar het platform leiden." } ] },
     funnel: { eyebrow: "Campagnes", h2: "Van onbekend tot ambassadeur.",
       lede: "Elke campagne begeleidt je doelgroep stap voor stap door de funnel, van de eerste kennismaking tot herhaalaankopen en aanbevelingen.",
       goalLabel: "Doel", exampleLabel: "Voorbeeld", tapHint: "Tik voor beschrijving",
@@ -276,6 +293,23 @@ const I18N = {
         media: ["Your campaign goes live on the chosen channels.", "You measure clicks, cost and conversions per channel.", "You scale what converts and cut the rest.", "Sharper targeting and creatives every month."],
       },
       priceCta: "Configure your Loop and see pricing ↘" },
+    model: { eyebrow: "Our approach", tabCampagnes: "Campaigns", tabApp: "App", tabPlatform: "Platform" },
+    appStack: { h2: "Built from foundation to interface.", lede: "An app is a stack: each layer carries the one above it. We build all four, so the whole thing holds up and scales.", tapHint: "Tap for details",
+      layers: [
+        { k: "Codebase", desc: "The application code itself, web, native or PWA, built on a clean, maintainable architecture." },
+        { k: "Databases", desc: "Where your data lives: secure, structured and ready to scale." },
+        { k: "Integrations", desc: "Connections to external systems and APIs, so the app fits your existing landscape." },
+        { k: "Hosting", desc: "The foundation: reliable, scalable hosting and automated deployment." } ] },
+    platformNet: { h2: "Your platform at the heart of your media.", lede: "The platform sits at the centre and connects all your channels. Data flows both ways, every channel feeds the whole.", tapHint: "Tap for details", center: "Platform",
+      nodes: [
+        { k: "CRM", desc: "Customer data and segments flow between your platform and your CRM." },
+        { k: "Mail", desc: "Automated email and flows, fed by platform data." },
+        { k: "Social", desc: "Organic and paid social, tied to your content and audience." },
+        { k: "PR", desc: "Earned attention and press relations around your platform." },
+        { k: "Search/LLM", desc: "Findability in search engines and AI assistants." },
+        { k: "Paid media", desc: "Paid reach that drives traffic and conversion to the platform." },
+        { k: "Outdoor", desc: "Out-of-home that links offline reach to your online platform." },
+        { k: "Print", desc: "Printed touchpoints that lead people to the platform." } ] },
     funnel: { eyebrow: "Campaigns", h2: "From stranger to advocate.",
       lede: "Every campaign guides your audience step by step through the funnel, from the first introduction to repeat purchases and referrals.",
       goalLabel: "Goal", exampleLabel: "Example", tapHint: "Tap for description",
@@ -1351,6 +1385,89 @@ function CallbackForm() {
     </div>
   );
 }
+function AppStack() {
+  const { t } = useLang();
+  const a = t.appStack;
+  const layers = a.layers;
+  const [active, setActive] = useState(null);
+  const N = layers.length, W = 1000, H = 380, x = 190, w = 620, padY = 18, gap = 16;
+  const slabH = (H - 2 * padY - gap * (N - 1)) / N;
+  return (
+    <div className="stk-wrap">
+      <svg className="stk-svg" viewBox="0 0 1000 380" role="img" aria-label={a.h2}>
+        <defs>
+          <linearGradient id="stkFill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#DA3E68" /><stop offset="1" stopColor="#AE2249" /></linearGradient>
+        </defs>
+        {layers.map((l, i) => {
+          const y = padY + i * (slabH + gap);
+          return (
+            <g key={i} className={`stk-seg ${active === i ? "on" : ""}`} onClick={() => setActive(i)} role="button" tabIndex={0}
+               aria-label={l.k} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setActive(i); } }}>
+              <rect className="stk-slab" x={x} y={y} width={w} height={slabH} rx="14" />
+              <text className="stk-label" x={W / 2} y={y + slabH / 2} textAnchor="middle" dominantBaseline="central">{l.k}</text>
+            </g>
+          );
+        })}
+      </svg>
+      <div className="fnl-desc" key={active}>
+        {active == null ? <span className="fnl-desc-hint mono">{a.tapHint}</span> : (
+          <><span className="fnl-desc-k">{layers[active].k}</span><span className="fnl-desc-g">{layers[active].desc}</span></>
+        )}
+      </div>
+    </div>
+  );
+}
+function PlatformNet() {
+  const { t } = useLang();
+  const pn = t.platformNet;
+  const nodes = pn.nodes;
+  const [active, setActive] = useState(null);
+  const N = nodes.length, R = 39;
+  const pts = nodes.map((_, i) => { const ang = (-90 + i * (360 / N)) * Math.PI / 180; return { x: 50 + R * Math.cos(ang), y: 50 + R * Math.sin(ang) }; });
+  return (
+    <div className="pnet-wrap">
+      <div className="pnet">
+        <svg className="pnet-lines" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet" aria-hidden>
+          {pts.map((p, i) => <line key={i} x1="50" y1="50" x2={p.x} y2={p.y} className={`pnet-line ${active === i ? "on" : ""}`} />)}
+        </svg>
+        <div className="pnet-center" aria-hidden><span>{pn.center}</span></div>
+        {nodes.map((n, i) => (
+          <button key={i} className={`pnet-node ${active === i ? "on" : ""}`} style={{ left: `${pts[i].x}%`, top: `${pts[i].y}%` }}
+            onClick={() => setActive(i)} aria-label={n.k}>{n.k}</button>
+        ))}
+      </div>
+      <div className="fnl-desc" key={active}>
+        {active == null ? <span className="fnl-desc-hint mono">{pn.tapHint}</span> : (
+          <><span className="fnl-desc-k">{nodes[active].k}</span><span className="fnl-desc-g">{nodes[active].desc}</span></>
+        )}
+      </div>
+    </div>
+  );
+}
+function ModelSection() {
+  const { t } = useLang();
+  const m = t.model;
+  const [tab, setTab] = useState("campagnes");
+  const head = tab === "app" ? t.appStack : tab === "platform" ? t.platformNet : t.funnel;
+  const tabs = [["campagnes", m.tabCampagnes], ["app", m.tabApp], ["platform", m.tabPlatform]];
+  return (
+    <section className="band band-mist" id="campagnes">
+      <div className="wrap">
+        <Section><div className="eyebrow">{m.eyebrow}</div><h2 className="display h2">{head.h2}</h2><p className="lede">{head.lede}</p></Section>
+        <div className="model-tabs">
+          {tabs.map(([k, label]) => (
+            <button key={k} className={`model-tab ${tab === k ? "on" : ""}`} onClick={() => setTab(k)} aria-pressed={tab === k}>{label}</button>
+          ))}
+        </div>
+        <div className="model-view" key={tab}>
+          {tab === "campagnes" && <FunnelViz />}
+          {tab === "app" && <AppStack />}
+          {tab === "platform" && <PlatformNet />}
+        </div>
+      </div>
+    </section>
+  );
+}
 function Home({ content, openConsult }) {
   const { t } = useLang();
   const { apps, articles, reviews, certs } = content;
@@ -1401,12 +1518,7 @@ function Home({ content, openConsult }) {
         </div>
       </section>
 
-      <section className="band band-mist" id="campagnes">
-        <div className="wrap">
-          <Section><div className="eyebrow">{t.funnel.eyebrow}</div><h2 className="display h2">{t.funnel.h2}</h2><p className="lede">{t.funnel.lede}</p></Section>
-          <Section><FunnelViz /></Section>
-        </div>
-      </section>
+      <ModelSection />
 
       <section className="band band-dark band-loop" id="loop">
         <div className="loop-bg" aria-hidden><NodeNetwork mono spread /></div>
@@ -2512,6 +2624,30 @@ button{font-family:inherit;}
 .fnl-desc-g strong{color:var(--mag);font-weight:600;}
 .fnl-desc-ex{font-size:13.5px;color:var(--soft);line-height:1.5;}
 .fnl-desc-ex strong{color:var(--mid);font-weight:600;}
+.model-tabs{display:flex;justify-content:center;gap:8px;margin:34px auto 4px;flex-wrap:wrap;}
+.model-tab{padding:9px 18px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--mid);font:inherit;font-size:13px;font-weight:600;cursor:pointer;transition:border-color .15s,color .15s,box-shadow .15s;}
+.model-tab:hover{border-color:var(--soft);color:var(--ink);}
+.model-tab.on{border-color:transparent;color:var(--ink);background:linear-gradient(var(--card),var(--card)) padding-box, var(--gloss) border-box;box-shadow:0 4px 14px -8px rgba(231,37,90,0.5);}
+.model-view{animation:fnlFade .35s ease;}
+.stk-wrap{max-width:720px;margin:30px auto 0;}
+.stk-svg{width:100%;height:auto;display:block;overflow:visible;}
+.stk-seg{cursor:pointer;outline:none;}
+.stk-slab{fill:url(#stkFill);stroke:rgba(255,255,255,0.24);stroke-width:1;opacity:0.82;transition:opacity .2s,filter .2s;}
+.stk-seg:hover .stk-slab{opacity:0.92;}
+.stk-seg.on .stk-slab{opacity:1;filter:brightness(1.13);stroke:rgba(255,255,255,0.55);}
+.stk-seg:focus-visible .stk-slab{opacity:0.95;}
+.stk-label{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:27px;fill:#fff;opacity:0.9;pointer-events:none;}
+.stk-seg.on .stk-label{opacity:1;}
+.pnet-wrap{max-width:500px;margin:38px auto 0;}
+.pnet{position:relative;width:100%;aspect-ratio:1;overflow:visible;}
+.pnet-lines{position:absolute;inset:0;width:100%;height:100%;overflow:visible;}
+.pnet-line{stroke:rgba(231,37,90,0.32);stroke-width:0.4;transition:stroke .15s,stroke-width .15s;}
+.pnet-line.on{stroke:var(--mag);stroke-width:0.8;}
+.pnet-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:27%;aspect-ratio:1;border-radius:50%;border:1px solid transparent;background:linear-gradient(140deg,#DA3E68,#AE2249) padding-box, var(--gloss) border-box;color:#fff;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:13px;display:grid;place-items:center;box-shadow:0 10px 28px -12px rgba(231,37,90,0.6);text-align:center;}
+.pnet-node{position:absolute;transform:translate(-50%,-50%);padding:7px 12px;border-radius:999px;border:1px solid rgba(255,255,255,0.22);background:linear-gradient(140deg,#DA3E68,#AE2249);color:#fff;font:inherit;font-size:12px;font-weight:600;white-space:nowrap;cursor:pointer;opacity:0.9;transition:filter .15s,box-shadow .15s,opacity .15s;}
+.pnet-node:hover{opacity:1;}
+.pnet-node.on{opacity:1;filter:brightness(1.12);border-color:transparent;background:linear-gradient(#C22252,#C22252) padding-box, var(--gloss) border-box;box-shadow:0 6px 20px -8px rgba(231,37,90,0.65);}
+@media (max-width:600px){.pnet-node{font-size:10.5px;padding:6px 9px;}.pnet-center{font-size:11px;}.stk-label{font-size:22px;}}
 .fnl-desc-hint{font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--soft);}
 @keyframes fnlFade{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:none;}}
 @media (prefers-reduced-motion: reduce){.fnl-build{animation:none;opacity:0;}}
