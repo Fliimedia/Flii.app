@@ -86,7 +86,7 @@ const I18N = {
         media: ["Je zet je campagne live op de gekozen kanalen.", "Je meet kliks, kosten en conversies per kanaal.", "Je ziet wat converteert en wat budget verspilt.", "Je schaalt de winnaars en scherpt de targeting aan."],
       },
       priceCta: "Stel Loop samen en bekijk de prijzen ↘" },
-    model: { eyebrow: "Onze aanpak", tabCampagnes: "Campagnes", tabApp: "App", tabPlatform: "Platform" },
+    model: { tabCampagnes: "Campagnes", tabApp: "App", tabPlatform: "Platform", eyeCampagnes: "De funnel", eyeApp: "De stack", eyePlatform: "Het netwerk" },
     appStack: { h2: "Gebouwd van fundament tot interface.", lede: "Een app is een stack: elke laag draagt de laag erboven. Wij bouwen ze alle vier, zodat het geheel klopt en meegroeit.", tapHint: "Tik voor uitleg",
       layers: [
         { k: "Codebase", desc: "De applicatiecode zelf, web, native of PWA, opgebouwd rond een schone en onderhoudbare architectuur." },
@@ -293,7 +293,7 @@ const I18N = {
         media: ["Your campaign goes live on the chosen channels.", "You measure clicks, cost and conversions per channel.", "You scale what converts and cut the rest.", "Sharper targeting and creatives every month."],
       },
       priceCta: "Configure your Loop and see pricing ↘" },
-    model: { eyebrow: "Our approach", tabCampagnes: "Campaigns", tabApp: "App", tabPlatform: "Platform" },
+    model: { tabCampagnes: "Campaigns", tabApp: "App", tabPlatform: "Platform", eyeCampagnes: "The funnel", eyeApp: "The stack", eyePlatform: "The network" },
     appStack: { h2: "Built from foundation to interface.", lede: "An app is a stack: each layer carries the one above it. We build all four, so the whole thing holds up and scales.", tapHint: "Tap for details",
       layers: [
         { k: "Codebase", desc: "The application code itself, web, native or PWA, built on a clean, maintainable architecture." },
@@ -1385,12 +1385,22 @@ function CallbackForm() {
     </div>
   );
 }
+const NET_ICONS = [
+  (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="8" r="3" /><path d="M4 20c0-2.8 2.2-5 5-5s5 2.2 5 5" /><path d="M16 6.5a2.6 2.6 0 0 1 0 5" /><path d="M17 15c2 .3 3.5 1.9 3.5 4" /></svg>),
+  (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="M4 7l8 6 8-6" /></svg>),
+  (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="6" cy="12" r="2.4" /><circle cx="18" cy="6" r="2.4" /><circle cx="18" cy="18" r="2.4" /><path d="M8.1 10.9 15.9 7.1M8.1 13.1 15.9 16.9" /></svg>),
+  (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M4 10v4h3l7 4V6L7 10z" /><path d="M17 9a4 4 0 0 1 0 6" /></svg>),
+  (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="6.5" /><path d="M20 20l-4.5-4.5" /></svg>),
+  (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="8" /><circle cx="12" cy="12" r="4" /><circle cx="12" cy="12" r="0.9" fill="currentColor" stroke="none" /></svg>),
+  (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="5" width="18" height="10" rx="1.5" /><path d="M8 15v4M16 15v4M6 21h5M13 21h5" /></svg>),
+  (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M7 9V4h10v5" /><rect x="4" y="9" width="16" height="7" rx="2" /><rect x="7" y="14" width="10" height="6" rx="1" /></svg>),
+];
 function AppStack() {
   const { t } = useLang();
   const a = t.appStack;
   const layers = a.layers;
   const [active, setActive] = useState(null);
-  const N = layers.length, W = 1000, H = 380, x = 190, w = 620, padY = 18, gap = 16;
+  const N = layers.length, W = 1000, H = 380, x = 190, w = 620, padY = 20, gap = 18;
   const slabH = (H - 2 * padY - gap * (N - 1)) / N;
   return (
     <div className="stk-wrap">
@@ -1399,12 +1409,15 @@ function AppStack() {
           <linearGradient id="stkFill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#DA3E68" /><stop offset="1" stopColor="#AE2249" /></linearGradient>
         </defs>
         {layers.map((l, i) => {
-          const y = padY + i * (slabH + gap);
+          const y = padY + i * (slabH + gap), cy = y + slabH / 2;
           return (
             <g key={i} className={`stk-seg ${active === i ? "on" : ""}`} onClick={() => setActive(i)} role="button" tabIndex={0}
                aria-label={l.k} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setActive(i); } }}>
-              <rect className="stk-slab" x={x} y={y} width={w} height={slabH} rx="14" />
-              <text className="stk-label" x={W / 2} y={y + slabH / 2} textAnchor="middle" dominantBaseline="central">{l.k}</text>
+              <rect className="stk-slab" x={x} y={y} width={w} height={slabH} rx="10" />
+              <circle className="stk-led" cx={x + 26} cy={cy} r="4.5" />
+              <circle className="stk-led2" cx={x + 43} cy={cy} r="4.5" />
+              <text className="stk-label" x={x + 64} y={cy} textAnchor="start" dominantBaseline="central">{l.k}</text>
+              {Array.from({ length: 9 }).map((_, v) => <line key={v} className="stk-vent" x1={x + w - 150 + v * 15} x2={x + w - 150 + v * 15} y1={cy - 16} y2={cy + 16} />)}
             </g>
           );
         })}
@@ -1422,18 +1435,33 @@ function PlatformNet() {
   const pn = t.platformNet;
   const nodes = pn.nodes;
   const [active, setActive] = useState(null);
-  const N = nodes.length, R = 39;
+  const N = nodes.length, R = 40;
   const pts = nodes.map((_, i) => { const ang = (-90 + i * (360 / N)) * Math.PI / 180; return { x: 50 + R * Math.cos(ang), y: 50 + R * Math.sin(ang) }; });
+  const pipe = (p) => {
+    const dx = p.x - 50, dy = p.y - 50, len = Math.hypot(dx, dy) || 1;
+    const ox = -dy / len * 6, oy = dx / len * 6;
+    return `M50,50 Q ${(50 + p.x) / 2 + ox},${(50 + p.y) / 2 + oy} ${p.x},${p.y}`;
+  };
   return (
     <div className="pnet-wrap">
       <div className="pnet">
-        <svg className="pnet-lines" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet" aria-hidden>
-          {pts.map((p, i) => <line key={i} x1="50" y1="50" x2={p.x} y2={p.y} className={`pnet-line ${active === i ? "on" : ""}`} />)}
+        <svg className="pnet-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden>
+          {pts.map((p, i) => (
+            <g key={i} className={`pnet-pipe ${active === i ? "on" : ""}`}>
+              <path d={pipe(p)} className="pnet-pipe-o" />
+              <path d={pipe(p)} className="pnet-pipe-i" />
+            </g>
+          ))}
         </svg>
-        <div className="pnet-center" aria-hidden><span>{pn.center}</span></div>
+        <div className="pnet-browser" aria-hidden>
+          <div className="pnet-bar"><i /><i /><i /><span className="pnet-url" /></div>
+          <div className="pnet-screen"><span className="pnet-scr-h" /><span className="pnet-scr-a" /><span className="pnet-scr-b" /><span className="pnet-name">{pn.center}</span></div>
+        </div>
         {nodes.map((n, i) => (
-          <button key={i} className={`pnet-node ${active === i ? "on" : ""}`} style={{ left: `${pts[i].x}%`, top: `${pts[i].y}%` }}
-            onClick={() => setActive(i)} aria-label={n.k}>{n.k}</button>
+          <button key={i} className={`pnet-node ${active === i ? "on" : ""}`} style={{ left: `${pts[i].x}%`, top: `${pts[i].y}%` }} onClick={() => setActive(i)} aria-label={n.k}>
+            <span className="pnet-ic" aria-hidden>{NET_ICONS[i]}</span>
+            <span className="pnet-lbl">{n.k}</span>
+          </button>
         ))}
       </div>
       <div className="fnl-desc" key={active}>
@@ -1449,15 +1477,14 @@ function ModelSection() {
   const m = t.model;
   const [tab, setTab] = useState("campagnes");
   const head = tab === "app" ? t.appStack : tab === "platform" ? t.platformNet : t.funnel;
+  const eyebrow = tab === "app" ? m.eyeApp : tab === "platform" ? m.eyePlatform : m.eyeCampagnes;
   const tabs = [["campagnes", m.tabCampagnes], ["app", m.tabApp], ["platform", m.tabPlatform]];
   return (
     <section className="band band-mist" id="campagnes">
       <div className="wrap">
-        <Section><div className="eyebrow">{m.eyebrow}</div><h2 className="display h2">{head.h2}</h2><p className="lede">{head.lede}</p></Section>
+        <Section><div className="eyebrow">{eyebrow}</div><h2 className="display h2">{head.h2}</h2><p className="lede">{head.lede}</p></Section>
         <div className="model-tabs">
-          {tabs.map(([k, label]) => (
-            <button key={k} className={`model-tab ${tab === k ? "on" : ""}`} onClick={() => setTab(k)} aria-pressed={tab === k}>{label}</button>
-          ))}
+          {tabs.map(([k, label]) => (<button key={k} className={`model-tab ${tab === k ? "on" : ""}`} onClick={() => setTab(k)} aria-pressed={tab === k}>{label}</button>))}
         </div>
         <div className="model-view" key={tab}>
           {tab === "campagnes" && <FunnelViz />}
@@ -2636,18 +2663,36 @@ button{font-family:inherit;}
 .stk-seg:hover .stk-slab{opacity:0.92;}
 .stk-seg.on .stk-slab{opacity:1;filter:brightness(1.13);stroke:rgba(255,255,255,0.55);}
 .stk-seg:focus-visible .stk-slab{opacity:0.95;}
-.stk-label{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:27px;fill:#fff;opacity:0.9;pointer-events:none;}
+.stk-label{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:26px;fill:#fff;opacity:0.92;pointer-events:none;}
 .stk-seg.on .stk-label{opacity:1;}
-.pnet-wrap{max-width:500px;margin:38px auto 0;}
+.stk-led{fill:#FFE3EE;opacity:0.9;pointer-events:none;}
+.stk-led2{fill:#7A1030;opacity:0.9;pointer-events:none;}
+.stk-seg.on .stk-led2{fill:#FFD2E4;}
+.stk-vent{stroke:rgba(255,255,255,0.26);stroke-width:2;pointer-events:none;}
+.pnet-wrap{max-width:520px;margin:34px auto 0;}
 .pnet{position:relative;width:100%;aspect-ratio:1;overflow:visible;}
-.pnet-lines{position:absolute;inset:0;width:100%;height:100%;overflow:visible;}
-.pnet-line{stroke:rgba(231,37,90,0.32);stroke-width:0.4;transition:stroke .15s,stroke-width .15s;}
-.pnet-line.on{stroke:var(--mag);stroke-width:0.8;}
-.pnet-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:27%;aspect-ratio:1;border-radius:50%;border:1px solid transparent;background:linear-gradient(140deg,#DA3E68,#AE2249) padding-box, var(--gloss) border-box;color:#fff;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:13px;display:grid;place-items:center;box-shadow:0 10px 28px -12px rgba(231,37,90,0.6);text-align:center;}
-.pnet-node{position:absolute;transform:translate(-50%,-50%);padding:7px 12px;border-radius:999px;border:1px solid rgba(255,255,255,0.22);background:linear-gradient(140deg,#DA3E68,#AE2249);color:#fff;font:inherit;font-size:12px;font-weight:600;white-space:nowrap;cursor:pointer;opacity:0.9;transition:filter .15s,box-shadow .15s,opacity .15s;}
-.pnet-node:hover{opacity:1;}
-.pnet-node.on{opacity:1;filter:brightness(1.12);border-color:transparent;background:linear-gradient(#C22252,#C22252) padding-box, var(--gloss) border-box;box-shadow:0 6px 20px -8px rgba(231,37,90,0.65);}
-@media (max-width:600px){.pnet-node{font-size:10.5px;padding:6px 9px;}.pnet-center{font-size:11px;}.stk-label{font-size:22px;}}
+.pnet-lines{position:absolute;inset:0;width:100%;height:100%;overflow:visible;z-index:1;}
+.pnet-pipe-o{fill:none;stroke:rgba(231,37,90,0.28);stroke-width:2.4;stroke-linecap:round;transition:stroke .18s,stroke-width .18s;}
+.pnet-pipe-i{fill:none;stroke:rgba(255,143,182,0.5);stroke-width:0.9;stroke-linecap:round;transition:stroke .18s;}
+.pnet-pipe.on .pnet-pipe-o{stroke:var(--mag);stroke-width:3.2;}
+.pnet-pipe.on .pnet-pipe-i{stroke:#FFD2E4;}
+.pnet-browser{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;width:38%;border-radius:12px;overflow:hidden;background:var(--card);border:1px solid transparent;background:linear-gradient(var(--card),var(--card)) padding-box, var(--gloss) border-box;box-shadow:0 14px 34px -14px rgba(231,37,90,0.5);}
+.pnet-bar{display:flex;align-items:center;gap:4px;padding:7px 9px;background:var(--mist);}
+.pnet-bar i{width:6px;height:6px;border-radius:50%;background:var(--soft);flex:none;}
+.pnet-url{flex:1;height:7px;margin-left:6px;border-radius:99px;background:var(--line);}
+.pnet-screen{position:relative;padding:14px 12px 16px;display:flex;flex-direction:column;gap:7px;min-height:66px;}
+.pnet-scr-h{height:9px;width:60%;border-radius:3px;background:var(--mag);opacity:0.85;}
+.pnet-scr-a{height:6px;width:100%;border-radius:3px;background:var(--line);}
+.pnet-scr-b{height:6px;width:78%;border-radius:3px;background:var(--line);}
+.pnet-name{margin-top:5px;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:12px;color:var(--ink);}
+.pnet-node{position:absolute;transform:translate(-50%,-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:6px;background:none;border:none;cursor:pointer;font:inherit;padding:0;width:78px;}
+.pnet-ic{width:46px;height:46px;flex:none;border-radius:13px;display:grid;place-items:center;color:#fff;border:1px solid transparent;background:linear-gradient(140deg,#DA3E68,#AE2249) padding-box, var(--gloss) border-box;box-shadow:0 8px 20px -12px rgba(231,37,90,0.6);transition:filter .15s,box-shadow .15s,transform .15s;}
+.pnet-ic svg{width:24px;height:24px;}
+.pnet-node:hover .pnet-ic{transform:translateY(-2px);}
+.pnet-node.on .pnet-ic{filter:brightness(1.12);box-shadow:0 8px 22px -8px rgba(231,37,90,0.75),0 0 0 3px rgba(231,37,90,0.18);}
+.pnet-lbl{font-size:11.5px;font-weight:600;color:var(--mid);letter-spacing:0.01em;text-align:center;line-height:1.2;}
+.pnet-node.on .pnet-lbl{color:var(--mag);}
+@media (max-width:600px){.pnet-node{width:62px;}.pnet-ic{width:40px;height:40px;border-radius:11px;}.pnet-ic svg{width:21px;height:21px;}.pnet-lbl{font-size:10px;}.pnet-name{font-size:10px;}.stk-label{font-size:21px;}}
 .fnl-desc-hint{font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--soft);}
 @keyframes fnlFade{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:none;}}
 @media (prefers-reduced-motion: reduce){.fnl-build{animation:none;opacity:0;}}
