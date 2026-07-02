@@ -993,7 +993,6 @@ function LoopRing() {
   const [lens, setLens] = useState("generic");
   const [spinning, setSpinning] = useState(false);
   const [spinTick, setSpinTick] = useState(0);
-  const spinRef = useRef(null);
   const spinTimer = useRef(null);
   const select = (i) => {
     const next = active === i ? null : i;
@@ -1002,15 +1001,8 @@ function LoopRing() {
     setActive(next);
     setSpinning(true);
     setSpinTick((tk) => tk + 1);
-    spinTimer.current = setTimeout(() => setSpinning(false), 720);
+    spinTimer.current = setTimeout(() => setSpinning(false), 1200);
   };
-  useEffect(() => {
-    const el = spinRef.current;
-    if (!el || !spinning) return;
-    el.style.animation = "none";
-    void el.offsetWidth;
-    el.style.animation = "";
-  }, [spinTick]);
   useEffect(() => () => clearTimeout(spinTimer.current), []);
   const cur = active != null ? items[active] : null;
   const curBody = cur ? (lens !== "generic" && t.loop.variants[lens] ? t.loop.variants[lens][active] : cur.body) : "";
@@ -1052,11 +1044,11 @@ function LoopRing() {
             <filter id="lrSoft" x="-120%" y="-120%" width="340%" height="340%"><feGaussianBlur stdDeviation="0.7" /></filter>
           </defs>
           <circle cx="50" cy="50" r="38" fill="none" stroke="url(#lrGrad)" strokeWidth="2.2" opacity="0.34" />
-          <g className={reduce ? "" : "lm-rot"}>
+          <g key={`o${spinTick}`} className={reduce ? "" : `lm-rot ${spinning ? "crossing" : ""}`}>
             <circle cx="50" cy="50" r="38" fill="none" stroke="url(#lrGrad)" strokeWidth="7" filter="url(#lrGlow)" opacity="0.55" />
             <circle cx="50" cy="50" r="38" fill="none" stroke="url(#lrGrad)" strokeWidth="5.2" filter="url(#lrFire)" />
           </g>
-          <g className={reduce ? "" : "lm-rot2"}>
+          <g key={`i${spinTick}`} className={reduce ? "" : `lm-rot2 ${spinning ? "crossing" : ""}`}>
             <circle cx="50" cy="50" r="35" fill="none" stroke="url(#lrGrad)" strokeWidth="3" filter="url(#lrFire)" opacity="0.9" />
           </g>
           {!reduce && (
@@ -1075,9 +1067,6 @@ function LoopRing() {
             </g>
           )}
         </svg>
-        <div className={`loop-ring-cross ${spinning ? "cross" : ""}`} ref={spinRef} aria-hidden>
-          <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="38" fill="none" stroke="url(#lrGrad)" strokeWidth="4" filter="url(#lrGlow)" /></svg>
-        </div>
         </div>
       </div>
       <div className="loop-ring-core" aria-live="polite">
@@ -2859,11 +2848,10 @@ button{font-family:inherit;}
 .loop-ring-svg{width:100%;height:100%;display:block;overflow:visible;}
 .loop-ring-spin{width:100%;height:100%;transform-origin:50% 50%;transform-style:preserve-3d;}
 .loop-ring-spin{position:absolute;inset:0;transform-origin:50% 50%;transform-style:preserve-3d;}
-.loop-ring-cross{position:absolute;inset:0;transform-style:preserve-3d;opacity:0;pointer-events:none;}
-.loop-ring-cross svg{width:100%;height:100%;display:block;overflow:visible;}
-.loop-ring-cross.cross{animation:lrCross .72s ease-in-out;}
-@keyframes lrCross{0%{opacity:0;transform:rotateX(0deg);}16%{opacity:0.95;}84%{opacity:0.95;}100%{opacity:0;transform:rotateX(360deg);}}
-@media (prefers-reduced-motion: reduce){.loop-ring-cross{animation:none;}}
+.lm-rot.crossing{animation:lrCrossOuter 1.2s ease-in-out;}
+.lm-rot2.crossing{animation:lrCrossInner 1.2s ease-in-out;}
+@keyframes lrCrossOuter{from{transform:rotateY(0deg);}to{transform:rotateY(360deg);}}
+@keyframes lrCrossInner{from{transform:rotateX(0deg);}to{transform:rotateX(360deg);}}
 .loop-ring-core{position:absolute;inset:70px;display:flex;align-items:center;justify-content:center;text-align:center;padding:13%;pointer-events:none;z-index:3;}
 .loop-core-default,.loop-core-content{display:flex;flex-direction:column;gap:9px;align-items:center;}
 .loop-core-content{animation:coreIn .5s ease both;}
