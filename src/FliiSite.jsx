@@ -186,7 +186,7 @@ const I18N = {
       addonDesc: { search: "Zoekcampagnes op Google.", social: "Betaalde social campagnes.", display: "Display-advertenties op websites en apps.", llm: "Vindbaar in ChatGPT, Perplexity en Google AI.", print: "Ontwerp voor advertenties en drukwerk.", outdoor: "Digitale buitenreclame, creatie en planning.", video: "Video-advertenties en Connected TV.", lifecycle: "Retentie via e-mail, CRM en automations." },
       contentOpts: { none: "Geen", klein: "Klein", groot: "Groot" },
       once: "Eenmalig", perMonth: "Per maand", monthCol: "Maand", totalWord: "Totaal", from: "vanaf", mo: "/mnd", once1: "eenmalig", setup: "Opzet", mgmt: "Beheer",
-      comboNote: "Combinatievoordeel: de losse Loop Start-fee vervalt in de volledige loop.",
+      comboNote: "Combinatievoordeel: de losse Loop Start-fee vervalt zodra je Loop Build afneemt.",
       empty: "Kies minimaal één type of dienst.", cta: "Plan een gesprek", summaryPrefix: "Interesse in",
       steps: { type: "Type", details: "Details", pakketten: "Pakketten", content: "Content", result: "Resultaat" },
       stepHelp: { type: "Kies één type of combineer er meerdere.", details: "Verfijn je keuze per dienst.", pakketten: "Welke fases van de loop neem je af?", content: "Hoeveel content per maand?", result: "Je indicatieve investering." },
@@ -395,7 +395,7 @@ const I18N = {
       addonDesc: { search: "Search campaigns on Google.", social: "Paid social campaigns.", display: "Display ads across websites and apps.", llm: "Found in ChatGPT, Perplexity and Google AI.", print: "Design for ads and print.", outdoor: "Digital out-of-home, creative and planning.", video: "Video ads and Connected TV.", lifecycle: "Retention via email, CRM and automations." },
       contentOpts: { none: "None", klein: "Small", groot: "Large" },
       once: "One-time", perMonth: "Per month", monthCol: "Month", totalWord: "Total", from: "from", mo: "/mo", once1: "one-time", setup: "Setup", mgmt: "Management",
-      comboNote: "Bundle benefit: the separate Loop Start fee is waived in the full loop.",
+      comboNote: "Bundle benefit: the separate Loop Start fee is waived as soon as you take Loop Build.",
       empty: "Pick at least one type or service.", cta: "Book a consultation", summaryPrefix: "Interested in",
       steps: { type: "Type", details: "Details", pakketten: "Packages", content: "Content", result: "Result" },
       stepHelp: { type: "Pick one type or combine several.", details: "Refine your choice per service.", pakketten: "Which phases of the loop do you take?", content: "How much content per month?", result: "Your indicative investment." },
@@ -1889,10 +1889,10 @@ function computeLoop({ types, phases, cats, dels }) {
   const allLoop = phases.plan && phases.build && phases.run;
   let once = 0, mo = 0, saving = 0;
   selected.forEach((sk) => {
-    const planFee = allLoop ? 0 : (phases.plan ? typePhasePrice(sk, "plan") : 0);
+    const planFee = phases.build ? 0 : (phases.plan ? typePhasePrice(sk, "plan") : 0);
     once += planFee + (phases.build ? typePhasePrice(sk, "build") : 0);
     mo += phases.run ? typePhasePrice(sk, "run") : 0;
-    if (allLoop) saving += PRICING.scopes[sk].plan;
+    if (phases.plan && phases.build) saving += PRICING.scopes[sk].plan;
   });
   if (types.campagne) CAT_KEYS.forEach((k) => {
     if (cats[k]) {
@@ -1966,7 +1966,7 @@ function PriceCalculator({ openConsult }) {
   const lineItems = () => {
     const items = [];
     selected.forEach((sk) => {
-      const planFee = allLoop ? 0 : (phases.plan ? typePhasePrice(sk, "plan") : 0);
+      const planFee = phases.build ? 0 : (phases.plan ? typePhasePrice(sk, "plan") : 0);
       const onceItem = planFee + (phases.build ? typePhasePrice(sk, "build") : 0);
       const moItem = phases.run ? typePhasePrice(sk, "run") : 0;
       const optList = sk === "app" ? APP_OPTS : sk === "platform" ? PLATFORM_OPTS : sk === "ai" ? AI_OPTS : null;
@@ -2118,7 +2118,7 @@ function PriceCalculator({ openConsult }) {
               {["plan", "build", "run"].map((k) => (
                 <button key={k} className={`toggle ${phases[k] ? "on" : ""}`} onClick={() => togglePhase(k)} aria-pressed={phases[k]}>
                   <span className="toggle-main"><span className="toggle-t">{p.phases[k]}</span><span className="toggle-d">{phaseDescFor(k)}</span></span>
-                  <span className="toggle-p mono">{k === "plan" && allLoop && selected.length > 0 ? <span className="waived">{packagePrice("plan")}</span> : packagePrice(k)}</span>
+                  <span className="toggle-p mono">{k === "plan" && phases.build && selected.length > 0 ? <span className="waived">{packagePrice("plan")}</span> : packagePrice(k)}</span>
                   <span className="tgt" aria-hidden><span className="tgt-dot" /></span>
                 </button>
               ))}
