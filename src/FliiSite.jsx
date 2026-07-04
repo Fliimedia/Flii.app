@@ -114,7 +114,7 @@ const I18N = {
         { k: "Signed", goal: "Van overtuigd naar conversie.", example: "Haal wrijving weg met een korte checkout en een tijdelijke bonus bij direct afrekenen." },
         { k: "Loyal", goal: "Van conversie naar loyaal.", example: "Een geautomatiseerde onboarding-flow via e-mail die het product in de eerste week laat renderen." },
         { k: "Ambassador", goal: "Van loyaal naar ambassadeur.", example: "Een referral-actie waarbij klanten korting krijgen voor elke aangebrachte nieuwe klant." } ] },
-    work: { eyebrow: "Showcase", h2: "Wat we lanceerden", manage: "Beheer showcase ↗", view: "Bekijk case ↗" },
+    work: { eyebrow: "flii.labs", h2: "Apps in de pipeline", lede: "Live producten en experimenten die we nu bij flii.labs bouwen en itereren.", manage: "Beheer showcase ↗", view: "Bekijk case ↗" },
     reviews: { eyebrow: "Reviews", h2: "Bewijs, geen beloftes.", word: "reviews" },
     byline: { by: "by", name: "Flii Media" },
     who: { eyebrow: "Voor wie we werken", h2: "Gebouwd voor ambitie.",
@@ -323,7 +323,7 @@ const I18N = {
         { k: "Signed", goal: "From convinced to conversion.", example: "Remove friction with a short checkout and a limited bonus for buying now." },
         { k: "Loyal", goal: "From conversion to loyal.", example: "An automated email onboarding flow that makes the product pay off in the first week." },
         { k: "Ambassador", goal: "From loyal to advocate.", example: "A referral program where customers get a discount for every new customer they bring in." } ] },
-    work: { eyebrow: "Showcase", h2: "What we've shipped", manage: "Manage showcase ↗", view: "View case ↗" },
+    work: { eyebrow: "flii.labs", h2: "Apps in the pipeline", lede: "Live products and experiments we are building and iterating at flii.labs right now.", manage: "Manage showcase ↗", view: "View case ↗" },
     reviews: { eyebrow: "Reviews", h2: "Proof, not promises.", word: "reviews" },
     byline: { by: "by", name: "Flii Media" },
     who: { eyebrow: "Who we're for", h2: "Built for ambition.",
@@ -436,8 +436,18 @@ const LangCtx = createContext({ lang: "nl", setLang: () => {}, t: I18N.nl });
 const useLang = () => useContext(LangCtx);
 
 /* ---------- CMS default content (Dutch) ---------- */
-const shotUrl = (url) => `https://s.wordpress.com/mshots/v1/${encodeURIComponent(url)}?w=1200&h=900`;
+const shotUrl = (url) => `https://image.thum.io/get/width/1440/crop/900/wait/6/${url}`;
 const DEFAULT_APPS = [
+  { id: "performance-os", title: "Performance OS", client: "zelfstandigondernemers.nl", tag: "Analytics / Dashboard",
+    summary: "Een GA4-dashboard dat marketingdata omzet naar stuurinformatie.",
+    link: "https://dashboard-zo.vercel.app/",
+    metrics: [{ label: "Bron", value: "GA4" }, { label: "Tabs", value: "5" }, { label: "Focus", value: "Sturen" }],
+    body: "Performance OS bundelt de belangrijkste marketing- en groeicijfers in een helder dashboard, gebouwd op GA4 en in de huisstijl van zelfstandigondernemers.nl. Vijf tabbladen brengen verkeer, kanalen en conversie samen.\n\nHet vertaalt ruwe data naar inzichten waar een team direct op kan sturen: wat werkt, waar het geld lekt en welke stap volgt." },
+  { id: "faab", title: "Founder as a Brand", client: "Flii Labs", tag: "PWA / AI",
+    summary: "Een AI-tool die founders helpt hun persoonlijke merk op LinkedIn te bouwen.",
+    link: "https://faab-one.vercel.app/",
+    metrics: [{ label: "Stappen", value: "4" }, { label: "Talen", value: "NL / EN" }, { label: "AI", value: "Anthropic" }],
+    body: "FAAB helpt oprichters om als merk zichtbaar te worden op LinkedIn. In vier stappen, Founder, Strategy, Topics en Post, werk je van positionering naar concrete content.\n\nVolledig tweetalig met browsertaal-detectie, en AI-ondersteuning die aansluit op je eigen stem en doelen." },
   { id: "waryte", title: "Waryte", client: "Flii Media", tag: "Product / SaaS",
     summary: "Social content scheduler met geautomatiseerde, branded contentcreatie op basis van trends.",
     link: "https://waryte.vercel.app",
@@ -448,12 +458,7 @@ const DEFAULT_APPS = [
     link: "https://wk2026-voorspellingen.vercel.app/",
     metrics: [{ label: "Voorspellingen", value: "Live" }, { label: "Fantasy", value: "Team" }, { label: "Datamodel", value: "Aanpasbaar" }],
     body: "World Cup Model is een omgeving om je WK-voorspellingen en fantasy team op te beheren, gebouwd op een aanpasbaar datamodel. Zet je voorspellingen, stel je team samen en zie standen en punten realtime meebewegen met echte wedstrijddata.\n\nHet datamodel is bij te stellen, zodat regels, punten en scenario's flexibel blijven. Mobile-first, installeerbaar als PWA en gelanceerd via Vercel." },
-  { id: "social-os", title: "Flii Social OS", client: "Flii Media", tag: "Marketingsite",
-    summary: "De propositie van Flii: strategie, media en platform in een helder verhaal.",
-    link: "https://flii.nl",
-    metrics: [{ label: "Kanalen", value: "20+" }, { label: "Tools", value: "50+" }, { label: "Focus", value: "Groei" }],
-    body: "De publieke site van Flii Media brengt strategie, media-inkoop, contentcreatie en platformbouw samen in een ervaring. Van planning en adverteren op 20+ mediakanalen tot development op maat en een eigen client-dashboard voor data.\n\nGebouwd om ambitieuze merken te laten zien hoe media, creatie en techniek samen resultaat opleveren." },
-  { id: "wedding-pwa", title: "Weddy", client: "Privé", tag: "PWA",
+  { id: "wedding-pwa", title: "Weddy", client: "Prive", tag: "PWA",
     summary: "Wedding planner voor bruid en bruidegom: samen alles voor de grote dag geregeld.",
     link: "https://wedding-app-flii-media.vercel.app/",
     metrics: [{ label: "Voor", value: "Het bruidspaar" }, { label: "Offline", value: "Ja" }, { label: "Installeren", value: "PWA" }],
@@ -667,7 +672,7 @@ const TABLES = ["reviews", "certs", "apps", "articles"];
 const DEFAULTS = { apps: DEFAULT_APPS, articles: DEFAULT_ARTICLES, reviews: DEFAULT_REVIEWS, certs: DEFAULT_CERTS };
 
 const LS_KEY = "flii_cms_v2";
-const SEED_VERSION = 5;
+const SEED_VERSION = 6;
 function loadStore() { try { const r = localStorage.getItem(LS_KEY); return r ? JSON.parse(r) : null; } catch (e) { return null; } }
 function saveStore(d) { try { localStorage.setItem(LS_KEY, JSON.stringify(d)); } catch (e) {} }
 
@@ -1520,7 +1525,7 @@ function ShowcaseList({ apps }) {
             </button>
             {isOpen && (
               <div className="wacc-body">
-                {hasLink && <div className="wacc-shot"><img src={shotUrl(w.link)} alt={w.title} loading="lazy" /></div>}
+                {hasLink && <div className="wacc-shot"><img src={w.shot || shotUrl(w.link)} alt={w.title} loading="lazy" onError={(e) => { e.currentTarget.style.display = "none"; }} /></div>}
                 <div className="wacc-desc">{paras(w.body).map((pp, j) => <p key={j}>{pp}</p>)}</div>
                 {hasLink && <a href={w.link} target="_blank" rel="noreferrer" className="wacc-visit">{t.detail.visit} {w.title} ↗</a>}
               </div>
@@ -1611,7 +1616,7 @@ function Home({ content, openConsult }) {
 
       <section className="band" id="work">
         <div className="wrap">
-          <Section className="work-head"><div><div className="eyebrow">{t.work.eyebrow}</div><h2 className="display h2">{t.work.h2}</h2></div></Section>
+          <Section className="work-head"><div><div className="eyebrow">{t.work.eyebrow}</div><h2 className="display h2">{t.work.h2}</h2><p className="lede">{t.work.lede}</p></div></Section>
           <Section><ShowcaseList apps={apps} /></Section>
         </div>
       </section>
