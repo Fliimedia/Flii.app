@@ -1837,7 +1837,7 @@ function CertDetail({ content, id }) {
 const PRICING = {
   scopes: {
     campagne: { plan: 1500, build: 0, run: 0 },
-    app: { plan: 2500, build: 3500, run: 750 },
+    app: { plan: 2500, build: 5000, run: 750 },
     platform: { plan: 4500, build: 18000, run: 2500 },
     ai: { plan: 2500, build: 6500, run: 850 },
   },
@@ -1851,13 +1851,15 @@ const APP_OPTS = ["webapp", "nativeApp", "pwa", "uxDesign", "backendApi", "appIn
 const PLATFORM_OPTS = ["website", "ecommerce", "portaal", "platformAi", "platformIntegraties", "cms"];
 const AI_OPTS = ["chatbot", "contentgen", "automatisering", "dataAnalyse", "aiIntegratie", "customModel"];
 const ALL_TYPE_OPTS = [...APP_OPTS, ...PLATFORM_OPTS, ...AI_OPTS];
+const APP_OPT_PRICE = { webapp: 500, nativeApp: 1200, pwa: 600, uxDesign: 700, backendApi: 1000, appIntegraties: 800, appStorePub: 200 };
+const APP_CAP = 10000;
 const CHANNEL_TREE = [
-  { key: "search", once: 850, mo: 500, subs: ["searchEngines", "aiSearch", "socialSearch", "appStore"], dels: ["seoContent", "seoTech", "sea", "linkbuilding"] },
-  { key: "social", once: 750, mo: 500, subs: ["meta", "tiktok", "linkedin", "pinterest", "otherSocial"], dels: ["socialContent", "community", "paidSocial", "socialInfluencer"] },
-  { key: "display", once: 700, mo: 450, subs: ["programmatic", "gdn", "native", "retargeting"], dels: ["bannerCreatie", "programmaticBuy", "retargetingSetup"] },
-  { key: "videotv", once: 950, mo: 600, subs: ["onlineVideo", "ctv", "linearTv"], dels: ["videoProductie", "videoMontage", "videoBuy"] },
+  { key: "search", once: 850, mo: 0, subs: ["searchEngines", "aiSearch", "socialSearch", "appStore"], dels: ["seoContent", "seoTech", "sea", "linkbuilding"] },
+  { key: "social", once: 750, mo: 0, subs: ["meta", "tiktok", "linkedin", "pinterest", "otherSocial"], dels: ["socialContent", "community", "paidSocial", "socialInfluencer"] },
+  { key: "display", once: 700, mo: 0, subs: ["programmatic", "gdn", "native", "retargeting"], dels: ["bannerCreatie", "programmaticBuy", "retargetingSetup"] },
+  { key: "videotv", once: 950, mo: 0, subs: ["onlineVideo", "ctv", "linearTv"], dels: ["videoProductie", "videoMontage", "videoBuy"] },
   { key: "audio", once: 0, mo: 0, subs: ["radio", "streamingAudio", "podcasts"], dels: ["spotProductie", "podcastProductie", "audioBuy"] },
-  { key: "email", once: 850, mo: 500, subs: ["newsletters", "automation", "loyalty"], dels: ["templateDesign", "emailFlows", "crmSetup"] },
+  { key: "email", once: 850, mo: 0, subs: ["newsletters", "automation", "loyalty"], dels: ["templateDesign", "emailFlows", "crmSetup"] },
   { key: "messaging", once: 0, mo: 0, subs: ["whatsapp", "sms", "push"], dels: ["flowSetup", "msgCopy", "msgIntegratie"] },
   { key: "ooh", once: 850, mo: 0, subs: ["billboards", "dooh", "transit", "retail"], dels: ["oohOntwerp", "oohBuy", "oohProductie"] },
   { key: "print", once: 650, mo: 0, subs: ["stationery", "flyers", "directMail", "merch"], dels: ["printOntwerp", "drukwerk", "printDistributie"] },
@@ -1880,11 +1882,11 @@ const DEL_PRICE = {
   spotProductie: { once: 1500 }, podcastProductie: { once: 1500 }, audioBuy: { mo: 400 },
   templateDesign: { once: 650 }, emailFlows: { once: 1200 }, crmSetup: { once: 1500 },
   flowSetup: { once: 850 }, msgCopy: { mo: 250 }, msgIntegratie: { once: 1200 },
-  oohOntwerp: { once: 750 }, oohBuy: { mo: 500 }, oohProductie: { once: 1500 },
+  oohOntwerp: { once: 750 }, oohBuy: { once: 500 }, oohProductie: { once: 1500 },
   printOntwerp: { once: 650 }, drukwerk: { once: 750 }, printDistributie: { once: 600 },
   persstrategie: { mo: 500 }, influencerMgmt: { mo: 450 }, affiliateSetup: { once: 1200 },
 };
-function computeLoop({ types, phases, cats, dels }) {
+function computeLoop({ types, phases, cats, dels, opts }) {
   const selected = SCOPE_KEYS.filter((k) => types[k]);
   const allLoop = phases.plan && phases.build && phases.run;
   let once = 0, mo = 0, saving = 0;
@@ -1894,6 +1896,10 @@ function computeLoop({ types, phases, cats, dels }) {
     mo += phases.run ? typePhasePrice(sk, "run") : 0;
     if (phases.plan && phases.build) saving += PRICING.scopes[sk].plan;
   });
+  if (types.app && phases.build && opts) {
+    const optSum = APP_OPTS.reduce((a, k) => a + (opts[k] ? (APP_OPT_PRICE[k] || 0) : 0), 0);
+    once += Math.min(optSum, APP_CAP - PRICING.scopes.app.build);
+  }
   if (types.campagne) CAT_KEYS.forEach((k) => {
     if (cats[k]) {
       const c = CAT_BY_KEY[k];
@@ -1933,7 +1939,7 @@ function PriceCalculator({ openConsult }) {
   const [opts, setOpts] = useState({});
   const toggleOpt = (k) => setOpts((s) => ({ ...s, [k]: !s[k] }));
   const optLabel = (k) => (p.typeOpts && p.typeOpts[k]) || k;
-  const { once, mo, saving, allLoop, selected } = computeLoop({ types, phases, cats, dels });
+  const { once, mo, saving, allLoop, selected } = computeLoop({ types, phases, cats, dels, opts });
   const nothing = once === 0 && mo === 0;
   const steps = ["type", "details", "pakketten", "result"];
   const last = steps.length - 1;
@@ -1967,10 +1973,19 @@ function PriceCalculator({ openConsult }) {
     const items = [];
     selected.forEach((sk) => {
       const planFee = phases.build ? 0 : (phases.plan ? typePhasePrice(sk, "plan") : 0);
-      const onceItem = planFee + (phases.build ? typePhasePrice(sk, "build") : 0);
+      let onceItem = planFee + (phases.build ? typePhasePrice(sk, "build") : 0);
       const moItem = phases.run ? typePhasePrice(sk, "run") : 0;
       const optList = sk === "app" ? APP_OPTS : sk === "platform" ? PLATFORM_OPTS : sk === "ai" ? AI_OPTS : null;
-      const sub = optList ? optList.filter((k) => opts[k]).map((k) => ({ label: optLabel(k), free: true })) : [];
+      let sub = [];
+      if (optList) {
+        const sel = optList.filter((k) => opts[k]);
+        if (sk === "app" && phases.build) {
+          let room = APP_CAP - PRICING.scopes.app.build;
+          sub = sel.map((k) => { const add = Math.min(APP_OPT_PRICE[k] || 0, Math.max(0, room)); room -= add; onceItem += add; return { label: optLabel(k), once: add }; });
+        } else {
+          sub = sel.map((k) => ({ label: optLabel(k), free: true }));
+        }
+      }
       if (onceItem > 0 || moItem > 0 || sub.length > 0) items.push({ label: p.scopes[sk], once: onceItem, mo: moItem, req: false, sub });
     });
     const bf = phases.build ? 1 : 0, rf = phases.run ? 1 : 0;
@@ -1989,7 +2004,8 @@ function PriceCalculator({ openConsult }) {
   };
   const mediaOnce = types.campagne ? CAT_KEYS.filter((k) => cats[k]).reduce((a, k) => { const c = CAT_BY_KEY[k]; return a + c.once + c.dels.filter((d) => dels[d]).reduce((b, d) => b + ((DEL_PRICE[d] && DEL_PRICE[d].once) || 0), 0); }, 0) : 0;
   const mediaMo = types.campagne ? CAT_KEYS.filter((k) => cats[k]).reduce((a, k) => { const c = CAT_BY_KEY[k]; return a + c.mo + c.dels.filter((d) => dels[d]).reduce((b, d) => b + ((DEL_PRICE[d] && DEL_PRICE[d].mo) || 0), 0); }, 0) : 0;
-  const phaseSum = (pk) => selected.reduce((a, sk) => a + typePhasePrice(sk, pk), 0) + (pk === "build" ? mediaOnce : pk === "run" ? mediaMo : 0);
+  const appOptOnce = types.app ? Math.min(APP_OPTS.reduce((a, k) => a + (opts[k] ? (APP_OPT_PRICE[k] || 0) : 0), 0), APP_CAP - PRICING.scopes.app.build) : 0;
+  const phaseSum = (pk) => selected.reduce((a, sk) => a + typePhasePrice(sk, pk), 0) + (pk === "build" ? mediaOnce + appOptOnce : pk === "run" ? mediaMo : 0);
   const packagePrice = (k) => k === "run" ? eur(phaseSum("run")) + p.mo : eur(phaseSum(k));
   const phaseDescFor = (k) => {
     if (selected.length === 1 && p.phaseByType && p.phaseByType[selected[0]]) return p.phaseByType[selected[0]][k];
@@ -2095,19 +2111,41 @@ function PriceCalculator({ openConsult }) {
             {types.app && (
               <div className="detail-block">
                 <div className="detail-block-q">{p.details.appQ}</div>
-                <div className="chips">{APP_OPTS.map((k) => <button key={k} className={`chip ${opts[k] ? "on" : ""}`} onClick={() => toggleOpt(k)} aria-pressed={opts[k]}>{optLabel(k)}</button>)}</div>
+                <div className="refine-group opt-group">
+                  {APP_OPTS.map((k) => (
+                    <button key={k} className={`toggle toggle-sm ${opts[k] ? "on" : ""}`} onClick={() => toggleOpt(k)} aria-pressed={opts[k]}>
+                      <span className="toggle-main"><span className="toggle-t">{optLabel(k)}</span></span>
+                      <span className="toggle-p mono">{`${p.from} ${eur(APP_OPT_PRICE[k])}`}</span>
+                      <span className="tgt" aria-hidden><span className="tgt-dot" /></span>
+                    </button>
+                  ))}
+                </div>
               </div>
             )}
             {types.platform && (
               <div className="detail-block">
                 <div className="detail-block-q">{p.details.platformQ}</div>
-                <div className="chips">{PLATFORM_OPTS.map((k) => <button key={k} className={`chip ${opts[k] ? "on" : ""}`} onClick={() => toggleOpt(k)} aria-pressed={opts[k]}>{optLabel(k)}</button>)}</div>
+                <div className="refine-group opt-group">
+                  {PLATFORM_OPTS.map((k) => (
+                    <button key={k} className={`toggle toggle-sm ${opts[k] ? "on" : ""}`} onClick={() => toggleOpt(k)} aria-pressed={opts[k]}>
+                      <span className="toggle-main"><span className="toggle-t">{optLabel(k)}</span></span>
+                      <span className="tgt" aria-hidden><span className="tgt-dot" /></span>
+                    </button>
+                  ))}
+                </div>
               </div>
             )}
             {types.ai && (
               <div className="detail-block">
                 <div className="detail-block-q">{p.scopes.ai}</div>
-                <div className="chips">{AI_OPTS.map((k) => <button key={k} className={`chip ${opts[k] ? "on" : ""}`} onClick={() => toggleOpt(k)} aria-pressed={opts[k]}>{optLabel(k)}</button>)}</div>
+                <div className="refine-group opt-group">
+                  {AI_OPTS.map((k) => (
+                    <button key={k} className={`toggle toggle-sm ${opts[k] ? "on" : ""}`} onClick={() => toggleOpt(k)} aria-pressed={opts[k]}>
+                      <span className="toggle-main"><span className="toggle-t">{optLabel(k)}</span></span>
+                      <span className="tgt" aria-hidden><span className="tgt-dot" /></span>
+                    </button>
+                  ))}
+                </div>
               </div>
             )}
           </div>
@@ -3238,6 +3276,7 @@ button{font-family:inherit;}
 .cat-explain{font-size:12.5px;color:var(--soft);line-height:1.5;margin:0;text-align:left;padding:0;}
 .toggle-sm .toggle-p{font-size:12px;}
 .refine-group{display:flex;flex-direction:column;gap:8px;}
+.opt-group{margin-top:6px;}
 .refine-h{font-size:10px;letter-spacing:0.11em;text-transform:uppercase;color:var(--soft);}
 .chip-sub{font-size:12.5px;padding:6px 12px;}
 .chip-sub.on{background:var(--ink);border-color:var(--ink);color:#fff;}
