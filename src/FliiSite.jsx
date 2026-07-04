@@ -460,7 +460,7 @@ const DEFAULT_APPS = [
     body: "World Cup Model is een omgeving om je WK-voorspellingen en fantasy team op te beheren, gebouwd op een aanpasbaar datamodel. Zet je voorspellingen, stel je team samen en zie standen en punten realtime meebewegen met echte wedstrijddata.\n\nHet datamodel is bij te stellen, zodat regels, punten en scenario's flexibel blijven. Mobile-first, installeerbaar als PWA en gelanceerd via Vercel." },
   { id: "wedding-pwa", title: "Weddy", client: "Flii Labs", tag: "PWA",
     summary: "Wedding planner voor bruid en bruidegom: samen alles voor de grote dag geregeld.",
-    link: "https://wedding-app-flii-media.vercel.app/",
+    link: "https://wedding-app-git-demo-flii-media.vercel.app/",
     metrics: [{ label: "Voor", value: "Het bruidspaar" }, { label: "Offline", value: "Ja" }, { label: "Installeren", value: "PWA" }],
     body: "Weddy is een wedding planner voor bruid en bruidegom: samen op een plek de trouwdag regelen. Taken, budget, gastenlijst en een minuut-voor-minuut dagplanning, overzichtelijk en met zijn tweeen bij te houden.\n\nInstalleerbaar als PWA en offline te gebruiken, ontworpen om de stress uit het plannen te halen." },
 ];
@@ -672,7 +672,7 @@ const TABLES = ["reviews", "certs", "apps", "articles"];
 const DEFAULTS = { apps: DEFAULT_APPS, articles: DEFAULT_ARTICLES, reviews: DEFAULT_REVIEWS, certs: DEFAULT_CERTS };
 
 const LS_KEY = "flii_cms_v2";
-const SEED_VERSION = 8;
+const SEED_VERSION = 9;
 function loadStore() { try { const r = localStorage.getItem(LS_KEY); return r ? JSON.parse(r) : null; } catch (e) { return null; } }
 function saveStore(d) { try { localStorage.setItem(LS_KEY, JSON.stringify(d)); } catch (e) {} }
 
