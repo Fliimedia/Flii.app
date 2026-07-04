@@ -174,7 +174,7 @@ const I18N = {
       phaseLabel: "Pakketten", phases: { plan: "Loop Start", build: "Loop Build", run: "Loop Run" },
       phaseDesc: { plan: "Research en plan van aanpak, met de optie om dit zelf uit te voeren.", build: "Creatie: de app, het platform of de campagne wordt gebouwd.", run: "Beheer & verbeter: hosting, optimalisatie en doorontwikkeling." },
       phaseByType: {
-        campagne: { plan: "Onderzoek en strategie voor je campagnes, om zelf uit te voeren.", build: "Creatie van de content en advertentiecampagnes.", run: "Beheer en verbetering van je campagnes." },
+        campagne: { plan: "Onderzoek en strategie voor je campagnes, om zelf uit te voeren.", build: "Creatie van de content en campagnes.", run: "Beheer en verbetering van je campagnes." },
         app: { plan: "Onderzoek en plan voor je app, om zelf uit te voeren.", build: "Ontwerp en bouw van de app.", run: "Beheer en doorontwikkeling van de app." },
         platform: { plan: "Onderzoek en plan voor je platform, om zelf uit te voeren.", build: "Ontwerp en bouw van het platform.", run: "Hosting, beheer en doorontwikkeling." },
         ai: { plan: "Onderzoek en plan voor de AI-integratie, om zelf uit te voeren.", build: "Bouw en integratie van de AI-oplossing.", run: "Beheer en optimalisatie van de AI." },
@@ -383,7 +383,7 @@ const I18N = {
       phaseLabel: "Packages", phases: { plan: "Loop Start", build: "Loop Build", run: "Loop Run" },
       phaseDesc: { plan: "Research and plan of action, with the option to execute it yourself.", build: "Creation: the app, platform or campaign gets built.", run: "Manage & improve: hosting, optimisation and further development." },
       phaseByType: {
-        campagne: { plan: "Research and strategy for your campaigns, ready to execute yourself.", build: "Creation of the content and ad campaigns.", run: "Management and improvement of your campaigns." },
+        campagne: { plan: "Research and strategy for your campaigns, ready to execute yourself.", build: "Creation of the content and campaigns.", run: "Management and improvement of your campaigns." },
         app: { plan: "Research and plan for your app, ready to execute yourself.", build: "Design and build of the app.", run: "Management and further development of the app." },
         platform: { plan: "Research and plan for your platform, ready to execute yourself.", build: "Design and build of the platform.", run: "Hosting, management and further development." },
         ai: { plan: "Research and plan for the AI integration, ready to execute yourself.", build: "Build and integration of the AI solution.", run: "Management and optimisation of the AI." },
