@@ -440,7 +440,7 @@ const shotUrl = (url) => `https://image.thum.io/get/width/1440/crop/900/wait/6/$
 const DEFAULT_APPS = [
   { id: "performance-os", title: "Performance OS", client: "Flii Media", tag: "Analytics / Dashboard",
     summary: "Een GA4-dashboard dat marketingdata omzet naar stuurinformatie.",
-    link: "https://dashboard-zo.vercel.app/",
+    link: "https://dashboard-zo-git-demo-flii-media.vercel.app/",
     metrics: [{ label: "Bron", value: "GA4" }, { label: "Tabs", value: "5" }, { label: "Focus", value: "Sturen" }],
     body: "Performance OS bundelt de belangrijkste marketing- en groeicijfers in een helder dashboard, gebouwd op GA4. Vijf tabbladen brengen verkeer, kanalen en conversie samen.\n\nHet vertaalt ruwe data naar inzichten waar een team direct op kan sturen: wat werkt, waar het geld lekt en welke stap volgt." },
   { id: "faab", title: "Founder as a Brand", client: "Flii Labs", tag: "PWA / AI",
@@ -672,7 +672,7 @@ const TABLES = ["reviews", "certs", "apps", "articles"];
 const DEFAULTS = { apps: DEFAULT_APPS, articles: DEFAULT_ARTICLES, reviews: DEFAULT_REVIEWS, certs: DEFAULT_CERTS };
 
 const LS_KEY = "flii_cms_v2";
-const SEED_VERSION = 7;
+const SEED_VERSION = 8;
 function loadStore() { try { const r = localStorage.getItem(LS_KEY); return r ? JSON.parse(r) : null; } catch (e) { return null; } }
 function saveStore(d) { try { localStorage.setItem(LS_KEY, JSON.stringify(d)); } catch (e) {} }
 
