@@ -193,7 +193,7 @@ const I18N = {
       stepTitle: { type: "Wat wil je bouwen?", details: "Stel je scope samen.", pakketten: "Kies je Loop-fases.", content: "Kies je content.", result: "Jouw indicatie." },
       typeNote: "Je kunt types combineren. AI-diensten zijn nieuw en als voorstel geprijsd.",
       waived: "vervalt",
-      details: { pickType: "Kies eerst een type hierboven.", campagneQ: "Welke mediakanalen wil je inzetten?", advice: "Ik weet dit nog niet zeker en wil advies", platformQ: "Welke functionaliteit heeft het platform nodig?", appQ: "Wat voor app wil je?", appFeatures: "Gewenste functionaliteit", appFeaturesPh: "Beschrijf kort wat de app moet kunnen", aiNote: "AI integratie of automatisering. We bepalen de exacte scope in het gesprek." },
+      details: { pickType: "Kies eerst een type hierboven.", campagneQ: "Welke mediakanalen wil je inzetten?", advice: "Ik weet dit nog niet zeker en wil advies", platformQ: "Welke functionaliteit heeft het platform nodig?", appQ: "Wat voor app wil je?", appExtraQ: "Extra diensten", appFeatures: "Gewenste functionaliteit", appFeaturesPh: "Beschrijf kort wat de app moet kunnen", aiNote: "AI integratie of automatisering. We bepalen de exacte scope in het gesprek." },
       appKinds: { webapp: "Webapp", software: "Software-app" },
       platformFns: { website: "Website", ecommerce: "E-commerce", ai: "AI-functionaliteit" },
       typeOpts: { webapp: "Webapp", nativeApp: "Native app", pwa: "PWA", uxDesign: "UX-design", backendApi: "Backend & API", appIntegraties: "Integraties", appStorePub: "App store-publicatie", website: "Website", ecommerce: "Webshop / e-commerce", portaal: "Portaal / dashboard", platformAi: "AI-functionaliteit", platformIntegraties: "Integraties", cms: "CMS", chatbot: "Chatbot / assistent", contentgen: "Contentgeneratie", automatisering: "Automatisering / workflows", dataAnalyse: "Data-analyse", aiIntegratie: "Integratie in tools", customModel: "Custom model" },
@@ -402,7 +402,7 @@ const I18N = {
       stepTitle: { type: "What do you want to build?", details: "Build your scope.", pakketten: "Choose your Loop phases.", content: "Choose your content.", result: "Your estimate." },
       typeNote: "You can combine types. AI services are new and priced as a proposal.",
       waived: "waived",
-      details: { pickType: "Pick a type above first.", campagneQ: "Which media channels do you want to use?", advice: "I'm not sure yet and want advice", platformQ: "Which functionality does the platform need?", appQ: "What kind of app do you want?", appFeatures: "Desired functionality", appFeaturesPh: "Briefly describe what the app should do", aiNote: "AI integration or automation. We define the exact scope in the call." },
+      details: { pickType: "Pick a type above first.", campagneQ: "Which media channels do you want to use?", advice: "I'm not sure yet and want advice", platformQ: "Which functionality does the platform need?", appQ: "What kind of app do you want?", appExtraQ: "Extra services", appFeatures: "Desired functionality", appFeaturesPh: "Briefly describe what the app should do", aiNote: "AI integration or automation. We define the exact scope in the call." },
       appKinds: { webapp: "Web app", software: "Software app" },
       platformFns: { website: "Website", ecommerce: "E-commerce", ai: "AI functionality" },
       typeOpts: { webapp: "Web app", nativeApp: "Native app", pwa: "PWA", uxDesign: "UX design", backendApi: "Backend & API", appIntegraties: "Integrations", appStorePub: "App store release", website: "Website", ecommerce: "Webshop / e-commerce", portaal: "Portal / dashboard", platformAi: "AI functionality", platformIntegraties: "Integrations", cms: "CMS", chatbot: "Chatbot / assistant", contentgen: "Content generation", automatisering: "Automation / workflows", dataAnalyse: "Data analysis", aiIntegratie: "Integration into tools", customModel: "Custom model" },
@@ -1852,11 +1852,13 @@ const PRICING = {
 };
 const SCOPE_KEYS = ["campagne", "app", "platform", "ai"];
 const PLATFORM_FNS = ["website", "ecommerce", "ai"];
-const APP_OPTS = ["webapp", "nativeApp", "pwa", "uxDesign", "backendApi", "appIntegraties", "appStorePub"];
+const APP_KINDS = ["webapp", "pwa", "nativeApp"];
+const APP_OPTS = ["uxDesign", "backendApi", "appIntegraties", "appStorePub"];
 const PLATFORM_OPTS = ["website", "ecommerce", "portaal", "platformAi", "platformIntegraties", "cms"];
 const AI_OPTS = ["chatbot", "contentgen", "automatisering", "dataAnalyse", "aiIntegratie", "customModel"];
 const ALL_TYPE_OPTS = [...APP_OPTS, ...PLATFORM_OPTS, ...AI_OPTS];
-const APP_OPT_PRICE = { webapp: 500, nativeApp: 1200, pwa: 600, uxDesign: 700, backendApi: 1000, appIntegraties: 800, appStorePub: 200 };
+const APP_KIND_PRICE = { webapp: 0, pwa: 0, nativeApp: 1500 };
+const APP_OPT_PRICE = { uxDesign: 900, backendApi: 1200, appIntegraties: 900, appStorePub: 500 };
 const APP_CAP = 10000;
 const CHANNEL_TREE = [
   { key: "search", once: 850, mo: 0, subs: ["searchEngines", "aiSearch", "socialSearch", "appStore"], dels: ["seoContent", "seoTech", "sea", "linkbuilding"] },
@@ -1891,7 +1893,7 @@ const DEL_PRICE = {
   printOntwerp: { once: 650 }, drukwerk: { once: 750 }, printDistributie: { once: 600 },
   persstrategie: { mo: 500 }, influencerMgmt: { mo: 450 }, affiliateSetup: { once: 1200 },
 };
-function computeLoop({ types, phases, cats, dels, opts }) {
+function computeLoop({ types, phases, cats, dels, opts, appKind }) {
   const selected = SCOPE_KEYS.filter((k) => types[k]);
   const allLoop = phases.plan && phases.build && phases.run;
   let once = 0, mo = 0, saving = 0;
@@ -1902,7 +1904,7 @@ function computeLoop({ types, phases, cats, dels, opts }) {
     if (phases.plan && phases.build) saving += PRICING.scopes[sk].plan;
   });
   if (types.app && phases.build && opts) {
-    const optSum = APP_OPTS.reduce((a, k) => a + (opts[k] ? (APP_OPT_PRICE[k] || 0) : 0), 0);
+    const optSum = APP_OPTS.reduce((a, k) => a + (opts[k] ? (APP_OPT_PRICE[k] || 0) : 0), 0) + (APP_KIND_PRICE[appKind] || 0);
     once += Math.min(optSum, APP_CAP - PRICING.scopes.app.build);
   }
   if (types.campagne) CAT_KEYS.forEach((k) => {
@@ -1942,9 +1944,10 @@ function PriceCalculator({ openConsult }) {
   const [dels, setDels] = useState(() => Object.fromEntries(ALL_DELS.map((k) => [k, false])));
   const [advice, setAdvice] = useState(false);
   const [opts, setOpts] = useState({});
+  const [appKind, setAppKind] = useState("webapp");
   const toggleOpt = (k) => setOpts((s) => ({ ...s, [k]: !s[k] }));
   const optLabel = (k) => (p.typeOpts && p.typeOpts[k]) || k;
-  const { once, mo, saving, allLoop, selected } = computeLoop({ types, phases, cats, dels, opts });
+  const { once, mo, saving, allLoop, selected } = computeLoop({ types, phases, cats, dels, opts, appKind });
   const nothing = once === 0 && mo === 0;
   const steps = ["type", "details", "pakketten", "result"];
   const last = steps.length - 1;
@@ -1986,7 +1989,11 @@ function PriceCalculator({ openConsult }) {
         const sel = optList.filter((k) => opts[k]);
         if (sk === "app" && phases.build) {
           let room = APP_CAP - PRICING.scopes.app.build;
-          sub = sel.map((k) => { const add = Math.min(APP_OPT_PRICE[k] || 0, Math.max(0, room)); room -= add; onceItem += add; return { label: optLabel(k), once: add }; });
+          sub = [];
+          const kp = APP_KIND_PRICE[appKind] || 0;
+          if (kp > 0) { const add = Math.min(kp, Math.max(0, room)); room -= add; onceItem += add; sub.push({ label: optLabel(appKind), once: add }); }
+          else { sub.push({ label: optLabel(appKind), free: true }); }
+          sel.forEach((k) => { const add = Math.min(APP_OPT_PRICE[k] || 0, Math.max(0, room)); room -= add; onceItem += add; sub.push({ label: optLabel(k), once: add }); });
         } else {
           sub = sel.map((k) => ({ label: optLabel(k), free: true }));
         }
@@ -2009,7 +2016,7 @@ function PriceCalculator({ openConsult }) {
   };
   const mediaOnce = types.campagne ? CAT_KEYS.filter((k) => cats[k]).reduce((a, k) => { const c = CAT_BY_KEY[k]; return a + c.once + c.dels.filter((d) => dels[d]).reduce((b, d) => b + ((DEL_PRICE[d] && DEL_PRICE[d].once) || 0), 0); }, 0) : 0;
   const mediaMo = types.campagne ? CAT_KEYS.filter((k) => cats[k]).reduce((a, k) => { const c = CAT_BY_KEY[k]; return a + c.mo + c.dels.filter((d) => dels[d]).reduce((b, d) => b + ((DEL_PRICE[d] && DEL_PRICE[d].mo) || 0), 0); }, 0) : 0;
-  const appOptOnce = types.app ? Math.min(APP_OPTS.reduce((a, k) => a + (opts[k] ? (APP_OPT_PRICE[k] || 0) : 0), 0), APP_CAP - PRICING.scopes.app.build) : 0;
+  const appOptOnce = types.app ? Math.min(APP_OPTS.reduce((a, k) => a + (opts[k] ? (APP_OPT_PRICE[k] || 0) : 0), 0) + (APP_KIND_PRICE[appKind] || 0), APP_CAP - PRICING.scopes.app.build) : 0;
   const phaseSum = (pk) => selected.reduce((a, sk) => a + typePhasePrice(sk, pk), 0) + (pk === "build" ? mediaOnce + appOptOnce : pk === "run" ? mediaMo : 0);
   const packagePrice = (k) => k === "run" ? eur(phaseSum("run")) + p.mo : eur(phaseSum(k));
   const phaseDescFor = (k) => {
@@ -2114,18 +2121,32 @@ function PriceCalculator({ openConsult }) {
               </div>
             )}
             {types.app && (
-              <div className="detail-block">
-                <div className="detail-block-q">{p.details.appQ}</div>
-                <div className="refine-group opt-group">
-                  {APP_OPTS.map((k) => (
-                    <button key={k} className={`toggle toggle-sm ${opts[k] ? "on" : ""}`} onClick={() => toggleOpt(k)} aria-pressed={opts[k]}>
-                      <span className="toggle-main"><span className="toggle-t">{optLabel(k)}</span></span>
-                      <span className="toggle-p mono">{`${p.from} ${eur(APP_OPT_PRICE[k])}`}</span>
-                      <span className="tgt" aria-hidden><span className="tgt-dot" /></span>
-                    </button>
-                  ))}
+              <>
+                <div className="detail-block">
+                  <div className="detail-block-q">{p.details.appQ}</div>
+                  <div className="refine-group opt-group">
+                    {APP_KINDS.map((k) => (
+                      <button key={k} className={`toggle toggle-sm ${appKind === k ? "on" : ""}`} onClick={() => setAppKind(k)} aria-pressed={appKind === k}>
+                        <span className="toggle-main"><span className="toggle-t">{optLabel(k)}</span></span>
+                        <span className="toggle-p mono">{APP_KIND_PRICE[k] ? `${p.from} ${eur(APP_KIND_PRICE[k])}` : p.inclFree}</span>
+                        <span className="tgt" aria-hidden><span className="tgt-dot" /></span>
+                      </button>
+                    ))}
+                  </div>
                 </div>
-              </div>
+                <div className="detail-block">
+                  <div className="detail-block-q">{p.details.appExtraQ}</div>
+                  <div className="refine-group opt-group">
+                    {APP_OPTS.map((k) => (
+                      <button key={k} className={`toggle toggle-sm ${opts[k] ? "on" : ""}`} onClick={() => toggleOpt(k)} aria-pressed={opts[k]}>
+                        <span className="toggle-main"><span className="toggle-t">{optLabel(k)}</span></span>
+                        <span className="toggle-p mono">{`${p.from} ${eur(APP_OPT_PRICE[k])}`}</span>
+                        <span className="tgt" aria-hidden><span className="tgt-dot" /></span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </>
             )}
             {types.platform && (
               <div className="detail-block">
@@ -3242,7 +3263,7 @@ button{font-family:inherit;}
 .calc-dot.on{color:var(--ink);}
 .calc-dot.on .calc-dot-n{border-color:var(--mag);background:var(--mag);color:#fff;}
 .calc-dot.done .calc-dot-n{border-color:var(--ink);background:var(--ink);color:var(--paper);}
-.calc{scroll-margin-top:88px;}
+.calc{scroll-margin-top:74px;}
 .calc-slide{padding:26px;min-height:286px;animation:slideIn .34s ease both;}
 @keyframes slideIn{from{opacity:0;transform:translateX(12px);}to{opacity:1;transform:none;}}
 .calc-slide-head{margin-bottom:20px;}
@@ -3293,9 +3314,9 @@ button{font-family:inherit;}
 .cfg-total{margin-top:4px;}
 .receipt-items{display:flex;flex-direction:column;margin:2px 0 4px;}
 .rcp{display:flex;flex-direction:column;margin:2px 0 6px;text-align:left;}
-.rcp-head{display:grid;grid-template-columns:1fr 78px 78px;gap:8px;font-size:10px;letter-spacing:0.07em;text-transform:uppercase;color:var(--soft);padding-bottom:9px;border-bottom:1px solid var(--line);}
+.rcp-head{display:grid;grid-template-columns:minmax(0,1fr) 78px 78px;gap:8px;font-size:10px;letter-spacing:0.07em;text-transform:uppercase;color:var(--soft);padding-bottom:9px;border-bottom:1px solid var(--line);}
 .rcp-head span+span{text-align:right;}
-.rcp-row{display:grid;grid-template-columns:1fr 78px 78px;gap:8px;align-items:baseline;padding:11px 0;width:100%;text-align:left;background:none;border:none;font:inherit;}
+.rcp-row{display:grid;grid-template-columns:minmax(0,1fr) 78px 78px;gap:8px;align-items:baseline;padding:11px 0;width:100%;text-align:left;background:none;border:none;font:inherit;}
 .rcp-line+.rcp-line{border-top:1px dashed var(--line);}
 .rcp-row-btn{cursor:pointer;}
 .rcp-l{color:var(--ink);font-weight:500;font-size:14px;line-height:1.35;display:flex;align-items:baseline;gap:7px;text-align:left;overflow-wrap:break-word;word-break:normal;hyphens:none;}
