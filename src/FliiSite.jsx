@@ -438,17 +438,17 @@ const useLang = () => useContext(LangCtx);
 /* ---------- CMS default content (Dutch) ---------- */
 const shotUrl = (url) => `https://image.thum.io/get/width/1440/crop/900/wait/6/${url}`;
 const DEFAULT_APPS = [
-  { id: "performance-os", title: "Performance OS", client: "zelfstandigondernemers.nl", tag: "Analytics / Dashboard",
+  { id: "performance-os", title: "Performance OS", client: "Flii Media", tag: "Analytics / Dashboard",
     summary: "Een GA4-dashboard dat marketingdata omzet naar stuurinformatie.",
     link: "https://dashboard-zo.vercel.app/",
     metrics: [{ label: "Bron", value: "GA4" }, { label: "Tabs", value: "5" }, { label: "Focus", value: "Sturen" }],
-    body: "Performance OS bundelt de belangrijkste marketing- en groeicijfers in een helder dashboard, gebouwd op GA4 en in de huisstijl van zelfstandigondernemers.nl. Vijf tabbladen brengen verkeer, kanalen en conversie samen.\n\nHet vertaalt ruwe data naar inzichten waar een team direct op kan sturen: wat werkt, waar het geld lekt en welke stap volgt." },
+    body: "Performance OS bundelt de belangrijkste marketing- en groeicijfers in een helder dashboard, gebouwd op GA4. Vijf tabbladen brengen verkeer, kanalen en conversie samen.\n\nHet vertaalt ruwe data naar inzichten waar een team direct op kan sturen: wat werkt, waar het geld lekt en welke stap volgt." },
   { id: "faab", title: "Founder as a Brand", client: "Flii Labs", tag: "PWA / AI",
     summary: "Een AI-tool die founders helpt hun persoonlijke merk op LinkedIn te bouwen.",
     link: "https://faab-one.vercel.app/",
     metrics: [{ label: "Stappen", value: "4" }, { label: "Talen", value: "NL / EN" }, { label: "AI", value: "Anthropic" }],
     body: "FAAB helpt oprichters om als merk zichtbaar te worden op LinkedIn. In vier stappen, Founder, Strategy, Topics en Post, werk je van positionering naar concrete content.\n\nVolledig tweetalig met browsertaal-detectie, en AI-ondersteuning die aansluit op je eigen stem en doelen." },
-  { id: "waryte", title: "Waryte", client: "Flii Media", tag: "Product / SaaS",
+  { id: "waryte", title: "Waryte", client: "Flii Labs", tag: "Product / SaaS",
     summary: "Social content scheduler met geautomatiseerde, branded contentcreatie op basis van trends.",
     link: "https://waryte.vercel.app",
     metrics: [{ label: "Content", value: "Branded" }, { label: "Basis", value: "Trends" }, { label: "Publiceren", value: "Gepland" }],
@@ -458,7 +458,7 @@ const DEFAULT_APPS = [
     link: "https://wk2026-voorspellingen.vercel.app/",
     metrics: [{ label: "Voorspellingen", value: "Live" }, { label: "Fantasy", value: "Team" }, { label: "Datamodel", value: "Aanpasbaar" }],
     body: "World Cup Model is een omgeving om je WK-voorspellingen en fantasy team op te beheren, gebouwd op een aanpasbaar datamodel. Zet je voorspellingen, stel je team samen en zie standen en punten realtime meebewegen met echte wedstrijddata.\n\nHet datamodel is bij te stellen, zodat regels, punten en scenario's flexibel blijven. Mobile-first, installeerbaar als PWA en gelanceerd via Vercel." },
-  { id: "wedding-pwa", title: "Weddy", client: "Prive", tag: "PWA",
+  { id: "wedding-pwa", title: "Weddy", client: "Flii Labs", tag: "PWA",
     summary: "Wedding planner voor bruid en bruidegom: samen alles voor de grote dag geregeld.",
     link: "https://wedding-app-flii-media.vercel.app/",
     metrics: [{ label: "Voor", value: "Het bruidspaar" }, { label: "Offline", value: "Ja" }, { label: "Installeren", value: "PWA" }],
@@ -672,7 +672,7 @@ const TABLES = ["reviews", "certs", "apps", "articles"];
 const DEFAULTS = { apps: DEFAULT_APPS, articles: DEFAULT_ARTICLES, reviews: DEFAULT_REVIEWS, certs: DEFAULT_CERTS };
 
 const LS_KEY = "flii_cms_v2";
-const SEED_VERSION = 6;
+const SEED_VERSION = 7;
 function loadStore() { try { const r = localStorage.getItem(LS_KEY); return r ? JSON.parse(r) : null; } catch (e) { return null; } }
 function saveStore(d) { try { localStorage.setItem(LS_KEY, JSON.stringify(d)); } catch (e) {} }
 
