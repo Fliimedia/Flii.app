@@ -439,30 +439,50 @@ const useLang = () => useContext(LangCtx);
 const shotUrl = (url) => `https://image.thum.io/get/width/1440/crop/900/wait/6/${url}`;
 const DEFAULT_APPS = [
   { id: "performance-os", title: "Performance OS", client: "Flii Media", tag: "Analytics / Dashboard",
-    summary: "Een GA4-dashboard dat marketingdata omzet naar stuurinformatie.",
     link: "https://dashboard-zo-git-demo-flii-media.vercel.app/",
-    metrics: [{ label: "Bron", value: "GA4" }, { label: "Tabs", value: "5" }, { label: "Focus", value: "Sturen" }],
-    body: "Performance OS bundelt de belangrijkste marketing- en groeicijfers in een helder dashboard, gebouwd op GA4. Vijf tabbladen brengen verkeer, kanalen en conversie samen.\n\nHet vertaalt ruwe data naar inzichten waar een team direct op kan sturen: wat werkt, waar het geld lekt en welke stap volgt." },
+    summary: "Marketing-dashboard dat GA4-data omzet naar heldere stuurinformatie.",
+    lead: "Een dashboard dat ruwe analytics vertaalt naar beslissingen die een team meteen kan nemen.",
+    details: [
+      { k: "Wat", v: "Een marketing- en groei-dashboard bovenop Google Analytics 4." },
+      { k: "Inhoud", v: "Scorecards, kanalen, een conversiefunnel en demografie, met een AI-samenvatting en business insights die reageren op je eigen context." },
+      { k: "Stack", v: "React met de GA4 Data API en interactieve grafieken." },
+    ] },
   { id: "faab", title: "Founder as a Brand", client: "Flii Labs", tag: "PWA / AI",
-    summary: "Een AI-tool die founders helpt hun persoonlijke merk op LinkedIn te bouwen.",
     link: "https://faab-one.vercel.app/",
-    metrics: [{ label: "Stappen", value: "4" }, { label: "Talen", value: "NL / EN" }, { label: "AI", value: "Anthropic" }],
-    body: "FAAB helpt oprichters om als merk zichtbaar te worden op LinkedIn. In vier stappen, Founder, Strategy, Topics en Post, werk je van positionering naar concrete content.\n\nVolledig tweetalig met browsertaal-detectie, en AI-ondersteuning die aansluit op je eigen stem en doelen." },
-  { id: "waryte", title: "Waryte", client: "Flii Labs", tag: "Product / SaaS",
-    summary: "Social content scheduler met geautomatiseerde, branded contentcreatie op basis van trends.",
-    link: "https://waryte.vercel.app",
-    metrics: [{ label: "Content", value: "Branded" }, { label: "Basis", value: "Trends" }, { label: "Publiceren", value: "Gepland" }],
-    body: "Waryte is een social content scheduler die branded content automatisch creeert op basis van actuele trends. Het volgt wat er speelt, schrijft en maakt posts op in de stem van je merk, en plant ze vooruit in zodat je feed altijd gevuld is.\n\nEen goedkeuringsflow houdt de mens in de regie en publiceren gaat rechtstreeks naar Webflow. Gebouwd voor teams die consistent en actueel willen posten, zonder dagelijks handwerk." },
+    summary: "AI-tool die oprichters helpt hun persoonlijke merk op LinkedIn te bouwen.",
+    lead: "Van positionering naar concrete content, in de eigen stem van de oprichter.",
+    details: [
+      { k: "Wat", v: "Een personal-branding-tool voor founders op LinkedIn." },
+      { k: "Hoe", v: "Vier stappen, Founder, Strategy, Topics en Post, waarin AI je positionering en berichten uitwerkt." },
+      { k: "Extra", v: "Volledig tweetalig, met automatische browsertaal-detectie." },
+    ] },
+  { id: "fcdata", title: "FC Data", client: "Flii Labs", tag: "Platform / Data",
+    link: "https://fcdata.vercel.app/",
+    summary: "Voetbaldataplatform waarop je elke speler, club en competitie opzoekt.",
+    lead: "Een toegankelijk alternatief voor Transfermarkt, gebouwd rond vindbaarheid en verkeer.",
+    details: [
+      { k: "Wat", v: "Een platform met data over spelers, clubs en competities." },
+      { k: "Hoe", v: "Een levende zoekbalk als startpunt; alles is opzoekbaar en puur om te tonen, zonder eigen API." },
+      { k: "Model", v: "Draait op verkeer en advertenties, volledig tweetalig NL en EN." },
+    ] },
   { id: "wk2026", title: "World Cup Model", client: "Flii Labs", tag: "Sport / PWA",
-    summary: "Beheer je WK-voorspellingen en fantasy team op een aanpasbaar datamodel.",
     link: "https://wk2026-voorspellingen.vercel.app/",
-    metrics: [{ label: "Voorspellingen", value: "Live" }, { label: "Fantasy", value: "Team" }, { label: "Datamodel", value: "Aanpasbaar" }],
-    body: "World Cup Model is een omgeving om je WK-voorspellingen en fantasy team op te beheren, gebouwd op een aanpasbaar datamodel. Zet je voorspellingen, stel je team samen en zie standen en punten realtime meebewegen met echte wedstrijddata.\n\nHet datamodel is bij te stellen, zodat regels, punten en scenario's flexibel blijven. Mobile-first, installeerbaar als PWA en gelanceerd via Vercel." },
+    summary: "Beheer je WK-voorspellingen en fantasy team op een aanpasbaar datamodel.",
+    lead: "Speel het WK 2026 mee met voorspellingen en een fantasy team dat live meebeweegt.",
+    details: [
+      { k: "Wat", v: "Een voorspellingen- en fantasy-omgeving voor het WK 2026." },
+      { k: "Hoe", v: "Zet je voorspellingen, stel een team samen en zie standen en punten meebewegen met de echte wedstrijden." },
+      { k: "Tech", v: "Aanpasbaar datamodel, mobile-first en installeerbaar als PWA." },
+    ] },
   { id: "wedding-pwa", title: "Weddy", client: "Flii Labs", tag: "PWA",
-    summary: "Wedding planner voor bruid en bruidegom: samen alles voor de grote dag geregeld.",
     link: "https://wedding-app-git-demo-flii-media.vercel.app/",
-    metrics: [{ label: "Voor", value: "Het bruidspaar" }, { label: "Offline", value: "Ja" }, { label: "Installeren", value: "PWA" }],
-    body: "Weddy is een wedding planner voor bruid en bruidegom: samen op een plek de trouwdag regelen. Taken, budget, gastenlijst en een minuut-voor-minuut dagplanning, overzichtelijk en met zijn tweeen bij te houden.\n\nInstalleerbaar als PWA en offline te gebruiken, ontworpen om de stress uit het plannen te halen." },
+    summary: "Trouwplanner waarin het bruidspaar samen de hele dag regelt.",
+    lead: "Alles voor de trouwdag op een plek, samen bij te houden.",
+    details: [
+      { k: "Wat", v: "Een wedding planner voor bruid en bruidegom." },
+      { k: "Inhoud", v: "Taken, budget, gastenlijst en een dagplanning van minuut tot minuut." },
+      { k: "Tech", v: "Installeerbaar als PWA en offline te gebruiken." },
+    ] },
 ];
 const DEFAULT_ARTICLES = [
   { id: "stop-kapotte-funnels", title: "Stop met kapotte funnels opschalen", cat: "Performance", date: "jun 2026", read: "6 min", cover: "funnel",
@@ -672,7 +692,7 @@ const TABLES = ["reviews", "certs", "apps", "articles"];
 const DEFAULTS = { apps: DEFAULT_APPS, articles: DEFAULT_ARTICLES, reviews: DEFAULT_REVIEWS, certs: DEFAULT_CERTS };
 
 const LS_KEY = "flii_cms_v2";
-const SEED_VERSION = 9;
+const SEED_VERSION = 10;
 function loadStore() { try { const r = localStorage.getItem(LS_KEY); return r ? JSON.parse(r) : null; } catch (e) { return null; } }
 function saveStore(d) { try { localStorage.setItem(LS_KEY, JSON.stringify(d)); } catch (e) {} }
 
@@ -1526,7 +1546,14 @@ function ShowcaseList({ apps }) {
             {isOpen && (
               <div className="wacc-body">
                 {hasLink && <div className="wacc-shot"><img src={w.shot || shotUrl(w.link)} alt={w.title} loading="lazy" onError={(e) => { e.currentTarget.style.display = "none"; }} /></div>}
-                <div className="wacc-desc">{paras(w.body).map((pp, j) => <p key={j}>{pp}</p>)}</div>
+                {w.lead && <p className="wacc-lead">{w.lead}</p>}
+                {w.details && (
+                  <dl className="wacc-dl">
+                    {w.details.map((d, j) => (
+                      <div className="wacc-drow" key={j}><dt>{d.k}</dt><dd>{d.v}</dd></div>
+                    ))}
+                  </dl>
+                )}
                 {hasLink && <a href={w.link} target="_blank" rel="noreferrer" className="wacc-visit">{t.detail.visit} {w.title} ↗</a>}
               </div>
             )}
@@ -2974,6 +3001,12 @@ button{font-family:inherit;}
 .wacc-shot{border-radius:12px;overflow:hidden;border:1px solid var(--line);aspect-ratio:16 / 10;background:var(--mist);margin-bottom:16px;}
 .wacc-shot img{width:100%;height:100%;object-fit:cover;display:block;}
 .wacc-desc{color:var(--mid);font-size:14.5px;line-height:1.6;display:flex;flex-direction:column;gap:12px;}
+.wacc-lead{color:var(--ink);font-size:15px;line-height:1.55;font-weight:500;margin:0 0 16px;}
+.wacc-dl{display:flex;flex-direction:column;gap:12px;margin:0;}
+.wacc-drow{display:grid;grid-template-columns:82px minmax(0,1fr);gap:14px;align-items:baseline;}
+.wacc-drow dt{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.08em;text-transform:uppercase;color:var(--mag);font-weight:600;padding-top:2px;}
+.wacc-drow dd{margin:0;color:var(--mid);font-size:14px;line-height:1.55;}
+@media (max-width:560px){.wacc-drow{grid-template-columns:1fr;gap:3px;}}
 .wacc-visit{display:inline-block;margin-top:16px;color:var(--mag);font-weight:600;font-size:14px;text-decoration:none;}
 .wacc-visit:hover{text-decoration:underline;text-underline-offset:3px;}
 .quote-card{background:var(--card);border:1px solid var(--line);border-radius:18px;transition:transform .2s,box-shadow .2s;}
