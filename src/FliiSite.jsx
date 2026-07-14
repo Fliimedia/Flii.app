@@ -203,7 +203,7 @@ const I18N = {
       onRequest: "Op aanvraag",
       svcCol: "Dienst", priceCol: "Prijs vanaf", contentCreatie: "Content creatie", contentCreatieNote: "Posts, visuals en video in je merkstem.",
       dels: { seoContent: "SEO (content)", seoTech: "SEO (technisch)", sea: "SEA / Google Ads", linkbuilding: "Linkbuilding", socialContent: "Contentcreatie", community: "Community management", paidSocial: "Paid social", socialInfluencer: "Influencer", bannerCreatie: "Bannercreatie", programmaticBuy: "Programmatic inkoop", retargetingSetup: "Retargeting-setup", videoProductie: "Videoproductie", videoMontage: "Montage", videoBuy: "Media-inkoop", spotProductie: "Spotproductie", podcastProductie: "Podcastproductie", audioBuy: "Media-inkoop", templateDesign: "Template-design", emailFlows: "Flows / automation", crmSetup: "CRM-inrichting", flowSetup: "Flow-opzet", msgCopy: "Copy", msgIntegratie: "Integratie", oohOntwerp: "Ontwerp", oohBuy: "Inkoop & planning", oohProductie: "Productie", printOntwerp: "Ontwerp", drukwerk: "Drukwerk", printDistributie: "Distributie", persstrategie: "Persstrategie", influencerMgmt: "Influencer-management", affiliateSetup: "Affiliate-setup" },
-      chansH: "Kanalen", delsH: "Diensten", catBase: "Basis", inclFree: "inbegrepen",
+      chansH: "Kanalen", delsH: "Diensten", catBase: "Basis", inclFree: "inbegrepen", viaChannels: "via kanalen",
       next: "Volgende", back: "Terug", startOver: "Opnieuw", totalFrom: "Totaal vanaf",
       refTitle: "Prijsreferentie", loopRef: "Flii Loop", loopRefDesc: "Drie pakketten, per campagne, app, platform of AI. Neem de hele loop of losse pakketten.",
       appRef: "App ontwikkeling", appRefDesc: "Drie niveaus. De prijs is de Loop Build-fee; Loop Start en Loop Run reken je apart.", looseRef: "Losse diensten",
@@ -412,7 +412,7 @@ const I18N = {
       onRequest: "On request",
       svcCol: "Service", priceCol: "From", contentCreatie: "Content creation", contentCreatieNote: "Posts, visuals and video in your brand voice.",
       dels: { seoContent: "SEO (content)", seoTech: "SEO (technical)", sea: "SEA / Google Ads", linkbuilding: "Link building", socialContent: "Content creation", community: "Community management", paidSocial: "Paid social", socialInfluencer: "Influencer", bannerCreatie: "Banner creative", programmaticBuy: "Programmatic buying", retargetingSetup: "Retargeting setup", videoProductie: "Video production", videoMontage: "Editing", videoBuy: "Media buying", spotProductie: "Spot production", podcastProductie: "Podcast production", audioBuy: "Media buying", templateDesign: "Template design", emailFlows: "Flows / automation", crmSetup: "CRM setup", flowSetup: "Flow setup", msgCopy: "Copy", msgIntegratie: "Integration", oohOntwerp: "Design", oohBuy: "Buying & planning", oohProductie: "Production", printOntwerp: "Design", drukwerk: "Print", printDistributie: "Distribution", persstrategie: "PR strategy", influencerMgmt: "Influencer management", affiliateSetup: "Affiliate setup" },
-      chansH: "Channels", delsH: "Services", catBase: "Base", inclFree: "included",
+      chansH: "Channels", delsH: "Services", catBase: "Base", inclFree: "included", viaChannels: "via channels",
       next: "Next", back: "Back", startOver: "Start over", totalFrom: "Total from",
       refTitle: "Price reference", loopRef: "Flii Loop", loopRefDesc: "Three packages, per campaign, app, platform or AI. Take the full loop or single packages.",
       appRef: "App development", appRefDesc: "Three levels. The price is the Loop Build fee; Loop Start and Loop Run are billed separately.", looseRef: "Add-on services",
@@ -1275,7 +1275,7 @@ function ServicePage({ id, openConsult }) {
           <div className="svc-col">
             <div className="svc-col-h mono">{svc.helpH}</div>
             <div className="svc-list">
-              {s.help.map((it, i) => <div key={i} className="svc-item"><div className="svc-item-h">{it.h}</div><p className="svc-item-b">{it.b}</p></div>)}
+              {s.help.map((it, i) => <div key={i} className="svc-item"><div className="svc-item-main"><div className="svc-item-h">{it.h}</div><p className="svc-item-b">{it.b}</p></div></div>)}
             </div>
           </div>
           <div className="svc-col">
@@ -1875,7 +1875,7 @@ const PRICING = {
   },
   content: { none: 0, klein: 650, groot: 1200 },
   contentCreatie: 650,
-  app: { basis: 3500, advanced: 8500, platform: 18000 },
+  app: { basis: 5000, advanced: 8500, platform: 18000 },
 };
 const SCOPE_KEYS = ["campagne", "app", "platform", "ai"];
 const PLATFORM_FNS = ["website", "ecommerce", "ai"];
@@ -2263,14 +2263,13 @@ function PriceCalculator({ openConsult }) {
 function Pricing({ openConsult }) {
   const { t } = useLang(); const p = t.pricing;
   useEffect(() => { window.scrollTo(0, 0); }, []);
-  const refPrice = (sk, pk) => pk === "build" ? (sk === "app" ? PRICING.scopes.app.build.basis : PRICING.scopes[sk].build) : PRICING.scopes[sk][pk];
+  const refPrice = (sk, pk) => PRICING.scopes[sk][pk];
   return (
     <section className="pricing">
       <div className="wrap">
         <a href="#/" className="back">{t.cms.back}</a>
         <div className="eyebrow">{p.eyebrow}</div>
         <h1 className="display detail-h">{p.h1}</h1>
-        <p className="detail-lede">{p.intro}</p>
         <PriceCalculator openConsult={openConsult} />
         <div className="ref">
           <h2 className="display ref-h">{p.refTitle}</h2>
@@ -2282,7 +2281,7 @@ function Pricing({ openConsult }) {
                   <div className="ref-card-t">{p.phases[k]}</div>
                   <div className="ref-card-d">{p.phaseDesc[k]}</div>
                   <div className="ref-rows mono">
-                    {SCOPE_KEYS.map((s) => <div key={s} className="ref-row"><span>{p.scopes[s]}</span><span>{eur(refPrice(s, k))}{k === "run" ? p.mo : ""}</span></div>)}
+                    {SCOPE_KEYS.map((s) => { const v = refPrice(s, k); return <div key={s} className="ref-row"><span>{p.scopes[s]}</span><span>{v > 0 ? `${eur(v)}${k === "run" ? p.mo : ""}` : (s === "campagne" ? p.viaChannels : p.onRequest)}</span></div>; })}
                   </div>
                 </div>
               ))}
@@ -2879,7 +2878,13 @@ button{font-family:inherit;}
 .svc-cols{display:grid;grid-template-columns:1fr 1fr;gap:44px;margin:46px 0 8px;}
 .svc-col-h{font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--soft);margin-bottom:20px;}
 .svc-list{display:flex;flex-direction:column;gap:22px;}
-.svc-item-h{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:18px;margin-bottom:5px;letter-spacing:-0.01em;}
+.service-page .svc-list{gap:18px;}
+.service-page .svc-item{display:flex;gap:14px;align-items:flex-start;}
+.service-page .svc-item::before{content:"";width:7px;height:7px;border-radius:2px;background:var(--mag);flex:none;margin-top:6px;}
+.service-page .svc-item-main{min-width:0;}
+.service-page .svc-step-h{font-size:16px;}
+.service-page .svc-loop-b{font-size:14.5px;line-height:1.5;}
+.svc-item-h{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:16px;margin-bottom:3px;letter-spacing:-0.01em;}
 .svc-item-b{font-size:15px;color:var(--mid);margin:0;line-height:1.55;}
 .svc-steps{display:flex;flex-direction:column;gap:18px;}
 .svc-step{display:flex;gap:15px;align-items:flex-start;}
@@ -3191,7 +3196,7 @@ button{font-family:inherit;}
 .field-mono{font-family:'IBM Plex Mono',monospace;font-size:13.5px;}
 .cover-preview{border:1px solid var(--line);border-radius:12px;overflow:hidden;aspect-ratio:16 / 7;background:var(--paper);}
 .editor-bar{position:sticky;bottom:0;display:flex;justify-content:flex-end;gap:10px;padding:16px 24px;background:var(--card);border-top:1px solid var(--line);}
-.pricing{padding:36px 0 96px;}
+.pricing{padding:64px 0 96px;}
 .loop-foot{margin-top:30px;text-align:center;}
 .loop-ring-wrap{display:flex;flex-direction:column;align-items:center;}
 .loop-ring-stage{position:relative;width:min(500px,calc(100vw - 60px));margin:48px auto 8px;aspect-ratio:1;perspective:1200px;}
@@ -3319,9 +3324,9 @@ button{font-family:inherit;}
 .chip:hover{border-color:var(--soft);}
 .chip.on{background:var(--mag);border-color:var(--mag);color:#fff;}
 .chip-p{font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:500;opacity:0.7;}
-.svc-list{display:flex;flex-direction:column;}
+.calc .svc-list{display:flex;flex-direction:column;}
 .svc-list-head{display:flex;justify-content:space-between;font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--soft);padding:0 2px 10px;}
-.svc-item{border-top:1px solid var(--line);}
+.calc .svc-item{border-top:1px solid var(--line);}
 .svc-item:last-child{border-bottom:1px solid var(--line);}
 .svc-row{display:flex;align-items:center;gap:12px;width:100%;background:none;border:none;padding:14px 2px;font:inherit;cursor:pointer;text-align:left;color:var(--ink);}
 .svc-row-x{display:inline-flex;width:20px;height:20px;flex:none;align-items:center;justify-content:center;font-weight:700;font-size:15px;line-height:1;color:var(--soft);border:1px solid var(--line);border-radius:6px;transition:background .14s,border-color .14s,color .14s;}
