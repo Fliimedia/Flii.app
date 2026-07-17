@@ -3327,7 +3327,7 @@ button{font-family:inherit;}
 .calc .svc-list{display:flex;flex-direction:column;}
 .svc-list-head{display:flex;justify-content:space-between;font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--soft);padding:0 2px 10px;}
 .calc .svc-item{border-top:1px solid var(--line);}
-.svc-item:last-child{border-bottom:1px solid var(--line);}
+.calc .svc-item:last-child{border-bottom:1px solid var(--line);}
 .svc-row{display:flex;align-items:center;gap:12px;width:100%;background:none;border:none;padding:14px 2px;font:inherit;cursor:pointer;text-align:left;color:var(--ink);}
 .svc-row-x{display:inline-flex;width:20px;height:20px;flex:none;align-items:center;justify-content:center;font-weight:700;font-size:15px;line-height:1;color:var(--soft);border:1px solid var(--line);border-radius:6px;transition:background .14s,border-color .14s,color .14s;}
 .svc-row.on .svc-row-x{background:var(--mag);border-color:var(--mag);color:#fff;}
