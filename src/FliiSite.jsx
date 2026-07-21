@@ -406,7 +406,7 @@ const useLang = () => useContext(LangCtx);
 /* ---------- CMS default content (Dutch) ---------- */
 const shotUrl = (url) => `https://image.thum.io/get/width/1440/crop/900/wait/6/${url}`;
 const DEFAULT_APPS = [
-  { id: "performance-os", title: "Performance OS", client: "Flii Media", tag: "Analytics / Dashboard",
+  { id: "performance-os", title: "Performance OS", client: "Flii Media", tag: "Analytics / Dashboard", brand: "Performance OS", badge: "Analytics in één dashboard",
     link: "https://dashboard-zo-git-demo-flii-media.vercel.app/",
     summary: "Analytics-dashboard dat GA4-data omzet naar heldere stuurinformatie.",
     lead: "Een dashboard dat ruwe analytics vertaalt naar beslissingen die een team meteen kan nemen.",
@@ -415,7 +415,7 @@ const DEFAULT_APPS = [
       { k: "Inhoud", v: "Scorecards, kanalen, een conversiefunnel en demografie, met een AI-samenvatting en business insights die reageren op je eigen context." },
       { k: "Stack", v: "React met de GA4 Data API en interactieve grafieken." },
     ] },
-  { id: "faab", title: "Founder as a Brand", client: "Flii Labs", tag: "PWA / AI",
+  { id: "faab", title: "Founder as a Brand", client: "Flii Labs", tag: "PWA / AI", brand: "FAAB", badge: "Personal branding op LinkedIn",
     link: "https://faab-one.vercel.app/",
     summary: "AI-tool die oprichters helpt hun persoonlijke merk op LinkedIn te bouwen.",
     lead: "Van positionering naar concrete content, in de eigen stem van de oprichter.",
@@ -424,7 +424,7 @@ const DEFAULT_APPS = [
       { k: "Hoe", v: "Vier stappen, Founder, Strategy, Topics en Post, waarin AI je positionering en berichten uitwerkt." },
       { k: "Extra", v: "Volledig tweetalig, met automatische browsertaal-detectie." },
     ] },
-  { id: "fcdata", title: "FC Data", client: "Flii Labs", tag: "Platform / Data",
+  { id: "fcdata", title: "FC Data", client: "Flii Labs", tag: "Platform / Data", brand: "FC Data", badge: "Zoek elke speler en club",
     link: "https://fcdata.vercel.app/",
     summary: "Voetbaldataplatform waarop je elke speler, club en competitie opzoekt.",
     lead: "Een toegankelijk alternatief voor Transfermarkt, gebouwd rond vindbaarheid en verkeer.",
@@ -433,7 +433,7 @@ const DEFAULT_APPS = [
       { k: "Hoe", v: "Een levende zoekbalk als startpunt; alles is opzoekbaar en puur om te tonen, zonder eigen API." },
       { k: "Model", v: "Draait op verkeer en advertenties, volledig tweetalig NL en EN." },
     ] },
-  { id: "wk2026", title: "World Cup Model", client: "Flii Labs", tag: "Sport / PWA",
+  { id: "wk2026", title: "World Cup Model", client: "Flii Labs", tag: "Sport / PWA", brand: "World Cup Model", badge: "WK-voorspellingen en fantasy",
     link: "https://wk2026-voorspellingen.vercel.app/",
     summary: "Beheer je WK-voorspellingen en fantasy team op een aanpasbaar datamodel.",
     lead: "Speel het WK 2026 mee met voorspellingen en een fantasy team dat live meebeweegt.",
@@ -442,7 +442,7 @@ const DEFAULT_APPS = [
       { k: "Hoe", v: "Zet je voorspellingen, stel een team samen en zie standen en punten meebewegen met de echte wedstrijden." },
       { k: "Tech", v: "Aanpasbaar datamodel, mobile-first en installeerbaar als PWA." },
     ] },
-  { id: "wedding-pwa", title: "Weddy", client: "Flii Labs", tag: "PWA",
+  { id: "wedding-pwa", title: "Weddy", client: "Flii Labs", tag: "PWA", brand: "Weddy", badge: "Trouwplanner voor het bruidspaar",
     link: "https://wedding-app-git-demo-flii-media.vercel.app/",
     summary: "Trouwplanner waarin het bruidspaar samen de hele dag regelt.",
     lead: "Alles voor de trouwdag op een plek, samen bij te houden.",
@@ -660,7 +660,7 @@ const TABLES = ["reviews", "certs", "apps", "articles"];
 const DEFAULTS = { apps: DEFAULT_APPS, articles: DEFAULT_ARTICLES, reviews: DEFAULT_REVIEWS, certs: DEFAULT_CERTS };
 
 const LS_KEY = "flii_cms_v2";
-const SEED_VERSION = 10;
+const SEED_VERSION = 11;
 function loadStore() { try { const r = localStorage.getItem(LS_KEY); return r ? JSON.parse(r) : null; } catch (e) { return null; } }
 function saveStore(d) { try { localStorage.setItem(LS_KEY, JSON.stringify(d)); } catch (e) {} }
 
@@ -1493,35 +1493,23 @@ function ModelSection() {
   );
 }
 function ShowcaseList({ apps }) {
-  const { t } = useLang();
-  const [open, setOpen] = useState(null);
   return (
-    <div className="wacc">
+    <div className="wcards">
       {apps.slice(0, 6).map((w) => {
-        const isOpen = open === w.id;
         const hasLink = w.link && w.link !== "#";
+        const Tag = hasLink ? "a" : "div";
+        const props = hasLink ? { href: w.link, target: "_blank", rel: "noreferrer" } : {};
         return (
-          <div key={w.id} className={`wacc-item ${isOpen ? "open" : ""}`}>
-            <button className="wacc-head" onClick={() => setOpen((o) => (o === w.id ? null : w.id))} aria-expanded={isOpen}>
-              <span className="wacc-title">{w.title}</span>
-              <span className="wacc-client mono">{w.client}</span>
-              <span className="wacc-arrow" aria-hidden>↘</span>
-            </button>
-            {isOpen && (
-              <div className="wacc-body">
-                {hasLink && <div className="wacc-shot"><img src={w.shot || shotUrl(w.link)} alt={w.title} loading="lazy" onError={(e) => { e.currentTarget.style.display = "none"; }} /></div>}
-                {w.lead && <p className="wacc-lead">{w.lead}</p>}
-                {w.details && (
-                  <dl className="wacc-dl">
-                    {w.details.map((d, j) => (
-                      <div className="wacc-drow" key={j}><dt>{d.k}</dt><dd>{d.v}</dd></div>
-                    ))}
-                  </dl>
-                )}
-                {hasLink && <a href={w.link} target="_blank" rel="noreferrer" className="wacc-visit">{t.detail.visit} {w.title} ↗</a>}
-              </div>
-            )}
-          </div>
+          <Tag key={w.id} className="wcard" {...props}>
+            <div className="wcard-shot">
+              <img src={w.shot || shotUrl(w.link)} alt={w.brand || w.title} loading="lazy" onError={(e) => { e.currentTarget.style.display = "none"; }} />
+            </div>
+            <span className="wcard-badge">
+              <span className="wcard-brand">{w.brand || w.title}</span>
+              <span className="wcard-sep" aria-hidden>/</span>
+              <span className="wcard-desc">{w.badge}</span>
+            </span>
+          </Tag>
         );
       })}
     </div>
@@ -2946,6 +2934,17 @@ button{font-family:inherit;}
 .byline-stars{color:var(--mag);font-size:14px;letter-spacing:1.5px;}
 .byline-rate{font-size:13px;color:var(--mid);white-space:nowrap;}
 .byline-rate strong{color:var(--ink);font-weight:700;}
+.wcards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:46px 22px;margin-top:6px;}
+.wcard{position:relative;display:block;text-decoration:none;}
+.wcard-shot{border-radius:16px;overflow:hidden;border:1px solid var(--line);aspect-ratio:16 / 10;background:var(--mist);}
+.wcard-shot img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s cubic-bezier(.2,.7,.2,1);}
+.wcard:hover .wcard-shot{border-color:transparent;background:linear-gradient(var(--mist),var(--mist)) padding-box, var(--gloss) border-box;}
+.wcard:hover .wcard-shot img{transform:scale(1.035);}
+.wcard-badge{position:absolute;left:50%;bottom:0;transform:translate(-50%,50%);display:inline-flex;align-items:center;gap:8px;max-width:94%;white-space:nowrap;padding:9px 16px;border-radius:999px;border:1px solid transparent;background:linear-gradient(var(--card),var(--card)) padding-box, var(--gloss) border-box;box-shadow:0 10px 26px -12px rgba(231,37,90,0.4);}
+.wcard-brand{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:13.5px;color:var(--ink);letter-spacing:-0.01em;flex:none;}
+.wcard-sep{color:var(--mag);font-weight:600;flex:none;}
+.wcard-desc{font-size:12.5px;color:var(--mid);overflow:hidden;text-overflow:ellipsis;}
+@media (max-width:640px){.wcards{grid-template-columns:1fr;gap:44px;}.wcard-badge{max-width:96%;padding:8px 14px;}.wcard-brand{font-size:12.5px;}.wcard-desc{font-size:11.5px;}}
 .wacc{display:flex;flex-direction:column;gap:12px;}
 .wacc-item{border:1px solid var(--line);border-radius:16px;background:var(--card);overflow:hidden;transition:border-color .18s,box-shadow .18s;}
 .wacc-item.open{border-color:transparent;background:linear-gradient(var(--card),var(--card)) padding-box, var(--gloss) border-box;box-shadow:0 16px 36px -22px rgba(231,37,90,0.45);}
