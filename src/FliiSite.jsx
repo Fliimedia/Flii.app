@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, createContext, useContext } from "react";
 
 // ============================================================
-// Flii.app : AI-architectuur voor apps en platformen
+// Flii.app : Let's Ignite ambitions
 // Dutch by default, EN toggle in the fixed bottom dock bar.
 // Hash routing: #/ home · #/cms · #/app|insight|review|cert/:id
 // Content via Supabase REST (fetch) with localStorage fallback.
@@ -13,7 +13,7 @@ const BRANDS = ["Weddy", "Aperture", "Populos", "Waryte", "FC Data"];
 /* ---------- i18n ---------- */
 const I18N = {
   nl: {
-    slogan: "AI-architectuur voor apps en platformen",
+    slogan: "Let's Ignite ambitions",
     nav: { solutions: "Diensten", work: "Werk", approach: "Aanpak", about: "Over ons", insights: "Inzichten", pricing: "Prijzen", contact: "Contact", consult: "Plan een gesprek", manage: "CMS" },
     mega: {
       groups: [
@@ -57,22 +57,21 @@ const I18N = {
       { value: 21, suffix: " dagen", label: "Van brief tot live" },
       { value: 100, suffix: "%", label: "AI-native oplevering" },
       { value: 12, suffix: "+", label: "Producten gelanceerd" } ],
-    loop: { eyebrow: "Flii Loop", h2: "Verbeter op basis van marktvraag.", center: "Altijd lerend",
-      lede: "Een plan voor het opstarten en blijvend verbeteren van jouw apps en platformen. Synchroon aan de wensen van je doelgroep, elke maand beter.",
+    loop: { eyebrow: "Flii Loop", h2: "Bouwen stopt niet bij de livegang.", center: "Altijd scherper",
+      lede: "Live gaan is stap één. Daarna houdt de Flii Loop je app of platform elke maand scherper: we meten wat gebruikers echt doen, halen daar de grootste kansen uit en bouwen de verbetering. Zo groeit het product mee met wie het gebruikt.",
       items: [
-        { k: "Livegang", body: "De nieuwe app of het platform bereikt de markt." },
-        { k: "Measure", body: "De reactie van gebruikers wordt in kaart gebracht." },
-        { k: "Analyse", body: "Data wordt omgezet naar inzichten, kansen en problemen." },
-        { k: "Improve", body: "We verbeteren, fixen of zetten een test op." } ],
+        { k: "Livegang", body: "Je app of platform gaat live en de eerste echte gebruikers stromen binnen." },
+        { k: "Measure", body: "We meten wat mensen werkelijk doen: waar ze klikken, blijven hangen en afhaken." },
+        { k: "Analyse", body: "De cijfers krijgen betekenis: we zien wat werkt, waar het lekt en waar de grootste winst zit." },
+        { k: "Improve", body: "We bouwen de verbetering, lossen knelpunten op of zetten een test uit, en de lus begint opnieuw." } ],
       lens: { generic: "Algemeen", platform: "Platform", app: "App", media: "Media" },
       variants: {
-        platform: ["Wij bouwen je platform met backend en zetten het live.", "Wij meten gebruik, funnels en waar het proces stokt.", "Wij zien welke stappen werken en welke afhaken.", "Wij automatiseren meer en schalen het platform op."],
-        app: ["Wij bouwen en lanceren je app of PWA.", "Wij meten hoe mensen de app echt gebruiken.", "Wij zien welke flows werken en wat gemist wordt.", "Wij verbeteren flows en maken de app sneller."],
-        media: ["Wij zetten je campagne live op de gekozen kanalen.", "Wij meten kliks, kosten en conversies per kanaal.", "Wij zien wat converteert en wat budget verspilt.", "Wij schalen de winnaars en scherpen de targeting aan."],
+        platform: ["We bouwen je platform met backend, rollen en data en zetten het live.", "We meten waar gebruikers doorstromen en waar het proces vastloopt.", "We zien welke stappen renderen en waar je mensen verliest.", "We automatiseren het handwerk en schalen het platform mee met je groei."],
+        app: ["We bouwen en lanceren je app of PWA, klaar voor de eerste gebruikers.", "We meten hoe mensen de app echt gebruiken, niet hoe we hopen dat ze het doen.", "We zien welke flows soepel lopen en waar mensen vastlopen.", "We slijpen de flows bij en maken de app sneller en logischer."],
       },
       priceCta: "Stel Loop samen en bekijk de prijzen ↘" },
     model: { tabCampagnes: "Campagnes", tabApp: "App", tabPlatform: "Platform", eyeCampagnes: "De funnel", eyeApp: "De stack", eyePlatform: "Het netwerk" },
-    appStack: { h2: "Gebouwd van fundament tot interface.", lede: "Een app is een stack: elke laag draagt de laag erboven. Wij bouwen ze alle vier, zodat het geheel klopt en meegroeit.", tapHint: "Tik voor uitleg",
+    appStack: { h2: "Gebouwd van fundament tot interface.", lede: "Een goede app is een stack: elke laag draagt de laag erboven. Wij bouwen ze alle vijf zelf, zodat het geheel klopt en met je meegroeit.", tapHint: "Tik voor uitleg",
       layers: [
         { k: "Front end", desc: "De interface die gebruikers zien en bedienen: web, native of PWA, snel en toegankelijk." },
         { k: "Integrations", desc: "Koppelingen met externe systemen en API's, zodat de app meedraait in je bestaande landschap." },
@@ -207,7 +206,7 @@ const I18N = {
       lockedH: "Alleen voor beheer", lockedSub: "Log in met je pincode om de CMS te openen." },
   },
   en: {
-    slogan: "AI architecture for apps and platforms",
+    slogan: "Let's Ignite ambitions",
     nav: { solutions: "Solutions", work: "Work", approach: "Approach", about: "About", insights: "Insights", pricing: "Pricing", contact: "Contact", consult: "Book a consultation", manage: "CMS" },
     mega: {
       groups: [
@@ -251,22 +250,21 @@ const I18N = {
       { value: 21, suffix: " days", label: "Brief to live" },
       { value: 100, suffix: "%", label: "AI-native delivery" },
       { value: 12, suffix: "+", label: "Products shipped" } ],
-    loop: { eyebrow: "Flii Loop", h2: "Improve based on market demand.", center: "Always learning",
-      lede: "A plan for launching and continuously improving your apps and platforms. In sync with your audience, better every month.",
+    loop: { eyebrow: "Flii Loop", h2: "Building doesn't stop at launch.", center: "Always sharper",
+      lede: "Going live is step one. From there the Flii Loop keeps your app or platform sharper every month: we measure what users really do, pull out the biggest opportunities and build the improvement. The product grows with the people using it.",
       items: [
-        { k: "Go live", body: "The new app or platform reaches the market." },
-        { k: "Measure", body: "The response from users is mapped out." },
-        { k: "Analyse", body: "Data is turned into insights, opportunities and problems." },
-        { k: "Improve", body: "We improve, fix or set up a test." } ],
+        { k: "Go live", body: "Your app or platform goes live and the first real users come in." },
+        { k: "Measure", body: "We measure what people actually do: where they click, linger and drop off." },
+        { k: "Analyse", body: "The numbers gain meaning: we see what works, where it leaks and where the biggest gains are." },
+        { k: "Improve", body: "We build the improvement, fix the bottlenecks or run a test, and the loop starts again." } ],
       lens: { generic: "General", platform: "Platform", app: "App", media: "Media" },
       variants: {
-        platform: ["We take your platform live with its backend and real users.", "We measure usage, funnels and where the process stalls.", "We build on what works and automate more.", "We scale the platform further with every iteration."],
-        app: ["We take your app or PWA live with the first users.", "We see in the data how people really use the app.", "We improve flows and add what people miss.", "We make the app faster and smarter with every release."],
-        media: ["We take your campaign live on the chosen channels.", "We measure clicks, cost and conversions per channel.", "We scale what converts and cut the rest.", "We sharpen targeting and creatives every month."],
+        platform: ["We build your platform with backend, roles and data and take it live.", "We measure where users flow through and where the process stalls.", "We see which steps pay off and where you lose people.", "We automate the manual work and scale the platform with your growth."],
+        app: ["We build and launch your app or PWA, ready for the first users.", "We measure how people really use the app, not how we hope they do.", "We see which flows run smoothly and where people get stuck.", "We refine the flows and make the app faster and more logical."],
       },
       priceCta: "Configure your Loop and see pricing ↘" },
     model: { tabCampagnes: "Campaigns", tabApp: "App", tabPlatform: "Platform", eyeCampagnes: "The funnel", eyeApp: "The stack", eyePlatform: "The network" },
-    appStack: { h2: "Built from foundation to interface.", lede: "An app is a stack: each layer carries the one above it. We build all four, so the whole thing holds up and scales.", tapHint: "Tap for details",
+    appStack: { h2: "Built from foundation to interface.", lede: "A good app is a stack: each layer carries the one above it. We build all five ourselves, so the whole thing holds together and grows with you.", tapHint: "Tap for details",
       layers: [
         { k: "Front end", desc: "The interface users see and operate: web, native or PWA, fast and accessible." },
         { k: "Integrations", desc: "Connections to external systems and APIs, so the app fits your existing landscape." },
