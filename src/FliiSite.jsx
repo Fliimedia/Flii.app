@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, createContext, useContext } from "react";
 
 // ============================================================
-// Flii.app : AI architectuur & marketing apps
+// Flii.app : AI-architectuur voor apps en platformen
 // Dutch by default, EN toggle in the fixed bottom dock bar.
 // Hash routing: #/ home · #/cms · #/app|insight|review|cert/:id
 // Content via Supabase REST (fetch) with localStorage fallback.
@@ -13,7 +13,7 @@ const BRANDS = ["Weddy", "Aperture", "Populos", "Waryte", "FC Data"];
 /* ---------- i18n ---------- */
 const I18N = {
   nl: {
-    slogan: "AI architectuur & marketing apps",
+    slogan: "AI-architectuur voor apps en platformen",
     nav: { solutions: "Diensten", work: "Werk", approach: "Aanpak", about: "Over ons", insights: "Inzichten", pricing: "Prijzen", contact: "Contact", consult: "Plan een gesprek", manage: "CMS" },
     mega: {
       groups: [
@@ -21,9 +21,6 @@ const I18N = {
           { label: "App & UX design", desc: "Conversiegericht ontwerp", href: "#/dienst/app-ux" },
           { label: "Platform development", desc: "Schaalbaar, met backend", href: "#/dienst/platform" },
           { label: "AI integratie", desc: "AI in je processen", href: "#/dienst/ai" } ] },
-        { group: "Groeien", blurb: "Maak van het product groei.", items: [
-          { label: "Marketing campagnes", desc: "Over de juiste kanalen", href: "#/dienst/campaigns" },
-          { label: "Media performance", desc: "Sturen op rendement", href: "#/dienst/media" } ] },
       ],
       featureK: "Flii Loop", featureT: "Eén loop die blijft leren →",
     },
@@ -53,19 +50,7 @@ const I18N = {
           lede: "We integreren AI daar waar het rendeert: assistenten, automatisering en slimme functies die in je bestaande processen passen, niet ernaast.",
           help: [{ h: "Tijd terug", b: "AI neemt repeterend werk over, je team houdt tijd over voor wat telt." }, { h: "Altijd bereikbaar", b: "Assistenten die vragen beantwoorden en leads kwalificeren, dag en nacht." }, { h: "Betere beslissingen", b: "Modellen die patronen zien die mensen missen." }],
           exec: [{ h: "Kansen vinden", b: "We zoeken waar AI het meeste oplevert in jouw proces." }, { h: "Ontwerp", b: "We kiezen model, data en de plek in de flow." }, { h: "Integratie", b: "We bouwen het in je tools en koppelen de data." }, { h: "Bijsturen", b: "We meten de output en verbeteren de kwaliteit." }],
-          outcome: "AI die meedraait in je processen en elke maand slimmer wordt.", loop: ["Je bouwt je eerste AI-functie in je eigen proces.", "Je meet waar hij tijd wint en waar hij mist.", "Je ziet waar de output klopt en waar niet.", "Je scherpt prompts, data en logica aan."] },
-        { slug: "campaigns", tag: "Campagnes", title: "Marketing campagnes",
-          body: "Content en campagnes voor elk kanaal. In de stem van jouw merk, gericht op resultaat.",
-          lede: "We zetten campagnes op die renderen: search, social, display, video, outdoor en AI-vindbaarheid. Eén verhaal, over de kanalen waar jouw klant zit.",
-          help: [{ h: "De juiste kanalen", b: "We kiezen kanalen op basis van je doelgroep, niet op gewoonte." }, { h: "Meetbaar rendement", b: "Elke euro is te volgen van klik tot klant." }, { h: "Eén verhaal", b: "Consistente boodschap en creatives over alle kanalen." }],
-          exec: [{ h: "Strategie", b: "Doelgroep, boodschap en kanaalkeuze." }, { h: "Creatie", b: "Advertenties, teksten en visuals die opvallen." }, { h: "Lanceren", b: "Opzet, tracking en de eerste live campagnes." }, { h: "Optimaliseren", b: "We schalen wat werkt en snoeien de rest." }],
-          outcome: "Campagnes die te volgen zijn tot op de klant, en elke maand scherper.", loop: ["Je zet je campagne live over de gekozen kanalen.", "Je meet bereik, kliks en conversies per kanaal.", "Je ziet welke creatives en boodschappen werken.", "Je schaalt de winnaars en scherpt de targeting aan."] },
-        { slug: "media", tag: "Performance", title: "Media performance",
-          body: "Organische inzet en adverteren op 20+ media kanalen. Gedreven door data, gericht op resultaat.",
-          lede: "Beheer en optimalisatie van je media. We sturen doorlopend op de cijfers die tellen, verbeteren wat rendeert en schrappen wat niet werkt.",
-          help: [{ h: "Minder verspilling", b: "Budget verschuift naar wat het beste presteert." }, { h: "Grip op de cijfers", b: "Rapportage op omzet en waarde per bezoeker, geen ijdele cijfers." }, { h: "Continu beter", b: "Elke maand een iteratie op basis van echte data." }],
-          exec: [{ h: "Meten", b: "We zetten tracking en attributie goed neer." }, { h: "Analyseren", b: "We lezen de data en vinden de knelpunten." }, { h: "Bijsturen", b: "We optimaliseren biedingen, doelgroepen en creatives." }, { h: "Rapporteren", b: "Transparante rapportage op wat echt telt." }],
-          outcome: "Media die elke maand meetbaar beter presteert.", loop: ["Je zet je media live op de gekozen kanalen.", "Je meet kliks, kosten en conversies per kanaal.", "Je ziet wat converteert en wat budget verspilt.", "Je schaalt de winnaars en scherpt de targeting aan."] }] },
+          outcome: "AI die meedraait in je processen en elke maand slimmer wordt.", loop: ["Je bouwt je eerste AI-functie in je eigen proces.", "Je meet waar hij tijd wint en waar hij mist.", "Je ziet waar de output klopt en waar niet.", "Je scherpt prompts, data en logica aan."] }] },
     loopCta: { k: "Flii Loop", h2: "Get in the Loop", body: "Lanceer, meet en verbeter. Zet feedback om naar duurzame verbetering.", pricing: "Bekijk Flii Loop ↗", talk: "Plan een gesprek" },
     certsLabel: "Gecertificeerd & partner",
     stats: [
@@ -73,9 +58,9 @@ const I18N = {
       { value: 100, suffix: "%", label: "AI-native oplevering" },
       { value: 12, suffix: "+", label: "Producten gelanceerd" } ],
     loop: { eyebrow: "Flii Loop", h2: "Verbeter op basis van marktvraag.", center: "Altijd lerend",
-      lede: "Een plan voor het opstarten en blijvend verbeteren van jouw apps, platformen of media. Synchroon aan de wensen van je doelgroep, elke maand beter.",
+      lede: "Een plan voor het opstarten en blijvend verbeteren van jouw apps en platformen. Synchroon aan de wensen van je doelgroep, elke maand beter.",
       items: [
-        { k: "Livegang", body: "De nieuwe app, campagne of platform bereikt de markt." },
+        { k: "Livegang", body: "De nieuwe app of het platform bereikt de markt." },
         { k: "Measure", body: "De reactie van gebruikers wordt in kaart gebracht." },
         { k: "Analyse", body: "Data wordt omgezet naar inzichten, kansen en problemen." },
         { k: "Improve", body: "We verbeteren, fixen of zetten een test op." } ],
@@ -94,16 +79,16 @@ const I18N = {
         { k: "Databases", desc: "Waar je data leeft: veilig, gestructureerd en klaar om op te schalen." },
         { k: "Hosting", desc: "De draaiende omgeving: betrouwbare, schaalbare hosting en geautomatiseerde deployment." },
         { k: "Codebase", desc: "Het fundament: schone, onderhoudbare applicatiecode waar alles op rust." } ] },
-    platformNet: { h2: "Je platform als spil van je media.", lede: "Het platform staat centraal en verbindt al je kanalen. Data stroomt heen en weer, elk kanaal voedt het geheel.", tapHint: "Tik voor uitleg", center: "Platform",
+    platformNet: { h2: "Je platform als spil van je systemen.", lede: "Het platform staat centraal en verbindt al je tools en data. Alles stroomt heen en weer, elk onderdeel voedt het geheel.", tapHint: "Tik voor uitleg", center: "Platform",
       nodes: [
-        { k: "CRM", desc: "Klantdata en segmenten stromen tussen je platform en je CRM." },
-        { k: "Mail", desc: "Geautomatiseerde e-mail en flows, gevoed door platformdata." },
-        { k: "Social", desc: "Organische en betaalde social, gekoppeld aan je content en publiek." },
-        { k: "PR", desc: "Verdiende aandacht en persrelaties rond je platform." },
-        { k: "Search/LLM", desc: "Vindbaarheid in zoekmachines en AI-assistenten." },
-        { k: "Paid media", desc: "Betaald bereik dat verkeer en conversie naar het platform stuurt." },
-        { k: "Outdoor", desc: "Buitenreclame die offline bereik koppelt aan je online platform." },
-        { k: "Print", desc: "Gedrukte uitingen die mensen naar het platform leiden." } ] },
+        { k: "CRM", desc: "Klantdata en segmenten centraal in het platform." },
+        { k: "E-mail", desc: "Transactionele en geautomatiseerde e-mail vanuit het platform." },
+        { k: "Integraties", desc: "Koppelingen met je bestaande tools en externe API's." },
+        { k: "Notificaties", desc: "Realtime meldingen naar gebruikers, in-app en per e-mail." },
+        { k: "Zoeken", desc: "Snel zoeken door alle data in het platform." },
+        { k: "Analytics", desc: "Gebruik, funnels en prestaties in beeld." },
+        { k: "Dashboards", desc: "Inzichten en KPI's overzichtelijk gepresenteerd." },
+        { k: "Rapportage", desc: "Exports en rapporten voor je team." } ] },
     funnel: { eyebrow: "Campagnes", h2: "Van onbekend tot ambassadeur.",
       lede: "Elke campagne begeleidt je doelgroep stap voor stap door de funnel, van de eerste kennismaking tot herhaalaankopen en aanbevelingen.",
       goalLabel: "Doel", exampleLabel: "Voorbeeld", tapHint: "Tik voor beschrijving",
@@ -122,7 +107,7 @@ const I18N = {
       items: [
         { h: "Gefinancierde startups", b: "die een product in de markt willen, met een groeimotor erachter." },
         { h: "Scale-ups", b: "klaar om uitgaven om te zetten in een systeem dat optelt." },
-        { h: "Founder-led merken", b: "die één partner willen die bouwt en marketing doet." },
+        { h: "Founder-led merken", b: "die één partner willen die bouwt en blijft doorontwikkelen." },
         { h: "Productteams", b: "die snelheid, data en een scherpe brief waarderen." } ] },
     steps: { eyebrow: "Hoe het werkt", h2: "Begin simpel.",
       items: [
@@ -172,7 +157,7 @@ const I18N = {
       badge: "Meest gekozen", save: "Je bespaart",
       levelLabel: "Niveau", levels: { basis: "Basis", advanced: "Advanced" },
       phaseLabel: "Pakketten", phases: { plan: "Loop Start", build: "Loop Build", run: "Loop Run" },
-      phaseDesc: { plan: "Research en plan van aanpak, met de optie om dit zelf uit te voeren.", build: "Creatie: de app, het platform of de campagne wordt gebouwd.", run: "Beheer & verbeter: hosting, optimalisatie en doorontwikkeling." },
+      phaseDesc: { plan: "Research en plan van aanpak, met de optie om dit zelf uit te voeren.", build: "Creatie: de app of het platform wordt gebouwd.", run: "Beheer & verbeter: hosting, optimalisatie en doorontwikkeling." },
       phaseByType: {
         campagne: { plan: "Onderzoek en strategie voor je campagnes, om zelf uit te voeren.", build: "Creatie van de content en campagnes.", run: "Beheer en verbetering van je campagnes." },
         app: { plan: "Onderzoek en plan voor je app, om zelf uit te voeren.", build: "Ontwerp en bouw van de app.", run: "Beheer en doorontwikkeling van de app." },
@@ -205,7 +190,7 @@ const I18N = {
       dels: { seoContent: "SEO (content)", seoTech: "SEO (technisch)", sea: "SEA / Google Ads", linkbuilding: "Linkbuilding", socialContent: "Contentcreatie", community: "Community management", paidSocial: "Paid social", socialInfluencer: "Influencer", bannerCreatie: "Bannercreatie", programmaticBuy: "Programmatic inkoop", retargetingSetup: "Retargeting-setup", videoProductie: "Videoproductie", videoMontage: "Montage", videoBuy: "Media-inkoop", spotProductie: "Spotproductie", podcastProductie: "Podcastproductie", audioBuy: "Media-inkoop", templateDesign: "Template-design", emailFlows: "Flows / automation", crmSetup: "CRM-inrichting", flowSetup: "Flow-opzet", msgCopy: "Copy", msgIntegratie: "Integratie", oohOntwerp: "Ontwerp", oohBuy: "Inkoop & planning", oohProductie: "Productie", printOntwerp: "Ontwerp", drukwerk: "Drukwerk", printDistributie: "Distributie", persstrategie: "Persstrategie", influencerMgmt: "Influencer-management", affiliateSetup: "Affiliate-setup" },
       chansH: "Kanalen", delsH: "Diensten", catBase: "Basis", inclFree: "inbegrepen", viaChannels: "via kanalen",
       next: "Volgende", back: "Terug", startOver: "Opnieuw", totalFrom: "Totaal vanaf",
-      refTitle: "Prijsreferentie", loopRef: "Flii Loop", loopRefDesc: "Drie pakketten, per campagne, app, platform of AI. Neem de hele loop of losse pakketten.",
+      refTitle: "Prijsreferentie", loopRef: "Flii Loop", loopRefDesc: "Drie pakketten, per app, platform of AI. Neem de hele loop of losse pakketten.",
       appRef: "App ontwikkeling", appRefDesc: "Drie niveaus. De prijs is de Loop Build-fee; Loop Start en Loop Run reken je apart.", looseRef: "Losse diensten",
       searchRef: "Keyword- en concurrentieonderzoek, structuur, advertentieteksten, conversietracking, optimalisatie en rapportage.",
       socialRef: "Doelgroepbepaling, opzet, A/B-tests, conversietracking, optimalisatie en rapportage. Creatives lopen via content.",
@@ -222,7 +207,7 @@ const I18N = {
       lockedH: "Alleen voor beheer", lockedSub: "Log in met je pincode om de CMS te openen." },
   },
   en: {
-    slogan: "AI architecture & marketing apps",
+    slogan: "AI architecture for apps and platforms",
     nav: { solutions: "Solutions", work: "Work", approach: "Approach", about: "About", insights: "Insights", pricing: "Pricing", contact: "Contact", consult: "Book a consultation", manage: "CMS" },
     mega: {
       groups: [
@@ -230,9 +215,6 @@ const I18N = {
           { label: "App & UX design", desc: "Conversion-smart design", href: "#/dienst/app-ux" },
           { label: "Platform development", desc: "Scalable, with backend", href: "#/dienst/platform" },
           { label: "AI integration", desc: "AI in your processes", href: "#/dienst/ai" } ] },
-        { group: "Grow", blurb: "Turn the product into growth.", items: [
-          { label: "Marketing campaigns", desc: "Across the right channels", href: "#/dienst/campaigns" },
-          { label: "Media performance", desc: "Steered on return", href: "#/dienst/media" } ] },
       ],
       featureK: "Flii Loop", featureT: "One loop that keeps learning →",
     },
@@ -262,19 +244,7 @@ const I18N = {
           lede: "We integrate AI where it pays off: assistants, automation and smart features that fit inside your existing processes, not beside them.",
           help: [{ h: "Time back", b: "AI takes over repetitive work so your team focuses on what matters." }, { h: "Always available", b: "Assistants that answer questions and qualify leads, day and night." }, { h: "Better decisions", b: "Models that spot patterns people miss." }],
           exec: [{ h: "Find the opportunities", b: "We look for where AI pays off most in your process." }, { h: "Design", b: "We pick the model, data and place in the flow." }, { h: "Integration", b: "We build it into your tools and connect the data." }, { h: "Refine", b: "We measure output and improve quality." }],
-          outcome: "AI that runs inside your processes and gets smarter every month.", loop: ["You build your first AI feature into your own process.", "You measure where it saves time and where it misses.", "You see where the output is right and where not.", "You sharpen prompts, data and logic."] },
-        { slug: "campaigns", tag: "Campaigns", title: "Marketing campaigns",
-          body: "Content and campaigns for every channel. In your brand's voice, built for results.",
-          lede: "We set up campaigns that pay back: search, social, display, video, outdoor and AI visibility. One story, across the channels where your customer is.",
-          help: [{ h: "The right channels", b: "We pick channels based on your audience, not habit." }, { h: "Measurable return", b: "Every euro is traceable from click to customer." }, { h: "One story", b: "Consistent message and creative across all channels." }],
-          exec: [{ h: "Strategy", b: "Audience, message and channel choice." }, { h: "Creative", b: "Ads, copy and visuals that stand out." }, { h: "Launch", b: "Setup, tracking and the first live campaigns." }, { h: "Optimise", b: "We scale what works and cut the rest." }],
-          outcome: "Campaigns traceable down to the customer, sharper every month.", loop: ["You launch your campaign across the chosen channels.", "You measure reach, clicks and conversions per channel.", "You see which creatives and messages work.", "You scale the winners and sharpen targeting."] },
-        { slug: "media", tag: "Performance", title: "Media performance",
-          body: "Organic and paid across 20+ media channels. Driven by data, focused on results.",
-          lede: "Management and optimisation of your media. We steer continuously on the numbers that matter, improve what pays off and cut what does not.",
-          help: [{ h: "Less waste", b: "Budget shifts to what performs best." }, { h: "Grip on the numbers", b: "Reporting on revenue and value per visitor, no vanity metrics." }, { h: "Continuously better", b: "An iteration every month based on real data." }],
-          exec: [{ h: "Measure", b: "We set up tracking and attribution properly." }, { h: "Analyse", b: "We read the data and find the bottlenecks." }, { h: "Adjust", b: "We optimise bids, audiences and creative." }, { h: "Report", b: "Transparent reporting on what really counts." }],
-          outcome: "Media that performs measurably better every month.", loop: ["You launch your media on the chosen channels.", "You measure clicks, cost and conversions per channel.", "You see what converts and what wastes budget.", "You scale the winners and sharpen targeting."] }] },
+          outcome: "AI that runs inside your processes and gets smarter every month.", loop: ["You build your first AI feature into your own process.", "You measure where it saves time and where it misses.", "You see where the output is right and where not.", "You sharpen prompts, data and logic."] }] },
     loopCta: { k: "Flii Loop", h2: "Get in the Loop", body: "Launch, measure and improve. Turn feedback into lasting improvement.", pricing: "See Flii Loop ↗", talk: "Book a consultation" },
     certsLabel: "Certified & partnered",
     stats: [
@@ -282,9 +252,9 @@ const I18N = {
       { value: 100, suffix: "%", label: "AI-native delivery" },
       { value: 12, suffix: "+", label: "Products shipped" } ],
     loop: { eyebrow: "Flii Loop", h2: "Improve based on market demand.", center: "Always learning",
-      lede: "A plan for launching and continuously improving your apps, platforms or media. In sync with your audience, better every month.",
+      lede: "A plan for launching and continuously improving your apps and platforms. In sync with your audience, better every month.",
       items: [
-        { k: "Go live", body: "The new app, campaign or platform reaches the market." },
+        { k: "Go live", body: "The new app or platform reaches the market." },
         { k: "Measure", body: "The response from users is mapped out." },
         { k: "Analyse", body: "Data is turned into insights, opportunities and problems." },
         { k: "Improve", body: "We improve, fix or set up a test." } ],
@@ -303,16 +273,16 @@ const I18N = {
         { k: "Databases", desc: "Where your data lives: secure, structured and ready to scale." },
         { k: "Hosting", desc: "The running environment: reliable, scalable hosting and automated deployment." },
         { k: "Codebase", desc: "The foundation: clean, maintainable application code everything rests on." } ] },
-    platformNet: { h2: "Your platform at the heart of your media.", lede: "The platform sits at the centre and connects all your channels. Data flows both ways, every channel feeds the whole.", tapHint: "Tap for details", center: "Platform",
+    platformNet: { h2: "Your platform at the heart of your systems.", lede: "The platform sits at the centre and connects all your tools and data. Everything flows both ways, every part feeds the whole.", tapHint: "Tap for details", center: "Platform",
       nodes: [
-        { k: "CRM", desc: "Customer data and segments flow between your platform and your CRM." },
-        { k: "Mail", desc: "Automated email and flows, fed by platform data." },
-        { k: "Social", desc: "Organic and paid social, tied to your content and audience." },
-        { k: "PR", desc: "Earned attention and press relations around your platform." },
-        { k: "Search/LLM", desc: "Findability in search engines and AI assistants." },
-        { k: "Paid media", desc: "Paid reach that drives traffic and conversion to the platform." },
-        { k: "Outdoor", desc: "Out-of-home that links offline reach to your online platform." },
-        { k: "Print", desc: "Printed touchpoints that lead people to the platform." } ] },
+        { k: "CRM", desc: "Customer data and segments, central to the platform." },
+        { k: "Email", desc: "Transactional and automated email from the platform." },
+        { k: "Integrations", desc: "Connections to your existing tools and external APIs." },
+        { k: "Notifications", desc: "Real-time alerts to users, in-app and by email." },
+        { k: "Search", desc: "Fast search across all data in the platform." },
+        { k: "Analytics", desc: "Usage, funnels and performance in view." },
+        { k: "Dashboards", desc: "Insights and KPIs presented clearly." },
+        { k: "Reporting", desc: "Exports and reports for your team." } ] },
     funnel: { eyebrow: "Campaigns", h2: "From stranger to advocate.",
       lede: "Every campaign guides your audience step by step through the funnel, from the first introduction to repeat purchases and referrals.",
       goalLabel: "Goal", exampleLabel: "Example", tapHint: "Tap for description",
@@ -381,7 +351,7 @@ const I18N = {
       badge: "Most chosen", save: "You save",
       levelLabel: "Level", levels: { basis: "Basic", advanced: "Advanced" },
       phaseLabel: "Packages", phases: { plan: "Loop Start", build: "Loop Build", run: "Loop Run" },
-      phaseDesc: { plan: "Research and plan of action, with the option to execute it yourself.", build: "Creation: the app, platform or campaign gets built.", run: "Manage & improve: hosting, optimisation and further development." },
+      phaseDesc: { plan: "Research and plan of action, with the option to execute it yourself.", build: "Creation: the app or platform gets built.", run: "Manage & improve: hosting, optimisation and further development." },
       phaseByType: {
         campagne: { plan: "Research and strategy for your campaigns, ready to execute yourself.", build: "Creation of the content and campaigns.", run: "Management and improvement of your campaigns." },
         app: { plan: "Research and plan for your app, ready to execute yourself.", build: "Design and build of the app.", run: "Management and further development of the app." },
@@ -414,7 +384,7 @@ const I18N = {
       dels: { seoContent: "SEO (content)", seoTech: "SEO (technical)", sea: "SEA / Google Ads", linkbuilding: "Link building", socialContent: "Content creation", community: "Community management", paidSocial: "Paid social", socialInfluencer: "Influencer", bannerCreatie: "Banner creative", programmaticBuy: "Programmatic buying", retargetingSetup: "Retargeting setup", videoProductie: "Video production", videoMontage: "Editing", videoBuy: "Media buying", spotProductie: "Spot production", podcastProductie: "Podcast production", audioBuy: "Media buying", templateDesign: "Template design", emailFlows: "Flows / automation", crmSetup: "CRM setup", flowSetup: "Flow setup", msgCopy: "Copy", msgIntegratie: "Integration", oohOntwerp: "Design", oohBuy: "Buying & planning", oohProductie: "Production", printOntwerp: "Design", drukwerk: "Print", printDistributie: "Distribution", persstrategie: "PR strategy", influencerMgmt: "Influencer management", affiliateSetup: "Affiliate setup" },
       chansH: "Channels", delsH: "Services", catBase: "Base", inclFree: "included", viaChannels: "via channels",
       next: "Next", back: "Back", startOver: "Start over", totalFrom: "Total from",
-      refTitle: "Price reference", loopRef: "Flii Loop", loopRefDesc: "Three packages, per campaign, app, platform or AI. Take the full loop or single packages.",
+      refTitle: "Price reference", loopRef: "Flii Loop", loopRefDesc: "Three packages, per app, platform or AI. Take the full loop or single packages.",
       appRef: "App development", appRefDesc: "Three levels. The price is the Loop Build fee; Loop Start and Loop Run are billed separately.", looseRef: "Add-on services",
       searchRef: "Keyword and competitor research, structure, ad copy, conversion tracking, optimisation and reporting.",
       socialRef: "Audience targeting, setup, A/B tests, conversion tracking, optimisation and reporting. Creatives run via content.",
@@ -440,10 +410,10 @@ const shotUrl = (url) => `https://image.thum.io/get/width/1440/crop/900/wait/6/$
 const DEFAULT_APPS = [
   { id: "performance-os", title: "Performance OS", client: "Flii Media", tag: "Analytics / Dashboard",
     link: "https://dashboard-zo-git-demo-flii-media.vercel.app/",
-    summary: "Marketing-dashboard dat GA4-data omzet naar heldere stuurinformatie.",
+    summary: "Analytics-dashboard dat GA4-data omzet naar heldere stuurinformatie.",
     lead: "Een dashboard dat ruwe analytics vertaalt naar beslissingen die een team meteen kan nemen.",
     details: [
-      { k: "Wat", v: "Een marketing- en groei-dashboard bovenop Google Analytics 4." },
+      { k: "Wat", v: "Een analytics- en groei-dashboard bovenop Google Analytics 4." },
       { k: "Inhoud", v: "Scorecards, kanalen, een conversiefunnel en demografie, met een AI-samenvatting en business insights die reageren op je eigen context." },
       { k: "Stack", v: "React met de GA4 Data API en interactieve grafieken." },
     ] },
@@ -1073,7 +1043,7 @@ function LoopRing() {
   return (
     <>
     <div className="loop-lens loop-lens-top">
-      {["platform", "app", "media"].map((k) => (
+      {["platform", "app"].map((k) => (
         <button key={k} className={`loop-lens-btn ${lens === k ? "on" : ""}`} onClick={() => setLens((v) => (v === k ? "generic" : k))} aria-pressed={lens === k}>
           <span className="loop-lens-ic" aria-hidden>{LENS_ICONS[k]}</span>
           <span className="loop-lens-l">{t.loop.lens[k]}</span>
@@ -1229,10 +1199,7 @@ const BRAND_SVGS = {
   linkedin: (<svg viewBox="0 0 24 24"><path fill="#0A66C2" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z" /></svg>),
   spotify: (<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#1DB954" /><g fill="none" stroke="#000" strokeWidth="1.6" strokeLinecap="round"><path d="M7 9.5c3-.9 6.6-.6 9.1 1" /><path d="M7.6 12.4c2.6-.7 5.5-.4 7.5 1" /><path d="M8.1 15.2c2-.5 4.1-.3 5.8.8" /></g></svg>),
 };
-const SERVICE_LOGOS = {
-  campaigns: ["google", "instagram", "tiktok", "youtube", "linkedin", "facebook", "spotify"],
-  media: ["google", "facebook", "instagram", "tiktok", "youtube", "linkedin"],
-};
+const SERVICE_LOGOS = {};
 function BrandLogo({ name }) {
   const svg = BRAND_SVGS[name];
   if (!svg) return null;
@@ -1508,10 +1475,10 @@ function PlatformNet() {
 function ModelSection() {
   const { t } = useLang();
   const m = t.model;
-  const [tab, setTab] = useState("campagnes");
-  const head = tab === "app" ? t.appStack : tab === "platform" ? t.platformNet : t.funnel;
-  const eyebrow = tab === "app" ? m.eyeApp : tab === "platform" ? m.eyePlatform : m.eyeCampagnes;
-  const tabs = [["campagnes", m.tabCampagnes], ["app", m.tabApp], ["platform", m.tabPlatform]];
+  const [tab, setTab] = useState("app");
+  const head = tab === "platform" ? t.platformNet : t.appStack;
+  const eyebrow = tab === "platform" ? m.eyePlatform : m.eyeApp;
+  const tabs = [["app", m.tabApp], ["platform", m.tabPlatform]];
   return (
     <section className="band band-mist" id="campagnes">
       <div className="wrap">
@@ -1520,7 +1487,6 @@ function ModelSection() {
           {tabs.map(([k, label]) => (<button key={k} className={`model-tab ${tab === k ? "on" : ""}`} onClick={() => setTab(k)} aria-pressed={tab === k}>{label}</button>))}
         </div>
         <div className="model-view" key={tab}>
-          {tab === "campagnes" && <FunnelViz />}
           {tab === "app" && <AppStack />}
           {tab === "platform" && <PlatformNet />}
         </div>
@@ -1877,7 +1843,7 @@ const PRICING = {
   contentCreatie: 650,
   app: { basis: 5000, advanced: 8500, platform: 18000 },
 };
-const SCOPE_KEYS = ["campagne", "app", "platform", "ai"];
+const SCOPE_KEYS = ["app", "platform", "ai"];
 const PLATFORM_FNS = ["website", "ecommerce", "ai"];
 const APP_KINDS = ["webapp", "pwa", "nativeApp"];
 const APP_OPTS = ["uxDesign", "backendApi", "appIntegraties", "appStorePub"];
@@ -2295,18 +2261,6 @@ function Pricing({ openConsult }) {
                   <div className="ref-card-t">{k === "platform" ? p.scopes.platform : p.levels[k]}</div>
                   <div className="ref-card-price mono">{p.from} {eur(PRICING.app[k])}</div>
                   <div className="ref-card-d">{desc}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="ref-block">
-            <div className="ref-block-h"><h3 className="ref-t">{p.looseRef}</h3></div>
-            <div className="ref-grid">
-              {CHANNEL_TREE.map((c) => (
-                <div key={c.key} className="ref-card">
-                  <div className="ref-card-t">{p.cats[c.key]}</div>
-                  <div className="ref-card-price mono">{c.once === 0 && c.mo === 0 ? p.onRequest : (c.mo ? `${p.setup} ${eur(c.once)} \u00B7 ${p.mgmt} ${eur(c.mo)}${p.mo}` : `${p.setup} ${eur(c.once)}`)}</div>
-                  <div className="ref-card-d">{p.catDesc[c.key]}</div>
                 </div>
               ))}
             </div>
