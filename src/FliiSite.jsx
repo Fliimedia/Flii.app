@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef, createContext, useContext } from "r
 // ============================================================
 // Flii.app : Let's Ignite ambitions
 // Dutch by default, EN toggle in the fixed bottom dock bar.
-// Hash routing: #/ home · #/cms · #/app|insight|review|cert/:id
+// Hash routing: #/ home · #/app|insight|review|cert/:id
 // Content via Supabase REST (fetch) with localStorage fallback.
 // ============================================================
 
@@ -132,7 +132,7 @@ const I18N = {
       detailPh: { vraag: "Waar loop je tegenaan?", advies: "Wat wil je bereiken?", product: "Welk product spreekt je aan?" },
       subject: { vraag: "Vraag via flii.app", advies: "Adviesgesprek via flii.app", product: "Productinteresse via flii.app" } },
     footer: { solutions: "Diensten", company: "Bedrijf", connect: "Connect",
-      company_links: [ { label: "Werk", href: "#work" }, { label: "Over ons", href: "#about" }, { label: "Inzichten", href: "#blog" }, { label: "Prijzen", href: "#/prijzen" }, { label: "CMS", href: "#/cms" } ],
+      company_links: [ { label: "Werk", href: "#work" }, { label: "Over ons", href: "#about" }, { label: "Inzichten", href: "#blog" }, { label: "Prijzen", href: "#/prijzen" } ],
       bottom: "Snel gebouwd. Afgesteld op prestatie." },
     cms: { back: "← Terug naar site", eyebrow: "Control panel", h1: "Content", reset: "Herstel standaard",
       status: { supabase: "Gesynct met Supabase", loading: "Verbinden met Supabase…", local: "Lokaal (deze browser)" },
@@ -325,7 +325,7 @@ const I18N = {
       detailPh: { vraag: "What are you running into?", advies: "What do you want to achieve?", product: "Which product appeals to you?" },
       subject: { vraag: "Question via flii.app", advies: "Consultation via flii.app", product: "Product interest via flii.app" } },
     footer: { solutions: "Solutions", company: "Company", connect: "Connect",
-      company_links: [ { label: "Work", href: "#work" }, { label: "About", href: "#about" }, { label: "Insights", href: "#blog" }, { label: "Pricing", href: "#/prijzen" }, { label: "CMS", href: "#/cms" } ],
+      company_links: [ { label: "Work", href: "#work" }, { label: "About", href: "#about" }, { label: "Insights", href: "#blog" }, { label: "Pricing", href: "#/prijzen" } ],
       bottom: "Built fast. Tuned for performance." },
     cms: { back: "← Back to site", eyebrow: "Control panel", h1: "Content", reset: "Reset to defaults",
       status: { supabase: "Synced with Supabase", loading: "Connecting to Supabase…", local: "Local (this browser)" },
@@ -704,7 +704,6 @@ function parseHash() {
   const h = (window.location.hash || "").replace(/^#\/?/, "");
   if (!h) return { name: "home" };
   const [seg, id] = h.split("/");
-  if (seg === "cms") return { name: "cms" };
   if (seg === "prijzen") return { name: "prijzen" };
   if (seg === "dienst" && id) return { name: "service", id };
   if (["app", "insight", "review", "cert"].includes(seg) && id) return { name: seg, id };
@@ -741,7 +740,7 @@ function FliiLogo({ dark = false, variant = "word" }) {
   }
   return (
     <span className={`brand brand-word-only ${dark ? "brand-on-dark" : ""}`}>
-      <span className="brand-word">flii<span className="brand-dot">.app</span></span>
+      <span className="brand-word">flii<svg className="brand-heart" viewBox="0 0 24 24" aria-hidden><path fill={MAG} d="M12 21s-7.5-4.7-9.6-9.2C.9 8.5 2.6 5 6 4.3c2.2-.5 4.4.6 6 2.6 1.6-2 3.8-3.1 6-2.6 3.4.7 5.1 4.2 3.6 7.5C19.5 16.3 12 21 12 21z" /></svg><span className="brand-dot">app</span></span>
     </span>
   );
 }
@@ -866,7 +865,7 @@ const UnlockIcon = () => (
   </svg>
 );
 /* ---------- nav + footer ---------- */
-function Nav({ openConsult, admin, onLogin, onLogout }) {
+function Nav({ openConsult }) {
   const { t, lang, setLang } = useLang();
   const [menu, setMenu] = useState(false);
   const [solOpen, setSolOpen] = useState(false);
@@ -917,30 +916,26 @@ function Nav({ openConsult, admin, onLogin, onLogout }) {
             </div>
           ))}
           {top.map((n) => <a key={n.label} href={n.href} onClick={close} className="mobile-top">{n.label}</a>)}
-          {admin && <a href="#/cms" onClick={close} className="btn btn-ghost mobile-cms">{t.nav.manage}</a>}
           <button className="btn btn-primary" onClick={(e) => { close(); openConsult(e); }}>{t.nav.consult}</button>
           <div className="mobile-foot">
             <div className="lang-toggle" role="group" aria-label="Language">
               <button className={`lang-btn ${lang === "nl" ? "on" : ""}`} onClick={() => setLang("nl")}>NL</button>
               <button className={`lang-btn ${lang === "en" ? "on" : ""}`} onClick={() => setLang("en")}>EN</button>
             </div>
-            {admin
-              ? <button className="mobile-login" onClick={() => { close(); onLogout(); }}><UnlockIcon /><span>{t.login.logoutAria}</span></button>
-              : <button className="mobile-login" onClick={() => { close(); onLogin(); }}><LockIcon /><span>{t.login.loginAria}</span></button>}
           </div>
         </div>
       )}
     </header>
   );
 }
-function Footer({ admin }) {
+function Footer() {
   const { t } = useLang();
   return (
     <footer className="footer">
       <div className="wrap footer-grid">
         <div><a href="#/" aria-label="Flii.app home"><FliiLogo dark variant="word" /></a><p className="footer-note">{t.slogan}.</p></div>
         <div className="footer-col"><div className="footer-h mono">{t.footer.solutions}</div>{t.mega.groups.flatMap((g) => g.items).map((c) => <a key={c.label} href={c.href}>{c.label}</a>)}</div>
-        <div className="footer-col"><div className="footer-h mono">{t.footer.company}</div>{t.footer.company_links.filter((c) => c.href !== "#/cms" || admin).map((c) => <a key={c.label} href={c.href}>{c.label}</a>)}</div>
+        <div className="footer-col"><div className="footer-h mono">{t.footer.company}</div>{t.footer.company_links.filter((c) => c.href !== "#/cms").map((c) => <a key={c.label} href={c.href}>{c.label}</a>)}</div>
         <div className="footer-col"><div className="footer-h mono">{t.footer.connect}</div><a href="https://wa.me/31640881169" target="_blank" rel="noreferrer">WhatsApp</a><a href="https://linkedin.com/company/flii-media" target="_blank" rel="noreferrer">LinkedIn</a><a href="mailto:hello@flii.nl">hello@flii.nl</a></div>
       </div>
       <div className="wrap footer-bottom"><span>© {new Date().getFullYear()} Flii.app</span><span className="mono">{t.footer.bottom}</span></div>
@@ -949,7 +944,7 @@ function Footer({ admin }) {
 }
 
 /* ---------- dock bar (fixed bottom) ---------- */
-function DockBar({ openConsult, admin, onLogin, onLogout }) {
+function DockBar({ openConsult }) {
   const { t, lang, setLang } = useLang();
   return (
     <div className="dockbar">
@@ -961,9 +956,6 @@ function DockBar({ openConsult, admin, onLogin, onLogout }) {
         <button className="dock-consult" onClick={openConsult} aria-label={t.nav.consult}>
           <CalIcon /><span className="dock-consult-label">{t.nav.consult}</span>
         </button>
-        {admin
-          ? <button className="icon-btn admin-btn on dock-login" onClick={onLogout} aria-label={t.login.logoutAria} title={t.login.logoutAria}><UnlockIcon /></button>
-          : <button className="icon-btn admin-btn dock-login" onClick={onLogin} aria-label={t.login.loginAria} title={t.login.loginAria}><LockIcon /></button>}
       </div>
     </div>
   );
@@ -2541,15 +2533,11 @@ export default function FliiSite() {
   const route = useRoute();
   const [consult, setConsult] = useState(false);
   const [consultPrefill, setConsultPrefill] = useState("");
-  const [loginOpen, setLoginOpen] = useState(false);
-  const [admin, setAdmin] = useState(() => { try { return sessionStorage.getItem("flii_admin") === "1"; } catch (e) { return false; } });
   const [lang, setLangState] = useState(() => { try { return localStorage.getItem("flii_lang") || "nl"; } catch (e) { return "nl"; } });
   const setLang = (l) => { setLangState(l); try { localStorage.setItem("flii_lang", l); } catch (e) {} };
   const t = I18N[lang] || I18N.nl;
   const openConsult = (e, prefill) => { if (e && e.preventDefault) e.preventDefault(); setConsultPrefill(typeof prefill === "string" ? prefill : ""); setConsult(true); };
-  const grantAdmin = () => { setAdmin(true); try { sessionStorage.setItem("flii_admin", "1"); } catch (e) {} };
-  const logout = () => { setAdmin(false); try { sessionStorage.removeItem("flii_admin"); } catch (e) {} if (route.name === "cms") window.location.hash = "#/"; };
-  useEffect(() => { const onKey = (e) => { if (e.key === "Escape") { setConsult(false); setLoginOpen(false); } }; window.addEventListener("keydown", onKey); document.body.style.overflow = (consult || loginOpen) ? "hidden" : ""; return () => { window.removeEventListener("keydown", onKey); document.body.style.overflow = ""; }; }, [consult, loginOpen]);
+  useEffect(() => { const onKey = (e) => { if (e.key === "Escape") setConsult(false); }; window.addEventListener("keydown", onKey); document.body.style.overflow = consult ? "hidden" : ""; return () => { window.removeEventListener("keydown", onKey); document.body.style.overflow = ""; }; }, [consult]);
   useEffect(() => { if (route.name !== "home") window.scrollTo(0, 0); }, [route.name, route.id]);
   useEffect(() => { document.documentElement.lang = lang; }, [lang]);
 
@@ -2557,19 +2545,17 @@ export default function FliiSite() {
     <LangCtx.Provider value={{ lang, setLang, t }}>
       <div className="flii-root">
         <style>{CSS}</style>
-        <Nav openConsult={openConsult} admin={admin} onLogin={() => setLoginOpen(true)} onLogout={logout} />
+        <Nav openConsult={openConsult} />
         {route.name === "home" && <Home content={content.data} openConsult={openConsult} />}
-        {route.name === "cms" && (admin ? <CMS content={content} /> : <LockedNotice onLogin={() => setLoginOpen(true)} />)}
         {route.name === "prijzen" && <Pricing openConsult={openConsult} />}
         {route.name === "service" && <ServicePage id={route.id} openConsult={openConsult} />}
         {route.name === "app" && <AppDetail content={content.data} id={route.id} />}
         {route.name === "insight" && <ArticleDetail content={content.data} id={route.id} />}
         {route.name === "review" && <ReviewDetail content={content.data} id={route.id} />}
         {route.name === "cert" && <CertDetail content={content.data} id={route.id} />}
-        <Footer admin={admin} />
-        <DockBar openConsult={openConsult} admin={admin} onLogin={() => setLoginOpen(true)} onLogout={logout} />
+        <Footer />
+        <DockBar openConsult={openConsult} />
         {consult && <ConsultModal onClose={() => setConsult(false)} prefill={consultPrefill} />}
-        {loginOpen && <LoginModal onClose={() => setLoginOpen(false)} onSuccess={grantAdmin} />}
       </div>
     </LangCtx.Provider>
   );
@@ -2606,7 +2592,7 @@ button{font-family:inherit;}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;height:70px;gap:16px;}
 .brand{display:inline-flex;align-items:center;gap:9px;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:23px;letter-spacing:-0.03em;color:var(--ink);}
 .logo-mark{width:30px;height:30px;display:block;flex:none;}
-.brand-word{line-height:1;}.brand-dot{color:var(--mag);}.brand-on-dark{color:var(--paper);}
+.brand-word{line-height:1;display:inline-flex;align-items:baseline;gap:1px;}.brand-heart{width:0.42em;height:0.42em;flex:none;align-self:flex-end;margin:0 0.04em 0.06em;}.brand-dot{color:var(--mag);}.brand-on-dark{color:var(--paper);}
 .nav-links{display:flex;align-items:center;gap:4px;margin-left:auto;}
 .nav-item{position:relative;}
 .nav-link{background:none;border:none;font:inherit;font-size:15px;font-weight:500;color:var(--mid);padding:8px 14px;border-radius:8px;cursor:pointer;transition:color .15s;}
@@ -2705,11 +2691,11 @@ button{font-family:inherit;}
 .fnl-outline{fill:none;stroke:rgba(174,34,73,0.42);stroke-width:1.4;stroke-linejoin:round;pointer-events:none;}
 .fnl-build{fill:none;stroke:#FF4D8D;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;filter:url(#fnlGlowF);stroke-dasharray:1;stroke-dashoffset:1;opacity:0;pointer-events:none;animation:fnlBuild 5.6s ease-in-out infinite;}
 @keyframes fnlBuild{0%{stroke-dashoffset:1;opacity:0;}6%{opacity:1;}46%{stroke-dashoffset:0;opacity:1;}72%{opacity:1;}100%{stroke-dashoffset:0;opacity:0;}}
-.fnl-desc{margin:24px auto 0;max-width:680px;text-align:center;display:flex;flex-direction:column;gap:7px;animation:fnlFade .3s ease;}
+.fnl-desc{margin:26px auto 0;max-width:680px;text-align:center;display:flex;flex-direction:column;gap:8px;padding:18px 22px;border:1px solid var(--line);border-radius:14px;background:var(--card);animation:fnlFade .3s ease;}
 .fnl-desc-k{font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--mag);font-weight:600;}
 .fnl-desc-g{font-size:15px;color:var(--ink);line-height:1.5;}
 .fnl-desc-g strong{color:var(--mag);font-weight:600;}
-.fnl-desc-ex{font-size:13.5px;color:var(--soft);line-height:1.5;}
+.fnl-desc-ex{font-size:13.5px;color:var(--mid);line-height:1.55;margin-top:4px;padding:14px 18px;border:1px solid transparent;border-radius:12px;background:linear-gradient(var(--mist),var(--mist)) padding-box, var(--gloss) border-box;text-align:left;}
 .fnl-desc-ex strong{color:var(--mid);font-weight:600;}
 .model-tabs{display:flex;justify-content:center;gap:8px;margin:34px auto 4px;flex-wrap:wrap;}
 .model-tab{padding:9px 18px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--mid);font:inherit;font-size:13px;font-weight:600;cursor:pointer;transition:border-color .15s,color .15s,box-shadow .15s;}
