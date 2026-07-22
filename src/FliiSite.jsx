@@ -84,10 +84,9 @@ const I18N = {
         { k: "E-mail", desc: "Transactionele en geautomatiseerde e-mail vanuit het platform." },
         { k: "Integraties", desc: "Koppelingen met je bestaande tools en externe API's." },
         { k: "Notificaties", desc: "Realtime meldingen naar gebruikers, in-app en per e-mail." },
-        { k: "Zoeken", desc: "Snel zoeken door alle data in het platform." },
+        { k: "Zoeken", desc: "Vindbaarheid van je platform in zoekmachines en AI-chatbots." },
         { k: "Analytics", desc: "Gebruik, funnels en prestaties in beeld." },
-        { k: "Dashboards", desc: "Inzichten en KPI's overzichtelijk gepresenteerd." },
-        { k: "Rapportage", desc: "Exports en rapporten voor je team." } ] },
+        { k: "Dashboards", desc: "Inzichten en KPI's overzichtelijk gepresenteerd." } ] },
     funnel: { eyebrow: "Campagnes", h2: "Van onbekend tot ambassadeur.",
       lede: "Elke campagne begeleidt je doelgroep stap voor stap door de funnel, van de eerste kennismaking tot herhaalaankopen en aanbevelingen.",
       goalLabel: "Doel", exampleLabel: "Voorbeeld", tapHint: "Tik voor beschrijving",
@@ -277,10 +276,9 @@ const I18N = {
         { k: "Email", desc: "Transactional and automated email from the platform." },
         { k: "Integrations", desc: "Connections to your existing tools and external APIs." },
         { k: "Notifications", desc: "Real-time alerts to users, in-app and by email." },
-        { k: "Search", desc: "Fast search across all data in the platform." },
+        { k: "Search", desc: "Findability of your platform in search engines and AI chatbots." },
         { k: "Analytics", desc: "Usage, funnels and performance in view." },
-        { k: "Dashboards", desc: "Insights and KPIs presented clearly." },
-        { k: "Reporting", desc: "Exports and reports for your team." } ] },
+        { k: "Dashboards", desc: "Insights and KPIs presented clearly." } ] },
     funnel: { eyebrow: "Campaigns", h2: "From stranger to advocate.",
       lede: "Every campaign guides your audience step by step through the funnel, from the first introduction to repeat purchases and referrals.",
       goalLabel: "Goal", exampleLabel: "Example", tapHint: "Tap for description",
@@ -2592,7 +2590,7 @@ button{font-family:inherit;}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;height:70px;gap:16px;}
 .brand{display:inline-flex;align-items:center;gap:9px;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:23px;letter-spacing:-0.03em;color:var(--ink);}
 .logo-mark{width:30px;height:30px;display:block;flex:none;}
-.brand-word{line-height:1;display:inline-flex;align-items:baseline;gap:1px;}.brand-heart{width:0.42em;height:0.42em;flex:none;align-self:flex-end;margin:0 0.04em 0.06em;}.brand-dot{color:var(--mag);}.brand-on-dark{color:var(--paper);}
+.brand-word{line-height:1;display:inline-flex;align-items:baseline;gap:0;}.brand-heart{width:0.30em;height:0.30em;flex:none;align-self:flex-end;margin:0 0.01em 0.07em;}.brand-dot{color:var(--mag);}.brand-on-dark{color:var(--paper);}
 .nav-links{display:flex;align-items:center;gap:4px;margin-left:auto;}
 .nav-item{position:relative;}
 .nav-link{background:none;border:none;font:inherit;font-size:15px;font-weight:500;color:var(--mid);padding:8px 14px;border-radius:8px;cursor:pointer;transition:color .15s;}
