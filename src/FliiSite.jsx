@@ -644,7 +644,7 @@ const TABLES = ["reviews", "certs", "apps", "articles"];
 const DEFAULTS = { apps: DEFAULT_APPS, articles: DEFAULT_ARTICLES, reviews: DEFAULT_REVIEWS, certs: DEFAULT_CERTS };
 
 const LS_KEY = "flii_cms_v2";
-const SEED_VERSION = 12;
+const SEED_VERSION = 13;
 function loadStore() { try { const r = localStorage.getItem(LS_KEY); return r ? JSON.parse(r) : null; } catch (e) { return null; } }
 function saveStore(d) { try { localStorage.setItem(LS_KEY, JSON.stringify(d)); } catch (e) {} }
 
@@ -658,7 +658,7 @@ function useContent() {
   const [data, setData] = useState(() => {
     const stored = loadStore();
     if (!stored) return { ...DEFAULTS, _seedV: SEED_VERSION };
-    if (stored._seedV !== SEED_VERSION) return { ...DEFAULTS, ...stored, apps: DEFAULT_APPS, _seedV: SEED_VERSION };
+    if (stored._seedV !== SEED_VERSION) return { ...DEFAULTS, _seedV: SEED_VERSION };
     return { ...DEFAULTS, ...stored };
   });
   const [status, setStatus] = useState(REMOTE ? "loading" : "local");
