@@ -451,61 +451,47 @@ const DEFAULT_APPS = [
     ] },
 ];
 const DEFAULT_ARTICLES = [
-  { id: "stop-kapotte-funnels", title: "Stop met kapotte funnels opschalen", cat: "Performance", date: "jun 2026", read: "6 min", cover: "funnel",
-    excerpt: "Meer leads bij gelijke omzet is een valkuil. Repareer conversie voordat je budget toevoegt.",
-    body: `Er is een moment in bijna elk groeitraject waarop iemand met overtuiging zegt: we moeten meer budget op de advertenties zetten. De cijfers lijken het te steunen. Het verkeer is goedkoop, de kliks komen binnen, en toch blijft de omzet achter. Het antwoord voelt logisch: meer bovenaan erin, dan komt er onderaan vanzelf meer uit. Maar dat klopt alleen als de funnel onderweg niets weglekt. En dat doet hij bijna altijd.
+  { id: "repareer-de-ervaring", title: "Repareer de ervaring, niet het budget", cat: "Product", date: "jun 2026", read: "6 min", cover: "analytics",
+    excerpt: "Groei voor een app of platform komt niet van meer verkeer, maar van minder wrijving. Meet waar gebruikers vastlopen, en los dat eerst op.",
+    body: `Er is een reflex die in bijna elk product opduikt zodra de groei stokt: er moet iets bij. Een extra feature, een nieuw kanaal, meer bezoekers. Bouwen voelt als vooruitgang, en met AI als bouwer kost het bijna niets meer. Juist daarom is het de verkeerde reflex. De grootste groei zit zelden in wat je toevoegt, maar in de wrijving die je weghaalt.
 
-Budget in een funnel pompen die niet converteert, koopt geen groei. Het koopt duurdere teleurstelling. Voordat je ook maar één euro extra uitgeeft, moet je weten waar het pad van klik naar omzet lekt, en dat lek eerst dichten.
+Een app of platform lekt gebruikers op dezelfde manier als een slechte funnel dat doet, alleen zie je het minder makkelijk. Iemand komt binnen, snapt het eerste scherm niet, loopt vast bij stap drie van de aanmelding, of ziet een lege pagina waar iets had moeten staan. Elk van die momenten kost je een gebruiker die je nooit meer terugziet. Meer verkeer erin duwen verandert daar niets aan, het maakt het lek alleen duurder.
 
-## De rekensom die niemand hardop maakt
+## De ervaring is de groeimotor
 
-Stel je verdubbelt je advertentiebudget. In het gunstigste geval verdubbelt je verkeer mee. Maar je conversieratio verandert niet, want aan de funnel zelf heb je niets gedaan. Je betaalt dus twee keer zoveel om exact hetzelfde percentage bezoekers te converteren. Erger nog: schaal je op binnen hetzelfde kanaal, dan bereik je vaak een minder gekwalificeerd publiek en daalt je conversie juist. Je kosten stijgen lineair, je opbrengst sublineair. Dat is geen groei, dat is verlies met een groeigrafiek eromheen.
+Bij een digitaal product is de ervaring geen laagje bovenop het echte werk, het is het werk. Een product dat aanvoelt alsof het klopt, verkoopt zichzelf: mensen blijven, komen terug en vertellen het door. Een product dat op de verkeerde momenten hapert, kun je niet redden met een groter budget. Je betaalt dan alleen om meer mensen door dezelfde slechte deur te sturen.
 
-De eerlijke vraag is niet hoeveel verkeer je kunt kopen, maar hoeveel omzet je haalt per honderd bezoekers, en waar je de andere drieënnegentig verliest. Pas als dat antwoord scherp is, wordt extra budget een hefboom in plaats van een lek.
+Dat is de kern van de Flii Loop. Live gaan is niet het einde maar het begin: daarna meet je wat gebruikers echt doen, en dat gedrag vertelt je waar de ervaring lekt. Niet je onderbuik, niet de mening van de luidste in de vergadering, maar het patroon in de data.
 
-## Wat kapot precies betekent
+## Meet gedrag, niet meningen
 
-Een kapotte funnel is zelden één groot gat. Het zijn meestal drie kleinere, die elkaar versterken:
+De meeste teams meten wat makkelijk is: bezoekers, sessies, misschien een totaal aantal aanmeldingen. Dat zijn cijfers die vanzelf stijgen als je verkeer koopt, maar niets zeggen over of het product werkt. De cijfers die er wel toe doen, zijn lastiger en eerlijker.
 
-- De aanbieding is onduidelijk. De bezoeker snapt binnen vijf seconden niet wat je verkoopt, voor wie het is, en waarom nu.
-- De landingservaring vraagt te veel, te vroeg. Traag laden, een formulier met elf velden, of een pagina die op mobiel uit elkaar valt.
-- De overdracht naar sales lekt. Een lead vult een formulier in en hoort drie dagen niets, of belandt in een inbox die niemand leest.
+- Time to first value: hoe lang duurt het voordat een nieuwe gebruiker voor het eerst iets van waarde doet? Hoe langer die tijd, hoe meer mensen je onderweg verliest.
+- Uitval per stap: op welk scherm in de aanmelding of de kernflow haakt de meeste mensen af? Er is bijna altijd een stap die er ver bovenuit steekt.
+- Herhaalgebruik: komen mensen na dag een terug? Een product dat niemand een tweede keer opent, groeit niet, hoe hard je de voorkant ook vult.
 
-![Van klik naar omzet: waar de meeste funnels hun bezoekers verliezen](funnel)
+![Waar gebruikers vastlopen: het patroon zit in het gedrag, niet in de meningen](analytics)
 
-Elk van die drie kost je een deel van de bezoekers die je net duur hebt ingekocht. Vermenigvuldig de verliezen en je begrijpt waarom meer budget het probleem groter maakt in plaats van kleiner. Een funnel die op klein volume tien procent weglekt, lekt op groot volume nog steeds tien procent, alleen tegen een veel hogere prijs.
+Deze drie samen vertellen je in een paar dagen meer dan een kwartaal aan aannames. Ze wijzen niet naar wat je zou kunnen bouwen, maar naar wat je moet repareren.
 
-## Repareer in deze volgorde
+## Repareer in volgorde van pijn
 
-Begin niet bij het kanaal, begin bij het einde. Werk terug van omzet naar klik, want een reparatie stroomafwaarts is waardeloos zolang het lek erboven zit.
+Als je eenmaal ziet waar het lekt, is de volgorde simpel: begin bij de grootste uitval, niet bij het leukste idee. Een scherm waar veertig procent afhaakt weegt zwaarder dan tien kleine verbeteringen samen. Los dat op, meet opnieuw, en ga door naar de volgende grootste.
 
-Eerst de overdracht. Hoe snel en hoe goed wordt een lead opgevolgd? Een lead die binnen vijf minuten een reactie krijgt, converteert veelvoudig beter dan een lead die een dag moet wachten. Dit is vaak de goedkoopste ingreep met de grootste impact, en hij kost geen cent extra advertentiebudget. Soms is het verschil tussen stilstand en groei niet een nieuw kanaal, maar iemand die de telefoon opneemt.
+Die discipline is moeilijker dan het klinkt, juist omdat bouwen goedkoop is geworden. Als een nieuwe feature in een uur staat, is de verleiding groot om aan de zijkant iets moois te maken in plaats van in het midden iets stuks te repareren. Maar een product met tien half-gebruikte features en een kapotte kernflow groeit niet. Een werkende kernflow wel.
 
-Dan de landingservaring. Meet de werkelijke laadtijd op een gemiddelde telefoon op een gemiddelde verbinding, niet op je glasvezel met een leeg cachegeheugen. Haal velden uit je formulier tot alleen overblijft wat sales echt nodig heeft om het gesprek te beginnen. Eén heldere actie per pagina, niet vier die om aandacht vechten.
+## Waarom dit nu belangrijker is dan ooit
 
-Dan de aanbieding. Dit is het moeilijkste, want het raakt aan positionering. Kan een vreemde in één zin navertellen wat je doet en voor wie? Zo niet, dan converteert geen enkele hoeveelheid verkeer goed, hoe strak de pagina er ook uitziet. De aanbieding repareren is werk dat je niet wegoptimaliseert met knoppen en kleuren, het vraagt dat je een keuze maakt over wie je wel en niet bedient.
+Toen bouwen nog weken kostte, zat de rem vanzelf ingebouwd: je dacht wel twee keer na voordat je iets toevoegde. Nu AI het bouwen overneemt, is die rem weg. Wat overblijft is de keuze: waar besteed je de snelheid aan? Aan meer, of aan beter?
 
-> Verkeer is een vermenigvuldiger, en een vermenigvuldiger werkt twee kanten op. Hij vergroot wat werkt en vergroot net zo hard wat niet werkt.
+Het antwoord is bijna altijd beter. De snelheid die AI je geeft, hoort terug te gaan naar sneller zien waar het product hapert en dat sneller herstellen, niet naar het stapelen van functies die niemand vroeg. Snelheid zonder richting bouwt alleen sneller het verkeerde.
 
-## Meet wat telt, niet wat makkelijk is
+## Eerst dichten, dan opschalen
 
-De meeste dashboards tonen wat eenvoudig te meten is: kliks, impressies, kosten per klik. Dat zijn ijdele cijfers zolang je niet weet wat een bezoeker waard is. De enige metriek die de reparatie stuurt, is de waarde per bezoeker: omzet gedeeld door bezoekers, over een periode die lang genoeg is om je salescyclus te dekken.
+De vraag is dus niet hoeveel bezoekers je erbij kunt kopen, maar hoeveel van de bezoekers die je al hebt doen wat je hoopt, en waar je de rest verliest. Beantwoord die vraag eerst. Repareer de ervaring tot mensen blijven hangen, en pas dan wordt groei een kwestie van meer van hetzelfde.
 
-Zodra je die kent, wordt elke beslissing simpel. Stijgt de waarde per bezoeker na een ingreep? Houden. Daalt hij zodra je opschaalt? Stoppen, en eerst terug naar de funnel. Je hoeft niet te raden en je hoeft niet te discussiëren over onderbuikgevoel, je laat de waarde per bezoeker de beslissing nemen.
-
-## Een rekenvoorbeeld dat blijft hangen
-
-Neem een webshop met honderd bezoekers per dag en een conversie van twee procent. Dat zijn twee verkopen. De eigenaar verdubbelt het budget, het verkeer gaat naar tweehonderd, maar de conversie zakt naar anderhalf procent omdat het extra publiek minder gericht is. Resultaat: drie verkopen in plaats van vier, tegen dubbele advertentiekosten. Hij betaalt meer en groeit minder hard dan de grafiek beloofde.
-
-Nu hetzelfde bedrijf, maar in omgekeerde volgorde. Eerst wordt de productpagina sneller, het formulier korter en de opvolging strakker. De conversie stijgt van twee naar drie procent. Bij dezelfde honderd bezoekers zijn dat al drie verkopen, zonder een euro extra advertentiegeld. Verdubbelt hij daarna het budget, dan staan er zes verkopen, want nu werkt de hogere conversie mee op elke nieuwe bezoeker.
-
-Hetzelfde budget, hetzelfde verkeer, een totaal andere uitkomst. Het verschil zit niet in hoeveel je erin stopt, maar in de staat van de funnel waar het doorheen gaat. Dat is de hele les: conversie is een vermenigvuldiger die op al je toekomstige verkeer wordt toegepast, en daarmee de enige investering die zichzelf blijft terugbetalen.
-
-## Pas daarna schaal je op
-
-Als de overdracht strak staat, de pagina snel en helder is, en de aanbieding klopt, dan, en pas dan, is opschalen verstandig. Nu werkt de vermenigvuldiger in je voordeel. Elke extra euro raakt een pad dat bewezen omzet oplevert, en je weet binnen een week of het kanaal blijft presteren op schaal.
-
-Dit is geen pleidooi tegen adverteren. Het is een pleidooi voor volgorde. Eerst converteren, dan schalen. De teams die we het hardst zien groeien, hebben zelden de grootste budgetten. Het zijn de teams die hun funnel behandelen als een product: ze meten waar het lekt, repareren in de juiste volgorde, en geven pas gas als het pad van klik naar omzet aantoonbaar dicht is. Saai, methodisch, en veel winstgevender dan nog een budgetverhoging die je teleurstelling alleen maar opschaalt.` },
+Een product dat lekt, schaal je niet op. Je dicht het eerst. Daarna telt elke gebruiker die je toevoegt echt mee.` },
   { id: "lanceren-21-dagen", title: "Lanceren in 21 dagen met AI in de loop", cat: "AI Build", date: "jun 2026", read: "7 min", cover: "launch",
     excerpt: "Wat verandert er als AI de bouwer is en jij regisseert, en waar wint de mens nog?",
     body: `Drie weken klinkt te kort om iets echts te lanceren. Dat was het ook, tot voor kort. De afstand tussen een idee en werkende software werd altijd bepaald door hoe snel mensen konden typen, testen en herstellen. Die afstand is in elkaar geklapt. Niet omdat mensen sneller typen, maar omdat AI het typen heeft overgenomen. Wat overblijft, is oordeel. En oordeel is precies waar de mens nog wint.
@@ -658,7 +644,7 @@ const TABLES = ["reviews", "certs", "apps", "articles"];
 const DEFAULTS = { apps: DEFAULT_APPS, articles: DEFAULT_ARTICLES, reviews: DEFAULT_REVIEWS, certs: DEFAULT_CERTS };
 
 const LS_KEY = "flii_cms_v2";
-const SEED_VERSION = 11;
+const SEED_VERSION = 12;
 function loadStore() { try { const r = localStorage.getItem(LS_KEY); return r ? JSON.parse(r) : null; } catch (e) { return null; } }
 function saveStore(d) { try { localStorage.setItem(LS_KEY, JSON.stringify(d)); } catch (e) {} }
 
