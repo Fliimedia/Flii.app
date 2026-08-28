@@ -1,6 +1,0 @@
-{
-  "routes": [
-    { "handle": "filesystem" },
-    { "src": "/p/(.*)", "dest": "/index.html" }
-  ]
-}
