@@ -3,3 +3,6 @@ dist
 .vercel
 *.local
 .DS_Store
+
+# lokale SMTP-inloggegevens, nooit committen
+public/p/internship/international/smtp-config.php
