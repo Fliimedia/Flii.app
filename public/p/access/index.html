@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Grant access | Flii Media</title>
+<style>
+  :root{
+    --mag:#E7255A; --ink:#16151a; --sub:#57545f;
+    --paper:#F3F1EB; --card:#FBFAF7; --line:#E4E0D6; --fill:#FDE7EE;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:760px;margin:0 auto;padding:40px 20px 72px}
+  h1{font-size:26px;letter-spacing:-.02em;margin:0 0 24px;font-weight:700}
+  details{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    margin:0 0 16px;overflow:hidden}
+  details[open]{border-color:var(--mag)}
+  summary{list-style:none;cursor:pointer;padding:18px 20px;display:flex;align-items:center;
+    gap:12px;font-weight:600;font-size:17px;user-select:none}
+  summary::-webkit-details-marker{display:none}
+  .dot{width:9px;height:9px;border-radius:50%;background:var(--mag);flex:0 0 auto}
+  .chev{margin-left:auto;transition:transform .2s;color:var(--sub);font-size:14px}
+  details[open] .chev{transform:rotate(90deg)}
+  .body{padding:4px 20px 22px;border-top:1px solid var(--line)}
+  .lead{color:var(--sub);font-size:14px;margin:14px 0 6px}
+  ol{margin:10px 0 0;padding-left:22px}
+  ol li{margin:0 0 11px}
+  ul.alt{margin:8px 0 0;padding-left:18px;color:var(--sub);font-size:14px}
+  ul.alt li{margin:0 0 6px}
+  b{font-weight:600}
+  code{background:#efece4;border:1px solid var(--line);border-radius:6px;padding:1px 6px;
+    font-family:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;font-size:13px}
+  .fill{background:var(--fill);border:1px dashed var(--mag);border-radius:6px;padding:1px 8px;
+    font-weight:600;color:#a01238;white-space:nowrap}
+  .val{background:#fff;border:1px solid var(--mag);border-radius:6px;padding:1px 8px;
+    font-weight:600;color:#a01238;white-space:nowrap}
+  .note{margin-top:14px;padding:12px 14px;background:#fff;border:1px solid var(--line);
+    border-radius:10px;color:var(--sub);font-size:13.5px}
+  .links{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
+  .links a{font-size:13px;color:var(--mag);text-decoration:none;border:1px solid var(--line);
+    border-radius:999px;padding:6px 13px;background:#fff}
+  .links a:hover{border-color:var(--mag)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Grant access to Flii Media</h1>
+
+  <details open>
+    <summary><span class="dot"></span> LinkedIn: Page access <span class="chev">&#9654;</span></summary>
+    <div class="body">
+      <p class="lead">You add a Flii Media team member as an admin on your LinkedIn Company Page. You do this as a Super admin of the Page.</p>
+      <p class="lead">Team member to add: <span class="val">Sten Bossong</span></p>
+      <ol>
+        <li>Sign in to LinkedIn as a <b>Super admin</b> of your Company Page and open your Page super admin view.</li>
+        <li>Click <b>Settings</b> in the left menu, then select <b>Manage admins</b>.</li>
+        <li>Open the <b>Page admins</b> tab.</li>
+        <li>Click <b>Add admin</b>.</li>
+        <li>In <b>Search for a member</b>, type the name of the Flii team member above. If they do not appear, ask them to <b>follow your Page</b> first, then try again.</li>
+        <li>Select their name from the list.</li>
+        <li>Set the role to <b>Super admin</b>.</li>
+        <li>Click <b>Save</b>.</li>
+      </ol>
+      <div class="links">
+        <a href="https://www.linkedin.com/help/linkedin/answer/a569144" target="_blank" rel="noopener">Add admins on your Page</a>
+        <a href="https://www.linkedin.com/help/linkedin/answer/a541981" target="_blank" rel="noopener">Page admin roles</a>
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="dot"></span> Meta: Page and pixel access <span class="chev">&#9654;</span></summary>
+    <div class="body">
+      <p class="lead">You grant Flii Media partner access to your Facebook Page and your pixel (now called a dataset), into Flii's Business Portfolio.</p>
+      <p class="lead">Flii Media Business Portfolio ID: <span class="val">169437185030360</span></p>
+      <ol>
+        <li>Go to <code>business.facebook.com/settings</code> and select the correct <b>Business Portfolio</b> (top left).</li>
+        <li>In the left menu, under <b>Users</b>, click <b>Partners</b>.</li>
+        <li>Click <b>Add</b>, then choose <b>Give a partner access to your assets</b>.</li>
+        <li>Enter Flii Media's <b>Business Portfolio ID</b> (above) and click <b>Next</b>.</li>
+        <li>Under <b>Pages</b>, select your Page and set the permission to <b>Full control</b>.</li>
+        <li>Under <b>Datasets</b> (formerly Pixels), select your pixel and set the permission to <b>Full control</b>.</li>
+        <li>Click <b>Assign assets</b> (or <b>Save changes</b>).</li>
+      </ol>
+      <ul class="alt">
+        <li>If the pixel is not listed in the partner step, assign it separately: <b>Data sources &gt; Datasets &gt; your dataset &gt; Partners &gt; Assign partner</b>, then enter the same Business Portfolio ID and set <b>Full control</b>.</li>
+      </ul>
+      <div class="note">If a Page or dataset does not appear in the list, it is not connected to your Business Portfolio yet. Add it first under <b>Accounts &gt; Pages</b> or <b>Data sources &gt; Datasets</b>, then repeat the step.</div>
+      <div class="links">
+        <a href="https://business.facebook.com/settings" target="_blank" rel="noopener">Open Business settings</a>
+        <a href="https://www.facebook.com/business/help/1717412048538897" target="_blank" rel="noopener">Give a partner access</a>
+        <a href="https://business.facebook.com/events_manager2" target="_blank" rel="noopener">Open Events Manager</a>
+      </div>
+    </div>
+  </details>
+
+</div>
+</body>
+</html>
