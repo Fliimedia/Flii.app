@@ -133,6 +133,7 @@ var ICONS = {
   project:'<path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/>',
   year:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 11h18"/>',
   format:'<rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/>',
+  invoice:'<path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/>',
   home:'<path d="M4 11l8-7 8 7"/><path d="M6 10v10h12V10"/>',
   book:'<path d="M4 5a2 2 0 012-2h13v18H6a2 2 0 01-2-2z"/><path d="M8 3v18"/>',
   help:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 113.2 2.4c-.7.3-1.2.9-1.2 1.7v.4"/><path d="M12 17.2v.1"/>'
@@ -146,6 +147,16 @@ var DATA = [
         parts:['Aanleiding en vraagstuk','Inzicht en onderbouwing','Concept','Uitwerking','Media inzet','Investering','Planning','Vervolgstappen'] },
       { id:'pitch-inkoop', title:'Pitch media inkoop', desc:'Beknopte variant waarin alleen media inkoop wordt voorgesteld.',
         parts:['Aanleiding','Doelgroep','Voorgestelde kanalen','Plaatsingen','Budgetverdeling','Verwachte resultaten','Planning','Investering'] }
+    ]},
+  { id:'facturatie', title:'Facturatie', icon:'invoice',
+    intro:'Van prijsopgave tot betaling, in een vaste vorm.',
+    items:[
+      { id:'offerte', title:'Offerte', desc:'Prijsopgave met scope, tarieven en geldigheid.',
+        parts:['Klant en projectgegevens','Aanleiding en scope','Werkzaamheden','Op te leveren resultaat','Investering en tarieven','Planning','Voorwaarden','Geldigheid en akkoord'] },
+      { id:'opdrachtbevestiging', title:'Opdracht bevestiging', desc:'Vastlegging van de verstrekte opdracht.',
+        parts:['Klant en projectgegevens','Bevestigde opdracht','Scope en op te leveren werk','Afgesproken tarief','Betaaltermijn','Planning en mijlpalen','Meerwerk en wijzigingen','Ondertekening'] },
+      { id:'factuur', title:'Factuur', desc:'Factuur met specificatie en betaalgegevens.',
+        parts:['Factuurnummer en datum','Klantgegevens','Projectreferentie','Specificatie werkzaamheden','Bedragen en btw','Totaalbedrag','Betaaltermijn en rekeningnummer','Bedrijfsgegevens, KVK en btw-nummer'] }
     ]},
   { id:'media-projecten', title:'Media projecten', icon:'project',
     intro:'De uitvoerende documentatie per lopend project, van concept tot evaluatie.',
