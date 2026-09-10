@@ -89,7 +89,12 @@ ol.parts li em{display:block;font-style:normal;color:var(--mid);font-size:14px;m
 .list button:hover .t{color:var(--mag)}
 .list .t{font-size:16px;font-weight:600;flex:none;min-width:200px}
 .list .d{font-size:14.5px;color:var(--mid)}
-.note{margin-top:36px;font-size:14px;color:var(--mid);border-left:2px solid var(--mist);padding-left:16px}
+.open-btn{display:inline-flex;align-items:center;gap:9px;margin-top:28px;background:var(--mag);
+  color:#fff;border:none;border-radius:10px;padding:12px 20px;font-size:14.5px;font-weight:600;
+  cursor:pointer;text-decoration:none}
+.open-btn:hover{filter:brightness(.94)}
+.open-btn svg{width:15px;height:15px;stroke:#fff;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.note{margin-top:28px;font-size:14px;color:var(--mid);border-left:2px solid var(--mist);padding-left:16px}
 
 @media(max-width:900px){
   .side{transform:translateX(-100%);transition:transform .25s ease;width:274px}
@@ -425,7 +430,10 @@ function renderDoc(cat,it){
     '<p class="lead">'+it.desc+'</p>'+
     '<p class="sec-label">'+label+' ('+it.slides.length+')</p>'+
     '<ol class="parts">'+rijen+'</ol>'+
-    '<p class="note">Voorstel voor de indeling. Wordt vastgelegd zodra het voorbeelddocument er is.</p></div>';
+    '<a class="open-btn" href="/docs/'+cat.id+'/'+it.id+'.html" target="_blank" rel="noopener">'+
+    'Open het template'+
+    '<svg viewBox="0 0 24 24"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>'+
+    '<p class="note">Ingevuld met lorem ipsum en voorbeeldcijfers. Vervang de inhoud per project.</p></div>';
   window.scrollTo(0,0);
 }
 
