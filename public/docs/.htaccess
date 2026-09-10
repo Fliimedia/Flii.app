@@ -1,0 +1,5 @@
+# Plaats dit als .htaccess in de map /docs/ op de host.
+# Zorgt dat de hele map noindex is, ook voor bestanden zonder meta-tag (PDF, afbeeldingen).
+<IfModule mod_headers.c>
+  Header set X-Robots-Tag "noindex, nofollow, noarchive, nosnippet"
+</IfModule>
