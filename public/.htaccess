@@ -1,0 +1,6 @@
+# Plaats dit als .htaccess in de webroot van flii.app.
+# Alles behalve de homepage krijgt een noindex header mee.
+<IfModule mod_headers.c>
+  SetEnvIf Request_URI "^/(index\.html)?$" IS_HOME=1
+  Header set X-Robots-Tag "noindex, nofollow" env=!IS_HOME
+</IfModule>
