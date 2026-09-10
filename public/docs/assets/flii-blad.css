@@ -1,0 +1,53 @@
+/* Flii Media bladdocumenten: offerte, opdrachtbevestiging en factuur.
+   Bladmaat A4, opmaak volgens het factuurblad uit de CRM.
+*/
+:root{--pink:#E8255B;--zwart:#3A3A3A;--ink:#1A1A1A;--lijn:#B9B9B9;--wash:#F2F2F2;--grijs:#8A8A8A;}
+*{box-sizing:border-box;}
+body{margin:0;background:#EDEDED;color:var(--ink);
+  font-family:Inter,system-ui,-apple-system,sans-serif;font-size:11px;line-height:1.45;
+  -webkit-font-smoothing:antialiased;}
+.bladhoes{padding:20px 10px 48px;display:flex;justify-content:center;}
+.blad{width:100%;max-width:794px;background:#fff;box-shadow:0 12px 40px rgba(15,14,12,.13);}
+.bband{height:13px;background:var(--zwart);}
+.bband.roze{height:9px;background:var(--pink);}
+.bkopblok{display:flex;gap:16px;padding:26px 34px 24px;}
+.blogo{flex:0 0 96px;}
+.blogo svg{width:64px;height:64px;display:block;}
+.bbedrijf{margin-left:auto;flex:0 0 300px;}
+.bbnaam{font-weight:700;font-size:13px;margin-bottom:8px;}
+.brij{display:flex;gap:10px;}
+.brij b{flex:0 0 92px;font-weight:400;color:var(--zwart);}
+.brij span{flex:1;}
+.bsoort{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--pink);
+  margin-bottom:6px;}
+.bbody{padding:26px 34px 30px;}
+.bcols{display:flex;gap:26px;}
+.bcols>div{flex:1;}
+.bkopje{font-weight:700;font-size:13px;margin:0 0 9px;}
+.bdetails{margin-top:22px;}
+.bscope{margin-top:22px;}
+.bscope ul{margin:8px 0 0;padding-left:16px;}
+.bscope li{margin-bottom:5px;}
+.btabel{width:100%;border-collapse:collapse;margin-top:20px;table-layout:fixed;}
+.btabel th{background:var(--zwart);color:#fff;font-weight:700;font-size:11px;padding:7px 5px;
+  text-align:center;border:1px solid var(--zwart);}
+.btabel td{border:1px solid var(--lijn);padding:7px 5px;text-align:center;vertical-align:middle;
+  font-size:10.5px;height:26px;word-wrap:break-word;}
+.btabel td.links{text-align:left;}
+.btabel td.leegrij{height:22px;}
+.btabel .geen{border:none;}
+.bsubcel{background:var(--wash);color:var(--grijs);}
+.btotcel{background:var(--zwart);color:#fff;font-weight:700;}
+.btotwaarde{background:#EDEDED;font-weight:700;}
+.bvoorwaarden{margin-top:24px;font-size:10.5px;color:var(--zwart);line-height:1.7;}
+.bakkoord{display:flex;gap:26px;margin-top:26px;}
+.bakkoord>div{flex:1;border-top:1px solid var(--lijn);padding-top:9px;}
+.bakkoord .l{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--grijs);margin-bottom:34px;}
+.bakkoord .s{font-size:10.5px;color:var(--zwart);}
+.bvoet{padding:24px 34px;text-align:center;line-height:2;font-size:10.5px;}
+@media print{
+  body{background:#fff;}
+  .bladhoes{padding:0;}
+  .blad{max-width:none;box-shadow:none;font-size:9pt;}
+}
