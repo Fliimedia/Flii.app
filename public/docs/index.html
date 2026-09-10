@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />
+<meta name="googlebot" content="noindex, nofollow" />
+<title>Documentatie | Flii Media</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" />
+<style>
+:root{
+  --ink:#171717; --mag:#E7255A; --paper:#F3F1EB; --card:#FBFAF7; --mist:#EAE7DF;
+  --line:#E2DED3; --mid:#5C5A52; --soft:#8B887E;
+  --gloss:linear-gradient(135deg,#F4739B 0%,#E7255A 46%,#B81846 100%);
+  --side:288px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.display{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;letter-spacing:-.02em;line-height:1.04}
+.mono{font-family:'IBM Plex Mono',monospace}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mid)}
+button{font-family:inherit}
+a{color:inherit;text-decoration:none}
+
+/* sidebar */
+.side{position:fixed;top:0;left:0;bottom:0;width:var(--side);background:var(--card);
+  border-right:1px solid var(--line);display:flex;flex-direction:column;z-index:40}
+.side-top{padding:20px 18px 14px;display:flex;align-items:center;gap:10px}
+.brand-word{line-height:1;display:inline-flex;align-items:baseline;font-size:23px;font-weight:800;
+  font-family:'Bricolage Grotesque',sans-serif;letter-spacing:-.02em}
+.brand-heart{width:.30em;height:.30em;flex:none;align-self:flex-end;margin:0 .01em .07em}
+.brand-dot{color:var(--mag)}
+.side-tag{margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--soft);border:1px solid var(--line);border-radius:999px;padding:3px 9px}
+.nav{flex:1;overflow-y:auto;padding:8px 12px 20px}
+.cat{margin-bottom:2px}
+.cat-btn{width:100%;display:flex;align-items:center;gap:11px;background:none;border:none;cursor:pointer;
+  padding:10px 12px;border-radius:10px;font-size:14.5px;font-weight:600;color:var(--ink);text-align:left;
+  transition:background .15s,color .15s}
+.cat-btn:hover{background:var(--mist)}
+.cat-btn.on{background:var(--mist)}
+.cat-btn svg.ic{width:18px;height:18px;flex:none;stroke:var(--mid);stroke-width:1.6;fill:none;
+  stroke-linecap:round;stroke-linejoin:round}
+.cat-btn.on svg.ic{stroke:var(--mag)}
+.chev{margin-left:auto;width:12px;height:12px;stroke:var(--soft);stroke-width:2;fill:none;
+  stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
+.cat.open .chev{transform:rotate(90deg)}
+.sub{max-height:0;overflow:hidden;transition:max-height .25s ease}
+.cat.open .sub{max-height:520px}
+.sub-inner{padding:2px 0 8px 20px;margin-left:20px;border-left:1px solid var(--line)}
+.sub-btn{display:block;width:100%;text-align:left;background:none;border:none;cursor:pointer;
+  padding:7px 10px;border-radius:8px;font-size:13.5px;color:var(--mid);transition:color .15s,background .15s}
+.sub-btn:hover{color:var(--ink);background:var(--mist)}
+.sub-btn.active{color:var(--mag);font-weight:600;background:#FDE7EE}
+.side-foot{border-top:1px solid var(--line);padding:14px 18px;font-size:12px;color:var(--soft)}
+
+/* topbar (mobiel) */
+.topbar{display:none;position:sticky;top:0;z-index:50;background:var(--card);
+  border-bottom:1px solid var(--line);padding:12px 16px;align-items:center;gap:12px}
+.burger{background:none;border:1px solid var(--line);border-radius:9px;padding:7px 9px;cursor:pointer;
+  display:flex;align-items:center}
+.burger svg{width:17px;height:17px;stroke:var(--ink);stroke-width:1.8;fill:none;stroke-linecap:round}
+.scrim{display:none;position:fixed;inset:0;background:rgba(23,23,23,.36);z-index:39}
+
+/* main */
+.main{margin-left:var(--side);padding:44px 40px 80px;max-width:980px}
+.crumb{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--soft);margin-bottom:14px}
+h1{font-size:34px;margin:0 0 12px}
+.lead{color:var(--mid);font-size:16px;max-width:64ch;margin:0 0 28px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:30px}
+.chip{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+  border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;color:var(--mid)}
+.chip.hot{background:var(--gloss);border-color:transparent;color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;cursor:pointer;
+  text-align:left;transition:border-color .15s,transform .15s}
+.card:hover{border-color:var(--mag);transform:translateY(-2px)}
+.card h3{font-size:15.5px;margin:0 0 6px;font-weight:600}
+.card p{font-size:13.5px;color:var(--mid);margin:0}
+.sec{margin-top:34px}
+.sec h2{font-size:13px;font-family:'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--mid);font-weight:500;margin:0 0 14px}
+ol.parts{counter-reset:p;list-style:none;padding:0;margin:0;border-top:1px solid var(--line)}
+ol.parts li{counter-increment:p;display:flex;gap:14px;padding:13px 2px;border-bottom:1px solid var(--line);
+  font-size:14.5px}
+ol.parts li::before{content:counter(p,decimal-leading-zero);font-family:'IBM Plex Mono',monospace;
+  font-size:11.5px;color:var(--mag);padding-top:3px;flex:none}
+.status{margin-top:34px;background:var(--card);border:1px solid var(--line);border-left:2px solid var(--mag);
+  border-radius:0 12px 12px 0;padding:16px 18px;font-size:13.5px;color:var(--mid)}
+.status b{color:var(--ink)}
+.path{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--soft);margin-top:8px;display:block}
+
+@media(max-width:900px){
+  .side{transform:translateX(-100%);transition:transform .25s ease;width:270px}
+  body.nav-open .side{transform:none}
+  body.nav-open .scrim{display:block}
+  .topbar{display:flex}
+  .main{margin-left:0;padding:26px 18px 70px}
+  h1{font-size:26px}
+  .lead{font-size:15px}
+}
+</style>
+</head>
+<body>
+
+<div class="scrim" id="scrim"></div>
+
+<div class="topbar">
+  <button class="burger" id="burger" aria-label="Menu">
+    <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+  </button>
+  <span class="brand-word">flii<svg class="brand-heart" viewBox="0 0 24 24" aria-hidden><path fill="#E7255A" d="M12 21s-7.5-4.7-9.6-9.2C.9 8.5 2.6 5 6 4.3c2.2-.5 4.4.6 6 2.6 1.6-2 3.8-3.1 6-2.6 3.4.7 5.1 4.2 3.6 7.5C19.5 16.3 12 21 12 21z"/></svg><span class="brand-dot">docs</span></span>
+</div>
+
+<aside class="side">
+  <div class="side-top">
+    <span class="brand-word">flii<svg class="brand-heart" viewBox="0 0 24 24" aria-hidden><path fill="#E7255A" d="M12 21s-7.5-4.7-9.6-9.2C.9 8.5 2.6 5 6 4.3c2.2-.5 4.4.6 6 2.6 1.6-2 3.8-3.1 6-2.6 3.4.7 5.1 4.2 3.6 7.5C19.5 16.3 12 21 12 21z"/></svg><span class="brand-dot">docs</span></span>
+    <span class="side-tag">intern</span>
+  </div>
+  <nav class="nav" id="nav"></nav>
+  <div class="side-foot">Standaard documentatie voor mediaprojecten</div>
+</aside>
+
+<main class="main" id="main"></main>
+
+<script>
+var ICONS = {
+  pitch:'<path d="M12 3l2.3 5.5L20 9.5l-4 4.1.9 5.9L12 16.8 7.1 19.5 8 13.6 4 9.5l5.7-1z"/>',
+  project:'<path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/>',
+  year:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 11h18"/>',
+  format:'<rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/>'
+};
+
+var DATA = [
+  { id:'pitches', title:'Pitches', icon:'pitch',
+    intro:'Het voorstel richting klant. Basis voor alle formats.',
+    items:[
+      { id:'pitch', title:'Pitch', desc:'Volledig voorstel: aanleiding, concept en investering.',
+        parts:['Aanleiding en vraagstuk','Inzicht en onderbouwing','Concept','Uitwerking','Media inzet','Investering','Planning','Vervolgstappen'] },
+      { id:'pitch-inkoop', title:'Pitch media inkoop', desc:'Beknopte variant waarin alleen media inkoop wordt voorgesteld.',
+        parts:['Aanleiding','Doelgroep','Voorgestelde kanalen','Plaatsingen','Budgetverdeling','Verwachte resultaten','Planning','Investering'] }
+    ]},
+  { id:'media-projecten', title:'Media projecten', icon:'project',
+    intro:'De uitvoerende documentatie per lopend project, van concept tot evaluatie.',
+    items:[
+      { id:'campagnes', title:'Campagnes', desc:'Het campagneplan van concept tot evaluatie.',
+        parts:['Campagne concept','Creatie','Media kanalen','Budgetverdeling','Meetbaarheid en KPI\u0027s','Tijdlijn: voorbespreking','Tijdlijn: livegang','Tijdlijn: tussenrapportages','Tijdlijn: evaluatie'] },
+      { id:'media-inkoop', title:'Media inkoop', desc:'Gekozen kanalen, plaatsingen en planning.',
+        parts:['Gekozen media kanalen','Plaatsingen','Budgetverdeling','Planning','Voorwaarden en annulering'] },
+      { id:'creatief-materiaal', title:'Creatief materiaal', desc:'Materiaalbon met technische specificaties.',
+        parts:['Overzicht uitingen','Technische specificaties per kanaal','Formaten en bestandstypen','Aanlevertermijnen','Aanleverkanaal','Controle en akkoord'] },
+      { id:'dashboard', title:'Dashboard', desc:'Vaste opzet van het live dashboard.',
+        parts:['Doel en gebruikers','Databronnen','KPI\u0027s en definities','Weergaven en filters','Verversingsfrequentie','Toegang'] },
+      { id:'rapportage', title:'Rapportage', desc:'Periodieke rapportage tijdens de looptijd.',
+        parts:['Samenvatting','Resultaten per kanaal','Voortgang op KPI\u0027s','Bestedingen','Observaties','Optimalisaties','Vooruitblik'] },
+      { id:'evaluatie', title:'Evaluatie', desc:'Eindevaluatie na afloop van het project.',
+        parts:['Doelstellingen versus resultaat','Resultaten per kanaal','Creatie en materiaal','Budget en efficiency','Wat werkte','Wat kan beter','Aanbevelingen vervolg'] }
+    ]},
+  { id:'jaarplan', title:'Jaarplan', icon:'year',
+    intro:'De jaarlijkse planning: always on, periodieke campagnes en content.',
+    items:[
+      { id:'marketing-jaarplan', title:'Marketing jaarplan', desc:'Always on plus periodieke campagnes over het hele jaar.',
+        parts:['Uitgangspunten','Doelstellingen en targets','Always on inzet','Periodieke campagnes','Content kalender','Budgetverdeling','Meetbaarheid','Tijdlijn: livegang','Tijdlijn: rapportages','Tijdlijn: evaluatie'] },
+      { id:'content-kalender', title:'Content kalender', desc:'Formats per maand over het jaar verdeeld.',
+        parts:['Uitgangspunten','Formats en rubrieken','Kalender per maand','Kanalen per format','Productie en aanlevering','Meetpunten'] }
+    ]},
+  { id:'formats', title:'Formats', icon:'format',
+    intro:'Conceptvoorstellen per type. Gebaseerd op het pitch document.',
+    items:[
+      { id:'televisie', title:'Televisie formats', desc:'Formatvoorstel voor televisie.',
+        parts:['Logline','Aanleiding','Format','Afleveringsopbouw','Doelgroep','Uitzendvorm','Productie','Vervolgstappen'] },
+      { id:'boek', title:'Boek', desc:'Voorstel voor een boekconcept.',
+        parts:['Logline','Aanleiding','Concept','Opbouw en hoofdstukken','Doelgroep','Positionering','Productie','Vervolgstappen'] },
+      { id:'campagne-concept', title:'Campagne concept', desc:'Het creatieve concept achter een campagne.',
+        parts:['Aanleiding','Inzicht','Concept','Uitwerking per kanaal','Doelgroep','Tone of voice','Vervolgstappen'] },
+      { id:'content', title:'Content', desc:'Voorstel voor een contentformat.',
+        parts:['Aanleiding','Concept','Formats','Kanalen','Frequentie','Productie','Vervolgstappen'] },
+      { id:'web-platformen', title:'Web platformen', desc:'Voorstel voor een platform of website.',
+        parts:['Aanleiding','Concept','Functionaliteit','Structuur','Techniek','Fasering','Vervolgstappen'] }
+    ]}
+];
+
+var nav = document.getElementById('nav');
+var main = document.getElementById('main');
+var current = null;
+
+function svgIc(name){
+  return '<svg class="ic" viewBox="0 0 24 24">'+ICONS[name]+'</svg>';
+}
+
+function buildNav(){
+  DATA.forEach(function(cat){
+    var wrap = document.createElement('div');
+    wrap.className = 'cat';
+    wrap.id = 'cat-'+cat.id;
+    var btn = document.createElement('button');
+    btn.className = 'cat-btn';
+    btn.innerHTML = svgIc(cat.icon)+'<span>'+cat.title+'</span>'+
+      '<svg class="chev" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>';
+    btn.onclick = function(){
+      var isOpen = wrap.classList.contains('open');
+      if(isOpen){ wrap.classList.remove('open'); btn.classList.remove('on'); }
+      else { wrap.classList.add('open'); btn.classList.add('on'); renderCat(cat); }
+    };
+    var sub = document.createElement('div');
+    sub.className = 'sub';
+    var inner = document.createElement('div');
+    inner.className = 'sub-inner';
+    cat.items.forEach(function(it){
+      var b = document.createElement('button');
+      b.className = 'sub-btn';
+      b.id = 'sub-'+it.id;
+      b.textContent = it.title;
+      b.onclick = function(e){ e.stopPropagation(); renderDoc(cat,it); closeMobile(); };
+      inner.appendChild(b);
+    });
+    sub.appendChild(inner);
+    wrap.appendChild(btn);
+    wrap.appendChild(sub);
+    nav.appendChild(wrap);
+  });
+}
+
+function markActive(id){
+  var prev = document.querySelector('.sub-btn.active');
+  if(prev) prev.classList.remove('active');
+  if(id){
+    var el = document.getElementById('sub-'+id);
+    if(el) el.classList.add('active');
+  }
+}
+
+function renderHome(){
+  markActive(null);
+  var cards = DATA.map(function(c){
+    return '<button class="card" onclick="openCat(\u0027'+c.id+'\u0027)">'+
+      '<h3>'+c.title+'</h3><p>'+c.intro+'</p></button>';
+  }).join('');
+  var total = DATA.reduce(function(n,c){ return n + c.items.length; }, 0);
+  main.innerHTML =
+    '<div class="crumb">Documentatie</div>'+
+    '<h1 class="display">Standaard documentatie</h1>'+
+    '<p class="lead">Alle vaste documenten voor mediaprojecten, in een uniforme opzet. '+
+    'Kies links een categorie om de bijbehorende documenten te zien.</p>'+
+    '<div class="chips"><span class="chip">'+DATA.length+' categorieen</span>'+
+    '<span class="chip">'+total+' documenten</span>'+
+    '<span class="chip hot">Niet indexeerbaar</span></div>'+
+    '<div class="grid">'+cards+'</div>';
+}
+
+function openCat(id){
+  var cat = DATA.filter(function(c){ return c.id===id; })[0];
+  var wrap = document.getElementById('cat-'+id);
+  if(wrap && !wrap.classList.contains('open')){
+    wrap.classList.add('open');
+    wrap.querySelector('.cat-btn').classList.add('on');
+  }
+  renderCat(cat);
+}
+
+function renderCat(cat){
+  markActive(null);
+  var cards = cat.items.map(function(it){
+    return '<button class="card" onclick="openDoc(\u0027'+cat.id+'\u0027,\u0027'+it.id+'\u0027)">'+
+      '<h3>'+it.title+'</h3><p>'+it.desc+'</p></button>';
+  }).join('');
+  main.innerHTML =
+    '<div class="crumb">Documentatie / '+cat.title+'</div>'+
+    '<h1 class="display">'+cat.title+'</h1>'+
+    '<p class="lead">'+cat.intro+'</p>'+
+    '<div class="grid">'+cards+'</div>';
+  window.scrollTo(0,0);
+}
+
+function openDoc(catId,itId){
+  var cat = DATA.filter(function(c){ return c.id===catId; })[0];
+  var it = cat.items.filter(function(x){ return x.id===itId; })[0];
+  renderDoc(cat,it);
+}
+
+function renderDoc(cat,it){
+  markActive(it.id);
+  var parts = it.parts.map(function(p){ return '<li>'+p+'</li>'; }).join('');
+  main.innerHTML =
+    '<div class="crumb">'+cat.title+' / '+it.title+'</div>'+
+    '<h1 class="display">'+it.title+'</h1>'+
+    '<p class="lead">'+it.desc+'</p>'+
+    '<div class="chips"><span class="chip">Template</span><span class="chip">'+it.parts.length+' onderdelen</span></div>'+
+    '<div class="sec"><h2>Opbouw van het document</h2><ol class="parts">'+parts+'</ol></div>'+
+    '<div class="status"><b>Nog uit te werken.</b> Dit template wordt opgebouwd zodra het voorbeelddocument is aangeleverd. '+
+    'De opbouw hierboven is het voorstel voor de vaste indeling.'+
+    '<span class="path">/docs/'+cat.id+'/'+it.id+'</span></div>';
+  window.scrollTo(0,0);
+}
+
+function closeMobile(){ document.body.classList.remove('nav-open'); }
+document.getElementById('burger').onclick = function(){ document.body.classList.toggle('nav-open'); };
+document.getElementById('scrim').onclick = closeMobile;
+
+buildNav();
+renderHome();
+</script>
+</body>
+</html>
