@@ -380,10 +380,9 @@ tr.total td:last-child{border-radius:0 0 8px 0}
 .cv-merk .times{color:var(--grey);font-size:16px;font-weight:300;}
 .cv-uitgifte{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-2);}
 
-.cv-soort{display:flex;align-items:center;gap:16px;padding:13px 0 0;}
+.cv-soort{display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding:13px 0 0;}
 .cv-soort .k{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
   color:var(--pink);flex:0 0 auto;}
-.cv-soort .lijn{flex:1;height:1px;background:var(--line);}
 .cv-soort .nr{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2);}
 
 .cv-titel{margin-top:34px;}
