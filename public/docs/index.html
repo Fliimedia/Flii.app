@@ -78,7 +78,9 @@ h1.doc{font-size:30px;font-weight:700;margin:0 0 10px}
 ol.parts{list-style:none;padding:0;margin:0}
 ol.parts li{padding:13px 2px;border-bottom:1px solid var(--line);font-size:15.5px;display:flex;gap:16px}
 ol.parts li:first-child{border-top:1px solid var(--line)}
-ol.parts li span{color:var(--soft);font-size:13px;width:20px;flex:none;padding-top:2px}
+ol.parts li span{color:var(--soft);font-size:13px;width:22px;flex:none;padding-top:3px}
+ol.parts li b{display:block;font-weight:600;font-size:15.5px}
+ol.parts li em{display:block;font-style:normal;color:var(--mid);font-size:14px;margin-top:2px}
 .list{list-style:none;padding:0;margin:0}
 .list li{border-bottom:1px solid var(--line)}
 .list li:first-child{border-top:1px solid var(--line)}
@@ -143,57 +145,200 @@ var DATA = [
   { id:'pitches', title:'Pitches', icon:'pitch',
     intro:'Het voorstel richting klant. Basis voor alle formats.',
     items:[
-      { id:'pitch', title:'Pitch', desc:'Volledig voorstel: aanleiding, concept en investering.',
-        parts:['Aanleiding en vraagstuk','Inzicht en onderbouwing','Concept','Uitwerking','Media inzet','Investering','Planning','Vervolgstappen'] }
+      { id:'pitch', title:'Pitch', desc:'Volledig voorstel: aanleiding, concept en investering.', vorm:'deck',
+        slides:[
+          ['Cover','Klant maal Flii, documentsoort, feitenbalk met opdrachtgever, periode, budget en contact.'],
+          ['Aanleiding','Het vraagstuk van de klant, de context en wat er nu blijft liggen.'],
+          ['Inzicht','Onderbouwing met doelgroep, marktbeeld en de kans die eruit volgt.'],
+          ['Concept','Het kernidee in een zin, plus waarom het werkt voor deze doelgroep.'],
+          ['Uitwerking','Hoe het eruitziet per onderdeel of kanaal, met beeld of mockup.'],
+          ['Investering','Scope, wat inbegrepen is en het bedrag in de resultaatbalk.'],
+          ['Planning','Van akkoord tot livegang, met de momenten waarop iets nodig is.'],
+          ['Vervolgstappen','Eindslide met drie genummerde stappen naar akkoord.']
+        ] }
     ]},
   { id:'facturatie', title:'Facturatie', icon:'invoice', onder:true,
-    intro:'Van prijsopgave tot betaling, in een vaste vorm.',
+    intro:'Van prijsopgave tot betaling. Bladdocumenten, geen slides.',
     items:[
-      { id:'offerte', title:'Offerte', desc:'Prijsopgave met scope, tarieven en geldigheid.',
-        parts:['Klant en projectgegevens','Aanleiding en scope','Werkzaamheden','Op te leveren resultaat','Investering en tarieven','Planning','Voorwaarden','Geldigheid en akkoord'] },
-      { id:'opdrachtbevestiging', title:'Opdracht bevestiging', desc:'Vastlegging van de verstrekte opdracht.',
-        parts:['Klant en projectgegevens','Bevestigde opdracht','Scope en op te leveren werk','Afgesproken tarief','Betaaltermijn','Planning en mijlpalen','Meerwerk en wijzigingen','Ondertekening'] },
-      { id:'factuur', title:'Factuur', desc:'Factuur met specificatie en betaalgegevens.',
-        parts:['Factuurnummer en datum','Klantgegevens','Projectreferentie','Specificatie werkzaamheden','Bedragen en btw','Totaalbedrag','Betaaltermijn en rekeningnummer','Bedrijfsgegevens, KVK en btw-nummer'] }
+      { id:'offerte', title:'Offerte', desc:'Prijsopgave met scope, tarieven en geldigheid.', vorm:'blad',
+        slides:[
+          ['Kopblok','Logo, Flii Media BV, adres, KVK, btw-nummer en rekeningnummer.'],
+          ['Aan','Tenaamstelling, adres en contactpersoon van de klant.'],
+          ['Kenmerken','Offertenummer, datum, geldig tot en beschrijving.'],
+          ['Scope','Wat wel en niet is inbegrepen, in korte regels.'],
+          ['Specificatie','Tabel met dienst, details, tarief, aantal en bedrag.'],
+          ['Totalen','Subtotaal, btw 21 procent en totaal.'],
+          ['Voorwaarden','Betaaltermijn, geldigheid en meerwerk.'],
+          ['Akkoord','Ondertekenblok voor beide partijen.']
+        ] },
+      { id:'opdrachtbevestiging', title:'Opdracht bevestiging', desc:'Vastlegging van de verstrekte opdracht.', vorm:'blad',
+        slides:[
+          ['Kopblok','Zelfde kop als de offerte, met de eigen bedrijfsgegevens.'],
+          ['Aan','Klantgegevens en contactpersoon.'],
+          ['Kenmerken','Nummer, datum, verwijzing naar de offerte en startdatum.'],
+          ['Bevestigde opdracht','Wat is afgesproken, in de woorden van de offerte.'],
+          ['Specificatie','Dezelfde regels en bedragen als de offerte.'],
+          ['Afspraken','Tarief, facturatiemoment, betaaltermijn en meerwerk.'],
+          ['Planning','Start, mijlpalen en einddatum of doorlooptijd.'],
+          ['Ondertekening','Handtekening van beide partijen met datum.']
+        ] },
+      { id:'factuur', title:'Factuur', desc:'Factuur met specificatie en betaalgegevens.', vorm:'blad',
+        slides:[
+          ['Kopblok','Logo, bedrijfsgegevens, KVK, btw-nummer en IBAN.'],
+          ['Organisatie','Factuuradres van de klant.'],
+          ['Contact','Naam, mailadres waar de factuur heen ging en telefoon.'],
+          ['Factuurdetails','Factuurdatum, vervaldatum, kenmerk in de reeks S00xxx en beschrijving.'],
+          ['Specificatie','Tabel met beschrijving, details, tarief, aantal, bedrag en btw.'],
+          ['Totalen','Subtotaal, btw en totaal.'],
+          ['Voettekst','Vragen naar invoice@flii.nl, dankwoord en rechten.']
+        ] }
     ]},
   { id:'media-projecten', title:'Media projecten', icon:'project',
     intro:'De uitvoerende documentatie per lopend project, van concept tot evaluatie.',
     items:[
-      { id:'campagnes', title:'Campagnes', desc:'Het campagneplan van concept tot evaluatie.',
-        parts:['Campagne concept','Creatie','Media kanalen','Budgetverdeling','Meetbaarheid en KPI\u0027s','Tijdlijn: voorbespreking','Tijdlijn: livegang','Tijdlijn: tussenrapportages','Tijdlijn: evaluatie'] },
-      { id:'media-inkoop', title:'Media inkoop', desc:'Gekozen kanalen, plaatsingen en planning.',
-        parts:['Gekozen media kanalen','Plaatsingen','Budgetverdeling','Planning','Voorwaarden en annulering'] },
-      { id:'creatief-materiaal', title:'Creatief materiaal', desc:'Materiaalbon met technische specificaties.',
-        parts:['Overzicht uitingen','Technische specificaties per kanaal','Formaten en bestandstypen','Aanlevertermijnen','Aanleverkanaal','Controle en akkoord'] },
-      { id:'dashboard', title:'Dashboard', desc:'Vaste opzet van het live dashboard.',
-        parts:['Doel en gebruikers','Databronnen','KPI\u0027s en definities','Weergaven en filters','Verversingsfrequentie','Toegang'] },
-      { id:'rapportage', title:'Rapportage', desc:'Periodieke rapportage tijdens de looptijd.',
-        parts:['Samenvatting','Resultaten per kanaal','Voortgang op KPI\u0027s','Bestedingen','Observaties','Optimalisaties','Vooruitblik'] },
-      { id:'evaluatie', title:'Evaluatie', desc:'Eindevaluatie na afloop van het project.',
-        parts:['Doelstellingen versus resultaat','Resultaten per kanaal','Creatie en materiaal','Budget en efficiency','Wat werkte','Wat kan beter','Aanbevelingen vervolg'] }
+      { id:'campagnes', title:'Campagnes', desc:'Het campagneplan van concept tot evaluatie.', vorm:'deck',
+        slides:[
+          ['Cover','Campagneplan, kicker met klant en campagne, feitenbalk met periode en budget.'],
+          ['Aanpak','Doelstelling, doelgroep en strategie, met drie kerncijfers.'],
+          ['Concept en creatie','Het idee en de uitingen die eruit volgen.'],
+          ['Per kanaal','Een slide per kanaal: opzet, targeting, inzet en verwacht resultaat.'],
+          ['Budgetverdeling','Tabel per kanaal met verdeelbalk en totaal in de resultaatbalk.'],
+          ['Meetbaarheid','KPI, definitie en waar het gemeten wordt, plus het dashboard.'],
+          ['Tijdlijn','Drie kolommen: voorbespreking, livegang, tussenrapportages en evaluatie.'],
+          ['Start','Eindslide met de stappen tot livegang.']
+        ] },
+      { id:'media-inkoop', title:'Media inkoop', desc:'Gekozen kanalen, plaatsingen en planning.', vorm:'deck',
+        slides:[
+          ['Cover','Media-inkoopplan met opdrachtgever, periode en totaalbudget.'],
+          ['Uitgangspunten','Doelgroep, bereikdoel en de redenering achter de kanaalkeuze.'],
+          ['Invulling per kanaal','Tabel met kanaal, plaatsing, formaat, periode en bedrag.'],
+          ['Budgetverdeling','Verdeelbalk over kanalen, met kosten en verwacht bereik.'],
+          ['Tijdlijn naar livegang','Reservering, aanlevering, controle en livegang.'],
+          ['Deliverables','Welk materiaal per kanaal nodig is en wanneer.'],
+          ['Af te stemmen','Openstaande punten en beslissingen die de klant moet nemen.'],
+          ['Start','Eindslide met akkoord en reservering.']
+        ] },
+      { id:'creatief-materiaal', title:'Creatief materiaal', desc:'Materiaalbon met technische specificaties.', vorm:'deck',
+        slides:[
+          ['Cover','Materiaalbon met campagne, periode en aanleverdeadline.'],
+          ['Overzicht uitingen','Welke uitingen er zijn en voor welk kanaal.'],
+          ['Specificaties','Bon per kanaal: formaat, afmeting, bestandstype, maximale grootte en tekstlimieten.'],
+          ['Aanlevering','Termijnen, aanleverkanaal en naamgeving van bestanden.'],
+          ['Controle','Wat wordt gecontroleerd en wie akkoord geeft.'],
+          ['Start','Eindslide met de aanleverstappen.']
+        ] },
+      { id:'dashboard', title:'Dashboard', desc:'Vaste opzet van het live dashboard.', vorm:'deck',
+        slides:[
+          ['Cover','Dashboard voor klant en periode, met de link erin.'],
+          ['Doel en gebruikers','Welke vraag het dashboard beantwoordt en voor wie.'],
+          ['Databronnen','Welke bronnen erin komen en hoe ze gekoppeld zijn.'],
+          ['KPI en definities','Per KPI de definitie, zodat cijfers niet ter discussie staan.'],
+          ['Weergave','Het dashboard in beeld, in de telefoonmockup.'],
+          ['Beheer','Verversing, toegang en wie wat mag zien.'],
+          ['Start','Eindslide met oplevering en toegang.']
+        ] },
+      { id:'rapportage', title:'Rapportage', desc:'Periodieke rapportage tijdens de looptijd.', vorm:'deck',
+        slides:[
+          ['Cover','Rapportage met klant, periode en de kernuitkomst.'],
+          ['Samenvatting','Drie kerncijfers en in twee zinnen wat de periode deed.'],
+          ['Per kanaal','Tabel met inzet, resultaat en kosten per kanaal.'],
+          ['Voortgang','Resultaat versus doelstelling, met verdeelbalk.'],
+          ['Observaties','Wat opvalt in de cijfers en wat de oorzaak is.'],
+          ['Optimalisaties','Wat is aangepast en wat dat opleverde.'],
+          ['Vooruitblik','Wat de komende periode gebeurt, als eindslide.']
+        ] },
+      { id:'evaluatie', title:'Evaluatie', desc:'Eindevaluatie na afloop van het project.', vorm:'deck',
+        slides:[
+          ['Cover','Evaluatie met project, looptijd en eindresultaat.'],
+          ['Doel versus resultaat','De vooraf gestelde doelen naast wat het werd.'],
+          ['Per kanaal','Resultaat, kosten en efficiency per kanaal.'],
+          ['Creatie','Welke uitingen werkten en welke niet, met beeld.'],
+          ['Budget','Besteding tegenover begroting, met verdeelbalk.'],
+          ['Leerpunten','Wat werkte en wat beter kan, eerlijk benoemd.'],
+          ['Aanbevelingen','Eindslide met drie stappen voor een vervolg.']
+        ] }
     ]},
   { id:'jaarplan', title:'Jaarplan', icon:'year',
     intro:'De jaarlijkse planning: always on, periodieke campagnes en content.',
     items:[
-      { id:'marketing-jaarplan', title:'Marketing jaarplan', desc:'Always on plus periodieke campagnes over het hele jaar.',
-        parts:['Uitgangspunten','Doelstellingen en targets','Always on inzet','Periodieke campagnes','Content kalender','Budgetverdeling','Meetbaarheid','Tijdlijn: livegang','Tijdlijn: rapportages','Tijdlijn: evaluatie'] },
-      { id:'content-kalender', title:'Content kalender', desc:'Formats per maand over het jaar verdeeld.',
-        parts:['Uitgangspunten','Formats en rubrieken','Kalender per maand','Kanalen per format','Productie en aanlevering','Meetpunten'] }
+      { id:'marketing-jaarplan', title:'Marketing jaarplan', desc:'Always on plus periodieke campagnes over het hele jaar.', vorm:'deck',
+        slides:[
+          ['Cover','Jaarplan met jaartal, opdrachtgever en jaarbudget.'],
+          ['Uitgangspunten','Waar de klant staat en wat het jaar moet opleveren.'],
+          ['Doelstellingen','Targets per doel, meetbaar gemaakt.'],
+          ['Always on','De doorlopende inzet en wat die maandelijks kost.'],
+          ['Campagnes','De periodieke campagnes per kwartaal, met aanleiding.'],
+          ['Content kalender','De formats per maand op hoofdlijnen.'],
+          ['Budgetverdeling','Verdeling over always on, campagnes en productie.'],
+          ['Tijdlijn','Livegangen, rapportagemomenten en de evaluatie.'],
+          ['Start','Eindslide met de eerste stappen van het jaar.']
+        ] },
+      { id:'content-kalender', title:'Content kalender', desc:'Formats per maand over het jaar verdeeld.', vorm:'deck',
+        slides:[
+          ['Cover','Content kalender met jaar en kanalen.'],
+          ['Uitgangspunten','Waarover we praten, met welke toon en voor wie.'],
+          ['Formats','De vaste rubrieken en wat elk format inhoudt.'],
+          ['Kalender','Per kwartaal een slide: maand, format, kanaal en thema.'],
+          ['Kanalen','Frequentie en soort per kanaal.'],
+          ['Productie','Wie maakt wat, en wanneer moet het klaar zijn.'],
+          ['Meetpunten','Waarop we bijsturen, als eindslide.']
+        ] }
     ]},
   { id:'formats', title:'Formats', icon:'format',
     intro:'Conceptvoorstellen per type. Gebaseerd op het pitch document.',
     items:[
-      { id:'televisie', title:'Televisie formats', desc:'Formatvoorstel voor televisie.',
-        parts:['Logline','Aanleiding','Format','Afleveringsopbouw','Doelgroep','Uitzendvorm','Productie','Vervolgstappen'] },
-      { id:'boek', title:'Boek', desc:'Voorstel voor een boekconcept.',
-        parts:['Logline','Aanleiding','Concept','Opbouw en hoofdstukken','Doelgroep','Positionering','Productie','Vervolgstappen'] },
-      { id:'campagne-concept', title:'Campagne concept', desc:'Het creatieve concept achter een campagne.',
-        parts:['Aanleiding','Inzicht','Concept','Uitwerking per kanaal','Doelgroep','Tone of voice','Vervolgstappen'] },
-      { id:'content', title:'Content', desc:'Voorstel voor een contentformat.',
-        parts:['Aanleiding','Concept','Formats','Kanalen','Frequentie','Productie','Vervolgstappen'] },
-      { id:'web-platformen', title:'Web platformen', desc:'Voorstel voor een platform of website.',
-        parts:['Aanleiding','Concept','Functionaliteit','Structuur','Techniek','Fasering','Vervolgstappen'] }
-    ]}
+      { id:'televisie', title:'Televisie formats', desc:'Formatvoorstel voor televisie.', vorm:'deck',
+        slides:[
+          ['Cover','Titel van het format met de logline eronder.'],
+          ['Aanleiding','Waarom dit format nu past, met kijkcijfer of trend.'],
+          ['Format','De opzet: wat gebeurt er, spelregels en rolverdeling.'],
+          ['Aflevering','De opbouw van een aflevering, van opening tot slot.'],
+          ['Doelgroep','Voor wie het is en waar het zit in het aanbod.'],
+          ['Productie','Uitzendvorm, aantal afleveringen en productiewijze.'],
+          ['Vervolgstappen','Eindslide met de weg naar een pilot.']
+        ] },
+      { id:'boek', title:'Boek', desc:'Voorstel voor een boekconcept.', vorm:'deck',
+        slides:[
+          ['Cover','Titel en ondertitel met de logline.'],
+          ['Aanleiding','Waarom dit boek nu, en wat er ontbreekt in het aanbod.'],
+          ['Concept','Het idee, de invalshoek en de toon.'],
+          ['Opbouw','De delen en hoofdstukken, met wat elk hoofdstuk doet.'],
+          ['Doelgroep','Voor wie het geschreven is en hoe het gepositioneerd wordt.'],
+          ['Productie','Omvang, planning en uitgeefvorm.'],
+          ['Vervolgstappen','Eindslide met de stappen naar een proefhoofdstuk.']
+        ] },
+      { id:'campagne-concept', title:'Campagne concept', desc:'Het creatieve concept achter een campagne.', vorm:'deck',
+        slides:[
+          ['Cover','De campagnetitel met de claim.'],
+          ['Aanleiding','Het vraagstuk waar de campagne antwoord op geeft.'],
+          ['Inzicht','Het inzicht over de doelgroep waar het concept op rust.'],
+          ['Concept','Het kernidee en de claim, groot in beeld.'],
+          ['Uitwerking','Hoe het concept eruitziet per kanaal, met visuals.'],
+          ['Toon','Tone of voice en hoe het bij het merk past.'],
+          ['Vervolgstappen','Eindslide met de weg naar productie.']
+        ] },
+      { id:'content', title:'Content', desc:'Voorstel voor een contentformat.', vorm:'deck',
+        slides:[
+          ['Cover','De naam van het contentformat met de belofte.'],
+          ['Aanleiding','Waarom dit onderwerp en deze vorm.'],
+          ['Concept','Het idee en de rubrieken die eruit volgen.'],
+          ['Formats','Hoe een aflevering of post eruitziet, met voorbeeld.'],
+          ['Kanalen','Waar het verschijnt en in welke frequentie.'],
+          ['Productie','Wat er nodig is om het te maken en te blijven maken.'],
+          ['Vervolgstappen','Eindslide met de start van een proefreeks.']
+        ] },
+      { id:'web-platformen', title:'Web platformen', desc:'Voorstel voor een platform of website.', vorm:'deck',
+        slides:[
+          ['Cover','Werktitel van het platform met de belofte in een zin.'],
+          ['Aanleiding','Welk probleem het oplost en voor wie.'],
+          ['Concept','Het idee en de belangrijkste gebruikersstromen.'],
+          ['Functionaliteit','Wat het platform kan, in blokken per onderdeel.'],
+          ['Structuur','De opbouw van paginas en de navigatie.'],
+          ['Ontwerp','De schermen in beeld, in de mockup.'],
+          ['Techniek','Wat eronder ligt, hosting en beheer.'],
+          ['Fasering','Eindslide met de fasen en de eerste oplevering.']
+        ] }
+    ]},
 ];
 
 var nav = document.getElementById('nav');
@@ -269,18 +414,18 @@ function renderCat(cat){
 
 function renderDoc(cat,it){
   markActive(it.id);
-  var parts = it.parts.map(function(p,i){
+  var rijen = it.slides.map(function(p,i){
     var n = (i+1) < 10 ? '0'+(i+1) : ''+(i+1);
-    return '<li><span>'+n+'</span>'+p+'</li>';
+    return '<li><span>'+n+'</span><div><b>'+p[0]+'</b><em>'+p[1]+'</em></div></li>';
   }).join('');
+  var label = it.vorm === 'blad' ? 'Opbouw van het blad' : 'Voorgestelde slides';
   main.innerHTML = '<div class="pane">'+
     '<div class="crumb">'+cat.title+'</div>'+
     '<h1 class="doc display">'+it.title+'</h1>'+
     '<p class="lead">'+it.desc+'</p>'+
-    '<p class="sec-label">Opbouw van het document</p>'+
-    '<ol class="parts">'+parts+'</ol>'+
-    '<p class="note">Dit template wordt opgebouwd zodra het voorbeelddocument is aangeleverd. '+
-    'De opbouw hierboven is het voorstel voor de vaste indeling.</p></div>';
+    '<p class="sec-label">'+label+' ('+it.slides.length+')</p>'+
+    '<ol class="parts">'+rijen+'</ol>'+
+    '<p class="note">Voorstel voor de indeling. Wordt vastgelegd zodra het voorbeelddocument er is.</p></div>';
   window.scrollTo(0,0);
 }
 
