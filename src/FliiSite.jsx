@@ -696,6 +696,13 @@ function parseHash() {
 function useRoute() {
   const [route, setRoute] = useState(parseHash);
   useEffect(() => { const on = () => setRoute(parseHash()); window.addEventListener("hashchange", on); return () => window.removeEventListener("hashchange", on); }, []);
+  useEffect(() => {
+    const onRoot = window.location.pathname.replace(/\/+$/, "") === "";
+    const isHome = onRoot && route.name === "home";
+    let m = document.querySelector('meta[name="robots"]');
+    if (!m) { m = document.createElement("meta"); m.setAttribute("name", "robots"); document.head.appendChild(m); }
+    m.setAttribute("content", isHome ? "index, follow" : "noindex, nofollow");
+  }, [route]);
   return route;
 }
 const slugify = (s) => (s || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 48) || ("item-" + Date.now());
