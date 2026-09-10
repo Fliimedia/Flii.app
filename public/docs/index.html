@@ -4,105 +4,102 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />
-<meta name="googlebot" content="noindex, nofollow" />
 <title>Documentatie | Flii Media</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap" />
 <style>
 :root{
   --ink:#171717; --mag:#E7255A; --paper:#F3F1EB; --card:#FBFAF7; --mist:#EAE7DF;
-  --line:#E2DED3; --mid:#5C5A52; --soft:#8B887E;
-  --gloss:linear-gradient(135deg,#F4739B 0%,#E7255A 46%,#B81846 100%);
-  --side:288px;
+  --line:#E2DED3; --mid:#5C5A52; --soft:#8B887E; --side:288px;
 }
 *{box-sizing:border-box}
-html,body{margin:0;padding:0}
-body{background:var(--paper);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+html,body{margin:0;padding:0;height:100%}
+body{background:var(--paper);color:var(--ink);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
-.display{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;letter-spacing:-.02em;line-height:1.04}
-.mono{font-family:'IBM Plex Mono',monospace}
-.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mid)}
-button{font-family:inherit}
+.display{font-family:'Bricolage Grotesque',sans-serif;letter-spacing:-.02em;line-height:1.06}
+button{font-family:inherit;color:inherit}
 a{color:inherit;text-decoration:none}
 
-/* sidebar */
 .side{position:fixed;top:0;left:0;bottom:0;width:var(--side);background:var(--card);
-  border-right:1px solid var(--line);display:flex;flex-direction:column;z-index:40}
-.side-top{padding:20px 18px 14px;display:flex;align-items:center;gap:10px}
-.brand-word{line-height:1;display:inline-flex;align-items:baseline;font-size:23px;font-weight:800;
+  display:flex;flex-direction:column;z-index:40}
+.side-top{height:64px;padding:0 14px;display:flex;align-items:center;gap:10px;flex:none}
+.mark{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:10px}
+.brand-word{line-height:1;display:inline-flex;align-items:baseline;font-size:20px;font-weight:800;
   font-family:'Bricolage Grotesque',sans-serif;letter-spacing:-.02em}
 .brand-heart{width:.30em;height:.30em;flex:none;align-self:flex-end;margin:0 .01em .07em}
 .brand-dot{color:var(--mag)}
-.side-tag{margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.1em;
-  text-transform:uppercase;color:var(--soft);border:1px solid var(--line);border-radius:999px;padding:3px 9px}
-.nav{flex:1;overflow-y:auto;padding:8px 12px 20px}
-.cat{margin-bottom:2px}
-.cat-btn{width:100%;display:flex;align-items:center;gap:11px;background:none;border:none;cursor:pointer;
-  padding:10px 12px;border-radius:10px;font-size:14.5px;font-weight:600;color:var(--ink);text-align:left;
-  transition:background .15s,color .15s}
-.cat-btn:hover{background:var(--mist)}
-.cat-btn.on{background:var(--mist)}
-.cat-btn svg.ic{width:18px;height:18px;flex:none;stroke:var(--mid);stroke-width:1.6;fill:none;
-  stroke-linecap:round;stroke-linejoin:round}
-.cat-btn.on svg.ic{stroke:var(--mag)}
-.chev{margin-left:auto;width:12px;height:12px;stroke:var(--soft);stroke-width:2;fill:none;
+.panel-btn{margin-left:auto;background:none;border:none;cursor:pointer;padding:7px;border-radius:9px;
+  display:flex;align-items:center;opacity:.55}
+.panel-btn:hover{background:var(--mist);opacity:1}
+.panel-btn svg{width:18px;height:18px;stroke:var(--ink);stroke-width:1.6;fill:none}
+
+.nav{flex:1;overflow-y:auto;padding:4px 10px 16px}
+.row{width:100%;display:flex;align-items:center;gap:12px;background:none;border:none;cursor:pointer;
+  padding:9px 10px;border-radius:10px;font-size:15px;color:var(--ink);text-align:left;line-height:1.3}
+.row:hover{background:var(--mist)}
+.row.on{background:var(--mist)}
+.row svg.ic{width:19px;height:19px;flex:none;stroke:var(--ink);stroke-width:1.5;fill:none;
+  stroke-linecap:round;stroke-linejoin:round;opacity:.8}
+.row.on svg.ic{stroke:var(--mag);opacity:1}
+.chev{margin-left:auto;width:11px;height:11px;stroke:var(--soft);stroke-width:2;fill:none;
   stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
 .cat.open .chev{transform:rotate(90deg)}
 .sub{max-height:0;overflow:hidden;transition:max-height .25s ease}
-.cat.open .sub{max-height:520px}
-.sub-inner{padding:2px 0 8px 20px;margin-left:20px;border-left:1px solid var(--line)}
+.cat.open .sub{max-height:560px}
+.sub-inner{padding:2px 0 6px 42px}
 .sub-btn{display:block;width:100%;text-align:left;background:none;border:none;cursor:pointer;
-  padding:7px 10px;border-radius:8px;font-size:13.5px;color:var(--mid);transition:color .15s,background .15s}
-.sub-btn:hover{color:var(--ink);background:var(--mist)}
-.sub-btn.active{color:var(--mag);font-weight:600;background:#FDE7EE}
-.side-foot{border-top:1px solid var(--line);padding:14px 18px;font-size:12px;color:var(--soft)}
+  padding:7px 10px;border-radius:9px;font-size:14px;color:var(--mid);line-height:1.35}
+.sub-btn:hover{background:var(--mist);color:var(--ink)}
+.sub-btn.active{background:var(--mist);color:var(--ink);font-weight:500}
 
-/* topbar (mobiel) */
+.side-foot{flex:none;border-top:1px solid var(--line);padding:8px 10px 12px}
+.side-foot .row{font-size:14px;color:var(--mid)}
+.side-foot .row svg.ic{width:17px;height:17px;opacity:.65}
+
 .topbar{display:none;position:sticky;top:0;z-index:50;background:var(--card);
-  border-bottom:1px solid var(--line);padding:12px 16px;align-items:center;gap:12px}
-.burger{background:none;border:1px solid var(--line);border-radius:9px;padding:7px 9px;cursor:pointer;
-  display:flex;align-items:center}
-.burger svg{width:17px;height:17px;stroke:var(--ink);stroke-width:1.8;fill:none;stroke-linecap:round}
-.scrim{display:none;position:fixed;inset:0;background:rgba(23,23,23,.36);z-index:39}
+  padding:11px 14px;align-items:center;gap:12px;border-bottom:1px solid var(--line)}
+.burger{background:none;border:none;cursor:pointer;padding:7px;border-radius:9px;display:flex}
+.burger svg{width:19px;height:19px;stroke:var(--ink);stroke-width:1.7;fill:none;stroke-linecap:round}
+.scrim{display:none;position:fixed;inset:0;background:rgba(23,23,23,.34);z-index:39}
 
-/* main */
-.main{margin-left:var(--side);padding:44px 40px 80px;max-width:980px}
-.crumb{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--soft);margin-bottom:14px}
-h1{font-size:34px;margin:0 0 12px}
-.lead{color:var(--mid);font-size:16px;max-width:64ch;margin:0 0 28px}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:30px}
-.chip{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;
-  border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;color:var(--mid)}
-.chip.hot{background:var(--gloss);border-color:transparent;color:#fff}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));gap:14px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;cursor:pointer;
-  text-align:left;transition:border-color .15s,transform .15s}
-.card:hover{border-color:var(--mag);transform:translateY(-2px)}
-.card h3{font-size:15.5px;margin:0 0 6px;font-weight:600}
-.card p{font-size:13.5px;color:var(--mid);margin:0}
-.sec{margin-top:34px}
-.sec h2{font-size:13px;font-family:'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--mid);font-weight:500;margin:0 0 14px}
-ol.parts{counter-reset:p;list-style:none;padding:0;margin:0;border-top:1px solid var(--line)}
-ol.parts li{counter-increment:p;display:flex;gap:14px;padding:13px 2px;border-bottom:1px solid var(--line);
-  font-size:14.5px}
-ol.parts li::before{content:counter(p,decimal-leading-zero);font-family:'IBM Plex Mono',monospace;
-  font-size:11.5px;color:var(--mag);padding-top:3px;flex:none}
-.status{margin-top:34px;background:var(--card);border:1px solid var(--line);border-left:2px solid var(--mag);
-  border-radius:0 12px 12px 0;padding:16px 18px;font-size:13.5px;color:var(--mid)}
-.status b{color:var(--ink)}
-.path{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--soft);margin-top:8px;display:block}
+.main{margin-left:var(--side);min-height:100vh;display:flex;flex-direction:column}
+.pane{flex:1;padding:56px 56px 90px;max-width:860px}
+.empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:40px 24px 90px}
+.empty h1{font-size:32px;font-weight:600;margin:0 0 10px}
+.empty p{color:var(--mid);margin:0;font-size:15px}
+.crumb{font-size:13px;color:var(--soft);margin-bottom:10px}
+h1.doc{font-size:30px;font-weight:700;margin:0 0 10px}
+.lead{color:var(--mid);font-size:15.5px;max-width:62ch;margin:0 0 34px}
+.sec-label{font-size:13px;color:var(--soft);margin:0 0 6px}
+ol.parts{list-style:none;padding:0;margin:0}
+ol.parts li{padding:12px 2px;border-bottom:1px solid var(--line);font-size:15px;display:flex;gap:14px}
+ol.parts li:first-child{border-top:1px solid var(--line)}
+ol.parts li span{color:var(--soft);font-size:13px;width:20px;flex:none;padding-top:2px}
+.list{list-style:none;padding:0;margin:0}
+.list li{border-bottom:1px solid var(--line)}
+.list li:first-child{border-top:1px solid var(--line)}
+.list button{width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:15px 4px;
+  display:flex;align-items:baseline;gap:14px}
+.list button:hover .t{color:var(--mag)}
+.list .t{font-size:15.5px;font-weight:500;flex:none;min-width:190px}
+.list .d{font-size:14px;color:var(--mid)}
+.note{margin-top:36px;font-size:14px;color:var(--mid);border-left:2px solid var(--mist);padding-left:16px}
 
 @media(max-width:900px){
-  .side{transform:translateX(-100%);transition:transform .25s ease;width:270px}
+  .side{transform:translateX(-100%);transition:transform .25s ease;width:274px}
   body.nav-open .side{transform:none}
   body.nav-open .scrim{display:block}
   .topbar{display:flex}
-  .main{margin-left:0;padding:26px 18px 70px}
-  h1{font-size:26px}
-  .lead{font-size:15px}
+  .main{margin-left:0}
+  .pane{padding:26px 18px 70px}
+  .empty{padding:60px 20px}
+  .empty h1{font-size:25px}
+  h1.doc{font-size:24px}
+  .list button{display:block;padding:14px 2px}
+  .list .t{min-width:0;margin-bottom:3px}
 }
 </style>
 </head>
@@ -111,29 +108,34 @@ ol.parts li::before{content:counter(p,decimal-leading-zero);font-family:'IBM Ple
 <div class="scrim" id="scrim"></div>
 
 <div class="topbar">
-  <button class="burger" id="burger" aria-label="Menu">
-    <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-  </button>
+  <button class="burger" id="burger" aria-label="Menu"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
   <span class="brand-word">flii<svg class="brand-heart" viewBox="0 0 24 24" aria-hidden><path fill="#E7255A" d="M12 21s-7.5-4.7-9.6-9.2C.9 8.5 2.6 5 6 4.3c2.2-.5 4.4.6 6 2.6 1.6-2 3.8-3.1 6-2.6 3.4.7 5.1 4.2 3.6 7.5C19.5 16.3 12 21 12 21z"/></svg><span class="brand-dot">docs</span></span>
 </div>
 
 <aside class="side">
   <div class="side-top">
-    <span class="brand-word">flii<svg class="brand-heart" viewBox="0 0 24 24" aria-hidden><path fill="#E7255A" d="M12 21s-7.5-4.7-9.6-9.2C.9 8.5 2.6 5 6 4.3c2.2-.5 4.4.6 6 2.6 1.6-2 3.8-3.1 6-2.6 3.4.7 5.1 4.2 3.6 7.5C19.5 16.3 12 21 12 21z"/></svg><span class="brand-dot">docs</span></span>
-    <span class="side-tag">intern</span>
+    <a class="mark" href="#" onclick="goHome();return false;">
+      <span class="brand-word">flii<svg class="brand-heart" viewBox="0 0 24 24" aria-hidden><path fill="#E7255A" d="M12 21s-7.5-4.7-9.6-9.2C.9 8.5 2.6 5 6 4.3c2.2-.5 4.4.6 6 2.6 1.6-2 3.8-3.1 6-2.6 3.4.7 5.1 4.2 3.6 7.5C19.5 16.3 12 21 12 21z"/></svg><span class="brand-dot">docs</span></span>
+    </a>
+    <button class="panel-btn" id="panel" aria-label="Paneel">
+      <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/></svg>
+    </button>
   </div>
   <nav class="nav" id="nav"></nav>
-  <div class="side-foot">Standaard documentatie voor mediaprojecten</div>
+  <div class="side-foot" id="foot"></div>
 </aside>
 
 <main class="main" id="main"></main>
 
 <script>
 var ICONS = {
-  pitch:'<path d="M12 3l2.3 5.5L20 9.5l-4 4.1.9 5.9L12 16.8 7.1 19.5 8 13.6 4 9.5l5.7-1z"/>',
+  pitch:'<path d="M12 3l2.2 5.4 5.8.5-4.4 3.8 1.3 5.7L12 15.4 7.1 18.4l1.3-5.7L4 8.9l5.8-.5z"/>',
   project:'<path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/>',
   year:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 11h18"/>',
-  format:'<rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/>'
+  format:'<rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/>',
+  home:'<path d="M4 11l8-7 8 7"/><path d="M6 10v10h12V10"/>',
+  book:'<path d="M4 5a2 2 0 012-2h13v18H6a2 2 0 01-2-2z"/><path d="M8 3v18"/>',
+  help:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 113.2 2.4c-.7.3-1.2.9-1.2 1.7v.4"/><path d="M12 17.2v.1"/>'
 };
 
 var DATA = [
@@ -186,124 +188,110 @@ var DATA = [
 ];
 
 var nav = document.getElementById('nav');
+var foot = document.getElementById('foot');
 var main = document.getElementById('main');
-var current = null;
 
-function svgIc(name){
-  return '<svg class="ic" viewBox="0 0 24 24">'+ICONS[name]+'</svg>';
-}
+function ic(n){ return '<svg class="ic" viewBox="0 0 24 24">'+ICONS[n]+'</svg>'; }
 
 function buildNav(){
   DATA.forEach(function(cat){
     var wrap = document.createElement('div');
-    wrap.className = 'cat';
-    wrap.id = 'cat-'+cat.id;
+    wrap.className = 'cat'; wrap.id = 'cat-'+cat.id;
     var btn = document.createElement('button');
-    btn.className = 'cat-btn';
-    btn.innerHTML = svgIc(cat.icon)+'<span>'+cat.title+'</span>'+
+    btn.className = 'row';
+    btn.innerHTML = ic(cat.icon)+'<span>'+cat.title+'</span>'+
       '<svg class="chev" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>';
     btn.onclick = function(){
-      var isOpen = wrap.classList.contains('open');
-      if(isOpen){ wrap.classList.remove('open'); btn.classList.remove('on'); }
+      if(wrap.classList.contains('open')){ wrap.classList.remove('open'); btn.classList.remove('on'); }
       else { wrap.classList.add('open'); btn.classList.add('on'); renderCat(cat); }
     };
-    var sub = document.createElement('div');
-    sub.className = 'sub';
-    var inner = document.createElement('div');
-    inner.className = 'sub-inner';
+    var sub = document.createElement('div'); sub.className = 'sub';
+    var inner = document.createElement('div'); inner.className = 'sub-inner';
     cat.items.forEach(function(it){
       var b = document.createElement('button');
-      b.className = 'sub-btn';
-      b.id = 'sub-'+it.id;
-      b.textContent = it.title;
+      b.className = 'sub-btn'; b.id = 'sub-'+it.id; b.textContent = it.title;
       b.onclick = function(e){ e.stopPropagation(); renderDoc(cat,it); closeMobile(); };
       inner.appendChild(b);
     });
-    sub.appendChild(inner);
-    wrap.appendChild(btn);
-    wrap.appendChild(sub);
+    sub.appendChild(inner); wrap.appendChild(btn); wrap.appendChild(sub);
     nav.appendChild(wrap);
   });
+  foot.innerHTML =
+    '<button class="row" onclick="goHome()">'+ic('home')+'<span>Overzicht</span></button>'+
+    '<button class="row" onclick="renderGuide()">'+ic('book')+'<span>Werkwijze</span></button>';
 }
 
 function markActive(id){
   var prev = document.querySelector('.sub-btn.active');
   if(prev) prev.classList.remove('active');
-  if(id){
-    var el = document.getElementById('sub-'+id);
-    if(el) el.classList.add('active');
-  }
+  if(id){ var el = document.getElementById('sub-'+id); if(el) el.classList.add('active'); }
 }
 
-function renderHome(){
+function goHome(){
   markActive(null);
-  var cards = DATA.map(function(c){
-    return '<button class="card" onclick="openCat(\u0027'+c.id+'\u0027)">'+
-      '<h3>'+c.title+'</h3><p>'+c.intro+'</p></button>';
-  }).join('');
-  var total = DATA.reduce(function(n,c){ return n + c.items.length; }, 0);
   main.innerHTML =
-    '<div class="crumb">Documentatie</div>'+
-    '<h1 class="display">Standaard documentatie</h1>'+
-    '<p class="lead">Alle vaste documenten voor mediaprojecten, in een uniforme opzet. '+
-    'Kies links een categorie om de bijbehorende documenten te zien.</p>'+
-    '<div class="chips"><span class="chip">'+DATA.length+' categorieen</span>'+
-    '<span class="chip">'+total+' documenten</span>'+
-    '<span class="chip hot">Niet indexeerbaar</span></div>'+
-    '<div class="grid">'+cards+'</div>';
+    '<div class="empty"><h1 class="display">Waar wil je beginnen?</h1>'+
+    '<p>Kies links een categorie om de documenten te zien.</p></div>';
+  window.scrollTo(0,0);
+  closeMobile();
 }
 
-function openCat(id){
-  var cat = DATA.filter(function(c){ return c.id===id; })[0];
-  var wrap = document.getElementById('cat-'+id);
-  if(wrap && !wrap.classList.contains('open')){
-    wrap.classList.add('open');
-    wrap.querySelector('.cat-btn').classList.add('on');
-  }
-  renderCat(cat);
+function openDoc(c,i){
+  var cat = DATA.filter(function(x){ return x.id===c; })[0];
+  renderDoc(cat, cat.items.filter(function(y){ return y.id===i; })[0]);
 }
 
 function renderCat(cat){
   markActive(null);
-  var cards = cat.items.map(function(it){
-    return '<button class="card" onclick="openDoc(\u0027'+cat.id+'\u0027,\u0027'+it.id+'\u0027)">'+
-      '<h3>'+it.title+'</h3><p>'+it.desc+'</p></button>';
+  var rows = cat.items.map(function(it){
+    return '<li><button onclick="openDoc(\u0027'+cat.id+'\u0027,\u0027'+it.id+'\u0027)">'+
+      '<span class="t">'+it.title+'</span><span class="d">'+it.desc+'</span></button></li>';
   }).join('');
-  main.innerHTML =
-    '<div class="crumb">Documentatie / '+cat.title+'</div>'+
-    '<h1 class="display">'+cat.title+'</h1>'+
-    '<p class="lead">'+cat.intro+'</p>'+
-    '<div class="grid">'+cards+'</div>';
+  main.innerHTML = '<div class="pane"><h1 class="doc display">'+cat.title+'</h1>'+
+    '<p class="lead">'+cat.intro+'</p><ul class="list">'+rows+'</ul></div>';
   window.scrollTo(0,0);
-}
-
-function openDoc(catId,itId){
-  var cat = DATA.filter(function(c){ return c.id===catId; })[0];
-  var it = cat.items.filter(function(x){ return x.id===itId; })[0];
-  renderDoc(cat,it);
 }
 
 function renderDoc(cat,it){
   markActive(it.id);
-  var parts = it.parts.map(function(p){ return '<li>'+p+'</li>'; }).join('');
-  main.innerHTML =
-    '<div class="crumb">'+cat.title+' / '+it.title+'</div>'+
-    '<h1 class="display">'+it.title+'</h1>'+
+  var parts = it.parts.map(function(p,i){
+    var n = (i+1) < 10 ? '0'+(i+1) : ''+(i+1);
+    return '<li><span>'+n+'</span>'+p+'</li>';
+  }).join('');
+  main.innerHTML = '<div class="pane">'+
+    '<div class="crumb">'+cat.title+'</div>'+
+    '<h1 class="doc display">'+it.title+'</h1>'+
     '<p class="lead">'+it.desc+'</p>'+
-    '<div class="chips"><span class="chip">Template</span><span class="chip">'+it.parts.length+' onderdelen</span></div>'+
-    '<div class="sec"><h2>Opbouw van het document</h2><ol class="parts">'+parts+'</ol></div>'+
-    '<div class="status"><b>Nog uit te werken.</b> Dit template wordt opgebouwd zodra het voorbeelddocument is aangeleverd. '+
-    'De opbouw hierboven is het voorstel voor de vaste indeling.'+
-    '<span class="path">/docs/'+cat.id+'/'+it.id+'</span></div>';
+    '<p class="sec-label">Opbouw van het document</p>'+
+    '<ol class="parts">'+parts+'</ol>'+
+    '<p class="note">Dit template wordt opgebouwd zodra het voorbeelddocument is aangeleverd. '+
+    'De opbouw hierboven is het voorstel voor de vaste indeling.</p></div>';
   window.scrollTo(0,0);
+}
+
+function renderGuide(){
+  markActive(null);
+  main.innerHTML = '<div class="pane">'+
+    '<h1 class="doc display">Werkwijze</h1>'+
+    '<p class="lead">Elk document volgt dezelfde opzet en dezelfde huisstijl, zodat een pitch, '+
+    'een campagneplan en een evaluatie herkenbaar bij elkaar horen.</p>'+
+    '<ol class="parts">'+
+    '<li><span>01</span>Voorbeelddocument aanleveren</li>'+
+    '<li><span>02</span>Vaste indeling bepalen</li>'+
+    '<li><span>03</span>Template opbouwen in huisstijl</li>'+
+    '<li><span>04</span>Invullen per project</li>'+
+    '</ol></div>';
+  window.scrollTo(0,0);
+  closeMobile();
 }
 
 function closeMobile(){ document.body.classList.remove('nav-open'); }
 document.getElementById('burger').onclick = function(){ document.body.classList.toggle('nav-open'); };
 document.getElementById('scrim').onclick = closeMobile;
+document.getElementById('panel').onclick = function(){ document.body.classList.toggle('nav-open'); };
 
 buildNav();
-renderHome();
+goHome();
 </script>
 </body>
 </html>
