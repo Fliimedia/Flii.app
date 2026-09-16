@@ -1,0 +1,40 @@
+{
+  "id": "client-id",
+  "name": "Klantnaam",
+  "aliases": ["alternatieve schrijfwijze"],
+  "website": "",
+  "since": "",
+  "lead": { "name": "", "role": "", "email": "", "phone": "" },
+  "contacts": [{ "name": "", "role": "", "email": "" }],
+  "collaboration": {
+    "scope": "",
+    "agreements": [],
+    "channels": [],
+    "meeting": "",
+    "nextReview": ""
+  },
+  "projects": [
+    {
+      "id": "",
+      "title": "",
+      "status": "active",
+      "phase": "",
+      "description": "",
+      "start": "",
+      "end": "",
+      "milestones": [{ "date": "", "label": "", "done": false }],
+      "team": []
+    }
+  ],
+  "results": {
+    "updated": "",
+    "source": "",
+    "note": "",
+    "metrics": [{ "label": "", "value": 0, "delta": 0, "period": "" }],
+    "series": [{ "label": "", "points": [{ "label": "", "value": 0 }] }]
+  },
+  "services": [{ "name": "", "type": "retainer", "period": "", "status": "active", "description": "" }],
+  "invoices": [{ "number": "", "date": "", "due": "", "amount": 0, "status": "open", "description": "", "link": "" }],
+  "files": [{ "name": "", "kind": "pdf", "project": "", "date": "", "source": "hosted", "url": "", "size": "" }],
+  "updates": [{ "date": "", "author": "Flii Media", "message": "" }]
+}
