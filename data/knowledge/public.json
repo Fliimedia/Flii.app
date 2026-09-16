@@ -1,0 +1,174 @@
+{
+ "label": "public",
+ "generated": "2026-09-14",
+ "chunks": [
+  {
+   "id": "public/dienst-ai.md#0",
+   "source": "public/dienst-ai.md",
+   "title": "dienst-ai",
+   "heading": "AI integratie",
+   "always": false,
+   "text": "We integreren AI daar waar het rendeert: assistenten, automatisering en slimme\nfuncties die in je bestaande processen passen, niet ernaast."
+  },
+  {
+   "id": "public/dienst-ai.md#1",
+   "source": "public/dienst-ai.md",
+   "title": "dienst-ai",
+   "heading": "Wat AI integratie oplevert",
+   "always": false,
+   "text": "Tijd terug, doordat AI repeterend werk overneemt en je team tijd overhoudt voor\nwat telt. Altijd bereikbaar zijn, met assistenten die vragen beantwoorden en\nleads kwalificeren, dag en nacht. En betere beslissingen, met modellen die\npatronen zien die mensen missen."
+  },
+  {
+   "id": "public/dienst-ai.md#2",
+   "source": "public/dienst-ai.md",
+   "title": "dienst-ai",
+   "heading": "Hoe we AI integreren",
+   "always": false,
+   "text": "Eerst kansen vinden: waar levert AI het meeste op in jouw proces. Dan ontwerp,\nwaarin we model, data en de plek in de flow kiezen. Dan de integratie in je tools\nen het koppelen van de data. En daarna bijsturen, waarbij we de output meten en\nde kwaliteit verbeteren.\n\nHet resultaat is AI die meedraait in je processen en elke maand slimmer wordt."
+  },
+  {
+   "id": "public/dienst-app-ux.md#3",
+   "source": "public/dienst-app-ux.md",
+   "title": "dienst-app-ux",
+   "heading": "App en UX design",
+   "always": false,
+   "text": "We ontwerpen en bouwen apps en interfaces waar mensen graag mee werken. Van\neerste schets tot werkende PWA, met steeds dezelfde vraag: wat heeft de\ngebruiker echt nodig?"
+  },
+  {
+   "id": "public/dienst-app-ux.md#4",
+   "source": "public/dienst-app-ux.md",
+   "title": "dienst-app-ux",
+   "heading": "Wat App en UX design oplevert",
+   "always": false,
+   "text": "Minder afhakers, doordat een heldere flow drempels weghaalt zodat meer bezoekers\ndoen wat je wilt. Sneller iets echts, omdat we in werkende versies werken in\nplaats van eindeloze mockups. En klaar voor groei: een opzet die meegroeit met\nnieuwe functies en gebruikers."
+  },
+  {
+   "id": "public/dienst-app-ux.md#5",
+   "source": "public/dienst-app-ux.md",
+   "title": "dienst-app-ux",
+   "heading": "Hoe we App en UX design uitvoeren",
+   "always": false,
+   "text": "Eerst onderzoek, waarin we gebruikers, doelen en knelpunten in kaart brengen.\nDan ontwerp: wireframes en een strak, herkenbaar interfaceontwerp. Dan bouw: een\nresponsive app of PWA, meteen hosting-klaar. En daarna meten en verbeteren, waar\nwe gebruik meten en de interface aanscherpen.\n\nHet resultaat is een app die klopt, converteert en klaarstaat om door te\nontwikkelen."
+  },
+  {
+   "id": "public/dienst-platform.md#6",
+   "source": "public/dienst-platform.md",
+   "title": "dienst-platform",
+   "heading": "Platform development",
+   "always": false,
+   "text": "We bouwen volwaardige platformen: portals, webapps en sites met een echte\nbackend, gebruikersrollen en waar nodig AI. Gemaakt om te schalen."
+  },
+  {
+   "id": "public/dienst-platform.md#7",
+   "source": "public/dienst-platform.md",
+   "title": "dienst-platform",
+   "heading": "Wat platform development oplevert",
+   "always": false,
+   "text": "Alles op één plek: data, gebruikers en processen in één systeem in plaats van\nlosse tools. Minder handwerk, doordat automatisering en koppelingen repeterend\nwerk uit handen nemen. En schaalbaarheid: een architectuur die meegroeit met\nverkeer, features en teams."
+  },
+  {
+   "id": "public/dienst-platform.md#8",
+   "source": "public/dienst-platform.md",
+   "title": "dienst-platform",
+   "heading": "Hoe we een platform bouwen",
+   "always": false,
+   "text": "Eerst de architectuur, waarin we datamodel, rollen en koppelingen bepalen. Dan de\nbouw van backend, database en interface, module voor module. Dan de integraties:\nAPI's, betalingen, AI en bestaande tools aan elkaar. En daarna beheer, met\nhosting, monitoring en doorontwikkeling.\n\nHet resultaat is een platform dat je bedrijf draagt in plaats van vertraagt."
+  },
+  {
+   "id": "public/dienst-platform.md#9",
+   "source": "public/dienst-platform.md",
+   "title": "dienst-platform",
+   "heading": "Je platform als spil van je systemen",
+   "always": false,
+   "text": "Het platform staat centraal en verbindt al je tools en data. Daaromheen hangen\nCRM voor klantdata en segmenten, transactionele en geautomatiseerde e-mail,\nintegraties met bestaande tools en externe API's, realtime notificaties in-app\nen per e-mail, vindbaarheid in zoekmachines en AI-chatbots, analytics voor\ngebruik en funnels, en dashboards met inzichten en KPI's."
+  },
+  {
+   "id": "public/dienst-platform.md#10",
+   "source": "public/dienst-platform.md",
+   "title": "dienst-platform",
+   "heading": "De lagen van een app",
+   "always": false,
+   "text": "Een goede app is een stack waarin elke laag de laag erboven draagt, en flii.app\nbouwt ze alle vijf zelf. De front end is de interface die gebruikers bedienen,\nweb, native of PWA. Integrations zijn de koppelingen met externe systemen en\nAPI's. Databases zijn waar je data leeft, veilig en gestructureerd. Hosting is de\ndraaiende omgeving met geautomatiseerde deployment. En de codebase is het\nfundament: schone, onderhoudbare applicatiecode."
+  },
+  {
+   "id": "public/flii-loop.md#11",
+   "source": "public/flii-loop.md",
+   "title": "flii-loop",
+   "heading": "Flii Loop",
+   "always": false,
+   "text": "Bouwen stopt niet bij de livegang. Live gaan is stap één; daarna houdt de Flii\nLoop je app of platform elke maand scherper. We meten wat gebruikers echt doen,\nhalen daar de grootste kansen uit en bouwen de verbetering. Zo groeit het product\nmee met wie het gebruikt.\n\nE�n loop die blijft leren. Lanceer, meet en verbeter, en zet feedback om naar\nduurzame verbetering."
+  },
+  {
+   "id": "public/flii-loop.md#12",
+   "source": "public/flii-loop.md",
+   "title": "flii-loop",
+   "heading": "De vier stappen van de Flii Loop",
+   "always": false,
+   "text": "Livegang: je app of platform gaat live en de eerste echte gebruikers stromen\nbinnen.\n\nMeasure: we meten wat mensen werkelijk doen, waar ze klikken, blijven hangen en\nafhaken.\n\nAnalyse: de cijfers krijgen betekenis. We zien wat werkt, waar het lekt en waar\nde grootste winst zit.\n\nImprove: we bouwen de verbetering, lossen knelpunten op of zetten een test uit,\nen de lus begint opnieuw."
+  },
+  {
+   "id": "public/klantportaal.md#13",
+   "source": "public/klantportaal.md",
+   "title": "klantportaal",
+   "heading": "Het klantportaal",
+   "always": false,
+   "text": "Klanten loggen in met hun klantnaam en een pincode van zes cijfers. De pincode\nwordt verstrekt door flii.app; die kun je niet zelf aanvragen of resetten.\n\nIn het portaal staan de samenwerking en de gemaakte afspraken, de lopende\nprojecten met hun mijlpalen, de resultaten, de diensten en facturen, en de\nopgeleverde bestanden. Ook is er een assistent die vragen beantwoordt.\n\nDe sessie eindigt zodra het tabblad wordt gesloten. Het portaal werkt op\ntelefoon, tablet en desktop, en heeft een lichte en een donkere weergave."
+  },
+  {
+   "id": "public/over-flii-app.md#14",
+   "source": "public/over-flii-app.md",
+   "title": "over-flii-app",
+   "heading": "Wat is flii.app",
+   "always": true,
+   "text": "flii.app ontwerpt en ontwikkelt AI-architectuur en apps. De kernbelofte is \"AI\narchitectuur als fundament van resultaat\". Het motto is \"Let's Ignite\nambitions\", en de ondertoon van het merk is kort samen te vatten als: snel\ngebouwd, afgesteld op prestatie.\n\nflii.app is onderdeel van Flii Media en werkt vanuit Amstelveen."
+  },
+  {
+   "id": "public/over-flii-app.md#15",
+   "source": "public/over-flii-app.md",
+   "title": "over-flii-app",
+   "heading": "Wat flii.app aanbiedt",
+   "always": true,
+   "text": "Er zijn drie diensten, samen één aanbod: we bedenken en bouwen de blauwdruk voor\nsucces.\n\n- App en UX design: apps en interfaces die doen wat gebruikers willen\n- Platform development: schaalbare platformen met backend, data en AI onder de motorkap\n- AI integratie: AI die echt werk uit handen neemt, ingebed in je eigen processen"
+  },
+  {
+   "id": "public/over-flii-app.md#16",
+   "source": "public/over-flii-app.md",
+   "title": "over-flii-app",
+   "heading": "Voor wie flii.app bouwt",
+   "always": true,
+   "text": "Gefinancierde startups die een product in de markt willen met een groeimotor\nerachter. Scale-ups die klaar zijn om uitgaven om te zetten in een systeem dat\noptelt. Founder-led merken die één partner willen die bouwt en blijft\ndoorontwikkelen. En productteams die snelheid, data en een scherpe brief\nwaarderen."
+  },
+  {
+   "id": "public/over-flii-app.md#17",
+   "source": "public/over-flii-app.md",
+   "title": "over-flii-app",
+   "heading": "Contact met flii.app",
+   "always": true,
+   "text": "Locatie: Amstelveen, Nederland\nE-mail: hello@flii.nl\nWhatsApp: wa.me/31640881169\nWebsite: flii.app\n\nEen gesprek plannen kan via de site. Je kunt kiezen tussen een vraag stellen,\neen vrijblijvend adviesgesprek, of interesse in een specifiek product."
+  },
+  {
+   "id": "public/over-flii-app.md#18",
+   "source": "public/over-flii-app.md",
+   "title": "over-flii-app",
+   "heading": "In cijfers",
+   "always": true,
+   "text": "Eenentwintig dagen van brief tot live. Honderd procent AI-native oplevering.\nMeer dan twaalf producten gelanceerd."
+  },
+  {
+   "id": "public/werkwijze.md#19",
+   "source": "public/werkwijze.md",
+   "title": "werkwijze",
+   "heading": "Hoe een traject bij flii.app verloopt",
+   "always": false,
+   "text": "Stap 1, kennismaking: een kort, direct gesprek over waar je staat en waar je\nheen wilt.\n\nStap 2, de kans in kaart: een helder plan met scope, indicatie en planning.\n\nStap 3, afstemmen: slimme vervolgvragen, waarna we de opdracht vastleggen.\n\nStap 4, bouwen: heldere scope, gedeelde verwachtingen, en een build die live\ngaat."
+  },
+  {
+   "id": "public/werkwijze.md#20",
+   "source": "public/werkwijze.md",
+   "title": "werkwijze",
+   "heading": "flii.labs",
+   "always": false,
+   "text": "Bij flii.labs bouwt en itereert flii.app live producten en experimenten. Dat is\nde eigen hobbykamer, waar werk in de praktijk wordt getest."
+  }
+ ]
+}
