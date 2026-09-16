@@ -1,0 +1,26 @@
+{
+  "id": "flii-app",
+  "name": "flii.app",
+  "aliases": ["flii app", "fliiapp", "flii", "flii media", "fliimedia"],
+  "tagline": "Let's Ignite ambitions",
+  "website": "https://flii.app",
+  "email": "hello@flii.nl",
+  "phone": "+31 6 40 88 11 69",
+  "address": {
+    "street": "",
+    "postcode": "",
+    "city": "Amstelveen",
+    "country": "Nederland"
+  },
+  "kvk": "",
+  "btw": "",
+  "iban": "",
+  "contacts": [
+    { "name": "Sten Bossong", "role": "Project Lead", "email": "hello@flii.nl", "phone": "+31 6 40 88 11 69" }
+  ],
+  "brand": {
+    "brand": "#E7255A",
+    "accent": "#FF5E9A",
+    "ink": "#171717"
+  }
+}
