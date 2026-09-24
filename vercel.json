@@ -14,5 +14,11 @@
     "api/crm.js": {
       "includeFiles": "crm-app/**"
     }
-  }
+  },
+  "rewrites": [
+    {
+      "source": "/crm",
+      "destination": "/api/crm"
+    }
+  ]
 }
