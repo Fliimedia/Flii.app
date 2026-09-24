@@ -66,17 +66,22 @@
 
   function vraagPin(fout) {
     scherm('<p style="margin:0 0 14px;color:#5A6068">Voer je pincode in</p>' +
-      '<input id="pin" type="password" inputmode="numeric" maxlength="6" autocomplete="off" ' +
+      '<input id="pin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" ' +
       'style="width:100%;padding:12px 14px;font-size:17px;text-align:center;letter-spacing:.4em;' +
       'border:1px solid #E1E4E7;border-radius:10px;outline:none">' +
+      '<button id="ok" style="width:100%;margin-top:10px;padding:12px 14px;font-size:15px;' +
+      'font-weight:600;color:#fff;background:#E8255B;border:none;border-radius:10px;' +
+      'cursor:pointer">Inloggen</button>' +
       '<div id="fout" style="color:#E8255B;font-size:13px;margin-top:10px;min-height:18px">' +
       (fout || '') + '</div>');
-    var veld = document.getElementById('pin');
+    var veld = document.getElementById('pin'), knop = document.getElementById('ok');
     veld.focus();
-    veld.addEventListener('input', function () {
-      if (veld.value.length < 6) return;
-      var pin = veld.value;
+    veld.addEventListener('keydown', function (e) { if (e.key === 'Enter') knop.click(); });
+    knop.addEventListener('click', function () {
+      var pin = veld.value.replace(/[^0-9]/g, '');
+      if (pin.length < 4) return;
       veld.disabled = true;
+      knop.disabled = true;
       fetch(API + '/api/auth', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
