@@ -86,12 +86,18 @@
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: NAAM, pin: pin })
-      }).then(function (r) { return r.ok ? r.json() : null; })
-        .then(function (d) {
-          if (!d || !d.token) { vraagPin('Onjuiste code'); return; }
+      }).then(function (r) {
+        if (r.status === 401) { vraagPin('Code niet herkend. Staat CLIENT_PINS goed in Vercel?'); return null; }
+        if (!r.ok) { vraagPin('Server gaf ' + r.status + '. Controleer de deploy in Vercel.'); return null; }
+        return r.json();
+      }).then(function (d) {
+          if (!d) return;
+          if (!d.token) { vraagPin('Geen token ontvangen'); return; }
           try { localStorage.setItem(SLEUTEL, d.token); } catch (e) {}
           laad(d.token);
-        }).catch(function () { vraagPin('Er ging iets mis'); });
+        }).catch(function () {
+          vraagPin('Server niet bereikbaar. Zet ALLOWED_ORIGINS op https://flii.app en deploy opnieuw.');
+        });
     });
   }
 
