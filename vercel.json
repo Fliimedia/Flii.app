@@ -3,8 +3,16 @@
     {
       "source": "/:path+",
       "headers": [
-        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
       ]
     }
-  ]
+  ],
+  "functions": {
+    "api/crm.js": {
+      "includeFiles": "crm-app/**"
+    }
+  }
 }
