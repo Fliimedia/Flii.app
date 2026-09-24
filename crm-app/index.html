@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow">
+<title>Flii CRM</title>
+<link rel="icon" href="https://fliimedia.github.io/Flii.nl/assets/img/d913cc3c069f.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0;padding:0;background:#FBFBFA;}
+  *{box-sizing:border-box;}
+  .poort{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;
+    justify-content:center;background:#0F0E0C;
+    font-family:'Inter Tight',system-ui,sans-serif;}
+  .poort-kaart{width:min(340px,90vw);text-align:center;color:#fff;}
+  .poort-slot{width:46px;height:46px;margin:0 auto 18px;display:flex;align-items:center;
+    justify-content:center;border-radius:50%;border:1.5px solid rgba(255,255,255,.28);}
+  .poort-slot svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:1.7;}
+  .poort h1{font-size:17px;font-weight:600;margin:0 0 4px;letter-spacing:-.2px;}
+  .poort p{font-size:12.5px;color:rgba(255,255,255,.5);margin:0 0 22px;}
+  .poort input{width:100%;padding:13px 16px;border-radius:10px;text-align:center;
+    background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);
+    color:#fff;font:inherit;font-size:22px;letter-spacing:.5em;text-indent:.5em;
+    font-family:'IBM Plex Mono',monospace;outline:none;}
+  .poort input:focus{border-color:#E8294A;}
+  .poort input.fout{border-color:#E8294A;animation:schud .32s;}
+  @keyframes schud{0%,100%{transform:translateX(0)}25%{transform:translateX(-7px)}
+    75%{transform:translateX(7px)}}
+  .poort-fout{font-size:12px;color:#E8294A;margin-top:12px;min-height:16px;}
+  .poort-terug{display:inline-block;margin-top:22px;font-size:12px;
+    color:rgba(255,255,255,.45);text-decoration:none;}
+  .poort-terug:hover{color:#fff;}
+  #root{min-height:100vh;}
+  .verborgen{display:none;}
+
+/* Footer volgt deze breedte. */
+:root{--paginabreedte:680px;}
+</style>
+</head>
+<body>
+<div id="root" class="verborgen"></div>
+<script src="https://fliimedia.github.io/Flii.nl/assets/vendor/react.min.js"></script>
+<script src="https://fliimedia.github.io/Flii.nl/assets/vendor/react-dom.min.js"></script>
+<script>
+/* Alles op dezelfde origin. Pincode gaat naar /api/auth, het token daarna naar /api/crm.
+   Geen cookies: het token staat in localStorage en reist mee in de aanvraag. */
+(function () {
+  var SLEUTEL = 'flii.session', NAAM = 'flii.app';
+  var wortel = document.getElementById('root');
+
+  function scherm(html) {
+    wortel.classList.remove('verborgen');
+    wortel.innerHTML =
+      '<div style="display:flex;align-items:center;justify-content:center;height:100vh;' +
+      'font-family:Inter,system-ui,sans-serif;text-align:center;padding:24px">' +
+      '<div style="width:100%;max-width:300px">' +
+      '<div style="height:9px;width:120px;background:#E8255B;margin:0 auto 26px;border-radius:5px"></div>' +
+      html + '</div></div>';
+  }
+
+  function vraagPin(fout) {
+    scherm('<p style="margin:0 0 14px;color:#5A6068">Voer je pincode in</p>' +
+      '<input id="pin" type="password" inputmode="numeric" maxlength="6" autocomplete="off" ' +
+      'style="width:100%;padding:12px 14px;font-size:17px;text-align:center;letter-spacing:.4em;' +
+      'border:1px solid #E1E4E7;border-radius:10px;outline:none">' +
+      '<div id="fout" style="color:#E8255B;font-size:13px;margin-top:10px;min-height:18px">' +
+      (fout || '') + '</div>');
+    var veld = document.getElementById('pin');
+    veld.focus();
+    veld.addEventListener('input', function () {
+      if (veld.value.length < 6) return;
+      var pin = veld.value;
+      veld.disabled = true;
+      fetch('/api/auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: NAAM, pin: pin })
+      }).then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (d) {
+          if (!d || !d.token) { vraagPin('Onjuiste code'); return; }
+          try { localStorage.setItem(SLEUTEL, d.token); } catch (e) {}
+          laad(d.token);
+        }).catch(function () { vraagPin('Er ging iets mis'); });
+    });
+  }
+
+  function laad(token) {
+    scherm('<p style="margin:0;color:#5A6068">Bezig met laden</p>');
+    fetch('/api/crm', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token: token })
+    }).then(function (r) {
+      if (r.status === 401) { try { localStorage.removeItem(SLEUTEL); } catch (e) {} vraagPin('Sessie verlopen'); return null; }
+      if (!r.ok) { scherm('<p style="margin:0;color:#5A6068">De CRM kon niet geladen worden.</p>'); return null; }
+      return r.text();
+    }).then(function (code) {
+      if (!code) return;
+      wortel.innerHTML = '';
+      wortel.classList.remove('verborgen');
+      var el = document.createElement('script');
+      el.textContent = code;
+      document.body.appendChild(el);
+    }).catch(function () { scherm('<p style="margin:0;color:#5A6068">De CRM kon niet geladen worden.</p>'); });
+  }
+
+  var bewaard = null;
+  try { bewaard = localStorage.getItem(SLEUTEL); } catch (e) {}
+  if (bewaard) { laad(bewaard); } else { vraagPin(); }
+})();
+</script>
+</body>
+</html>
