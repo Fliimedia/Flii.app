@@ -4,10 +4,18 @@ import { cors } from "./_lib/cors.js";
 import { readBody } from "./_lib/accounts.js";
 import { verifyToken } from "./_lib/token.js";
 
-// Levert de CRM-applicatie alleen aan een ingelogde beheerder.
-// Geen cookies: het sessietoken van het portaal gaat mee in de aanvraag.
+// De CRM draait alleen op Vercel. GET geeft de schil, POST geeft de applicatie
+// en alleen aan een ingelogde beheerder. Geen cookies.
+const MAP = join(process.cwd(), "crm-app");
+
 export default function handler(req, res) {
   if (cors(req, res)) return;
+
+  if (req.method === "GET") {
+    res.setHeader("Cache-Control", "no-store");
+    res.setHeader("Content-Type", "text/html; charset=utf-8");
+    return res.status(200).send(readFileSync(join(MAP, "index.html"), "utf8"));
+  }
 
   if (req.method !== "POST") {
     return res.status(405).json({ error: "method_not_allowed" });
@@ -21,7 +29,5 @@ export default function handler(req, res) {
 
   res.setHeader("Cache-Control", "no-store");
   res.setHeader("Content-Type", "application/javascript; charset=utf-8");
-  return res
-    .status(200)
-    .send(readFileSync(join(process.cwd(), "crm-app", "flii-crm.js"), "utf8"));
+  return res.status(200).send(readFileSync(join(MAP, "flii-crm.js"), "utf8"));
 }
