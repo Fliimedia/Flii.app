@@ -8,7 +8,7 @@
 <title>Flii Media &times; Theatertijd, Voorstel social media</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="/assets/doc/flii-doc.css">
 <style>
 .kal{display:flex;flex-direction:column;background:var(--wash);border-radius:11px;padding:12px 18px 6px;}
@@ -36,7 +36,33 @@
 .kb-i{display:inline-block;width:16px;height:9px;border-radius:3px;}
 .kb-i.vol{background:var(--pink);} .kb-i.mid{background:var(--pink-2);} .kb-i.licht{background:var(--wash-pink);border:1px solid var(--pink-3);} .kb-i.prep{border:1px dashed var(--muted-2);}
 .kd-i{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--pink);}
-.kpi .v{font-size:24px;}
+
+:root{--pink:#C8102E;--pink-2:#E0452B;--pink-3:#F2A385;--wash-pink:#FFF1C2;--wash:#FAF5EC;--tt-geel:#FFC93C;--tt-donker:#1A0605;}
+.topbar{height:17px;background:
+  radial-gradient(circle,#FFD75A 0 2.4px,transparent 3px) 6px 50%/26px 17px repeat-x,
+  radial-gradient(circle,#F0402A 0 2.4px,transparent 3px) 19px 50%/26px 17px repeat-x,
+  #0A0606;border-bottom:3px solid var(--pink);border-radius:10px 10px 0 0;}
+.head{padding-top:42px;}
+h1{font-family:"Bebas Neue",Impact,"Arial Narrow",sans-serif;font-weight:400;font-size:52px;letter-spacing:.5px;line-height:1;margin:8px 0 10px;}
+.tt-logo{position:absolute;right:0;top:40px;height:46px;width:auto;border-radius:4px;}
+.page .punten .pkaart h3{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;font-size:40px;letter-spacing:.4px;line-height:1;margin:18px 28px 18px;}
+.page .punten .pvraag{background:var(--tt-donker);}
+.pvraag span{color:var(--tt-geel);}
+.kpi .v{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;font-size:38px;letter-spacing:.5px;}
+.kpi.accent .l,.kpi.accent .s{color:rgba(255,255,255,.85);}
+.page.cover.tt{padding-right:500px;}
+.page.cover.tt .topbar{right:454px;border-radius:10px 0 0 0;}
+.tt-gordijn{position:absolute;top:0;right:0;bottom:0;width:454px;background:#3a0303 url(gordijn.jpg) center 30%/cover no-repeat;border-radius:0 10px 10px 0;}
+.page.cover.tt .cv-titel h1{font-size:96px;line-height:.9;letter-spacing:1px;}
+.page.cover.tt .kv{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;font-size:64px;}
+.page.cover.tt .cv-f .v{font-size:13px;}
+.kb.licht{color:#8E1209;}
+.kd{background:var(--tt-geel);border:2px solid var(--pink);width:13px;height:13px;margin:-6.5px 0 0 -6.5px;box-shadow:0 0 6px rgba(255,201,60,.8);}
+.kd-i{background:var(--tt-geel);border:2px solid var(--pink);}
+.knr{background:var(--pink);}
+.knr.tv{background:var(--tt-geel);border:2px solid var(--pink);}
+.km{font-family:"Bebas Neue",Impact,sans-serif;font-size:15px;letter-spacing:1px;color:var(--ink);font-weight:400;}
+
 .punten .pkaart h3{font-size:25px;letter-spacing:-.7px;margin:18px 28px 16px;}
 .punten .ptekst{padding:0 28px 20px;}
 .punten .ptekst p{font-size:15px;line-height:1.7;margin:0 0 18px;max-width:500px;}
@@ -49,7 +75,7 @@
 
 <div class="deck">
   <section class="sheet actief">
-    <div class="page cover">
+    <div class="page cover tt"><div class="tt-gordijn" role="img" aria-label="Theatertijd"></div>
       <div class="topbar"></div>
       <div class="cv-top">
         <div class="cv-merk"><span class="naam">Theatertijd</span><span class="times">&times;</span><img class="lg-fm" src="/assets/doc/fm-logo.png" alt="Flii Media"></div>
@@ -72,7 +98,7 @@
   <section class="sheet">
     <div class="page">
       <div class="topbar"></div>
-      <div class="head"><div class="kop-ic"><svg viewBox="0 0 24 24"><path d="M12 3.5 20 8v8l-8 4.5L4 16V8z"/><path d="M4 8l8 4.5L20 8"/><path d="M12 12.5V20.5"/></svg></div><div class="kicker">Theatertijd &middot; Voorstel social media</div>
+      <div class="head"><img class="tt-logo" src="logo.jpg" alt="Theatertijd"><div class="kicker">Theatertijd &middot; Voorstel social media</div>
         <h1>Content</h1>
         <p class="intro">Twee pijlers die Theatertijd online altijd zichtbaar houden: doorlopend op basis van zoekvraag, en extra sterk rond elke uitzending.</p>
       </div>
@@ -83,7 +109,7 @@
   <section class="sheet">
     <div class="page">
       <div class="topbar"></div>
-      <div class="head"><div class="kop-ic"><svg viewBox="0 0 24 24"><path d="M12 3.5 20 8v8l-8 4.5L4 16V8z"/><path d="M4 8l8 4.5L20 8"/><path d="M12 12.5V20.5"/></svg></div><div class="kicker">Theatertijd &middot; Voorstel social media</div>
+      <div class="head"><img class="tt-logo" src="logo.jpg" alt="Theatertijd"><div class="kicker">Theatertijd &middot; Voorstel social media</div>
         <h1>Bereik en conversie</h1>
         <p class="intro">Twee pijlers die het tv-bereik vertalen naar bezoekers: via het netwerk van partners en via persoonlijke oproepen die direct naar de kaartverkoop leiden.</p>
       </div>
@@ -94,7 +120,7 @@
   <section class="sheet">
     <div class="page">
       <div class="topbar"></div>
-      <div class="head"><div class="kop-ic"><svg viewBox="0 0 24 24"><path d="M12 3.5 20 8v8l-8 4.5L4 16V8z"/><path d="M4 8l8 4.5L20 8"/><path d="M12 12.5V20.5"/></svg></div><div class="kicker">Theatertijd &middot; Voorstel social media</div>
+      <div class="head"><img class="tt-logo" src="logo.jpg" alt="Theatertijd"><div class="kicker">Theatertijd &middot; Voorstel social media</div>
         <h1>Kalender</h1>
         <p class="intro">Oktober 2026 tot en met mei 2027. Twee series op RTL 4, met always-on content als doorlopende basis.</p>
       </div>
