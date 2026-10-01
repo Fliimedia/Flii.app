@@ -38,10 +38,10 @@ h1{font-size:34px;letter-spacing:-1.3px;line-height:1.02;margin:6px 0 0;font-wei
 .postkop{display:flex;align-items:baseline;gap:10px;padding-bottom:9px;border-bottom:1px solid var(--line)}
 .persoonlijk{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:14px;
   padding-top:13px;border-top:1px solid var(--line)}
-.tip{display:flex;align-items:center;gap:9px;margin-top:12px;padding-top:11px;
-  border-top:1px solid var(--line);font-size:12.5px;color:var(--muted)}
-.tip b{color:var(--ink);font-weight:600}
-.tip svg{width:14px;height:14px;flex:none;stroke:var(--pink);stroke-width:1.8;fill:none;
+.kanalen .tip{display:inline-flex;align-items:center;gap:8px;margin-left:auto;
+  font-size:12.5px;color:var(--muted)}
+.kanalen .tip b{color:var(--ink);font-weight:600}
+.kanalen .tip svg{width:14px;height:14px;flex:none;stroke:var(--pink);stroke-width:1.8;fill:none;
   stroke-linecap:round;stroke-linejoin:round}
 .persoonlijk .naam{font-size:13px;font-weight:700;margin-bottom:6px}
 .persoonlijk .rol{font-weight:400;color:var(--muted-2);font-size:12px}
@@ -76,6 +76,8 @@ h1{font-size:34px;letter-spacing:-1.3px;line-height:1.02;margin:6px 0 0;font-wei
   .posts{grid-template-columns:1fr;gap:12px}
   .binnen{display:block}
   .persoonlijk{grid-template-columns:1fr;gap:16px}
+  .kanalen{flex-wrap:wrap}
+  .kanalen .tip{margin-left:0;flex-basis:100%}
   .zij{margin-top:12px}
 }
 </style>
@@ -156,12 +158,8 @@ Na een operatie lag ik er tijdelijk uit, en je bedrijf houdt daar niet mee op. D
 Bij The Friday Move op BNR spraken we erover met Wilfred Genee. Kijk mee hieronder.</div>
       </div>
     </div>
-    <div class="tip">
-      <svg viewBox="0 0 24 24"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 00-3.5 10.9c.5.4.8 1 .8 1.6h5.4c0-.6.3-1.2.8-1.6A6 6 0 0012 3z"/></svg>
-      <span><b>Tip:</b> voeg de link naar boek verkoop toe in de contact sectie van je profiel</span>
-    </div>
     <a class="kijk" href="https://drive.google.com/file/d/1nisagMoLFhjBKcyumJBgHseit5xdlm0w/view" target="_blank" rel="noopener">Video bekijken<svg viewBox="0 0 24 24"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
-    <div class="kanalen"><span class="l">Kanalen</span><span class="merken"><svg class="lg"><use href="#lg-linkedin"/></svg></span></div>
+    <div class="kanalen"><span class="l">Kanalen</span><span class="merken"><svg class="lg"><use href="#lg-linkedin"/></svg></span><span class="tip"><svg viewBox="0 0 24 24"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 00-3.5 10.9c.5.4.8 1 .8 1.6h5.4c0-.6.3-1.2.8-1.6A6 6 0 0012 3z"/></svg><span><b>Tip:</b> voeg de link naar boek verkoop toe in de contact sectie van je profiel</span></span></div>
   </div>
 
   <div class="post">
