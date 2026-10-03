@@ -1,0 +1,18 @@
+{
+  "campaign": {
+    "name": "OneLane",
+    "start": "2026-10-01",
+    "end": null,
+    "budget": null,
+    "status": null
+  },
+  "channels": [
+    { "id": "radio", "name": "Radio", "budget": null },
+    { "id": "dooh", "name": "Digital out of home", "budget": null },
+    { "id": "meta", "name": "Facebook en Instagram", "budget": null },
+    { "id": "linkedin", "name": "LinkedIn", "budget": null },
+    { "id": "spotify", "name": "Spotify", "budget": null },
+    { "id": "video", "name": "Online video", "budget": null }
+  ],
+  "daily": []
+}
