@@ -1,0 +1,32 @@
+name: OneLane dashboard data
+
+on:
+  schedule:
+    - cron: "15 4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency: onelane-dashboard
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install google-auth requests
+      - run: python scripts/onelane-dashboard/fetch_ga4.py
+        env:
+          GA_SERVICE_ACCOUNT: ${{ secrets.GA_SERVICE_ACCOUNT }}
+      - name: Commit data.json
+        run: |
+          if git diff --quiet; then echo "Geen wijzigingen"; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add public/werk/onelane/2026/campagne/dashboard/data.json
+          git commit -m "OneLane dashboard: data bijgewerkt"
+          git push
