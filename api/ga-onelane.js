@@ -6,6 +6,8 @@ const PROPERTY = "554527914";
 const STREAM = "onelane.nl";
 const START = "2026-10-05";
 const END = "2026-11-15";
+const MIN = "2026-09-30";
+const ISO = /^\d{4}-\d{2}-\d{2}$/;
 const ORIGINS = ["https://flii.app", "https://www.flii.app"];
 const METRICS = ["sessions", "totalUsers", "newUsers", "engagementRate", "averageSessionDuration", "screenPageViews"];
 const KEYS = ["s", "u", "nu", "e", "d", "v"];
@@ -36,11 +38,11 @@ function amsterdamToday() {
   return new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Amsterdam", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
 }
 
-async function report(token, end, dims, mets, limit, nlOnly) {
+async function report(token, start, end, dims, mets, limit, nlOnly) {
   const exprs = [exact("streamName", STREAM), exact("hostName", STREAM)];
   if (nlOnly) exprs.push(exact("country", "Netherlands"));
   const body = {
-    dateRanges: [{ startDate: START, endDate: end }],
+    dateRanges: [{ startDate: start, endDate: end }],
     dimensions: dims.map((name) => ({ name })),
     metrics: mets.map((name) => ({ name })),
     dimensionFilter: { andGroup: { expressions: exprs } },
@@ -72,14 +74,18 @@ export default async function handler(req, res) {
   if (req.method !== "GET") return res.status(405).json({ error: "method_not_allowed" });
 
   const today = amsterdamToday();
-  const end = today < END ? today : END;
-  if (today < START) return res.status(200).json({ empty: true });
+  const qs = req.query || {};
+  let start = typeof qs.start === "string" && ISO.test(qs.start) ? qs.start : START;
+  let end = typeof qs.end === "string" && ISO.test(qs.end) ? qs.end : today < END ? today : END;
+  if (start < MIN) start = MIN;
+  if (end > today) end = today;
+  if (start > end) return res.status(400).json({ error: "invalid_range" });
 
   try {
     const token = await accessToken();
     const geo = ["sessions", "totalUsers", "engagementRate"];
     const gk = ["s", "u", "e"];
-    const q = (dims, mets, limit, nl) => report(token, end, dims, mets, limit, nl);
+    const q = (dims, mets, limit, nl) => report(token, start, end, dims, mets, limit, nl);
     const [tot, byDate, ch, src, lp, co, ci, dev, age, gen] = await Promise.all([
       q([], METRICS.concat("screenPageViewsPerSession")),
       q(["date"], METRICS),
@@ -99,7 +105,7 @@ export default async function handler(req, res) {
     const map = {};
     byDate.forEach((r) => { const s = r.d[0]; map[s.slice(0, 4) + "-" + s.slice(4, 6) + "-" + s.slice(6)] = r.m; });
     const days = [];
-    for (let t = Date.parse(START + "T00:00:00Z"); t <= Date.parse(end + "T00:00:00Z"); t += 86400000) {
+    for (let t = Date.parse(start + "T00:00:00Z"); t <= Date.parse(end + "T00:00:00Z"); t += 86400000) {
       const iso = new Date(t).toISOString().slice(0, 10);
       const m = map[iso] || new Array(6).fill(0);
       days.push(KEYS.reduce((o, k, i) => ((o[k] = num(m[i])), o), { date: iso }));
@@ -112,9 +118,9 @@ export default async function handler(req, res) {
       ? { age: a.map((r) => ({ n: r.d[0], v: num(r.m[0]) })), gender: g.map((r) => ({ n: r.d[0], v: num(r.m[0]) })) }
       : null;
 
-    res.setHeader("Cache-Control", "public, s-maxage=1800, stale-while-revalidate=86400");
+    res.setHeader("Cache-Control", end === today ? "public, s-maxage=1800, stale-while-revalidate=86400" : "public, s-maxage=21600, stale-while-revalidate=86400");
     return res.status(200).json({
-      meta: { source: "GA4", property: "OneLane", stream: STREAM, start: START, end, updated: new Date().toISOString() },
+      meta: { source: "GA4", property: "OneLane", stream: STREAM, start, end, updated: new Date().toISOString() },
       totals,
       days,
       dims: {
