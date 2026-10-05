@@ -55,7 +55,7 @@ async function report(token, end, dims, mets, limit, nlOnly) {
   const j = await r.json().catch(() => ({}));
   if (!r.ok) throw new Error("ga4: " + ((j.error && j.error.status) || r.status));
   return (j.rows || []).map((row) => ({
-    d: (row.dimensionValues || []).map((x) => x.value),
+    d: (row.dimensionValues || []).map((x) => (x.value && x.value.trim() ? x.value : "(not set)")),
     m: (row.metricValues || []).map((x) => Number(x.value) || 0),
   }));
 }
