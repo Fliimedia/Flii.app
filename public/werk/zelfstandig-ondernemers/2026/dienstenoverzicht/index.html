@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
 <style>
-:root{--pink:#E8255B;--wash-pink:#FCEDF2;--ink:#16181D;--muted:#5A6068;--muted-2:#8A9099;--line:#E1E4E7;--wash:#F6F7F9;--scale:1;}
+:root{--pink:#042F79;--wash-pink:#E8EEF7;--ink:#16181D;--muted:#5A6068;--muted-2:#8A9099;--line:#E1E4E7;--wash:#F6F7F9;--scale:1;}
 *{box-sizing:border-box}
 html,body{margin:0}
 body{background:#F4F4F7;font-family:Inter,system-ui,-apple-system,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
@@ -20,8 +20,9 @@ body{background:#F4F4F7;font-family:Inter,system-ui,-apple-system,sans-serif;col
 .a4{width:794px;height:1123px;background:#fff;position:relative;padding:0 48px 30px;display:flex;flex-direction:column;
   transform:scale(var(--scale));transform-origin:top left}
 .band{position:absolute;top:0;left:0;right:0;height:9px;background:var(--pink)}
-.kop{display:flex;align-items:center;justify-content:space-between;padding:34px 0 14px;border-bottom:1px solid var(--ink)}
-.kop img{height:34px;width:auto;display:block}
+.kop{display:flex;align-items:center;justify-content:space-between;padding:30px 0 14px;border-bottom:1px solid var(--pink)}
+.kop .zo{height:40px;width:auto;display:block}
+.kop .fck{height:58px;width:auto;display:block}
 .kop .u{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-2)}
 .soort{display:flex;align-items:baseline;justify-content:space-between;padding:12px 0 0}
 .soort .k{font-size:9.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--pink)}
@@ -29,7 +30,7 @@ body{background:#F4F4F7;font-family:Inter,system-ui,-apple-system,sans-serif;col
 h1{font-size:40px;font-weight:800;letter-spacing:-1.6px;line-height:1;margin:22px 0 22px}
 .sec{font-size:9.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--pink);margin:0 0 8px}
 table{width:100%;border-collapse:collapse;table-layout:fixed}
-thead th{background:var(--wash-pink);color:#8C4258;font-size:8.5px;font-weight:700;letter-spacing:.13em;
+thead th{background:var(--wash-pink);color:var(--pink);font-size:8.5px;font-weight:700;letter-spacing:.13em;
   text-transform:uppercase;text-align:left;padding:9px 12px}
 thead th:first-child{border-radius:7px 0 0 7px}
 thead th:last-child{border-radius:0 7px 7px 0;text-align:right}
@@ -48,13 +49,15 @@ tr.sub .kb{font-size:15px}
 .totaal{background:var(--pink);color:#fff;border-radius:10px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between}
 .totaal .l{font-size:9.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.85)}
 .totaal .v{font-size:28px;font-weight:800;letter-spacing:-1px}
-.optie{margin-top:16px;border:1.5px dashed #F2A3BA;border-radius:10px;padding:14px 20px}
+.optie{margin-top:16px;border:1.5px dashed #9DB1D3;border-radius:10px;padding:14px 20px}
 .optie-kop{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:6px}
 .optie-kop .l{font-size:9.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--pink)}
 .optie-kop .v{font-size:18px;font-weight:800;letter-spacing:-.5px}
 .or{display:flex;justify-content:space-between;font-size:11.5px;padding:4px 0;color:var(--ink)}
 .or span:last-child{font-weight:600}
-.voet{margin-top:auto;padding-top:14px;font-size:8px;letter-spacing:.11em;text-transform:uppercase;color:#C4CAD1}
+.voet{margin-top:auto;padding-top:14px;display:flex;align-items:flex-end;justify-content:space-between}
+.voet .fine{font-size:8px;letter-spacing:.11em;text-transform:uppercase;color:#C4CAD1}
+.voet img{height:30px;width:auto;display:block}
 @media print{
   @page{size:A4;margin:0}
   body{background:#fff}
@@ -67,7 +70,7 @@ tr.sub .kb{font-size:15px}
 <body>
 <div class="hoes"><div class="schaal"><div class="a4">
   <div class="band"></div>
-  <div class="kop"><img src="/assets/doc/fm-logo.png" alt="Flii Media"><span class="u">Zelfstandig Ondernemers</span></div>
+  <div class="kop"><img class="zo" src="beeld/zo-logo.png" alt="Zelfstandig Ondernemers"><img class="fck" src="beeld/fc-klap.png" alt="FC Klap"></div>
   <div class="soort"><span class="k">Kostenraming</span><span class="nr">Oktober 2026</span></div>
   <h1>Diensten &amp; media</h1>
 
@@ -120,7 +123,7 @@ tr.sub .kb{font-size:15px}
     <div class="or"><span>Tv-versie campagnecommercial</span><span>&euro;10.000</span></div>
   </div>
 
-  <div class="voet">Flii Media, vertrouwelijk</div>
+  <div class="voet"><span class="fine">Flii Media, vertrouwelijk</span><img src="/assets/doc/fm-logo.png" alt="Flii Media"></div>
 </div></div></div>
 <script>
 (function(){function fit(){var w=document.documentElement.clientWidth;
