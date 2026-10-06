@@ -52,7 +52,7 @@ tr.sub .kb{font-size:15px}
 .totaal{background:var(--pink);color:#fff;border-radius:10px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between}
 .totaal .l{font-size:9.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.85)}
 .totaal .v{font-size:28px;font-weight:800;letter-spacing:-1px}
-.optie{margin-top:16px;border:1.5px dashed #9DB1D3;border-radius:10px;padding:14px 20px}
+.optie{margin-top:16px;border:1.5px solid transparent;background:linear-gradient(#fff,#fff) padding-box,linear-gradient(110deg,#FF2EC4,#B44CFF,#5B8CFF,#FF4FD8,#FF7A59,#FF2EC4) border-box;background-size:100% 100%,300% 100%;box-shadow:0 0 10px rgba(255,46,196,.22),0 0 24px rgba(180,76,255,.12);animation:neon 6s linear infinite;border-radius:10px;padding:14px 20px}
 .optie-kop{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:6px}
 .optie-kop .l{font-size:9.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--pink)}
 .optie-kop .v{font-size:18px;font-weight:800;letter-spacing:-.5px}
@@ -63,7 +63,10 @@ tr.sub .kb{font-size:15px}
 .voet .merk{display:flex;align-items:center;gap:9px}
 .voet .slogan{font-size:9.5px;font-weight:600;color:var(--muted)}
 .voet img{height:17px;width:auto;display:block}
+@keyframes neon{0%{background-position:0 0,0% 50%}100%{background-position:0 0,300% 50%}}
+@media (prefers-reduced-motion:reduce){.optie{animation:none}}
 @media print{
+  .optie{animation:none;background-size:100% 100%,100% 100%}
   @page{size:A4;margin:0}
   body{background:#fff}
   .hoes{padding:0}
