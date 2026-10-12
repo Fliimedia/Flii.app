@@ -46,9 +46,6 @@
 <script src="https://fliimedia.github.io/Flii.nl/assets/vendor/react.min.js"></script>
 <script src="https://fliimedia.github.io/Flii.nl/assets/vendor/react-dom.min.js"></script>
 <script>
-/* De pagina staat op flii.app, de controle draait op Vercel.
-   Pincode gaat naar /api/auth, het token daarna naar /api/crm.
-   Geen cookies: het token staat in localStorage en reist mee in de aanvraag. */
 (function () {
   var API = 'https://fliiapp.vercel.app';
   var SLEUTEL = 'flii.session', NAAM = 'flii.app';
@@ -88,15 +85,15 @@
         body: JSON.stringify({ name: NAAM, pin: pin })
       }).then(function (r) {
         if (r.status === 401) { vraagPin('Deze pincode is incorrect'); return null; }
-        if (!r.ok) { vraagPin('Server gaf ' + r.status + '. Controleer de deploy in Vercel.'); return null; }
+        if (!r.ok) { vraagPin('Er ging iets mis. Probeer het later opnieuw.'); return null; }
         return r.json();
       }).then(function (d) {
           if (!d) return;
-          if (!d.token) { vraagPin('Geen token ontvangen'); return; }
+          if (!d.token) { vraagPin('Inloggen mislukt. Probeer het opnieuw.'); return; }
           try { localStorage.setItem(SLEUTEL, d.token); } catch (e) {}
           laad(d.token);
         }).catch(function () {
-          vraagPin('Server niet bereikbaar. Zet ALLOWED_ORIGINS op https://flii.app en deploy opnieuw.');
+          vraagPin('Geen verbinding. Probeer het later opnieuw.');
         });
     });
   }
