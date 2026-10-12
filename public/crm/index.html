@@ -87,7 +87,7 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: NAAM, pin: pin })
       }).then(function (r) {
-        if (r.status === 401) { vraagPin('Code niet herkend. Staat CLIENT_PINS goed in Vercel?'); return null; }
+        if (r.status === 401) { vraagPin('Deze pincode is incorrect'); return null; }
         if (!r.ok) { vraagPin('Server gaf ' + r.status + '. Controleer de deploy in Vercel.'); return null; }
         return r.json();
       }).then(function (d) {
