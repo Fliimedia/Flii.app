@@ -202,3 +202,4 @@ footer{border-top:1px solid var(--line);padding:22px 16px 36px;text-align:center
 /* v7: date fields as plain displays */
 .cal-val{padding:11px 14px;border:1px solid var(--line);border-radius:10px;background:var(--paper);font-size:14px;font-variant-numeric:tabular-nums;white-space:nowrap}
 .cal-val.active{border-color:var(--ink)}
+.cal-pop .err:empty{display:none}
