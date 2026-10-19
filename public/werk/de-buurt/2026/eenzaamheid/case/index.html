@@ -25,7 +25,7 @@ a{color:inherit;text-decoration:none}
 .soort .k{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--pink)}
 .soort .nr{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2)}
 
-.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center;margin:34px 0 0}
+.hero{margin:34px 0 0;max-width:760px}
 h1{font-size:56px;letter-spacing:-2.4px;line-height:1;margin:0 0 20px;font-weight:800}
 h1 em{font-style:normal;color:var(--pink)}
 .lead{font-size:18px;line-height:1.55;color:var(--muted);margin:0;max-width:520px}
@@ -55,6 +55,15 @@ h2{font-size:30px;letter-spacing:-1px;line-height:1.15;margin:24px 0 12px;font-w
 .stap .d{font-size:14px;color:var(--muted);line-height:1.5}
 .stap .hun{font-size:12px;color:var(--muted-2);border-top:1px dashed var(--line);padding-top:10px;margin-top:auto}
 
+.ads{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}
+.ad{border:1px solid var(--line);border-radius:16px;padding:20px 20px 18px;display:flex;flex-direction:column}
+.ad .k{font-size:9px;font-weight:700;letter-spacing:.17em;text-transform:uppercase;color:var(--pink);margin-bottom:10px}
+.ad .h{font-size:21px;font-weight:800;letter-spacing:-.5px;line-height:1.25;margin-bottom:8px}
+.ad .b{font-size:14.5px;color:var(--muted);line-height:1.55;margin-bottom:14px}
+.ad .cta{align-self:flex-start;font-size:12px;font-weight:600;border:1px solid var(--line);border-radius:999px;padding:6px 12px;margin-bottom:16px}
+.ad .m{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;border-top:1px dashed var(--line);padding-top:12px;margin-top:auto}
+.ad .m span{display:block;font-size:11.5px;color:var(--muted-2)}
+.ad .m b{font-size:20px;font-weight:800}
 .duo{display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-top:28px;align-items:start}
 .lijst{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
 .lijst li{display:flex;justify-content:space-between;gap:16px;padding:13px 0;border-bottom:1px solid var(--line);font-size:15px}
@@ -81,6 +90,7 @@ h2{font-size:30px;letter-spacing:-1px;line-height:1.15;margin:24px 0 12px;font-w
   .stappen{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:820px){
+  .ads{grid-template-columns:1fr}
   .wrap{padding:26px 16px 70px}
   .hero{grid-template-columns:1fr;gap:28px}
   .hero figure{max-width:340px;transform:rotate(1.5deg)}
@@ -119,9 +129,8 @@ h2{font-size:30px;letter-spacing:-1px;line-height:1.15;margin:24px 0 12px;font-w
   <div class="hero">
     <div>
       <h1>Een bankje, een buur en <em>een bak koffie.</em></h1>
-      <p class="lead">Eenzaamheid is een groot woord. Er iets aan doen hoeft dat niet te zijn. Voor Stichting de Buurt maakten we een campagne rond de Week tegen Eenzaamheid die het zo klein en makkelijk mogelijk maakte: zet een bankje buiten en nodig je buur uit.</p>
+      <p class="lead">Eenzaamheid is een groot woord. Er iets aan doen hoeft dat niet te zijn. Voor Stichting de Buurt zetten we rond de Week tegen Eenzaamheid een Meta-campagne op met één simpele vraag: zet een bankje buiten en nodig je buur uit voor koffie.</p>
     </div>
-    <figure><img src="../beeld/feed-1.webp" alt="Campagnebeeld Week tegen Eenzaamheid"></figure>
   </div>
 
   <div class="cijfers">
@@ -134,47 +143,33 @@ h2{font-size:30px;letter-spacing:-1px;line-height:1.15;margin:24px 0 12px;font-w
   <div class="blok">
     <div class="bkop"><span class="n">01</span><span class="s">De opdracht</span></div>
     <h2>Zoveel mogelijk buren aan de koffie krijgen.</h2>
-    <p class="tekst">Stichting de Buurt wilde dat mensen zich tijdens de Week tegen Eenzaamheid aanmelden voor een BuurtBankje. Wie meedoet, zet een bankje buiten en krijgt een gratis buurt pretpakket vol ideeën. De uitdaging: een zwaar onderwerp omzetten in een uitnodiging waar je gewoon ja op zegt.</p>
+    <p class="tekst">Stichting de Buurt wilde dat zoveel mogelijk mensen zich tijdens de Week tegen Eenzaamheid aanmelden voor een BuurtBankje: een bankje buiten zetten en een buur uitnodigen om aan te schuiven. Met een beperkt budget, en met een onderwerp dat snel zwaar voelt. De advertenties moesten dus vooral licht en uitnodigend zijn.</p>
   </div>
 
   <div class="blok">
-    <div class="bkop"><span class="n">02</span><span class="s">Zo pakten we het aan</span></div>
-    <h2>Vier stappen voor de buurt, vier stappen voor ons.</h2>
-    <p class="tekst">De campagne vraagt mensen om vier simpele stappen te zetten. Wij volgden er zelf ook vier.</p>
+    <div class="bkop"><span class="n">02</span><span class="s">De advertenties</span></div>
+    <h2>Twee invalshoeken, één winnaar per doel.</h2>
+    <p class="tekst">We testten het goede gesprek tegen gewoon iets leuks doen voor je buurt.</p>
+    <div class="ads">
+      <div class="ad"><div class="k">Advertentie A</div><div class="h">Een goed gesprek begint op een BuurtBankje.</div><div class="b">Open er één tijdens de Week tegen Eenzaamheid en nodig je buren uit om gezellig aan te schuiven!</div><span class="cta">Meer informatie</span><div class="m"><div><span>CTR</span><b>4,0%</b></div><div><span>Kliks</span><b>5.437</b></div><div><span>Leads</span><b>32</b></div></div></div>
+      <div class="ad"><div class="k">Advertentie B</div><div class="h">Zin om iets leuks te doen voor je buurt?</div><div class="b">Zet tijdens de Week tegen Eenzaamheid een BuurtBankje buiten en nodig je buur uit om aan te schuiven.</div><span class="cta">Meer informatie</span><div class="m"><div><span>CTR</span><b>3,3%</b></div><div><span>Kliks</span><b>3.783</b></div><div><span>Leads</span><b>41</b></div></div></div>
+    </div>
+    <p class="tekst" style="margin-top:20px">Het leukste inzicht: de advertentie waar het meest op werd geklikt, was niet de advertentie die de meeste aanmeldingen opleverde. 'Een goed gesprek' trok de kliks, 'Iets leuks voor je buurt' haalde de meeste leads, tegen bijna de helft van de kosten per lead.</p>
+  </div>
+
+  <div class="blok">
+    <div class="bkop"><span class="n">03</span><span class="s">Zo pakten we het aan</span></div>
+    <h2>Vier stappen, net als de campagne zelf.</h2>
     <div class="stappen">
-      <div class="stap">
-        <img src="../beeld/stap-1-vierkant.webp" alt="Stap 1: zet een bankje buiten" loading="lazy">
-        <div class="nr">STAP 1</div>
-        <div class="t">Luisteren</div>
-        <div class="d">Wat wil de Buurt bereiken, wie moeten we raken en wanneer? Doel: aanmeldingen voor een BuurtBankje rond de Week tegen Eenzaamheid.</div>
-        <div class="hun">Hun stap: zet een bankje buiten.</div>
-      </div>
-      <div class="stap">
-        <img src="../beeld/stap-2-vierkant.webp" alt="Stap 2: bel aan bij een buur" loading="lazy">
-        <div class="nr">STAP 2</div>
-        <div class="t">Bedenken</div>
-        <div class="d">Geen zware boodschap, maar een drempel zo laag als een stoepje: bankje, buur, koffie, praatje. Het concept in vier stappen was geboren.</div>
-        <div class="hun">Hun stap: bel aan bij een buur.</div>
-      </div>
-      <div class="stap">
-        <img src="../beeld/stap-3-vierkant.webp" alt="Stap 3: nodig je buur uit voor koffie" loading="lazy">
-        <div class="nr">STAP 3</div>
-        <div class="t">Maken</div>
-        <div class="d">Twee posts en acht uitingen: een feedbeeld in twee varianten en een carrousel met de vier stappen, in vierkant en verhaalformaat.</div>
-        <div class="hun">Hun stap: nodig je buur uit voor koffie.</div>
-      </div>
-      <div class="stap">
-        <img src="../beeld/stap-4-vierkant.webp" alt="Stap 4: ga zitten en maak een praatje" loading="lazy">
-        <div class="nr">STAP 4</div>
-        <div class="t">Lanceren en meten</div>
-        <div class="d">Van 26 augustus tot 1 oktober op Facebook en Instagram, met een campagne voor aanmeldingen en een voor het evenement. Daarna alles gemeten en gerapporteerd.</div>
-        <div class="hun">Hun stap: ga zitten en maak een praatje.</div>
-      </div>
+      <div class="stap"><div class="nr">STAP 1</div><div class="t">Meten wat telt</div><div class="d">Aanmeldingen tellen via de site én via een formulier binnen Facebook, zodat niemand hoeft af te haken.</div></div>
+      <div class="stap"><div class="nr">STAP 2</div><div class="t">Twee boodschappen testen</div><div class="d">Twee advertenties met elk een eigen invalshoek, tegelijk op Facebook en Instagram.</div></div>
+      <div class="stap"><div class="nr">STAP 3</div><div class="t">Een evenement erbij</div><div class="d">Een kleine eventcampagne op Facebook voor de Week tegen Eenzaamheid: 161 reacties voor 50 euro.</div></div>
+      <div class="stap"><div class="nr">STAP 4</div><div class="t">Opschalen op het juiste moment</div><div class="d">Van 26 augustus tot 1 oktober, met het grootste deel van het budget in de dagen rond de Week tegen Eenzaamheid zelf.</div></div>
     </div>
   </div>
 
   <div class="blok">
-    <div class="bkop"><span class="n">03</span><span class="s">Wat het opleverde</span></div>
+    <div class="bkop"><span class="n">04</span><span class="s">Wat het opleverde</span></div>
     <h2>Mensen klikten, deelden en gaven hartjes.</h2>
     <div class="duo">
       <ul class="lijst">
