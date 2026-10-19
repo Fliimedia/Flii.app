@@ -38,7 +38,13 @@ td:first-child{font-weight:500}
 .num{text-align:right}
 tfoot td{border-top:1px solid var(--stroke);font-weight:700;padding-top:9px}
 .note{font-size:11.5px;color:var(--mist);margin-top:10px}
-@media(max-width:760px){.cmp{grid-template-columns:1fr;gap:14px}}
+.vis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px;padding-top:16px;border-top:1px solid var(--inset)}
+.vis figure{margin:0}
+.vis .im{aspect-ratio:1/1;border-radius:10px;overflow:hidden;background:var(--inset);display:flex;align-items:center}
+.vis img{width:100%;height:100%;object-fit:cover;display:block}.vis img.v{height:auto;object-fit:contain}
+.vis figcaption{margin-top:7px;font-size:12px;font-weight:500}
+.vis figcaption span{display:block;font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:10.5px;color:var(--mist);margin-top:2px}
+@media(max-width:760px){.cmp{grid-template-columns:1fr;gap:14px}.vis{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:640px){body{padding:10px}.head .t{border-left:none;padding-left:0;flex-basis:100%}}
 </style>
 </head>
@@ -72,15 +78,21 @@ tfoot td{border-top:1px solid var(--stroke);font-weight:700;padding-top:9px}
 <div class="card sec">
 <h2>Vergelijking</h2>
 <div class="cmp">
-<div><h3>Kanalen</h3><p>Meta levert online het goedkoopste bereik (CPM €&nbsp;2,03 tegen €&nbsp;7,52 geprojecteerd) en via de Traffic-campagne de meeste websitebezoeken (330 landingspaginaweergaven à €&nbsp;0,49). LinkedIn bereikt de zakelijke doelgroep tegen een CPM van €&nbsp;11,63 maar besteedt een derde van het geplande tempo, terwijl YouTube goedkope weergaven oplevert (€&nbsp;0,006 per view) maar nauwelijks klikken.</p></div>
-<div><h3>Creatives</h3><p>Video presteert duidelijk beter dan statisch beeld: op LinkedIn kost een klik op video gemiddeld €&nbsp;2,95 tegen €&nbsp;24 à €&nbsp;28 voor de beeldadvertenties, en op Meta kost een videoweergave €&nbsp;0,015. Binnen LinkedIn haalt de originele video de hoogste CTR (tot 0,75%), de Tag On-varianten blijven achter (0,11 tot 0,45%).</p></div>
+<div><h3>Kanalen</h3><p>Gemeten tegen hun eigen projectie zijn alle online kanalen goedkoper dan verwacht (CPM Meta −73%, LinkedIn −65%, YouTube −42%, Spotify −77%), dus het verschil tussen kanalen zit niet in de prijs maar in de rol: Meta Traffic brengt de websitebezoekers (330 landingspaginaweergaven à €&nbsp;0,49), YouTube de aandacht (90% van de vertoningen wordt een weergave) en LinkedIn de zakelijke beslisser. Het knelpunt is levering: LinkedIn besteedt een derde en Meta circa 70% van het geplande tempo, terwijl Spotify pas sinds 17 oktober loopt.</p></div>
+<div><h3>Creatives</h3><p>Op LinkedIn haalt video een CTR van 0,31% en een CPC van €&nbsp;2,95 tegen 0,15% en circa €&nbsp;30 voor statisch beeld, al draaien de beeldadvertenties alleen in remarketing, zodat vorm en doelgroep hier samenvallen. Binnen video scoort de 20 seconden-video het best (CTR tot 0,75%), terwijl de 6 seconden Tag On-varianten achterblijven (0,11 tot 0,45%).</p></div>
 <div><h3>Doelgroepen</h3><p>Remarketing levert nog weinig op doordat de bezoekersgroep klein is: de LinkedIn-remarketingset draait op een CPM van €&nbsp;46,65 met 6 websitebezoeken, tegen €&nbsp;9,13 voor de videoset buiten remarketing. Op YouTube kijkt de interessedoelgroep vaker de video (93% weergaven per vertoning) dan remarketing (76%), tegen een vrijwel gelijke CPM van circa €&nbsp;5,85.</p></div>
+</div>
+<div class="vis">
+<figure><div class="im"><img src="beeld/statisch-v1.webp" alt="LinkedIn statisch, versie 1" loading="lazy"></div><figcaption>Statisch, versie 1<span>CTR 0,15% · CPC ±€&nbsp;30</span></figcaption></figure>
+<figure><div class="im"><img src="beeld/statisch-v2.webp" alt="LinkedIn statisch, versie 2" loading="lazy"></div><figcaption>Statisch, versie 2<span>CTR 0,15% · CPC ±€&nbsp;30</span></figcaption></figure>
+<figure><div class="im"><img class="v" src="beeld/video-20s.webp" alt="Video 20 seconden" loading="lazy"></div><figcaption>Video, 20 sec<span>CTR 0,21–0,75% · CPC €&nbsp;1,38–4,82</span></figcaption></figure>
+<figure><div class="im"><img class="v" src="beeld/tagon-6s.webp" alt="Tag On 6 seconden" loading="lazy"></div><figcaption>Tag On, 6 sec<span>CTR 0,11–0,45% · CPC €&nbsp;2,76–9,05</span></figcaption></figure>
 </div>
 </div>
 
 <div class="card sec">
 <h2>Advies budgetverdeling</h2>
-<p>Verschuif €&nbsp;2.000 van het LinkedIn-budget naar Meta, verdeeld over Traffic en Video views, omdat LinkedIn in het huidige tempo nog maar circa €&nbsp;1.200 van de resterende €&nbsp;4.840 uitgeeft. Zet daarnaast de drie LinkedIn-beeldadvertenties in remarketing uit en laat dat budget naar de video's gaan.</p>
+<p>Verschuif €&nbsp;2.000 van het LinkedIn-budget naar Meta, verdeeld over Traffic en Video views, omdat LinkedIn in het huidige tempo nog maar circa €&nbsp;1.200 van de resterende €&nbsp;4.840 uitgeeft. Vervang daarnaast de drie beeldadvertenties in de LinkedIn-remarketingset door de 20 seconden-video, zodat ook in remarketing het sterkste format draait.</p>
 </div>
 </div>
 <script>
