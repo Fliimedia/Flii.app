@@ -32,19 +32,21 @@ body{margin:0;font-family:Inter,system-ui,sans-serif;color:var(--ink);background
 .cmp h3{margin:0 0 6px;font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
 .tw{overflow-x:auto;-webkit-overflow-scrolling:touch}
 table{width:100%;border-collapse:collapse;font-size:12px;min-width:980px}
-th.grp{text-align:center;border-bottom:1px solid var(--inset);padding-bottom:4px}
-td.p{color:var(--mist)}td.p{border-right:1px solid var(--inset)}td.p:last-child{border-right:none}
-tfoot td.p{font-weight:400}
 th{text-align:left;font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);padding:6px 8px;border-bottom:1px solid var(--stroke);white-space:nowrap}
 td{padding:7px 8px;white-space:nowrap;border-top:1px solid var(--inset)}
 tbody tr:first-child td{border-top:none}
 td:first-child{font-weight:500}
-th.grp{text-align:center;border-bottom:none;padding-bottom:0}
-th.r,td.r{padding-left:14px}
-th.p,td.p{padding-left:6px}
-td.p{color:var(--mist)}
-tfoot td.p{font-weight:400}
-.tw table{min-width:920px}
+table.rtab th{border-bottom:none;padding-top:0;padding-bottom:3px}
+table.rtab thead tr:first-child th{font-family:Inter,system-ui,sans-serif;text-transform:none;letter-spacing:0;font-size:11.5px;font-weight:600;color:var(--ink);padding-bottom:6px}
+table.rtab th.grp{text-align:center}
+table.rtab th.grp span{display:block;padding-bottom:6px;border-bottom:1px solid var(--stroke)}
+table.rtab thead tr:last-child th{padding-bottom:8px;border-bottom:1px solid var(--stroke)}
+th.r,td.r{padding-left:18px}th.p,td.p{padding-left:8px}
+td.p{color:var(--mist)}tfoot td.p{font-weight:400}
+table.rtab td.r:not(:nth-child(2)),table.rtab th.r.s{border-left:1px solid var(--inset)}
+td .dl{display:block;font-family:Inter,system-ui,sans-serif;font-size:10.5px;font-weight:500;margin-top:2px;color:var(--dim)}td .dl.up{color:#1F8A5B}td .dl.dn{color:#C2413B}
+:root[data-theme="dark"] td .dl.up{color:#4CC38A}:root[data-theme="dark"] td .dl.dn{color:#F07A72}
+.tw table{min-width:960px}
 .tw table.stab{min-width:720px}
 .num{text-align:right}
 tfoot td{border-top:1px solid var(--stroke);font-weight:700;padding-top:9px}
@@ -73,8 +75,8 @@ tfoot td{border-top:1px solid var(--stroke);font-weight:700;padding-top:9px}
 
 <div class="card sec">
 <h2>Resultaten</h2>
-<div class="tw"><table>
-<thead><tr><th rowspan="2">Kanaal</th><th colspan="2" class="grp">Besteed / budget</th><th colspan="2" class="grp">Bereik</th><th colspan="2" class="grp">Frequentie</th><th colspan="2" class="grp">Impressies</th><th colspan="2" class="grp">CPM</th><th colspan="2" class="grp">CPC</th></tr><tr><th class="num r">Resultaat</th><th class="num p">Projectie</th><th class="num r">Resultaat</th><th class="num p">Projectie</th><th class="num r">Resultaat</th><th class="num p">Projectie</th><th class="num r">Resultaat</th><th class="num p">Projectie</th><th class="num r">Resultaat</th><th class="num p">Projectie</th><th class="num r">Resultaat</th><th class="num p">Projectie</th></tr></thead>
+<div class="tw"><table class="rtab">
+<thead><tr><th rowspan="2" style="vertical-align:bottom;padding-bottom:8px;border-bottom:1px solid var(--stroke)">Kanaal</th><th colspan="2" class="grp"><span>Besteding</span></th><th colspan="2" class="grp"><span>Bereik</span></th><th colspan="2" class="grp"><span>Frequentie</span></th><th colspan="2" class="grp"><span>Impressies</span></th><th colspan="2" class="grp"><span>CPM</span></th><th colspan="2" class="grp"><span>CPC</span></th></tr><tr><th class="num r">Resultaat</th><th class="num p">Projectie</th><th class="num r s">Resultaat</th><th class="num p">Projectie</th><th class="num r s">Resultaat</th><th class="num p">Projectie</th><th class="num r s">Resultaat</th><th class="num p">Projectie</th><th class="num r s">Resultaat</th><th class="num p">Projectie</th><th class="num r s">Resultaat</th><th class="num p">Projectie</th></tr></thead>
 <tbody>
 <tr><td>Out of home</td><td class="num mono r">€&nbsp;3.750</td><td class="num mono p">€&nbsp;3.750</td><td class="num mono r">150.000</td><td class="num mono p">150.000</td><td class="num mono r">3,50</td><td class="num mono p">3,50</td><td class="num mono r">525.000</td><td class="num mono p">525.000</td><td class="num mono r">€&nbsp;7,14</td><td class="num mono p">€&nbsp;7,14</td><td class="num mono r">−</td><td class="num mono p">−</td></tr>
 <tr><td>Radio</td><td class="num mono r">€&nbsp;5.048</td><td class="num mono p">€&nbsp;4.862</td><td class="num mono r">316.000</td><td class="num mono p">292.217</td><td class="num mono r">3,09</td><td class="num mono p">3,10</td><td class="num mono r">975.282</td><td class="num mono p">905.874</td><td class="num mono r">€&nbsp;5,18</td><td class="num mono p">€&nbsp;5,37</td><td class="num mono r">−</td><td class="num mono p">−</td></tr>
@@ -84,7 +86,7 @@ tfoot td{border-top:1px solid var(--stroke);font-weight:700;padding-top:9px}
 <tr><td>Spotify</td><td class="num mono r">€&nbsp;141</td><td class="num mono p">€&nbsp;683</td><td class="num mono r">24.552</td><td class="num mono p">15.024</td><td class="num mono r">1,68</td><td class="num mono p">3,00</td><td class="num mono r">41.175</td><td class="num mono p">45.073</td><td class="num mono r">€&nbsp;3,43</td><td class="num mono p">€&nbsp;15,15</td><td class="num mono r">€&nbsp;1,33</td><td class="num mono p">€&nbsp;5,05</td></tr>
 </tbody>
 <tfoot>
-<tr><td>Totaal</td><td class="num mono r">€&nbsp;13.024</td><td class="num mono p">€&nbsp;13.955</td><td class="num mono r">918.612</td><td class="num mono p">594.742</td><td class="num mono r">2,57</td><td class="num mono p">3,14</td><td class="num mono r">2.364.266</td><td class="num mono p">1.868.804</td><td class="num mono r">€&nbsp;5,51</td><td class="num mono p">€&nbsp;7,47</td><td class="num mono r">€&nbsp;3,15</td><td class="num mono p">€&nbsp;1,60</td></tr>
+<tr><td>Totaal</td><td class="num mono r">€&nbsp;13.024<span class="dl">−7%</span></td><td class="num mono p">€&nbsp;13.955</td><td class="num mono r">918.612<span class="dl up">+54%</span></td><td class="num mono p">594.742</td><td class="num mono r">2,57<span class="dl">−18%</span></td><td class="num mono p">3,14</td><td class="num mono r">2.364.266<span class="dl up">+27%</span></td><td class="num mono p">1.868.804</td><td class="num mono r">€&nbsp;5,51<span class="dl up">−26%</span></td><td class="num mono p">€&nbsp;7,47</td><td class="num mono r">€&nbsp;3,15<span class="dl dn">+97%</span></td><td class="num mono p">€&nbsp;1,60</td></tr>
 </tfoot>
 </table></div>
 
