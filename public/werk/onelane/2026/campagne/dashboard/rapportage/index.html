@@ -38,12 +38,13 @@ th{text-align:left;font-family:'IBM Plex Mono',monospace;font-weight:400;font-si
 td{padding:7px 8px;white-space:nowrap;border-top:1px solid var(--inset)}
 tbody tr:first-child td{border-top:none}
 td:first-child{font-weight:500}
-.k{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);font-weight:400!important}
-tr.proj td{color:var(--mist);border-top:none;padding-top:2px}
-tr.proj td.k{color:var(--dim)}
-tbody tr.res td{border-top:1px solid var(--inset)}
-td[rowspan]{vertical-align:top;font-weight:500}
-tfoot tr.proj td{border-top:none;font-weight:400;padding-top:2px}
+th.grp{text-align:center;border-bottom:none;padding-bottom:0}
+th.r,td.r{padding-left:14px}
+th.p,td.p{padding-left:6px}
+td.p{color:var(--mist)}
+tfoot td.p{font-weight:400}
+.tw table{min-width:920px}
+.tw table.stab{min-width:720px}
 .num{text-align:right}
 tfoot td{border-top:1px solid var(--stroke);font-weight:700;padding-top:9px}
 .note{font-size:11.5px;color:var(--mist);margin-top:10px}
@@ -70,17 +71,17 @@ tfoot td{border-top:1px solid var(--stroke);font-weight:700;padding-top:9px}
 <div class="card sec">
 <h2>Resultaten</h2>
 <div class="tw"><table>
-<thead><tr><th rowspan="2">Kanaal</th><th colspan="2" class="grp">Besteed</th><th colspan="2" class="grp">Bereik</th><th colspan="2" class="grp">Frequentie</th><th colspan="2" class="grp">Impressies</th><th colspan="2" class="grp">CPM</th><th colspan="2" class="grp">CPC</th></tr><tr><th class="num">Resultaat</th><th class="num p">Projectie</th><th class="num">Resultaat</th><th class="num p">Projectie</th><th class="num">Resultaat</th><th class="num p">Projectie</th><th class="num">Resultaat</th><th class="num p">Projectie</th><th class="num">Resultaat</th><th class="num p">Projectie</th><th class="num">Resultaat</th><th class="num p">Projectie</th></tr></thead>
+<thead><tr><th rowspan="2">Kanaal</th><th colspan="2" class="grp">Besteed / budget</th><th colspan="2" class="grp">Bereik</th><th colspan="2" class="grp">Frequentie</th><th colspan="2" class="grp">Impressies</th><th colspan="2" class="grp">CPM</th><th colspan="2" class="grp">CPC</th></tr><tr><th class="num r">Resultaat</th><th class="num p">Projectie</th><th class="num r">Resultaat</th><th class="num p">Projectie</th><th class="num r">Resultaat</th><th class="num p">Projectie</th><th class="num r">Resultaat</th><th class="num p">Projectie</th><th class="num r">Resultaat</th><th class="num p">Projectie</th><th class="num r">Resultaat</th><th class="num p">Projectie</th></tr></thead>
 <tbody>
-<tr><td>Out of home</td><td class="num mono">€&nbsp;3.571</td><td class="num mono p">€&nbsp;3.571</td><td class="num mono">142.857</td><td class="num mono p">142.857</td><td class="num mono">3,50</td><td class="num mono p">3,50</td><td class="num mono">500.000</td><td class="num mono p">500.000</td><td class="num mono">€&nbsp;7,14</td><td class="num mono p">€&nbsp;7,14</td><td class="num mono">−</td><td class="num mono p">−</td></tr>
-<tr><td>Radio</td><td class="num mono">€&nbsp;5.048</td><td class="num mono p">€&nbsp;4.862</td><td class="num mono">316.000</td><td class="num mono p">292.217</td><td class="num mono">3,09</td><td class="num mono p">3,10</td><td class="num mono">975.282</td><td class="num mono p">905.874</td><td class="num mono">€&nbsp;5,18</td><td class="num mono p">€&nbsp;5,37</td><td class="num mono">−</td><td class="num mono p">−</td></tr>
-<tr><td>Meta</td><td class="num mono">€&nbsp;1.366</td><td class="num mono p">€&nbsp;1.973</td><td class="num mono">320.839</td><td class="num mono p">87.500</td><td class="num mono">2,09</td><td class="num mono p">3,00</td><td class="num mono">672.144</td><td class="num mono p">262.500</td><td class="num mono">€&nbsp;2,03</td><td class="num mono p">€&nbsp;7,52</td><td class="num mono">€&nbsp;1,32</td><td class="num mono p">€&nbsp;0,75</td></tr>
-<tr><td>LinkedIn</td><td class="num mono">€&nbsp;683</td><td class="num mono p">€&nbsp;1.973</td><td class="num mono">39.627</td><td class="num mono p">21.429</td><td class="num mono">1,48</td><td class="num mono p">2,75</td><td class="num mono">58.770</td><td class="num mono p">58.929</td><td class="num mono">€&nbsp;11,63</td><td class="num mono p">€&nbsp;33,48</td><td class="num mono">€&nbsp;3,88</td><td class="num mono p">€&nbsp;6,70</td></tr>
-<tr><td>YouTube</td><td class="num mono">€&nbsp;535</td><td class="num mono p">€&nbsp;714</td><td class="num mono">67.594</td><td class="num mono p">28.571</td><td class="num mono">1,36</td><td class="num mono p">2,50</td><td class="num mono">91.895</td><td class="num mono p">71.429</td><td class="num mono">€&nbsp;5,83</td><td class="num mono p">€&nbsp;10,00</td><td class="num mono">€&nbsp;24,34</td><td class="num mono p">€&nbsp;2,50</td></tr>
-<tr><td>Spotify</td><td class="num mono">€&nbsp;141</td><td class="num mono p">€&nbsp;683</td><td class="num mono">24.552</td><td class="num mono p">15.024</td><td class="num mono">1,68</td><td class="num mono p">3,00</td><td class="num mono">41.175</td><td class="num mono p">45.073</td><td class="num mono">€&nbsp;3,43</td><td class="num mono p">€&nbsp;15,15</td><td class="num mono">€&nbsp;1,33</td><td class="num mono p">€&nbsp;5,05</td></tr>
+<tr><td>Out of home</td><td class="num mono r">€&nbsp;3.571</td><td class="num mono p">€&nbsp;3.571</td><td class="num mono r">142.857</td><td class="num mono p">142.857</td><td class="num mono r">3,50</td><td class="num mono p">3,50</td><td class="num mono r">500.000</td><td class="num mono p">500.000</td><td class="num mono r">€&nbsp;7,14</td><td class="num mono p">€&nbsp;7,14</td><td class="num mono r">−</td><td class="num mono p">−</td></tr>
+<tr><td>Radio</td><td class="num mono r">€&nbsp;5.048</td><td class="num mono p">€&nbsp;4.862</td><td class="num mono r">316.000</td><td class="num mono p">292.217</td><td class="num mono r">3,09</td><td class="num mono p">3,10</td><td class="num mono r">975.282</td><td class="num mono p">905.874</td><td class="num mono r">€&nbsp;5,18</td><td class="num mono p">€&nbsp;5,37</td><td class="num mono r">−</td><td class="num mono p">−</td></tr>
+<tr><td>Meta</td><td class="num mono r">€&nbsp;1.366</td><td class="num mono p">€&nbsp;1.973</td><td class="num mono r">320.839</td><td class="num mono p">87.500</td><td class="num mono r">2,09</td><td class="num mono p">3,00</td><td class="num mono r">672.144</td><td class="num mono p">262.500</td><td class="num mono r">€&nbsp;2,03</td><td class="num mono p">€&nbsp;7,52</td><td class="num mono r">€&nbsp;1,32</td><td class="num mono p">€&nbsp;0,75</td></tr>
+<tr><td>LinkedIn</td><td class="num mono r">€&nbsp;683</td><td class="num mono p">€&nbsp;1.973</td><td class="num mono r">39.627</td><td class="num mono p">21.429</td><td class="num mono r">1,48</td><td class="num mono p">2,75</td><td class="num mono r">58.770</td><td class="num mono p">58.929</td><td class="num mono r">€&nbsp;11,63</td><td class="num mono p">€&nbsp;33,48</td><td class="num mono r">€&nbsp;3,88</td><td class="num mono p">€&nbsp;6,70</td></tr>
+<tr><td>YouTube</td><td class="num mono r">€&nbsp;535</td><td class="num mono p">€&nbsp;714</td><td class="num mono r">67.594</td><td class="num mono p">28.571</td><td class="num mono r">1,36</td><td class="num mono p">2,50</td><td class="num mono r">91.895</td><td class="num mono p">71.429</td><td class="num mono r">€&nbsp;5,83</td><td class="num mono p">€&nbsp;10,00</td><td class="num mono r">€&nbsp;24,34</td><td class="num mono p">€&nbsp;2,50</td></tr>
+<tr><td>Spotify</td><td class="num mono r">€&nbsp;141</td><td class="num mono p">€&nbsp;683</td><td class="num mono r">24.552</td><td class="num mono p">15.024</td><td class="num mono r">1,68</td><td class="num mono p">3,00</td><td class="num mono r">41.175</td><td class="num mono p">45.073</td><td class="num mono r">€&nbsp;3,43</td><td class="num mono p">€&nbsp;15,15</td><td class="num mono r">€&nbsp;1,33</td><td class="num mono p">€&nbsp;5,05</td></tr>
 </tbody>
 <tfoot>
-<tr><td>Totaal</td><td class="num mono">€&nbsp;11.346</td><td class="num mono p">€&nbsp;13.777</td><td class="num mono">911.469</td><td class="num mono p">587.599</td><td class="num mono">2,57</td><td class="num mono p">3,14</td><td class="num mono">2.339.266</td><td class="num mono p">1.843.804</td><td class="num mono">€&nbsp;4,85</td><td class="num mono p">€&nbsp;7,47</td><td class="num mono">€&nbsp;2,03</td><td class="num mono p">€&nbsp;1,60</td></tr>
+<tr><td>Totaal</td><td class="num mono r">€&nbsp;11.346</td><td class="num mono p">€&nbsp;13.777</td><td class="num mono r">911.469</td><td class="num mono p">587.599</td><td class="num mono r">2,57</td><td class="num mono p">3,14</td><td class="num mono r">2.339.266</td><td class="num mono p">1.843.804</td><td class="num mono r">€&nbsp;4,85</td><td class="num mono p">€&nbsp;7,47</td><td class="num mono r">€&nbsp;2,03</td><td class="num mono p">€&nbsp;1,60</td></tr>
 </tfoot>
 </table></div>
 <div class="note">Projectie naar rato van de geplande looptijd per kanaal, tot en met 19 oktober. Out of home naar rato van de looptijd en radio flight 1, op basis van inkoop. Totaal bereik is per kanaal opgeteld.</div>
@@ -99,6 +100,19 @@ tfoot td{border-top:1px solid var(--stroke);font-weight:700;padding-top:9px}
 <figure><div class="im"><img class="v" src="beeld/video-20s.webp" alt="Video 20 seconden" loading="lazy"></div><figcaption>Video, 20 sec<span>Meta · €&nbsp;0,015 per weergave</span><span>LinkedIn · CTR 0,21–0,75%</span></figcaption></figure>
 <figure><div class="im"><img class="v" src="beeld/tagon-6s.webp" alt="Tag On 6 seconden" loading="lazy"></div><figcaption>Tag On, 6 sec<span>Meta · CTR 0,03%</span><span>LinkedIn · CTR 0,11–0,45%</span></figcaption></figure>
 </div>
+</div>
+
+<div class="card sec">
+<h2>Sentiment en reacties</h2>
+<div class="tw"><table class="stab">
+<thead><tr><th>Kanaal</th><th class="num">Reacties</th><th class="num">Positief</th><th class="num">Negatief</th><th class="num">Opmerkingen</th><th class="num">Gedeeld</th><th class="num">Opgeslagen</th><th class="num">Reacties per 1.000 impressies</th></tr></thead>
+<tbody>
+<tr><td>Meta</td><td class="num mono">156</td><td class="num mono">155 (like)</td><td class="num mono">1 (boos)</td><td class="num mono">3</td><td class="num mono">13</td><td class="num mono">10</td><td class="num mono">0,23</td></tr>
+<tr><td>LinkedIn</td><td class="num mono">17</td><td class="num mono">17</td><td class="num mono">0</td><td class="num mono">0</td><td class="num mono">0</td><td class="num mono">−</td><td class="num mono">0,29</td></tr>
+</tbody>
+<tfoot><tr><td>Totaal</td><td class="num mono">173</td><td class="num mono">172</td><td class="num mono">1</td><td class="num mono">3</td><td class="num mono">13</td><td class="num mono">10</td><td class="num mono">0,24</td></tr></tfoot>
+</table></div>
+<p style="margin-top:12px">Het sentiment is vrijwel volledig positief: van de 173 reacties is er één negatief, een boze reactie op Meta. Statisch beeld lokt naar verhouding de meeste interactie uit: op Meta krijgen de statics 4,7 keer zoveel reacties per vertoning als de video's en alle drie de opmerkingen, terwijl op LinkedIn alle 17 reacties op de video's binnenkwamen.</p>
 </div>
 
 <div class="card sec">
