@@ -54,6 +54,9 @@ h1{font-size:21px;font-weight:700;letter-spacing:-.3px;margin:18px 0 0}
 
 .kop{width:100%;font-size:11.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted-2);margin:14px 0 -2px 4px}
 .kop:first-child{margin-top:0}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:12px;font-weight:600;color:var(--muted);background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px 11px;transition:border-color .12s ease,color .12s ease}
+.chip:hover{border-color:var(--pink);color:var(--ink)}
 .voet{margin-top:auto;padding-top:34px;display:flex;align-items:center;gap:7px;
   font-size:12px;color:var(--muted-2)}
 .voet .punt{width:5px;height:5px;border-radius:50%;background:var(--pink)}
@@ -93,33 +96,6 @@ h1{font-size:21px;font-weight:700;letter-spacing:-.3px;margin:18px 0 0}
   </div>
 
   <div class="links">
-    <div class="kop">Categorieën</div>
-    <a class="link" href="https://flii.nl/insight" target="_blank" rel="noopener">
-      <span class="ic"><svg viewBox="0 0 24 24"><path d="M5 4h11l3 3v13H5z"/><path d="M8 10h8M8 14h8M8 18h5"/></svg></span>
-      <span class="tx">Blog<span class="sub">flii.nl/insight</span></span>
-      <svg class="pijl" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
-    </a>
-    <a class="link" href="https://flii.nl/cases" target="_blank" rel="noopener">
-      <span class="ic"><svg viewBox="0 0 24 24"><path d="M3 6.5A1.5 1.5 0 014.5 5H9l2 2h8.5A1.5 1.5 0 0121 8.5v10a1.5 1.5 0 01-1.5 1.5h-15A1.5 1.5 0 013 18.5z"/></svg></span>
-      <span class="tx">Cases<span class="sub">flii.nl/cases</span></span>
-      <svg class="pijl" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
-    </a>
-    <a class="link" href="https://flii.nl/diensten" target="_blank" rel="noopener">
-      <span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5h6v2"/><path d="M3 12h18"/></svg></span>
-      <span class="tx">Diensten<span class="sub">flii.nl/diensten</span></span>
-      <svg class="pijl" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
-    </a>
-    <a class="link" href="https://flii.nl/kennisbank" target="_blank" rel="noopener">
-      <span class="ic"><svg viewBox="0 0 24 24"><path d="M4 5a2 2 0 012-2h13v18H6a2 2 0 01-2-2z"/><path d="M8 3v18"/><path d="M11.5 8h5"/></svg></span>
-      <span class="tx">Kennisbank<span class="sub">flii.nl/kennisbank</span></span>
-      <svg class="pijl" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
-    </a>
-    <a class="link" href="https://flii.nl/#faq" target="_blank" rel="noopener">
-      <span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 113.2 2.4c-.7.3-1.2.9-1.2 1.7v.4"/><path d="M12 17.2v.1"/></svg></span>
-      <span class="tx">Veelgestelde vragen<span class="sub">flii.nl/#faq</span></span>
-      <svg class="pijl" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
-    </a>
-
     <div class="kop">Recent</div>
     <a class="link" href="https://flii.nl/insight/server-side-tracking" target="_blank" rel="noopener">
       <img class="th" src="https://flii.nl/assets/insight/server-side-tracking.webp" alt="" loading="lazy">
@@ -176,6 +152,15 @@ h1{font-size:21px;font-weight:700;letter-spacing:-.3px;margin:18px 0 0}
       <span class="tx">Branding vs. Performance: wat werkt?<span class="sub">flii.nl/insight/branding-versus-performance-marketing</span></span>
       <svg class="pijl" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
     </a>
+
+    <div class="kop">Categorieën</div>
+    <div class="chips">
+      <a class="chip" href="https://flii.nl/insight" target="_blank" rel="noopener">Blog</a>
+      <a class="chip" href="https://flii.nl/cases" target="_blank" rel="noopener">Cases</a>
+      <a class="chip" href="https://flii.nl/diensten" target="_blank" rel="noopener">Diensten</a>
+      <a class="chip" href="https://flii.nl/kennisbank" target="_blank" rel="noopener">Kennisbank</a>
+      <a class="chip" href="https://flii.nl/#faq" target="_blank" rel="noopener">Veelgestelde vragen</a>
+    </div>
   </div>
 
   <div class="voet"><span class="punt"></span>flii.nl</div>
