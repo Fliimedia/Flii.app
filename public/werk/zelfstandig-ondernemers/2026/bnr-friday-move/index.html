@@ -63,6 +63,10 @@ h1{font-size:34px;letter-spacing:-1.3px;line-height:1.02;margin:6px 0 0;font-wei
 .zij{flex:0 0 250px}
 .zij figure{margin:0 0 10px}
 .zij figure img{border:1px solid var(--line);border-radius:9px;width:100%;height:auto}
+.zij figure{position:relative}
+.zij.staand{flex:0 0 160px}
+.dl{position:absolute;top:8px;right:8px;width:30px;height:30px;border-radius:50%;background:var(--pink);display:grid;place-items:center;box-shadow:0 2px 6px rgba(0,0,0,.25)}
+.dl svg{width:14px;height:14px;stroke:#fff;stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round}
 .kijk{display:inline-flex;align-items:center;gap:8px;background:var(--pink);color:#fff;
   border-radius:9px;padding:9px 14px;font-size:13px;font-weight:600;margin-top:12px;align-self:flex-start}
 .kijk svg{width:13px;height:13px;stroke:#fff;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
@@ -79,6 +83,7 @@ h1{font-size:34px;letter-spacing:-1.3px;line-height:1.02;margin:6px 0 0;font-wei
   .kanalen{flex-wrap:wrap}
   .kanalen .tip{margin-left:0;flex-basis:100%}
   .zij{margin-top:12px}
+  .zij.staand{max-width:200px}
 }
 </style>
 </head>
@@ -131,7 +136,8 @@ Bekijk het gesprek in de video.</div>
       </div>
       <div class="zij">
         <figure>
-          <img src="beeld/thumbnail-16x9.webp" alt="Thumbnail The Friday Move" loading="lazy">
+          <img src="beeld/v1-thumbnail-16x9.jpg" alt="Thumbnail V1, 16:9" loading="lazy">
+          <a class="dl" href="beeld/v1-thumbnail-16x9.jpg" download aria-label="Download thumbnail"><svg viewBox="0 0 24 24"><path d="M12 4v11"/><path d="M8 11l4 4 4-4"/><path d="M5 19h14"/></svg></a>
           <figcaption>Thumbnail 16:9</figcaption>
         </figure>
       </div>
@@ -148,7 +154,7 @@ Bekijk het gesprek in de video.</div>
         <div class="copy">Als ondernemer sta ik midden in de groep waarvoor wij het vangnet bouwen. Het betekent nogal wat als je tijdelijk bent uitgeschakeld terwijl je bedrijf gewoon doorstoomt – hoe regel je dat allemaal? Mede daarom zet ik me in voor het creëren van een veilig vangnet voor zelfstandig ondernemers en schreef ik samen met Frits Sissing het boek ‘Anders ondernemen’, een werkboek om bewuster te kiezen. Bij ‘The Friday Move’ op BNR spraken we erover met Wilfred Genee. Kijk mee hieronder.</div>
       </div>
     </div>
-    <a class="kijk" href="bestanden/bnr-friday-move-v1.mp4" download>Download video<svg viewBox="0 0 24 24"><path d="M12 4v11"/><path d="M8 11l4 4 4-4"/><path d="M5 19h14"/></svg></a>
+    <a class="kijk" href="bestanden/bnr-friday-move-v1-16x9.mp4" download>Download video<svg viewBox="0 0 24 24"><path d="M12 4v11"/><path d="M8 11l4 4 4-4"/><path d="M5 19h14"/></svg></a>
     <div class="kanalen"><span class="l">Kanalen</span><span class="merken"><svg class="lg"><use href="#lg-linkedin"/></svg></span><span class="tip"><svg viewBox="0 0 24 24"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 00-3.5 10.9c.5.4.8 1 .8 1.6h5.4c0-.6.3-1.2.8-1.6A6 6 0 0012 3z"/></svg><span><b>Tip:</b> voeg de link naar boek verkoop toe in de contact sectie van je profiel</span></span></div>
   </div>
 
@@ -159,9 +165,18 @@ Bekijk het gesprek in de video.</div>
         <div class="l">Titel</div>
         <div class="titel">Ook een werkboek</div>
         <div class="l">Copy</div>
-        <div class="copy">Anders ondernemen is niet alleen een boek om te lezen, maar ook een werkboek.
+        <div class="copy">Wat is de valkuil van zelfstandig ondernemen?
 
-Je gaat er zelf mee aan de slag en maakt zo bewuster je keuzes. Frits Sissing en Lydia Bos vertellen erover bij The Friday Move op BNR.</div>
+Frits Sissing en Lydia Bos zijn de oprichters van Zelfstandig Ondernemers, een platform voor zzp’ers en andere zelfstandig ondernemers dat, onder meer, een vangnet biedt bij tijdelijke arbeidsongeschiktheid. Onlangs verscheen van hun hand het boek ‘Anders ondernemen’, over het belang van bewust kiezen als je actief bent als ondernemer. Bij ‘The Friday Move’ op BNR werden ze daarover ondervraagd door Wilfred Genee.
+
+Bekijk het gesprek in de video.</div>
+      </div>
+      <div class="zij staand">
+        <figure>
+          <img src="beeld/v2-thumbnail-9x16.png" alt="Thumbnail V2, 9:16" loading="lazy">
+          <a class="dl" href="beeld/v2-thumbnail-9x16.png" download aria-label="Download thumbnail"><svg viewBox="0 0 24 24"><path d="M12 4v11"/><path d="M8 11l4 4 4-4"/><path d="M5 19h14"/></svg></a>
+          <figcaption>Thumbnail 9:16</figcaption>
+        </figure>
       </div>
     </div>
     <a class="kijk" href="https://drive.google.com/uc?export=download&amp;id=1HWapFoyvnOA1E2ORjXc1qSMQr4_VPYkJ" target="_blank" rel="noopener">Download video<svg viewBox="0 0 24 24"><path d="M12 4v11"/><path d="M8 11l4 4 4-4"/><path d="M5 19h14"/></svg></a>
@@ -175,9 +190,18 @@ Je gaat er zelf mee aan de slag en maakt zo bewuster je keuzes. Frits Sissing en
         <div class="l">Titel</div>
         <div class="titel">Anders ondernemen</div>
         <div class="l">Copy</div>
-        <div class="copy">Anders ondernemen, het nieuwe boek van Frits Sissing en Lydia Bos.
+        <div class="copy">Wat is de valkuil van zelfstandig ondernemen?
 
-Over bewust kiezen als je voor jezelf werkt. Bij The Friday Move op BNR vertellen ze wat erin staat en waarom ze het schreven.</div>
+Frits Sissing en Lydia Bos zijn de oprichters van Zelfstandig Ondernemers, een platform voor zzp’ers en andere zelfstandig ondernemers dat, onder meer, een vangnet biedt bij tijdelijke arbeidsongeschiktheid. Onlangs verscheen van hun hand het boek ‘Anders ondernemen’, over het belang van bewust kiezen als je actief bent als ondernemer. Bij ‘The Friday Move’ op BNR werden ze daarover ondervraagd door Wilfred Genee.
+
+Bekijk het gesprek in de video.</div>
+      </div>
+      <div class="zij staand">
+        <figure>
+          <img src="beeld/v3-thumbnail-9x16.png" alt="Thumbnail V3, 9:16" loading="lazy">
+          <a class="dl" href="beeld/v3-thumbnail-9x16.png" download aria-label="Download thumbnail"><svg viewBox="0 0 24 24"><path d="M12 4v11"/><path d="M8 11l4 4 4-4"/><path d="M5 19h14"/></svg></a>
+          <figcaption>Thumbnail 9:16</figcaption>
+        </figure>
       </div>
     </div>
     <a class="kijk" href="bestanden/bnr-friday-move-v3.mp4" download>Download video<svg viewBox="0 0 24 24"><path d="M12 4v11"/><path d="M8 11l4 4 4-4"/><path d="M5 19h14"/></svg></a>
@@ -191,9 +215,18 @@ Over bewust kiezen als je voor jezelf werkt. Bij The Friday Move op BNR vertelle
         <div class="l">Titel</div>
         <div class="titel">Na de operatie</div>
         <div class="l">Copy</div>
-        <div class="copy">Je bedrijf houdt niet op als jij uitvalt.
+        <div class="copy">Wat is de valkuil van zelfstandig ondernemen?
 
-Lydia Bos lag er na een operatie tijdelijk uit en kent de valkuilen daardoor van dichtbij. Bij The Friday Move op BNR vertelt ze wat dat met je onderneming doet.</div>
+Frits Sissing en Lydia Bos zijn de oprichters van Zelfstandig Ondernemers, een platform voor zzp’ers en andere zelfstandig ondernemers dat, onder meer, een vangnet biedt bij tijdelijke arbeidsongeschiktheid. Onlangs verscheen van hun hand het boek ‘Anders ondernemen’, over het belang van bewust kiezen als je actief bent als ondernemer. Bij ‘The Friday Move’ op BNR werden ze daarover ondervraagd door Wilfred Genee.
+
+Bekijk het gesprek in de video.</div>
+      </div>
+      <div class="zij staand">
+        <figure>
+          <img src="beeld/v4-thumbnail-9x16.png" alt="Thumbnail V4, 9:16" loading="lazy">
+          <a class="dl" href="beeld/v4-thumbnail-9x16.png" download aria-label="Download thumbnail"><svg viewBox="0 0 24 24"><path d="M12 4v11"/><path d="M8 11l4 4 4-4"/><path d="M5 19h14"/></svg></a>
+          <figcaption>Thumbnail 9:16</figcaption>
+        </figure>
       </div>
     </div>
     <a class="kijk" href="https://drive.google.com/uc?export=download&amp;id=12kWPlITaOBkEhoh4FIyxp7D18miTOO7Z" target="_blank" rel="noopener">Download video<svg viewBox="0 0 24 24"><path d="M12 4v11"/><path d="M8 11l4 4 4-4"/><path d="M5 19h14"/></svg></a>
@@ -207,9 +240,18 @@ Lydia Bos lag er na een operatie tijdelijk uit en kent de valkuilen daardoor van
         <div class="l">Titel</div>
         <div class="titel">Voor echte ondernemers</div>
         <div class="l">Copy</div>
-        <div class="copy">Het vangnet is er voor echte ondernemers, niet voor schijnzelfstandigen.
+        <div class="copy">Wat is de valkuil van zelfstandig ondernemen?
 
-Frits Sissing en Lydia Bos leggen bij The Friday Move op BNR uit waarom dat onderscheid telt.</div>
+Frits Sissing en Lydia Bos zijn de oprichters van Zelfstandig Ondernemers, een platform voor zzp’ers en andere zelfstandig ondernemers dat, onder meer, een vangnet biedt bij tijdelijke arbeidsongeschiktheid. Onlangs verscheen van hun hand het boek ‘Anders ondernemen’, over het belang van bewust kiezen als je actief bent als ondernemer. Bij ‘The Friday Move’ op BNR werden ze daarover ondervraagd door Wilfred Genee.
+
+Bekijk het gesprek in de video.</div>
+      </div>
+      <div class="zij staand">
+        <figure>
+          <img src="beeld/v5-thumbnail-9x16.png" alt="Thumbnail V5, 9:16" loading="lazy">
+          <a class="dl" href="beeld/v5-thumbnail-9x16.png" download aria-label="Download thumbnail"><svg viewBox="0 0 24 24"><path d="M12 4v11"/><path d="M8 11l4 4 4-4"/><path d="M5 19h14"/></svg></a>
+          <figcaption>Thumbnail 9:16</figcaption>
+        </figure>
       </div>
     </div>
     <a class="kijk" href="bestanden/bnr-friday-move-v5.mp4" download>Download video<svg viewBox="0 0 24 24"><path d="M12 4v11"/><path d="M8 11l4 4 4-4"/><path d="M5 19h14"/></svg></a>
