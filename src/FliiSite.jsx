@@ -14,7 +14,7 @@ const BRANDS = ["Weddy", "Aperture", "Populos", "Waryte", "FC Data"];
 const I18N = {
   nl: {
     slogan: "Let's Ignite ambitions",
-    nav: { solutions: "Diensten", work: "Werk", approach: "Aanpak", about: "Over ons", insights: "Inzichten", pricing: "Prijzen", contact: "Contact", consult: "Plan een gesprek", manage: "CMS" },
+    nav: { solutions: "Diensten", work: "Labs", approach: "Aanpak", about: "Over ons", insights: "Inzichten", pricing: "Prijzen", contact: "Contact", consult: "Plan een gesprek", manage: "CMS" },
     mega: {
       groups: [
         { group: "Bouwen", blurb: "Ontwerp en lanceer het product.", items: [
@@ -131,7 +131,7 @@ const I18N = {
       detailPh: { vraag: "Waar loop je tegenaan?", advies: "Wat wil je bereiken?", product: "Welk product spreekt je aan?" },
       subject: { vraag: "Vraag via flii.app", advies: "Adviesgesprek via flii.app", product: "Productinteresse via flii.app" } },
     footer: { solutions: "Diensten", company: "Bedrijf", connect: "Connect",
-      company_links: [ { label: "Werk", href: "#work" }, { label: "Over ons", href: "#about" }, { label: "Inzichten", href: "#blog" }, { label: "Prijzen", href: "#/prijzen" } ],
+      company_links: [ { label: "Labs", href: "#/labs" }, { label: "Over ons", href: "#/over" }, { label: "Inzichten", href: "#/inzichten" }, { label: "Prijzen", href: "#/prijzen" } ],
       bottom: "Snel gebouwd. Afgesteld op prestatie." },
     cms: { back: "← Terug naar site", eyebrow: "Control panel", h1: "Content", reset: "Herstel standaard",
       status: { supabase: "Gesynct met Supabase", loading: "Verbinden met Supabase…", local: "Lokaal (deze browser)" },
@@ -206,7 +206,7 @@ const I18N = {
   },
   en: {
     slogan: "Let's Ignite ambitions",
-    nav: { solutions: "Solutions", work: "Work", approach: "Approach", about: "About", insights: "Insights", pricing: "Pricing", contact: "Contact", consult: "Book a consultation", manage: "CMS" },
+    nav: { solutions: "Solutions", work: "Labs", approach: "Approach", about: "About", insights: "Insights", pricing: "Pricing", contact: "Contact", consult: "Book a consultation", manage: "CMS" },
     mega: {
       groups: [
         { group: "Build", blurb: "Design and ship the product.", items: [
@@ -323,7 +323,7 @@ const I18N = {
       detailPh: { vraag: "What are you running into?", advies: "What do you want to achieve?", product: "Which product appeals to you?" },
       subject: { vraag: "Question via flii.app", advies: "Consultation via flii.app", product: "Product interest via flii.app" } },
     footer: { solutions: "Solutions", company: "Company", connect: "Connect",
-      company_links: [ { label: "Work", href: "#work" }, { label: "About", href: "#about" }, { label: "Insights", href: "#blog" }, { label: "Pricing", href: "#/prijzen" } ],
+      company_links: [ { label: "Labs", href: "#/labs" }, { label: "About", href: "#/over" }, { label: "Insights", href: "#/inzichten" }, { label: "Pricing", href: "#/prijzen" } ],
       bottom: "Built fast. Tuned for performance." },
     cms: { back: "← Back to site", eyebrow: "Control panel", h1: "Content", reset: "Reset to defaults",
       status: { supabase: "Synced with Supabase", loading: "Connecting to Supabase…", local: "Local (this browser)" },
@@ -687,7 +687,11 @@ function useContent() {
 function parseHash() {
   const h = (window.location.hash || "").replace(/^#\/?/, "");
   if (!h) return { name: "home" };
+  // Old in-page anchors from before the split into pages.
+  const LEGACY = { top: "home", loop: "aanpak", solutions: "diensten", campagnes: "diensten", work: "labs", about: "over", blog: "inzichten", contact: "contact" };
+  if (LEGACY[h]) return { name: LEGACY[h] };
   const [seg, id] = h.split("/");
+  if (["diensten", "aanpak", "labs", "over", "inzichten", "contact"].includes(seg) && !id) return { name: seg };
   if (seg === "prijzen") return { name: "prijzen" };
   if (seg === "dienst" && id) return { name: "service", id };
   if (["app", "insight", "review", "cert"].includes(seg) && id) return { name: seg, id };
@@ -869,9 +873,9 @@ function Nav({ openConsult }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
   const top = [
-    { label: t.nav.work, href: "#work" }, { label: t.nav.approach, href: "#loop" },
-    { label: t.nav.about, href: "#about" }, { label: t.nav.insights, href: "#blog" },
-    { label: t.nav.pricing, href: "#/prijzen" }, { label: t.nav.contact, href: "#contact" },
+    { label: t.nav.work, href: "#/labs" }, { label: t.nav.approach, href: "#/aanpak" },
+    { label: t.nav.about, href: "#/over" }, { label: t.nav.insights, href: "#/inzichten" },
+    { label: t.nav.pricing, href: "#/prijzen" }, { label: t.nav.contact, href: "#/contact" },
   ];
   return (
     <header className="nav">
@@ -879,7 +883,7 @@ function Nav({ openConsult }) {
         <a href="#/" className="nav-brand" aria-label="Flii.app home" onClick={close}><FliiLogo variant={scrolled ? "mark" : "word"} /></a>
         <nav className="nav-links" aria-label="Primary">
           <div className="nav-item" onMouseEnter={() => setSolOpen(true)} onMouseLeave={() => setSolOpen(false)}>
-            <button className="nav-link">{t.nav.solutions} <span className="caret">›</span></button>
+            <a href="#/diensten" className="nav-link">{t.nav.solutions} <span className="caret">›</span></a>
             <div className={`mega ${solOpen ? "open" : ""}`}>
               <div className="mega-cols">
                 {t.mega.groups.map((g) => (
@@ -890,7 +894,7 @@ function Nav({ openConsult }) {
                   </div>
                 ))}
               </div>
-              <a href="#loop" className="mega-feature"><span className="mono mega-feature-k">{t.mega.featureK}</span><span className="mega-feature-t">{t.mega.featureT}</span></a>
+              <a href="#/aanpak" className="mega-feature"><span className="mono mega-feature-k">{t.mega.featureK}</span><span className="mega-feature-t">{t.mega.featureT}</span></a>
             </div>
           </div>
           {top.map((n) => <a key={n.label} href={n.href} className="nav-link">{n.label}</a>)}
@@ -906,7 +910,7 @@ function Nav({ openConsult }) {
               {g.items.map((it) => <a key={it.label} href={it.href} onClick={close}>{it.label}</a>)}
             </div>
           ))}
-          {top.map((n) => <a key={n.label} href={n.href} onClick={close} className="mobile-top">{n.label}</a>)}
+          {[{ label: t.nav.solutions, href: "#/diensten" }].concat(top).map((n) => <a key={n.label} href={n.href} onClick={close} className="mobile-top">{n.label}</a>)}
           <button className="btn btn-primary" onClick={(e) => { close(); openConsult(e); }}>{t.nav.consult}</button>
           <div className="mobile-foot">
             <div className="lang-toggle" role="group" aria-label="Language">
@@ -1498,11 +1502,8 @@ function ShowcaseList({ apps }) {
     </div>
   );
 }
-function Home({ content, openConsult }) {
+function Home({ openConsult }) {
   const { t } = useLang();
-  const { apps, articles, reviews, certs } = content;
-  const [priceOpen, setPriceOpen] = useState(false);
-  const avg = reviews.length ? (reviews.reduce((s, r) => s + (r.rating || 5), 0) / reviews.length).toFixed(1) : "5.0";
   return (
     <>
       <section className="hero" id="top">
@@ -1513,22 +1514,20 @@ function Home({ content, openConsult }) {
           <p className="hero-sub">{t.hero.sub}</p>
           <div className="hero-actions">
             <button onClick={openConsult} className="btn btn-primary">{t.hero.primary}</button>
-            <a href="#loop" className="loop-cta" aria-label={t.hero.loopCta}>
+            <a href="#/aanpak" className="loop-cta" aria-label={t.hero.loopCta}>
               <FliiLoopMark />
               <span className="loop-cta-t">{t.hero.loopCta} <span className="loop-cta-arrow" aria-hidden>↘</span></span>
             </a>
           </div>
         </div>
-        <a href="#solutions" className="hero-scroll mono" aria-label="Scroll"><span>scroll</span><span className="hero-scroll-line" aria-hidden /></a>
       </section>
-
-      <Section className="brandwall-wrap">
-        <div className="wrap">
-          <div className="brandwall-label mono">{t.brandsLabel}</div>
-          <Marquee className="brand-marquee" items={BRANDS} duration={34} render={(b) => <span className="marquee-brand">{b}</span>} />
-        </div>
-      </Section>
-
+    </>
+  );
+}
+function DienstenPage() {
+  const { t } = useLang();
+  return (
+    <>
       <section className="band" id="solutions">
         <div className="wrap">
           <Section><div className="eyebrow">{t.services.eyebrow}</div><h2 className="display h2">{t.services.h2}</h2><p className="lede">{t.services.lede}</p></Section>
@@ -1547,42 +1546,43 @@ function Home({ content, openConsult }) {
           </div>
         </div>
       </section>
-
       <ModelSection />
-
+    </>
+  );
+}
+function AanpakPage() {
+  const { t } = useLang();
+  return (
+    <>
       <section className="band band-dark band-loop" id="loop">
         <div className="loop-bg" aria-hidden><NodeNetwork mono spread /></div>
         <div className="wrap">
           <Section><div className="eyebrow on-dark">{t.loop.eyebrow}</div><h2 className="display h2 on-dark">{t.loop.h2}</h2><p className="lede on-dark-soft">{t.loop.lede}</p></Section>
           <Section className="loop-ring-wrap"><LoopRing /></Section>
-          <Section className="loop-fold">
-            <button className={`price-fold-trigger ${priceOpen ? "open" : ""}`} onClick={() => setPriceOpen((v) => !v)} aria-expanded={priceOpen}>
-              <FliiLoopMark />
-              <span className="price-fold-t">{t.calc.eyebrow} <span className="price-fold-arrow" aria-hidden>↘</span></span>
-            </button>
-            {priceOpen && <div className="price-fold-panel"><PriceCalculator openConsult={openConsult} /></div>}
-          </Section>
+          <Section className="loop-fold"><a href="#/prijzen" className="btn btn-primary">{t.nav.pricing}</a></Section>
         </div>
       </section>
-
-      <section className="stats">
-        <div className="wrap stats-grid">
-          {t.stats.map((s, i) => (
-            <Section key={i} className="stat" style={{ transitionDelay: `${i * 90}ms` }}>
-              <div className="display stat-value"><Counter value={s.value} suffix={s.suffix} /></div>
-              <div className="stat-label mono">{s.label}</div>
-            </Section>
-          ))}
+      <section className="band band-dark">
+        <div className="wrap">
+          <Section><div className="eyebrow on-dark">{t.steps.eyebrow}</div><h2 className="display h2 on-dark">{t.steps.h2}</h2></Section>
+          <div className="steps-grid">{t.steps.items.map((s, i) => <Section key={i} className="step" style={{ transitionDelay: `${i * 70}ms` }}><div className="step-n mono">{s.n}</div><h3 className="step-h on-dark">{s.h}</h3><p className="step-b on-dark-soft">{s.b}</p></Section>)}</div>
         </div>
       </section>
-
+    </>
+  );
+}
+function LabsPage({ content }) {
+  const { t } = useLang();
+  const { apps, reviews } = content;
+  const avg = reviews.length ? (reviews.reduce((s, r) => s + (r.rating || 5), 0) / reviews.length).toFixed(1) : "5.0";
+  return (
+    <>
       <section className="band" id="work">
         <div className="wrap">
           <Section className="work-head"><div><div className="eyebrow">{t.work.eyebrow}</div><h2 className="display h2">{t.work.h2}</h2><p className="lede">{t.work.lede}</p></div></Section>
           <Section><ShowcaseList apps={apps} /></Section>
         </div>
       </section>
-
       <section className="band band-mist">
         <div className="wrap">
           <Section className="quotes-head">
@@ -1612,7 +1612,20 @@ function Home({ content, openConsult }) {
           </div>
         </div>
       </section>
-
+    </>
+  );
+}
+function OverPage({ content }) {
+  const { t } = useLang();
+  const { certs } = content;
+  return (
+    <>
+      <section className="band" id="about">
+        <div className="wrap">
+          <Section><div className="eyebrow">{t.who.eyebrow}</div><h2 className="display h2">{t.who.h2}</h2><p className="lede">{t.who.lede}</p></Section>
+          <div className="aud-grid">{t.who.items.map((a, i) => <Section key={i} className="aud" style={{ transitionDelay: `${i * 70}ms` }}><h3 className="aud-h">{a.h}</h3><p className="aud-b">{a.b}</p></Section>)}</div>
+        </div>
+      </section>
       {/* CREDENTIAL BADGES */}
       <Section className="creds">
         <div className="wrap">
@@ -1628,26 +1641,19 @@ function Home({ content, openConsult }) {
           )} />
         </div>
       </Section>
-
-      <section className="band" id="about">
-        <div className="wrap">
-          <Section><div className="eyebrow">{t.who.eyebrow}</div><h2 className="display h2">{t.who.h2}</h2><p className="lede">{t.who.lede}</p></Section>
-          <div className="aud-grid">{t.who.items.map((a, i) => <Section key={i} className="aud" style={{ transitionDelay: `${i * 70}ms` }}><h3 className="aud-h">{a.h}</h3><p className="aud-b">{a.b}</p></Section>)}</div>
-        </div>
-      </section>
-
-      <section className="band band-dark">
-        <div className="wrap">
-          <Section><div className="eyebrow on-dark">{t.steps.eyebrow}</div><h2 className="display h2 on-dark">{t.steps.h2}</h2></Section>
-          <div className="steps-grid">{t.steps.items.map((s, i) => <Section key={i} className="step" style={{ transitionDelay: `${i * 70}ms` }}><div className="step-n mono">{s.n}</div><h3 className="step-h on-dark">{s.h}</h3><p className="step-b on-dark-soft">{s.b}</p></Section>)}</div>
-        </div>
-      </section>
-
+    </>
+  );
+}
+function InzichtenPage({ content }) {
+  const { t } = useLang();
+  const { articles } = content;
+  return (
+    <>
       <section className="band" id="blog">
         <div className="wrap">
           <Section className="work-head"><div><div className="eyebrow">{t.insights.eyebrow}</div><h2 className="display h2">{t.insights.h2}</h2></div></Section>
           <div className="post-grid">
-            {articles.slice(0, 3).map((p, i) => (
+            {articles.map((p, i) => (
               <Section key={p.id} className="post" style={{ transitionDelay: `${i * 70}ms` }}>
                 <a href={`#/insight/${p.id}`} className="post-link">
                   <div className="post-thumb" aria-hidden><ArticleArt variant={p.cover} mode="thumb" /></div>
@@ -1661,19 +1667,19 @@ function Home({ content, openConsult }) {
           </div>
         </div>
       </section>
-
+    </>
+  );
+}
+function ContactPage({ openConsult }) {
+  const { t } = useLang();
+  return (
+    <>
       <section className="cta-band" id="contact">
-        <div className="cta-chip">Get in the Loop</div>
         <div className="wrap cta-inner">
           <Section>
-            <h2 className="display cta-h">{t.cta.h2}</h2>
-            <p className="cta-sub">{t.cta.sub}</p>
+            <h2 className="display cta-h">{t.consult.h}</h2>
             <div className="hero-actions">
               <button onClick={openConsult} className="btn btn-primary">{t.cta.primary}</button>
-              <a href="#loop" className="loop-cta" aria-label={t.hero.loopCta}>
-                <FliiLoopMark />
-                <span className="loop-cta-t">{t.hero.loopCta} <span className="loop-cta-arrow" aria-hidden>↘</span></span>
-              </a>
             </div>
           </Section>
           <Section className="contact-grid">
@@ -1690,10 +1696,10 @@ const paras = (s) => (s || "").split("\n\n").filter(Boolean);
 function NotFound({ back }) { const { t } = useLang(); return <section className="detail"><div className="wrap"><a href={back} className="back">{t.detail.backHome}</a><h1 className="display detail-h">{t.detail.notFound}</h1><p className="lede">{t.detail.notFoundSub}</p></div></section>; }
 function AppDetail({ content, id }) {
   const { t } = useLang(); const a = content.apps.find((x) => x.id === id);
-  if (!a) return <NotFound back="#work" />;
+  if (!a) return <NotFound back="#/labs" />;
   return (
     <article className="detail"><div className="wrap">
-      <a href="#work" className="back">{t.detail.backShowcase}</a>
+      <a href="#/labs" className="back">{t.detail.backShowcase}</a>
       <div className="detail-meta mono">{a.client} · {a.tag}</div>
       <h1 className="display detail-h">{a.title}</h1>
       <p className="detail-lede">{a.summary}</p>
@@ -1761,10 +1767,10 @@ function renderArticleBody(body) {
 }
 function ArticleDetail({ content, id }) {
   const { t } = useLang(); const a = content.articles.find((x) => x.id === id);
-  if (!a) return <NotFound back="#blog" />;
+  if (!a) return <NotFound back="#/inzichten" />;
   return (
     <article className="detail detail-narrow"><div className="wrap">
-      <a href="#blog" className="back">{t.detail.backInsights}</a>
+      <a href="#/inzichten" className="back">{t.detail.backInsights}</a>
       <div className="detail-meta mono">{a.cat} · {a.date}{a.read ? ` · ${a.read}` : ""}</div>
       <h1 className="display detail-h">{a.title}</h1>
       <p className="detail-lede">{a.excerpt}</p>
@@ -2537,7 +2543,13 @@ export default function FliiSite() {
       <div className="flii-root">
         <style>{CSS}</style>
         <Nav openConsult={openConsult} />
-        {route.name === "home" && <Home content={content.data} openConsult={openConsult} />}
+        {route.name === "home" && <Home openConsult={openConsult} />}
+        {route.name === "diensten" && <DienstenPage />}
+        {route.name === "aanpak" && <AanpakPage />}
+        {route.name === "labs" && <LabsPage content={content.data} />}
+        {route.name === "over" && <OverPage content={content.data} />}
+        {route.name === "inzichten" && <InzichtenPage content={content.data} />}
+        {route.name === "contact" && <ContactPage openConsult={openConsult} />}
         {route.name === "prijzen" && <Pricing openConsult={openConsult} />}
         {route.name === "service" && <ServicePage id={route.id} openConsult={openConsult} />}
         {route.name === "app" && <AppDetail content={content.data} id={route.id} />}
@@ -2623,7 +2635,7 @@ button{font-family:inherit;}
 .mobile-menu .btn{margin-top:12px;justify-content:center;}
 
 /* hero */
-.hero{position:relative;padding:96px 0 104px;overflow:hidden;}
+.hero{position:relative;padding:96px 0 104px;overflow:hidden;min-height:calc(100svh - 72px);display:flex;align-items:center;}
 .hero-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(58% 58% at 84% 12%,rgba(231,37,90,0.10),rgba(231,37,90,0) 70%);}
 .node-net{position:absolute;inset:0;}
 .node-net-canvas{display:block;width:100%;height:100%;-webkit-mask-image:linear-gradient(102deg,transparent 0%,rgba(0,0,0,0.08) 34%,#000 68%);mask-image:linear-gradient(102deg,transparent 0%,rgba(0,0,0,0.08) 34%,#000 68%);}
@@ -2632,6 +2644,7 @@ button{font-family:inherit;}
 .loop-bg{position:absolute;left:0;right:0;top:68%;transform:translateY(-50%);height:52%;z-index:0;opacity:0.64;}
 .node-net-loop .node-net-canvas{-webkit-mask-image:radial-gradient(84% 84% at 50% 50%,#000 40%,rgba(0,0,0,0.24) 72%,transparent 100%);mask-image:radial-gradient(84% 84% at 50% 50%,#000 40%,rgba(0,0,0,0.24) 72%,transparent 100%);}
 .hero-inner{position:relative;z-index:2;max-width:740px;}
+.hero>.hero-inner{width:100%;}
 .loop-cta{display:inline-flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink);font-weight:600;font-size:15px;}
 .loop-cta:hover{color:var(--mag);}
 .loop-cta-t{white-space:nowrap;}
