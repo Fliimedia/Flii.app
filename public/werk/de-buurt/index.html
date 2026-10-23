@@ -1,47 +1,129 @@
 <!doctype html>
 <html lang="nl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
 <title>Stichting de Buurt | Flii Media</title>
+<script>try{if(localStorage.getItem("db-theme")==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--pink:#E8255B;--ink:#16181D;--muted:#5A6068;--muted-2:#8A9099;--line:#E1E4E7;}
-*{box-sizing:border-box}
-body{margin:0;background:#fff;color:var(--ink);font-family:Inter,system-ui,sans-serif;
-  font-size:15.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+:root{--flii:#E6007E;--pink:#E8255B;--ink:#16181D;--mist:#5A6068;--dim:#8A9099;--stroke:#E1E4E7;--inset:#F2F3F5;--wash:#F6F7F9;--card:rgba(255,255,255,.9);--solid:#FFFFFF;
+--bg1:rgba(232,37,91,.07);--bg2:rgba(22,24,29,.04);--pinksoft:rgba(232,37,91,.12);--logo:#FFFFFF;color-scheme:light}
+:root[data-theme="dark"]{--ink:#ECEEF1;--mist:#A3A9B2;--dim:#7D848E;--stroke:#2A2E36;--inset:#20242B;--wash:#0F1115;--card:#181B21;--solid:#181B21;
+--bg1:rgba(232,37,91,.10);--bg2:rgba(255,255,255,.02);--pinksoft:rgba(232,37,91,.18);--logo:#FFFFFF;color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html,body{max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:'Inter',system-ui,-apple-system,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased;min-height:100vh;
+background:radial-gradient(1000px 640px at 88% -8%,var(--bg1) 0%,transparent 55%),radial-gradient(860px 640px at -8% 108%,var(--bg2) 0%,transparent 55%),var(--wash);
+padding:16px;padding-top:calc(16px + env(safe-area-inset-top,0px));padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
 a{color:inherit;text-decoration:none}
-img{display:block;max-width:100%}
-.band{height:9px;background:var(--pink)}
-.wrap{max-width:820px;margin:0 auto;padding:38px 24px 80px}
-.kop{display:flex;align-items:baseline;justify-content:space-between;gap:20px;
-  padding-bottom:16px;border-bottom:1px solid var(--ink)}
-.kop img{height:26px;width:auto}
-.kop .u{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-2)}
-.soort{display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding:13px 0 0}
-.soort .k{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--pink)}
-.soort .nr{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2)}
-h1{font-size:46px;letter-spacing:-2px;line-height:1.02;margin:30px 0 26px;font-weight:800}
-ul{list-style:none;padding:0;margin:0;border-top:1px solid var(--line)}
-li{border-bottom:1px solid var(--line)}
-li a{display:flex;align-items:baseline;gap:16px;padding:16px 2px}
-li a:hover .b{color:var(--pink)}
-.b{font-weight:600;min-width:200px}
-.d{color:var(--muted);font-size:14.5px}
-@media(max-width:700px){.wrap{padding:26px 16px 70px}h1{font-size:30px;letter-spacing:-1.1px}
-  li a{display:block;padding:15px 2px}.b{min-width:0;margin-bottom:3px}}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+.disp{font-family:'Space Grotesk','Inter',system-ui,sans-serif}
+.frame{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.topbar{display:flex;align-items:center;gap:10px}
+.crumbs{flex:1}
+.applogo{font-family:'Space Grotesk','Inter',sans-serif;font-weight:700;font-size:15px;letter-spacing:.02em;white-space:nowrap}
+.crumbs .title{font-size:12px;color:var(--mist);margin-top:2px}
+.tbtn{appearance:none;width:34px;height:34px;border-radius:50%;border:1px solid var(--stroke);background:var(--inset);display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none;padding:0}
+.tbtn svg{width:16px;height:16px;fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.card{background:var(--card);border:1px solid var(--stroke);border-radius:16px;padding:13px 15px;backdrop-filter:blur(10px)}
+.h1{font-family:'Space Grotesk','Inter',sans-serif;font-weight:600;font-size:14px}
+.brandbar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:12px 15px}
+.logobox{height:46px;width:120px;display:flex;align-items:center;flex:none;background:var(--logo);border-radius:8px;padding:4px 8px}
+.logobox img{max-height:38px;max-width:100%;display:block}
+.bmeta{display:flex;flex-direction:column;justify-content:center;border-left:1px solid var(--stroke);padding-left:14px}
+.bname{font-weight:600;font-size:14px;line-height:1.25}
+.bper{font-size:11.5px;color:var(--mist);margin-top:2px}
+.sec{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:2px 4px -2px}
+.sec .k{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--pink)}
+.sec .n{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--dim)}
+.proj{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.9fr);gap:16px;align-items:stretch}
+.phead{display:flex;flex-direction:column;gap:10px;padding:2px 0}
+.pname{font-family:'Space Grotesk','Inter',sans-serif;font-weight:600;font-size:20px;line-height:1.15;letter-spacing:-.01em}
+.pmeta{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--mist);background:var(--inset);border:1px solid var(--stroke);border-radius:999px;padding:4px 9px;white-space:nowrap}
+.chip.done{color:var(--pink);background:var(--pinksoft);border-color:transparent}
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.tile{display:flex;flex-direction:column;gap:6px;border:1px solid var(--stroke);border-radius:12px;padding:12px 13px;background:var(--solid);transition:border-color .15s,background .15s}
+.tile:hover{border-color:var(--pink)}
+.tile:hover .tl{color:var(--pink)}
+.tile svg{width:17px;height:17px;fill:none;stroke:var(--pink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tl{font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.tl .ar{font-family:'IBM Plex Mono',monospace;font-weight:400;color:var(--dim)}
+.td{font-size:11.5px;color:var(--mist)}
+.fliifoot{display:flex;justify-content:flex-end;align-items:center;gap:9px;padding:8px 4px 0;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.05em;color:var(--mist)}
+.brandmark{border-radius:9px;background:var(--flii);display:flex;align-items:center;justify-content:center;flex:none;width:26px;height:26px}
+.brandmark svg{width:74%;height:74%}
+@media(max-width:880px){
+body{padding:10px;padding-top:calc(10px + env(safe-area-inset-top,0px))}
+.card{padding:12px 13px}
+.proj{grid-template-columns:1fr;gap:12px}
+}
+@media(max-width:560px){.tiles{grid-template-columns:1fr}.bmeta{border-left:none;padding-left:0;flex-basis:100%}}
 </style>
 </head>
 <body>
-<div class="band"></div>
-<div class="wrap">
-  <div class="kop"><img src="/assets/doc/fm-logo.png" alt="Flii Media"><span class="u">Stichting de Buurt</span></div>
-  <div class="soort"><span class="k">Opdrachtgever</span><span class="nr">Alle jaren</span></div>
-  <h1>Stichting<br>de Buurt</h1>
-  <ul><li><a href="2026/"><span class="b">2026</span><span class="d">Week tegen Eenzaamheid</span></a></li></ul>
+<div class="frame">
+
+  <div class="topbar">
+    <div class="crumbs">
+      <div class="applogo">Stichting de Buurt</div>
+      <div class="title">Dashboard</div>
+    </div>
+    <button class="tbtn" id="theme" type="button" aria-label="Donkere modus">
+      <svg viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
+    </button>
+  </div>
+
+  <div class="card brandbar">
+    <div class="logobox"><img src="/werk/de-buurt/2026/eenzaamheid/rapportage/beeld/de-buurt-logo.png" alt="de Buurt"></div>
+    <div class="bmeta">
+      <div class="bname">Stichting de Buurt</div>
+      <div class="bper">Sinds september 2025</div>
+    </div>
+  </div>
+
+  <!-- CAMPAGNES -->
+  <div class="sec"><span class="k">Campagnes</span><span class="n">1 project</span></div>
+
+  <div class="card proj">
+    <div class="phead">
+      <div class="pname">Week tegen Eenzaamheid</div>
+      <div class="pmeta">
+        <span class="chip done">Afgerond</span>
+        <span class="chip">2026</span>
+        <span class="chip">Meta</span>
+      </div>
+    </div>
+    <div class="tiles">
+      <a class="tile" href="/werk/de-buurt/2026/eenzaamheid/">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M21 16l-5-5-9 9"/></svg>
+        <div class="tl">Creatief materiaal<span class="ar">→</span></div>
+        <div class="td">8 uitingen</div>
+      </a>
+      <a class="tile" href="/werk/de-buurt/2026/eenzaamheid/rapportage/">
+        <svg viewBox="0 0 24 24"><path d="M4 20h16M7 16V10M12 16V5M17 16v-8"/></svg>
+        <div class="tl">Rapportage<span class="ar">→</span></div>
+        <div class="td">26 augustus – 1 oktober 2026</div>
+      </a>
+      <a class="tile" href="/werk/de-buurt/2026/eenzaamheid/case/">
+        <svg viewBox="0 0 24 24"><path d="M5 4h10l4 4v12H5z"/><path d="M15 4v4h4M8 13h8M8 17h5"/></svg>
+        <div class="tl">Case<span class="ar">→</span></div>
+        <div class="td">Aanpak en resultaten</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="fliifoot"><span>let's Ignite ambitions</span><div class="brandmark"><svg viewBox="0 0 500 500"><path fill="#fff" d="m 239.8092,332.68537 c -2.28447,-3.49286 -23.46567,-48.57731 -23.46567,-50.01464 0,-0.93415 13.88823,-0.66647 21.30481,-0.87484 7.75505,-0.21787 53.41913,-115.30501 53.06132,-114.03739 -1.54162,5.46154 -1.00892,4.30871 -0.54189,0.14626 L 322.17232,168.5 H 349.5 v 82.5 82.5 h -22 -22 l -0.26195,-38.32102 c -0.30405,-44.48 7.24157,-55.84478 -0.8773,-38.24361 -11.37304,20.61415 -25.02431,56.46612 -37.2072,76.63979 C 266.40468,334.4775 262.28909,334 253.90061,334 c -11.19087,0 -12.7022,0.80941 -14.09141,-1.31463 z m -82.3413,-2.91541 C 157.20134,329.07148 157.09952,292.5 157.24162,248.5 l 0.25838,-80 58.25,-0.25806 c 55.01074,-0.24371 59.35516,-1.52083 59.35032,0.13946 -0.003,0.96693 -4.62864,12.78964 -10.28528,24.20363 L 254.96003,214.35034 227.97492,214 201.5,214.5 v 13.5 13.5 l 19.3529,0.27195 19.3529,0.27196 0.91723,0.0629 c 1.38257,0.0949 -3.92785,10.20835 -7.20338,17.07342 l -6.24989,13.09893 -13.33998,-0.0597 L 201.5,272.5 l -0.5,29 -0.5,29 -21.27373,0.26996 c -16.47548,0.20907 -21.38304,-0.0165 -21.75837,-1 z"/></svg></div></div>
 </div>
+<script>
+(function(){var b=document.getElementById("theme"),r=document.documentElement;
+b.addEventListener("click",function(){var d=r.getAttribute("data-theme")!=="dark";
+if(d)r.setAttribute("data-theme","dark");else r.removeAttribute("data-theme");
+try{localStorage.setItem("db-theme",d?"dark":"light")}catch(e){}})})();
+</script>
 </body>
 </html>
