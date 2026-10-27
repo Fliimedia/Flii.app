@@ -152,9 +152,9 @@ form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const data = { naam: form.naam.value.trim(), email: form.email.value.trim(), bericht: form.bericht.value.trim(), website: form.website.value };
   statusEl.className = "status";
-  if (!data.naam || !data.bericht || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+  if (!data.naam || !data.bericht || !(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email) || /^\+?[0-9][0-9\s().-]{6,}$/.test(data.email))) {
     statusEl.className = "status err";
-    statusEl.textContent = "Vul je naam, een geldig e-mailadres en een bericht in.";
+    statusEl.textContent = "Vul je naam, een geldig e-mailadres of telefoonnummer en een bericht in.";
     fit();
     return;
   }

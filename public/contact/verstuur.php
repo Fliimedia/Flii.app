@@ -24,7 +24,9 @@ $naam    = str_replace("\n", ' ', $clean(isset($in['naam']) ? $in['naam'] : '', 
 $email   = str_replace("\n", '', $clean(isset($in['email']) ? $in['email'] : '', 200));
 $bericht = $clean(isset($in['bericht']) ? $in['bericht'] : '', 4000);
 
-if ($naam === '' || $bericht === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+$isMail = filter_var($email, FILTER_VALIDATE_EMAIL) !== false;
+$isTel  = !$isMail && preg_match('/^\+?[0-9][0-9\s().-]{6,}$/', $email);
+if ($naam === '' || $bericht === '' || (!$isMail && !$isTel)) {
   antwoord(422, array('ok' => false, 'reason' => 'invalid'));
 }
 
@@ -41,7 +43,7 @@ $hits[] = $now;
 
 $to      = 'hello@flii.nl';
 $subject = '=?UTF-8?B?' . base64_encode('Contact via flii.app: ' . $naam) . '?=';
-$body    = "Naam: $naam\nE-mail: $email\n\n$bericht\n\n--\nVerstuurd via het contactformulier op flii.app";
+$body    = "Naam: $naam\n" . ($isMail ? 'E-mail' : 'Telefoon') . ": $email\n\n$bericht\n\n--\nVerstuurd via het contactformulier op flii.app";
 
 $cfg = null;
 foreach (array(__DIR__ . '/smtp-config.php', __DIR__ . '/../aanvraag/stage-internationaal/smtp-config.php', __DIR__ . '/../p/internship/international/smtp-config.php') as $p) {
@@ -50,7 +52,7 @@ foreach (array(__DIR__ . '/smtp-config.php', __DIR__ . '/../aanvraag/stage-inter
 $from = ($cfg && !empty($cfg['from'])) ? $cfg['from'] : 'no-reply@flii.nl';
 
 $headers  = 'From: Flii.app <' . $from . ">\r\n";
-$headers .= 'Reply-To: ' . $email . "\r\n";
+if ($isMail) $headers .= 'Reply-To: ' . $email . "\r\n";
 $headers .= "MIME-Version: 1.0\r\n";
 $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 $headers .= "Content-Transfer-Encoding: 8bit\r\n";
