@@ -167,3 +167,11 @@ h1{font-size:clamp(34px,4.6vw,66px);margin-bottom:14px}
 @keyframes cc-in{from{opacity:0;transform:translateY(8px)}}
 @media (prefers-reduced-motion:reduce){.cc{animation:none}}
 @media (max-width:760px){.cc{width:calc(100vw - 2*var(--pad));z-index:30}}
+
+/* cookiemelding: kleiner en subtieler, direct als overlay bij binnenkomst */
+.cc{width:min(236px,calc(100vw - 2*var(--pad)));padding:11px 13px;border-radius:14px;background:rgba(251,250,247,.82);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 6px 22px rgba(23,23,23,.1),0 0 0 1px rgba(23,23,23,.05);animation-duration:.5s}
+.cc p{margin:0 0 9px;font-size:12px;line-height:1.4;color:var(--mid)}
+.cc-actions{gap:4px}
+.cc button{font-size:12px;height:30px;padding:0 13px}
+.cc-yes{font-weight:500}
+@media (max-width:760px){.cc{width:calc(100vw - 2*var(--pad))}}

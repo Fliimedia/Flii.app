@@ -216,6 +216,6 @@ prefs.querySelector(".prefs-save").addEventListener("click", () => {
 // Kleine cookiemelding: alleen zolang er nog geen keuze is opgeslagen.
 const cc = document.getElementById("cc");
 function hideCc() { cc.hidden = true; }
-if (!Object.keys(readPrefs()).length) setTimeout(() => { cc.hidden = false; }, 900);
+if (!Object.keys(readPrefs()).length) (cc.hidden = false);
 cc.querySelector(".cc-yes").addEventListener("click", () => { saveChoice(true, true); hideCc(); });
 cc.querySelector(".cc-no").addEventListener("click", () => { saveChoice(true, false); hideCc(); });
