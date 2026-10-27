@@ -143,8 +143,9 @@ function close() {
   openBtn.focus({ preventScroll: true });
 }
 openBtn.addEventListener("click", open);
+document.querySelector(".menu-contact").addEventListener("click", (e) => { e.stopPropagation(); open(); });
 panel.querySelector(".close").addEventListener("click", close);
-addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
+addEventListener("keydown", (e) => { if (e.key !== "Escape") return; if (!prefs.hidden) prefsClose(); else close(); });
 document.addEventListener("pointerdown", (e) => { if (cta.dataset.state === "open" && !cta.contains(e.target)) close(); });
 
 form.addEventListener("submit", async (e) => {
@@ -174,4 +175,36 @@ form.addEventListener("submit", async (e) => {
     sendBtn.disabled = false;
     fit();
   }
+});
+
+/* ---------- preferences: cookie choices, kept in this browser ---------- */
+const PREFKEY = "flii-cookies";
+const prefs = document.querySelector(".prefs");
+const prefsBack = document.querySelector(".prefs-back");
+const prefsBtn = document.querySelector(".prefs-btn");
+function readPrefs() { try { return JSON.parse(localStorage.getItem(PREFKEY) || "null") || {}; } catch (e) { return {}; } }
+// Other scripts can read the choice here, or listen for "flii:consent".
+window.fliiConsent = Object.assign({ noodzakelijk: true, statistieken: false, marketing: false }, readPrefs());
+function prefsOpen() {
+  const p = readPrefs();
+  prefs.querySelector('[name="statistieken"]').checked = !!p.statistieken;
+  prefs.querySelector('[name="marketing"]').checked = !!p.marketing;
+  prefsBack.hidden = false; prefs.hidden = false;
+  prefsBtn.setAttribute("aria-expanded", "true");
+  prefs.querySelector('[name="statistieken"]').focus({ preventScroll: true });
+}
+function prefsClose() {
+  prefsBack.hidden = true; prefs.hidden = true;
+  prefsBtn.setAttribute("aria-expanded", "false");
+  prefsBtn.focus({ preventScroll: true });
+}
+prefsBtn.addEventListener("click", prefsOpen);
+prefsBack.addEventListener("click", prefsClose);
+prefs.querySelector(".close").addEventListener("click", prefsClose);
+prefs.querySelector(".prefs-save").addEventListener("click", () => {
+  const choice = { noodzakelijk: true, statistieken: prefs.querySelector('[name="statistieken"]').checked, marketing: prefs.querySelector('[name="marketing"]').checked, opgeslagen: new Date().toISOString() };
+  try { localStorage.setItem(PREFKEY, JSON.stringify(choice)); } catch (e) {}
+  window.fliiConsent = choice;
+  dispatchEvent(new CustomEvent("flii:consent", { detail: choice }));
+  prefsClose();
 });
