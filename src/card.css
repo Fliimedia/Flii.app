@@ -98,8 +98,6 @@ input:focus,textarea:focus{border-color:var(--mag);box-shadow:0 0 0 3px rgba(231
 
 /* bottom right: preferences + Flii Media */
 .foot{position:fixed;z-index:9;right:var(--pad);bottom:max(18px,env(safe-area-inset-bottom));display:flex;align-items:center;gap:16px}
-.prefs-btn{border:0;background:none;padding:4px 2px;font:inherit;font-size:13px;color:var(--mid);cursor:pointer}
-.prefs-btn:hover{color:var(--mag)}
 .fm{display:block;line-height:0;opacity:.9;transition:opacity .2s,transform .2s}
 .fm:hover{opacity:1;transform:translateY(-1px)}
 .fm svg{width:30px;height:auto;fill:var(--mag)}
@@ -129,4 +127,28 @@ input:focus,textarea:focus{border-color:var(--mag);box-shadow:0 0 0 3px rgba(231
   .menu-login{height:40px;padding:0 14px;font-size:14px}
   .btn-sm{--h:40px;font-size:14px}
   .logo{font-size:24px}
+}
+
+/* v3: smaller, more minimal */
+.logo{font-size:23px}
+h1{font-size:clamp(34px,4.6vw,66px);margin-bottom:14px}
+.sub{font-size:clamp(13px,1.1vw,15px)}
+.cta-btn{--h:50px;font-size:15px;padding-right:22px;box-shadow:0 10px 26px rgba(23,23,23,.16)}
+.cta{height:50px;border-radius:25px}
+.cta-btn:hover,.cta-btn:focus-visible{padding-left:22px}
+.btn{--h:44px;font-size:14px}
+.ico{display:inline-grid;place-items:center;width:40px;height:40px;padding:0;border-radius:50%;cursor:pointer;color:var(--ink);text-decoration:none;
+  background:rgba(255,255,255,.55);border:1px solid rgba(226,222,211,.9);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);transition:color .2s,border-color .2s,transform .2s}
+.ico svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.ico:hover,.ico:focus-visible{color:var(--mag);border-color:var(--mag);transform:translateY(-1px);outline:none}
+.ico-sm{width:34px;height:34px}
+.ico-sm svg{width:16px;height:16px}
+.prefs-btn svg circle{fill:currentColor;stroke:none}
+.menu{gap:8px}
+.foot{gap:12px}
+.fm svg{width:26px}
+@media (max-width:760px){
+  .logo{font-size:21px}
+  .cta-btn{--h:48px;font-size:15px}
+  .cta{height:48px;bottom:calc(max(18px,env(safe-area-inset-bottom)) + 44px)}
 }
