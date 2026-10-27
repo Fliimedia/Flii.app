@@ -184,10 +184,10 @@ const prefsBack = document.querySelector(".prefs-back");
 const prefsBtn = document.querySelector(".prefs-btn");
 function readPrefs() { try { return JSON.parse(localStorage.getItem(PREFKEY) || "null") || {}; } catch (e) { return {}; } }
 // Other scripts can read the choice here, or listen for "flii:consent".
-window.fliiConsent = Object.assign({ noodzakelijk: true, statistieken: false, marketing: false }, readPrefs());
+window.fliiConsent = Object.assign({ noodzakelijk: true, statistieken: true, marketing: false }, readPrefs());
 function prefsOpen() {
   const p = readPrefs();
-  prefs.querySelector('[name="statistieken"]').checked = !!p.statistieken;
+  prefs.querySelector('[name="statistieken"]').checked = "statistieken" in p ? !!p.statistieken : true;
   prefs.querySelector('[name="marketing"]').checked = !!p.marketing;
   prefsBack.hidden = false; prefs.hidden = false;
   prefsBtn.setAttribute("aria-expanded", "true");
@@ -201,10 +201,21 @@ function prefsClose() {
 prefsBtn.addEventListener("click", prefsOpen);
 prefsBack.addEventListener("click", prefsClose);
 prefs.querySelector(".close").addEventListener("click", prefsClose);
-prefs.querySelector(".prefs-save").addEventListener("click", () => {
-  const choice = { noodzakelijk: true, statistieken: prefs.querySelector('[name="statistieken"]').checked, marketing: prefs.querySelector('[name="marketing"]').checked, opgeslagen: new Date().toISOString() };
+function saveChoice(stat, mkt) {
+  const choice = { noodzakelijk: true, statistieken: stat, marketing: mkt, opgeslagen: new Date().toISOString() };
   try { localStorage.setItem(PREFKEY, JSON.stringify(choice)); } catch (e) {}
   window.fliiConsent = choice;
   dispatchEvent(new CustomEvent("flii:consent", { detail: choice }));
+}
+prefs.querySelector(".prefs-save").addEventListener("click", () => {
+  saveChoice(prefs.querySelector('[name="statistieken"]').checked, prefs.querySelector('[name="marketing"]').checked);
+  hideCc();
   prefsClose();
 });
+
+// Kleine cookiemelding: alleen zolang er nog geen keuze is opgeslagen.
+const cc = document.getElementById("cc");
+function hideCc() { cc.hidden = true; }
+if (!Object.keys(readPrefs()).length) setTimeout(() => { cc.hidden = false; }, 900);
+cc.querySelector(".cc-yes").addEventListener("click", () => { saveChoice(true, true); hideCc(); });
+cc.querySelector(".cc-no").addEventListener("click", () => { saveChoice(true, false); hideCc(); });
