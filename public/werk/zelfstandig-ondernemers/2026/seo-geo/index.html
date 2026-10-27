@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow">
+<title>Flii Media &times; Zelfstandig Ondernemers, SEO en GEO kennisbank</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="/assets/doc/flii-doc.css">
+<style>
+:root{--pink:#042F79;--pink-2:#2F5BA8;--pink-3:#9DB1D3;--wash-pink:#E8EEF7;--wash:#F4F6FA;--zo:#042F79;--zo-d:#021A45;--zo-o:#F1A93B;--zo-ol:#FDF3E2;}
+.topbar{height:14px;background:repeating-linear-gradient(135deg,var(--zo) 0 2px,#fff 2px 5px);border-bottom:3px solid var(--zo-o);border-radius:10px 10px 0 0;}
+.head{padding-top:40px;}
+h1{font-family:Montserrat,Inter,sans-serif;font-weight:900;font-size:40px;letter-spacing:-1px;line-height:1.05;margin:8px 0 9px;color:var(--zo);}
+.zo-logo{position:absolute;right:0;top:38px;height:40px;width:auto;}
+.page .punten .pkaart h3{font-family:Montserrat,Inter,sans-serif;font-weight:800;font-size:22px;letter-spacing:-.5px;color:var(--zo);margin:12px 24px 10px;}
+.pnum{margin:18px 0 0 24px;}
+.pvraag{background:var(--zo-d);}
+.pvraag span{color:var(--zo-o);}
+.ptekst{padding:0 24px 16px;}
+.ptekst p{font-size:12.5px;line-height:1.55;margin:0 0 9px;}
+.kpi .v{font-family:Montserrat,Inter,sans-serif;font-weight:900;font-size:32px;letter-spacing:-1px;color:var(--zo);}
+.kpi.accent{background:var(--zo);}
+.kpi.accent .v{color:#fff;}
+.kpi .s b{color:var(--ink);font-weight:600;}
+.kpi.accent .s b{color:#fff;}
+.bron{font-size:9px;line-height:1.5;color:var(--muted-2);margin-top:8px;}
+
+/* cover */
+.page.cover.zo{padding-right:500px;}
+.page.cover.zo .topbar{right:454px;border-radius:10px 0 0 0;}
+.zo-paneel{position:absolute;top:0;right:0;bottom:0;width:454px;border-radius:0 10px 10px 0;overflow:hidden;
+  background:repeating-linear-gradient(135deg,rgba(255,255,255,.13) 0 2px,transparent 2px 9px),var(--zo);}
+.zo-paneel::after{content:"";position:absolute;left:0;right:0;bottom:0;height:110px;background:var(--zo-o);}
+.ai-kaart{position:absolute;left:44px;right:44px;top:190px;background:#fff;border-radius:14px;padding:22px 24px;z-index:2;box-shadow:0 18px 40px rgba(2,26,69,.35);}
+.ai-vraag{display:inline-block;background:var(--wash-pink);color:var(--zo);font-size:12.5px;font-weight:600;border-radius:12px 12px 2px 12px;padding:9px 13px;margin-left:auto;}
+.ai-v{display:flex;justify-content:flex-end;margin-bottom:16px;}
+.ai-l{font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-2);margin-bottom:7px;}
+.ai-ant{font-size:12.5px;line-height:1.6;color:var(--ink);margin:0;}
+.ai-bron{display:inline-flex;align-items:center;gap:7px;margin-top:14px;font-size:11px;font-weight:600;color:var(--zo);background:var(--zo-ol);border:1px solid var(--zo-o);border-radius:999px;padding:4px 11px 4px 5px;}
+.ai-bron b{width:18px;height:18px;border-radius:50%;background:var(--zo);color:#fff;font-size:9.5px;display:flex;align-items:center;justify-content:center;}
+.ai-zin{position:absolute;left:44px;right:44px;top:92px;color:#fff;font-family:Montserrat,Inter,sans-serif;font-weight:800;font-size:25px;line-height:1.2;letter-spacing:-.4px;z-index:2;}
+.ai-zin span{color:var(--zo-o);}
+.page.cover.zo .cv-titel h1{font-size:64px;line-height:.98;letter-spacing:-2px;}
+.page.cover.zo .kv{font-family:Montserrat,Inter,sans-serif;font-weight:900;font-size:50px;color:var(--zo);}
+.cv-merk .lg-zo{height:30px;width:auto;}
+.page.cover.zo .cv-inhoud-r{gap:18px;}
+
+/* slide 1 */
+.ev{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+.ev .kpi{padding:14px 16px;}
+.ev .kpi .v{font-size:34px;margin:6px 0 4px;}
+.ev .kpi .s{font-size:11px;}
+.ev .kpi .bk{display:block;font-size:9px;color:var(--muted-2);margin-top:6px;}
+.ev .kpi.accent .bk{color:rgba(255,255,255,.7);}
+.rij{display:flex;gap:12px;flex:1;min-height:0;margin-top:12px;}
+.lijst{list-style:none;margin:0;padding:0;}
+.lijst li{position:relative;padding-left:16px;font-size:12.5px;line-height:1.5;margin-bottom:7px;}
+.lijst li::before{content:"";position:absolute;left:0;top:7px;width:7px;height:7px;border-radius:50%;background:var(--zo-o);}
+.lijst li b{font-weight:600;}
+
+/* slide 2 */
+.clus{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.cl{padding:16px 18px 15px;}
+.cl li{padding:6px 0 6px 15px;}
+.cl li::before{top:6px;}
+.cl{background:var(--wash);border-radius:11px;padding:14px 18px 13px;display:flex;flex-direction:column;}
+.cl-k{display:flex;align-items:center;justify-content:space-between;}
+.cl-l{font-family:Montserrat,Inter,sans-serif;font-size:12px;font-weight:900;color:#fff;background:var(--zo);border-radius:6px;width:24px;height:24px;display:flex;align-items:center;justify-content:center;}
+.prio{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border-radius:999px;padding:3px 9px;}
+.prio.p1{background:var(--zo-o);color:var(--zo-d);}
+.prio.p2{background:var(--wash-pink);color:var(--zo);}
+.cl h4{font-family:Montserrat,Inter,sans-serif;font-size:15.5px;font-weight:800;color:var(--zo);margin:9px 0 3px;letter-spacing:-.2px;}
+.cl .pij{font-size:11px;color:var(--muted);margin-bottom:8px;}
+.cl .pij b{color:var(--ink);font-weight:600;}
+.cl ul{list-style:none;margin:0;padding:0;}
+.cl li{font-size:11.5px;line-height:1.4;padding:4px 0 4px 15px;border-top:1px solid var(--line);position:relative;}
+.cl li::before{content:"?";position:absolute;left:0;top:4px;font-size:10px;font-weight:800;color:var(--zo-o);}
+.cl .tel{margin-top:auto;padding-top:8px;font-size:10.5px;font-weight:600;color:var(--zo);}
+.opsch{display:flex;gap:12px;margin-top:12px;}
+.opsch > div{flex:1;border:1.5px solid var(--line);border-radius:11px;padding:12px 18px;}
+.opsch .l{font-size:9.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--zo);margin-bottom:5px;}
+.opsch p{font-size:11.5px;line-height:1.5;margin:0;color:var(--ink);}
+.opsch .accent{background:var(--zo);border-color:var(--zo);}
+.opsch .accent .l{color:var(--zo-o);}
+.opsch .accent p{color:#fff;}
+
+/* slide 3 */
+.anat{display:grid;grid-template-columns:1fr 1fr;gap:6px 22px;padding:0 24px 14px;}
+.el{display:flex;gap:10px;padding:7px 0;border-top:1px solid var(--line);}
+.el i{flex:0 0 22px;height:22px;border-radius:50%;background:var(--zo);color:#fff;font-style:normal;font-size:10.5px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.el b{display:block;font-size:12.5px;font-weight:700;color:var(--ink);}
+.el span{display:block;font-size:11px;line-height:1.45;color:var(--muted);margin-top:2px;}
+.el em{font-style:normal;display:inline-block;font-size:9.5px;font-weight:700;color:var(--zo-d);background:var(--zo-ol);border-radius:4px;padding:1px 6px;margin-top:4px;}
+
+/* slide 4 */
+.rollen{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.rol{background:var(--wash);border-radius:11px;padding:14px 18px 12px;}
+.rol-k{display:flex;align-items:baseline;justify-content:space-between;}
+.rol h4{font-family:Montserrat,Inter,sans-serif;font-size:17px;font-weight:800;color:var(--zo);margin:0;}
+.rol .uur{font-size:10px;font-weight:700;color:var(--zo-d);background:var(--zo-ol);border-radius:999px;padding:2px 9px;}
+.rol .wat{font-size:11px;color:var(--muted);margin:3px 0 7px;}
+.rol ul{margin:0;padding:0;list-style:none;}
+.rol li{font-size:11.5px;line-height:1.42;padding:3px 0 3px 14px;position:relative;}
+.rol li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--zo-o);}
+.wk{display:grid;grid-template-columns:150px repeat(4,1fr);background:var(--wash);border-radius:11px;padding:10px 16px 12px;column-gap:6px;row-gap:8px;margin-top:14px;}
+.wi{height:30px;}
+.wk-h{font-family:Montserrat,Inter,sans-serif;font-size:12px;font-weight:800;color:var(--zo);text-align:center;padding:3px 0;}
+.wk-l{display:flex;flex-direction:column;justify-content:center;}
+.wk-l b{font-size:11.5px;font-weight:700;}
+.wi{height:26px;border-radius:6px;display:flex;align-items:center;padding:0 9px;font-size:10.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.wi.vol{background:var(--zo);color:#fff;}
+.wi.mid{background:var(--pink-2);color:#fff;}
+.wi.licht{background:var(--wash-pink);color:var(--zo);border:1px solid var(--pink-3);}
+.wi.oranje{background:var(--zo-o);color:var(--zo-d);}
+.ev4{margin-top:14px;}
+</style>
+</head>
+<body>
+
+<div class="deck">
+
+  <section class="sheet actief">
+    <div class="page cover zo">
+      <div class="zo-paneel" role="img" aria-label="Voorbeeld van een AI-antwoord dat Zelfstandig Ondernemers als bron noemt">
+        <div class="ai-zin">De vraag gaat naar AI.<br><span>Het antwoord komt van ons.</span></div>
+        <div class="ai-kaart">
+          <div class="ai-v"><span class="ai-vraag">Wanneer gaat de verplichte AOV voor zzp'ers in?</span></div>
+          <div class="ai-l">AI-antwoord</div>
+          <p class="ai-ant">Het wetsvoorstel ligt bij de Tweede Kamer (Kamerstuk 36912). Een startdatum is nog niet vastgesteld; 1 januari 2030 is op zijn vroegst. De premie wordt 5,4% van de winst, met een maximum.</p>
+          <span class="ai-bron"><b>1</b>zelfstandigondernemers.nl</span>
+        </div>
+      </div>
+      <div class="topbar"></div>
+      <div class="cv-top">
+        <div class="cv-merk"><img class="lg-zo" src="beeld/zo-logo.png" alt="Zelfstandig Ondernemers"><span class="times">&times;</span><img class="lg-fm" src="/assets/doc/fm-logo.png" alt="Flii Media"></div>
+        <div class="cv-uitgifte">Versie 1.0 &middot; oktober 2026</div>
+      </div>
+      <div class="cv-soort"><span class="k">Strategie</span><span class="nr">SEO en GEO kennisbank</span></div>
+      <div class="cv-titel">
+        <h1>Van zoekresultaat<br>naar bron</h1>
+        <p class="cv-doel">Zzp'ers stellen hun vragen over AOV, broodfonds en pensioen steeds vaker aan ChatGPT en Google AI. Dit plan maakt de kennisbank van Zelfstandig Ondernemers de bron die die antwoorden noemt en citeert. In vier onderdelen, met een vast team van drie.</p>
+      </div>
+      <div class="cv-kern">
+        <div><span class="kl">Doelstelling</span><span class="kt">Het aantal AI-citaties en de organische vindbaarheid van de kennisbank drastisch verhogen, op de onderwerpen waar zzp'ers een vangnet zoeken.</span></div>
+        <div class="kv">6 tot 8<em>artikelen per maand</em></div>
+      </div>
+      <div class="cv-feiten"><div class="cv-f"><div class="l">Zichtbaar in</div><div class="v">Google, AI-modus<br><span class="cv-bij">ChatGPT, Perplexity, Copilot</span></div></div><div class="cv-f"><div class="l">Start</div><div class="v">December 2026<br><span class="cv-bij">nulmeting en eerste artikelen</span></div></div><div class="cv-f"><div class="l">Team</div><div class="v">1 researcher<br><span class="cv-bij">2 redacteuren</span></div></div><div class="cv-f"><div class="l">Contact</div><div class="v">Sten Bossong<br><span class="cv-bij">Flii Media</span></div></div></div>
+      <div class="cv-inhoud"><div class="cv-inhoud-l">In dit document</div><div class="cv-inhoud-r"><span><i>01</i>Onderbouwing</span><span><i>02</i>Onderwerpen</span><span><i>03</i>Artikel en techniek</span><span><i>04</i>Team en werkwijze</span></div></div>
+      <div class="foot"><span class="fine">Flii Media &times; Zelfstandig Ondernemers &middot; vertrouwelijk</span></div>
+    </div>
+  </section>
+
+  <section class="sheet">
+    <div class="page">
+      <div class="topbar"></div>
+      <div class="head"><img class="zo-logo" src="beeld/zo-logo.png" alt="Zelfstandig Ondernemers"><div class="kicker">Zelfstandig Ondernemers &middot; SEO en GEO</div>
+        <h1>Onderbouwing</h1>
+        <p class="intro">Wat onderzoek laat zien over welke pagina's AI-antwoorden citeren, waar de kennisbank nu staat, en waarom Zelfstandig Ondernemers grote kans maakt om dé bron te worden.</p>
+      </div>
+      <div class="body">
+        <div class="ev">
+          <div class="kpi"><div class="l">Citaten, cijfers, bronnen</div><div class="v">+41%</div><div class="s">meer zichtbaarheid in AI-antwoorden door <b>expertcitaten</b>. Statistieken geven +31%, bronvermelding +27%.</div><span class="bk">GEO-studie Princeton e.a., KDD 2024, 10.000 vragen</span></div>
+          <div class="kpi"><div class="l">Antwoord eerst</div><div class="v">44%</div><div class="s">van de ChatGPT-citaties komt uit het <b>eerste derde</b> van een pagina. Stellige, korte zinnen worden vaker geciteerd.</div><span class="bk">Growth Memo, 1,2 mln ChatGPT-antwoorden, 2026</span></div>
+          <div class="kpi"><div class="l">Actualiteit</div><div class="v">70%</div><div class="s">van de door ChatGPT geciteerde pagina's is in het <b>afgelopen jaar bijgewerkt</b>. AI citeert ruim een kwart jongere content dan Google.</div><span class="bk">AirOps 2025; Ahrefs, 17 mln citaties, 2025</span></div>
+          <div class="kpi accent"><div class="l">Genoemd worden</div><div class="v">0,7</div><div class="s">correlatie tussen <b>merkvermeldingen</b> en AI-zichtbaarheid; YouTube-vermeldingen het sterkst. Backlinks scoren zwak.</div><span class="bk">Ahrefs, 75.000 merken, december 2025</span></div>
+        </div>
+        <div class="rij">
+          <div class="punten">
+            <div class="pkaart"><div class="pnum">1</div><h3>Uitgangspositie</h3><div class="ptekst">
+              <ul class="lijst">
+                <li><b>50 artikelen</b> zonder thema-indeling, meestal 30 tot 250 woorden.</li>
+                <li><b>Geen auteur, datum of bronnen</b> bij de kennisbankartikelen. Juist dat zijn de signalen die AI en Google bij financiële onderwerpen zwaar wegen.</li>
+                <li><b>Verouderd en dubbel:</b> drie WIA-artikelen, twee over jaarruimte, en een blog die de verplichte AOV nog in 2027 laat starten.</li>
+                <li><b>Eigen producten onderbelicht:</b> schenkkring, pensioen en sparen hebben samen een handvol artikelen.</li>
+                <li><b>Niet in de top</b> bij "verplichte aov", "broodfonds of aov" en "pensioen zzp". Daar staan Knab, De Zaak, Keuze.nl, Unive en ZZP Nederland.</li>
+              </ul></div>
+              <div class="pvraag"><span>Af te stemmen</span><b>Wie van Zelfstandig Ondernemers treedt op als auteur of vakinhoudelijk controleur?</b></div></div>
+            <div class="pkaart"><div class="pnum">2</div><h3>De kans</h3><div class="ptekst">
+              <ul class="lijst">
+                <li><b>Financiën is het open veld.</b> Slechts 11% van de AI Overview-citaties in finance komt uit de Google top 10. Een gespecialiseerde, actuele bron kan daar dus ook zonder toppositie in.</li>
+                <li><b>De verplichte AOV is onzeker en dus gezocht.</b> Wetsvoorstel 36912 ligt in de Kamer, de startdatum is open. Wie gedateerd en met Kamerstukken schrijft, wordt de bron.</li>
+                <li><b>"Schenkkring" is onbezet.</b> Niemand heeft het begrip als uitleg geclaimd; het is het eigen product.</li>
+                <li><b>Geciteerd worden loont.</b> Merken die in een AI Overview genoemd worden krijgen 35% meer organische klikken.</li>
+                <li><b>Het publiek is er al.</b> 44,7% van de Nederlanders gebruikt generatieve AI; de AI-modus van Google is sinds oktober 2025 in het Nederlands beschikbaar.</li>
+              </ul></div>
+              <div class="pvraag"><span>Af te stemmen</span><b>Mogen we eigen ledendata (bijv. uitkeringen, inleg, peilingen) als citeerbare cijfers publiceren?</b></div></div>
+          </div>
+        </div>
+        <div class="bron">Bronnen: Aggarwal e.a., GEO (KDD 2024); Growth Memo (feb. 2026); AirOps (aug. 2025); Ahrefs (jul. en dec. 2025); BrightEdge (feb. 2026); Seer Interactive (nov. 2025); Eurostat (2025); Google (okt. 2025); eigen analyse kennisbank en zoekresultaten, 27 oktober 2026.</div>
+      </div>
+      <div class="foot"><span class="fine">Flii Media &times; Zelfstandig Ondernemers &middot; vertrouwelijk</span></div>
+    </div>
+  </section>
+
+  <section class="sheet">
+    <div class="page">
+      <div class="topbar"></div>
+      <div class="head"><img class="zo-logo" src="beeld/zo-logo.png" alt="Zelfstandig Ondernemers"><div class="kicker">Zelfstandig Ondernemers &middot; SEO en GEO</div>
+        <h1>Onderwerpen</h1>
+        <p class="intro">Zes clusters rond de vragen die zzp'ers echt stellen. Elk cluster krijgt <b>één pijlerpagina</b> die het onderwerp volledig uitlegt, met daaromheen <b>korte vraagartikelen</b> die naar elkaar en naar de dienstpagina linken.</p>
+      </div>
+      <div class="body">
+        <div class="clus">
+          <div class="cl"><div class="cl-k"><span class="cl-l">A</span><span class="prio p1">Prioriteit</span></div><h4>Verplichte AOV</h4><div class="pij"><b>Pijler:</b> alles over de basisverzekering (BAZ), maandelijks bijgewerkt</div>
+            <ul><li>Wanneer gaat de verplichte AOV in?</li><li>Wat kost de verplichte AOV bij mijn winst?</li><li>Kan ik een opt-out krijgen, en wat betekent dat?</li></ul><div class="tel">ca. 14 artikelen</div></div>
+          <div class="cl"><div class="cl-k"><span class="cl-l">B</span><span class="prio p1">Prioriteit</span></div><h4>Alternatieven voor een AOV</h4><div class="pij"><b>Pijler:</b> broodfonds, schenkkring en buffer vergeleken</div>
+            <ul><li>Wat is een schenkkring en hoe werkt die?</li><li>Broodfonds of AOV: wat past bij mij?</li><li>Hoe overbrug ik de twee jaar wachttijd?</li></ul><div class="tel">ca. 14 artikelen</div></div>
+          <div class="cl"><div class="cl-k"><span class="cl-l">C</span><span class="prio p2">Vervolg</span></div><h4>Kosten en dekking</h4><div class="pij"><b>Pijler:</b> wat een AOV kost en wat je ervoor krijgt</div>
+            <ul><li>Wat kost een AOV per maand?</li><li>Is de premie of inleg aftrekbaar?</li><li>Beroeps- of gangbare arbeid: wat is het verschil?</li></ul><div class="tel">ca. 12 artikelen</div></div>
+          <div class="cl"><div class="cl-k"><span class="cl-l">D</span><span class="prio p2">Vervolg</span></div><h4>Ziek zonder vangnet</h4><div class="pij"><b>Pijler:</b> wat je kunt als je uitvalt zonder AOV</div>
+            <ul><li>Ik ben ziek en heb geen AOV, wat nu?</li><li>Heb ik recht op Bbz of IOAZ?</li><li>Kan ik me vrijwillig verzekeren voor WIA en ZW?</li></ul><div class="tel">ca. 12 artikelen</div></div>
+          <div class="cl"><div class="cl-k"><span class="cl-l">E</span><span class="prio p1">Prioriteit</span></div><h4>Pensioen en sparen</h4><div class="pij"><b>Pijler:</b> pensioen opbouwen als zzp'er, met rekenvoorbeelden</div>
+            <ul><li>Hoeveel moet ik per maand opzij zetten?</li><li>Hoe bereken ik mijn jaarruimte?</li><li>Lijfrente, banksparen of beleggen?</li></ul><div class="tel">ca. 14 artikelen</div></div>
+          <div class="cl"><div class="cl-k"><span class="cl-l">F</span><span class="prio p2">Vervolg</span></div><h4>Regels en zekerheid</h4><div class="pij"><b>Pijler:</b> de regels rond zelfstandigheid, per jaar bijgewerkt</div>
+            <ul><li>Wat verandert er met de Wet DBA en Wet VBAR?</li><li>Hoe voorkom ik schijnzelfstandigheid?</li><li>Wanneer is een bv slimmer?</li></ul><div class="tel">ca. 10 artikelen</div></div>
+        </div>
+        <div class="opsch">
+          <div><div class="l">Opschonen bestaande kennisbank</div><p>Dubbele artikelen samenvoegen met een doorverwijzing, verouderde artikelen bijwerken (regels 2023, wetswijzigingen 2024, AOV per 2027) en dunne artikelen uitbreiden of opnemen in een vraagartikel.</p></div>
+          <div><div class="l">Bron voor vragen</div><p>De 121 vragen uit de eigen FAQ, zoekdata uit Search Console, vragen die AI-tools zelf voorstellen, en wat leden aan de klantenservice vragen.</p></div>
+          <div class="accent"><div class="l">Volgorde</div><p>Eerst de pijlers A, B en E plus de prioriteitsvragen; daarna C, D en F. Samen ca. 76 artikelen in 12 maanden.</p></div>
+        </div>
+      </div>
+      <div class="foot"><span class="fine">Flii Media &times; Zelfstandig Ondernemers &middot; vertrouwelijk</span></div>
+    </div>
+  </section>
+
+  <section class="sheet">
+    <div class="page">
+      <div class="topbar"></div>
+      <div class="head"><img class="zo-logo" src="beeld/zo-logo.png" alt="Zelfstandig Ondernemers"><div class="kicker">Zelfstandig Ondernemers &middot; SEO en GEO</div>
+        <h1>Artikel en techniek</h1>
+        <p class="intro">Elk artikel volgt hetzelfde format, gebouwd op wat AI-antwoorden aantoonbaar citeren. Daarnaast zorgen we dat AI-zoekmachines de kennisbank kunnen lezen, en dat Zelfstandig Ondernemers ook buiten de eigen site genoemd wordt.</p>
+      </div>
+      <div class="body">
+        <div class="punten">
+          <div class="pkaart breed"><div class="pnum">1</div><h3>Het format van elk artikel</h3>
+            <div class="anat">
+              <div class="el"><i>1</i><div><b>De vraag als titel en url</b><span>Letterlijk zoals zzp'ers hem stellen, één vraag per artikel.</span><em>70% van informatieve citaties heeft een titel die de vraag volgt</em></div></div>
+              <div class="el"><i>2</i><div><b>Kernantwoord in de eerste alinea</b><span>40 tot 60 woorden, stellig en zelfstandig leesbaar.</span><em>44% van citaties uit het eerste derde</em></div></div>
+              <div class="el"><i>3</i><div><b>Cijfers met bron</b><span>Rijksoverheid, UWV, CBS, Kamerstukken en eigen ledendata.</span><em>+31% statistieken, +27% bronvermelding</em></div></div>
+              <div class="el"><i>4</i><div><b>Citaat van een expert</b><span>Een herkenbare stem van Zelfstandig Ondernemers.</span><em>+41% citaten</em></div></div>
+              <div class="el"><i>5</i><div><b>Auteur, controle en datum</b><span>Naam, vakinhoudelijk gecontroleerd door, en "bijgewerkt op".</span><em>Vereist bij financiële onderwerpen</em></div></div>
+              <div class="el"><i>6</i><div><b>Tabel of rekenvoorbeeld</b><span>Bijvoorbeeld kosten van AOV, broodfonds en schenkkring naast elkaar.</span><em>Makkelijk over te nemen als feit</em></div></div>
+              <div class="el"><i>7</i><div><b>Kort en gefocust</b><span>600 tot 1.200 woorden; tussenkoppen als vragen.</span><em>Korte pagina's vaker geciteerd dan lange gidsen</em></div></div>
+              <div class="el"><i>8</i><div><b>Vervolgvragen en links</b><span>3 tot 5 vervolgvragen, link naar de pijler en de dienstpagina.</span><em>Dekt de deelvragen die AI zelf stelt</em></div></div>
+            </div>
+            <div class="pvraag"><span>Af te stemmen</span><b>Wie keurt de vakinhoud goed, en binnen hoeveel werkdagen na aanlevering?</b></div></div>
+          <div class="pkaart"><div class="pnum">2</div><h3>Techniek en vindbaarheid</h3><div class="ptekst">
+            <ul class="lijst">
+              <li><b>AI-zoekbots toelaten</b> (OAI-SearchBot, PerplexityBot, ClaudeBot). Wie OAI-SearchBot blokkeert, verschijnt niet in ChatGPT-zoekantwoorden.</li>
+              <li><b>Bing Webmaster Tools en IndexNow.</b> ChatGPT en Copilot leunen op de Bing-index, en Bing toont sinds februari 2026 hoe vaak Copilot je citeert.</li>
+              <li><b>Tekst in de HTML.</b> De site rendert al op de server; zo houden. AI-crawlers voeren geen JavaScript uit.</li>
+              <li><b>Article- en organisatieschema</b> met auteur en datum, sitemap met wijzigingsdatum. Geen tijd in llms.txt: geen meetbaar effect.</li>
+            </ul>
+            <h3 style="font-family:Montserrat,Inter,sans-serif;font-size:15px;font-weight:800;color:var(--zo);margin:12px 0 7px;">Buiten de eigen site</h3>
+            <ul class="lijst">
+              <li><b>Video met transcript.</b> Elke aflevering van "Zo zit het" op YouTube, met transcript op de kennisbankpagina.</li>
+              <li><b>Genoemd worden</b> via bijdragen en eigen cijfers bij De Zaak, ZiPconomy en vakmedia, en op LinkedIn.</li>
+            </ul></div>
+            <div class="pvraag"><span>Af te stemmen</span><b>Wie beheert robots.txt en de CMS-instellingen bij het huidige websitebureau?</b></div></div>
+        </div>
+        <div class="bron">Bronnen: AirOps (aug. 2025); Growth Memo (feb. en apr. 2026); Aggarwal e.a., GEO (KDD 2024); Google, AI-functies en je website (dec. 2025); OpenAI, overzicht crawlers; Vercel en MERJ (dec. 2024); Seer Interactive (feb. 2025); SE Ranking, 300.000 domeinen (nov. 2025); Ahrefs (dec. 2025).</div>
+      </div>
+      <div class="foot"><span class="fine">Flii Media &times; Zelfstandig Ondernemers &middot; vertrouwelijk</span></div>
+    </div>
+  </section>
+
+  <section class="sheet">
+    <div class="page">
+      <div class="topbar"></div>
+      <div class="head"><img class="zo-logo" src="beeld/zo-logo.png" alt="Zelfstandig Ondernemers"><div class="kicker">Zelfstandig Ondernemers &middot; SEO en GEO</div>
+        <h1>Team en werkwijze</h1>
+        <p class="intro">Eén researcher en twee redacteuren met elk een eigen set clusters. De redacteuren controleren elkaars artikelen, zodat elk stuk door een tweede paar ogen gaat voordat de vakexpert van Zelfstandig Ondernemers het goedkeurt.</p>
+      </div>
+      <div class="body">
+        <div class="rollen">
+          <div class="rol"><div class="rol-k"><h4>Researcher</h4><span class="uur">Basis voor alle artikelen</span></div><div class="wat">Bepaalt wat we schrijven en meet wat het oplevert</div>
+            <ul><li>Vaste set van 100 vragen die elke maand in ChatGPT, Google AI-modus, Perplexity en Copilot wordt gemeten</li><li>Kiest de vragen per maand uit zoekdata, FAQ en AI-voorstellen</li><li>Levert per artikel een briefing met bronnen, cijfers en een citaatvraag</li><li>Volgt wet- en regelgeving (BAZ, DBA, jaarruimte) en meldt wat bijgewerkt moet</li></ul></div>
+          <div class="rol"><div class="rol-k"><h4>Redacteur 1</h4><span class="uur">3 tot 4 per maand</span></div><div class="wat">Clusters A, B en C: verplichte AOV, alternatieven, kosten en dekking</div>
+            <ul><li>Schrijft de pijlers en vraagartikelen in het vaste format</li><li>Houdt de pijler verplichte AOV maandelijks actueel</li><li>Controleert de artikelen van redacteur 2</li><li>Maakt van elk artikel een LinkedIn-post</li></ul></div>
+          <div class="rol"><div class="rol-k"><h4>Redacteur 2</h4><span class="uur">3 tot 4 per maand</span></div><div class="wat">Clusters D, E en F: ziek zonder vangnet, pensioen en sparen, regels</div>
+            <ul><li>Schrijft de pijlers en vraagartikelen in het vaste format</li><li>Schoont de bestaande 50 artikelen op, twee per maand</li><li>Controleert de artikelen van redacteur 1</li><li>Zet de transcripten van "Zo zit het" om naar kennisbankpagina's</li></ul></div>
+        </div>
+        <div class="wk">
+          <div class="wk-h"></div><div class="wk-h">Week 1</div><div class="wk-h">Week 2</div><div class="wk-h">Week 3</div><div class="wk-h">Week 4</div>
+          <div class="wk-l"><b>Researcher</b></div>
+          <div class="wi vol">Meting en vragenselectie</div><div class="wi mid">Briefings en bronnen</div><div class="wi licht">Actualiteit volgen</div><div class="wi oranje">Maandrapport AI-citaties</div>
+          <div class="wk-l"><b>Redacteuren</b></div>
+          <div class="wi licht">Bijwerken bestaande artikelen</div><div class="wi vol">Schrijven, 2 per redacteur</div><div class="wi vol">Schrijven, 2 per redacteur</div><div class="wi mid">Kruiscontrole</div>
+          <div class="wk-l"><b>Vakexpert ZO</b></div>
+          <div class="wi licht" style="visibility:hidden"></div><div class="wi licht" style="visibility:hidden"></div><div class="wi mid">Goedkeuring</div><div class="wi mid">Goedkeuring</div>
+          <div class="wk-l"><b>Publicatie</b><span style="font-size:10px;color:var(--muted)">uit de vorige cyclus</span></div>
+          <div class="wi oranje">2 artikelen</div><div class="wi oranje">2 artikelen</div><div class="wi oranje">2 artikelen</div><div class="wi oranje">1 tot 2 artikelen</div>
+        </div>
+        <div class="cols ev4">
+          <div class="kpi"><div class="l">Productie</div><div class="v">6 tot 8</div><div class="s">nieuwe artikelen per maand, plus <b>2 bijgewerkt</b></div></div>
+          <div class="kpi"><div class="l">AI-citaties</div><div class="v">100 vragen</div><div class="s">maandelijks gemeten per platform; <b>nulmeting december 2026</b></div></div>
+          <div class="kpi"><div class="l">Vindbaarheid</div><div class="v">Top 10</div><div class="s">voor de pijlervragen, gemeten in <b>Search Console en Bing</b></div></div>
+          <div class="kpi accent"><div class="l">Instroom</div><div class="v">Aanmeldingen</div><div class="s">via AI-verkeer (chatgpt.com, perplexity.ai, Copilot, Gemini) in <b>GA4</b></div></div>
+        </div>
+      </div>
+      <div class="foot"><span class="fine">Flii Media &times; Zelfstandig Ondernemers &middot; vertrouwelijk</span></div>
+    </div>
+  </section>
+
+</div>
+
+<nav class="nav-deck">
+  <button class="nd-pijl" id="nd-vorige" aria-label="Vorige"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
+  <div class="nd-tabs"><button class="nd-tab actief">Cover</button><button class="nd-tab">Onderbouwing</button><button class="nd-tab">Onderwerpen</button><button class="nd-tab">Artikel en techniek</button><button class="nd-tab">Team en werkwijze</button></div>
+  <span class="nd-tel" id="nd-tel">1 / 5</span>
+  <button class="nd-pijl" id="nd-volgende" aria-label="Volgende"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
+</nav>
+
+<script src="/assets/doc/flii-doc.js"></script>
+</body>
+</html>
