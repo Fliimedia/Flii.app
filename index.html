@@ -2,15 +2,44 @@
 <html lang="nl">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Flii.app · AI architectuur & marketing-apps</title>
-    <meta name="description" content="Flii.app ontwerpt en ontwikkelt AI architectuur & apps. Gebouwd voor groei, gericht op rendement." />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Flii.app · AI architectuur & apps</title>
+    <meta name="description" content="Flii.app ontwerpt en ontwikkelt AI architectuur & apps." />
+    <meta name="theme-color" content="#F3F1EB" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Inter:wght@400;500;600&display=swap" />
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <canvas class="net" aria-hidden="true"></canvas>
+
+    <main class="card">
+      <div class="logo" aria-label="flii.app">flii<svg class="heart" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.7-9.6-9.2C.9 8.5 2.6 5 6 4.3c2.2-.5 4.4.6 6 2.6 1.6-2 3.8-3.1 6-2.6 3.4.7 5.1 4.2 3.6 7.5C19.5 16.3 12 21 12 21z"/></svg><span>app</span></div>
+      <h1>AI architectuur als fundament van <span class="hl">resultaat</span></h1>
+      <p class="sub">Wij ontwerpen en ontwikkelen AI architectuur &amp; apps.</p>
+    </main>
+
+    <div class="fab" data-state="closed">
+      <button class="fab-btn" type="button" aria-expanded="false" aria-controls="contact" aria-label="Contact">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v8a2.5 2.5 0 0 1-2.5 2.5H10l-4.2 3.2c-.5.4-1.3 0-1.3-.6V17A2.5 2.5 0 0 1 4 14.5z"/></svg>
+      </button>
+      <section class="panel" id="contact" aria-labelledby="contact-h" hidden>
+        <button class="close" type="button" aria-label="Sluiten"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+        <h2 id="contact-h">Contact</h2>
+        <form novalidate>
+          <label>Naam<input name="naam" autocomplete="name" required maxlength="120" /></label>
+          <label>E-mail<input name="email" type="email" autocomplete="email" required maxlength="200" /></label>
+          <label>Bericht<textarea name="bericht" rows="4" required maxlength="4000"></textarea></label>
+          <label class="hp" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off" /></label>
+          <button class="send" type="submit">Versturen</button>
+          <p class="status" role="status" aria-live="polite"></p>
+        </form>
+        <a class="wa" href="https://wa.me/31640881169" target="_blank" rel="noopener">Of app ons via WhatsApp</a>
+      </section>
+    </div>
+
+    <script type="module" src="/src/card.js"></script>
   </body>
 </html>
