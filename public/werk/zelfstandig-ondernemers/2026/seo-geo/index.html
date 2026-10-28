@@ -265,6 +265,31 @@ h1{font-family:Montserrat,Inter,sans-serif;font-weight:900;font-size:40px;letter
 .rij .pnum{margin-top:14px;}
 .sp tbody td{padding:13px 16px;}
 .rollen.r4 .rol{padding:18px 18px;}
+
+/* versie 6 */
+.team{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;flex:1;min-height:0;}
+.tl{background:var(--wash);border-radius:11px;padding:18px 18px 16px;display:flex;flex-direction:column;}
+.tl .rol-t{margin-bottom:14px;}
+.tl .ft{flex:0 0 72px;width:72px;height:72px;}
+.ft2{display:flex;flex:0 0 auto;}
+.ft2 .ft{flex:0 0 58px;width:58px;height:58px;}
+.ft2 .ft + .ft{margin-left:-14px;}
+.tl h4{font-family:Montserrat,Inter,sans-serif;font-size:19px;font-weight:800;color:var(--zo);margin:0;line-height:1.15;}
+.start{background:#fff;border-left:3px solid var(--zo-o);border-radius:6px;padding:9px 12px;font-size:12.5px;line-height:1.4;margin-bottom:12px;}
+.start b{display:block;font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--zo-o);margin-bottom:2px;}
+.em{font-size:9.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--zo);margin-bottom:6px;}
+.tl ul{list-style:none;margin:0;padding:0;}
+.tl li{position:relative;padding:7px 0 7px 16px;font-size:13px;line-height:1.4;border-top:1px solid var(--line);}
+.tl li::before{content:"";position:absolute;left:0;top:13px;width:7px;height:7px;border-radius:50%;background:var(--zo-o);}
+.lv{margin-top:auto;padding-top:12px;}
+.lv span{display:block;font-size:9.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--muted-2);}
+.lv b{display:block;font-size:15px;font-weight:800;color:var(--zo);margin-top:3px;line-height:1.3;}
+.tl.zo-rol .start{display:none;}
+.psum b{font-size:26px;}
+.tl li{font-size:14px;padding:11px 0 11px 17px;}
+.tl li::before{top:18px;}
+.tl .em{margin-top:4px;}
+.start{font-size:13.5px;padding:11px 13px;}
 </style>
 </head>
 <body>
@@ -331,8 +356,6 @@ h1{font-family:Montserrat,Inter,sans-serif;font-weight:900;font-size:40px;letter
               <ul class="lijst">
                 <li><b>De verplichte AOV is onzeker en daardoor veel gezocht.</b> Het wetsvoorstel (Kamerstuk 36912) ligt bij de Tweede Kamer en de startdatum staat nog niet vast. Wie hier actueel en met bronnen over schrijft, wordt de bron die AI noemt.</li>
                 <li><b>Zelfstandig Ondernemers heeft eigen cijfers.</b> Inleg, uitkeringen en ledenpeilingen zijn gegevens die niemand anders heeft. Juist eigen cijfers worden geciteerd.</li>
-                <li><b>De vragen liggen al klaar.</b> De eigen FAQ bevat 121 vragen van zzp'ers. Daarmee is het eerste jaar aan onderwerpen al grotendeels gevuld.</li>
-                <li><b>De video's werken al.</b> "Zo zit het" loopt goed, en vermeldingen op YouTube hangen het sterkst samen met zichtbaarheid in AI-antwoorden.</li>
                 <li><b>Geciteerd worden levert klikken op.</b> Merken die in een AI Overview genoemd worden, krijgen 35% meer organische klikken.</li>
                 <li><b>Het publiek gebruikt AI al.</b> 44,7% van de Nederlanders gebruikt generatieve AI, en Google biedt de AI-modus sinds oktober 2025 in het Nederlands aan.</li>
               </ul></div>
@@ -389,27 +412,23 @@ h1{font-family:Montserrat,Inter,sans-serif;font-weight:900;font-size:40px;letter
       <div class="topbar"></div>
       <div class="head"><img class="zo-logo" src="beeld/zo-logo.png" alt="Zelfstandig Ondernemers"><div class="kicker">Zelfstandig Ondernemers &middot; SEO en GEO</div>
         <h1>Team en werkwijze</h1>
-        <p class="intro">Ysee doet het onderzoek, Vincent en Wendy schrijven en lezen elkaars artikelen na, en de vakexpert van Zelfstandig Ondernemers levert de citaten. Elke maand volgen we dezelfde stappen.</p>
+        <p class="intro">Ysee doet het onderzoek, Vincent en Wendy schrijven en lezen elkaars artikelen na, en de vakexperts van Zelfstandig Ondernemers leveren de citaten. Per teamlid wat er elke maand gebeurt, vanaf 1 november 2026.</p>
       </div>
       <div class="body">
-        <div class="rollen r4">
-          <div class="rol"><div class="rol-t"><img class="ft" src="beeld/ysee.png" alt="Ysee"><div><span class="rl">Researcher</span><h4>Ysee</h4><div class="wat">Onderzoek, zoekwoorden en resultaten</div></div></div></div>
-          <div class="rol"><div class="rol-t"><img class="ft" src="beeld/vincent.png" alt="Vincent"><div><span class="rl">Redacteur</span><h4>Vincent</h4><div class="wat">Verplichte AOV, alternatieven, kosten</div></div></div></div>
-          <div class="rol"><div class="rol-t"><img class="ft" src="beeld/wendy.png" alt="Wendy"><div><span class="rl">Redacteur</span><h4>Wendy</h4><div class="wat">Pensioen, ziek zonder vangnet, regels</div></div></div></div>
-          <div class="rol zo-rol"><div class="rol-t"><span class="ft zo-ft">ZO</span><div><span class="rl">Vakexpert</span><h4>Zelfstandig Ondernemers</h4><div class="wat">Levert de expertcitaten</div></div></div></div>
+        <div class="team">
+          <div class="tl"><div class="rol-t"><img class="ft" src="beeld/ysee.png" alt="Ysee"><div><span class="rl">Researcher</span><h4>Ysee</h4></div></div>
+            <div class="start"><b>Start, november</b>Brengt de 20 belangrijkste zoekwoorden in kaart</div><div class="em">Elke maand</div><ul><li>Koppelt elk artikel aan een zoekwoord, zoals AI het opzoekt</li><li>Verzamelt per artikel bronnen en cijfers</li><li>Volgt de actualiteit en meldt wat bijgewerkt moet</li><li>Houdt de resultaten bij in het dashboard</li></ul>
+            <div class="lv"><span>Levert per maand</span><b>6 tot 8 briefings en een maandoverzicht</b></div></div>
+          <div class="tl"><div class="rol-t"><img class="ft" src="beeld/vincent.png" alt="Vincent"><div><span class="rl">Redacteur</span><h4>Vincent</h4></div></div>
+            <div class="em">Elke maand</div><ul><li>Schrijft artikelen over verplichte AOV, alternatieven en kosten</li><li>Houdt de verplichte AOV actueel</li><li>Leest de artikelen van Wendy na</li><li>Publiceert verspreid over de maand</li></ul>
+            <div class="lv"><span>Levert per maand</span><b>3 tot 4 artikelen</b></div></div>
+          <div class="tl"><div class="rol-t"><img class="ft" src="beeld/wendy.png" alt="Wendy"><div><span class="rl">Redacteur</span><h4>Wendy</h4></div></div>
+            <div class="em">Elke maand</div><ul><li>Schrijft artikelen over pensioen, ziek zonder vangnet en regels</li><li>Werkt bestaande artikelen bij</li><li>Leest de artikelen van Vincent na</li><li>Publiceert verspreid over de maand</li></ul>
+            <div class="lv"><span>Levert per maand</span><b>3 tot 4 artikelen en 2 bijgewerkte</b></div></div>
+          <div class="tl zo-rol"><div class="rol-t"><span class="ft2"><img class="ft" src="beeld/expert1.png" alt=""><img class="ft" src="beeld/expert2.png" alt=""></span><div><span class="rl">Vakexperts</span><h4>Zelfstandig Ondernemers</h4></div></div>
+            <div class="em">Elke maand</div><ul><li>Geven per artikel een citaat</li><li>Staan met naam bij het citaat</li></ul>
+            <div class="lv"><span>Levert per maand</span><b>6 tot 8 citaten</b></div></div>
         </div>
-        <table class="sp">
-          <thead><tr><th>Stap</th><th>Wie</th><th>Actie</th><th>Deliverable</th></tr></thead>
-          <tbody>
-            <tr class="eenm"><td><span class="sn">0</span><em>Eenmalig, november</em></td><td><span class="wie"><img src="beeld/ysee.png" alt="">Ysee</span></td><td>Brengt de 20 belangrijkste zoekwoorden in kaart, zoals AI ze opzoekt</td><td><b>Zoekwoordenlijst</b></td></tr>
-            <tr><td><span class="sn">1</span></td><td><span class="wie"><img src="beeld/ysee.png" alt="">Ysee</span></td><td>Koppelt elk artikel aan een zoekwoord en verzamelt bronnen en cijfers</td><td><b>6 tot 8 briefings</b></td></tr>
-            <tr><td><span class="sn">2</span></td><td><span class="wie"><span class="zo-mini">ZO</span>Vakexpert</span></td><td>Geeft per artikel een citaat</td><td><b>6 tot 8 citaten</b></td></tr>
-            <tr><td><span class="sn">3</span></td><td><span class="wie"><img src="beeld/vincent.png" alt=""><img class="tw" src="beeld/wendy.png" alt="">Vincent en Wendy</span></td><td>Schrijven elk 3 tot 4 artikelen in het vaste format</td><td><b>6 tot 8 artikelen</b></td></tr>
-            <tr><td><span class="sn">4</span></td><td><span class="wie"><img src="beeld/vincent.png" alt=""><img class="tw" src="beeld/wendy.png" alt="">Vincent en Wendy</span></td><td>Lezen elkaars artikelen na en werken bestaande artikelen bij</td><td><b>2 bijgewerkte artikelen</b></td></tr>
-            <tr><td><span class="sn">5</span></td><td><span class="wie"><img src="beeld/vincent.png" alt=""><img class="tw" src="beeld/wendy.png" alt="">Vincent en Wendy</span></td><td>Publiceren de artikelen verspreid over de maand</td><td><b>6 tot 8 artikelen online</b></td></tr>
-            <tr><td><span class="sn">6</span></td><td><span class="wie"><img src="beeld/ysee.png" alt="">Ysee</span></td><td>Houdt de resultaten bij in het dashboard</td><td><b>Maandoverzicht</b></td></tr>
-          </tbody>
-        </table>
       </div>
       <div class="foot"><span class="fine">Flii Media &times; Zelfstandig Ondernemers &middot; vertrouwelijk</span></div>
     </div>
@@ -432,7 +451,7 @@ h1{font-family:Montserrat,Inter,sans-serif;font-weight:900;font-size:40px;letter
             </div>
             <div class="vw-l">Dashboard</div>
             <div class="dash"><a class="dl" href="https://fckl.app/client/zelfstandig-ondernemers">fckl.app/client/zelfstandig-ondernemers</a>
-              <div class="dr"><span>Pincode</span><b>Verstrekt door FC Klap</b></div>
+              <div class="dr"><span>Pincode</span><b>920457</b></div>
               <div class="dr"><span>Filter</span><b>Search Console</b></div></div>
             <div class="vw-l">Voorwaarden om gevonden te worden</div>
             <ul class="lijst ok">
@@ -444,12 +463,12 @@ h1{font-family:Montserrat,Inter,sans-serif;font-weight:900;font-size:40px;letter
               <div class="pl">AI-citaties per maand</div>
               <div class="pg"><div class="pb"><span class="pv">135</span><div class="pbar" style="height:1.5%"></div></div><div class="pb"><span class="pv">676</span><div class="pbar" style="height:6.7%"></div></div><div class="pb"><span class="pv">1.351</span><div class="pbar" style="height:13.3%"></div></div><div class="pb"><span class="pv">4.730</span><div class="pbar" style="height:46.7%"></div></div><div class="pb"><span class="pv">10.135</span><div class="pbar eind" style="height:100.0%"></div></div></div>
               <div class="prow"><div class="pm"><b>Nu</b><span>okt 2026</span></div><div class="pm"><b>Februari</b><span>2027</span></div><div class="pm"><b>April</b><span>2027</span></div><div class="pm"><b>Juli</b><span>2027</span></div><div class="pm"><b>November</b><span>2027</span></div></div>
-              <div class="pl pl2">Bezoekers uit chatbots <em>7,4% van de AI-citaties</em></div>
+              <div class="pl pl2">Bezoekers uit chatbots</div>
               <div class="prow"><div class="pc b">10</div><div class="pc b">50</div><div class="pc b">100</div><div class="pc b">350</div><div class="pc b">750</div></div>
-              <div class="pl pl2">Aanmeldingen <em>2% van de bezoekers</em></div>
+              <div class="pl pl2">Aanmeldingen</div>
               <div class="prow"><div class="pc">0,2</div><div class="pc">1</div><div class="pc">2</div><div class="pc">7</div><div class="pc">15</div></div>
             </div>
-            <div class="psum"><div><span>AI-citaties</span><b>135 naar 10.135</b><em>per maand</em></div><div><span>Bezoekers</span><b>10 naar 750</b><em>per maand</em></div><div><span>Aanmeldingen</span><b>0,2 naar 15</b><em>per maand</em></div></div>
+            <div class="psum"><div><span>Citatie naar bezoek</span><b>7,4%</b><em>marktgemiddelde klikratio op AI-citaties</em></div><div><span>Bezoek naar aanmelding</span><b>2%</b><em>marktgemiddelde conversie uit chatbots</em></div><div><span>Citatie naar aanmelding</span><b>0,15%</b><em>7,4% maal 2%</em></div></div>
           </div>
         </div>
         <div class="bron">Bronnen: Microsoft, Bing Webmaster Tools AI Performance (feb. 2026); Google, Search Console generatieve AI-rapport (jun. 2026); OpenAI, overzicht crawlers; Vercel en MERJ (dec. 2024).</div>
