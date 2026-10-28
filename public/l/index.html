@@ -3,63 +3,81 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#F6E6E9">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta name="robots" content="noindex, nofollow">
 <title>Flii Media</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Inter:wght@400;500;600;700&display=swap">
 <style>
-:root{--pink:#E8255B;--ink:#16181D;--muted:#5A6068;--muted-2:#8A9099;--line:#E1E4E7;--paper:#F3F1EB;}
+:root{--ink:#171717;--mag:#E7255A;--paper:#F3F1EB;--card:#FBFAF7;--line:#E2DED3;--mid:#5C5A52;--soft:#8B887E}
 *{box-sizing:border-box}
 html,body{min-height:100%}
 html{background:var(--paper)}
-body{margin:0;background:var(--paper);color:var(--ink);
-  font-family:Inter,system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.5;
-  -webkit-font-smoothing:antialiased;
-  background-image:radial-gradient(circle at 50% -10%, #fff 0%, var(--paper) 55%)}
+body{margin:0;color:var(--ink);font-family:Inter,system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;
+  background:
+    radial-gradient(60% 40% at 88% 4%,rgba(231,37,90,.16),rgba(231,37,90,0) 70%),
+    radial-gradient(50% 35% at 8% 0%,rgba(192,75,255,.09),rgba(192,75,255,0) 70%),
+    linear-gradient(180deg,#F6E6E9 0%,#F4EDEA 40%,var(--paper) 75%) fixed}
+/* zachte wolken op de achtergrond */
+body::before,body::after{content:"";position:fixed;z-index:0;pointer-events:none;border-radius:50%;filter:blur(28px);opacity:.85}
+body::before{width:70vmax;height:28vmax;left:-20vmax;top:58vh;background:radial-gradient(closest-side,#fff,rgba(255,255,255,0))}
+body::after{width:60vmax;height:24vmax;right:-22vmax;top:10vh;background:radial-gradient(closest-side,rgba(255,255,255,.9),rgba(255,255,255,0))}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
 
-.wrap{max-width:560px;margin:0 auto;padding:48px 20px 60px;display:flex;flex-direction:column;
-  align-items:center;min-height:100%}
-.avatar{width:92px;height:92px;border-radius:50%;background:#fff;border:1px solid var(--line);
-  display:flex;align-items:center;justify-content:center;box-shadow:0 6px 22px rgba(22,24,29,.07)}
-.avatar img{width:52px;height:auto}
-h1{font-size:21px;font-weight:700;letter-spacing:-.3px;margin:18px 0 0}
-.tag{font-size:14.5px;color:var(--muted);margin:5px 0 0;text-align:center;max-width:36ch}
+.wrap{position:relative;z-index:1;max-width:560px;margin:0 auto;padding:52px 18px 56px;display:flex;flex-direction:column;align-items:center;min-height:100svh}
+.avatar{width:88px;height:88px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.5);-webkit-backdrop-filter:blur(14px) saturate(1.5);backdrop-filter:blur(14px) saturate(1.5);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9),inset 0 0 0 1px rgba(255,255,255,.6),0 10px 30px rgba(180,60,100,.14)}
+.avatar img{width:48px;height:auto}
+h1{font-family:'Bricolage Grotesque',Inter,sans-serif;font-weight:800;font-size:30px;letter-spacing:-.03em;line-height:1.05;margin:18px 0 0}
+.tag{font-size:14.5px;color:var(--mid);margin:6px 0 0;text-align:center;max-width:36ch}
 
-.links{width:100%;margin-top:26px;display:flex;flex-direction:column;gap:12px}
-.link{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--line);
-  border-radius:14px;padding:16px 18px;font-size:15.5px;font-weight:600;
-  transition:transform .12s ease,border-color .12s ease,box-shadow .12s ease}
-.link:hover{transform:translateY(-2px);border-color:var(--pink);box-shadow:0 8px 20px rgba(22,24,29,.07)}
-.link .ic{width:20px;height:20px;flex:none}
-.link .ic svg{width:20px;height:20px;stroke:var(--ink);stroke-width:1.7;fill:none;
-  stroke-linecap:round;stroke-linejoin:round}
-.link .th{width:52px;height:40px;border-radius:8px;object-fit:cover;flex:none;background:var(--line)}
-.link .tx{flex:1;min-width:0}
-.link .sub{display:block;font-weight:400;font-size:13px;color:var(--muted-2);margin-top:1px}
-.link .pijl{width:15px;height:15px;flex:none;stroke:var(--muted-2);stroke-width:2;fill:none;
-  stroke-linecap:round;stroke-linejoin:round}
-.link:hover .pijl{stroke:var(--pink)}
+.glass{background:linear-gradient(180deg,rgba(255,255,255,.55),rgba(255,240,245,.32));
+  -webkit-backdrop-filter:blur(16px) saturate(1.6);backdrop-filter:blur(16px) saturate(1.6);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9),inset 0 0 0 1px rgba(255,255,255,.55),0 8px 24px rgba(180,60,100,.10)}
 
-.toprij{display:flex;gap:14px;margin-top:26px}
-.toprij a{display:flex;flex-direction:column;align-items:center;gap:7px;width:76px}
-.toprij a>svg,.toprij a>svg:first-child{width:46px;height:46px;border-radius:50%;background:#fff;
-  border:1px solid var(--line);padding:13px;box-sizing:border-box;
-  transition:border-color .12s ease,transform .12s ease}
-.toprij a:hover>svg{border-color:var(--pink);transform:translateY(-2px)}
-.toprij svg.ln{stroke:var(--pink);stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.toprij span{font-size:11.5px;font-weight:600;color:var(--muted)}
+.toprij{display:flex;gap:12px;margin-top:24px}
+.toprij a{display:flex;flex-direction:column;align-items:center;gap:7px;width:74px}
+.toprij a>svg{width:48px;height:48px;border-radius:50%;padding:13px;
+  background:rgba(255,255,255,.5);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9),inset 0 0 0 1px rgba(255,255,255,.6),0 6px 18px rgba(180,60,100,.10);
+  transition:transform .2s ease,box-shadow .2s ease}
+.toprij a:hover>svg{transform:translateY(-2px);box-shadow:inset 0 0 0 1px var(--mag),0 8px 22px rgba(231,37,90,.18)}
+.toprij svg.ln{stroke:var(--mag);stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.toprij span{font-size:11.5px;font-weight:600;color:var(--mid)}
 
-.kop{width:100%;font-size:11.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted-2);margin:14px 0 -2px 4px}
+.links{width:100%;margin-top:28px;display:flex;flex-direction:column;gap:10px}
+.kop{width:100%;font-size:11.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--soft);margin:16px 0 0 6px}
 .kop:first-child{margin-top:0}
+
+/* bar cards: beeld links, titel, magenta pijl */
+.link{display:flex;align-items:center;gap:14px;padding:8px 10px 8px 8px;border-radius:20px;
+  background:linear-gradient(180deg,rgba(255,255,255,.58),rgba(255,240,245,.34));
+  -webkit-backdrop-filter:blur(16px) saturate(1.6);backdrop-filter:blur(16px) saturate(1.6);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9),inset 0 0 0 1px rgba(255,255,255,.55),0 8px 24px rgba(180,60,100,.09);
+  transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s ease}
+.link:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.9),inset 0 0 0 1px rgba(231,37,90,.45),0 14px 30px rgba(231,37,90,.16)}
+.link .th{width:104px;height:66px;border-radius:14px;object-fit:cover;flex:none;background:var(--line)}
+.link .tx{flex:1;min-width:0;font-size:15px;font-weight:600;line-height:1.3;letter-spacing:-.005em;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.link .go{width:34px;height:34px;flex:none;border-radius:50%;background:var(--mag);display:flex;align-items:center;justify-content:center;
+  transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+.link .go svg{width:15px;height:15px;stroke:#fff;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.link:hover .go{transform:translateX(3px)}
+.link:focus-visible{outline:2px solid var(--mag);outline-offset:3px}
+
 .chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{font-size:12px;font-weight:600;color:var(--muted);background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px 11px;transition:border-color .12s ease,color .12s ease}
-.chip:hover{border-color:var(--pink);color:var(--ink)}
-.voet{margin-top:auto;padding-top:34px;display:flex;align-items:center;gap:7px;
-  font-size:12px;color:var(--muted-2)}
-.voet .punt{width:5px;height:5px;border-radius:50%;background:var(--pink)}
+.chip{font-size:12px;font-weight:600;color:var(--mid);border-radius:999px;padding:5px 11px;
+  background:rgba(255,255,255,.5);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.65);transition:color .2s,box-shadow .2s}
+.chip:hover{color:var(--ink);box-shadow:inset 0 0 0 1px var(--mag)}
+.voet{margin-top:auto;padding-top:34px;display:flex;align-items:center;gap:7px;font-size:12px;color:var(--soft)}
+.voet .punt{width:5px;height:5px;border-radius:50%;background:var(--mag)}
+@media (max-width:420px){.link .th{width:88px;height:60px}.link .tx{font-size:14.5px}}
+@media (prefers-reduced-motion:reduce){.link,.link .go,.toprij a>svg{transition:none}}
 </style>
 </head>
 <body>
@@ -99,58 +117,58 @@ h1{font-size:21px;font-weight:700;letter-spacing:-.3px;margin:18px 0 0}
     <div class="kop">Recent</div>
     <a class="link" href="https://flii.nl/insight/server-side-tracking" target="_blank" rel="noopener">
       <img class="th" src="https://flii.nl/assets/insight/server-side-tracking.webp" alt="" loading="lazy">
-      <span class="tx">Server-side tracking: waarom je data niet meer klopt<span class="sub">flii.nl/insight/server-side-tracking</span></span>
-      <svg class="pijl" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+      <span class="tx">Server-side tracking: waarom je data niet meer klopt</span>
+      <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span>
     </a>
     <a class="link" href="https://flii.nl/insight/linkedin-of-meta-b2b" target="_blank" rel="noopener">
       <img class="th" src="https://flii.nl/assets/insight/linkedin-of-meta-b2b.webp" alt="" loading="lazy">
-      <span class="tx">LinkedIn of Meta: waar bereik je B2B-beslissers?<span class="sub">flii.nl/insight/linkedin-of-meta-b2b</span></span>
-      <svg class="pijl" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+      <span class="tx">LinkedIn of Meta: waar bereik je B2B-beslissers?</span>
+      <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span>
     </a>
     <a class="link" href="https://flii.nl/cases/bikefair" target="_blank" rel="noopener">
       <img class="th" src="https://flii.nl/assets/media/10855b463973.png" alt="" loading="lazy">
-      <span class="tx">BikeFair: van expatfavoriet naar landelijk merk<span class="sub">flii.nl/cases/bikefair</span></span>
-      <svg class="pijl" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+      <span class="tx">BikeFair: van expatfavoriet naar landelijk merk</span>
+      <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span>
     </a>
     <a class="link" href="https://flii.nl/insight/founder-as-a-brand" target="_blank" rel="noopener">
       <img class="th" src="https://flii.nl/assets/insight/founder-as-a-brand.webp" alt="" loading="lazy">
-      <span class="tx">Founder as a Brand: waarom de oprichter je sterkste kanaal is<span class="sub">flii.nl/insight/founder-as-a-brand</span></span>
-      <svg class="pijl" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+      <span class="tx">Founder as a Brand: waarom de oprichter je sterkste kanaal is</span>
+      <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span>
     </a>
     <a class="link" href="https://flii.nl/insight/mediabudget-optimaal-verdelen" target="_blank" rel="noopener">
       <img class="th" src="https://flii.nl/assets/insight/mediabudget-optimaal-verdelen.webp" alt="" loading="lazy">
-      <span class="tx">Zo verdeel je je mediabudget optimaal<span class="sub">flii.nl/insight/mediabudget-optimaal-verdelen</span></span>
-      <svg class="pijl" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+      <span class="tx">Zo verdeel je je mediabudget optimaal</span>
+      <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span>
     </a>
     <a class="link" href="https://flii.nl/cases/de-buurt/week-tegen-eenzaamheid" target="_blank" rel="noopener">
       <img class="th" src="https://flii.nl/assets/media/7d8844fc0173.jpg" alt="" loading="lazy">
-      <span class="tx">Week tegen Eenzaamheid voor Stichting De Buurt<span class="sub">flii.nl/cases/de-buurt/week-tegen-eenzaamheid</span></span>
-      <svg class="pijl" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+      <span class="tx">Week tegen Eenzaamheid voor Stichting De Buurt</span>
+      <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span>
     </a>
     <a class="link" href="https://flii.nl/insight/black-friday-checklist-campagnes" target="_blank" rel="noopener">
       <img class="th" src="https://flii.nl/assets/insight/black-friday-checklist-campagnes.webp" alt="" loading="lazy">
-      <span class="tx">Black Friday-checklist: wat je nu al regelt<span class="sub">flii.nl/insight/black-friday-checklist-campagnes</span></span>
-      <svg class="pijl" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+      <span class="tx">Black Friday-checklist: wat je nu al regelt</span>
+      <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span>
     </a>
     <a class="link" href="https://flii.app/demo" target="_blank" rel="noopener">
       <img class="th" src="https://flii.nl/assets/social/demo-dashboard.jpg" alt="" loading="lazy">
-      <span class="tx">Live demo: al je marketingdata in één scherm<span class="sub">flii.app/demo</span></span>
-      <svg class="pijl" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+      <span class="tx">Live demo: al je marketingdata in één scherm</span>
+      <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span>
     </a>
     <a class="link" href="https://flii.nl/platform-app-development" target="_blank" rel="noopener">
       <img class="th" src="https://flii.nl/assets/social/platform-app-development.jpg" alt="" loading="lazy">
-      <span class="tx">Platform &amp; app development<span class="sub">flii.nl/platform-app-development</span></span>
-      <svg class="pijl" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+      <span class="tx">Platform &amp; app development</span>
+      <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span>
     </a>
     <a class="link" href="https://flii.nl/insight/google-io-2026-wat-marketeers-moeten-weten" target="_blank" rel="noopener">
       <img class="th" src="https://flii.nl/assets/insight/google-io-2026-wat-marketeers-moeten-weten-v2.webp" alt="" loading="lazy">
-      <span class="tx">Google I/O 2026: wat marketeers moeten weten<span class="sub">flii.nl/insight/google-io-2026-wat-marketeers-moeten-weten</span></span>
-      <svg class="pijl" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+      <span class="tx">Google I/O 2026: wat marketeers moeten weten</span>
+      <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span>
     </a>
     <a class="link" href="https://flii.nl/insight/branding-versus-performance-marketing" target="_blank" rel="noopener">
       <img class="th" src="https://flii.nl/assets/insight/branding-versus-performance-marketing.webp" alt="" loading="lazy">
-      <span class="tx">Branding vs. Performance: wat werkt?<span class="sub">flii.nl/insight/branding-versus-performance-marketing</span></span>
-      <svg class="pijl" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+      <span class="tx">Branding vs. Performance: wat werkt?</span>
+      <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span>
     </a>
 
     <div class="kop">Categorieën</div>
