@@ -208,3 +208,5 @@ h1{font-size:clamp(44px,6.6vw,96px);margin-bottom:16px}
 /* pull-to-refresh op mobiel: pagina mag niet op overflow:hidden staan */
 body{overflow:visible;overflow-x:clip}
 .hero{box-sizing:border-box}
+/* open formulier boven menu en footer */
+.cta:not([data-state="closed"]){z-index:15}
