@@ -332,6 +332,10 @@ h1{font-family:Montserrat,Inter,sans-serif;font-weight:900;font-size:40px;letter
 .bk h5{font-size:15px;margin-bottom:8px;}
 .ai-zin{top:84px;}
 .ai-kaart{top:200px;}
+.bk ul.zw li{font-size:11.5px;line-height:1.38;padding:5px 0 5px 14px;}
+.bk ul.zw li::before{top:11px;}
+.vb{display:inline-block;font-size:10.5px;font-family:"IBM Plex Mono",ui-monospace,monospace;color:var(--zo);background:var(--wash-pink);border-radius:4px;padding:1px 6px;margin-top:2px;}
+.brf-g{grid-template-columns:1.25fr 1.25fr .9fr;}
 </style>
 </head>
 <body>
@@ -445,7 +449,15 @@ h1{font-family:Montserrat,Inter,sans-serif;font-weight:900;font-size:40px;letter
                 <li><b>Afsluiting:</b> 3 vervolgvragen en links naar de hoofdpagina en de dienst</li>
               </ol></div>
             <div class="bk"><h5>Zoekwoorden</h5>
-              <ul><li>Eén hoofdzoekwoord per artikel, uit de lijst van Ysee</li><li>In de titel, de url, de eerste zin en één tussenkop</li><li>2 tot 3 verwante zoekwoorden in de tussenkoppen</li><li>Natuurlijk schrijven, niet herhalen om het herhalen</li></ul></div>
+              <ul class="zw">
+                <li><b>Hoofdzoekwoord:</b> één per artikel, staat in de briefing van Ysee <span class="vb">verplichte aov</span></li>
+                <li><b>Titel:</b> bevat het zoekwoord letterlijk <span class="vb">Wanneer gaat de verplichte AOV in?</span></li>
+                <li><b>Url:</b> alleen het zoekwoord en de kern, kleine letters <span class="vb">/kennisbank/verplichte-aov-ingangsdatum</span></li>
+                <li><b>Eerste zin:</b> zoekwoord binnen de eerste 15 woorden, als deel van het antwoord</li>
+                <li><b>Tussenkoppen:</b> één met het hoofdzoekwoord, 2 tot 3 met verwante zoekwoorden <span class="vb">opt-out, premie, broodfonds</span></li>
+                <li><b>Meta-omschrijving:</b> zoekwoord plus kernantwoord, maximaal 155 tekens</li>
+                <li><b>Niet:</b> het zoekwoord vaker dan 4 keer; wissel af met synoniemen <span class="vb">AOV, arbeidsongeschiktheidsverzekering</span></li>
+              </ul></div>
             <div class="bk"><h5>Lengte en stijl</h5>
               <ul><li>600 tot maximaal 1.000 woorden</li><li>Korte, stellige zinnen op B1-niveau</li><li>Elk cijfer met bron: Rijksoverheid, UWV, CBS, Kamerstukken of eigen data <em>+31% / +27%</em></li><li>Naam van de redacteur en datum van publicatie</li></ul></div>
           </div>
