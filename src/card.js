@@ -132,7 +132,9 @@ function open() {
   fit();
   cta.dataset.state = "opening";
   openBtn.setAttribute("aria-expanded", "true");
-  timer = setTimeout(() => { cta.dataset.state = "open"; (panel.classList.contains("done") ? panel.querySelector(".close") : form.naam).focus({ preventScroll: true }); }, reduce ? 0 : 260);
+  timer = setTimeout(() => { cta.dataset.state = "open"; // On touch screens focusing a field pops up the keyboard; focus the panel instead.
+    const touch = matchMedia("(pointer: coarse)").matches;
+    (panel.classList.contains("done") || touch ? panel.querySelector(".close") : form.naam).focus({ preventScroll: true }); }, reduce ? 0 : 260);
 }
 function close() {
   if (cta.dataset.state === "closed") return;
