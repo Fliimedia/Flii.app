@@ -149,7 +149,6 @@ openBtn.addEventListener("click", () => {
   openBtn.classList.add("go");
   setTimeout(() => { open(); setTimeout(() => openBtn.classList.remove("go"), 350); }, 640);
 });
-document.querySelector(".menu-contact").addEventListener("click", (e) => { e.stopPropagation(); open(); });
 panel.querySelector(".close").addEventListener("click", close);
 addEventListener("keydown", (e) => { if (e.key !== "Escape" || !document.getElementById("cc").hidden) return; if (!prefs.hidden) prefsClose(); else close(); });
 document.addEventListener("pointerdown", (e) => { if (cta.dataset.state === "open" && !cta.contains(e.target)) close(); });
