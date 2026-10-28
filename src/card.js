@@ -217,7 +217,7 @@ function saveChoice(stat, mkt) {
 prefs.querySelector(".prefs-save").addEventListener("click", () => {
   saveChoice(prefs.querySelector('[name="statistieken"]').checked, prefs.querySelector('[name="marketing"]').checked);
   hideCc();
-  prefsClose();
+  setTimeout(prefsClose, reduce ? 0 : 650);
 });
 
 // Kleine cookiemelding: alleen zolang er nog geen keuze is opgeslagen.
@@ -236,3 +236,10 @@ if (!Object.keys(readPrefs()).length) {
 }
 cc.querySelector(".cc-yes").addEventListener("click", () => { saveChoice(true, true); hideCc(); });
 cc.querySelector(".cc-no").addEventListener("click", () => { saveChoice(true, false); hideCc(); });
+
+/* Zelfde klik-animatie als de contactknop voor de andere knoppen (Versturen, Opslaan). */
+document.querySelectorAll(".btn:not(.cta-btn)").forEach((b) => b.addEventListener("click", () => {
+  if (reduce) return;
+  b.classList.remove("go"); void b.offsetWidth; b.classList.add("go");
+  setTimeout(() => b.classList.remove("go"), 900);
+}));
