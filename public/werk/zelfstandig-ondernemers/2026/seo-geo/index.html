@@ -117,6 +117,46 @@ h1{font-family:Montserrat,Inter,sans-serif;font-weight:900;font-size:40px;letter
 .wi.licht{background:var(--wash-pink);color:var(--zo);border:1px solid var(--pink-3);}
 .wi.oranje{background:var(--zo-o);color:var(--zo-d);}
 .ev4{margin-top:14px;}
+
+/* vereenvoudigd */
+.cl{padding:18px 20px 16px;}
+.cl .prio{align-self:flex-start;}
+.cl h4{font-size:18px;margin:10px 0 8px;}
+.cl li{font-size:12.5px;padding:7px 0 7px 15px;}
+.cl li::before{top:7px;}
+.opsch p{font-size:12.5px;}
+.stap{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px;padding:4px 24px 18px;}
+.st{background:#fff;border-radius:9px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;}
+.st i{width:24px;height:24px;border-radius:50%;background:var(--zo);color:#fff;font-style:normal;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.st b{font-size:14px;font-weight:700;color:var(--ink);}
+.st em{font-style:normal;align-self:flex-start;font-size:10.5px;font-weight:700;color:var(--zo-d);background:var(--zo-ol);border-radius:4px;padding:2px 7px;}
+.ptekst .lijst li{font-size:13px;margin-bottom:11px;}
+.rol h4{margin-bottom:2px;}
+.rol li{font-size:12.5px;padding:4px 0 4px 14px;}
+.rol li::before{top:10px;}
+.wi{height:34px;font-size:11.5px;}
+.kpi .s{font-size:11.5px;}
+.clus{flex:1;grid-auto-rows:1fr;gap:14px;}
+.cl{padding:22px 24px 18px;}
+.cl h4{font-size:20px;margin:12px 0 10px;}
+.cl li{font-size:13.5px;padding:10px 0 10px 16px;}
+.cl li::before{top:10px;font-size:11px;}
+.opsch{margin-top:14px;}
+.opsch > div{padding:16px 22px;}
+.opsch p{font-size:13px;}
+.rol{padding:20px 22px 18px;}
+.rol h4{font-size:19px;}
+.rol .wat{font-size:12px;margin:4px 0 10px;}
+.rol li{font-size:13.5px;padding:6px 0 6px 15px;}
+.rol li::before{top:13px;}
+.wk{padding:14px 18px 16px;row-gap:12px;margin-top:16px;}
+.wk-h{font-size:13.5px;}
+.wk-l b{font-size:13px;}
+.wi{height:42px;font-size:12.5px;padding:0 12px;}
+.ev4{margin-top:16px;}
+.ev4 .kpi{padding:20px 22px;}
+.ev4 .kpi .v{font-size:38px;}
+.ev4 .kpi .s{font-size:12.5px;}
 </style>
 </head>
 <body>
@@ -201,27 +241,26 @@ h1{font-family:Montserrat,Inter,sans-serif;font-weight:900;font-size:40px;letter
       <div class="topbar"></div>
       <div class="head"><img class="zo-logo" src="beeld/zo-logo.png" alt="Zelfstandig Ondernemers"><div class="kicker">Zelfstandig Ondernemers &middot; SEO en GEO</div>
         <h1>Onderwerpen</h1>
-        <p class="intro">Zes clusters rond de vragen die zzp'ers echt stellen. Elk cluster krijgt <b>één pijlerpagina</b> die het onderwerp volledig uitlegt, met daaromheen <b>korte vraagartikelen</b> die naar elkaar en naar de dienstpagina linken.</p>
+        <p class="intro">Zes onderwerpen rond de vragen die zzp'ers echt stellen. Per onderwerp één hoofdpagina die alles uitlegt, met daaromheen korte artikelen die elk één vraag beantwoorden.</p>
       </div>
       <div class="body">
         <div class="clus">
-          <div class="cl"><div class="cl-k"><span class="cl-l">A</span><span class="prio p1">Prioriteit</span></div><h4>Verplichte AOV</h4><div class="pij"><b>Pijler:</b> alles over de basisverzekering (BAZ), maandelijks bijgewerkt</div>
-            <ul><li>Wanneer gaat de verplichte AOV in?</li><li>Wat kost de verplichte AOV bij mijn winst?</li><li>Kan ik een opt-out krijgen, en wat betekent dat?</li></ul><div class="tel">ca. 14 artikelen</div></div>
-          <div class="cl"><div class="cl-k"><span class="cl-l">B</span><span class="prio p1">Prioriteit</span></div><h4>Alternatieven voor een AOV</h4><div class="pij"><b>Pijler:</b> broodfonds, schenkkring en buffer vergeleken</div>
-            <ul><li>Wat is een schenkkring en hoe werkt die?</li><li>Broodfonds of AOV: wat past bij mij?</li><li>Hoe overbrug ik de twee jaar wachttijd?</li></ul><div class="tel">ca. 14 artikelen</div></div>
-          <div class="cl"><div class="cl-k"><span class="cl-l">C</span><span class="prio p2">Vervolg</span></div><h4>Kosten en dekking</h4><div class="pij"><b>Pijler:</b> wat een AOV kost en wat je ervoor krijgt</div>
-            <ul><li>Wat kost een AOV per maand?</li><li>Is de premie of inleg aftrekbaar?</li><li>Beroeps- of gangbare arbeid: wat is het verschil?</li></ul><div class="tel">ca. 12 artikelen</div></div>
-          <div class="cl"><div class="cl-k"><span class="cl-l">D</span><span class="prio p2">Vervolg</span></div><h4>Ziek zonder vangnet</h4><div class="pij"><b>Pijler:</b> wat je kunt als je uitvalt zonder AOV</div>
-            <ul><li>Ik ben ziek en heb geen AOV, wat nu?</li><li>Heb ik recht op Bbz of IOAZ?</li><li>Kan ik me vrijwillig verzekeren voor WIA en ZW?</li></ul><div class="tel">ca. 12 artikelen</div></div>
-          <div class="cl"><div class="cl-k"><span class="cl-l">E</span><span class="prio p1">Prioriteit</span></div><h4>Pensioen en sparen</h4><div class="pij"><b>Pijler:</b> pensioen opbouwen als zzp'er, met rekenvoorbeelden</div>
-            <ul><li>Hoeveel moet ik per maand opzij zetten?</li><li>Hoe bereken ik mijn jaarruimte?</li><li>Lijfrente, banksparen of beleggen?</li></ul><div class="tel">ca. 14 artikelen</div></div>
-          <div class="cl"><div class="cl-k"><span class="cl-l">F</span><span class="prio p2">Vervolg</span></div><h4>Regels en zekerheid</h4><div class="pij"><b>Pijler:</b> de regels rond zelfstandigheid, per jaar bijgewerkt</div>
-            <ul><li>Wat verandert er met de Wet DBA en Wet VBAR?</li><li>Hoe voorkom ik schijnzelfstandigheid?</li><li>Wanneer is een bv slimmer?</li></ul><div class="tel">ca. 10 artikelen</div></div>
+          <div class="cl"><span class="prio p1">Eerst</span><h4>Verplichte AOV</h4>
+            <ul><li>Wanneer gaat de verplichte AOV in?</li><li>Wat kost de verplichte AOV bij mijn winst?</li><li>Kan ik een opt-out krijgen?</li></ul></div>
+          <div class="cl"><span class="prio p1">Eerst</span><h4>Alternatieven voor een AOV</h4>
+            <ul><li>Wat is een schenkkring en hoe werkt die?</li><li>Broodfonds of AOV: wat past bij mij?</li><li>Hoe overbrug ik de twee jaar wachttijd?</li></ul></div>
+          <div class="cl"><span class="prio p1">Eerst</span><h4>Pensioen en sparen</h4>
+            <ul><li>Hoeveel moet ik per maand opzij zetten?</li><li>Hoe bereken ik mijn jaarruimte?</li><li>Lijfrente, banksparen of beleggen?</li></ul></div>
+          <div class="cl"><span class="prio p2">Daarna</span><h4>Kosten en dekking</h4>
+            <ul><li>Wat kost een AOV per maand?</li><li>Is de premie of inleg aftrekbaar?</li><li>Wat is beroepsarbeidsongeschiktheid?</li></ul></div>
+          <div class="cl"><span class="prio p2">Daarna</span><h4>Ziek zonder vangnet</h4>
+            <ul><li>Ik ben ziek en heb geen AOV, wat nu?</li><li>Heb ik recht op Bbz of IOAZ?</li><li>Kan ik me vrijwillig verzekeren voor WIA?</li></ul></div>
+          <div class="cl"><span class="prio p2">Daarna</span><h4>Regels en zekerheid</h4>
+            <ul><li>Wat verandert er met de Wet DBA?</li><li>Hoe voorkom ik schijnzelfstandigheid?</li><li>Wanneer is een bv slimmer?</li></ul></div>
         </div>
         <div class="opsch">
-          <div><div class="l">Opschonen bestaande kennisbank</div><p>Dubbele artikelen samenvoegen met een doorverwijzing, verouderde artikelen bijwerken (regels 2023, wetswijzigingen 2024, AOV per 2027) en dunne artikelen uitbreiden of opnemen in een vraagartikel.</p></div>
-          <div><div class="l">Bron voor vragen</div><p>De 121 vragen uit de eigen FAQ, zoekdata uit Search Console, vragen die AI-tools zelf voorstellen, en wat leden aan de klantenservice vragen.</p></div>
-          <div class="accent"><div class="l">Volgorde</div><p>Eerst de pijlers A, B en E plus de prioriteitsvragen; daarna C, D en F. Samen ca. 76 artikelen in 12 maanden.</p></div>
+          <div><div class="l">Bestaande kennisbank</div><p>Dubbele artikelen samenvoegen, verouderde artikelen bijwerken en dunne artikelen uitbreiden.</p></div>
+          <div class="accent"><div class="l">Omvang</div><p>Ca. 76 nieuwe artikelen in 12 maanden, te beginnen met de drie onderwerpen die eerst gaan.</p></div>
         </div>
       </div>
       <div class="foot"><span class="fine">Flii Media &times; Zelfstandig Ondernemers &middot; vertrouwelijk</span></div>
@@ -233,37 +272,30 @@ h1{font-family:Montserrat,Inter,sans-serif;font-weight:900;font-size:40px;letter
       <div class="topbar"></div>
       <div class="head"><img class="zo-logo" src="beeld/zo-logo.png" alt="Zelfstandig Ondernemers"><div class="kicker">Zelfstandig Ondernemers &middot; SEO en GEO</div>
         <h1>Artikel en techniek</h1>
-        <p class="intro">Elk artikel volgt hetzelfde format, gebouwd op wat AI-antwoorden aantoonbaar citeren. Daarnaast zorgen we dat AI-zoekmachines de kennisbank kunnen lezen, en dat Zelfstandig Ondernemers ook buiten de eigen site genoemd wordt.</p>
+        <p class="intro">Elk artikel volgt hetzelfde format, gebouwd op wat AI-antwoorden aantoonbaar citeren. Daarnaast zorgen we dat AI-zoekmachines de kennisbank goed kunnen lezen.</p>
       </div>
       <div class="body">
         <div class="punten">
           <div class="pkaart breed"><div class="pnum">1</div><h3>Het format van elk artikel</h3>
-            <div class="anat">
-              <div class="el"><i>1</i><div><b>De vraag als titel en url</b><span>Letterlijk zoals zzp'ers hem stellen, één vraag per artikel.</span><em>70% van informatieve citaties heeft een titel die de vraag volgt</em></div></div>
-              <div class="el"><i>2</i><div><b>Kernantwoord in de eerste alinea</b><span>40 tot 60 woorden, stellig en zelfstandig leesbaar.</span><em>44% van citaties uit het eerste derde</em></div></div>
-              <div class="el"><i>3</i><div><b>Cijfers met bron</b><span>Rijksoverheid, UWV, CBS, Kamerstukken en eigen ledendata.</span><em>+31% statistieken, +27% bronvermelding</em></div></div>
-              <div class="el"><i>4</i><div><b>Citaat van een expert</b><span>Een herkenbare stem van Zelfstandig Ondernemers.</span><em>+41% citaten</em></div></div>
-              <div class="el"><i>5</i><div><b>Auteur, controle en datum</b><span>Naam, vakinhoudelijk gecontroleerd door, en "bijgewerkt op".</span><em>Vereist bij financiële onderwerpen</em></div></div>
-              <div class="el"><i>6</i><div><b>Tabel of rekenvoorbeeld</b><span>Bijvoorbeeld kosten van AOV, broodfonds en schenkkring naast elkaar.</span><em>Makkelijk over te nemen als feit</em></div></div>
-              <div class="el"><i>7</i><div><b>Kort en gefocust</b><span>600 tot 1.200 woorden; tussenkoppen als vragen.</span><em>Korte pagina's vaker geciteerd dan lange gidsen</em></div></div>
-              <div class="el"><i>8</i><div><b>Vervolgvragen en links</b><span>3 tot 5 vervolgvragen, link naar de pijler en de dienstpagina.</span><em>Dekt de deelvragen die AI zelf stelt</em></div></div>
+            <div class="stap">
+              <div class="st"><i>1</i><b>De vraag als titel</b><em>70% van de citaties heeft een titel die de vraag volgt</em></div>
+              <div class="st"><i>2</i><b>Het antwoord in de eerste alinea</b><em>44% van de citaties komt uit het eerste derde</em></div>
+              <div class="st"><i>3</i><b>Cijfers met een bron</b><em>+31% voor cijfers, +27% voor bronvermelding</em></div>
+              <div class="st"><i>4</i><b>Een citaat van een expert</b><em>+41% voor citaten</em></div>
+              <div class="st"><i>5</i><b>Auteur en datum van bijwerken</b><em>Vereist bij financiële onderwerpen</em></div>
+              <div class="st"><i>6</i><b>Kort, met links naar de hoofdpagina</b><em>Korte pagina's vaker geciteerd dan lange gidsen</em></div>
             </div>
-            <div class="pvraag"><span>Af te stemmen</span><b>Wie keurt de vakinhoud goed, en binnen hoeveel werkdagen na aanlevering?</b></div></div>
-          <div class="pkaart"><div class="pnum">2</div><h3>Techniek en vindbaarheid</h3><div class="ptekst">
+            <div class="pvraag"><span>Af te stemmen</span><b>Wie keurt de vakinhoud goed, en binnen hoeveel werkdagen?</b></div></div>
+          <div class="pkaart"><div class="pnum">2</div><h3>Techniek</h3><div class="ptekst">
             <ul class="lijst">
-              <li><b>AI-zoekbots toelaten</b> (OAI-SearchBot, PerplexityBot, ClaudeBot). Wie OAI-SearchBot blokkeert, verschijnt niet in ChatGPT-zoekantwoorden.</li>
-              <li><b>Bing Webmaster Tools en IndexNow.</b> ChatGPT en Copilot leunen op de Bing-index, en Bing toont sinds februari 2026 hoe vaak Copilot je citeert.</li>
-              <li><b>Tekst in de HTML.</b> De site rendert al op de server; zo houden. AI-crawlers voeren geen JavaScript uit.</li>
-              <li><b>Article- en organisatieschema</b> met auteur en datum, sitemap met wijzigingsdatum. Geen tijd in llms.txt: geen meetbaar effect.</li>
-            </ul>
-            <h3 style="font-family:Montserrat,Inter,sans-serif;font-size:15px;font-weight:800;color:var(--zo);margin:12px 0 7px;">Buiten de eigen site</h3>
-            <ul class="lijst">
-              <li><b>Video met transcript.</b> Elke aflevering van "Zo zit het" op YouTube, met transcript op de kennisbankpagina.</li>
-              <li><b>Genoemd worden</b> via bijdragen en eigen cijfers bij De Zaak, ZiPconomy en vakmedia, en op LinkedIn.</li>
+              <li><b>AI-zoekbots toelaten.</b> Wie de zoekbot van OpenAI blokkeert, verschijnt niet in ChatGPT-antwoorden.</li>
+              <li><b>Aanmelden bij Bing.</b> ChatGPT en Copilot leunen op de Bing-index.</li>
+              <li><b>Tekst direct in de pagina.</b> AI-crawlers lezen geen JavaScript; de site doet dit al goed.</li>
+              <li><b>Video's met uitgeschreven tekst.</b> Elke aflevering van "Zo zit het" krijgt een kennisbankpagina.</li>
             </ul></div>
-            <div class="pvraag"><span>Af te stemmen</span><b>Wie beheert robots.txt en de CMS-instellingen bij het huidige websitebureau?</b></div></div>
+            <div class="pvraag"><span>Af te stemmen</span><b>Wie beheert de site-instellingen bij het huidige websitebureau?</b></div></div>
         </div>
-        <div class="bron">Bronnen: AirOps (aug. 2025); Growth Memo (feb. en apr. 2026); Aggarwal e.a., GEO (KDD 2024); Google, AI-functies en je website (dec. 2025); OpenAI, overzicht crawlers; Vercel en MERJ (dec. 2024); Seer Interactive (feb. 2025); SE Ranking, 300.000 domeinen (nov. 2025); Ahrefs (dec. 2025).</div>
+        <div class="bron">Bronnen: AirOps (aug. 2025); Growth Memo (feb. en apr. 2026); Aggarwal e.a., GEO (KDD 2024); Google, AI-functies en je website (dec. 2025); OpenAI, overzicht crawlers; Vercel en MERJ (dec. 2024); Seer Interactive (feb. 2025).</div>
       </div>
       <div class="foot"><span class="fine">Flii Media &times; Zelfstandig Ondernemers &middot; vertrouwelijk</span></div>
     </div>
@@ -274,33 +306,31 @@ h1{font-family:Montserrat,Inter,sans-serif;font-weight:900;font-size:40px;letter
       <div class="topbar"></div>
       <div class="head"><img class="zo-logo" src="beeld/zo-logo.png" alt="Zelfstandig Ondernemers"><div class="kicker">Zelfstandig Ondernemers &middot; SEO en GEO</div>
         <h1>Team en werkwijze</h1>
-        <p class="intro">Eén researcher en twee redacteuren met elk een eigen set clusters. De redacteuren controleren elkaars artikelen, zodat elk stuk door een tweede paar ogen gaat voordat de vakexpert van Zelfstandig Ondernemers het goedkeurt.</p>
+        <p class="intro">Eén researcher en twee redacteuren. De redacteuren lezen elkaars artikelen na, daarna keurt de vakexpert van Zelfstandig Ondernemers ze goed.</p>
       </div>
       <div class="body">
         <div class="rollen">
-          <div class="rol"><div class="rol-k"><h4>Researcher</h4><span class="uur">Basis voor alle artikelen</span></div><div class="wat">Bepaalt wat we schrijven en meet wat het oplevert</div>
-            <ul><li>Vaste set van 100 vragen die elke maand in ChatGPT, Google AI-modus, Perplexity en Copilot wordt gemeten</li><li>Kiest de vragen per maand uit zoekdata, FAQ en AI-voorstellen</li><li>Levert per artikel een briefing met bronnen, cijfers en een citaatvraag</li><li>Volgt wet- en regelgeving (BAZ, DBA, jaarruimte) en meldt wat bijgewerkt moet</li></ul></div>
-          <div class="rol"><div class="rol-k"><h4>Redacteur 1</h4><span class="uur">3 tot 4 per maand</span></div><div class="wat">Clusters A, B en C: verplichte AOV, alternatieven, kosten en dekking</div>
-            <ul><li>Schrijft de pijlers en vraagartikelen in het vaste format</li><li>Houdt de pijler verplichte AOV maandelijks actueel</li><li>Controleert de artikelen van redacteur 2</li><li>Maakt van elk artikel een LinkedIn-post</li></ul></div>
-          <div class="rol"><div class="rol-k"><h4>Redacteur 2</h4><span class="uur">3 tot 4 per maand</span></div><div class="wat">Clusters D, E en F: ziek zonder vangnet, pensioen en sparen, regels</div>
-            <ul><li>Schrijft de pijlers en vraagartikelen in het vaste format</li><li>Schoont de bestaande 50 artikelen op, twee per maand</li><li>Controleert de artikelen van redacteur 1</li><li>Zet de transcripten van "Zo zit het" om naar kennisbankpagina's</li></ul></div>
+          <div class="rol"><h4>Researcher</h4><div class="wat">Bepaalt wat we schrijven en meet het resultaat</div>
+            <ul><li>Kiest elke maand de vragen</li><li>Levert per artikel bronnen en cijfers</li><li>Meet maandelijks de AI-citaties</li></ul></div>
+          <div class="rol"><h4>Redacteur 1</h4><div class="wat">Verplichte AOV, alternatieven, kosten</div>
+            <ul><li>Schrijft 3 tot 4 artikelen per maand</li><li>Houdt de verplichte AOV actueel</li><li>Leest de artikelen van redacteur 2 na</li></ul></div>
+          <div class="rol"><h4>Redacteur 2</h4><div class="wat">Pensioen, ziek zonder vangnet, regels</div>
+            <ul><li>Schrijft 3 tot 4 artikelen per maand</li><li>Werkt bestaande artikelen bij</li><li>Leest de artikelen van redacteur 1 na</li></ul></div>
         </div>
         <div class="wk">
           <div class="wk-h"></div><div class="wk-h">Week 1</div><div class="wk-h">Week 2</div><div class="wk-h">Week 3</div><div class="wk-h">Week 4</div>
           <div class="wk-l"><b>Researcher</b></div>
-          <div class="wi vol">Meting en vragenselectie</div><div class="wi mid">Briefings en bronnen</div><div class="wi licht">Actualiteit volgen</div><div class="wi oranje">Maandrapport AI-citaties</div>
+          <div class="wi vol">Vragen kiezen</div><div class="wi mid">Bronnen en cijfers</div><div class="wi licht">Actualiteit volgen</div><div class="wi oranje">Maandmeting</div>
           <div class="wk-l"><b>Redacteuren</b></div>
-          <div class="wi licht">Bijwerken bestaande artikelen</div><div class="wi vol">Schrijven, 2 per redacteur</div><div class="wi vol">Schrijven, 2 per redacteur</div><div class="wi mid">Kruiscontrole</div>
-          <div class="wk-l"><b>Vakexpert ZO</b></div>
-          <div class="wi licht" style="visibility:hidden"></div><div class="wi licht" style="visibility:hidden"></div><div class="wi mid">Goedkeuring</div><div class="wi mid">Goedkeuring</div>
-          <div class="wk-l"><b>Publicatie</b><span style="font-size:10px;color:var(--muted)">uit de vorige cyclus</span></div>
+          <div class="wi licht">Bijwerken</div><div class="wi vol">Schrijven</div><div class="wi vol">Schrijven</div><div class="wi mid">Nalezen en goedkeuren</div>
+          <div class="wk-l"><b>Publicatie</b></div>
           <div class="wi oranje">2 artikelen</div><div class="wi oranje">2 artikelen</div><div class="wi oranje">2 artikelen</div><div class="wi oranje">1 tot 2 artikelen</div>
         </div>
         <div class="cols ev4">
-          <div class="kpi"><div class="l">Productie</div><div class="v">6 tot 8</div><div class="s">nieuwe artikelen per maand, plus <b>2 bijgewerkt</b></div></div>
-          <div class="kpi"><div class="l">AI-citaties</div><div class="v">100 vragen</div><div class="s">maandelijks gemeten per platform; <b>nulmeting december 2026</b></div></div>
-          <div class="kpi"><div class="l">Vindbaarheid</div><div class="v">Top 10</div><div class="s">voor de pijlervragen, gemeten in <b>Search Console en Bing</b></div></div>
-          <div class="kpi accent"><div class="l">Instroom</div><div class="v">Aanmeldingen</div><div class="s">via AI-verkeer (chatgpt.com, perplexity.ai, Copilot, Gemini) in <b>GA4</b></div></div>
+          <div class="kpi"><div class="l">Productie</div><div class="v">6 tot 8</div><div class="s">artikelen per maand</div></div>
+          <div class="kpi"><div class="l">AI-citaties</div><div class="v">100 vragen</div><div class="s">maandelijks gemeten, nulmeting december 2026</div></div>
+          <div class="kpi"><div class="l">Vindbaarheid</div><div class="v">Top 10</div><div class="s">in Google en Bing voor de hoofdpagina's</div></div>
+          <div class="kpi accent"><div class="l">Resultaat</div><div class="v">Aanmeldingen</div><div class="s">via verkeer uit AI-tools</div></div>
         </div>
       </div>
       <div class="foot"><span class="fine">Flii Media &times; Zelfstandig Ondernemers &middot; vertrouwelijk</span></div>
