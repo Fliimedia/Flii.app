@@ -296,6 +296,42 @@ h1{font-family:Montserrat,Inter,sans-serif;font-weight:900;font-size:40px;letter
 .cv-rechts{display:flex;align-items:center;gap:16px;}
 .lg-fck{height:58px;width:auto;display:block;}
 .fm-wit{position:absolute;right:30px;bottom:34px;height:40px;width:auto;z-index:3;}
+/* versie 8 */
+.ai-zin{font-size:24px;}
+.ai-logos{position:absolute;left:44px;right:44px;top:470px;display:grid;grid-template-columns:1fr 1fr;gap:10px;z-index:2;}
+.ai-logos span{display:flex;align-items:center;gap:10px;background:#fff;border-radius:10px;padding:11px 14px;font-size:14px;font-weight:700;color:var(--ink);}
+.ai-logos img{width:24px;height:24px;display:block;}
+.page.cover.zo .cv-f .v{font-size:13.5px;}
+.page.cover.zo .cv-bij{font-size:11.5px;display:block;margin-top:3px;line-height:1.4;}
+.clus.k{grid-template-columns:repeat(6,1fr);grid-auto-rows:auto;flex:0 0 auto;gap:10px;}
+.clus.k .cl{padding:12px 13px 10px;}
+.clus.k .cl h4{font-size:14px;margin:7px 0 4px;line-height:1.2;}
+.clus.k .cl li{font-size:11px;padding:5px 0 5px 12px;line-height:1.35;}
+.clus.k .cl li::before{top:5px;font-size:9px;}
+.clus.k .prio{font-size:8px;padding:2px 7px;}
+.brf{margin-top:12px;background:var(--zo);border-radius:11px;padding:14px 16px 16px;flex:1;display:flex;flex-direction:column;}
+.brf-l{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--zo-o);margin-bottom:10px;}
+.brf-g{display:grid;grid-template-columns:1.45fr 1fr 1fr;gap:10px;flex:1;}
+.bk{background:#fff;border-radius:9px;padding:12px 16px;}
+.bk h5{font-family:Montserrat,Inter,sans-serif;font-size:14px;font-weight:800;color:var(--zo);margin:0 0 6px;}
+.bk ol,.bk ul{margin:0;padding:0;list-style:none;}
+.bk ol{counter-reset:n;}
+.bk li{position:relative;font-size:12px;line-height:1.4;padding:5px 0 5px 22px;border-top:1px solid var(--line);}
+.bk li:first-child{border-top:0;}
+.bk ol li::before{counter-increment:n;content:counter(n);position:absolute;left:0;top:5px;width:16px;height:16px;border-radius:50%;background:var(--zo);color:#fff;font-size:9.5px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.bk ul li{padding-left:14px;}
+.bk ul li::before{content:"";position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:var(--zo-o);}
+.bk li em{font-style:normal;display:inline-block;font-size:9.5px;font-weight:700;color:var(--zo-d);background:var(--zo-ol);border-radius:4px;padding:1px 6px;margin-left:4px;}
+.cms{margin-top:12px;display:flex;align-items:center;gap:10px;background:var(--zo-ol);border-radius:9px;padding:11px 16px;font-size:13px;}
+.cms span{font-size:9.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);}
+.cms b{color:var(--zo);margin-right:18px;}
+.bk li{font-size:13px;padding:8px 0 8px 22px;}
+.bk ol li::before{top:9px;}
+.bk ul li{padding-left:14px;}
+.bk ul li::before{top:15px;}
+.bk h5{font-size:15px;margin-bottom:8px;}
+.ai-zin{top:84px;}
+.ai-kaart{top:200px;}
 </style>
 </head>
 <body>
@@ -305,13 +341,14 @@ h1{font-family:Montserrat,Inter,sans-serif;font-weight:900;font-size:40px;letter
   <section class="sheet actief">
     <div class="page cover zo">
       <div class="zo-paneel" role="img" aria-label="Voorbeeld van een AI-antwoord dat Zelfstandig Ondernemers als bron noemt">
-        <img class="fm-wit" src="beeld/fm-logo-wit.png" alt="Flii Media"><div class="ai-zin">De vraag gaat naar AI.<br><span>Het antwoord komt van ons.</span></div>
+        <img class="fm-wit" src="beeld/fm-logo-wit.png" alt="Flii Media"><div class="ai-zin">Generative Engine Optimization:<br><span>vindbaar zijn in de chatbots</span></div>
         <div class="ai-kaart">
           <div class="ai-v"><span class="ai-vraag">Wanneer gaat de verplichte AOV voor zzp'ers in?</span></div>
           <div class="ai-l">AI-antwoord</div>
           <p class="ai-ant">Het wetsvoorstel ligt bij de Tweede Kamer (Kamerstuk 36912). Een startdatum is nog niet vastgesteld; 1 januari 2030 is op zijn vroegst. De premie wordt 5,4% van de winst, met een maximum.</p>
           <span class="ai-bron"><b>1</b>zelfstandigondernemers.nl</span>
         </div>
+        <div class="ai-logos"><span><img src="beeld/chatgpt.svg" alt="">ChatGPT</span><span><img src="beeld/gemini.svg" alt="">Gemini</span><span><img src="beeld/claude.svg" alt="">Claude</span><span><img src="beeld/copilot.svg" alt="">Copilot</span></div>
       </div>
       <div class="topbar"></div>
       <div class="cv-top">
@@ -327,8 +364,7 @@ h1{font-family:Montserrat,Inter,sans-serif;font-weight:900;font-size:40px;letter
         <div><span class="kl">Doelstelling</span><span class="kt">Het aantal AI-citaties en de organische vindbaarheid van de kennisbank drastisch verhogen, op de onderwerpen waar zzp'ers een vangnet zoeken.</span></div>
         <div class="kv">6 tot 8<em>artikelen per maand</em></div>
       </div>
-      <div class="cv-feiten"><div class="cv-f"><div class="l">Zichtbaar in</div><div class="v">Google, AI-modus<br><span class="cv-bij">ChatGPT, Perplexity, Copilot</span></div></div><div class="cv-f"><div class="l">Start</div><div class="v">November 2026<br><span class="cv-bij">zoekwoordonderzoek en eerste artikelen</span></div></div><div class="cv-f"><div class="l">Team</div><div class="v">1 researcher<br><span class="cv-bij">2 redacteuren</span></div></div><div class="cv-f"><div class="l">Contact</div><div class="v">Sten Bossong<br><span class="cv-bij">Flii Media</span></div></div></div>
-      <div class="cv-inhoud"><div class="cv-inhoud-l">In dit document</div><div class="cv-inhoud-r"><span><i>01</i>Onderbouwing</span><span><i>02</i>Onderwerpen en artikel</span><span><i>03</i>Team en werkwijze</span><span><i>04</i>Resultaten</span></div></div>
+      <div class="cv-feiten"><div class="cv-f"><div class="l">Zichtbaar in</div><div class="v">ChatGPT, Gemini, Claude en Copilot<br><span class="cv-bij">en in Google AI Overviews en AI-modus</span></div></div><div class="cv-f"><div class="l">Start</div><div class="v">1 november 2026<br><span class="cv-bij">eerst de 20 zoekwoorden, daarna 6 tot 8 artikelen per maand</span></div></div><div class="cv-f"><div class="l">Team</div><div class="v">Ysee, Vincent en Wendy<br><span class="cv-bij">researcher en twee redacteuren, met de vakexperts van ZO</span></div></div><div class="cv-f"><div class="l">Contact</div><div class="v">Sten Bossong<br><span class="cv-bij">projectleider, Flii Media</span></div></div></div>
       <div class="foot"><span class="fine">Flii Media &times; Zelfstandig Ondernemers &middot; vertrouwelijk</span></div>
     </div>
   </section>
@@ -396,15 +432,22 @@ h1{font-family:Montserrat,Inter,sans-serif;font-weight:900;font-size:40px;letter
           <div class="cl"><span class="prio p2">Daarna</span><h4>Regels en zekerheid</h4>
             <ul><li>Wat verandert er met de Wet DBA?</li><li>Wanneer is een bv slimmer?</li></ul></div>
         </div>
-        <div class="fmt">
-          <div class="fmt-l">Het format van elk artikel</div>
-          <div class="fmt-r">
-            <div class="st"><i>1</i><b>De vraag als titel</b><em>70% van de citaties heeft een titel die de vraag volgt</em></div>
-            <div class="st"><i>2</i><b>Antwoord in de eerste alinea</b><em>44% van de citaties uit het eerste derde</em></div>
-            <div class="st"><i>3</i><b>Cijfers met een bron</b><em>+31% cijfers, +27% bronvermelding</em></div>
-            <div class="st"><i>4</i><b>Citaat van een expert</b><em>+41% citaten</em></div>
-            <div class="st"><i>5</i><b>Auteur en datum</b><em>Vereist bij financiële onderwerpen</em></div>
-            <div class="st"><i>6</i><b>Kort, met links</b><em>Korte pagina's vaker geciteerd</em></div>
+        <div class="brf">
+          <div class="brf-l">Briefing voor elk artikel</div>
+          <div class="brf-g">
+            <div class="bk"><h5>Opbouw</h5>
+              <ol>
+                <li><b>Titel:</b> de vraag, letterlijk zoals zzp'ers hem stellen <em>70% van de citaties</em></li>
+                <li><b>Kernantwoord:</b> 40 tot 60 woorden direct onder de titel, zelfstandig leesbaar <em>44% uit het eerste derde</em></li>
+                <li><b>3 tot 5 paragrafen</b> met een vraag als tussenkop, elk 80 tot 150 woorden</li>
+                <li><b>Tabel of rekenvoorbeeld</b>, bijvoorbeeld kosten naast elkaar</li>
+                <li><b>Citaat</b> van de vakexpert, met naam <em>+41%</em></li>
+                <li><b>Afsluiting:</b> 3 vervolgvragen en links naar de hoofdpagina en de dienst</li>
+              </ol></div>
+            <div class="bk"><h5>Zoekwoorden</h5>
+              <ul><li>Eén hoofdzoekwoord per artikel, uit de lijst van Ysee</li><li>In de titel, de url, de eerste zin en één tussenkop</li><li>2 tot 3 verwante zoekwoorden in de tussenkoppen</li><li>Natuurlijk schrijven, niet herhalen om het herhalen</li></ul></div>
+            <div class="bk"><h5>Lengte en stijl</h5>
+              <ul><li>600 tot maximaal 1.000 woorden</li><li>Korte, stellige zinnen op B1-niveau</li><li>Elk cijfer met bron: Rijksoverheid, UWV, CBS, Kamerstukken of eigen data <em>+31% / +27%</em></li><li>Naam van de redacteur en datum van publicatie</li></ul></div>
           </div>
         </div>
         <div class="bron">Bronnen: AirOps (aug. 2025); Growth Memo (feb. en apr. 2026); Aggarwal e.a., GEO (KDD 2024); Google, AI-functies en je website (dec. 2025).</div>
@@ -418,7 +461,7 @@ h1{font-family:Montserrat,Inter,sans-serif;font-weight:900;font-size:40px;letter
       <div class="topbar"></div>
       <div class="head"><img class="zo-logo" src="beeld/zo-logo.png" alt="Zelfstandig Ondernemers"><div class="kicker">Zelfstandig Ondernemers &middot; SEO en GEO</div>
         <h1>Team en werkwijze</h1>
-        <p class="intro">Ysee doet het onderzoek, Vincent en Wendy schrijven en lezen elkaars artikelen na, en de vakexperts van Zelfstandig Ondernemers leveren de citaten en kunnen artikelen afkeuren. Per teamlid wat er elke maand gebeurt, vanaf 1 november 2026.</p>
+        <p class="intro">Per teamlid wat er elke maand gebeurt, vanaf 1 november 2026.</p>
       </div>
       <div class="body">
         <div class="team">
@@ -426,16 +469,17 @@ h1{font-family:Montserrat,Inter,sans-serif;font-weight:900;font-size:40px;letter
             <div class="start"><b>Start, november</b>Brengt de 20 belangrijkste zoekwoorden in kaart</div><div class="em">Elke maand</div><ul><li>Koppelt elk artikel aan een zoekwoord, zoals AI het opzoekt</li><li>Verzamelt per artikel bronnen en cijfers</li><li>Houdt de resultaten bij in het dashboard</li></ul>
             <div class="lv"><span>Levert per maand</span><b>6 tot 8 briefings en een maandoverzicht</b></div></div>
           <div class="tl"><div class="rol-t"><img class="ft" src="beeld/vincent.png" alt="Vincent"><div><span class="rl">Redacteur</span><h4>Vincent</h4></div></div>
-            <div class="em">Elke maand</div><ul><li>Schrijft artikelen over verplichte AOV, alternatieven en kosten</li><li>Leest de artikelen van Wendy na</li><li>Publiceert verspreid over de maand</li></ul>
+            <div class="em">Elke maand</div><ul><li>Schrijft artikelen over verplichte AOV, alternatieven en kosten</li><li>Haalt per artikel een citaat op bij Zelfstandig Ondernemers</li><li>Leest de artikelen van Wendy na</li><li>Publiceert verspreid over de maand via het CMS</li></ul>
             <div class="lv"><span>Levert per maand</span><b>3 tot 4 artikelen</b></div></div>
           <div class="tl"><div class="rol-t"><img class="ft" src="beeld/wendy.png" alt="Wendy"><div><span class="rl">Redacteur</span><h4>Wendy</h4></div></div>
-            <div class="em">Elke maand</div><ul><li>Schrijft artikelen over pensioen, ziek zonder vangnet en regels</li><li>Leest de artikelen van Vincent na</li><li>Publiceert verspreid over de maand</li></ul>
+            <div class="em">Elke maand</div><ul><li>Schrijft artikelen over pensioen, ziek zonder vangnet en regels</li><li>Haalt per artikel een citaat op bij Zelfstandig Ondernemers</li><li>Leest de artikelen van Vincent na</li><li>Publiceert verspreid over de maand via het CMS</li></ul>
             <div class="lv"><span>Levert per maand</span><b>3 tot 4 artikelen</b></div></div>
           <div class="tl zo-rol"><div class="rol-t"><span class="ft2"><img class="ft" src="beeld/expert1.png" alt=""><img class="ft" src="beeld/expert2.png" alt=""></span><div><span class="rl">Vakexperts</span><h4>Zelfstandig Ondernemers</h4></div></div>
             <div class="em">Elke maand</div><ul><li>Geven per artikel een citaat</li><li>Staan met naam bij het citaat</li><li>Kunnen artikelen afkeuren</li></ul>
             <div class="lv"><span>Levert per maand</span><b>6 tot 8 citaten</b></div></div>
         </div>
       </div>
+        <div class="cms"><span>Publiceren</span><b>cms.zelfstandigondernemers.nl</b><span>Login</span><b>info@fcklap.nl</b></div>
       <div class="foot"><span class="fine">Flii Media &times; Zelfstandig Ondernemers &middot; vertrouwelijk</span></div>
     </div>
   </section>
