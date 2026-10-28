@@ -350,6 +350,40 @@ h1{font-family:Montserrat,Inter,sans-serif;font-weight:900;font-size:40px;letter
 .ev .kpi .bk{background:none;border-radius:0;padding:0;}
 .tl li{font-size:16px;padding:12px 0 12px 17px;}
 .tl li::before{top:20px;}
+/* versie 10: onderbouwing als verhaal */
+.ob{width:100%;border-collapse:separate;border-spacing:0 8px;margin-top:-8px;}
+.ob thead th{background:none;padding:0 18px 2px;font-size:10px;letter-spacing:.14em;color:var(--zo);text-align:left;border-radius:0;}
+.ob thead th:nth-child(2){color:var(--muted);}
+.ob thead th:nth-child(3){color:var(--zo-o);}
+.ob td{background:var(--wash);padding:13px 18px;vertical-align:middle;font-size:13.5px;line-height:1.4;border:0;}
+.ob td.o1{width:40%;border-radius:11px 0 0 11px;}
+.ob td.o2{width:30%;color:var(--muted);border-left:2px solid #fff;}
+.ob td.o3{width:30%;font-weight:600;color:var(--zo);background:var(--wash-pink);border-radius:0 11px 11px 0;border-left:2px solid #fff;}
+.ov{float:left;width:94px;font-family:Montserrat,Inter,sans-serif;font-weight:900;font-size:32px;line-height:1;color:var(--zo);margin-top:2px;}
+.o1 b{display:block;font-size:13.5px;color:var(--ink);}
+.o1 em{display:block;font-style:normal;font-size:12px;color:var(--muted);margin-top:2px;}
+.wn{display:flex;align-items:stretch;gap:10px;margin-top:6px;}
+.wn-l{flex:0 0 auto;display:flex;align-items:center;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--zo-o);padding-right:4px;}
+.wn > div{flex:1;border:1.5px solid var(--line);border-radius:10px;padding:10px 14px;font-size:12.5px;color:var(--muted);}
+.wn > div b{display:block;font-family:Montserrat,Inter,sans-serif;font-weight:800;font-size:15px;color:var(--zo);}
+.afst{display:flex;gap:10px;margin-top:10px;}
+.afst > div{flex:1;background:var(--zo-d);border-radius:10px;padding:11px 16px;color:#fff;}
+.afst span{display:block;font-size:9px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--zo-o);}
+.afst b{display:block;font-size:13px;font-weight:500;margin-top:3px;}
+.ob{border-spacing:0 10px;}
+.ob td{padding:21px 20px;font-size:14.5px;}
+.ov{width:122px;font-size:38px;}
+.o1 b{font-size:15px;}
+.o1 em{font-size:12.5px;}
+.wn{margin-top:10px;}
+.wn > div{padding:13px 16px;font-size:13px;}
+.wn > div b{font-size:17px;}
+.afst{margin-top:14px;}
+.afst > div{padding:14px 18px;}
+.afst b{font-size:14px;}
+.o1g{display:flex;align-items:center;gap:16px;}
+.o1g .ov{float:none;flex:0 0 118px;width:auto;margin:0;}
+.ob td{padding:17px 20px;}
 </style>
 </head>
 <body>
@@ -392,36 +426,19 @@ h1{font-family:Montserrat,Inter,sans-serif;font-weight:900;font-size:40px;letter
       <div class="topbar"></div>
       <div class="head"><img class="zo-logo" src="beeld/zo-logo.png" alt="Zelfstandig Ondernemers"><div class="kicker">Zelfstandig Ondernemers &middot; SEO en GEO</div>
         <h1>Onderbouwing</h1>
-        <p class="intro">Wat AI citeert, waar de kennisbank staat en waar de kans ligt.</p>
+        <p class="intro">Wat AI citeert, hoe de kennisbank daar nu op scoort, en wat we daarom doen.</p>
       </div>
       <div class="body">
-        <div class="ev">
-          <div class="kpi"><div class="l">Citaten, cijfers, bronnen</div><div class="v">+41%</div><div class="s">zichtbaarheid door <b>expertcitaten</b>; cijfers +31%, bronnen +27%</div><span class="bk">GEO-studie Princeton, KDD 2024</span></div>
-          <div class="kpi"><div class="l">Antwoord eerst</div><div class="v">44%</div><div class="s">van de citaties komt uit het <b>eerste derde</b> van een pagina</div><span class="bk">Growth Memo, 2026</span></div>
-          <div class="kpi"><div class="l">Actualiteit</div><div class="v">70%</div><div class="s">van de geciteerde pagina's is <b>minder dan een jaar oud</b></div><span class="bk">AirOps, 2025</span></div>
-          <div class="kpi accent"><div class="l">Genoemd worden</div><div class="v">0,7</div><div class="s">correlatie tussen <b>merkvermeldingen</b> en AI-zichtbaarheid</div><span class="bk">Ahrefs, 75.000 merken, 2025</span></div>
+        <table class="ob">
+          <thead><tr><th>Wat AI citeert</th><th>De kennisbank nu</th><th>Wat we daarom doen</th></tr></thead>
+          <tbody><tr><td class="o1"><div class="o1g"><span class="ov">+41%</span><div><b>Expertcitaten, cijfers en bronnen</b><em>meer zichtbaarheid door citaten; cijfers +31%, bronnen +27%</em></div></div></td><td class="o2">Geen citaten, geen bronnen, geen auteur</td><td class="o3">Elk artikel een expertcitaat en cijfers met bron</td></tr><tr><td class="o1"><div class="o1g"><span class="ov">44%</span><div><b>Antwoord eerst</b><em>van de citaties komt uit het eerste derde van een pagina</em></div></div></td><td class="o2">50 korte artikelen zonder vaste opbouw</td><td class="o3">Kernantwoord van 40 tot 60 woorden bovenaan</td></tr><tr><td class="o1"><div class="o1g"><span class="ov">70%</span><div><b>Actualiteit</b><em>van de geciteerde pagina's is minder dan een jaar oud</em></div></div></td><td class="o2">Verouderd, zoals een blog met 2027 als startjaar van de verplichte AOV</td><td class="o3">8 nieuwe, gedateerde artikelen per maand</td></tr><tr><td class="o1"><div class="o1g"><span class="ov">0,7</span><div><b>Genoemd worden</b><em>correlatie tussen merkvermeldingen en AI-zichtbaarheid</em></div></div></td><td class="o2">Niet bovenaan op "verplichte aov"; eigen producten nauwelijks behandeld</td><td class="o3">Eigen cijfers die anderen overnemen, en artikelen over de eigen producten</td></tr></tbody>
+        </table>
+        <div class="wn"><span class="wn-l">Waarom nu</span>
+          <div><b>Verplichte AOV</b>startdatum onzeker, dus veel gezocht</div>
+          <div><b>35% meer klikken</b>voor merken die AI noemt</div>
+          <div><b>44,7%</b>van de Nederlanders gebruikt AI</div>
         </div>
-        <div class="rij">
-          <div class="punten">
-            <div class="pkaart"><div class="pnum">1</div><h3>Huidige situatie</h3><div class="ptekst">
-              <ul class="lijst">
-                <li><b>50 artikelen</b>, zonder thema's en meestal korter dan 250 woorden</li>
-                <li><b>Geen auteur, datum of bronnen</b>, terwijl AI daar bij financiële onderwerpen op let</li>
-                <li><b>Verouderd en dubbel</b>, zoals een blog met 2027 als startjaar van de verplichte AOV</li>
-                <li><b>Eigen producten</b> als schenkkring en pensioen nauwelijks behandeld</li>
-                <li><b>Niet bovenaan</b> op "verplichte aov" en "pensioen zzp"; daar staan Knab, De Zaak en ZZP Nederland</li>
-              </ul></div>
-              <div class="pvraag"><span>Af te stemmen</span><b>Wie van Zelfstandig Ondernemers levert de expertcitaten?</b></div></div>
-            <div class="pkaart"><div class="pnum">2</div><h3>De kans</h3><div class="ptekst">
-              <ul class="lijst">
-                <li><b>Verplichte AOV:</b> de startdatum is onzeker, dus er wordt veel gezocht. Actuele uitleg met bronnen wordt geciteerd.</li>
-                <li><b>Eigen cijfers:</b> inleg, uitkeringen en peilingen heeft niemand anders.</li>
-                <li><b>Geciteerd worden loont:</b> 35% meer organische klikken.</li>
-                <li><b>Het publiek is er al:</b> 44,7% van de Nederlanders gebruikt AI.</li>
-              </ul></div>
-              <div class="pvraag"><span>Af te stemmen</span><b>Mogen we eigen ledendata publiceren als citeerbare cijfers?</b></div></div>
-          </div>
-        </div>
+        <div class="afst"><div><span>Af te stemmen</span><b>Wie van Zelfstandig Ondernemers levert de expertcitaten?</b></div><div><span>Af te stemmen</span><b>Mogen we eigen ledendata publiceren als citeerbare cijfers?</b></div></div>
         <div class="bron">Bronnen: Aggarwal e.a., GEO (KDD 2024); Growth Memo (feb. 2026); AirOps (aug. 2025); Ahrefs (jul. en dec. 2025); Seer Interactive (nov. 2025); Eurostat (2025); Google (okt. 2025); eigen analyse kennisbank en zoekresultaten, 27 oktober 2026.</div>
       </div>
       <div class="foot"><span class="fine">Flii Media &times; Zelfstandig Ondernemers &middot; vertrouwelijk</span></div>
@@ -432,7 +449,7 @@ h1{font-family:Montserrat,Inter,sans-serif;font-weight:900;font-size:40px;letter
     <div class="page">
       <div class="topbar"></div>
       <div class="head"><img class="zo-logo" src="beeld/zo-logo.png" alt="Zelfstandig Ondernemers"><div class="kicker">Zelfstandig Ondernemers &middot; SEO en GEO</div>
-        <h1>Onderwerpen en artikel</h1>
+        <h1>Over welke onderwerpen schrijven we, en hoe?</h1>
         <p class="intro">Zes onderwerpen, elk met een hoofdpagina en korte vraagartikelen. 8 artikelen per maand, 96 per jaar.</p>
       </div>
       <div class="body">
@@ -557,7 +574,7 @@ h1{font-family:Montserrat,Inter,sans-serif;font-weight:900;font-size:40px;letter
 
 <nav class="nav-deck">
   <button class="nd-pijl" id="nd-vorige" aria-label="Vorige"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
-  <div class="nd-tabs"><button class="nd-tab actief">Cover</button><button class="nd-tab">Onderbouwing</button><button class="nd-tab">Onderwerpen en artikel</button><button class="nd-tab">Team en werkwijze</button><button class="nd-tab">Resultaten</button></div>
+  <div class="nd-tabs"><button class="nd-tab actief">Cover</button><button class="nd-tab">Onderbouwing</button><button class="nd-tab">Onderwerpen</button><button class="nd-tab">Team en werkwijze</button><button class="nd-tab">Resultaten</button></div>
   <span class="nd-tel" id="nd-tel">1 / 5</span>
   <button class="nd-pijl" id="nd-volgende" aria-label="Volgende"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
 </nav>
