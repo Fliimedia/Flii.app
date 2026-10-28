@@ -142,10 +142,16 @@ function close() {
   timer = setTimeout(() => { panel.hidden = true; }, reduce ? 0 : 420);
   openBtn.focus({ preventScroll: true });
 }
-openBtn.addEventListener("click", open);
+openBtn.addEventListener("click", () => {
+  if (reduce) return open();
+  if (openBtn.classList.contains("go")) return;
+  // swipe right, arrow turns up, small hop - then the form unfolds
+  openBtn.classList.add("go");
+  setTimeout(() => { open(); setTimeout(() => openBtn.classList.remove("go"), 350); }, 640);
+});
 document.querySelector(".menu-contact").addEventListener("click", (e) => { e.stopPropagation(); open(); });
 panel.querySelector(".close").addEventListener("click", close);
-addEventListener("keydown", (e) => { if (e.key !== "Escape") return; if (!prefs.hidden) prefsClose(); else close(); });
+addEventListener("keydown", (e) => { if (e.key !== "Escape" || !document.getElementById("cc").hidden) return; if (!prefs.hidden) prefsClose(); else close(); });
 document.addEventListener("pointerdown", (e) => { if (cta.dataset.state === "open" && !cta.contains(e.target)) close(); });
 
 form.addEventListener("submit", async (e) => {
@@ -215,7 +221,17 @@ prefs.querySelector(".prefs-save").addEventListener("click", () => {
 
 // Kleine cookiemelding: alleen zolang er nog geen keuze is opgeslagen.
 const cc = document.getElementById("cc");
-function hideCc() { cc.hidden = true; }
-if (!Object.keys(readPrefs()).length) (cc.hidden = false);
+const ccBack = document.getElementById("cc-back");
+function hideCc() { cc.hidden = true; ccBack.hidden = true; }
+// Eerste bezoek: een keuze is verplicht voordat de site bruikbaar is.
+if (!Object.keys(readPrefs()).length) {
+  cc.hidden = false; ccBack.hidden = false;
+  cc.querySelector(".cc-yes").focus({ preventScroll: true });
+  cc.addEventListener("keydown", (e) => {
+    if (e.key !== "Tab") return;
+    const b = [...cc.querySelectorAll("button")], i = b.indexOf(document.activeElement);
+    e.preventDefault(); b[(i + (e.shiftKey ? b.length - 1 : 1)) % b.length].focus();
+  });
+}
 cc.querySelector(".cc-yes").addEventListener("click", () => { saveChoice(true, true); hideCc(); });
 cc.querySelector(".cc-no").addEventListener("click", () => { saveChoice(true, false); hideCc(); });
