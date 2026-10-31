@@ -277,26 +277,16 @@ body{padding:0 !important;background:#F4F4F7;min-height:100vh;
 .tijdlijn{flex:0 1 auto;}
 
 
-/* logo's: OneLane linksboven, Flii Media rechtsonder */
-.lg-klant{position:absolute;top:28px;left:46px;height:24px;width:auto;}
-.page .head{padding-top:74px;}
-.page .kop-ic{top:74px;}
-.foot{align-items:center;}
-.lg-fm-foot{height:22px;width:auto;display:block;}
-/* doelgroepkaarten op de media-inzet */
-.doelkaart{flex:1;display:flex;flex-direction:column;}
-.doel-kop{padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:4px;}
-.doel-n{display:block;font-size:19px;font-weight:800;letter-spacing:-.5px;color:var(--ink);}
-.doel-t{display:block;font-size:13.5px;line-height:1.55;color:var(--muted);margin-top:4px;}
-.doelkaart .spec-row{padding:9px 0;}
-.doelkaart .spec-l b{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--pink);}
-.doelkaart .spec-l span{font-size:14px;color:var(--ink);margin-top:3px;}
-.punten{flex:0 0 auto;}
-.punten .pkaart{flex:1;}
-.tbl th.r{text-align:right;}
-.tbl td{font-size:12.5px;}
-.punten .ptekst p{font-size:14px;}
-.card .tick{font-size:14px;padding:6px 0;}
+.lg-klant{position:absolute;right:0;top:34px;height:26px;width:auto;}
+.body{padding-top:14px;}
+.card .klein{font-size:13.5px !important;line-height:1.6;}
+.card .tick{font-size:13.5px;padding:7px 0;}
+.card .bon-sec{margin-top:18px;font-size:10.5px;}
+.card .bon-row{font-size:13px;padding:9px 0;}
+.card .eyebrow{font-size:10.5px;}
+.ptekst p{font-size:14px;line-height:1.7;}
+.pkaart h3{font-size:21px;}
+.pnum{width:28px;height:28px;font-size:14px;}
 </style>
 </head>
 <body>
@@ -305,126 +295,132 @@ body{padding:0 !important;background:#F4F4F7;min-height:100vh;
   <div class="topbar"></div>
   <img class="lg-klant" src="/assets/logos/onelane-2x.webp" alt="OneLane">
   <div class="head">
-    <div class="kicker">FYNCE &middot; Mediaplan &middot; 4</div>
+    <div class="kicker">FYNCE &middot; Mediaplan &middot; 1</div>
     <h1>Media-inzet</h1>
-    <div class="kop-ic"><svg viewBox="0 0 24 24"><path d="M4 18V9"/><path d="M10 18V5"/><path d="M16 18v-6"/><path d="M3 21h18"/></svg></div>
+    <p class="intro">Verkeer naar fynce.onelane.nl genereren en interesse opbouwen. Per doelgroep de inzet, de boodschap en de KPI&rsquo;s.</p>
   </div>
   <div class="body">
-    <div class="cols">
-      <div class="card doelkaart">
-        <div class="doel-kop"><span class="doel-n">Bedrijven</span><span class="doel-t">Verkeer naar fynce.onelane.nl genereren en interesse opbouwen.</span></div>
-        <div class="rows">
-          <div class="spec-row"><div class="spec-l"><b>Kanalen</b><span>Meta, LinkedIn, SEA, Display en e-mail (CRM).</span></div></div>
-          <div class="spec-row"><div class="spec-l"><b>Campagnes</b><span>Single image advertenties met 3 hooks en 3 USP-variaties.</span></div></div>
-          <div class="spec-row"><div class="spec-l"><b>Hooks</b><span>&lsquo;Financieel klusje?&rsquo;, &lsquo;Hulp nodig bij bedrijfsfinanci&euml;n?&rsquo;</span></div></div>
-          <div class="spec-row"><div class="spec-l"><b>USP&rsquo;s</b><span>&lsquo;Kies uit duizenden freelancers, zonder commissie.&rsquo;</span></div></div>
-          <div class="spec-row"><div class="spec-l"><b>Doelgroepen</b><span>Breed en remarketing.</span></div></div>
-          <div class="spec-row"><div class="spec-l"><b>KPI&rsquo;s</b><span>Bezoekers, bezoekerskwaliteit en aanmeldingen.</span></div></div>
-        </div>
+    <div class="cols grow">
+      <div class="card" style="flex:1">
+        <div class="eyebrow"><span><span class="dot"></span>Bedrijven</span><em>Verkeer en interesse</em></div>
+        <div class="bon-sec">Kanalen</div><div class="klein" style="font-size:11.5px;color:var(--muted)">Meta, LinkedIn, SEA, Display en e-mail (CRM).</div>
+        <div class="bon-sec">Campagnes</div><div class="klein" style="font-size:11.5px;color:var(--muted)">Single image advertenties met 3 hooks en 3 USP-variaties.</div>
+        <div class="bon-sec">Hooks</div><div class="tick">&lsquo;Financieel klusje?&rsquo;</div><div class="tick">&lsquo;Hulp nodig bij bedrijfsfinanci&euml;n?&rsquo;</div>
+        <div class="bon-sec">USP&rsquo;s</div><div class="tick">&lsquo;Kies uit duizenden freelancers, zonder commissie.&rsquo;</div>
+        <div class="bon-sec">Doelgroepen &middot; KPI&rsquo;s</div><div class="klein" style="font-size:11.5px;color:var(--muted)">Breed en remarketing. Bezoekers, bezoekerskwaliteit en aanmeldingen.</div>
       </div>
-      <div class="card doelkaart">
-        <div class="doel-kop"><span class="doel-n">Finance-zzp&rsquo;ers</span><span class="doel-t">App-installaties en aanmeldingen genereren.</span></div>
-        <div class="rows">
-          <div class="spec-row"><div class="spec-l"><b>Kanalen</b><span>LinkedIn, Meta, SEA en Display.</span></div></div>
-          <div class="spec-row"><div class="spec-l"><b>Campagnes</b><span>App-install, lead ads en single image advertenties met 3 hooks en 3 USP-variaties.</span></div></div>
-          <div class="spec-row"><div class="spec-l"><b>Hooks</b><span>&lsquo;Op zoek naar nieuwe freelance opdrachten?&rsquo;</span></div></div>
-          <div class="spec-row"><div class="spec-l"><b>USP&rsquo;s</b><span>&lsquo;Elke maand nieuwe freelance opdrachten.&rsquo;</span></div></div>
-          <div class="spec-row"><div class="spec-l"><b>Doelgroepen</b><span>Breed en remarketing.</span></div></div>
-          <div class="spec-row"><div class="spec-l"><b>KPI&rsquo;s</b><span>App-installaties en afgeronde registraties.</span></div></div>
-        </div>
+      <div class="card" style="flex:1">
+        <div class="eyebrow"><span><span class="dot"></span>Finance-zzp&rsquo;ers</span><em>App-installaties en aanmeldingen</em></div>
+        <div class="bon-sec">Kanalen</div><div class="klein" style="font-size:11.5px;color:var(--muted)">LinkedIn, Meta, SEA en Display.</div>
+        <div class="bon-sec">Campagnes</div><div class="klein" style="font-size:11.5px;color:var(--muted)">App-install, lead ads en single image advertenties met 3 hooks en 3 USP-variaties.</div>
+        <div class="bon-sec">Hooks</div><div class="tick">&lsquo;Op zoek naar nieuwe freelance opdrachten?&rsquo;</div>
+        <div class="bon-sec">USP&rsquo;s</div><div class="tick">&lsquo;Elke maand nieuwe freelance opdrachten.&rsquo;</div>
+        <div class="bon-sec">Doelgroepen &middot; KPI&rsquo;s</div><div class="klein" style="font-size:11.5px;color:var(--muted)">Breed en remarketing. App-installaties en afgeronde registraties.</div>
       </div>
     </div>
   </div>
-  <div class="foot"><div class="fine">FLII MEDIA &times; ONELANE &middot; FYNCE &middot; MEDIAPLAN</div><img class="lg-fm-foot" src="/assets/logos/flii-media-mark.webp" alt="Flii Media"></div>
+  <div class="foot"><span class="fine">FLII MEDIA &times; ONELANE &middot; FYNCE &middot; MEDIAPLAN</span></div>
 </div></div>
-
+<div class="sheet"><div class="page">
+  <div class="topbar"></div>
+  <img class="lg-klant" src="/assets/logos/onelane-2x.webp" alt="OneLane">
+  <div class="head">
+    <div class="kicker">FYNCE &middot; Mediaplan &middot; 2</div>
+    <h1>Organisch &amp; CRM</h1>
+    <p class="intro">Naast de betaalde inzet: organisch en CRM maken het platform bekend bij de bestaande contacten en de markt.</p>
+  </div>
+  <div class="body">
+    <div class="punten"><div class="pkaart"><div class="pnum">1</div><h3>Website</h3><div class="ptekst"><p>Prominente homepage-sectie met aparte routes voor bedrijven en freelancers.</p></div></div><div class="pkaart"><div class="pnum">2</div><h3>Social media</h3><div class="ptekst"><p>Content over het platform, financi&euml;le opdrachten en zelfstandig ondernemerschap.</p></div></div><div class="pkaart"><div class="pnum">3</div><h3>E-mail</h3><div class="ptekst"><p>Bestaande contacten activeren en ge&iuml;nteresseerden opvolgen.</p></div></div><div class="pkaart"><div class="pnum">4</div><h3>Content</h3><div class="ptekst"><p>Uitleg over FYNCE, praktijkvoorbeelden en succesverhalen.</p></div></div></div>
+  </div>
+  <div class="foot"><span class="fine">FLII MEDIA &times; ONELANE &middot; FYNCE &middot; MEDIAPLAN</span></div>
+</div></div>
+<div class="sheet"><div class="page">
+  <div class="topbar"></div>
+  <img class="lg-klant" src="/assets/logos/onelane-2x.webp" alt="OneLane">
+  <div class="head">
+    <div class="kicker">FYNCE &middot; Mediaplan &middot; 3</div>
+    <h1>Budgetscenario&rsquo;s</h1>
+    <p class="intro">Drie scenario&rsquo;s met het budget per doelgroep, de verwachte bezoekers en directe installs.</p>
+  </div>
+  <div class="body">
+    <div class="cols grow" style="align-items:stretch">
+      <div class="card compact" style="flex:1;display:flex;flex-direction:column">
+        <div class="eyebrow"><span><span class="dot"></span>Scenario S</span><em>€16.000</em></div>
+        <div class="bon-sec">Budget per doelgroep</div>
+        <div class="bon-row"><span class="t">Bedrijven</span><span class="n">€4.000</span></div>
+        <div class="bon-row"><span class="t">ZZP&rsquo;ers</span><span class="n">€8.000</span></div>
+        <div class="bon-row"><span class="t">Uren</span><span class="n">€4.000</span></div>
+        <div class="bon-row"><span class="t"><b>Totaal</b></span><span class="n">€16.000</span></div>
+        <div style="margin-top:6px"><div style="display:flex;justify-content:space-between;font-size:11px;font-weight:700"><span>S</span><span style="color:var(--muted-2);font-weight:500">Verdeling per doelgroep</span></div><div class="balk" style="margin:5px 0 0;height:26px"><span style="flex:4000;background:#E8255B;color:#fff">25%</span><span style="flex:8000;background:#F4849F;color:#fff">50%</span><span style="flex:4000;background:#FAC5D5;color:#16181D">25%</span></div></div>
+        <div class="kpi accent" style="flex:0 0 auto;margin-top:auto;padding:12px 16px">
+          <div class="l">Bezoekers &middot; directe installs</div>
+          <div class="v" style="font-size:24px;margin:4px 0 0">8.000 &middot; 100</div>
+        </div>
+      </div>      <div class="card compact" style="flex:1;display:flex;flex-direction:column">
+        <div class="eyebrow"><span><span class="dot"></span>Scenario M</span><em>€21.500*</em></div>
+        <div class="bon-sec">Budget per doelgroep</div>
+        <div class="bon-row"><span class="t">Bedrijven</span><span class="n">€6.000</span></div>
+        <div class="bon-row"><span class="t">ZZP&rsquo;ers</span><span class="n">€10.000</span></div>
+        <div class="bon-row"><span class="t">Uren</span><span class="n">€5.000</span></div>
+        <div class="bon-row"><span class="t"><b>Totaal</b></span><span class="n">€21.000</span></div>
+        <div style="margin-top:6px"><div style="display:flex;justify-content:space-between;font-size:11px;font-weight:700"><span>M</span><span style="color:var(--muted-2);font-weight:500">Verdeling per doelgroep</span></div><div class="balk" style="margin:5px 0 0;height:26px"><span style="flex:6000;background:#E8255B;color:#fff">29%</span><span style="flex:10000;background:#F4849F;color:#fff">48%</span><span style="flex:5000;background:#FAC5D5;color:#16181D">24%</span></div></div>
+        <div class="kpi accent" style="flex:0 0 auto;margin-top:auto;padding:12px 16px">
+          <div class="l">Bezoekers &middot; directe installs</div>
+          <div class="v" style="font-size:24px;margin:4px 0 0">12.000 &middot; 120</div>
+        </div>
+      </div>      <div class="card compact" style="flex:1;display:flex;flex-direction:column">
+        <div class="eyebrow"><span><span class="dot"></span>Scenario XL</span><em>€26.000</em></div>
+        <div class="bon-sec">Budget per doelgroep</div>
+        <div class="bon-row"><span class="t">Bedrijven</span><span class="n">€8.000</span></div>
+        <div class="bon-row"><span class="t">ZZP&rsquo;ers</span><span class="n">€12.000</span></div>
+        <div class="bon-row"><span class="t">Uren</span><span class="n">€6.000</span></div>
+        <div class="bon-row"><span class="t"><b>Totaal</b></span><span class="n">€26.000</span></div>
+        <div style="margin-top:6px"><div style="display:flex;justify-content:space-between;font-size:11px;font-weight:700"><span>XL</span><span style="color:var(--muted-2);font-weight:500">Verdeling per doelgroep</span></div><div class="balk" style="margin:5px 0 0;height:26px"><span style="flex:8000;background:#E8255B;color:#fff">31%</span><span style="flex:12000;background:#F4849F;color:#fff">46%</span><span style="flex:6000;background:#FAC5D5;color:#16181D">23%</span></div></div>
+        <div class="kpi accent" style="flex:0 0 auto;margin-top:auto;padding:12px 16px">
+          <div class="l">Bezoekers &middot; directe installs</div>
+          <div class="v" style="font-size:24px;margin:4px 0 0">16.000 &middot; 140</div>
+        </div>
+      </div>
+    </div>
+    <div class="klein" style="margin-top:4px"><div class="legend" style="display:inline-flex" style="margin-top:10px;gap:14px"><span><i style="display:inline-block;width:9px;height:9px;border-radius:2px;background:#E8255B;margin-right:7px"></i>Bedrijven</span><span><i style="display:inline-block;width:9px;height:9px;border-radius:2px;background:#F4849F;margin-right:7px"></i>ZZP'ers</span><span><i style="display:inline-block;width:9px;height:9px;border-radius:2px;background:#FAC5D5;margin-right:7px"></i>Uren</span></div></div>
+    <div class="klein">* Scenario M telt op tot &euro; 21.000. Het opgegeven totaal van &euro; 21.500 moet nog worden afgestemd. De prognoses zijn indicatief en worden aangescherpt op basis van historische data en de eerste campagneresultaten.</div>
+  </div>
+  <div class="foot"><span class="fine">FLII MEDIA &times; ONELANE &middot; FYNCE &middot; MEDIAPLAN</span></div>
+</div></div>
+<div class="sheet"><div class="page">
+  <div class="topbar"></div>
+  <img class="lg-klant" src="/assets/logos/onelane-2x.webp" alt="OneLane">
+  <div class="head">
+    <div class="kicker">FYNCE &middot; Mediaplan &middot; 4</div>
+    <h1>Meting &amp; optimalisatie</h1>
+    <p class="intro">Wat we meten per doelgroep en per kanaal.</p>
+  </div>
+  <div class="body">
+    <div class="cols grow" style="align-items:stretch"><div class="card compact" style="flex:1"><div class="eyebrow"><span><span class="dot"></span>Bedrijven</span></div><div class="tick">Bezoekers</div><div class="tick">Bezoekerskwaliteit</div><div class="tick">Aanmeldingen</div><div class="tick">Kosten per relevante bezoeker</div></div><div class="card compact" style="flex:1"><div class="eyebrow"><span><span class="dot"></span>ZZP&rsquo;ers</span></div><div class="tick">App-installaties</div><div class="tick">Afgeronde registraties</div><div class="tick">Kosten per registratie</div></div><div class="card compact" style="flex:1"><div class="eyebrow"><span><span class="dot"></span>Media</span></div><div class="tick">Bereik</div><div class="tick">Frequentie</div><div class="tick">Klikratio</div><div class="tick">Kosten per klik</div></div><div class="card compact" style="flex:1"><div class="eyebrow"><span><span class="dot"></span>Organisch</span></div><div class="tick">Bereik</div><div class="tick">Betrokkenheid</div><div class="tick">Websiteverkeer</div></div></div>
+    <div class="result" style="margin-top:auto"><div><span class="rl">Aanpak</span><span class="rs">Start met het testen van kanalen, doelgroepen en boodschappen. Verschuif budget naar de best presterende combinaties en schaal vervolgens op.</span></div></div>
+  </div>
+  <div class="foot"><span class="fine">FLII MEDIA &times; ONELANE &middot; FYNCE &middot; MEDIAPLAN</span></div>
+</div></div>
 <div class="sheet"><div class="page">
   <div class="topbar"></div>
   <img class="lg-klant" src="/assets/logos/onelane-2x.webp" alt="OneLane">
   <div class="head">
     <div class="kicker">FYNCE &middot; Mediaplan &middot; 5</div>
-    <h1>Organisch en CRM</h1>
-    <div class="kop-ic"><svg viewBox="0 0 24 24"><path d="M4 6.5h16v11H4z"/><path d="M4 7l8 6 8-6"/></svg></div>
+    <h1>Praktisch af te stemmen</h1>
+    <p class="intro">Punten die nog bevestigd moeten worden voordat we het plan vastzetten.</p>
   </div>
   <div class="body">
-    <div class="punten">
-      <div class="pkaart"><div class="pnum">1</div><h3>Website</h3><div class="ptekst"><p>Prominente homepage-sectie met aparte routes voor <b>bedrijven</b> en <b>freelancers</b>.</p></div></div>
-      <div class="pkaart"><div class="pnum">2</div><h3>Social media</h3><div class="ptekst"><p>Content over het platform, financi&euml;le opdrachten en zelfstandig ondernemerschap.</p></div></div>
-      <div class="pkaart"><div class="pnum">3</div><h3>E-mail</h3><div class="ptekst"><p>Bestaande contacten activeren en ge&iuml;nteresseerden opvolgen.</p></div></div>
-      <div class="pkaart"><div class="pnum">4</div><h3>Content</h3><div class="ptekst"><p>Uitleg over FYNCE, praktijkvoorbeelden en succesverhalen.</p></div></div>
-    </div>
+    <div class="punten"><div class="pkaart"><div class="pnum">1</div><h3>Totaalbudget scenario M</h3><div class="ptekst"><p>Scenario M telt op tot &euro; 21.000. Het opgegeven totaal van &euro; 21.500 moet nog worden afgestemd.</p></div><div class="pvraag"><span>Status</span><b>Nog te bevestigen</b></div></div><div class="pkaart"><div class="pnum">2</div><h3>Prognoses</h3><div class="ptekst"><p>De prognoses zijn indicatief. We scherpen ze aan op basis van historische data en de eerste campagneresultaten.</p></div><div class="pvraag"><span>Status</span><b>Indicatief</b></div></div></div>
   </div>
-  <div class="foot"><div class="fine">FLII MEDIA &times; ONELANE &middot; FYNCE &middot; MEDIAPLAN</div><img class="lg-fm-foot" src="/assets/logos/flii-media-mark.webp" alt="Flii Media"></div>
-</div></div>
-
-<div class="sheet"><div class="page">
-  <div class="topbar"></div>
-  <img class="lg-klant" src="/assets/logos/onelane-2x.webp" alt="OneLane">
-  <div class="head">
-    <div class="kicker">FYNCE &middot; Mediaplan &middot; 6</div>
-    <h1>Budgetscenario&rsquo;s</h1>
-    <div class="kop-ic"><svg viewBox="0 0 24 24"><path d="M17.5 6.5a7 7 0 1 0 0 11"/><path d="M4.5 10.5h9"/><path d="M4.5 13.5h9"/></svg></div>
-  </div>
-  <div class="body">
-    <div class="cols">
-      <div class="kpi"><div class="l">Scenario S</div><div class="v">&euro; 16.000</div><div class="s">8.000 bezoekers &middot; 100 directe installs</div></div>
-      <div class="kpi"><div class="l">Scenario M</div><div class="v">&euro; 21.500*</div><div class="s">12.000 bezoekers &middot; 120 directe installs</div></div>
-      <div class="kpi"><div class="l">Scenario XL</div><div class="v">&euro; 26.000</div><div class="s">16.000 bezoekers &middot; 140 directe installs</div></div>
-    </div>
-    <div class="tabelwrap">
-      <table class="tbl">
-        <thead><tr>
-          <th>Scenario</th><th class="r">Bedrijven</th><th class="r">ZZP&rsquo;ers</th><th class="r">Uren</th><th class="r">Totaal</th>
-          <th class="r">Bezoekers</th><th class="r">Directe installs</th>
-        </tr></thead>
-        <tbody>
-          <tr><td class="strong">S</td><td class="r">&euro; 4.000</td><td class="r">&euro; 8.000</td><td class="r">&euro; 4.000</td><td class="r strong">&euro; 16.000</td><td class="r">8.000</td><td class="r">100</td></tr>
-          <tr><td class="strong">M</td><td class="r">&euro; 6.000</td><td class="r">&euro; 10.000</td><td class="r">&euro; 5.000</td><td class="r strong">&euro; 21.500*</td><td class="r">12.000</td><td class="r">120</td></tr>
-          <tr><td class="strong">XL</td><td class="r">&euro; 8.000</td><td class="r">&euro; 12.000</td><td class="r">&euro; 6.000</td><td class="r strong">&euro; 26.000</td><td class="r">16.000</td><td class="r">140</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="klein">*Scenario M telt op tot &euro; 21.000. Het opgegeven totaal van &euro; 21.500 moet nog worden afgestemd.</p>
-    <p class="klein">De prognoses zijn indicatief en worden aangescherpt op basis van historische data en de eerste campagneresultaten.</p>
-  </div>
-  <div class="foot"><div class="fine">FLII MEDIA &times; ONELANE &middot; FYNCE &middot; MEDIAPLAN</div><img class="lg-fm-foot" src="/assets/logos/flii-media-mark.webp" alt="Flii Media"></div>
-</div></div>
-
-<div class="sheet"><div class="page">
-  <div class="topbar"></div>
-  <img class="lg-klant" src="/assets/logos/onelane-2x.webp" alt="OneLane">
-  <div class="head">
-    <div class="kicker">FYNCE &middot; Mediaplan &middot; 7</div>
-    <h1>Meting en optimalisatie</h1>
-    <div class="kop-ic"><svg viewBox="0 0 24 24"><path d="M4 19h16"/><path d="M6 15l4-4 3 3 5-6"/></svg></div>
-  </div>
-  <div class="body">
-    <div class="cols">
-      <div class="card" style="flex:1"><div class="eyebrow">Bedrijven</div><div class="rows">
-        <div class="tick"><span>Bezoekers</span></div><div class="tick"><span>Bezoekerskwaliteit</span></div><div class="tick"><span>Aanmeldingen</span></div><div class="tick"><span>Kosten per relevante bezoeker</span></div></div></div>
-      <div class="card" style="flex:1"><div class="eyebrow">ZZP&rsquo;ers</div><div class="rows">
-        <div class="tick"><span>App-installaties</span></div><div class="tick"><span>Afgeronde registraties</span></div><div class="tick"><span>Kosten per registratie</span></div></div></div>
-      <div class="card" style="flex:1"><div class="eyebrow">Media</div><div class="rows">
-        <div class="tick"><span>Bereik</span></div><div class="tick"><span>Frequentie</span></div><div class="tick"><span>Klikratio</span></div><div class="tick"><span>Kosten per klik</span></div></div></div>
-      <div class="card" style="flex:1"><div class="eyebrow">Organisch</div><div class="rows">
-        <div class="tick"><span>Bereik</span></div><div class="tick"><span>Betrokkenheid</span></div><div class="tick"><span>Websiteverkeer</span></div></div></div>
-    </div>
-    <div class="result">
-      <div><span class="rl">Aanpak</span>
-        <span class="rs">Start met het testen van kanalen, doelgroepen en boodschappen. Verschuif budget naar de best presterende combinaties en schaal vervolgens op.</span></div>
-    </div>
-  </div>
-  <div class="foot"><div class="fine">FLII MEDIA &times; ONELANE &middot; FYNCE &middot; MEDIAPLAN</div><img class="lg-fm-foot" src="/assets/logos/flii-media-mark.webp" alt="Flii Media"></div>
+  <div class="foot"><span class="fine">FLII MEDIA &times; ONELANE &middot; FYNCE &middot; MEDIAPLAN</span></div>
 </div></div>
 </div>
-
 <div class="nav-deck" role="tablist" aria-label="Slides">
   <button class="nd-pijl" id="nd-vorige" type="button" aria-label="Vorige slide"><svg viewBox="0 0 24 24"><polyline points="15 5 8 12 15 19"/></svg></button>
-  <div class="nd-tabs"><button class="nd-tab" type="button">Media-inzet</button><button class="nd-tab" type="button">Organisch &amp; CRM</button><button class="nd-tab" type="button">Budget</button><button class="nd-tab" type="button">Meting</button></div>
+  <div class="nd-tabs"><button class="nd-tab" type="button">Media-inzet</button><button class="nd-tab" type="button">Organisch &amp; CRM</button><button class="nd-tab" type="button">Budget</button><button class="nd-tab" type="button">Meting</button><button class="nd-tab" type="button">Afstemmen</button></div>
   <button class="nd-pijl" id="nd-volgende" type="button" aria-label="Volgende slide"><svg viewBox="0 0 24 24"><polyline points="9 5 16 12 9 19"/></svg></button>
   <span class="nd-tel" id="nd-tel"></span>
 </div>
-
 <script>
 /* Slidebediening: tabs, pijlen, toetsenbord en vegen. */
 (function () {
