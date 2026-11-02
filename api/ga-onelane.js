@@ -74,9 +74,11 @@ async function gscBranded(token, start, end) {
     const r = await fetch("https://www.googleapis.com/webmasters/v3/sites", { headers: H });
     const j = await r.json().catch(() => ({}));
     if (!r.ok) return { error: (j.error && (j.error.status || j.error.message)) || "gsc_" + r.status };
-    const list = (j.siteEntry || []).map((x) => x.siteUrl).filter((u) => /onelane\.nl/i.test(u));
-    gscSite = list.find((u) => u.startsWith("sc-domain:")) || list[0] || null;
-    if (!gscSite) return { error: "no_property" };
+    const all = (j.siteEntry || []).filter((x) => /onelane\.nl/i.test(x.siteUrl));
+    const ok = all.filter((x) => x.permissionLevel && x.permissionLevel !== "siteUnverifiedUser");
+    const pick = ok.find((x) => x.siteUrl.startsWith("sc-domain:")) || ok[0];
+    if (!pick) return { error: "no_access", sites: all.map((x) => x.siteUrl + " (" + x.permissionLevel + ")") };
+    gscSite = pick.siteUrl;
   }
   const r = await fetch("https://www.googleapis.com/webmasters/v3/sites/" + encodeURIComponent(gscSite) + "/searchAnalytics/query", {
     method: "POST",
