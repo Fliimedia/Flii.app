@@ -12,9 +12,11 @@ const ORIGINS = ["https://flii.app", "https://www.flii.app"];
 const METRICS = ["sessions", "totalUsers", "newUsers", "engagementRate", "averageSessionDuration", "screenPageViews"];
 const KEYS = ["s", "u", "nu", "e", "d", "v"];
 
-let cached = { token: null, exp: 0 };
+const cache = {};
 
-async function accessToken() {
+async function accessToken(refresh) {
+  const rt = refresh || process.env.GOOGLE_REFRESH_TOKEN || "";
+  const cached = cache[rt] || { token: null, exp: 0 };
   if (cached.token && Date.now() < cached.exp - 60000) return cached.token;
   const r = await fetch("https://oauth2.googleapis.com/token", {
     method: "POST",
@@ -22,14 +24,14 @@ async function accessToken() {
     body: new URLSearchParams({
       client_id: process.env.GOOGLE_CLIENT_ID || "",
       client_secret: process.env.GOOGLE_CLIENT_SECRET || "",
-      refresh_token: process.env.GOOGLE_REFRESH_TOKEN || "",
+      refresh_token: rt,
       grant_type: "refresh_token",
     }),
   });
   const j = await r.json().catch(() => ({}));
   if (!r.ok || !j.access_token) throw new Error("oauth: " + (j.error || r.status));
-  cached = { token: j.access_token, exp: Date.now() + (j.expires_in || 3600) * 1000 };
-  return cached.token;
+  cache[rt] = { token: j.access_token, exp: Date.now() + (j.expires_in || 3600) * 1000 };
+  return j.access_token;
 }
 
 const exact = (fieldName, value) => ({ filter: { fieldName, stringFilter: { matchType: "EXACT", value } } });
@@ -120,7 +122,7 @@ export default async function handler(req, res) {
     const geo = ["sessions", "totalUsers", "engagementRate"];
     const gk = ["s", "u", "e"];
     const q = (dims, mets, limit, nl) => report(token, start, end, dims, mets, limit, nl);
-    const gscP = gscBranded(token, start, end).catch((e) => ({ error: String(e.message || e).slice(0, 80) }));
+    const gscP = (process.env.GOOGLE_SC_REFRESH_TOKEN ? accessToken(process.env.GOOGLE_SC_REFRESH_TOKEN) : Promise.resolve(token)).then((tk) => gscBranded(tk, start, end)).catch((e) => ({ error: String(e.message || e).slice(0, 80) }));
     const [tot, byDate, ch, src, lp, co, ci, dev, age, gen] = await Promise.all([
       q([], METRICS.concat("screenPageViewsPerSession")),
       q(["date"], METRICS),
