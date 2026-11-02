@@ -62,6 +62,40 @@ async function report(token, start, end, dims, mets, limit, nlOnly) {
   }));
 }
 
+// Branded zoekopdrachten uit Search Console: queries met "one" (woordbegin) of "lane".
+const BRAND_RE = "(?i)(\\bone|lane)";
+let gscSite = null;
+
+async function gscBranded(token, start, end) {
+  const H = { Authorization: "Bearer " + token, "Content-Type": "application/json" };
+  if (!gscSite) {
+    const r = await fetch("https://www.googleapis.com/webmasters/v3/sites", { headers: H });
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok) return { error: (j.error && (j.error.status || j.error.message)) || "gsc_" + r.status };
+    const list = (j.siteEntry || []).map((x) => x.siteUrl).filter((u) => /onelane\.nl/i.test(u));
+    gscSite = list.find((u) => u.startsWith("sc-domain:")) || list[0] || null;
+    if (!gscSite) return { error: "no_property" };
+  }
+  const r = await fetch("https://www.googleapis.com/webmasters/v3/sites/" + encodeURIComponent(gscSite) + "/searchAnalytics/query", {
+    method: "POST",
+    headers: H,
+    body: JSON.stringify({
+      startDate: start,
+      endDate: end,
+      dimensions: ["date"],
+      dimensionFilterGroups: [{ filters: [{ dimension: "query", operator: "includingRegex", expression: BRAND_RE }] }],
+      rowLimit: 500,
+      dataState: "all",
+    }),
+  });
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok) return { error: (j.error && (j.error.status || j.error.message)) || "gsc_" + r.status };
+  const days = {};
+  let imp = 0, clk = 0;
+  (j.rows || []).forEach((x) => { days[x.keys[0]] = { i: x.impressions, c: x.clicks }; imp += x.impressions; clk += x.clicks; });
+  return { site: gscSite, impressions: imp, clicks: clk, days };
+}
+
 const num = (v) => (Number.isInteger(v) ? v : Math.round(v * 10000) / 10000);
 const rec = (n, m, keys) => keys.reduce((o, k, i) => ((o[k] = num(m[i])), o), { n });
 
@@ -86,6 +120,7 @@ export default async function handler(req, res) {
     const geo = ["sessions", "totalUsers", "engagementRate"];
     const gk = ["s", "u", "e"];
     const q = (dims, mets, limit, nl) => report(token, start, end, dims, mets, limit, nl);
+    const gscP = gscBranded(token, start, end).catch((e) => ({ error: String(e.message || e).slice(0, 80) }));
     const [tot, byDate, ch, src, lp, co, ci, dev, age, gen] = await Promise.all([
       q([], METRICS.concat("screenPageViewsPerSession")),
       q(["date"], METRICS),
@@ -102,13 +137,16 @@ export default async function handler(req, res) {
     const tv = tot[0] ? tot[0].m : new Array(7).fill(0);
     const totals = KEYS.concat("vps").reduce((o, k, i) => ((o[k] = num(tv[i] || 0)), o), {});
 
+    const gsc = await gscP;
     const map = {};
     byDate.forEach((r) => { const s = r.d[0]; map[s.slice(0, 4) + "-" + s.slice(4, 6) + "-" + s.slice(6)] = r.m; });
     const days = [];
     for (let t = Date.parse(start + "T00:00:00Z"); t <= Date.parse(end + "T00:00:00Z"); t += 86400000) {
       const iso = new Date(t).toISOString().slice(0, 10);
       const m = map[iso] || new Array(6).fill(0);
-      days.push(KEYS.reduce((o, k, i) => ((o[k] = num(m[i])), o), { date: iso }));
+      const day = KEYS.reduce((o, k, i) => ((o[k] = num(m[i])), o), { date: iso });
+      if (gsc.days && gsc.days[iso]) { day.bi = gsc.days[iso].i; day.bc = gsc.days[iso].c; }
+      days.push(day);
     }
 
     const skip = (n) => ["unknown", "(not set)", ""].includes(n);
@@ -132,6 +170,7 @@ export default async function handler(req, res) {
       cities: ci.map((r) => rec(r.d[0], r.m, gk)),
       devices: dev.map((r) => rec(r.d[0], r.m, gk)),
       demografie,
+      branded: gsc.error ? { error: gsc.error } : { impressions: gsc.impressions, clicks: gsc.clicks, site: gsc.site },
     });
   } catch (e) {
     res.setHeader("Cache-Control", "no-store");
