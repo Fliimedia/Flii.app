@@ -191,7 +191,7 @@ form.addEventListener("submit", async (e) => {
     if (!r.ok || !j.ok) throw new Error("send");
     form.remove();
     const p = document.createElement("p");
-    p.className = "thanks"; p.textContent = "Bedankt! We nemen snel contact met je op.";
+    p.className = "thanks"; p.textContent = "Bedankt! We nemen binnen één werkdag contact met je op.";
     track("generate_lead", { method: "contact_form" });
     (panel.querySelector(".person") || panel.querySelector("h2")).after(p);
     panel.classList.add("done");
