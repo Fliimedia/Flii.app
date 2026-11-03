@@ -1,3 +1,4 @@
+import { track } from "./track.js";
 import "./card.css";
 
 // Old links (#/prijzen, #loop, ...) all land on this one page now.
@@ -143,6 +144,7 @@ addEventListener("resize", () => { btnWidth(); if (cta.dataset.state !== "closed
 
 function open() {
   if (cta.dataset.state !== "closed") return;
+  track("contact_form_open");
   clearTimeout(timer);
   panel.hidden = false;
   fit();
@@ -190,6 +192,7 @@ form.addEventListener("submit", async (e) => {
     form.remove();
     const p = document.createElement("p");
     p.className = "thanks"; p.textContent = "Bedankt! We nemen snel contact met je op.";
+    track("generate_lead", { method: "contact_form" });
     panel.querySelector("h2").after(p);
     panel.classList.add("done");
     fit();
@@ -282,3 +285,8 @@ document.querySelectorAll(".btn:not(.cta-btn)").forEach((b) => b.addEventListene
   duo.addEventListener("pointerenter", () => clearTimeout(back));
   document.addEventListener("pointerdown", (e) => { if (!duo.contains(e.target)) set("lock"); });
 }
+
+/* Klik-events voor de meting */
+document.querySelector(".wa").addEventListener("click", () => track("whatsapp_click", { method: "whatsapp" }));
+document.querySelector(".duo-lock").addEventListener("click", () => track("login_click"));
+document.querySelectorAll(".soc").forEach((a) => a.addEventListener("click", () => track("social_click", { platform: a.getAttribute("aria-label") })));
