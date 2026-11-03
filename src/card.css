@@ -252,3 +252,5 @@ body{overflow:visible;overflow-x:clip}
 .duo[data-state="fm"] .duo-knob .i-fm{opacity:1;transform:none}
 .duo:hover .duo-knob,.duo:focus-within .duo-knob{box-shadow:0 2px 10px rgba(231,37,90,.22),0 0 0 1px rgba(231,37,90,.35)}
 @media (prefers-reduced-motion:reduce){.duo-knob,.duo-knob svg{transition:none}}
+/* social icoontjes rechtsonder, naast cookie */
+.foot .soc+.prefs-btn{margin-left:4px}
