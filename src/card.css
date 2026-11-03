@@ -256,3 +256,8 @@ body{overflow:visible;overflow-x:clip}
 .foot .soc+.prefs-btn{margin-left:4px}
 /* formulier opent op desktop rechts */
 .cta{transform:translate(var(--dx,0px),var(--dy,0px))}
+/* contactpersoon in het formulier */
+.person{display:flex;align-items:center;gap:12px;margin:-4px 0 16px}
+.person img{width:44px;height:44px;border-radius:50%;object-fit:cover;flex:none;box-shadow:0 0 0 2px #fff,0 0 0 3px rgba(231,37,90,.35)}
+.person strong{display:block;font-size:15px;line-height:1.2}
+.person span{display:block;font-size:13px;color:var(--mid);line-height:1.3}
