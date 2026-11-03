@@ -254,3 +254,5 @@ body{overflow:visible;overflow-x:clip}
 @media (prefers-reduced-motion:reduce){.duo-knob,.duo-knob svg{transition:none}}
 /* social icoontjes rechtsonder, naast cookie */
 .foot .soc+.prefs-btn{margin-left:4px}
+/* formulier opent op desktop rechts */
+.cta{transform:translate(var(--dx,0px),var(--dy,0px))}

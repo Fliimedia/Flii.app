@@ -125,7 +125,16 @@ function fit() {
   cta.style.setProperty("--panel-h", h + "px");
   // The form unfolds from the button; lift it when it would run off the bottom of the screen.
   const r = cta.parentElement.getBoundingClientRect();
+  if (innerWidth > 760) {
+    // Desktop: the form travels from the button to the right-hand side, vertically centred.
+    const right = document.querySelector(".duo").getBoundingClientRect().right;
+    const w = Math.min(380, innerWidth - 40);
+    cta.style.setProperty("--dx", right - w - r.left + "px");
+    cta.style.setProperty("--dy", Math.max(16, (innerHeight - h) / 2) - r.top + "px");
+    return;
+  }
   const dy = Math.min(Math.max(0, r.top + h - (innerHeight - 16)), Math.max(0, r.top - 16));
+  cta.style.setProperty("--dx", "0px");
   cta.style.setProperty("--dy", -dy + "px");
 }
 btnWidth();
@@ -147,7 +156,7 @@ function close() {
   if (cta.dataset.state === "closed") return;
   clearTimeout(timer);
   cta.dataset.state = "closed";
-  cta.style.setProperty("--dy", "0px");
+  cta.style.setProperty("--dy", "0px"); cta.style.setProperty("--dx", "0px");
   openBtn.setAttribute("aria-expanded", "false");
   timer = setTimeout(() => { panel.hidden = true; }, reduce ? 0 : 420);
   openBtn.focus({ preventScroll: true });
