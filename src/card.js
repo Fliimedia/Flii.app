@@ -251,3 +251,25 @@ document.querySelectorAll(".btn:not(.cta-btn)").forEach((b) => b.addEventListene
   b.classList.remove("go"); void b.offsetWidth; b.classList.add("go");
   setTimeout(() => b.classList.remove("go"), 900);
 }));
+
+/* Toggle rechtsboven: slotje (portal) en Flii Media-logo (flii.nl).
+   Twee seconden boven het slotje blijven, of erop vasthouden, zet de schakelaar om naar het logo. */
+{
+  const duo = document.querySelector(".duo");
+  const lock = duo.querySelector(".duo-lock");
+  let t = 0, back = 0, held = false;
+  const set = (st) => { duo.dataset.state = st; };
+  const arm = () => { clearTimeout(t); clearTimeout(back); if (duo.dataset.state === "lock") t = setTimeout(() => { set("fm"); held = true; }, 2000); };
+  const disarm = () => clearTimeout(t);
+  lock.addEventListener("pointerenter", (e) => { if (e.pointerType === "mouse") arm(); });
+  lock.addEventListener("pointerleave", disarm);
+  lock.addEventListener("pointerdown", (e) => { held = false; if (e.pointerType !== "mouse") arm(); });
+  lock.addEventListener("pointerup", disarm);
+  lock.addEventListener("pointercancel", disarm);
+  lock.addEventListener("contextmenu", (e) => e.preventDefault());
+  // A hold that switched the toggle should not also open the portal.
+  lock.addEventListener("click", (e) => { if (held) { e.preventDefault(); held = false; } });
+  duo.addEventListener("pointerleave", (e) => { if (e.pointerType === "mouse") { clearTimeout(back); back = setTimeout(() => set("lock"), 700); } });
+  duo.addEventListener("pointerenter", () => clearTimeout(back));
+  document.addEventListener("pointerdown", (e) => { if (!duo.contains(e.target)) set("lock"); });
+}
