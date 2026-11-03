@@ -120,7 +120,14 @@ const sendBtn = panel.querySelector(".send");
 let timer = 0;
 
 function btnWidth() { cta.style.setProperty("--btn-w", openBtn.offsetWidth + "px"); }
-function fit() { cta.style.setProperty("--panel-h", Math.min(panel.offsetHeight, innerHeight - 40) + "px"); }
+function fit() {
+  const h = Math.min(panel.offsetHeight, innerHeight - 40);
+  cta.style.setProperty("--panel-h", h + "px");
+  // The form unfolds from the button; lift it when it would run off the bottom of the screen.
+  const r = cta.parentElement.getBoundingClientRect();
+  const dy = Math.min(Math.max(0, r.top + h - (innerHeight - 16)), Math.max(0, r.top - 16));
+  cta.style.setProperty("--dy", -dy + "px");
+}
 btnWidth();
 if (document.fonts) document.fonts.ready.then(btnWidth);
 addEventListener("resize", () => { btnWidth(); if (cta.dataset.state !== "closed") fit(); });
@@ -140,6 +147,7 @@ function close() {
   if (cta.dataset.state === "closed") return;
   clearTimeout(timer);
   cta.dataset.state = "closed";
+  cta.style.setProperty("--dy", "0px");
   openBtn.setAttribute("aria-expanded", "false");
   timer = setTimeout(() => { panel.hidden = true; }, reduce ? 0 : 420);
   openBtn.focus({ preventScroll: true });

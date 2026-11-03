@@ -223,3 +223,11 @@ body{overflow:visible;overflow-x:clip}
 .btn.go:disabled .btn-ic{width:calc(100% - 10px)}
 .btn.go:disabled{opacity:1}
 @media (prefers-reduced-motion:reduce){.btn.go{animation:none}}
+/* Let's talk staat in de hero, onder de subregel; het formulier klapt vanaf de knop open */
+.hero{z-index:auto}
+.cta-slot{position:relative;height:50px;margin-top:26px}
+.cta{position:absolute;left:0;top:0;right:auto;bottom:auto;z-index:15;transform:translateY(var(--dy,0px));
+  transition:width .42s cubic-bezier(.2,.8,.2,1),height .42s cubic-bezier(.2,.8,.2,1),border-radius .42s cubic-bezier(.2,.8,.2,1),background-color .3s,box-shadow .3s,transform .42s cubic-bezier(.2,.8,.2,1)}
+.panel{left:0;right:auto}
+@media (max-width:760px){.cta-slot{height:48px;margin-top:22px}.cta{top:0;bottom:auto}}
+@media (prefers-reduced-motion:reduce){.cta{transition:none}}
