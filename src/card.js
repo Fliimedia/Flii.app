@@ -181,10 +181,10 @@ form.addEventListener("submit", async (e) => {
   if (!data.naam || !data.bericht || !(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email) || /^\+?[0-9][0-9\s().-]{6,}$/.test(data.email))) {
     statusEl.className = "status err";
     statusEl.textContent = "Vul je naam, een geldig e-mailadres of telefoonnummer en een bericht in.";
-    fit();
+    fit(); requestAnimationFrame(fit);
     return;
   }
-  sendBtn.disabled = true; statusEl.textContent = "Versturen…";
+  sendBtn.disabled = true; statusEl.className = "status busy"; statusEl.textContent = "Versturen…"; fit();
   try {
     const r = await fetch("/contact/verstuur.php", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) });
     const j = await r.json().catch(() => ({}));
@@ -193,14 +193,14 @@ form.addEventListener("submit", async (e) => {
     const p = document.createElement("p");
     p.className = "thanks"; p.textContent = "Bedankt! We nemen snel contact met je op.";
     track("generate_lead", { method: "contact_form" });
-    panel.querySelector("h2").after(p);
+    (panel.querySelector(".person") || panel.querySelector("h2")).after(p);
     panel.classList.add("done");
-    fit();
+    fit(); requestAnimationFrame(fit);
   } catch (err) {
     statusEl.className = "status err";
     statusEl.innerHTML = 'Versturen lukt nu niet. Mail ons op <a href="mailto:hello@flii.nl">hello@flii.nl</a>.';
     sendBtn.disabled = false;
-    fit();
+    fit(); requestAnimationFrame(fit);
   }
 });
 
