@@ -135,13 +135,13 @@ function fit() {
     const heroRight = Math.max(textRight(document.querySelector(".hero h1")), textRight(document.querySelector(".hero .sub")));
     const w = Math.max(300, Math.min(380, right - heroRight - 40));
     cta.style.setProperty("--pw", w + "px");
-    const top0 = document.querySelector(".top").getBoundingClientRect().bottom + 12;
+    const top0 = document.querySelector(".duo").getBoundingClientRect().bottom + 16;
     const bottom0 = document.querySelector(".foot").getBoundingClientRect().top - 12;
-    const avail = bottom0 - top0;
-    const roomy = avail > 240;
-    const h = Math.min(panel.offsetHeight, roomy ? avail : innerHeight - 32);
+    // The whole form always stays visible: it starts just below the top bar and only moves up
+    // (over the top bar) when the screen is too low to fit it otherwise.
+    const h = Math.min(panel.offsetHeight, innerHeight - 32);
     cta.style.setProperty("--panel-h", h + "px");
-    const top = roomy ? top0 + (avail - h) / 2 : Math.max(16, (innerHeight - h) / 2);
+    const top = h <= bottom0 - top0 ? top0 : Math.max(16, Math.min(top0, innerHeight - 16 - h));
     cta.style.setProperty("--dx", right - w - r.left + "px");
     cta.style.setProperty("--dy", top - r.top + "px");
     return;
