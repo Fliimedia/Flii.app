@@ -122,7 +122,7 @@ let timer = 0;
 
 function btnWidth() { cta.style.setProperty("--btn-w", openBtn.offsetWidth + "px"); }
 function fit() {
-  const h = Math.min(panel.offsetHeight, innerHeight - 40);
+  const h = Math.min(panel.offsetHeight, innerHeight - 32);
   cta.style.setProperty("--panel-h", h + "px");
   // The form unfolds from the button; lift it when it would run off the bottom of the screen.
   const r = cta.parentElement.getBoundingClientRect();
@@ -131,7 +131,10 @@ function fit() {
     const right = document.querySelector(".duo").getBoundingClientRect().right;
     const w = Math.min(380, innerWidth - 40);
     cta.style.setProperty("--dx", right - w - r.left + "px");
-    cta.style.setProperty("--dy", Math.max(16, (innerHeight - h) / 2) - r.top + "px");
+    // Centre below the top bar when there is room, otherwise as high as needed so the whole form fits.
+    const below = document.querySelector(".top").getBoundingClientRect().bottom + 8;
+    const top = innerHeight - h >= below + 16 ? Math.max(below, (innerHeight - h) / 2) : Math.max(16, (innerHeight - h) / 2);
+    cta.style.setProperty("--dy", top - r.top + "px");
     return;
   }
   const dy = Math.min(Math.max(0, r.top + h - (innerHeight - 16)), Math.max(0, r.top - 16));

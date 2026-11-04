@@ -279,3 +279,15 @@ body{overflow:visible;overflow-x:clip}
 .wa{margin-top:14px}
 @keyframes st-spin{to{transform:rotate(360deg)}}
 @media (prefers-reduced-motion:reduce){.status.busy::before{animation:none}}
+/* contactformulier past ook op lage schermen: compacter, en scrollbaar als het toch niet past */
+.cta[data-state="open"]{overflow-y:auto;overscroll-behavior:contain}
+@media (max-height:760px){
+  .panel{padding:18px 20px 16px}
+  .panel h2{font-size:22px;margin-bottom:10px}
+  .person{margin:-2px 0 10px}.person img{width:38px;height:38px}
+  .panel label{gap:4px}
+  form{gap:8px}
+  input,textarea{padding:8px 11px}
+  textarea{height:72px}
+  .wa{margin-top:10px}
+}
