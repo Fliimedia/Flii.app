@@ -223,6 +223,8 @@ function prefsOpen() {
 function prefsClose() {
   prefsBack.hidden = true; prefs.hidden = true;
   prefsBtn.setAttribute("aria-expanded", "false");
+  // Closed from the cookie notice without saving: the notice comes back, a choice is still required.
+  if (!Object.keys(readPrefs()).length) { cc.hidden = false; ccBack.hidden = false; cc.querySelector(".cc-yes").focus({ preventScroll: true }); return; }
   prefsBtn.focus({ preventScroll: true });
 }
 prefsBtn.addEventListener("click", prefsOpen);
@@ -255,7 +257,7 @@ if (!Object.keys(readPrefs()).length) {
   });
 }
 cc.querySelector(".cc-yes").addEventListener("click", () => { saveChoice(true, true); hideCc(); });
-cc.querySelector(".cc-no").addEventListener("click", () => { saveChoice(true, false); hideCc(); });
+cc.querySelector(".cc-no").addEventListener("click", () => { hideCc(); prefsOpen(); });
 
 /* Zelfde klik-animatie als de contactknop voor de andere knoppen (Versturen, Opslaan). */
 document.querySelectorAll(".btn:not(.cta-btn)").forEach((b) => b.addEventListener("click", () => {
