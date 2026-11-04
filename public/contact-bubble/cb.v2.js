@@ -10,12 +10,11 @@
 
   var css =
     "#fcb{position:fixed;right:16px;bottom:calc(max(" + bottom + "px,env(safe-area-inset-bottom)) );z-index:45;font-family:Inter,system-ui,-apple-system,sans-serif;display:flex;flex-direction:column;align-items:flex-end;gap:10px}" +
-    "#fcb .fcb-btn{position:relative;width:52px;height:52px;border-radius:50%;border:0;padding:0;cursor:pointer;background:#fff;box-shadow:0 0 0 2px #fff,0 0 0 3.5px rgba(231,37,90,.55),0 10px 26px rgba(23,23,23,.18);transition:transform .2s cubic-bezier(.2,.8,.2,1)}" +
+    "#fcb .fcb-btn{position:relative;width:52px;height:52px;border-radius:50%;border:0;padding:0;cursor:pointer;background:#E7255A;color:#fff;display:grid;place-items:center;box-shadow:0 10px 26px rgba(231,37,90,.32);transition:transform .2s cubic-bezier(.2,.8,.2,1),background .2s}" +
+    "#fcb .fcb-btn:hover{background:#D01C4E}" +
+    "#fcb .fcb-btn>svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}" +
     "#fcb .fcb-btn:hover{transform:translateY(-2px)}" +
     "#fcb .fcb-btn:focus-visible{outline:2px solid #E7255A;outline-offset:4px}" +
-    "#fcb .fcb-btn img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block}" +
-    "#fcb .fcb-badge{position:absolute;right:-3px;bottom:-3px;width:22px;height:22px;border-radius:50%;background:#E7255A;display:grid;place-items:center;box-shadow:0 0 0 2px #fff}" +
-    "#fcb .fcb-badge svg{width:12px;height:12px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}" +
     "#fcb .fcb-card{width:min(300px,calc(100vw - 32px));background:#FBFAF7;color:#171717;border-radius:18px;padding:16px;box-shadow:0 18px 50px rgba(23,23,23,.18),0 0 0 1px rgba(23,23,23,.06);transform-origin:bottom right;animation:fcb-in .28s cubic-bezier(.2,.8,.2,1)}" +
     "#fcb .fcb-card[hidden]{display:none}" +
     "#fcb .fcb-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}" +
@@ -57,7 +56,7 @@
       '<a class="fcb-row" href="https://flii.nl" target="_blank" rel="noopener">' + WEB + "<div><span>Website</span><b>flii.nl</b></div></a>" +
     "</section>" +
     '<button class="fcb-btn" type="button" aria-label="Contact met Sten Bossong" aria-expanded="false" aria-controls="fcb-card">' +
-      '<img src="' + PHOTO + '" alt=""><span class="fcb-badge">' + CHAT + "</span></button>";
+      CHAT + "</button>";
   document.body.appendChild(wrap);
 
   var card = wrap.querySelector(".fcb-card"), btn = wrap.querySelector(".fcb-btn");
