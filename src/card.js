@@ -121,22 +121,35 @@ const sendBtn = panel.querySelector(".send");
 let timer = 0;
 
 function btnWidth() { cta.style.setProperty("--btn-w", openBtn.offsetWidth + "px"); }
+function textRight(el) {
+  if (!el) return 0;
+  const rg = document.createRange(); rg.selectNodeContents(el);
+  return rg.getBoundingClientRect().right;
+}
 function fit() {
-  const h = Math.min(panel.offsetHeight, innerHeight - 32);
-  cta.style.setProperty("--panel-h", h + "px");
-  // The form unfolds from the button; lift it when it would run off the bottom of the screen.
   const r = cta.parentElement.getBoundingClientRect();
   if (innerWidth > 760) {
-    // Desktop: the form travels from the button to the right-hand side, vertically centred.
+    // Desktop: the form sits in the free space on the right, between the top bar and the footer icons,
+    // and never over the slogan.
     const right = document.querySelector(".duo").getBoundingClientRect().right;
-    const w = Math.min(380, innerWidth - 40);
+    const heroRight = Math.max(textRight(document.querySelector(".hero h1")), textRight(document.querySelector(".hero .sub")));
+    const w = Math.max(300, Math.min(380, right - heroRight - 40));
+    cta.style.setProperty("--pw", w + "px");
+    const top0 = document.querySelector(".top").getBoundingClientRect().bottom + 12;
+    const bottom0 = document.querySelector(".foot").getBoundingClientRect().top - 12;
+    const avail = bottom0 - top0;
+    const roomy = avail > 240;
+    const h = Math.min(panel.offsetHeight, roomy ? avail : innerHeight - 32);
+    cta.style.setProperty("--panel-h", h + "px");
+    const top = roomy ? top0 + (avail - h) / 2 : Math.max(16, (innerHeight - h) / 2);
     cta.style.setProperty("--dx", right - w - r.left + "px");
-    // Centre below the top bar when there is room, otherwise as high as needed so the whole form fits.
-    const below = document.querySelector(".top").getBoundingClientRect().bottom + 8;
-    const top = innerHeight - h >= below + 16 ? Math.max(below, (innerHeight - h) / 2) : Math.max(16, (innerHeight - h) / 2);
     cta.style.setProperty("--dy", top - r.top + "px");
     return;
   }
+  cta.style.removeProperty("--pw");
+  const h = Math.min(panel.offsetHeight, innerHeight - 32);
+  cta.style.setProperty("--panel-h", h + "px");
+  // Phone: the form unfolds from the button; lift it when it would run off the bottom of the screen.
   const dy = Math.min(Math.max(0, r.top + h - (innerHeight - 16)), Math.max(0, r.top - 16));
   cta.style.setProperty("--dx", "0px");
   cta.style.setProperty("--dy", -dy + "px");

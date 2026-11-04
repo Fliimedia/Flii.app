@@ -291,3 +291,13 @@ body{overflow:visible;overflow-x:clip}
   textarea{height:72px}
   .wa{margin-top:10px}
 }
+/* desktop: breedte van het formulier past in de vrije ruimte rechts */
+.cta:not([data-state="closed"]),.panel{width:var(--pw,min(380px,calc(100vw - 2 * var(--pad))))}
+@media (max-height:620px) and (min-width:761px){
+  .panel{padding:14px 18px 12px}
+  .panel h2{font-size:20px;margin-bottom:6px}
+  .person{margin:0 0 8px}.person img{width:32px;height:32px}
+  form{gap:6px}label{gap:3px}
+  textarea{height:52px}
+  .wa{margin-top:8px}
+}
