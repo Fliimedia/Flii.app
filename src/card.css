@@ -334,3 +334,6 @@ body{overflow:visible;overflow-x:clip}
 .send-row .wa svg{width:14px;height:14px}
 .send-row .wa:hover{color:var(--ink)}
 .thanks+.wa{display:inline-flex;margin-top:0;font-size:12px;color:var(--soft)}
+/* WhatsApp op de onderrand van het formulier, rechtsonder */
+.send-row{align-items:flex-end}
+.send-row .wa{align-self:flex-end;line-height:1;margin-bottom:-4px}
