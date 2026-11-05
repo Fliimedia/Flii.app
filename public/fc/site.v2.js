@@ -80,7 +80,8 @@
       "#fcc .fcc-no{background:none;color:#5C5A52}#fcc .fcc-no:hover{color:#171717}" +
       "#fcc button:focus-visible{outline:2px solid #E7255A;outline-offset:2px}" +
       "#fcc h2{margin:0 0 4px;font-size:17px;font-weight:700;letter-spacing:-.01em}" +
-      "#fcc ul{list-style:none;margin:8px 0 14px;padding:0}" +
+      "#fcc ul{list-style:none;margin:8px 0 12px;padding:0}" +
+      "#fcc .fcc-links{font-size:12px;color:#5C5A52;margin:0 0 12px}#fcc .fcc-links a{color:#171717;text-decoration:underline;text-decoration-color:rgba(231,37,90,.5);text-underline-offset:2px}#fcc .fcc-links a:hover{color:#E7255A}" +
       "#fcc li{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 0;border-top:1px solid #E2DED3}" +
       "#fcc li:last-child{border-bottom:1px solid #E2DED3}" +
       "#fcc li strong{display:block;font-size:13px}#fcc li span{display:block;font-size:12px;color:#5C5A52}" +
@@ -107,7 +108,8 @@
         '<li><div><strong>Noodzakelijk</strong><span>Nodig om de site te laten werken.</span></div><label class="sw"><input type="checkbox" checked disabled aria-label="Noodzakelijk"><i></i></label></li>' +
         '<li><div><strong>Statistieken</strong><span>Anoniem meten hoe de site gebruikt wordt.</span></div><label class="sw"><input type="checkbox" name="statistieken" checked aria-label="Statistieken"><i></i></label></li>' +
         '<li><div><strong>Marketing</strong><span>Advertenties beter laten aansluiten.</span></div><label class="sw"><input type="checkbox" name="marketing" aria-label="Marketing"><i></i></label></li>' +
-        '</ul><div class="fcc-a"><button class="fcc-yes" type="button">Opslaan</button></div>';
+        '</ul><p class="fcc-links">Lees meer in ons <a href="https://flii.nl/privacy" target="_blank" rel="noopener">privacybeleid</a> en <a href="https://flii.nl/cookies" target="_blank" rel="noopener">cookiebeleid</a>.</p>' +
+        '<div class="fcc-a"><button class="fcc-yes" type="button">Opslaan</button></div>';
       box.querySelector(".fcc-yes").addEventListener("click", function () {
         done(box.querySelector('[name="statistieken"]').checked, box.querySelector('[name="marketing"]').checked);
       });

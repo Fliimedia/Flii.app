@@ -301,3 +301,27 @@ body{overflow:visible;overflow-x:clip}
   textarea{height:52px}
   .wa{margin-top:8px}
 }
+/* ---------- morph: de knop wordt het formulier ----------
+   Het glas zit nu op de wrapper zelf, zodat precies die vorm uitgroeit tot de kaart. */
+.cta{--ease:cubic-bezier(.32,.72,0,1);border-radius:25px;overflow:hidden;
+  background-color:rgba(255,244,248,.4);-webkit-backdrop-filter:blur(18px) saturate(1.7);backdrop-filter:blur(18px) saturate(1.7);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9),inset 0 0 0 1px rgba(255,255,255,.55),0 10px 30px rgba(180,60,100,.16);
+  transition:width .5s var(--ease),height .5s var(--ease),border-radius .5s var(--ease),transform .5s var(--ease),background-color .35s ease,box-shadow .5s var(--ease)}
+.cta:not([data-state="closed"]){background-color:var(--card);border-radius:22px;
+  box-shadow:inset 0 0 0 1px rgba(23,23,23,.06),0 22px 60px rgba(23,23,23,.16)}
+.cta-btn,.cta-btn:hover,.cta-btn:focus-visible{background:transparent;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+.cta-btn{transition:padding .45s cubic-bezier(.2,.8,.2,1),opacity .15s ease}
+.cta[data-state="closed"] .cta-btn{transition:padding .45s cubic-bezier(.2,.8,.2,1),opacity .2s ease .32s}
+.panel{transition:opacity .15s ease}
+.cta[data-state="opening"] .panel,.cta[data-state="open"] .panel{opacity:1;transition:opacity .25s ease .28s}
+/* geen scrollbalk tijdens het uitklappen; alleen scrollen als het formulier echt niet past */
+.cta,.cta[data-state="open"]{overflow:hidden}
+.cta[data-state="open"].scrolly{overflow-y:auto;overscroll-behavior:contain}
+/* het sprongetje doet de hele vorm, niet alleen de knop */
+.cta-btn.go{animation:none}
+.cta.hop{animation:cta-hop .34s .3s cubic-bezier(.3,.9,.4,1) both}
+@keyframes cta-hop{0%{translate:0 0}45%{translate:0 -9px}75%{translate:0 0}88%{translate:0 -2px}100%{translate:0 0}}
+@media (prefers-reduced-motion:reduce){.cta,.cta-btn,.panel{transition:none!important}.cta.hop{animation:none}}
+.prefs-links{margin:-6px 0 16px;font-size:12.5px;color:var(--mid)}
+.prefs-links a{color:var(--ink);text-decoration:underline;text-decoration-color:rgba(231,37,90,.5);text-underline-offset:2px}
+.prefs-links a:hover{color:var(--mag)}

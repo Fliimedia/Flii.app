@@ -141,6 +141,7 @@ function fit() {
     // (over the top bar) when the screen is too low to fit it otherwise.
     const h = Math.min(panel.offsetHeight, innerHeight - 32);
     cta.style.setProperty("--panel-h", h + "px");
+    cta.classList.toggle("scrolly", panel.offsetHeight > h + 1);
     const top = h <= bottom0 - top0 ? top0 : Math.max(16, Math.min(top0, innerHeight - 16 - h));
     cta.style.setProperty("--dx", right - w - r.left + "px");
     cta.style.setProperty("--dy", top - r.top + "px");
@@ -149,6 +150,7 @@ function fit() {
   cta.style.removeProperty("--pw");
   const h = Math.min(panel.offsetHeight, innerHeight - 32);
   cta.style.setProperty("--panel-h", h + "px");
+  cta.classList.toggle("scrolly", panel.offsetHeight > h + 1);
   // Phone: the form unfolds from the button; lift it when it would run off the bottom of the screen.
   const dy = Math.min(Math.max(0, r.top + h - (innerHeight - 16)), Math.max(0, r.top - 16));
   cta.style.setProperty("--dx", "0px");
@@ -168,7 +170,7 @@ function open() {
   openBtn.setAttribute("aria-expanded", "true");
   timer = setTimeout(() => { cta.dataset.state = "open"; // On touch screens focusing a field pops up the keyboard; focus the panel instead.
     const touch = matchMedia("(pointer: coarse)").matches;
-    (panel.classList.contains("done") || touch ? panel.querySelector(".close") : form.naam).focus({ preventScroll: true }); }, reduce ? 0 : 260);
+    (panel.classList.contains("done") || touch ? panel.querySelector(".close") : form.naam).focus({ preventScroll: true }); }, reduce ? 0 : 520);
 }
 function close() {
   if (cta.dataset.state === "closed") return;
@@ -176,15 +178,16 @@ function close() {
   cta.dataset.state = "closed";
   cta.style.setProperty("--dy", "0px"); cta.style.setProperty("--dx", "0px");
   openBtn.setAttribute("aria-expanded", "false");
-  timer = setTimeout(() => { panel.hidden = true; }, reduce ? 0 : 420);
+  cta.classList.remove("scrolly");
+  timer = setTimeout(() => { panel.hidden = true; }, reduce ? 0 : 520);
   openBtn.focus({ preventScroll: true });
 }
 openBtn.addEventListener("click", () => {
   if (reduce) return open();
   if (openBtn.classList.contains("go")) return;
   // swipe right, arrow turns up, small hop - then the form unfolds
-  openBtn.classList.add("go");
-  setTimeout(() => { open(); setTimeout(() => openBtn.classList.remove("go"), 350); }, 640);
+  openBtn.classList.add("go"); cta.classList.add("hop");
+  setTimeout(() => { open(); setTimeout(() => { openBtn.classList.remove("go"); cta.classList.remove("hop"); }, 350); }, 640);
 });
 panel.querySelector(".close").addEventListener("click", close);
 addEventListener("keydown", (e) => { if (e.key !== "Escape" || !document.getElementById("cc").hidden) return; if (!prefs.hidden) prefsClose(); else close(); });
