@@ -208,11 +208,13 @@ form.addEventListener("submit", async (e) => {
     const r = await fetch("/contact/verstuur.php", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) });
     const j = await r.json().catch(() => ({}));
     if (!r.ok || !j.ok) throw new Error("send");
+    const wa = form.querySelector(".wa");
     form.remove();
     const p = document.createElement("p");
     p.className = "thanks"; p.textContent = "Bedankt! We nemen binnen één werkdag contact met je op.";
     track("generate_lead", { method: "contact_form" });
     (panel.querySelector(".person") || panel.querySelector("h2")).after(p);
+    if (wa) p.after(wa);
     panel.classList.add("done");
     fit(); requestAnimationFrame(fit);
   } catch (err) {
