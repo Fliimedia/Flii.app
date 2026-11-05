@@ -7,3 +7,8 @@
 # Omleidingen na de herindeling van de URL-structuur.
 Redirect 301 /access/socials /intern/toegang/socials
 Redirect 301 /p/internship/international /aanvraag/stage-internationaal
+
+# Klantomgevingen onder /client/<klant>/, ons eigen dashboard onder /admin/, algemene login op /client/.
+RedirectMatch 301 ^/(zo|bikefair|stenbossong|broadcast-magazine|onelane|theatertijd|ronreizen|uitvaart-portret|de-buurt|fc-klap|lucas-roberts)(/dashboard)?/?$ /client/$1/
+RedirectMatch 301 ^/flii(/dashboard)?/?$ /admin/
+RedirectMatch 301 ^/(portal|portaal)/?$ /client/
