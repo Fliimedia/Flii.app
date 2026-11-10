@@ -62,6 +62,14 @@
   }
 
   function vraagPin(fout) {
+    // Inloggen loopt via de portal (/client/), die na verificatie terugstuurt naar deze pagina.
+    if (!fout || /Sessie|incorrect|toegang|mislukt/i.test(fout)) {
+      try { localStorage.removeItem(SLEUTEL); } catch (e) {}
+      location.replace("/client/?next=" + encodeURIComponent(location.pathname));
+      return;
+    }
+    scherm('<p style="margin:0;color:#5A6068">' + fout + '</p>');
+    return;
     scherm('<p style="margin:0 0 14px;color:#5A6068">Voer je pincode in</p>' +
       '<input id="pin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" ' +
       'style="width:100%;padding:12px 14px;font-size:17px;text-align:center;letter-spacing:.4em;' +
