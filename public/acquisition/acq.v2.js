@@ -14,7 +14,7 @@
   ];
 
   var LIJSTEN = [
-    { slug: "website", titel: "Website", data: "/acquisition/website/leads.v1.json" }
+    { slug: "website", titel: "Website", data: "/acquisition/website/leads.v2.json" }
   ];
 
   var wortel = document.getElementById("app");
@@ -188,9 +188,9 @@
 
           var info = el("dl", { class: "info" }, [
             el("dt", { text: "Branche" }), el("dd", { text: ld.branche }),
-            el("dt", { text: "Adres" }), el("dd", {}, [el("a", { href: mapsLink(ld.naam + ", " + ld.adres), target: "_blank", rel: "noopener", text: ld.adres })]),
+            el("dt", { text: "Adres" }), el("dd", {}, [el("a", { href: ld.maps || mapsLink(ld.naam + ", " + ld.adres), target: "_blank", rel: "noopener", text: ld.adres })]),
             el("dt", { text: "Google reviews" }), el("dd", { text: ld.rating.toFixed(1).replace(".", ",") + " uit 5, " + ld.reviews + " reviews" }),
-            el("dt", { text: "Websitecheck" }), el("dd", { text: ld.websitecheck })
+            el("dt", { text: "Website op Google" }), el("dd", { text: ld.googleWebsite })
           ]);
 
           var knoppen = el("div", { class: "fases" }, FASES.map(function (f) {
