@@ -3,187 +3,179 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#F6E6E9">
+<meta name="theme-color" content="#FFFFFF">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta name="robots" content="noindex, nofollow">
 <title>Flii Media</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="preload" href="/l/fonts/BricolageGrotesque.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/l/fonts/DMSans.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-:root{--ink:#171717;--mag:#E7255A;--paper:#F3F1EB;--card:#FBFAF7;--line:#E2DED3;--mid:#5C5A52;--soft:#8B887E}
+@font-face{font-family:'Bricolage Grotesque';src:url(/l/fonts/BricolageGrotesque.woff2) format('woff2');font-weight:200 800;font-display:swap}
+@font-face{font-family:'DM Sans';src:url(/l/fonts/DMSans.woff2) format('woff2');font-weight:100 1000;font-display:swap}
+@font-face{font-family:'JetBrains Mono';src:url(/l/fonts/JetBrainsMono.woff2) format('woff2');font-weight:100 800;font-display:swap}
+:root{--page:#FFFFFF;--ink:#0F0E0C;--muted:#4A4840;--subtle:#9B9790;--rule:#E8E6E1;--red:#E8294A;--red-dk:#C2173A;--card:#F7F6F3;
+  --disp:'Bricolage Grotesque','Inter',system-ui,sans-serif;--body:'DM Sans',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace}
 *{box-sizing:border-box}
-html,body{min-height:100%}
-html{background:var(--paper)}
-body{margin:0;color:var(--ink);font-family:Inter,system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;
-  background:
-    radial-gradient(60% 40% at 88% 4%,rgba(231,37,90,.16),rgba(231,37,90,0) 70%),
-    radial-gradient(50% 35% at 8% 0%,rgba(192,75,255,.09),rgba(192,75,255,0) 70%),
-    linear-gradient(180deg,#F6E6E9 0%,#F4EDEA 40%,var(--paper) 75%) fixed}
-/* zachte wolken op de achtergrond */
-body::before,body::after{content:"";position:fixed;z-index:0;pointer-events:none;border-radius:50%;filter:blur(28px);opacity:.85}
-body::before{width:70vmax;height:28vmax;left:-20vmax;top:58vh;background:radial-gradient(closest-side,#fff,rgba(255,255,255,0))}
-body::after{width:60vmax;height:24vmax;right:-22vmax;top:10vh;background:radial-gradient(closest-side,rgba(255,255,255,.9),rgba(255,255,255,0))}
+html,body{margin:0;background:var(--page)}
+body{color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
+.wrap{max-width:560px;margin:0 auto;padding:28px 20px 40px;min-height:100svh;display:flex;flex-direction:column}
 
-.wrap{position:relative;z-index:1;max-width:560px;margin:0 auto;padding:52px 18px 56px;display:flex;flex-direction:column;align-items:center;min-height:100svh}
-.avatar{width:88px;height:88px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-  background:rgba(255,255,255,.5);-webkit-backdrop-filter:blur(14px) saturate(1.5);backdrop-filter:blur(14px) saturate(1.5);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.9),inset 0 0 0 1px rgba(255,255,255,.6),0 10px 30px rgba(180,60,100,.14)}
-.avatar img{width:48px;height:auto}
-h1{font-family:'Bricolage Grotesque',Inter,sans-serif;font-weight:800;font-size:30px;letter-spacing:-.03em;line-height:1.05;margin:18px 0 0}
-.tag{font-size:14.5px;color:var(--mid);margin:6px 0 0;text-align:center;max-width:36ch}
+.top{display:flex;align-items:center;justify-content:space-between}
+.top img{height:56px;width:auto;margin-left:-16px}
+.meta{display:flex;align-items:center;gap:10px;margin-top:22px;font-size:12.5px;color:var(--muted)}
+.meta .dot{width:6px;height:6px;border-radius:50%;background:var(--red);flex:none}
+.meta .lijn{flex:1;height:1px;background:var(--rule)}
 
-.glass{background:linear-gradient(180deg,rgba(255,255,255,.55),rgba(255,240,245,.32));
-  -webkit-backdrop-filter:blur(16px) saturate(1.6);backdrop-filter:blur(16px) saturate(1.6);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.9),inset 0 0 0 1px rgba(255,255,255,.55),0 8px 24px rgba(180,60,100,.10)}
+h1{font-family:var(--disp);font-weight:800;font-size:44px;letter-spacing:-.035em;line-height:1;margin:34px 0 0}
+.tag{font-size:16px;color:var(--muted);margin:10px 0 0}
 
-.toprij{display:flex;gap:12px;margin-top:24px}
-.toprij a{display:flex;flex-direction:column;align-items:center;gap:7px;width:74px}
-.toprij a>svg{width:48px;height:48px;border-radius:50%;padding:13px;
-  background:rgba(255,255,255,.5);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.9),inset 0 0 0 1px rgba(255,255,255,.6),0 6px 18px rgba(180,60,100,.10);
-  transition:transform .2s ease,box-shadow .2s ease}
-.toprij a:hover>svg{transform:translateY(-2px);box-shadow:inset 0 0 0 1px var(--mag),0 8px 22px rgba(231,37,90,.18)}
-.toprij svg.ln{stroke:var(--mag);stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.toprij span{font-size:11.5px;font-weight:600;color:var(--mid)}
+.knoppen{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:26px}
+.knoppen a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;height:76px;border:1px solid var(--rule);border-radius:12px;
+  font-size:12.5px;font-weight:600;color:var(--ink);transition:border-color .2s ease-out,color .2s ease-out}
+.knoppen svg{width:22px;height:22px;stroke:var(--ink);stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:stroke .2s ease-out}
+.knoppen a:hover{border-color:var(--ink)}
+.knoppen a:hover svg{stroke:var(--red)}
 
-.links{width:100%;margin-top:28px;display:flex;flex-direction:column;gap:10px}
-.kop{width:100%;font-size:11.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--soft);margin:16px 0 0 6px}
-.kop:first-child{margin-top:0}
+.kop{display:flex;align-items:center;gap:12px;margin:38px 0 4px;font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--subtle)}
+.kop::after{content:"";flex:1;height:1px;background:var(--rule)}
 
-/* bar cards: beeld links, titel, magenta pijl */
-.link{display:flex;align-items:center;gap:14px;padding:8px 10px 8px 8px;border-radius:20px;
-  background:linear-gradient(180deg,rgba(255,255,255,.58),rgba(255,240,245,.34));
-  -webkit-backdrop-filter:blur(16px) saturate(1.6);backdrop-filter:blur(16px) saturate(1.6);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.9),inset 0 0 0 1px rgba(255,255,255,.55),0 8px 24px rgba(180,60,100,.09);
-  transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s ease}
-.link:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.9),inset 0 0 0 1px rgba(231,37,90,.45),0 14px 30px rgba(231,37,90,.16)}
-.link .th{width:104px;height:66px;border-radius:14px;object-fit:cover;flex:none;background:var(--line)}
-.link .tx{flex:1;min-width:0;font-size:15px;font-weight:600;line-height:1.3;letter-spacing:-.005em;
-  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.link .go{width:34px;height:34px;flex:none;border-radius:50%;background:var(--mag);display:flex;align-items:center;justify-content:center;
-  transition:transform .25s cubic-bezier(.2,.8,.2,1)}
-.link .go svg{width:15px;height:15px;stroke:#fff;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.link:hover .go{transform:translateX(3px)}
-.link:focus-visible{outline:2px solid var(--mag);outline-offset:3px}
+.lijst{display:flex;flex-direction:column}
+.link{display:flex;align-items:center;gap:16px;padding:14px 0;border-bottom:1px solid var(--rule)}
+.link:last-child{border-bottom:0}
+.link .th{width:108px;height:70px;border-radius:10px;object-fit:cover;flex:none;background:var(--card)}
+.link .tx{flex:1;min-width:0;font-family:var(--disp);font-weight:700;font-size:16.5px;line-height:1.22;letter-spacing:-.015em;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;transition:color .2s ease-out}
+.pijl{width:20px;height:20px;flex:none;stroke:var(--red);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s ease-out}
+.link:hover .tx{color:var(--red)}
+.link:hover .pijl{transform:translateX(3px)}
+.link:focus-visible,.knoppen a:focus-visible,.chip:focus-visible,summary:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:6px}
 
-.chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{font-size:12px;font-weight:600;color:var(--mid);border-radius:999px;padding:5px 11px;
-  background:rgba(255,255,255,.5);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.65);transition:color .2s,box-shadow .2s}
-.chip:hover{color:var(--ink);box-shadow:inset 0 0 0 1px var(--mag)}
-.voet{margin-top:auto;padding-top:34px;display:flex;align-items:center;gap:7px;font-size:12px;color:var(--soft)}
-.voet .punt{width:5px;height:5px;border-radius:50%;background:var(--mag)}
-@media (max-width:420px){.link .th{width:88px;height:60px}.link .tx{font-size:14.5px}}
-@media (prefers-reduced-motion:reduce){.link,.link .go,.toprij a>svg{transition:none}}
+details.archief{margin-top:22px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+details.archief summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:16px 0;
+  font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+details.archief summary::-webkit-details-marker{display:none}
+details.archief summary .n{color:var(--subtle);margin-left:6px}
+details.archief summary svg{width:16px;height:16px;stroke:var(--ink);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s ease-out}
+details.archief[open] summary svg{transform:rotate(180deg)}
+details.archief .lijst{border-top:1px solid var(--rule)}
+details.archief .link .th{width:84px;height:56px}
+details.archief .link .tx{font-size:15px}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.chip{font-size:14px;color:var(--muted);background:var(--card);border-radius:999px;padding:7px 14px;transition:background .2s ease-out,color .2s ease-out}
+.chip:hover{background:var(--ink);color:#fff}
+
+.voet{margin-top:auto;padding-top:44px;display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;color:var(--subtle)}
+.voet .dot{width:5px;height:5px;border-radius:50%;background:var(--red)}
+@media (max-width:400px){h1{font-size:38px}.link .th{width:92px;height:62px}.link .tx{font-size:15.5px}.knoppen a{height:70px;font-size:12px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
-
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="s-linkedin" viewBox="0 0 448 512"><path fill="#0A66C2" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></symbol>
-  <symbol id="s-mail" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2.5" fill="none" stroke="#E8255B" stroke-width="1.8"/><path d="M3 7l9 6 9-6" fill="none" stroke="#E8255B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-  <symbol id="s-tel" viewBox="0 0 24 24"><path d="M6.5 3h3l1.5 4-2 1.5a12 12 0 006.5 6.5L17 13l4 1.5v3a2 2 0 01-2.2 2A16.5 16.5 0 014.5 5.2 2 2 0 016.5 3z" fill="none" stroke="#E8255B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-</svg>
-
 <div class="wrap">
 
-  <div class="avatar"><img src="/assets/doc/fm-logo.png" alt="Flii Media"></div>
+  <div class="top"><a href="https://flii.nl" target="_blank" rel="noopener"><img src="/l/fm-logo.webp" alt="Flii Media"></a></div>
+
   <h1>Flii Media</h1>
-  <p class="tag">Let's Ignite ambitions</p>
+  <p class="tag">Let's ignite ambitions</p>
 
-  <div class="toprij">
-    <a href="https://flii.nl" target="_blank" rel="noopener" title="flii.nl">
-      <svg viewBox="0 0 24 24" class="ln"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 010 18"/><path d="M12 3a15 15 0 000 18"/></svg>
-      <span>Website</span>
-    </a>
-    <a href="https://instagram.com/fliimedia" target="_blank" rel="noopener" title="Instagram">
-      <svg class="ln" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1" fill="#E8255B" stroke="none"/></svg>
-      <span>Instagram</span>
-    </a>
-    <a href="https://linkedin.com/company/flii-media" target="_blank" rel="noopener" title="LinkedIn">
-      <svg viewBox="0 0 448 512"><use href="#s-linkedin"/></svg>
-      <span>LinkedIn</span>
-    </a>
-    <a href="https://flii.nl/contact" target="_blank" rel="noopener" title="flii.nl/contact">
-      <svg viewBox="0 0 24 24" class="ln"><path d="M4 5h16v14H4z"/><path d="M4 7l8 6 8-6"/></svg>
-      <span>Contact</span>
-    </a>
+  <div class="knoppen">
+    <a href="https://flii.nl" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 010 18"/><path d="M12 3a15 15 0 000 18"/></svg>Website</a>
+    <a href="https://instagram.com/fliimedia" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r=".6"/></svg>Instagram</a>
+    <a href="https://linkedin.com/company/flii-media" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10.5V17M8 7.2v.1M12 17v-3.6c0-1.7 1-2.9 2.5-2.9S17 11.7 17 13.4V17M12 10.5V17"/></svg>LinkedIn</a>
+    <a href="https://flii.nl/contact" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/></svg>Contact</a>
   </div>
 
-  <div class="links">
-    <div class="kop">Recent</div>
-    <a class="link" href="https://flii.nl/insight/server-side-tracking" target="_blank" rel="noopener">
-      <img class="th" src="https://flii.nl/assets/insight/server-side-tracking.webp" alt="" loading="lazy">
-      <span class="tx">Server-side tracking: waarom je data niet meer klopt</span>
-      <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span>
-    </a>
-    <a class="link" href="https://flii.nl/insight/netflix-met-reclame-maart-2027" target="_blank" rel="noopener">
-      <img class="th" src="https://flii.nl/assets/insight/netflix-met-reclame-maart-2027.webp" alt="" loading="lazy">
-      <span class="tx">Netflix met reclame vanaf 1 maart 2027: wat adverteerders moeten weten</span>
-      <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span>
-    </a>
-    <a class="link" href="https://flii.nl/insight/linkedin-of-meta-b2b" target="_blank" rel="noopener">
-      <img class="th" src="https://flii.nl/assets/insight/linkedin-of-meta-b2b.webp" alt="" loading="lazy">
-      <span class="tx">LinkedIn of Meta: waar bereik je B2B-beslissers?</span>
-      <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span>
-    </a>
-    <a class="link" href="https://flii.nl/cases/bikefair" target="_blank" rel="noopener">
-      <img class="th" src="https://flii.nl/assets/media/10855b463973.png" alt="" loading="lazy">
-      <span class="tx">BikeFair: van expatfavoriet naar landelijk merk</span>
-      <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span>
-    </a>
-    <a class="link" href="https://flii.nl/insight/founder-as-a-brand" target="_blank" rel="noopener">
-      <img class="th" src="https://flii.nl/assets/insight/founder-as-a-brand.webp" alt="" loading="lazy">
-      <span class="tx">Founder as a Brand: waarom de oprichter je sterkste kanaal is</span>
-      <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span>
-    </a>
-    <a class="link" href="https://flii.nl/insight/mediabudget-optimaal-verdelen" target="_blank" rel="noopener">
-      <img class="th" src="https://flii.nl/assets/insight/mediabudget-optimaal-verdelen.webp" alt="" loading="lazy">
-      <span class="tx">Zo verdeel je je mediabudget optimaal</span>
-      <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span>
-    </a>
-    <a class="link" href="https://flii.nl/cases/de-buurt/week-tegen-eenzaamheid" target="_blank" rel="noopener">
-      <img class="th" src="https://flii.nl/assets/media/7d8844fc0173.jpg" alt="" loading="lazy">
-      <span class="tx">Week tegen Eenzaamheid voor Stichting De Buurt</span>
-      <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span>
-    </a>
-    <a class="link" href="https://flii.nl/insight/black-friday-checklist-campagnes" target="_blank" rel="noopener">
-      <img class="th" src="https://flii.nl/assets/insight/black-friday-checklist-campagnes.webp" alt="" loading="lazy">
-      <span class="tx">Black Friday-checklist: wat je nu al regelt</span>
-      <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span>
-    </a>
-    <a class="link" href="https://flii.app/demo" target="_blank" rel="noopener">
-      <img class="th" src="https://flii.nl/assets/social/demo-dashboard.jpg" alt="" loading="lazy">
-      <span class="tx">Live demo: al je marketingdata in één scherm</span>
-      <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span>
-    </a>
-    <a class="link" href="https://flii.nl/platform-app-development" target="_blank" rel="noopener">
-      <img class="th" src="https://flii.nl/assets/social/platform-app-development.jpg" alt="" loading="lazy">
-      <span class="tx">Platform &amp; app development</span>
-      <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span>
-    </a>
-    <a class="link" href="https://flii.nl/insight/google-io-2026-wat-marketeers-moeten-weten" target="_blank" rel="noopener">
-      <img class="th" src="https://flii.nl/assets/insight/google-io-2026-wat-marketeers-moeten-weten-v2.webp" alt="" loading="lazy">
-      <span class="tx">Google I/O 2026: wat marketeers moeten weten</span>
-      <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span>
-    </a>
-
-    <div class="kop">Categorieën</div>
-    <div class="chips">
-      <a class="chip" href="https://flii.nl/insight" target="_blank" rel="noopener">Blog</a>
-      <a class="chip" href="https://flii.nl/cases" target="_blank" rel="noopener">Cases</a>
-      <a class="chip" href="https://flii.nl/diensten" target="_blank" rel="noopener">Diensten</a>
-      <a class="chip" href="https://flii.nl/kennisbank" target="_blank" rel="noopener">Kennisbank</a>
-      <a class="chip" href="https://flii.nl/#faq" target="_blank" rel="noopener">Veelgestelde vragen</a>
-    </div>
+  <div class="kop">Recent</div>
+  <div class="lijst" id="recent">
+      <a class="link" href="https://flii.nl/insight/server-side-tracking" target="_blank" rel="noopener" data-pub="2026-11-30">
+        <img class="th" src="https://flii.nl/assets/insight/server-side-tracking.webp" alt="" loading="lazy">
+        <span class="tx">Server-side tracking: waarom je data niet meer klopt</span><svg class="pijl" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="link" href="https://flii.nl/insight/netflix-met-reclame-maart-2027" target="_blank" rel="noopener" data-pub="2026-11-27">
+        <img class="th" src="https://flii.nl/assets/insight/netflix-met-reclame-maart-2027.webp" alt="" loading="lazy">
+        <span class="tx">Netflix met reclame vanaf 1 maart 2027: wat adverteerders moeten weten</span><svg class="pijl" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="link" href="https://flii.nl/insight/linkedin-of-meta-b2b" target="_blank" rel="noopener" data-pub="2026-11-25">
+        <img class="th" src="https://flii.nl/assets/insight/linkedin-of-meta-b2b.webp" alt="" loading="lazy">
+        <span class="tx">LinkedIn of Meta: waar bereik je B2B-beslissers?</span><svg class="pijl" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="link" href="https://flii.nl/cases/bikefair" target="_blank" rel="noopener" data-pub="2026-11-23">
+        <img class="th" src="https://flii.nl/assets/media/10855b463973.png" alt="" loading="lazy">
+        <span class="tx">BikeFair: van expatfavoriet naar landelijk merk</span><svg class="pijl" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="link" href="https://flii.nl/insight/founder-as-a-brand" target="_blank" rel="noopener" data-pub="2026-11-18">
+        <img class="th" src="https://flii.nl/assets/insight/founder-as-a-brand.webp" alt="" loading="lazy">
+        <span class="tx">Founder as a Brand: waarom de oprichter je sterkste kanaal is</span><svg class="pijl" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="link" href="https://flii.nl/insight/mediabudget-optimaal-verdelen" target="_blank" rel="noopener" data-pub="2026-11-11">
+        <img class="th" src="https://flii.nl/assets/insight/mediabudget-optimaal-verdelen.webp" alt="" loading="lazy">
+        <span class="tx">Zo verdeel je je mediabudget optimaal</span><svg class="pijl" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="link" href="https://flii.nl/cases/de-buurt/week-tegen-eenzaamheid" target="_blank" rel="noopener" data-pub="2026-11-09">
+        <img class="th" src="https://flii.nl/assets/media/7d8844fc0173.jpg" alt="" loading="lazy">
+        <span class="tx">Week tegen Eenzaamheid voor Stichting De Buurt</span><svg class="pijl" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="link" href="https://flii.nl/insight/black-friday-checklist-campagnes" target="_blank" rel="noopener" data-pub="2026-11-06">
+        <img class="th" src="https://flii.nl/assets/insight/black-friday-checklist-campagnes.webp" alt="" loading="lazy">
+        <span class="tx">Black Friday-checklist: wat je nu al regelt</span><svg class="pijl" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="link" href="https://flii.app/demo" target="_blank" rel="noopener" data-pub="2026-11-04">
+        <img class="th" src="https://flii.nl/assets/social/demo-dashboard.jpg" alt="" loading="lazy">
+        <span class="tx">Live demo: al je marketingdata in één scherm</span><svg class="pijl" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="link" href="https://flii.nl/platform-app-development" target="_blank" rel="noopener" data-pub="2026-11-02">
+        <img class="th" src="https://flii.nl/assets/social/platform-app-development.jpg" alt="" loading="lazy">
+        <span class="tx">Platform &amp; app development</span><svg class="pijl" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="link" href="https://flii.nl/insight/google-io-2026-wat-marketeers-moeten-weten" target="_blank" rel="noopener" data-pub="2026-10-28">
+        <img class="th" src="https://flii.nl/assets/insight/google-io-2026-wat-marketeers-moeten-weten-v2.webp" alt="" loading="lazy">
+        <span class="tx">Google I/O 2026: wat marketeers moeten weten</span><svg class="pijl" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="link" href="https://flii.nl/insight/branding-versus-performance-marketing" target="_blank" rel="noopener" data-pub="2026-10-21">
+        <img class="th" src="https://flii.nl/assets/insight/branding-versus-performance-marketing.webp" alt="" loading="lazy">
+        <span class="tx">Branding vs. Performance: wat werkt?</span><svg class="pijl" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="link" href="https://flii.nl/insight/social-media-onderzoek-2026-newcom" target="_blank" rel="noopener" data-pub="2026-10-12">
+        <img class="th" src="https://flii.nl/assets/insight/social-media-onderzoek-2026-newcom-v2.webp" alt="" loading="lazy">
+        <span class="tx">Meer gebruikers, meer twijfel: social media in 2026</span><svg class="pijl" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="link" href="https://flii.nl/insight/ai-nieuwscrawlers-en-je-merk" target="_blank" rel="noopener" data-pub="2026-10-07">
+        <img class="th" src="https://flii.nl/assets/insight/ai-nieuwscrawlers-en-je-merk.webp" alt="" loading="lazy">
+        <span class="tx">Zou AI ook een krantenabonnement moeten hebben?</span><svg class="pijl" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
   </div>
 
-  <div class="voet"><span class="punt"></span>flii.nl</div>
+  <details class="archief" id="archief" hidden>
+    <summary><span>Archief<span class="n" id="archief-n"></span></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+    <div class="lijst" id="archief-lijst"></div>
+  </details>
 
+  <div class="kop">Categorieën</div>
+  <div class="chips">
+    <a class="chip" href="https://flii.nl/insight" target="_blank" rel="noopener">Blog</a>
+    <a class="chip" href="https://flii.nl/cases" target="_blank" rel="noopener">Cases</a>
+    <a class="chip" href="https://flii.nl/diensten" target="_blank" rel="noopener">Diensten</a>
+    <a class="chip" href="https://flii.nl/kennisbank" target="_blank" rel="noopener">Kennisbank</a>
+    <a class="chip" href="https://flii.nl/#faq" target="_blank" rel="noopener">Veelgestelde vragen</a>
+  </div>
+
+  <div class="voet"><span class="dot"></span>flii.nl</div>
 </div>
+<script>
+/* Toont alleen gepubliceerde links: de 10 nieuwste onder Recent, de rest in het Archief. */
+(function(){
+  var nu=new Date(), vandaag=nu.getFullYear()+'-'+String(nu.getMonth()+1).padStart(2,'0')+'-'+String(nu.getDate()).padStart(2,'0');
+  var recent=document.getElementById('recent'), arch=document.getElementById('archief'), al=document.getElementById('archief-lijst');
+  var items=[].slice.call(recent.querySelectorAll('.link')).filter(function(a){
+    if(a.dataset.pub>vandaag){a.remove();return false} return true});
+  items.sort(function(a,b){return a.dataset.pub<b.dataset.pub?1:-1});
+  items.forEach(function(a,i){(i<10?recent:al).appendChild(a)});
+  var n=al.children.length; if(n){arch.hidden=false;document.getElementById('archief-n').textContent=' ('+n+')'}
+})();
+</script>
 <script src="/fc/site.v2.js" defer></script>
 </body>
 </html>
