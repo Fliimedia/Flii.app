@@ -12,3 +12,4 @@ Redirect 301 /p/internship/international /aanvraag/stage-internationaal
 RedirectMatch 301 ^/(zo|bikefair|stenbossong|broadcast-magazine|onelane|theatertijd|ronreizen|uitvaart-portret|de-buurt|fc-klap|lucas-roberts)(/dashboard)?/?$ /client/$1/
 RedirectMatch 301 ^/flii(/dashboard)?/?$ /admin/
 RedirectMatch 301 ^/(portal|portaal)/?$ /client/
+RedirectMatch 301 ^/acquisition(/.*)?$ /acquisitie$1

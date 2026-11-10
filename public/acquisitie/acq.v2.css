@@ -86,3 +86,15 @@ dl.info a{text-decoration:underline;text-decoration-color:var(--line);text-under
   .fold{padding-left:2px}
   dl.info{grid-template-columns:110px 1fr}
 }
+
+/* menu rechtsboven */
+.am{position:relative}
+.am-knop{display:grid;place-items:center;width:36px;height:36px;padding:0;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);cursor:pointer;transition:border-color .15s,color .15s}
+.am-knop svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round}
+.am-knop:hover,.am-knop[aria-expanded="true"]{border-color:var(--ink)}
+.am-knop:focus-visible{outline:2px solid var(--pink);outline-offset:2px}
+.am-lijst{position:absolute;right:0;top:calc(100% + 8px);z-index:20;min-width:190px;padding:6px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 30px rgba(22,24,29,.1);display:flex;flex-direction:column}
+.am-lijst[hidden]{display:none}
+.am-lijst a{display:block;padding:9px 12px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;color:var(--ink)}
+.am-lijst a:hover{background:var(--wash)}
+.am-lijst a[aria-current="page"]{color:var(--pink)}

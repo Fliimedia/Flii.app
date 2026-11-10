@@ -1,4 +1,4 @@
-/* flii.app acquisition: funneloverzicht (/acquisition/) en leadlijsten (/acquisition/<lijst>/).
+/* flii.app acquisition: funneloverzicht (/acquisitie/) en leadlijsten (/acquisitie/<lijst>/).
    Toegang via dezelfde beheerderslogin als de CRM. De fase per lead staat in deze browser (localStorage). */
 (function () {
   "use strict";
@@ -14,7 +14,7 @@
   ];
 
   var LIJSTEN = [
-    { slug: "website", titel: "Website", data: "/acquisition/website/leads.v2.json" }
+    { slug: "website", titel: "Website", data: "/acquisitie/website/leads.v2.json" }
   ];
 
   var wortel = document.getElementById("app");
@@ -54,6 +54,14 @@
 
   /* ---------- toegang ---------- */
   function vraagPin(fout) {
+    // Inloggen loopt via de portal (/client/), die na verificatie terugstuurt naar deze pagina.
+    if (!fout || /Sessie|incorrect|toegang|mislukt/i.test(fout)) {
+      try { localStorage.removeItem(SESSIE); } catch (e) {}
+      location.replace("/client/?next=" + encodeURIComponent(location.pathname));
+      return;
+    }
+    scherm([el("div", { class: "poort" }, [el("div", { class: "k" }, [el("p", { text: fout })])])]);
+    return;
     var veld = el("input", { type: "password", inputmode: "numeric", maxlength: "8", autocomplete: "off" });
     var knop = el("button", { text: "Inloggen" });
     var melding = el("div", { class: "fout", text: fout || "" });
@@ -113,9 +121,9 @@
         FASES.forEach(function (f) { totaal[f.id] += tel[f.id]; });
         alles += data[i].leads.length;
         return el("tr", {}, [
-          el("td", {}, [el("a", { href: "/acquisition/" + l.slug + "/", text: l.titel })])
+          el("td", {}, [el("a", { href: "/acquisitie/" + l.slug + "/", text: l.titel })])
         ].concat(FASES.map(function (f) {
-          return el("td", {}, [el("a", { href: "/acquisition/" + l.slug + "/#" + f.id, text: String(tel[f.id]), style: "text-decoration:none" })]);
+          return el("td", {}, [el("a", { href: "/acquisitie/" + l.slug + "/#" + f.id, text: String(tel[f.id]), style: "text-decoration:none" })]);
         })).concat([el("td", { class: "t", text: String(data[i].leads.length) })]));
       });
 
@@ -137,8 +145,8 @@
       ]);
 
       scherm([el("div", { class: "band" }), el("div", { class: "wrap" }, [
-        kop(el("span", { class: "u", text: "Acquisition" })),
-        el("h1", { text: "Acquisition" }),
+        kop(el("span", { class: "u", text: "Acquisitie" })),
+        el("h1", { text: "Acquisitie" }),
         el("p", { class: "sec", text: "Funnel" }), funnel,
         el("p", { class: "sec", text: "Lijsten" }), tabel
       ])]);
@@ -148,7 +156,7 @@
   /* ---------- lijst ---------- */
   function lijstPagina(slug) {
     var lijst = LIJSTEN.filter(function (l) { return l.slug === slug; })[0];
-    if (!lijst) { location.replace("/acquisition/"); return; }
+    if (!lijst) { location.replace("/acquisitie/"); return; }
     laadLijst(lijst).then(function (data) {
       var filter = (location.hash || "").replace("#", "");
       if (!FASES.some(function (f) { return f.id === filter; })) filter = "";
@@ -216,7 +224,7 @@
       }
 
       scherm([el("div", { class: "band" }), el("div", { class: "wrap" }, [
-        kop(el("a", { class: "u", href: "/acquisition/", text: "Acquisition" })),
+        kop(el("a", { class: "u", href: "/acquisitie/", text: "Acquisitie" })),
         el("h1", { text: data.titel || lijst.titel }),
         tabs, ul
       ])]);
