@@ -131,7 +131,7 @@ function fit() {
   if (innerWidth > 760) {
     // Desktop: the form sits in the free space on the right, between the top bar and the footer icons,
     // and never over the slogan.
-    const right = document.querySelector(".duo").getBoundingClientRect().right;
+    const right = document.querySelector(".menu").getBoundingClientRect().right;
     const heroRight = Math.max(textRight(document.querySelector(".hero h1")), textRight(document.querySelector(".hero .sub")));
     const w = Math.max(300, Math.min(380, right - heroRight - 40));
     cta.style.setProperty("--pw", w + "px");

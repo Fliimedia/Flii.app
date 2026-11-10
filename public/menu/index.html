@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="theme-color" content="#F6E6E9" />
+<title>Menu | flii.app</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Inter:wght@400;500;600&display=swap" />
+<style>
+:root{--ink:#171717;--mag:#E7255A;--paper:#F3F1EB;--line:rgba(23,23,23,.09);--mid:#5C5A52;--soft:#8B887E;--pad:clamp(20px,4.4vw,64px)}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{min-height:100svh;color:var(--ink);font-family:'Inter',system-ui,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;
+  background:radial-gradient(60% 55% at 88% 8%,rgba(231,37,90,.16),rgba(231,37,90,0) 70%),radial-gradient(50% 45% at 8% 0%,rgba(192,75,255,.08),rgba(192,75,255,0) 70%),linear-gradient(180deg,#F6E6E9 0%,#F4EDEA 42%,var(--paper) 70%);background-color:var(--paper);background-repeat:no-repeat;background-size:100% 100vh}
+a{color:inherit;text-decoration:none}
+.top{position:sticky;top:0;z-index:5;padding:calc(var(--pad) * .55) var(--pad);display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;letter-spacing:-.03em;font-size:28px;line-height:1;display:inline-flex;align-items:baseline}
+.logo span{color:var(--mag)}
+.heart{width:.3em;height:.3em;flex:none;align-self:flex-end;margin:0 .01em .07em;fill:var(--mag)}
+.glas{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;color:var(--ink);
+  background:linear-gradient(180deg,rgba(255,255,255,.42),rgba(255,236,242,.22));-webkit-backdrop-filter:blur(18px) saturate(1.7);backdrop-filter:blur(18px) saturate(1.7);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9),inset 0 0 0 1px rgba(255,255,255,.55),0 6px 18px rgba(180,60,100,.14);transition:color .2s,transform .2s}
+.glas svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round}
+.glas:hover,.glas:focus-visible{color:var(--mag);transform:translateY(-1px);outline:none}
+main{padding:8px var(--pad) 64px;columns:250px 4;column-gap:20px}
+.blok{break-inside:avoid;margin:0 0 20px;padding:20px 22px;border-radius:20px;background:rgba(255,255,255,.5);box-shadow:inset 0 0 0 1px rgba(255,255,255,.7),0 6px 18px rgba(180,60,100,.06)}
+h2{margin:0 0 10px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--soft)}
+ul{list-style:none;margin:0;padding:0}
+.lijst>li{border-top:1px solid var(--line)}
+.lijst>li:first-child{border-top:0}
+.lijst>li>a,.lijst>li>span{display:block;padding:8px 0;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:17px;letter-spacing:-.015em;line-height:1.25}
+.lijst ul{margin:0 0 10px 2px;padding-left:12px;border-left:1px solid var(--line)}
+.lijst ul a,.lijst ul span{display:block;padding:3px 0;font-size:14px;color:var(--mid)}
+.lijst ul ul{margin:0 0 2px}
+.lijst ul span{color:var(--soft);font-size:12.5px;padding-top:6px}
+main a{transition:color .2s}
+main a:hover,main a:focus-visible{color:var(--mag);outline:none}
+@media (max-width:760px){.logo{font-size:23px}}
+</style>
+</head>
+<body>
+  <header class="top">
+    <a class="logo" href="/" aria-label="flii.app">flii<svg class="heart" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.7-9.6-9.2C.9 8.5 2.6 5 6 4.3c2.2-.5 4.4.6 6 2.6 1.6-2 3.8-3.1 6-2.6 3.4.7 5.1 4.2 3.6 7.5C19.5 16.3 12 21 12 21z"/></svg><span>app</span></a>
+    <a class="glas" href="/" aria-label="Sluiten" title="Sluiten"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></a>
+  </header>
+  <main>
+      <section class="blok"><h2>Algemeen</h2><ul class="lijst"><li><a href="/">Home</a></li><li><a href="/l/">Links</a></li><li><a href="/client/">Login</a></li></ul></section>
+      <section class="blok"><h2>Dashboards</h2><ul class="lijst"><li><a href="/admin/">Admin</a></li><li><a href="/demo/dashboard/">Demo</a></li><li><span>Klanten</span><ul><li><a href="/client/bikefair/">Bikefair</a></li><li><a href="/client/broadcast-magazine/">Broadcast Magazine</a></li><li><a href="/client/de-buurt/">de Buurt</a></li><li><a href="/client/fc-klap/">FC Klap</a></li><li><a href="/client/medialane/">Medialane</a></li><li><a href="/client/onelane/">OneLane</a></li><li><a href="/client/ronreizen/">Ronreizen</a></li><li><a href="/client/stenbossong/">Sten Bossong</a></li><li><a href="/client/theatertijd/">Theatertijd</a></li><li><a href="/client/uitvaart-portret/">Uitvaart-portret</a></li><li><a href="/client/zo/">Zelfstandig Ondernemers</a></li></ul></li></ul></section>
+      <section class="blok"><h2><a href="/werk/">Werk</a></h2><ul class="lijst"><li><a href="/werk/de-buurt/">Stichting de Buurt</a><ul><li><a href="/werk/de-buurt/2026/">2026</a><ul><li><a href="/werk/de-buurt/2026/eenzaamheid/">Week tegen Eenzaamheid</a><ul><li><a href="/werk/de-buurt/2026/eenzaamheid/case/">Case</a></li><li><a href="/werk/de-buurt/2026/eenzaamheid/rapportage/">Rapportage</a></li></ul></li></ul></li></ul></li><li><a href="/werk/onelane/">OneLane</a><ul><li><a href="/werk/onelane/2026/">2026</a><ul><li><a href="/werk/onelane/2026/campagne/">Campagne</a><ul><li><a href="/werk/onelane/2026/campagne/dashboard/">Dashboard</a><ul><li><a href="/werk/onelane/2026/campagne/dashboard/rapportage/">Rapportage</a></li><li><a href="/werk/onelane/2026/campagne/dashboard/uitzendschema/">Uitzendschema</a></li></ul></li><li><a href="/werk/onelane/2026/campagne/fynce/">Mediaplan FYNCE</a></li></ul></li></ul></li></ul></li><li><a href="/werk/theatertijd/">Theatertijd</a><ul><li><a href="/werk/theatertijd/2026/">2026</a><ul><li><a href="/werk/theatertijd/2026/social-media/">Social media</a><ul><li><a href="/werk/theatertijd/2026/social-media/hooks/">Hooks</a></li><li><a href="/werk/theatertijd/2026/social-media/materiaalbon/">Materiaalbon</a></li><li><a href="/werk/theatertijd/2026/social-media/pitch/">Pitch</a></li><li><a href="/werk/theatertijd/2026/social-media/voorstel/">Voorstel</a></li></ul></li></ul></li></ul></li><li><a href="/werk/zelfstandig-ondernemers/">Zelfstandig Ondernemers</a><ul><li><a href="/werk/zelfstandig-ondernemers/2026/">2026</a><ul><li><a href="/werk/zelfstandig-ondernemers/2026/bnr-friday-move/">BNR The Friday Move</a></li><li><a href="/werk/zelfstandig-ondernemers/2026/dienstenoverzicht/">Jaarplan 2027</a></li><li><a href="/werk/zelfstandig-ondernemers/2026/november-campagne/">November campagne</a><ul><li><a href="/werk/zelfstandig-ondernemers/2026/november-campagne/materiaalbon/">Materiaalbon</a></li></ul></li><li><a href="/werk/zelfstandig-ondernemers/2026/seo-geo/">SEO en GEO kennisbank</a></li></ul></li></ul></li></ul></section>
+      <section class="blok"><h2><a href="/docs/">Documentatie</a></h2><ul class="lijst"><li><a href="/docs/template-basis.html">Basissjabloon</a></li><li><span>Facturatie</span><ul><li><a href="/docs/facturatie/factuur.html">Factuur</a></li><li><a href="/docs/facturatie/offerte.html">Offerte</a></li><li><a href="/docs/facturatie/opdrachtbevestiging.html">Opdrachtbevestiging</a></li></ul></li><li><span>Formats</span><ul><li><a href="/docs/formats/boek.html">Boek</a></li><li><a href="/docs/formats/campagne-concept.html">Campagne concept</a></li><li><a href="/docs/formats/content.html">Content</a></li><li><a href="/docs/formats/televisie.html">Televisie</a></li><li><a href="/docs/formats/web-platformen.html">Web platformen</a></li></ul></li><li><span>Jaarplan</span><ul><li><a href="/docs/jaarplan/content-kalender.html">Content kalender</a></li><li><a href="/docs/jaarplan/marketing-jaarplan.html">Marketing jaarplan</a></li></ul></li><li><span>Mediaprojecten</span><ul><li><a href="/docs/media-projecten/campagnes.html">Campagnes</a></li><li><a href="/docs/media-projecten/creatief-materiaal.html">Creatief materiaal</a></li><li><a href="/docs/media-projecten/dashboard.html">Dashboard</a></li><li><a href="/docs/media-projecten/evaluatie.html">Evaluatie</a></li><li><a href="/docs/media-projecten/media-inkoop.html">Media-inkoop</a></li><li><a href="/docs/media-projecten/rapportage.html">Rapportage</a></li></ul></li><li><span>Pitches</span><ul><li><a href="/docs/pitches/pitch.html">Pitch</a></li></ul></li></ul></section>
+      <section class="blok"><h2>Acquisitie</h2><ul class="lijst"><li><a href="/acquisition/">Acquisition</a><ul><li><a href="/acquisition/website/">Website</a></li></ul></li><li><a href="/acquisitie/pakketten/">Pakketten</a></li></ul></section>
+      <section class="blok"><h2>Intern</h2><ul class="lijst"><li><a href="/crm/">CRM</a></li><li><a href="/intern/toegang/socials/">Toegang socials</a></li><li><a href="/aanvraag/stage-internationaal/">Stage aanvraag</a></li></ul></section>
+  </main>
+  <script src="/fc/site.v2.js" defer></script>
+</body>
+</html>
