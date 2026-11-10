@@ -42,7 +42,11 @@
 
   function kop(rechts) {
     return el("div", { class: "kop" }, [
-      el("a", { href: "/acquisition/" }, [el("img", { src: "/assets/doc/fm-logo.png", alt: "Flii Media" })]),
+      (function () {
+        var a = el("a", { class: "fliilogo", href: "/", "aria-label": "flii.app" }, ["flii"]);
+        a.insertAdjacentHTML("beforeend", '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.7-9.6-9.2C.9 8.5 2.6 5 6 4.3c2.2-.5 4.4.6 6 2.6 1.6-2 3.8-3.1 6-2.6 3.4.7 5.1 4.2 3.6 7.5C19.5 16.3 12 21 12 21z"/></svg><span>app</span>');
+        return a;
+      })(),
       rechts
     ]);
   }
