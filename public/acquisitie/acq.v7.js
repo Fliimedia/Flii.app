@@ -14,7 +14,10 @@
   ];
 
   var LIJSTEN = [
-    { slug: "website", titel: "Website", data: "/acquisitie/website/leads.v2.json" }
+    { slug: "website", titel: "Website", data: "/acquisitie/website/leads.v3.json" },
+    { slug: "social-advertising", titel: "Social advertising", data: "/acquisitie/social-advertising/leads.v1.json" },
+    { slug: "social-content", titel: "Social content creation", data: "/acquisitie/social-content/leads.v1.json" },
+    { slug: "search-llm", titel: "Search & LLM advertising", data: "/acquisitie/search-llm/leads.v1.json" }
   ];
 
   var wortel = document.getElementById("app");
@@ -204,9 +207,10 @@
           var info = el("dl", { class: "info" }, [
             el("dt", { text: "Branche" }), el("dd", { text: ld.branche }),
             el("dt", { text: "Adres" }), el("dd", {}, [el("a", { href: ld.maps || mapsLink(ld.naam + ", " + ld.adres), target: "_blank", rel: "noopener", text: ld.adres })]),
-            el("dt", { text: "Google reviews" }), el("dd", { text: ld.rating.toFixed(1).replace(".", ",") + " uit 5, " + ld.reviews + " reviews" }),
-            el("dt", { text: "Website op Google" }), el("dd", { text: ld.googleWebsite })
-          ]);
+            el("dt", { text: "Google reviews" }), el("dd", { text: ld.rating.toFixed(1).replace(".", ",") + " uit 5, " + ld.reviews + " reviews" })
+          ].concat(ld.googleWebsite ? [el("dt", { text: "Website op Google" }), el("dd", { text: ld.googleWebsite })] : [])
+           .concat(ld.website ? [el("dt", { text: "Website" }), el("dd", {}, [el("a", { href: ld.website, target: "_blank", rel: "noopener", text: ld.website.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "") })])] : [])
+           .concat(ld.signaal ? [el("dt", { text: "Op de website" }), el("dd", { text: ld.signaal })] : []));
 
           var knoppen = el("div", { class: "fases" }, FASES.map(function (f) {
             return el("button", { class: "fase" + (f.id === fase ? " aan" : ""), on: { click: function () {
@@ -229,6 +233,7 @@
       scherm([el("div", { class: "band" }), el("div", { class: "wrap" }, [
         kop(el("a", { class: "u", href: "/acquisitie/", text: "Acquisitie" })),
         el("h1", { text: data.titel || lijst.titel }),
+        data.selectie ? el("p", { class: "selectie", style: "color:var(--muted);margin:-14px 0 26px;max-width:680px", text: data.selectie }) : null,
         tabs, ul
       ])]);
       teken();
