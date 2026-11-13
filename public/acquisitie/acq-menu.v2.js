@@ -4,7 +4,8 @@
   var ITEMS = [
     { href: "/acquisitie/", titel: "Overzicht" },
     { href: "/acquisitie/website/", titel: "Website" },
-    { href: "/acquisitie/pakketten/", titel: "Pakketten" }
+    { href: "/acquisitie/pakketten/", titel: "Pakketten" },
+    { href: "/acquisitie/script/", titel: "Cold call script" }
   ];
   var pad = location.pathname.replace(/\/?$/, "/");
 
@@ -31,6 +32,6 @@
   function scan() { document.querySelectorAll(".kop").forEach(bouw); }
   window.acqMenu = scan;
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", scan); else scan();
-  /* De overzichts- en lijstpagina's worden door acq.v5.js opgebouwd. */
+  /* De overzichts- en lijstpagina's worden door acq.v6.js en script.v1.js opgebouwd. */
   new MutationObserver(scan).observe(document.documentElement, { childList: true, subtree: true });
 })();

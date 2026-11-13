@@ -146,7 +146,10 @@
 
       scherm([el("div", { class: "band" }), el("div", { class: "wrap" }, [
         kop(el("span", { class: "u", text: "Acquisitie" })),
-        el("h1", { text: "Acquisitie" }),
+        el("div", { class: "titelrij" }, [
+          el("h1", { text: "Acquisitie" }),
+          el("a", { class: "knop", href: "/acquisitie/script/", text: "Cold call script" })
+        ]),
         el("p", { class: "sec", text: "Funnel" }), funnel,
         el("p", { class: "sec", text: "Lijsten" }), tabel
       ])]);
