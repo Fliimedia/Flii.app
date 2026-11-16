@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
 <meta name="googlebot" content="noindex, nofollow">
-<title>OneLane &mdash; Campagne-evaluatie NOVA (tussenstand) | Flii Media</title>
+<title>OneLane &mdash; Campagne-evaluatie NOVA | Flii Media</title>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -14,26 +14,35 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0}
-html{scroll-snap-type:y mandatory;scroll-behavior:smooth}
-body{background:#11142a;font-family:Inter,Arial,sans-serif;color:#1F2440;--s:.5}
-.deck{display:flex;flex-direction:column;align-items:center;gap:24px;padding:24px 0}
-.slide{width:calc(1920px * var(--s));height:calc(1080px * var(--s));overflow:hidden;border-radius:calc(12px * var(--s) + 4px);box-shadow:0 12px 40px rgba(0,0,0,.35);scroll-snap-align:center;flex:none}
+html,body{height:100%}
+body{background:#11142a;font-family:Inter,Arial,sans-serif;color:#1F2440;--s:.5;overflow:hidden;display:flex;flex-direction:column}
+.stage{flex:1;display:flex;align-items:center;justify-content:center;min-height:0;padding:16px}
+.slide{display:none;width:calc(1920px * var(--s));height:calc(1080px * var(--s));overflow:hidden;border-radius:calc(12px * var(--s) + 4px);box-shadow:0 12px 40px rgba(0,0,0,.35);flex:none}
+.slide.on{display:block}
 .slide>section{position:relative;width:1920px;height:1080px;overflow:hidden;transform:scale(var(--s));transform-origin:0 0;font-family:Inter,Arial,sans-serif;color:#1F2440}
 section h1,section h2,section h3{font-weight:600}
 section a{color:inherit;text-decoration:none}
+section img{object-fit:cover}
 section table{border-collapse:collapse;width:100%}
 section th,section td{padding:.35em .6em;border-bottom:1px solid rgba(31,36,64,.12);text-align:left;font-weight:400}
 section th{font-weight:600}
 section tr:last-child td{border-bottom:0}
-section img{object-fit:cover}
 x-shape{display:block;flex:none}
-x-shape[kind="arrow-right"]{clip-path:polygon(0 30%,60% 30%,60% 0,100% 50%,60% 100%,60% 70%,0 70%)}
-@media (max-width:700px){.deck{gap:12px;padding:12px 0}html{scroll-snap-type:none}}
+.bar{flex:none;display:flex;align-items:center;justify-content:center;gap:10px;padding:10px 16px 16px;flex-wrap:wrap}
+.bar button{font:600 14px Inter,Arial,sans-serif;border:0;cursor:pointer;border-radius:999px;transition:background .15s,color .15s}
+.nav{width:40px;height:40px;background:#262c4d;color:#f5f3ee;font-size:18px!important}
+.nav:hover{background:#EE6A3C}
+.nav:disabled{opacity:.35;cursor:default;background:#262c4d}
+.dots{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+.dot{min-width:34px;height:34px;padding:0 10px;background:transparent;color:#9aa0b8;border:1px solid #3a4163!important}
+.dot:hover{color:#f5f3ee;border-color:#9aa0b8!important}
+.dot.on{background:#EE6A3C;color:#fff;border-color:#EE6A3C!important}
+.label{color:#9aa0b8;font:400 14px Inter,Arial,sans-serif;min-width:110px;text-align:center}
 </style>
 </head>
 <body>
-<main class="deck">
-<div class="slide" aria-label="Slide 1">
+<main class="stage">
+<div class="slide on" data-i="0" aria-label="Slide 1: Cover">
 <section id="cover" data-transition="fade" style="background:linear-gradient(120deg, #1a1e35 0%, #222a45 55%, #1d4650 100%)">
   <div style="position:absolute; top:15.36px; left:1049.24px; width:692px; height:952px; display:flex; flex-direction:column; background:radial-gradient(circle at 60% 45%, #ee6a3c47 0%, #ee6a3c00 70%)">
   </div>
@@ -44,239 +53,203 @@ x-shape[kind="arrow-right"]{clip-path:polygon(0 30%,60% 30%,60% 0,100% 50%,60% 1
     <div style="width:120px; height:6px; display:flex; flex-direction:column; background:#ee6a3c; border-radius:3px">
     </div>
     <h1 style="font-family:'Space Grotesk', Arial, sans-serif; font-size:120px; font-weight:600; line-height:1.02; color:#f5f3ee">Campagne-evaluatie</h1>
-    <p style="font-family:Inter, Arial, sans-serif; font-size:40px; line-height:1.3; color:#c9cee0">Tussenstand t/m 10 november 2026</p>
+    <p style="font-family:Inter, Arial, sans-serif; font-size:40px; line-height:1.3; color:#c9cee0">5 oktober t/m 15 november 2026</p>
   </div>
-  <div style="position:absolute; top:812px; left:128px; width:860px; display:flex; flex-direction:row; gap:40px; align-items:center">
+  <div style="position:absolute; top:800px; left:128px; width:1100px; display:flex; flex-direction:row; gap:40px; align-items:center">
     <img src="img/logo-dark.png" alt="OneLane-logo" style="width:315px; height:90px; object-fit:contain">
+    <div style="width:2px; height:72px; background:#5c6385"></div>
+    <div style="display:flex; flex-direction:column; gap:6px"><p style="font-family:Inter, Arial, sans-serif; font-size:24px; color:#9aa0b8">Creatie</p><p style="font-family:'Space Grotesk', Arial, sans-serif; font-size:48px; font-weight:700; line-height:1; color:#f5f3ee">D8</p></div>
+    <div style="display:flex; flex-direction:column; gap:6px"><p style="font-family:Inter, Arial, sans-serif; font-size:24px; color:#9aa0b8">Media</p><div style="display:flex; flex-direction:row; gap:12px; align-items:center"><img src="img/fm.png" alt="Flii Media-logo" style="width:63px; height:48px; object-fit:contain"><p style="font-family:'Space Grotesk', Arial, sans-serif; font-size:36px; font-weight:600; line-height:1; color:#f5f3ee; white-space:nowrap">Flii Media</p></div></div>
   </div>
 </section>
 </div>
-<div class="slide" aria-label="Slide 2">
-<section id="div1" data-transition="fade" style="display:flex; flex-direction:column; gap:32px; justify-content:center; padding:128px; background:linear-gradient(120deg, #1a1e35 0%, #222a45 60%, #1d4650 100%)">
-  <div style="width:120px; height:6px; display:flex; flex-direction:column; background:#ee6a3c; border-radius:3px">
-  </div>
-  <h2 style="font-family:'Space Grotesk', Arial, sans-serif; font-size:96px; font-weight:600; color:#f5f3ee">Project &amp; resultaat</h2>
+<div class="slide" data-i="1" aria-label="Slide 2: Plan">
+<section id="div1" data-transition="fade" style="background:linear-gradient(120deg, #1A1E35 0%, #222A45 60%, #1D4650 100%);color:#F5F3EE;font-family:Inter, Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:center;gap:28px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:200px;font-weight:600;line-height:1;color:#EE6A3C">1</p>
+<div style="width:120px;height:6px;background:#EE6A3C;border-radius:3px"></div>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:96px;font-weight:600;color:#F5F3EE">Plan</h2>
+<div style="position:absolute;left:1500px;top:1000px;width:356px;height:36px;display:flex;flex-direction:row;align-items:center;justify-content:flex-end;gap:12px"><img src="img/fm.png" alt="Flii Media" style="width:40px;height:30px;object-fit:contain"><p style="font-family:Inter, Arial, sans-serif;font-size:24px;color:#9AA0B8;white-space:nowrap">Amplifying impact</p></div>
 </section>
 </div>
-<div class="slide" aria-label="Slide 3">
-<section id="adflow" data-transition="fade" style="background:#f5f3ee">
-  <div id="p81fd87456c29r0-6a79a3b6" style="position:absolute; top:112px; left:128px; width:1665px; height:124px; display:flex; flex-direction:column; gap:16px">
-    <p style="font-family:Inter, Arial, sans-serif; font-size:24px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:#b9461f">1 · Project · Plan</p>
-    <h2 style="font-family:'Space Grotesk', Arial, sans-serif; font-size:64px; font-weight:600; color:#1f2440">Van bereik naar bezoek naar herkenning</h2>
-  </div>
-  <div id="p81fd87456c29r1-6a79a3b6" style="position:absolute; top:275px; left:128px; width:1665px; height:446px; display:flex; flex-direction:row; gap:16px">
-    <div style="display:flex; flex-direction:column; gap:14px; flex:1; padding:32px; background:#ffffff; border:1px solid #e6e2d8; border-radius:20px">
-      <p style="font-family:Inter, Arial, sans-serif; font-size:24px; font-weight:600; letter-spacing:2px; color:#b9461f">1 · BEREIK</p>
-      <img src="img/v20.jpg" alt="Still uit de brand video" style="width:440px; height:200px; border-radius:10px">
-      <h3 style="font-family:'Space Grotesk', Arial, sans-serif; font-size:30px; font-weight:600; color:#1f2440">Video in feed, stories en reels</h3>
-      <p style="font-family:Inter, Arial, sans-serif; font-size:24px; line-height:1.4; color:#4a4f63">Aan doelgroep via video Meta, LinkedIn, YouTube + audio op Spotify</p>
-    </div>
-    <x-shape kind="arrow-right" style="width:48px; height:28px; align-self:center; background:#1f2440"></x-shape>
-    <div style="display:flex; flex-direction:column; gap:14px; flex:1; padding:32px; background:#ffffff; border:1px solid #e6e2d8; border-radius:20px">
-      <p style="font-family:Inter, Arial, sans-serif; font-size:24px; font-weight:600; letter-spacing:2px; color:#b9461f">2 · TRAFFIC</p>
-      <div style="display:flex; flex-direction:row; gap:12px">
-        <img src="img/feed-v1.jpg" alt="Afbeelding versie 1" style="width:160px; height:200px; border-radius:10px">
-        <img src="img/feed-v2.jpg" alt="Afbeelding versie 2" style="width:160px; height:200px; border-radius:10px">
-      </div>
-      <h3 style="font-family:'Space Grotesk', Arial, sans-serif; font-size:30px; font-weight:600; color:#1f2440">Afbeeldingen naar de website</h3>
-      <p style="font-family:Inter, Arial, sans-serif; font-size:24px; line-height:1.4; color:#4a4f63">Aan videokijkers · Meta, LinkedIn, Spotify-banners</p>
-    </div>
-    <x-shape kind="arrow-right" style="width:48px; height:28px; align-self:center; background:#1f2440"></x-shape>
-    <div style="display:flex; flex-direction:column; gap:14px; flex:1; padding:32px; background:#ffffff; border:1px solid #e6e2d8; border-radius:20px">
-      <p style="font-family:Inter, Arial, sans-serif; font-size:24px; font-weight:600; letter-spacing:2px; color:#b9461f">3 · REMARKETING</p>
-      <div style="display:flex; flex-direction:row; gap:12px">
-        <img src="img/tagon.jpg" alt="Still uit de tag-on van 6 seconden" style="width:268px; height:200px; border-radius:10px">
-        <img src="img/feed-v1.jpg" alt="Afbeelding voor remarketing" style="width:160px; height:200px; border-radius:10px">
-      </div>
-      <h3 style="font-family:'Space Grotesk', Arial, sans-serif; font-size:30px; font-weight:600; color:#1f2440">Tag-on video en afbeeldingen</h3>
-      <p style="font-family:Inter, Arial, sans-serif; font-size:24px; line-height:1.4; color:#4a4f63">Aan betrokkenen met social en site · Meta, LinkedIn, YouTube</p>
-    </div>
-  </div>
-  <div id="p81fd87456c29r2-6a79a3b6" style="position:absolute; top:750.83px; left:50%; width:1665px; height:130px; display:flex; flex-direction:row; gap:28px; align-items:center; padding:20px 32px; background:#1f2440; border-radius:20px; transform:translateX(-50%)">
-    <img src="img/mast.jpg" alt="Snelwegmast-uiting" style="width:160px; height:90px; border-radius:8px">
-    <p style="font-family:Inter, Arial, sans-serif; font-size:24px; font-weight:600; letter-spacing:2px; white-space:nowrap; color:#ee6a3c">2x BURST FLIGHTS</p>
-    <p style="font-family:Inter, Arial, sans-serif; font-size:26px; color:#f5f3ee">NPO Radio 1, Digital Out of Home (90x schermen op NS stations) &amp; Snelweg (8x billboards)</p>
-  </div>
-  <img src="img/feed-v1.jpg" alt="Afbeelding versie 1" id="7d425925" style="position:absolute; top:356px; left:743px; width:160px; height:200px; border-radius:10px">
-  <img src="img/feed-v2.jpg" alt="Afbeelding versie 2" id="176890b1" style="position:absolute; top:356px; left:915px; width:160px; height:200px; border-radius:10px">
-  <div id="93cbb300" data-group style="position:absolute; top:275.02px; left:1695.43px; width:149.02px; height:112.34px; display:flex; flex-direction:column">
-    <img src="img/feed-v1.jpg" alt="Afbeelding versie 1" style="position:absolute; top:0.56px; left:0.44px; width:71.6px; height:111.78px; border-radius:10px">
-    <img src="img/feed-v2.jpg" alt="Afbeelding versie 2" style="position:absolute; top:0.56px; left:77.41px; width:71.6px; height:111.78px; border-radius:10px">
-  </div>
-</section>
-</div>
-<div class="slide" aria-label="Slide 4">
-<section id="planning" data-transition="fade" style="background:#F5F3EE;color:#1F2440;font-family:Inter, Arial, sans-serif;padding:112px 128px 120px;display:flex;flex-direction:column;gap:28px">
+<div class="slide" data-i="2" aria-label="Slide 3: Plan">
+<section id="plan" data-transition="fade" style="background:#F5F3EE;color:#1F2440;font-family:Inter, Arial, sans-serif;padding:104px 128px 120px;display:flex;flex-direction:column;gap:24px">
 <div style="display:flex;flex-direction:column;gap:16px">
-<p style="font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#B9461F;font-weight:600">2 · Project · Planning</p>
-<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:64px;font-weight:600;color:#1F2440">Campagneplanning per kanaal</h2>
+<p style="font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#B9461F;font-weight:600">1 · Plan · Briefing, aanpak en planning</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:64px;font-weight:600;color:#1F2440">De nieuwe naam snel en groots bekend maken</h2>
 </div>
-<div style="display:flex;flex-direction:column;background:#FFFFFF;border:1px solid #E6E2D8;border-radius:20px;padding:20px 40px 0">
-<div style="display:flex;flex-direction:row"><div style="width:320px"></div><div style="position:relative;width:1264px;height:96px"><div style="position:absolute;left:0px;top:40px;width:1px;height:52px;background:#E6E2D8"></div><p style="position:absolute;left:12px;top:40px;width:140px;font-size:24px;font-weight:600;color:#1F2440;line-height:1.05">Wk 41<br><span style="color:#7A7F92">5 okt</span></p><div style="position:absolute;left:158px;top:40px;width:1px;height:52px;background:#E6E2D8"></div><p style="position:absolute;left:170px;top:40px;width:140px;font-size:24px;font-weight:600;color:#1F2440;line-height:1.05">Wk 42<br><span style="color:#7A7F92">12 okt</span></p><div style="position:absolute;left:316px;top:40px;width:1px;height:52px;background:#E6E2D8"></div><p style="position:absolute;left:328px;top:40px;width:140px;font-size:24px;font-weight:600;color:#1F2440;line-height:1.05">Wk 43<br><span style="color:#7A7F92">19 okt</span></p><div style="position:absolute;left:474px;top:40px;width:1px;height:52px;background:#E6E2D8"></div><p style="position:absolute;left:486px;top:40px;width:140px;font-size:24px;font-weight:600;color:#1F2440;line-height:1.05">Wk 44<br><span style="color:#7A7F92">26 okt</span></p><div style="position:absolute;left:632px;top:40px;width:1px;height:52px;background:#E6E2D8"></div><p style="position:absolute;left:644px;top:40px;width:140px;font-size:24px;font-weight:600;color:#1F2440;line-height:1.05">Wk 45<br><span style="color:#7A7F92">2 nov</span></p><div style="position:absolute;left:790px;top:40px;width:1px;height:52px;background:#E6E2D8"></div><p style="position:absolute;left:802px;top:40px;width:140px;font-size:24px;font-weight:600;color:#1F2440;line-height:1.05">Wk 46<br><span style="color:#7A7F92">9 nov</span></p><div style="position:absolute;left:948px;top:40px;width:1px;height:52px;background:#E6E2D8"></div><p style="position:absolute;left:960px;top:40px;width:140px;font-size:24px;font-weight:600;color:#1F2440;line-height:1.05">Wk 47<br><span style="color:#7A7F92">16 nov</span></p><div style="position:absolute;left:1106px;top:40px;width:1px;height:52px;background:#E6E2D8"></div><p style="position:absolute;left:1118px;top:40px;width:140px;font-size:24px;font-weight:600;color:#1F2440;line-height:1.05">Wk 48<br><span style="color:#7A7F92">23 nov</span></p><div style="position:absolute;left:-17px;top:0;width:34px;height:34px;border-radius:17px;background:#EE6A3C;display:flex;align-items:center;justify-content:center"><p style="font-size:24px;font-weight:600;color:#FFFFFF;line-height:1">1</p></div><div style="position:absolute;left:299px;top:0;width:34px;height:34px;border-radius:17px;background:#EE6A3C;display:flex;align-items:center;justify-content:center"><p style="font-size:24px;font-weight:600;color:#FFFFFF;line-height:1">2</p></div><div style="position:absolute;left:615px;top:0;width:34px;height:34px;border-radius:17px;background:#EE6A3C;display:flex;align-items:center;justify-content:center"><p style="font-size:24px;font-weight:600;color:#FFFFFF;line-height:1">3</p></div><div style="position:absolute;left:1089px;top:0;width:34px;height:34px;border-radius:17px;background:#EE6A3C;display:flex;align-items:center;justify-content:center"><p style="font-size:24px;font-weight:600;color:#FFFFFF;line-height:1">4</p></div></div></div>
-<div style="display:flex;flex-direction:row;border-top:1px solid #E6E2D8"><div style="width:320px;display:flex;flex-direction:column;gap:2px;padding:8px 0"><p style="font-size:26px;font-weight:600;color:#1F2440">Radio</p><p style="font-size:24px;color:#6A6F82">NPO Radio 1</p></div><div style="position:relative;width:1264px;height:72px"><div style="position:absolute;left:0px;top:0;width:1px;height:72px;background:#E6E2D8"></div><div style="position:absolute;left:158px;top:0;width:1px;height:72px;background:#E6E2D8"></div><div style="position:absolute;left:316px;top:0;width:1px;height:72px;background:#E6E2D8"></div><div style="position:absolute;left:474px;top:0;width:1px;height:72px;background:#E6E2D8"></div><div style="position:absolute;left:632px;top:0;width:1px;height:72px;background:#E6E2D8"></div><div style="position:absolute;left:790px;top:0;width:1px;height:72px;background:#E6E2D8"></div><div style="position:absolute;left:948px;top:0;width:1px;height:72px;background:#E6E2D8"></div><div style="position:absolute;left:1106px;top:0;width:1px;height:72px;background:#E6E2D8"></div><div style="position:absolute;left:0px;top:0;width:0;height:72px;border-left:2px dashed #EE6A3C"></div><div style="position:absolute;left:316px;top:0;width:0;height:72px;border-left:2px dashed #EE6A3C"></div><div style="position:absolute;left:632px;top:0;width:0;height:72px;border-left:2px dashed #EE6A3C"></div><div style="position:absolute;left:1106px;top:0;width:0;height:72px;border-left:2px dashed #EE6A3C"></div><p style="position:absolute;left:35px;top:8px;width:620px;font-size:24px;color:#1F2440;white-space:nowrap">6 t/m 16 okt</p><div style="position:absolute;left:23px;top:42px;width:248px;height:10px;background:#EE6A3C;border-radius:5px"></div><p style="position:absolute;left:644px;top:8px;width:620px;font-size:24px;color:#1F2440;white-space:nowrap">2 t/m 13 nov</p><div style="position:absolute;left:632px;top:42px;width:271px;height:10px;background:#EE6A3C;border-radius:5px"></div></div></div>
-<div style="display:flex;flex-direction:row;border-top:1px solid #E6E2D8"><div style="width:320px;display:flex;flex-direction:column;gap:2px;padding:8px 0"><p style="font-size:26px;font-weight:600;color:#1F2440">Digital out of home</p><p style="font-size:24px;color:#6A6F82">NS-stations, snelwegmasten</p></div><div style="position:relative;width:1264px;height:112px"><div style="position:absolute;left:0px;top:0;width:1px;height:112px;background:#E6E2D8"></div><div style="position:absolute;left:158px;top:0;width:1px;height:112px;background:#E6E2D8"></div><div style="position:absolute;left:316px;top:0;width:1px;height:112px;background:#E6E2D8"></div><div style="position:absolute;left:474px;top:0;width:1px;height:112px;background:#E6E2D8"></div><div style="position:absolute;left:632px;top:0;width:1px;height:112px;background:#E6E2D8"></div><div style="position:absolute;left:790px;top:0;width:1px;height:112px;background:#E6E2D8"></div><div style="position:absolute;left:948px;top:0;width:1px;height:112px;background:#E6E2D8"></div><div style="position:absolute;left:1106px;top:0;width:1px;height:112px;background:#E6E2D8"></div><div style="position:absolute;left:0px;top:0;width:0;height:112px;border-left:2px dashed #EE6A3C"></div><div style="position:absolute;left:316px;top:0;width:0;height:112px;border-left:2px dashed #EE6A3C"></div><div style="position:absolute;left:632px;top:0;width:0;height:112px;border-left:2px dashed #EE6A3C"></div><div style="position:absolute;left:1106px;top:0;width:0;height:112px;border-left:2px dashed #EE6A3C"></div><p style="position:absolute;left:12px;top:8px;width:620px;font-size:24px;color:#1F2440;white-space:nowrap">NS-stations · 5 t/m 11 okt</p><div style="position:absolute;left:0px;top:42px;width:158px;height:10px;background:#EE6A3C;border-radius:5px"></div><p style="position:absolute;left:644px;top:8px;width:620px;font-size:24px;color:#1F2440;white-space:nowrap">NS-stations · 2 t/m 8 nov</p><div style="position:absolute;left:632px;top:42px;width:158px;height:10px;background:#EE6A3C;border-radius:5px"></div><p style="position:absolute;left:644px;top:58px;width:620px;font-size:24px;color:#1F2440;white-space:nowrap">Snelwegmasten · 2 t/m 8 nov</p><div style="position:absolute;left:632px;top:92px;width:158px;height:10px;background:#EE6A3C;border-radius:5px"></div></div></div>
-<div style="display:flex;flex-direction:row;border-top:1px solid #E6E2D8"><div style="width:320px;display:flex;flex-direction:column;gap:2px;padding:8px 0"><p style="font-size:26px;font-weight:600;color:#1F2440">Socials</p><p style="font-size:24px;color:#6A6F82">Meta, LinkedIn, YouTube</p></div><div style="position:relative;width:1264px;height:112px"><div style="position:absolute;left:0px;top:0;width:1px;height:112px;background:#E6E2D8"></div><div style="position:absolute;left:158px;top:0;width:1px;height:112px;background:#E6E2D8"></div><div style="position:absolute;left:316px;top:0;width:1px;height:112px;background:#E6E2D8"></div><div style="position:absolute;left:474px;top:0;width:1px;height:112px;background:#E6E2D8"></div><div style="position:absolute;left:632px;top:0;width:1px;height:112px;background:#E6E2D8"></div><div style="position:absolute;left:790px;top:0;width:1px;height:112px;background:#E6E2D8"></div><div style="position:absolute;left:948px;top:0;width:1px;height:112px;background:#E6E2D8"></div><div style="position:absolute;left:1106px;top:0;width:1px;height:112px;background:#E6E2D8"></div><div style="position:absolute;left:0px;top:0;width:0;height:112px;border-left:2px dashed #EE6A3C"></div><div style="position:absolute;left:316px;top:0;width:0;height:112px;border-left:2px dashed #EE6A3C"></div><div style="position:absolute;left:632px;top:0;width:0;height:112px;border-left:2px dashed #EE6A3C"></div><div style="position:absolute;left:1106px;top:0;width:0;height:112px;border-left:2px dashed #EE6A3C"></div><p style="position:absolute;left:12px;top:8px;width:620px;font-size:24px;color:#1F2440;white-space:nowrap">Video- en motion ads</p><div style="position:absolute;left:0px;top:42px;width:948px;height:10px;background:#9AA0B8;border-radius:5px"></div><p style="position:absolute;left:12px;top:58px;width:620px;font-size:24px;color:#1F2440;white-space:nowrap">Remarketing: tag-on video’s en afbeeldingen</p><div style="position:absolute;left:0px;top:92px;width:948px;height:10px;background:#9AA0B8;border-radius:5px"></div></div></div>
-<div style="display:flex;flex-direction:row;border-top:1px solid #E6E2D8"><div style="width:320px;display:flex;flex-direction:column;gap:2px;padding:8px 0"><p style="font-size:26px;font-weight:600;color:#1F2440">Digital audio + display</p><p style="font-size:24px;color:#6A6F82">Spotify</p></div><div style="position:relative;width:1264px;height:72px"><div style="position:absolute;left:0px;top:0;width:1px;height:72px;background:#E6E2D8"></div><div style="position:absolute;left:158px;top:0;width:1px;height:72px;background:#E6E2D8"></div><div style="position:absolute;left:316px;top:0;width:1px;height:72px;background:#E6E2D8"></div><div style="position:absolute;left:474px;top:0;width:1px;height:72px;background:#E6E2D8"></div><div style="position:absolute;left:632px;top:0;width:1px;height:72px;background:#E6E2D8"></div><div style="position:absolute;left:790px;top:0;width:1px;height:72px;background:#E6E2D8"></div><div style="position:absolute;left:948px;top:0;width:1px;height:72px;background:#E6E2D8"></div><div style="position:absolute;left:1106px;top:0;width:1px;height:72px;background:#E6E2D8"></div><div style="position:absolute;left:0px;top:0;width:0;height:72px;border-left:2px dashed #EE6A3C"></div><div style="position:absolute;left:316px;top:0;width:0;height:72px;border-left:2px dashed #EE6A3C"></div><div style="position:absolute;left:632px;top:0;width:0;height:72px;border-left:2px dashed #EE6A3C"></div><div style="position:absolute;left:1106px;top:0;width:0;height:72px;border-left:2px dashed #EE6A3C"></div><p style="position:absolute;left:35px;top:8px;width:620px;font-size:24px;color:#1F2440;white-space:nowrap">6 okt t/m 15 nov</p><div style="position:absolute;left:23px;top:42px;width:925px;height:10px;background:#9AA0B8;border-radius:5px"></div></div></div>
-<div style="display:flex;flex-direction:row;border-top:1px solid #E6E2D8"><div style="width:320px;display:flex;flex-direction:column;gap:2px;padding:8px 0"><p style="font-size:26px;font-weight:600;color:#1F2440">Online video</p><p style="font-size:24px;color:#6A6F82">Ster</p></div><div style="position:relative;width:1264px;height:72px"><div style="position:absolute;left:0px;top:0;width:1px;height:72px;background:#E6E2D8"></div><div style="position:absolute;left:158px;top:0;width:1px;height:72px;background:#E6E2D8"></div><div style="position:absolute;left:316px;top:0;width:1px;height:72px;background:#E6E2D8"></div><div style="position:absolute;left:474px;top:0;width:1px;height:72px;background:#E6E2D8"></div><div style="position:absolute;left:632px;top:0;width:1px;height:72px;background:#E6E2D8"></div><div style="position:absolute;left:790px;top:0;width:1px;height:72px;background:#E6E2D8"></div><div style="position:absolute;left:948px;top:0;width:1px;height:72px;background:#E6E2D8"></div><div style="position:absolute;left:1106px;top:0;width:1px;height:72px;background:#E6E2D8"></div><div style="position:absolute;left:0px;top:0;width:0;height:72px;border-left:2px dashed #EE6A3C"></div><div style="position:absolute;left:316px;top:0;width:0;height:72px;border-left:2px dashed #EE6A3C"></div><div style="position:absolute;left:632px;top:0;width:0;height:72px;border-left:2px dashed #EE6A3C"></div><div style="position:absolute;left:1106px;top:0;width:0;height:72px;border-left:2px dashed #EE6A3C"></div><p style="position:absolute;left:825px;top:8px;width:620px;font-size:24px;color:#1F2440;white-space:nowrap">10 t/m 15 nov</p><div style="position:absolute;left:813px;top:42px;width:135px;height:10px;background:#EE6A3C;border-radius:5px"></div></div></div>
+<div style="display:grid;grid-template-columns:1fr 1.25fr 1fr;gap:24px">
+<div style="display:flex;flex-direction:column;gap:14px;background:#FFFFFF;border:1px solid #E6E2D8;border-top:6px solid #EE6A3C;border-radius:20px;padding:24px 28px"><h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:32px;font-weight:600;color:#1F2440">Briefing</h3><p style="font-size:24px;line-height:1.4;color:#4A4F63">De Jong &amp; Laan gaat verder als OneLane. Doel: de naam in korte tijd bekend en herkenbaar maken, met <b style="color:#1F2440">bereik én herhaling</b>.</p><p style="font-size:24px;line-height:1.4;color:#4A4F63"><b style="color:#1F2440">Doelstelling:</b> 1,6 mln bereik en 4,9 mln contactmomenten.</p></div>
+<div style="display:flex;flex-direction:column;gap:14px;background:#FFFFFF;border:1px solid #E6E2D8;border-top:6px solid #EE6A3C;border-radius:20px;padding:24px 28px"><h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:32px;font-weight:600;color:#1F2440">Aanpak</h3><div style="display:flex;flex-direction:row;gap:14px;align-items:flex-start"><div style="width:34px;height:34px;border-radius:17px;background:#1F2440;display:flex;align-items:center;justify-content:center;flex:none"><p style="font-size:24px;font-weight:600;color:#FFFFFF;line-height:1">1</p></div><p style="font-size:24px;line-height:1.4;color:#4A4F63"><b style="color:#1F2440">Bereik</b> · video in feed, stories en reels</p></div><div style="display:flex;flex-direction:row;gap:14px;align-items:flex-start"><div style="width:34px;height:34px;border-radius:17px;background:#1F2440;display:flex;align-items:center;justify-content:center;flex:none"><p style="font-size:24px;font-weight:600;color:#FFFFFF;line-height:1">2</p></div><p style="font-size:24px;line-height:1.4;color:#4A4F63"><b style="color:#1F2440">Traffic</b> · afbeeldingen naar de website</p></div><div style="display:flex;flex-direction:row;gap:14px;align-items:flex-start"><div style="width:34px;height:34px;border-radius:17px;background:#1F2440;display:flex;align-items:center;justify-content:center;flex:none"><p style="font-size:24px;font-weight:600;color:#FFFFFF;line-height:1">3</p></div><p style="font-size:24px;line-height:1.4;color:#4A4F63"><b style="color:#1F2440">Remarketing</b> · tag-on video en afbeeldingen</p></div><p style="font-size:24px;line-height:1.4;color:#4A4F63">Daaromheen radio en buitenreclame in twee burst flights.</p></div>
+<div style="display:flex;flex-direction:column;gap:14px;background:#FFFFFF;border:1px solid #E6E2D8;border-top:6px solid #EE6A3C;border-radius:20px;padding:24px 28px"><h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:32px;font-weight:600;color:#1F2440">Budget</h3><p style="font-size:24px;line-height:1.4;color:#4A4F63"><b style="color:#1F2440">Offline € 20.165</b> · radio, NS-stations, snelwegmasten</p><p style="font-size:24px;line-height:1.4;color:#4A4F63"><b style="color:#1F2440">Online € 15.050</b> · Meta, LinkedIn, YouTube, Spotify</p><p style="font-size:24px;line-height:1.4;color:#4A4F63"><b style="color:#1F2440">Ster online video € 2.500</b> · toegevoegd op 9 nov</p><p style="font-size:24px;line-height:1.4;color:#4A4F63">Creatie D8 · Media Flii Media</p></div>
 </div>
-<div style="display:grid;grid-template-columns:1fr 1.3fr;gap:12px 48px"><div style="display:flex;flex-direction:row;gap:16px;align-items:center"><div style="width:34px;height:34px;border-radius:17px;background:#EE6A3C;display:flex;align-items:center;justify-content:center"><p style="font-size:24px;font-weight:600;color:#FFFFFF;line-height:1">1</p></div><p style="width:130px;font-size:24px;color:#7A7F92">ma 5 okt</p><p style="font-size:24px;color:#1F2440">Start campagne en dashboard live</p></div><div style="display:flex;flex-direction:row;gap:16px;align-items:center"><div style="width:34px;height:34px;border-radius:17px;background:#EE6A3C;display:flex;align-items:center;justify-content:center"><p style="font-size:24px;font-weight:600;color:#FFFFFF;line-height:1">2</p></div><p style="width:130px;font-size:24px;color:#7A7F92">ma 19 okt</p><p style="font-size:24px;color:#1F2440">Eerste tussenrapportage</p></div><div style="display:flex;flex-direction:row;gap:16px;align-items:center"><div style="width:34px;height:34px;border-radius:17px;background:#EE6A3C;display:flex;align-items:center;justify-content:center"><p style="font-size:24px;font-weight:600;color:#FFFFFF;line-height:1">3</p></div><p style="width:130px;font-size:24px;color:#7A7F92">ma 2 nov</p><p style="font-size:24px;color:#1F2440">Tweede tussenrapportage</p></div><div style="display:flex;flex-direction:row;gap:16px;align-items:center"><div style="width:34px;height:34px;border-radius:17px;background:#EE6A3C;display:flex;align-items:center;justify-content:center"><p style="font-size:24px;font-weight:600;color:#FFFFFF;line-height:1">4</p></div><p style="width:130px;font-size:24px;color:#7A7F92">ma 23 nov</p><p style="font-size:24px;color:#1F2440">Eindrapportage met bereik, resultaat en aanbevelingen</p></div></div>
+<div style="display:flex;flex-direction:column;background:#FFFFFF;border:1px solid #E6E2D8;border-radius:20px;padding:16px 40px 6px">
+<div style="display:flex;flex-direction:row"><div style="width:360px"></div><div style="position:relative;width:1224px;height:36px"><p style="position:absolute;left:8px;top:0;width:140px;font-size:24px;color:#7A7F92">5 okt</p><p style="position:absolute;left:212px;top:0;width:140px;font-size:24px;color:#7A7F92">12 okt</p><p style="position:absolute;left:416px;top:0;width:140px;font-size:24px;color:#7A7F92">19 okt</p><p style="position:absolute;left:620px;top:0;width:140px;font-size:24px;color:#7A7F92">26 okt</p><p style="position:absolute;left:824px;top:0;width:140px;font-size:24px;color:#7A7F92">2 nov</p><p style="position:absolute;left:1028px;top:0;width:140px;font-size:24px;color:#7A7F92">9 nov</p></div></div><div style="display:flex;flex-direction:row;align-items:center;border-top:1px solid #E6E2D8"><p style="width:360px;font-size:24px;color:#1F2440">Radio · NPO Radio 1</p><div style="position:relative;width:1224px;height:38px"><div style="position:absolute;left:0px;top:0;width:1px;height:38px;background:#E6E2D8"></div><div style="position:absolute;left:204px;top:0;width:1px;height:38px;background:#E6E2D8"></div><div style="position:absolute;left:408px;top:0;width:1px;height:38px;background:#E6E2D8"></div><div style="position:absolute;left:612px;top:0;width:1px;height:38px;background:#E6E2D8"></div><div style="position:absolute;left:816px;top:0;width:1px;height:38px;background:#E6E2D8"></div><div style="position:absolute;left:1020px;top:0;width:1px;height:38px;background:#E6E2D8"></div><div style="position:absolute;left:29px;top:13px;width:321px;height:12px;background:#EE6A3C;border-radius:6px"></div><div style="position:absolute;left:816px;top:13px;width:350px;height:12px;background:#EE6A3C;border-radius:6px"></div></div></div><div style="display:flex;flex-direction:row;align-items:center;border-top:1px solid #E6E2D8"><p style="width:360px;font-size:24px;color:#1F2440">NS-stations</p><div style="position:relative;width:1224px;height:38px"><div style="position:absolute;left:0px;top:0;width:1px;height:38px;background:#E6E2D8"></div><div style="position:absolute;left:204px;top:0;width:1px;height:38px;background:#E6E2D8"></div><div style="position:absolute;left:408px;top:0;width:1px;height:38px;background:#E6E2D8"></div><div style="position:absolute;left:612px;top:0;width:1px;height:38px;background:#E6E2D8"></div><div style="position:absolute;left:816px;top:0;width:1px;height:38px;background:#E6E2D8"></div><div style="position:absolute;left:1020px;top:0;width:1px;height:38px;background:#E6E2D8"></div><div style="position:absolute;left:0px;top:13px;width:204px;height:12px;background:#EE6A3C;border-radius:6px"></div><div style="position:absolute;left:816px;top:13px;width:204px;height:12px;background:#EE6A3C;border-radius:6px"></div></div></div><div style="display:flex;flex-direction:row;align-items:center;border-top:1px solid #E6E2D8"><p style="width:360px;font-size:24px;color:#1F2440">Snelwegmasten</p><div style="position:relative;width:1224px;height:38px"><div style="position:absolute;left:0px;top:0;width:1px;height:38px;background:#E6E2D8"></div><div style="position:absolute;left:204px;top:0;width:1px;height:38px;background:#E6E2D8"></div><div style="position:absolute;left:408px;top:0;width:1px;height:38px;background:#E6E2D8"></div><div style="position:absolute;left:612px;top:0;width:1px;height:38px;background:#E6E2D8"></div><div style="position:absolute;left:816px;top:0;width:1px;height:38px;background:#E6E2D8"></div><div style="position:absolute;left:1020px;top:0;width:1px;height:38px;background:#E6E2D8"></div><div style="position:absolute;left:816px;top:13px;width:204px;height:12px;background:#EE6A3C;border-radius:6px"></div></div></div><div style="display:flex;flex-direction:row;align-items:center;border-top:1px solid #E6E2D8"><p style="width:360px;font-size:24px;color:#1F2440">Online kanalen</p><div style="position:relative;width:1224px;height:38px"><div style="position:absolute;left:0px;top:0;width:1px;height:38px;background:#E6E2D8"></div><div style="position:absolute;left:204px;top:0;width:1px;height:38px;background:#E6E2D8"></div><div style="position:absolute;left:408px;top:0;width:1px;height:38px;background:#E6E2D8"></div><div style="position:absolute;left:612px;top:0;width:1px;height:38px;background:#E6E2D8"></div><div style="position:absolute;left:816px;top:0;width:1px;height:38px;background:#E6E2D8"></div><div style="position:absolute;left:1020px;top:0;width:1px;height:38px;background:#E6E2D8"></div><div style="position:absolute;left:0px;top:13px;width:1224px;height:12px;background:#9AA0B8;border-radius:6px"></div></div></div><div style="display:flex;flex-direction:row;align-items:center;border-top:1px solid #E6E2D8"><p style="width:360px;font-size:24px;color:#1F2440">Online video · Ster</p><div style="position:relative;width:1224px;height:38px"><div style="position:absolute;left:0px;top:0;width:1px;height:38px;background:#E6E2D8"></div><div style="position:absolute;left:204px;top:0;width:1px;height:38px;background:#E6E2D8"></div><div style="position:absolute;left:408px;top:0;width:1px;height:38px;background:#E6E2D8"></div><div style="position:absolute;left:612px;top:0;width:1px;height:38px;background:#E6E2D8"></div><div style="position:absolute;left:816px;top:0;width:1px;height:38px;background:#E6E2D8"></div><div style="position:absolute;left:1020px;top:0;width:1px;height:38px;background:#E6E2D8"></div><div style="position:absolute;left:1049px;top:13px;width:175px;height:12px;background:#EE6A3C;border-radius:6px"></div></div></div>
+</div>
+<div style="position:absolute;left:1500px;top:1000px;width:356px;height:36px;display:flex;flex-direction:row;align-items:center;justify-content:flex-end;gap:12px"><img src="img/fm.png" alt="Flii Media" style="width:40px;height:30px;object-fit:contain"><p style="font-family:Inter, Arial, sans-serif;font-size:24px;color:#7A7F92;white-space:nowrap">Amplifying impact</p></div>
 </section>
 </div>
-<div class="slide" aria-label="Slide 5">
+<div class="slide" data-i="3" aria-label="Slide 4: Resultaat">
+<section id="div2" data-transition="fade" style="background:linear-gradient(120deg, #1A1E35 0%, #222A45 60%, #1D4650 100%);color:#F5F3EE;font-family:Inter, Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:center;gap:28px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:200px;font-weight:600;line-height:1;color:#EE6A3C">2</p>
+<div style="width:120px;height:6px;background:#EE6A3C;border-radius:3px"></div>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:96px;font-weight:600;color:#F5F3EE">Resultaat</h2>
+<div style="position:absolute;left:1500px;top:1000px;width:356px;height:36px;display:flex;flex-direction:row;align-items:center;justify-content:flex-end;gap:12px"><img src="img/fm.png" alt="Flii Media" style="width:40px;height:30px;object-fit:contain"><p style="font-family:Inter, Arial, sans-serif;font-size:24px;color:#9AA0B8;white-space:nowrap">Amplifying impact</p></div>
+</section>
+</div>
+<div class="slide" data-i="4" aria-label="Slide 5: Totaal">
 <section id="resultaten" data-transition="fade" style="display:flex; flex-direction:column; gap:48px; padding:112px 128px 120px; background:#1f2440">
   <div style="display:flex; flex-direction:column; gap:16px">
-    <p style="font-family:Inter, Arial, sans-serif; font-size:24px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:#ee6a3c">3 · Project · Resultaten vs. projectie</p>
+    <p style="font-family:Inter, Arial, sans-serif; font-size:24px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:#ee6a3c">2 · Resultaat · Totaal</p>
     <h2 style="font-family:'Space Grotesk', Arial, sans-serif; font-size:64px; font-weight:600; color:#f5f3ee">Focus op merkbekendheid geeft resultaat</h2>
   </div>
   <div style="display:grid; gap:24px; grid-template-columns:1fr 1fr 1fr 1fr">
     <div style="display:flex; flex-direction:column; gap:10px; padding:32px 32px 28px; background:#262c4d; border-top:4px solid #ee6a3c; border-radius:20px">
-      <p style="font-family:'Space Grotesk', Arial, sans-serif; font-size:64px; font-weight:600; line-height:1; color:#f5f3ee">2,2 mln</p>
+      <p style="font-family:'Space Grotesk', Arial, sans-serif; font-size:64px; font-weight:600; line-height:1; color:#f5f3ee">2,6 mln</p>
       <p style="font-family:Inter, Arial, sans-serif; font-size:28px; font-weight:600; color:#f5f3ee">Bereik</p>
-      <p style="font-family:Inter, Arial, sans-serif; font-size:24px; line-height:1.35; color:#b9bed3">+68% t.o.v. projectie (1,3 mln)</p>
+      <p style="font-family:Inter, Arial, sans-serif; font-size:24px; line-height:1.35; color:#b9bed3">+59% t.o.v. doel (1,6 mln)</p>
     </div>
     <div style="display:flex; flex-direction:column; gap:10px; padding:32px 32px 28px; background:#262c4d; border-top:4px solid #ee6a3c; border-radius:20px">
-      <p style="font-family:'Space Grotesk', Arial, sans-serif; font-size:64px; font-weight:600; line-height:1; color:#f5f3ee">6,4 mln</p>
+      <p style="font-family:'Space Grotesk', Arial, sans-serif; font-size:64px; font-weight:600; line-height:1; color:#f5f3ee">7,6 mln</p>
       <p style="font-family:Inter, Arial, sans-serif; font-size:28px; font-weight:600; color:#f5f3ee">Contactmomenten</p>
-      <p style="font-family:Inter, Arial, sans-serif; font-size:24px; line-height:1.35; color:#b9bed3">+55% t.o.v. projectie (4,1 mln)</p>
+      <p style="font-family:Inter, Arial, sans-serif; font-size:24px; line-height:1.35; color:#b9bed3">+54% t.o.v. doel (4,9 mln)</p>
     </div>
     <div style="display:flex; flex-direction:column; gap:10px; padding:32px 32px 28px; background:#262c4d; border-top:4px solid #ee6a3c; border-radius:20px">
-      <p style="font-family:'Space Grotesk', Arial, sans-serif; font-size:64px; font-weight:600; line-height:1; color:#f5f3ee">€ 5,00</p>
+      <p style="font-family:'Space Grotesk', Arial, sans-serif; font-size:64px; font-weight:600; line-height:1; color:#f5f3ee">€ 5,01</p>
       <p style="font-family:Inter, Arial, sans-serif; font-size:28px; font-weight:600; color:#f5f3ee">CPM</p>
-      <p style="font-family:Inter, Arial, sans-serif; font-size:24px; line-height:1.35; color:#b9bed3">36% goedkoper dan verwacht (€ 7,76)</p>
+      <p style="font-family:Inter, Arial, sans-serif; font-size:24px; line-height:1.35; color:#b9bed3">34% goedkoper dan doel (€ 7,63)</p>
     </div>
     <div style="display:flex; flex-direction:column; gap:10px; padding:32px 32px 28px; background:#262c4d; border-top:4px solid #5c6385; border-radius:20px">
-      <p style="font-family:'Space Grotesk', Arial, sans-serif; font-size:64px; font-weight:600; line-height:1; color:#f5f3ee">2,9</p>
+      <p style="font-family:'Space Grotesk', Arial, sans-serif; font-size:64px; font-weight:600; line-height:1; color:#f5f3ee">3,0</p>
       <p style="font-family:Inter, Arial, sans-serif; font-size:28px; font-weight:600; color:#f5f3ee">Frequentie</p>
-      <p style="font-family:Inter, Arial, sans-serif; font-size:24px; line-height:1.35; color:#b9bed3">7% lager dan verwacht (3,2), vooral door YouTube en Spotify</p>
+      <p style="font-family:Inter, Arial, sans-serif; font-size:24px; line-height:1.35; color:#b9bed3">3% lager dan doel (3,1), vooral door YouTube en Spotify</p>
     </div>
     <div style="display:flex; flex-direction:column; gap:10px; padding:32px 32px 28px; background:#262c4d; border-top:4px solid #5c6385; border-radius:20px">
-      <p style="font-family:'Space Grotesk', Arial, sans-serif; font-size:64px; font-weight:600; line-height:1; color:#f5f3ee">4.211</p>
+      <p style="font-family:'Space Grotesk', Arial, sans-serif; font-size:64px; font-weight:600; line-height:1; color:#f5f3ee">4.643</p>
       <p style="font-family:Inter, Arial, sans-serif; font-size:28px; font-weight:600; color:#f5f3ee">Klikken</p>
-      <p style="font-family:Inter, Arial, sans-serif; font-size:24px; line-height:1.35; color:#b9bed3">60% onder doel (10.621), door focus op bereik en herkenning</p>
+      <p style="font-family:Inter, Arial, sans-serif; font-size:24px; line-height:1.35; color:#b9bed3">56% onder doel (10.621), door focus op bereik en herkenning</p>
     </div>
     <div style="display:flex; flex-direction:column; gap:10px; padding:32px 32px 28px; background:#262c4d; border-top:4px solid #5c6385; border-radius:20px">
-      <p style="font-family:'Space Grotesk', Arial, sans-serif; font-size:64px; font-weight:600; line-height:1; color:#f5f3ee">€ 32.238</p>
+      <p style="font-family:'Space Grotesk', Arial, sans-serif; font-size:64px; font-weight:600; line-height:1; color:#f5f3ee">€ 38.177</p>
       <p style="font-family:Inter, Arial, sans-serif; font-size:28px; font-weight:600; color:#f5f3ee">Besteed</p>
-      <p style="font-family:Inter, Arial, sans-serif; font-size:24px; line-height:1.35; color:#b9bed3">100% van de planning; 85% van het totaalbudget</p>
+      <p style="font-family:Inter, Arial, sans-serif; font-size:24px; line-height:1.35; color:#b9bed3">101% van het budget (€ 37.715)</p>
     </div>
     <div style="display:flex; flex-direction:column; gap:10px; padding:32px 32px 28px; background:#262c4d; border-top:4px solid #5c6385; border-radius:20px">
-      <p style="font-family:'Space Grotesk', Arial, sans-serif; font-size:64px; font-weight:600; line-height:1; color:#f5f3ee">8.449</p>
+      <p style="font-family:'Space Grotesk', Arial, sans-serif; font-size:64px; font-weight:600; line-height:1; color:#f5f3ee">9.915</p>
       <p style="font-family:Inter, Arial, sans-serif; font-size:28px; font-weight:600; color:#f5f3ee">Websitebezoeken</p>
-      <p style="font-family:Inter, Arial, sans-serif; font-size:24px; line-height:1.35; color:#b9bed3">+90% bezoek per week sinds de start</p>
+      <p style="font-family:Inter, Arial, sans-serif; font-size:24px; line-height:1.35; color:#b9bed3">+91% bezoek per week sinds de start</p>
     </div>
     <div style="display:flex; flex-direction:column; gap:10px; padding:32px 32px 28px; background:#262c4d; border-top:4px solid #5c6385; border-radius:20px">
-      <p style="font-family:'Space Grotesk', Arial, sans-serif; font-size:64px; font-weight:600; line-height:1; color:#f5f3ee">559</p>
+      <p style="font-family:'Space Grotesk', Arial, sans-serif; font-size:64px; font-weight:600; line-height:1; color:#f5f3ee">630</p>
       <p style="font-family:Inter, Arial, sans-serif; font-size:28px; font-weight:600; color:#f5f3ee">Reacties op social</p>
       <p style="font-family:Inter, Arial, sans-serif; font-size:24px; line-height:1.35; color:#b9bed3">99% positief</p>
     </div>
   </div>
+<div style="position:absolute;left:1500px;top:1000px;width:356px;height:36px;display:flex;flex-direction:row;align-items:center;justify-content:flex-end;gap:12px"><img src="img/fm.png" alt="Flii Media" style="width:40px;height:30px;object-fit:contain"><p style="font-family:Inter, Arial, sans-serif;font-size:24px;color:#9AA0B8;white-space:nowrap">Amplifying impact</p></div>
 </section>
 </div>
-<div class="slide" aria-label="Slide 6">
-<section id="div2" data-transition="fade" style="background:linear-gradient(120deg, #1A1E35 0%, #222A45 60%, #1D4650 100%);color:#F5F3EE;font-family:Inter, Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:center;gap:32px">
-<div style="width:120px;height:6px;background:#EE6A3C;border-radius:3px"></div>
-<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:96px;font-weight:600;color:#F5F3EE">Insight</h2>
-</section>
-</div>
-<div class="slide" aria-label="Slide 7">
-<section id="vergelijking" data-transition="fade" style="background:#F5F3EE;color:#1F2440;font-family:Inter, Arial, sans-serif;padding:112px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div class="slide" data-i="5" aria-label="Slide 6: Per kanaal">
+<section id="per-kanaal" data-transition="fade" style="background:#F5F3EE;color:#1F2440;font-family:Inter, Arial, sans-serif;padding:112px 128px 160px;display:flex;flex-direction:column;gap:40px">
 <div style="display:flex;flex-direction:column;gap:16px">
-<p style="font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#B9461F;font-weight:600">4 · Insight · Kanalen vergeleken</p>
-<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:64px;font-weight:600;color:#1F2440">Elk kanaal had een eigen rol</h2>
+<p style="font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#B9461F;font-weight:600">2 · Resultaat · Per kanaal</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:64px;font-weight:600;color:#1F2440">Resultaten per kanaal</h2>
 </div>
-<div style="display:flex;flex-direction:column;background:#FFFFFF;border:1px solid #E6E2D8;border-radius:20px;padding:8px 24px 12px"><table style="font-size:24px;color:#1F2440;background:transparent">
-<tr><th style="width:16%;text-align:left;padding:9px 16px;color:#6A6F82">Kanaal</th><th style="width:11%;text-align:right;padding:9px 16px;color:#6A6F82">Besteed</th><th style="width:12%;text-align:right;padding:9px 16px;color:#6A6F82">Bereik</th><th style="width:16%;text-align:right;padding:9px 16px;color:#6A6F82">Contactmomenten</th><th style="width:10%;text-align:right;padding:9px 16px;color:#6A6F82">Frequentie</th><th style="width:9%;text-align:right;padding:9px 16px;color:#6A6F82">CPM</th><th style="width:16%;text-align:right;padding:9px 16px;color:#6A6F82">€ per 1.000 bereikt</th><th style="width:10%;text-align:right;padding:9px 16px;color:#6A6F82">Klikken</th></tr>
-<tr><td style="padding:9px 16px">Buitenreclame</td><td style="text-align:right;padding:9px 16px">€ 10.000</td><td style="text-align:right;padding:9px 16px">400.000</td><td style="text-align:right;padding:9px 16px">1.400.000</td><td style="text-align:right;padding:9px 16px">3,5</td><td style="text-align:right;padding:9px 16px">€ 7,14</td><td style="text-align:right;padding:9px 16px">€ 25,00</td><td style="text-align:right;padding:9px 16px">−</td></tr>
-<tr><td style="padding:9px 16px">Radio</td><td style="text-align:right;padding:9px 16px">€ 8.872</td><td style="text-align:right;padding:9px 16px">536.440</td><td style="text-align:right;padding:9px 16px">1.658.646</td><td style="text-align:right;padding:9px 16px">3,1</td><td style="text-align:right;padding:9px 16px">€ 5,35</td><td style="text-align:right;padding:9px 16px">€ 16,54</td><td style="text-align:right;padding:9px 16px">−</td></tr>
-<tr><td style="padding:9px 16px">Meta</td><td style="text-align:right;padding:9px 16px">€ 5.150</td><td style="text-align:right;padding:9px 16px">695.820</td><td style="text-align:right;padding:9px 16px">2.302.383</td><td style="text-align:right;padding:9px 16px">3,3</td><td style="text-align:right;padding:9px 16px">€ 2,24</td><td style="text-align:right;padding:9px 16px">€ 7,40</td><td style="text-align:right;padding:9px 16px">2.776</td></tr>
-<tr><td style="padding:9px 16px">LinkedIn</td><td style="text-align:right;padding:9px 16px">€ 4.995</td><td style="text-align:right;padding:9px 16px">220.190</td><td style="text-align:right;padding:9px 16px">484.461</td><td style="text-align:right;padding:9px 16px">2,2</td><td style="text-align:right;padding:9px 16px">€ 10,31</td><td style="text-align:right;padding:9px 16px">€ 22,69</td><td style="text-align:right;padding:9px 16px">806</td></tr>
-<tr><td style="padding:9px 16px">YouTube</td><td style="text-align:right;padding:9px 16px">€ 2.065</td><td style="text-align:right;padding:9px 16px">179.871</td><td style="text-align:right;padding:9px 16px">288.894</td><td style="text-align:right;padding:9px 16px">1,6</td><td style="text-align:right;padding:9px 16px">€ 7,15</td><td style="text-align:right;padding:9px 16px">€ 11,48</td><td style="text-align:right;padding:9px 16px">93</td></tr>
-<tr><td style="padding:9px 16px">Spotify</td><td style="text-align:right;padding:9px 16px">€ 1.156</td><td style="text-align:right;padding:9px 16px">170.764</td><td style="text-align:right;padding:9px 16px">314.826</td><td style="text-align:right;padding:9px 16px">1,8</td><td style="text-align:right;padding:9px 16px">€ 3,67</td><td style="text-align:right;padding:9px 16px">€ 6,77</td><td style="text-align:right;padding:9px 16px">536</td></tr>
-<tr style="background:#F3F0E9"><td style="padding:9px 16px">Totaal</td><td style="text-align:right;padding:9px 16px">€ 32.238</td><td style="text-align:right;padding:9px 16px">2.203.085</td><td style="text-align:right;padding:9px 16px">6.449.210</td><td style="text-align:right;padding:9px 16px">2,9</td><td style="text-align:right;padding:9px 16px">€ 5,00</td><td style="text-align:right;padding:9px 16px">€ 14,63</td><td style="text-align:right;padding:9px 16px">4.211</td></tr>
+<div style="display:flex;flex-direction:column;background:#FFFFFF;border:1px solid #E6E2D8;border-radius:20px;padding:8px 24px 12px"><table style="font-size:26px;color:#1F2440;background:transparent">
+<tr><th style="width:16%;text-align:left;padding:14px 16px;color:#6A6F82">Kanaal</th><th style="width:11%;text-align:right;padding:14px 16px;color:#6A6F82">Besteed</th><th style="width:12%;text-align:right;padding:14px 16px;color:#6A6F82">Bereik</th><th style="width:16%;text-align:right;padding:14px 16px;color:#6A6F82">Contactmomenten</th><th style="width:10%;text-align:right;padding:14px 16px;color:#6A6F82">Frequentie</th><th style="width:9%;text-align:right;padding:14px 16px;color:#6A6F82">CPM</th><th style="width:16%;text-align:right;padding:14px 16px;color:#6A6F82">€ per 1.000 bereikt</th><th style="width:10%;text-align:right;padding:14px 16px;color:#6A6F82">Klikken</th></tr>
+<tr><td style="padding:14px 16px">Buitenreclame</td><td style="text-align:right;padding:14px 16px">€ 10.000</td><td style="text-align:right;padding:14px 16px">400.000</td><td style="text-align:right;padding:14px 16px">1.400.000</td><td style="text-align:right;padding:14px 16px">3,5</td><td style="text-align:right;padding:14px 16px">€ 7,14</td><td style="text-align:right;padding:14px 16px">€ 25,00</td><td style="text-align:right;padding:14px 16px">−</td></tr>
+<tr><td style="padding:14px 16px">Radio</td><td style="text-align:right;padding:14px 16px">€ 10.165</td><td style="text-align:right;padding:14px 16px">611.000</td><td style="text-align:right;padding:14px 16px">1.894.100</td><td style="text-align:right;padding:14px 16px">3,1</td><td style="text-align:right;padding:14px 16px">€ 5,37</td><td style="text-align:right;padding:14px 16px">€ 16,64</td><td style="text-align:right;padding:14px 16px">−</td></tr>
+<tr><td style="padding:14px 16px">Meta</td><td style="text-align:right;padding:14px 16px">€ 5.835</td><td style="text-align:right;padding:14px 16px">740.756</td><td style="text-align:right;padding:14px 16px">2.619.640</td><td style="text-align:right;padding:14px 16px">3,5</td><td style="text-align:right;padding:14px 16px">€ 2,23</td><td style="text-align:right;padding:14px 16px">€ 7,88</td><td style="text-align:right;padding:14px 16px">3.003</td></tr>
+<tr><td style="padding:14px 16px">LinkedIn</td><td style="text-align:right;padding:14px 16px">€ 5.899</td><td style="text-align:right;padding:14px 16px">239.260</td><td style="text-align:right;padding:14px 16px">601.554</td><td style="text-align:right;padding:14px 16px">2,5</td><td style="text-align:right;padding:14px 16px">€ 9,81</td><td style="text-align:right;padding:14px 16px">€ 24,65</td><td style="text-align:right;padding:14px 16px">973</td></tr>
+<tr><td style="padding:14px 16px">YouTube</td><td style="text-align:right;padding:14px 16px">€ 2.488</td><td style="text-align:right;padding:14px 16px">202.673</td><td style="text-align:right;padding:14px 16px">325.692</td><td style="text-align:right;padding:14px 16px">1,6</td><td style="text-align:right;padding:14px 16px">€ 7,64</td><td style="text-align:right;padding:14px 16px">€ 12,27</td><td style="text-align:right;padding:14px 16px">107</td></tr>
+<tr><td style="padding:14px 16px">Spotify</td><td style="text-align:right;padding:14px 16px">€ 1.291</td><td style="text-align:right;padding:14px 16px">194.511</td><td style="text-align:right;padding:14px 16px">356.986</td><td style="text-align:right;padding:14px 16px">1,8</td><td style="text-align:right;padding:14px 16px">€ 3,62</td><td style="text-align:right;padding:14px 16px">€ 6,64</td><td style="text-align:right;padding:14px 16px">560</td></tr>
+<tr><td style="padding:14px 16px">Ster online video</td><td style="text-align:right;padding:14px 16px">€ 2.500</td><td style="text-align:right;padding:14px 16px">166.667</td><td style="text-align:right;padding:14px 16px">416.667</td><td style="text-align:right;padding:14px 16px">2,5</td><td style="text-align:right;padding:14px 16px">€ 6,00</td><td style="text-align:right;padding:14px 16px">€ 15,00</td><td style="text-align:right;padding:14px 16px">−</td></tr>
+<tr style="background:#F3F0E9"><td style="padding:14px 16px">Totaal</td><td style="text-align:right;padding:14px 16px">€ 38.177</td><td style="text-align:right;padding:14px 16px">2.554.867</td><td style="text-align:right;padding:14px 16px">7.614.639</td><td style="text-align:right;padding:14px 16px">3,0</td><td style="text-align:right;padding:14px 16px">€ 5,01</td><td style="text-align:right;padding:14px 16px">€ 14,94</td><td style="text-align:right;padding:14px 16px">4.643</td></tr>
 </table></div>
-<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:20px">
-<div style="display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #E6E2D8;border-top:4px solid #EE6A3C;border-radius:16px;padding:20px 24px"><p style="font-size:24px;font-weight:600;color:#1F2440">Online vs. offline</p><p style="font-size:24px;color:#4A4F63;line-height:1.35">Online bereikt een persoon voor € 10,55 per 1.000, offline voor € 20,15.</p></div>
-<div style="display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #E6E2D8;border-top:4px solid #EE6A3C;border-radius:16px;padding:20px 24px"><p style="font-size:24px;font-weight:600;color:#1F2440">Facebook vs. Instagram</p><p style="font-size:24px;color:#4A4F63;line-height:1.35">Instagram levert per 1.000 vertoningen 2,8 keer zoveel websitebezoek; op Facebook wordt de video 2,5 keer zo vaak bekeken.</p></div>
-<div style="display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #E6E2D8;border-top:4px solid #EE6A3C;border-radius:16px;padding:20px 24px"><p style="font-size:24px;font-weight:600;color:#1F2440">Spotify vs. YouTube</p><p style="font-size:24px;color:#4A4F63;line-height:1.35">Beide worden vrijwel helemaal afgemaakt (92% en 96%); Spotify is goedkoper per contactmoment.</p></div>
-<div style="display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #E6E2D8;border-top:4px solid #EE6A3C;border-radius:16px;padding:20px 24px"><p style="font-size:24px;font-weight:600;color:#1F2440">Meta vs. LinkedIn</p><p style="font-size:24px;color:#4A4F63;line-height:1.35">Meta is 4,6 keer goedkoper per contactmoment; op LinkedIn klikt men vaker door (0,17% tegen 0,12%).</p></div>
-</div>
-
-<p style="position:absolute;left:128px;bottom:56px;width:1664px;font-size:24px;color:#7A7F92;border-top:1px solid #DEDBD2;padding-top:16px">5 okt t/m 10 nov. Bereik en contactmomenten buitenreclame en radio volgens inkoop; online volgens de platforms.</p>
+<p style="position:absolute;left:128px;bottom:56px;width:1300px;font-size:24px;color:#7A7F92;border-top:1px solid #DEDBD2;padding-top:16px">5 okt t/m 15 nov. Buitenreclame, radio en Ster volgens inkoop; online volgens de platforms.</p>
+<div style="position:absolute;left:1500px;top:1000px;width:356px;height:36px;display:flex;flex-direction:row;align-items:center;justify-content:flex-end;gap:12px"><img src="img/fm.png" alt="Flii Media" style="width:40px;height:30px;object-fit:contain"><p style="font-family:Inter, Arial, sans-serif;font-size:24px;color:#7A7F92;white-space:nowrap">Amplifying impact</p></div>
 </section>
 </div>
-<div class="slide" aria-label="Slide 8">
+<div class="slide" data-i="6" aria-label="Slide 7: Inzichten">
+<section id="div3" data-transition="fade" style="background:linear-gradient(120deg, #1A1E35 0%, #222A45 60%, #1D4650 100%);color:#F5F3EE;font-family:Inter, Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:center;gap:28px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:200px;font-weight:600;line-height:1;color:#EE6A3C">3</p>
+<div style="width:120px;height:6px;background:#EE6A3C;border-radius:3px"></div>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:96px;font-weight:600;color:#F5F3EE">Inzichten</h2>
+<div style="position:absolute;left:1500px;top:1000px;width:356px;height:36px;display:flex;flex-direction:row;align-items:center;justify-content:flex-end;gap:12px"><img src="img/fm.png" alt="Flii Media" style="width:40px;height:30px;object-fit:contain"><p style="font-family:Inter, Arial, sans-serif;font-size:24px;color:#9AA0B8;white-space:nowrap">Amplifying impact</p></div>
+</section>
+</div>
+<div class="slide" data-i="7" aria-label="Slide 8: Key insights">
+<section id="insights" data-transition="fade" style="background:#1F2440;color:#F5F3EE;font-family:Inter, Arial, sans-serif;padding:112px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#EE6A3C;font-weight:600">3 · Inzichten · Key insights</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:64px;font-weight:600;color:#F5F3EE">Vier dingen die we nu weten</h2>
+</div>
+<div style="display:flex;flex-direction:column">
+<div style="display:flex;flex-direction:row;gap:40px;padding:22px 0;border-top:1px solid #3A4163"><p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;color:#EE6A3C;width:56px">1</p><div style="display:flex;flex-direction:column;gap:8px;width:1560px"><p style="font-size:36px;font-weight:600;line-height:1.3">Radio en outdoor samen laten OneLane zoeken.</p><p style="font-size:26px;line-height:1.4;color:#C9CCD8">Van 2 tot 8 november 175 bezoeken per dag via Google (+160%) en 97 direct (+74%), tegen de weken zonder radio en outdoor.</p></div></div>
+<div style="display:flex;flex-direction:row;gap:40px;padding:22px 0;border-top:1px solid #3A4163"><p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;color:#EE6A3C;width:56px">2</p><div style="display:flex;flex-direction:column;gap:8px;width:1560px"><p style="font-size:36px;font-weight:600;line-height:1.3">Meta voor bereik, LinkedIn voor de doelgroep.</p><p style="font-size:26px;line-height:1.4;color:#C9CCD8">Meta is 4,4 keer goedkoper per contactmoment (€ 2,23 tegen € 9,81 per 1.000); op LinkedIn klikt men vaker door (0,16% tegen 0,11%).</p></div></div>
+<div style="display:flex;flex-direction:row;gap:40px;padding:22px 0;border-top:1px solid #3A4163"><p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;color:#EE6A3C;width:56px">3</p><div style="display:flex;flex-direction:column;gap:8px;width:1560px"><p style="font-size:36px;font-weight:600;line-height:1.3">Instagram haalt bezoekers, Facebook kijkers.</p><p style="font-size:26px;line-height:1.4;color:#C9CCD8">Instagram levert per 1.000 vertoningen 3,4 keer zoveel websitebezoek; op Facebook wordt de video 2,3 keer zo vaak helemaal bekeken.</p></div></div>
+<div style="display:flex;flex-direction:row;gap:40px;padding:22px 0;border-top:1px solid #3A4163;border-bottom:1px solid #3A4163"><p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;color:#EE6A3C;width:56px">4</p><div style="display:flex;flex-direction:column;gap:8px;width:1560px"><p style="font-size:36px;font-weight:600;line-height:1.3">Kort wint.</p><p style="font-size:26px;line-height:1.4;color:#C9CCD8">De tag-on van 6 seconden wordt op Meta 31 keer zo vaak helemaal bekeken als de video van 20 seconden.</p></div></div>
+</div>
+<div style="position:absolute;left:1500px;top:1000px;width:356px;height:36px;display:flex;flex-direction:row;align-items:center;justify-content:flex-end;gap:12px"><img src="img/fm.png" alt="Flii Media" style="width:40px;height:30px;object-fit:contain"><p style="font-family:Inter, Arial, sans-serif;font-size:24px;color:#9AA0B8;white-space:nowrap">Amplifying impact</p></div>
+</section>
+</div>
+<div class="slide" data-i="8" aria-label="Slide 9: Website">
 <section id="website" data-transition="fade" style="display:flex; flex-direction:column; gap:32px; padding:112px 128px 160px; background:#f5f3ee">
   <div style="display:flex; flex-direction:column; gap:16px">
-    <p style="font-family:Inter, Arial, sans-serif; font-size:24px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:#b9461f">5 · Insight · Website</p>
+    <p style="font-family:Inter, Arial, sans-serif; font-size:24px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:#b9461f">3 · Inzichten · Website</p>
     <h2 style="font-family:'Space Grotesk', Arial, sans-serif; font-size:64px; font-weight:600; color:#1f2440">Het bezoek groeit sinds de start</h2>
   </div>
   <div style="display:grid; gap:32px; grid-template-columns:1fr 1fr 1fr">
     <div style="display:flex; flex-direction:column; gap:12px; padding:24px 32px; background:#ffffff; border:1px solid #e6e2d8; border-radius:20px">
-      <p style="font-family:'Space Grotesk', Arial, sans-serif; font-size:72px; font-weight:600; line-height:1; color:#1f2440">8.449</p>
+      <p style="font-family:'Space Grotesk', Arial, sans-serif; font-size:72px; font-weight:600; line-height:1; color:#1f2440">9.915</p>
       <p style="font-family:Inter, Arial, sans-serif; font-size:28px; font-weight:600; color:#1f2440">Websitebezoeken</p>
     </div>
     <div style="display:flex; flex-direction:column; gap:12px; padding:24px 32px; background:#ffffff; border:1px solid #e6e2d8; border-radius:20px">
-      <p style="font-family:'Space Grotesk', Arial, sans-serif; font-size:72px; font-weight:600; line-height:1; color:#1f2440">+90%</p>
+      <p style="font-family:'Space Grotesk', Arial, sans-serif; font-size:72px; font-weight:600; line-height:1; color:#1f2440">+91%</p>
       <p style="font-family:Inter, Arial, sans-serif; font-size:28px; font-weight:600; color:#1f2440">Bezoek per week</p>
-      <p style="font-family:Inter, Arial, sans-serif; font-size:26px; color:#4a4f63">Laatste volle week tegen de eerste campagneweek</p>
+      <p style="font-family:Inter, Arial, sans-serif; font-size:26px; color:#4a4f63">Laatste campagneweek tegen de eerste</p>
     </div>
     <div style="display:flex; flex-direction:column; gap:12px; padding:24px 32px; background:#ffffff; border:1px solid #e6e2d8; border-radius:20px">
-      <p style="font-family:'Space Grotesk', Arial, sans-serif; font-size:72px; font-weight:600; line-height:1; color:#1f2440">+178%</p>
+      <p style="font-family:'Space Grotesk', Arial, sans-serif; font-size:72px; font-weight:600; line-height:1; color:#1f2440">+144%</p>
       <p style="font-family:Inter, Arial, sans-serif; font-size:28px; font-weight:600; color:#1f2440">Zoekverkeer via Google</p>
-      <p style="font-family:Inter, Arial, sans-serif; font-size:26px; color:#4a4f63">Op merknaam OneLane versus eerste campagneweek.</p>
+      <p style="font-family:Inter, Arial, sans-serif; font-size:26px; color:#4a4f63">Laatste campagneweek tegen de eerste</p>
     </div>
   </div>
   <div style="display:grid; gap:64px; align-items:start; grid-template-columns:520px 1fr">
     <div style="display:flex; flex-direction:column; gap:12px; padding:28px 32px; background:#1f2440; border-radius:20px">
-      <h3 style="font-family:'Space Grotesk', Arial, sans-serif; font-size:40px; font-weight:600; color:#f5f3ee">36 aanvragen</h3>
-      <p style="font-family:Inter, Arial, sans-serif; font-size:26px; line-height:1.45; color:#d6d9e5">18 contactaanvragen en 18 adviesgesprekken, de helft via de Engelse site.</p>
-      <p style="font-family:Inter, Arial, sans-serif; font-size:26px; line-height:1.45; color:#d6d9e5">Van alle 285 ingestuurde formulieren was 1 op de 8 een aanvraag.</p>
+      <h3 style="font-family:'Space Grotesk', Arial, sans-serif; font-size:40px; font-weight:600; color:#f5f3ee">42 aanvragen</h3>
+      <p style="font-family:Inter, Arial, sans-serif; font-size:26px; line-height:1.45; color:#d6d9e5">20 contactaanvragen en 22 adviesgesprekken, bijna de helft via de Engelse site.</p>
+      <p style="font-family:Inter, Arial, sans-serif; font-size:26px; line-height:1.45; color:#d6d9e5">Van alle 350 ingestuurde formulieren was 1 op de 8 een aanvraag.</p>
     </div>
     <div style="display:flex; flex-direction:column; gap:12px">
-      <p style="font-family:Inter, Arial, sans-serif; font-size:24px; font-weight:600; color:#4a4f63">Alle 285 ingestuurde formulieren per pagina</p>
+      <p style="font-family:Inter, Arial, sans-serif; font-size:24px; font-weight:600; color:#4a4f63">Alle 350 ingestuurde formulieren per pagina</p>
       <div style="display:grid; gap:32px; grid-template-columns:1fr 1fr">
         <div style="display:flex; flex-direction:column; padding:8px 24px 12px; background:#ffffff; border:1px solid #e6e2d8; border-radius:20px">
           <table style="font-family:Inter, Arial, sans-serif; font-size:24px; color:#1f2440; background:#00000000">
             <tr><th style="padding:9px 16px; width:75%; color:#6a6f82">Pagina</th><th style="padding:9px 16px; width:25%; text-align:right; color:#6a6f82">Aantal</th></tr>
-            <tr><td style="padding:9px 16px">Homepage (NL en EN)</td><td style="padding:9px 16px; text-align:right">137</td></tr>
-            <tr><td style="padding:9px 16px">Locatiepagina’s</td><td style="padding:9px 16px; text-align:right">23</td></tr>
-            <tr><td style="padding:9px 16px">Nieuwsbericht nieuwe naam</td><td style="padding:9px 16px; text-align:right">22</td></tr>
-            <tr><td style="padding:9px 16px">Kennis &amp; inzichten</td><td style="padding:9px 16px; text-align:right">21</td></tr>
+            <tr><td style="padding:9px 16px">Homepage (NL en EN)</td><td style="padding:9px 16px; text-align:right">167</td></tr>
+            <tr><td style="padding:9px 16px">Locatiepagina’s</td><td style="padding:9px 16px; text-align:right">32</td></tr>
+            <tr><td style="padding:9px 16px">Nieuwsbericht nieuwe naam</td><td style="padding:9px 16px; text-align:right">27</td></tr>
+            <tr><td style="padding:9px 16px">Kennis &amp; inzichten</td><td style="padding:9px 16px; text-align:right">24</td></tr>
           </table>
         </div>
         <div style="display:flex; flex-direction:column; padding:8px 24px 12px; background:#ffffff; border:1px solid #e6e2d8; border-radius:20px">
           <table style="font-family:Inter, Arial, sans-serif; font-size:24px; color:#1f2440; background:#00000000">
             <tr><th style="padding:9px 16px; width:75%; color:#6a6f82">Pagina</th><th style="padding:9px 16px; width:25%; text-align:right; color:#6a6f82">Aantal</th></tr>
-            <tr><td style="padding:9px 16px">Contactpagina</td><td style="padding:9px 16px; text-align:right">16</td></tr>
-            <tr><td style="padding:9px 16px">Ons verhaal (NL en EN)</td><td style="padding:9px 16px; text-align:right">12</td></tr>
-            <tr><td style="padding:9px 16px">Actualiteiten</td><td style="padding:9px 16px; text-align:right">11</td></tr>
-            <tr><td style="padding:9px 16px">Plan een adviesgesprek</td><td style="padding:9px 16px; text-align:right">4</td></tr>
+            <tr><td style="padding:9px 16px">Contactpagina</td><td style="padding:9px 16px; text-align:right">20</td></tr>
+            <tr><td style="padding:9px 16px">Ons verhaal (NL en EN)</td><td style="padding:9px 16px; text-align:right">16</td></tr>
+            <tr><td style="padding:9px 16px">Actualiteiten</td><td style="padding:9px 16px; text-align:right">12</td></tr>
+            <tr><td style="padding:9px 16px">Plan een adviesgesprek</td><td style="padding:9px 16px; text-align:right">5</td></tr>
           </table>
         </div>
       </div>
     </div>
   </div>
+<div style="position:absolute;left:1500px;top:1000px;width:356px;height:36px;display:flex;flex-direction:row;align-items:center;justify-content:flex-end;gap:12px"><img src="img/fm.png" alt="Flii Media" style="width:40px;height:30px;object-fit:contain"><p style="font-family:Inter, Arial, sans-serif;font-size:24px;color:#7A7F92;white-space:nowrap">Amplifying impact</p></div>
 </section>
 </div>
-<div class="slide" aria-label="Slide 9">
-<section id="insights" data-transition="fade" style="background:#1F2440;color:#F5F3EE;font-family:Inter, Arial, sans-serif;padding:112px 128px 160px;display:flex;flex-direction:column;gap:36px">
-<div style="display:flex;flex-direction:column;gap:16px">
-<p style="font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#EE6A3C;font-weight:600">6 · Insight · Key insights</p>
-<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:64px;font-weight:600;color:#F5F3EE">Vijf dingen die we nu weten</h2>
-</div>
-<div style="display:flex;flex-direction:column">
-<div style="display:flex;flex-direction:row;gap:40px;padding:20px 0;border-top:1px solid #3A4163"><p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:40px;color:#EE6A3C;width:56px">1</p><div style="display:flex;flex-direction:column;gap:6px;width:1560px"><p style="font-size:32px;font-weight:600;line-height:1.3">Het bereik ligt ruim boven plan.</p><p style="font-size:24px;line-height:1.4;color:#C9CCD8">2,2 mln personen bereikt, 68% meer dan de projectie van 1,3 mln, bij 100% van het geplande budget. Een contactmoment kostte gemiddeld € 5,00 per 1.000 in plaats van € 7,76.</p></div></div>
-<div style="display:flex;flex-direction:row;gap:40px;padding:20px 0;border-top:1px solid #3A4163"><p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:40px;color:#EE6A3C;width:56px">2</p><div style="display:flex;flex-direction:column;gap:6px;width:1560px"><p style="font-size:32px;font-weight:600;line-height:1.3">Radio en outdoor samen laten OneLane zoeken.</p><p style="font-size:24px;line-height:1.4;color:#C9CCD8">Van 2 tot 8 november 175 bezoeken per dag via Google (+160%) en 97 direct (+74%), tegen de weken zonder radio en outdoor.</p></div></div>
-<div style="display:flex;flex-direction:row;gap:40px;padding:20px 0;border-top:1px solid #3A4163"><p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:40px;color:#EE6A3C;width:56px">3</p><div style="display:flex;flex-direction:column;gap:6px;width:1560px"><p style="font-size:32px;font-weight:600;line-height:1.3">Online levert de klikken, maar minder dan gepland.</p><p style="font-size:24px;line-height:1.4;color:#C9CCD8">4.211 klikken, waarvan 2.776 via Meta en 806 via LinkedIn. Dat is 60% onder het doel van 10.621.</p></div></div>
-<div style="display:flex;flex-direction:row;gap:40px;padding:20px 0;border-top:1px solid #3A4163"><p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:40px;color:#EE6A3C;width:56px">4</p><div style="display:flex;flex-direction:column;gap:6px;width:1560px"><p style="font-size:32px;font-weight:600;line-height:1.3">Kort wint.</p><p style="font-size:24px;line-height:1.4;color:#C9CCD8">De tag-on van 6 seconden wordt op Meta 37 keer zo vaak helemaal bekeken als de video van 20 seconden.</p></div></div>
-<div style="display:flex;flex-direction:row;gap:40px;padding:20px 0;border-top:1px solid #3A4163;border-bottom:1px solid #3A4163"><p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:40px;color:#EE6A3C;width:56px">5</p><div style="display:flex;flex-direction:column;gap:6px;width:1560px"><p style="font-size:32px;font-weight:600;line-height:1.3">LinkedIn kan scherper.</p><p style="font-size:24px;line-height:1.4;color:#C9CCD8">Instapniveau krijgt 32% van de vertoningen; eigenaren en accountancy klikken twee tot drie keer zo vaak door.</p></div></div>
-</div>
-</section>
-</div>
-<div class="slide" aria-label="Slide 10">
+<div class="slide" data-i="9" aria-label="Slide 10: Learnings">
 <section id="learnings" data-transition="fade" style="background:#f5f3ee">
   <div id="pce35f11a9931r0-ed36d013" style="position:absolute; top:112px; left:128px; width:1665px; height:110px; display:flex; flex-direction:column; gap:16px">
-    <p style="font-family:Inter, Arial, sans-serif; font-size:24px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:#b9461f">7 · Insight · Learnings &amp; vervolg</p>
+    <p style="font-family:Inter, Arial, sans-serif; font-size:24px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:#b9461f">3 · Inzichten · Learnings &amp; vervolg</p>
     <h2 style="font-family:'Space Grotesk', Arial, sans-serif; font-size:64px; font-weight:600; color:#1f2440">Wat we meenemen</h2>
   </div>
   <div id="pce35f11a9931r1-ed36d013" style="position:absolute; top:265px; left:128px; width:1665px; display:grid; gap:32px; grid-template-columns:1.2fr 1fr">
@@ -292,7 +265,7 @@ x-shape[kind="arrow-right"]{clip-path:polygon(0 30%,60% 30%,60% 0,100% 50%,60% 1
       </div>
       <div style="display:flex; flex-direction:column; gap:6px; padding:0 0 0 24px; border-left:4px solid #ee6a3c">
         <p style="font-family:Inter, Arial, sans-serif; font-size:24px; font-weight:600; color:#1f2440">Branding miste een concrete call-to-action</p>
-        <p style="font-family:Inter, Arial, sans-serif; font-size:24px; line-height:1.4; color:#4a4f63">36 aanvragen in vijf weken en bezoekers uit advertenties blijven beperkt. Geef een duidelijke vervolgstap mee, zoals een adviesgesprek.</p>
+        <p style="font-family:Inter, Arial, sans-serif; font-size:24px; line-height:1.4; color:#4a4f63">42 aanvragen in zes weken en bezoekers uit advertenties blijven beperkt. Geef een duidelijke vervolgstap mee, zoals een adviesgesprek.</p>
       </div>
     </div>
     <div style="display:flex; flex-direction:column; gap:24px; padding:36px 40px; background:#ffffff; border:1px solid #e6e2d8; border-radius:20px">
@@ -313,26 +286,45 @@ x-shape[kind="arrow-right"]{clip-path:polygon(0 30%,60% 30%,60% 0,100% 50%,60% 1
       </div>
     </div>
   </div>
+<div style="position:absolute;left:1500px;top:1000px;width:356px;height:36px;display:flex;flex-direction:row;align-items:center;justify-content:flex-end;gap:12px"><img src="img/fm.png" alt="Flii Media" style="width:40px;height:30px;object-fit:contain"><p style="font-family:Inter, Arial, sans-serif;font-size:24px;color:#7A7F92;white-space:nowrap">Amplifying impact</p></div>
 </section>
 </div>
 </main>
+<nav class="bar" aria-label="Slides">
+<button class="nav" id="prev" aria-label="Vorige slide">&#8249;</button>
+<div class="dots"><button class="dot on" data-i="0" title="Cover" aria-label="Slide 1: Cover">1</button><button class="dot" data-i="1" title="Plan" aria-label="Slide 2: Plan">2</button><button class="dot" data-i="2" title="Briefing &amp; planning" aria-label="Slide 3: Briefing &amp; planning">3</button><button class="dot" data-i="3" title="Resultaat" aria-label="Slide 4: Resultaat">4</button><button class="dot" data-i="4" title="Totaal" aria-label="Slide 5: Totaal">5</button><button class="dot" data-i="5" title="Per kanaal" aria-label="Slide 6: Per kanaal">6</button><button class="dot" data-i="6" title="Inzichten" aria-label="Slide 7: Inzichten">7</button><button class="dot" data-i="7" title="Key insights" aria-label="Slide 8: Key insights">8</button><button class="dot" data-i="8" title="Website" aria-label="Slide 9: Website">9</button><button class="dot" data-i="9" title="Learnings" aria-label="Slide 10: Learnings">10</button></div>
+<button class="nav" id="next" aria-label="Volgende slide">&#8250;</button>
+<span class="label" id="label">Cover</span>
+</nav>
 <script>
 (function(){
+  var L=['Cover', 'Plan', 'Briefing & planning', 'Resultaat', 'Totaal', 'Per kanaal', 'Inzichten', 'Key insights', 'Website', 'Learnings'];
+  var slides=[].slice.call(document.querySelectorAll('.slide')), dots=[].slice.call(document.querySelectorAll('.dot')), cur=0;
   function fit(){
-    var w=window.innerWidth, h=window.innerHeight;
-    var s=w<700 ? (w-24)/1920 : Math.min((w*0.94)/1920,(h-48)/1080);
-    document.body.style.setProperty('--s',s);
+    var st=document.querySelector('.stage'), w=st.clientWidth-32, h=st.clientHeight-32;
+    document.body.style.setProperty('--s',Math.max(.1,Math.min(w/1920,h/1080)));
   }
-  fit(); window.addEventListener('resize',fit);
-  var slides=[].slice.call(document.querySelectorAll('.slide'));
-  function current(){var c=innerHeight/2,b=0,d=1e9;slides.forEach(function(el,i){var r=el.getBoundingClientRect(),m=Math.abs(r.top+r.height/2-c);if(m<d){d=m;b=i}});return b}
+  function go(i){
+    cur=Math.max(0,Math.min(slides.length-1,i));
+    slides.forEach(function(s,k){s.classList.toggle('on',k===cur)});
+    dots.forEach(function(d,k){d.classList.toggle('on',k===cur)});
+    document.getElementById('prev').disabled=cur===0;
+    document.getElementById('next').disabled=cur===slides.length-1;
+    document.getElementById('label').textContent=L[cur];
+    if(history.replaceState) history.replaceState(null,'','#'+(cur+1));
+  }
+  dots.forEach(function(d){d.addEventListener('click',function(){go(+d.dataset.i)})});
+  document.getElementById('prev').addEventListener('click',function(){go(cur-1)});
+  document.getElementById('next').addEventListener('click',function(){go(cur+1)});
   document.addEventListener('keydown',function(e){
-    var k=e.key, i=current();
-    if(k==='ArrowRight'||k==='ArrowDown'||k==='PageDown'||k===' '){e.preventDefault();i=Math.min(i+1,slides.length-1)}
-    else if(k==='ArrowLeft'||k==='ArrowUp'||k==='PageUp'){e.preventDefault();i=Math.max(i-1,0)}
-    else if(k==='Home'){i=0} else if(k==='End'){i=slides.length-1} else return;
-    slides[i].scrollIntoView({block:'center'});
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();go(cur+1)}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(cur-1)}
+    else if(e.key==='Home')go(0); else if(e.key==='End')go(slides.length-1);
   });
+  var sx=null; document.querySelector('.stage').addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});
+  document.querySelector('.stage').addEventListener('touchend',function(e){if(sx===null)return;var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40)go(cur+(dx<0?1:-1));sx=null});
+  window.addEventListener('resize',fit); fit();
+  var h=parseInt((location.hash||'').slice(1),10); go(h>0?h-1:0);
 })();
 </script>
 </body>
