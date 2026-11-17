@@ -384,6 +384,16 @@ h1{font-family:Montserrat,Inter,sans-serif;font-weight:900;font-size:40px;letter
 .o1g{display:flex;align-items:center;gap:16px;}
 .o1g .ov{float:none;flex:0 0 118px;width:auto;margin:0;}
 .ob td{padding:17px 20px;}
+/* data */
+.dl-g{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.dlk{display:flex;flex-direction:column;background:var(--wash);border-radius:11px;padding:20px 22px;text-decoration:none;color:var(--ink);border:1.5px solid transparent;transition:border-color .15s;}
+.dlk:hover{border-color:var(--zo-o);}
+.dlk .t{display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.dlk h4{font-family:Montserrat,Inter,sans-serif;font-size:18px;font-weight:800;color:var(--zo);margin:0;}
+.dlk .fs{font-size:10px;font-weight:700;color:var(--zo-d);background:var(--zo-ol);border-radius:4px;padding:2px 8px;white-space:nowrap;}
+.dlk p{font-size:13px;line-height:1.5;margin:10px 0 14px;}
+.dlk .knop{margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;gap:8px;background:var(--zo);color:#fff;font-size:12.5px;font-weight:700;border-radius:999px;padding:8px 16px;}
+.dlk .knop svg{width:14px;height:14px;fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;}
 </style>
 </head>
 <body>
@@ -570,12 +580,27 @@ h1{font-family:Montserrat,Inter,sans-serif;font-weight:900;font-size:40px;letter
     </div>
   </section>
 
+  <section class="sheet">
+    <div class="page">
+      <div class="topbar"></div>
+      <div class="head"><img class="zo-logo" src="beeld/zo-logo.png" alt="Zelfstandig Ondernemers"><div class="kicker">Zelfstandig Ondernemers &middot; SEO en GEO</div>
+        <h1>Data</h1>
+        <p class="intro">Exports over juli 2025 t/m oktober 2026 (16 maanden), waar mogelijk per maand. Elk bestand begint met een tabblad Toelichting met bron en definities.</p>
+      </div>
+      <div class="body">
+        <div class="dl-g"><a class="dlk" href="bestanden/ZO_Search_Console_2025-07_tm_2026-10.xlsx" download><div class="t"><h4>Google Search Console</h4><span class="fs">Excel &middot; 4,6 MB</span></div><p>Alle zoekopdrachten met klikken, vertoningen, CTR en positie; landingspagina's per zoekopdracht; prestaties per landingspagina. Ook per maand en per paginatype: homepage, kennisbank en diensten.</p><span class="knop"><svg viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Downloaden</span></a><a class="dlk" href="bestanden/ZO_Zoekwoordenonderzoek_nov2026.xlsx" download><div class="t"><h4>Zoekwoordenonderzoek</h4><span class="fs">Excel &middot; 43 kB</span></div><p>456 zoekwoorden over de zeven thema's, inclusief zzp-, zzp'er- en zelfstandige-varianten. Per zoekwoord zoekvolume, concurrentie, zoekintentie, vragen en de huidige positie van ZO.</p><span class="knop"><svg viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Downloaden</span></a><a class="dlk" href="bestanden/ZO_Kennisbank_prestaties_2025-07_tm_2026-10.xlsx" download><div class="t"><h4>Kennisbank-prestaties</h4><span class="fs">Excel &middot; 263 kB</span></div><p>Per artikel URL, titel, klikken, vertoningen, positie, CTR en belangrijkste zoekopdrachten, met organische sessies en aanmeldingen uit GA4. Ook per maand.</p><span class="knop"><svg viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Downloaden</span></a><a class="dlk" href="bestanden/ZO_GA4_organisch_en_AI-verkeer_jul2025-okt2026.xlsx" download><div class="t"><h4>GA4: organisch en AI-verkeer</h4><span class="fs">Excel &middot; 154 kB</span></div><p>Organische landingspagina's met sessies en betrokkenheid, organische conversies, prestaties per paginatype en verkeer vanuit ChatGPT, Perplexity, Gemini en Copilot.</p><span class="knop"><svg viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Downloaden</span></a></div>
+        <div class="bron">Niet beschikbaar: concurrentiedata (organische concurrenten, keyword gaps, contentgap) vraagt een SEO-tool zoals Semrush of Ahrefs; 'concurrentie' in het zoekwoordenbestand is de concurrentie onder Google Ads-adverteerders. In GA4 worden alleen aanmeldingen als conversie gemeten; berekeningen, brochureaanvragen en belafspraken niet. Zoekvolumes zijn door Google afgerond; de zoekintentie is een inschatting van Flii Media.</div>
+      </div>
+      <div class="foot"><span class="fine">Flii Media &times; Zelfstandig Ondernemers &middot; vertrouwelijk</span></div>
+    </div>
+  </section>
+
 </div>
 
 <nav class="nav-deck">
   <button class="nd-pijl" id="nd-vorige" aria-label="Vorige"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
-  <div class="nd-tabs"><button class="nd-tab actief">Cover</button><button class="nd-tab">Onderbouwing</button><button class="nd-tab">Onderwerpen</button><button class="nd-tab">Team en werkwijze</button><button class="nd-tab">Resultaten</button></div>
-  <span class="nd-tel" id="nd-tel">1 / 5</span>
+  <div class="nd-tabs"><button class="nd-tab actief">Cover</button><button class="nd-tab">Onderbouwing</button><button class="nd-tab">Onderwerpen</button><button class="nd-tab">Team en werkwijze</button><button class="nd-tab">Resultaten</button><button class="nd-tab">Data</button></div>
+  <span class="nd-tel" id="nd-tel">1 / 6</span>
   <button class="nd-pijl" id="nd-volgende" aria-label="Volgende"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
 </nav>
 
