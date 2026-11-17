@@ -3,3 +3,10 @@ Options -Indexes
 <IfModule mod_headers.c>
   Header set X-Robots-Tag "noindex, nofollow, noarchive, nosnippet"
 </IfModule>
+AddType application/vnd.openxmlformats-officedocument.spreadsheetml.sheet .xlsx
+AddType text/csv .csv
+<FilesMatch "\.(xlsx|csv)$">
+  <IfModule mod_headers.c>
+    Header set Content-Disposition "attachment"
+  </IfModule>
+</FilesMatch>
