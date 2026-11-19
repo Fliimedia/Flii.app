@@ -4,161 +4,10 @@
 (function () {
   "use strict";
 
-  var SCRIPT = {
-    titel: "Website",
-    start: "bellen",
-    stappen: {
-      bellen: {
-        titel: "Bellen",
-        zeg: "Bel [bedrijf]. Wordt er opgenomen?",
-        tip: "Spreek bij de voicemail kort in: naam, Flii Media, dat je terugbelt. Geen pitch.",
-        opties: [
-          { label: "Opgenomen", naar: "opening" },
-          { label: "Geen gehoor", naar: "eind_geengehoor" },
-          { label: "Voicemail", naar: "eind_voicemail" },
-          { label: "In gesprek", naar: "eind_ingesprek" },
-          { label: "Verkeerd nummer", naar: "eind_verkeerd" }
-        ]
-      },
-      opening: {
-        titel: "Opening",
-        zeg: "Goedemiddag, u spreekt met [naam] van Flii Media. Spreek ik met de eigenaar van [bedrijf]?",
-        opties: [
-          { label: "Ja, eigenaar", naar: "toestemming" },
-          { label: "Nee, iemand anders", naar: "poortwachter" },
-          { label: "Geen tijd", naar: "geentijd" },
-          { label: "Bedrijf gestopt", naar: "eind_gestopt" }
-        ]
-      },
-      poortwachter: {
-        titel: "Poortwachter",
-        zeg: "Helder, dank u. Wie gaat er bij [bedrijf] over nieuwe klanten en de website? En wanneer kan ik die persoon het beste even bellen?",
-        tip: "Noteer naam en tijdstip. Laat je niet afschepen met een algemeen e-mailadres.",
-        opties: [
-          { label: "Doorverbonden", naar: "toestemming" },
-          { label: "Terugbelmoment", naar: "eind_terugbellen" },
-          { label: "Geen informatie", naar: "eind_nee" }
-        ]
-      },
-      geentijd: {
-        titel: "Geen tijd",
-        zeg: "Dat begrijp ik, ik houd het kort. Wanneer kan ik u beter twee minuten bellen: vanmiddag of morgenochtend?",
-        opties: [
-          { label: "Moment afgesproken", naar: "eind_terugbellen" },
-          { label: "Toch nu even", naar: "toestemming" },
-          { label: "Geen interesse", naar: "eind_nee" }
-        ]
-      },
-      toestemming: {
-        titel: "Toestemming",
-        zeg: "Ik zal eerlijk zijn: dit is een onverwacht telefoontje. Mag ik u in dertig seconden vertellen waarom ik bel? Daarna beslist u of we verder praten.",
-        opties: [
-          { label: "Ja, vertel", naar: "aanleiding" },
-          { label: "Nee", naar: "eind_nee" },
-          { label: "Niet meer bellen", naar: "eind_nietbellen" }
-        ]
-      },
-      aanleiding: {
-        titel: "Aanleiding",
-        zeg: "Ik zag dat [bedrijf] sterke reviews heeft op Google, [aantal] sterren, maar ik kon geen website vinden. Klopt dat, of heb ik iets gemist?",
-        opties: [
-          { label: "Klopt, geen website", naar: "behoefte" },
-          { label: "Heeft een website", naar: "heeftsite" }
-        ]
-      },
-      heeftsite: {
-        titel: "Heeft een website",
-        zeg: "Dan heb ik die gemist, excuus. Hoeveel nieuwe klanten haalt die website ongeveer per maand voor u binnen?",
-        opties: [
-          { label: "Genoeg", naar: "eind_heeftsite" },
-          { label: "Weinig of geen", naar: "behoefte" }
-        ]
-      },
-      behoefte: {
-        titel: "Behoefte",
-        zeg: "Hoe vinden nieuwe klanten u nu? En zou u er graag meer bij hebben?",
-        tip: "Laat de klant praten. Wat hij hier zegt, gebruik je straks in de pitch.",
-        opties: [
-          { label: "Wil meer klanten", naar: "pitch" },
-          { label: "Zit vol", naar: "later" }
-        ]
-      },
-      later: {
-        titel: "Zit vol",
-        zeg: "Mooi om te horen dat het zo goed loopt. Mag ik over drie maanden nog eens bellen? Misschien is er dan ruimte.",
-        opties: [
-          { label: "Ja", naar: "eind_later" },
-          { label: "Nee", naar: "eind_nee" }
-        ]
-      },
-      pitch: {
-        titel: "Voorbeeld",
-        zeg: "Wie u via Google vindt, zoekt meestal eerst een website voordat hij belt. Zonder site gaat hij vaak door naar de volgende. Daarom heb ik alvast een voorbeeldwebsite voor [bedrijf] gemaakt, met uw reviews erop. Mag ik die laten zien in een videocall van een kwartier?",
-        tip: "Zeg alleen dat het voorbeeld er is als het echt klaarstaat.",
-        opties: [
-          { label: "Ja, laat zien", naar: "plannen" },
-          { label: "Wat kost het?", naar: "prijs" },
-          { label: "Stuur maar op", naar: "sturen" },
-          { label: "Geen interesse", naar: "bezwaar" }
-        ]
-      },
-      bezwaar: {
-        titel: "Bezwaar",
-        zeg: "Dat snap ik. Mag ik vragen waar het aan ligt: is het tijd, geld, of heeft u er gewoon geen behoefte aan?",
-        opties: [
-          { label: "Geld", naar: "prijs" },
-          { label: "Tijd", naar: "tijd" },
-          { label: "Geen behoefte", naar: "eind_nee" },
-          { label: "Niet meer bellen", naar: "eind_nietbellen" }
-        ]
-      },
-      tijd: {
-        titel: "Bezwaar: tijd",
-        zeg: "Daarom doen wij het meeste werk. U kijkt een kwartier mee, daarna regelen wij de rest: teksten, foto's en vindbaarheid in Google.",
-        opties: [
-          { label: "Toch interesse", naar: "plannen" },
-          { label: "Stuur maar op", naar: "sturen" }
-        ]
-      },
-      prijs: {
-        titel: "Prijs",
-        zeg: "De website kost eenmalig € 800, daarna € 25 per maand voor hosting en onderhoud. Met één extra klant per maand verdient u dat meestal al terug. Past dat ongeveer bij wat u in gedachten had?",
-        opties: [
-          { label: "Past", naar: "plannen" },
-          { label: "Te duur", naar: "sturen" }
-        ]
-      },
-      plannen: {
-        titel: "Afspraak",
-        zeg: "Mooi. Komt morgen of overmorgen beter uit? En liever in de ochtend of in de middag?",
-        tip: "Geef steeds twee keuzes, geen open vraag.",
-        opties: [
-          { label: "Afspraak staat", naar: "eind_afspraak" },
-          { label: "Wil het eerst zien", naar: "sturen" }
-        ]
-      },
-      sturen: {
-        titel: "Voorbeeld sturen",
-        zeg: "Prima. Dan stuur ik het voorbeeld per WhatsApp, zodat u het rustig kunt bekijken. Zal ik u [dag] om [tijd] even bellen om te horen wat u ervan vindt?",
-        opties: [
-          { label: "Ja", naar: "eind_sturen" },
-          { label: "Nee", naar: "eind_nee" }
-        ]
-      },
-      eind_afspraak: { eind: true, status: "afspraak", titel: "Afspraak", zeg: "Bedankt voor uw tijd, ik stuur u zo de uitnodiging. Tot dan!" },
-      eind_sturen: { eind: true, status: "sturen", titel: "Nabellen", zeg: "Ik stuur het u vandaag nog. Tot [dag]!" },
-      eind_terugbellen: { eind: true, status: "terugbellen", titel: "Terugbellen", zeg: "Dank u, dan bel ik op het afgesproken moment. Fijne dag!" },
-      eind_later: { eind: true, status: "later", titel: "Over 3 maanden", zeg: "Dank u, dan noteer ik dat. Fijne dag nog!" },
-      eind_heeftsite: { eind: true, status: "heeftal", titel: "Heeft website", zeg: "Dan wens ik u veel succes. Bedankt voor uw tijd!" },
-      eind_nee: { eind: true, status: "geeninteresse", titel: "Geen interesse", zeg: "Helemaal goed, bedankt voor uw tijd. Fijne dag nog!" },
-      eind_nietbellen: { eind: true, status: "nietbellen", titel: "Niet meer bellen", zeg: "Begrepen, dan haal ik u van de lijst. Fijne dag nog!" },
-      eind_gestopt: { eind: true, status: "gestopt", titel: "Bedrijf gestopt", zeg: "Excuus voor het storen, en veel succes. Fijne dag!" },
-      eind_geengehoor: { eind: true, status: "geengehoor", titel: "Geen gehoor", zeg: "Leg vast en probeer het later opnieuw." },
-      eind_voicemail: { eind: true, status: "voicemail", titel: "Voicemail", zeg: "Leg vast en bel over een paar dagen opnieuw." },
-      eind_ingesprek: { eind: true, status: "ingesprek", titel: "In gesprek", zeg: "Leg vast en bel later vandaag opnieuw." },
-      eind_verkeerd: { eind: true, status: "verkeerd", titel: "Verkeerd nummer", zeg: "Leg vast. De lead gaat naar Afgevallen." }
-    }
-  };
+  /* Het script hangt af van de lijst (?lijst=...), standaard Website. Teksten staan in acq-scripts.v1.js. */
+  var LIJST = new URLSearchParams(location.search).get("lijst") || "website";
+  if (!window.FliiScripts[LIJST]) LIJST = "website";
+  var SCRIPT = window.FliiScripts[LIJST];
 
   var B = window.FliiBel;
   Object.keys(SCRIPT.stappen).forEach(function (id) {
@@ -229,6 +78,10 @@
   var lijnen = svg("svg", { class: "cb-lijnen", "aria-hidden": "true" });
   boom.appendChild(lijnen);
   var knopen = {};
+  var scriptKeuze = el("select", { class: "cb-k cb-keuze", "aria-label": "Script", on: { change: function () { location.href = "?lijst=" + scriptKeuze.value; } } },
+    Object.keys(window.FliiScripts).map(function (k) {
+      var op = el("option", { value: k, text: window.FliiScripts[k].titel }); if (k === LIJST) op.selected = true; return op;
+    }));
 
   /* ---------- lead: wie bel je ---------- */
   var LEAD = null; /* { lijst, id, naam, telefoon } */
@@ -243,6 +96,7 @@
     if (ld) kiesLead(ld);
   });
   function kiesLead(ld) {
+    if (ld.lijst !== LIJST) { location.href = "?lijst=" + ld.lijst + "&lead=" + encodeURIComponent(ld.id); return; }
     LEAD = ld; CALLS = [];
     try { history.replaceState(null, "", "?lijst=" + ld.lijst + "&lead=" + encodeURIComponent(ld.id)); } catch (e) {}
     tekenLead();
@@ -250,7 +104,7 @@
       CALLS = s.calls.filter(function (c) { return c.lead_id === ld.id; });
       tekenLead();
     }).catch(function () {});
-    if (S[huidig].eind) vulInhoud(huidig);
+    vulInhoud(huidig);
   }
   function tekenLead() {
     leadBalk.innerHTML = "";
@@ -266,13 +120,13 @@
     ]));
     leadBalk.appendChild(el("button", { type: "button", class: "cb-k", text: "Ander bedrijf", on: { click: function () {
       LEAD = null; CALLS = []; zoek.value = "";
-      try { history.replaceState(null, "", location.pathname); } catch (e) {}
+      try { history.replaceState(null, "", "?lijst=" + LIJST); } catch (e) {}
       tekenLead(); if (S[huidig].eind) vulInhoud(huidig);
     } } }));
   }
   Promise.all(B.LIJSTEN.map(function (l) {
     return B.laadLijst(l).then(function (d) {
-      return d.leads.map(function (ld) { return { lijst: l.slug, lijstTitel: l.titel, id: ld.id, naam: ld.naam, telefoon: ld.telefoon }; });
+      return d.leads.map(function (ld) { return { lijst: l.slug, lijstTitel: l.titel, id: ld.id, naam: ld.naam, telefoon: ld.telefoon, reviews: ld.reviews, eigenaar: ld.eigenaar, plaats: ld.plaats, branche: ld.branche }; });
     }).catch(function () { return []; });
   })).then(function (res) {
     ALLE = [].concat.apply([], res);
@@ -304,17 +158,25 @@
   app.appendChild(el("div", { class: "band" }));
   app.appendChild(el("div", { class: "wrap cb-wrap" }, [
     el("div", { class: "kop" }, [logo(), el("span", { class: "u", text: "Cold call script" })]),
-    el("div", { class: "cb-top" }, [el("h1", { text: "Cold call script: " + SCRIPT.titel }), el("div", { class: "cb-acties" }, [knopTerug, knopOpnieuw])]),
+    el("div", { class: "cb-top" }, [el("h1", { text: "Belscript: " + SCRIPT.titel }), el("div", { class: "cb-acties" }, [scriptKeuze, knopTerug, knopOpnieuw])]),
     leadBalk,
     boom
   ]));
   if (window.acqMenu) window.acqMenu();
 
   /* ---------- inhoud van de open stap ---------- */
+  function vulIn(t) {
+    if (!LEAD) return t;
+    return t.replace(/\[bedrijf\]/g, LEAD.naam)
+      .replace(/\[aantal\]/g, LEAD.reviews ? String(LEAD.reviews) : "[aantal]")
+      .replace(/\[eigenaar\]/g, LEAD.eigenaar || "[eigenaar]")
+      .replace(/\[plaats\]/g, LEAD.plaats || "[plaats]")
+      .replace(/\[dienst\]/g, LEAD.branche ? LEAD.branche.toLowerCase() : "[dienst]");
+  }
   function vulInhoud(id) {
     var s = S[id], box = knopen[id].querySelector(".cb-inhoud");
     box.innerHTML = "";
-    box.appendChild(el("p", { class: "cb-zeg", text: s.zeg }));
+    box.appendChild(el("p", { class: "cb-zeg", text: vulIn(s.zeg) }));
     if (s.tip) box.appendChild(el("p", { class: "cb-tip", text: s.tip }));
     if (s.eind) {
       box.appendChild(el("p", { class: "cb-uitkomst" }, ["Uitkomst: ", el("b", { text: s.uitkomst })]));
@@ -356,7 +218,7 @@
       if (!start) { melding.textContent = "Vul een datum in voor de volgende actie."; return null; }
       melding.textContent = "";
       var tekst = st.naam + "\n\n" + beschrijving.value + (LEAD && LEAD.telefoon ? "\n\nTelefoon: " + LEAD.telefoon : "");
-      return { titel: ((st.titel || "Bellen") + " " + naam()).trim(), start: start, eind: new Date(start.getTime() + parseInt(duur.value, 10) * 60000), tekst: tekst };
+      return { titel: ((s.agenda || st.titel || "Bellen") + " " + naam()).trim(), start: start, eind: new Date(start.getTime() + parseInt(duur.value, 10) * 60000), tekst: tekst };
     }
     var opslaan = el("button", { type: "button", class: "cb-optie cb-hoofd", text: "Opslaan bij lead", on: { click: function () {
       if (!LEAD) { melding.textContent = "Kies bovenaan het bedrijf dat je belt."; zoek.focus(); return; }

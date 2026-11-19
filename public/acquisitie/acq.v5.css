@@ -177,3 +177,34 @@ ol.bl-hist{list-style:none;margin:0 0 22px;padding:0;border-left:1px solid var(-
   .bl-groep{grid-template-columns:1fr;gap:4px}
   .bl-kop{padding-top:0}
 }
+
+/* bellen met het script in het profiel */
+.bl-belrij{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.bl-belrij .knop{font:inherit;font-size:14px;font-weight:600;cursor:pointer}
+.bl-nummer{font-family:'IBM Plex Mono',monospace;font-size:14px;text-decoration:none;border-bottom:1px solid var(--line)}
+.bl-nummer:hover{border-color:var(--ink)}
+.bl-boom{margin-left:auto;font-size:13px;color:var(--muted);text-decoration:none}
+.bl-boom:hover{color:var(--ink)}
+.br{margin-top:14px}
+.br-kaart{border:1px solid var(--ink);border-radius:14px;padding:18px 20px 14px;background:#fff;box-shadow:0 10px 30px rgba(22,24,29,.07)}
+.br-kaart.br-eind{border-color:var(--pink)}
+.br-stap{margin:0 0 8px;font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--pink)}
+.br-zeg{margin:0;font-size:18px;line-height:1.42;font-weight:600;letter-spacing:-.2px}
+.br-tip{margin:12px 0 0;font-size:13px;color:var(--muted);background:var(--wash);border-radius:8px;padding:8px 11px}
+.br-uitkomst{display:flex;align-items:center;gap:8px;margin:14px 0 0;font-size:14px;color:var(--muted)}
+.br-uitkomst b{color:var(--ink)}
+.br-opties{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin-top:16px}
+.br-optie{padding:11px 13px;font:inherit;font-size:14px;font-weight:600;text-align:left;border-radius:10px;cursor:pointer;border:1px solid var(--line);background:#fff;color:var(--ink)}
+.br-optie:hover{border-color:var(--pink);background:#FDF1F4}
+.br-optie.br-hoofd{background:var(--ink);border-color:var(--ink);color:#fff}
+.br-optie.br-hoofd:hover{background:#000}
+.br-onder{display:flex;justify-content:space-between;margin-top:10px}
+.br-onder button{background:none;border:0;font:inherit;font-size:13px;color:var(--muted);cursor:pointer;padding:4px 0}
+.br-onder button:hover{color:var(--ink)}
+.br-uit{display:grid;grid-template-columns:96px 1fr;gap:10px;align-items:start;margin-top:12px}
+.br-uitkop{font-size:12px;color:var(--muted-2);padding-top:6px;line-height:1.3}
+@media (max-width:640px){
+  .br-uit{grid-template-columns:1fr;gap:4px}
+  .bl-boom{margin-left:0}
+  .br-zeg{font-size:16.5px}
+}

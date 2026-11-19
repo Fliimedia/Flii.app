@@ -214,7 +214,7 @@
         })
         .catch(function (e) { opslaan.disabled = false; if (e.message !== "login") melding.textContent = "Opslaan lukte niet. Probeer het opnieuw."; });
     } } });
-    return el("div", { class: "bl" }, [
+    var blok = el("div", { class: "bl" }, [
       el("p", { class: "sec", text: "Gesprek vastleggen" }),
       groep("Niet bereikt", false), groep("Bereikt", true),
       el("label", { class: "bl-besch" }, [el("span", { text: "Beschrijving" }), beschrijving]),
@@ -226,6 +226,84 @@
       ]),
       melding
     ]);
+    return {
+      el: blok,
+      kies: function (id) { var st = B.statusVan(id); if (st) kies(st); },
+      verloop: function (tekst) {
+        var rest = beschrijving.value.replace(/^Gespreksverloop:\n(- .*\n?)*\n?/, "");
+        beschrijving.value = tekst ? "Gespreksverloop:\n" + tekst + "\n\n" + rest : rest;
+      },
+      toon: function () { blok.scrollIntoView({ behavior: "smooth", block: "center" }); }
+    };
+  }
+
+  /* ---------- bellen met het script, in het profiel ---------- */
+  function vulIn(t, ld) {
+    return t.replace(/\[bedrijf\]/g, ld.naam)
+      .replace(/\[aantal\]/g, ld.reviews ? String(ld.reviews) : "[aantal]")
+      .replace(/\[eigenaar\]/g, ld.eigenaar || "[eigenaar]")
+      .replace(/\[plaats\]/g, ld.plaats || "[plaats]")
+      .replace(/\[dienst\]/g, ld.branche ? ld.branche.toLowerCase() : "[dienst]");
+  }
+  function belScript(slug, ld, form) {
+    var sc = window.FliiScripts[slug] || window.FliiScripts.website, S = sc.stappen;
+    var pad = [], huidig = sc.start;
+    var doos = el("div", { class: "br" });
+    function bereikbaar(id) {
+      var gezien = {}, uit = {}, stapel = [id];
+      while (stapel.length) {
+        var x = stapel.pop();
+        if (gezien[x] || !S[x]) continue;
+        gezien[x] = true;
+        if (S[x].eind) uit[S[x].status] = true;
+        else S[x].opties.forEach(function (o) { stapel.push(o.naar); });
+      }
+      return STATUSSEN.filter(function (st) { return uit[st.id]; });
+    }
+    function verloop() { return pad.map(function (p) { return "- " + S[p.van].titel + ": " + p.label; }).join("\n"); }
+    function ga(o) { pad.push({ van: huidig, label: o.label }); huidig = o.naar; teken(true); }
+    function teken(verder) {
+      var s = S[huidig];
+      doos.innerHTML = "";
+      var kaart = el("div", { class: "br-kaart" + (s.eind ? " br-eind" : "") }, [
+        el("p", { class: "br-stap", text: (s.eind ? "Uitkomst" : "Stap " + (pad.length + 1)) + " · " + s.titel }),
+        el("p", { class: "br-zeg", text: vulIn(s.zeg, ld) }),
+        s.tip ? el("p", { class: "br-tip", text: s.tip }) : null
+      ]);
+      if (s.eind) {
+        var st = B.statusVan(s.status);
+        kaart.appendChild(el("p", { class: "br-uitkomst" }, [
+          el("span", { class: st.fase ? dotKlasse(st.fase) : "dot" }), el("b", { text: st.naam }),
+          el("span", { text: st.fase ? " · fase " + B.faseNaam(st.fase) : " · fase blijft gelijk" })
+        ]));
+        form.kies(st.id); form.verloop(verloop());
+      } else {
+        kaart.appendChild(el("div", { class: "br-opties" }, s.opties.map(function (o, i) {
+          return el("button", { type: "button", class: "br-optie" + (i === 0 ? " br-hoofd" : ""), on: { click: function () { ga(o); } } }, [o.label]);
+        })));
+      }
+      kaart.appendChild(el("div", { class: "br-onder" }, [
+        pad.length ? el("button", { type: "button", text: "Vorige stap", on: { click: function () { var p = pad.pop(); if (p) { huidig = p.van; teken(); } } } }) : el("span"),
+        el("button", { type: "button", text: "Opnieuw", on: { click: function () { pad = []; huidig = sc.start; teken(); } } })
+      ]));
+      doos.appendChild(kaart);
+      if (!s.eind) {
+        doos.appendChild(el("div", { class: "br-uit" }, [
+          el("span", { class: "br-uitkop", text: "Mogelijke uitkomsten vanaf hier" }),
+          el("div", { class: "bl-chips" }, bereikbaar(huidig).map(function (st) {
+            return el("button", { type: "button", class: "bl-chip", on: { click: function () {
+              form.kies(st.id); form.verloop(verloop()); form.toon();
+            } } }, [st.fase ? el("span", { class: dotKlasse(st.fase) }) : null, st.naam]);
+          }))
+        ]));
+      }
+      if (verder && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        kaart.animate([{ opacity: 0, transform: "translateX(14px)" }, { opacity: 1, transform: "none" }], { duration: 260, easing: "ease-out" });
+      }
+      if (s.eind) form.toon();
+    }
+    teken();
+    return doos;
   }
 
   function geschiedenis(slug, ld, opnieuw) {
@@ -256,7 +334,7 @@
       var data = res[0];
       var filter = (location.hash || "").replace("#", "");
       if (!FASES.some(function (f) { return f.id === filter; })) filter = "";
-      var open = {};
+      var open = {}, bellen = {};
 
       var tabs = el("div", { class: "tabs" });
       var ul = el("ul", { class: "leads" });
@@ -316,11 +394,26 @@
             } } }, [el("span", { class: dotKlasse(f.id) }), f.naam]);
           }));
 
+          var form = vastleggen(slug, ld, function () { open[ld.id] = true; bellen[ld.id] = false; teken(); });
+          var belBlok = el("div", { class: "bl-script" });
+          function tekenBel() {
+            belBlok.innerHTML = "";
+            belBlok.appendChild(el("div", { class: "bl-belrij" }, [
+              el("button", { type: "button", class: "knop" + (bellen[ld.id] ? " licht" : ""), on: { click: function () { bellen[ld.id] = !bellen[ld.id]; tekenBel(); } } }, [
+                bellen[ld.id] ? "Script sluiten" : "Bellen"
+              ]),
+              ld.telefoon ? el("a", { class: "bl-nummer", href: telefoonLink(ld.telefoon), text: ld.telefoon }) : null,
+              el("a", { class: "bl-boom", href: "/acquisitie/script/?lijst=" + slug + "&lead=" + encodeURIComponent(ld.id), text: "Hele boom bekijken" })
+            ]));
+            if (bellen[ld.id]) belBlok.appendChild(belScript(slug, ld, form));
+          }
+          tekenBel();
+
           li.appendChild(rij);
           li.appendChild(el("div", { class: "fold" }, [
             info,
-            el("div", { class: "bl-script" }, [el("a", { class: "knop licht", href: "/acquisitie/script/?lijst=" + slug + "&lead=" + encodeURIComponent(ld.id), text: "Bellen met script" })]),
-            vastleggen(slug, ld, function () { open[ld.id] = true; teken(); }),
+            belBlok,
+            form.el,
             el("p", { class: "sec", text: "Belgeschiedenis" }), geschiedenis(slug, ld, teken),
             el("p", { class: "sec", text: "Fase" }), knoppen
           ]));
