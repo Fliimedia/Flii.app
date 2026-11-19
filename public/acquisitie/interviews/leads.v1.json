@@ -1,0 +1,268 @@
+{
+ "lijst": "interviews",
+ "titel": "Interviews",
+ "leads": [
+  {
+   "id": "beauty-studio-victoria",
+   "naam": "Beauty Studio Victoria",
+   "branche": "Schoonheidssalon",
+   "adres": "Amsterdamseweg 75A, 1182 GP Amstelveen",
+   "plaats": "Amstelveen",
+   "telefoon": "+31 6 24431627",
+   "website": "https://www.treatwell.nl/en/place/beauty-studio-victoria/",
+   "eigenaar": "Patricia"
+  },
+  {
+   "id": "that-s-beauty",
+   "naam": "That's Beauty",
+   "branche": "Schoonheidssalon",
+   "adres": "Amsterdamseweg 120 (in Strak salon), 1182 HH Amstelveen",
+   "plaats": "Amstelveen",
+   "telefoon": "+31 6 14038276",
+   "website": "https://www.treatwell.nl/en/place/that-s-beauty/",
+   "eigenaar": "Svetlana"
+  },
+  {
+   "id": "clear-skin-clinic",
+   "naam": "Clear Skin Clinic",
+   "branche": "Schoonheidssalon",
+   "adres": "Rembrandtweg 152, 1181 GX Amstelveen",
+   "plaats": "Amstelveen",
+   "telefoon": "+31 20 226 9006",
+   "website": "https://www.treatwell.nl/en/place/clear-skin-clinic-2/",
+   "eigenaar": "Gözde"
+  },
+  {
+   "id": "skin-boutique-amstelveen",
+   "naam": "Skin Boutique Amstelveen",
+   "branche": "Schoonheidssalon",
+   "adres": "Noorddammerlaan 114 (in kliniek Arc of Beauty), 1187 AG Amstelveen",
+   "plaats": "Amstelveen",
+   "website": "https://skin-boutique-amstelveen.salonized.com",
+   "eigenaar": "Joyce Hesterman"
+  },
+  {
+   "id": "pure-natural-cosmetics",
+   "naam": "Pure Natural Cosmetics",
+   "branche": "Schoonheidssalon",
+   "adres": "Jan van Avesneslaan 10, 1181 ED Amstelveen",
+   "plaats": "Amstelveen",
+   "telefoon": "+31 6 43075111",
+   "website": "http://www.purecosmetics.info/"
+  },
+  {
+   "id": "beauty-by-masy",
+   "naam": "Beauty by Masy",
+   "branche": "Schoonheidssalon",
+   "adres": "Tom Lodewijklaan 2, 1183 WE Amstelveen (thuissalon)",
+   "plaats": "Amstelveen",
+   "telefoon": "+31 6 59047710",
+   "website": "https://www.treatwell.nl/en/place/beauty-by-masy/",
+   "eigenaar": "Masy"
+  },
+  {
+   "id": "beauty-care-alexandra",
+   "naam": "Beauty & Care Alexandra",
+   "branche": "Schoonheidssalon",
+   "adres": "Lesse 17, 1186 LA Amstelveen",
+   "plaats": "Amstelveen",
+   "telefoon": "+31 6 25078379"
+  },
+  {
+   "id": "let-z-beauty-care",
+   "naam": "Let'z Beauty & Care",
+   "branche": "Schoonheidssalon",
+   "adres": "Kostverlorenhof 103, 1183 HH Amstelveen",
+   "plaats": "Amstelveen",
+   "telefoon": "+31 20 303 0284",
+   "website": "https://www.treatwell.nl/en/place/let-z-beauty-care/"
+  },
+  {
+   "id": "fanash-beauty",
+   "naam": "Fanash Beauty",
+   "branche": "Schoonheidssalon",
+   "adres": "Binnenhof 63 (Stadshart), 1181 ZJ Amstelveen",
+   "plaats": "Amstelveen",
+   "website": "https://www.westfield.com/nl/netherlands/stadshartamstelveen/winkels/fanash-beauty/80363"
+  },
+  {
+   "id": "beauty-by-linda-lie",
+   "naam": "Beauty by Linda Lie",
+   "branche": "Schoonheidssalon",
+   "adres": "Alpen Rondweg 84, 1186 EA Amstelveen",
+   "plaats": "Amstelveen",
+   "telefoon": "+31 6 13155296"
+  },
+  {
+   "id": "glow-expert",
+   "naam": "Glow Expert",
+   "branche": "Schoonheidssalon",
+   "adres": "Provincialeweg 164, 1506 ME Zaandam",
+   "plaats": "Zaandam",
+   "telefoon": "+31 75 210 2021",
+   "website": "https://www.treatwell.nl/salon/glow-expert/"
+  },
+  {
+   "id": "deluxe-clinic",
+   "naam": "Deluxe Clinic",
+   "branche": "Schoonheidssalon",
+   "adres": "Lobeliusstraat 34, 1504 EM Zaandam",
+   "plaats": "Zaandam",
+   "telefoon": "+31 75 785 1087",
+   "website": "https://www.treatwell.nl/en/place/deluxe-clinic/"
+  },
+  {
+   "id": "huidinstituut-roya",
+   "naam": "Huidinstituut Roya",
+   "branche": "Schoonheidssalon",
+   "adres": "Jan Steenstraat 7a, 1506 LN Zaandam",
+   "plaats": "Zaandam",
+   "telefoon": "+31 6 23205181"
+  },
+  {
+   "id": "beautyfit-zaandam",
+   "naam": "BeautyFit Zaandam",
+   "branche": "Schoonheidssalon",
+   "adres": "Drielse Wetering 53, 1509 KP Zaandam",
+   "plaats": "Zaandam",
+   "telefoon": "+31 6 45046338"
+  },
+  {
+   "id": "beauty-unlimited-zaandam",
+   "naam": "Beauty Unlimited Zaandam",
+   "branche": "Schoonheidssalon",
+   "adres": "Paltrokstraat 16, 1508 EK Zaandam",
+   "plaats": "Zaandam",
+   "telefoon": "+31 6 15285738"
+  },
+  {
+   "id": "puur-by-chantal",
+   "naam": "Puur! by Chantal",
+   "branche": "Schoonheidssalon",
+   "adres": "'t Kalf, Zaandam (thuissalon)",
+   "plaats": "Zaandam",
+   "telefoon": "+31 6 51540114",
+   "eigenaar": "Chantal Heinrichs"
+  },
+  {
+   "id": "huidstudio-liev",
+   "naam": "Huidstudio Liev",
+   "branche": "Schoonheidssalon",
+   "adres": "Zeilenmakersstraat 1c, 1551 EB Westzaan",
+   "plaats": "Westzaan",
+   "telefoon": "+31 6 55321459"
+  },
+  {
+   "id": "cotton-clinic",
+   "naam": "Cotton Clinic",
+   "branche": "Schoonheidssalon",
+   "adres": "Gedempte Gracht 2E, 1506 CE Zaandam",
+   "plaats": "Zaandam",
+   "telefoon": "+31 75 615 1676"
+  },
+  {
+   "id": "blush-bliss",
+   "naam": "Blush & Bliss",
+   "branche": "Schoonheidssalon",
+   "adres": "Westzijde 77B, 1506 ED Zaandam",
+   "plaats": "Zaandam",
+   "telefoon": "+31 6 83690775"
+  },
+  {
+   "id": "huidverbeteringsspecialist-wendy",
+   "naam": "Huidverbeteringsspecialist Wendy",
+   "branche": "Schoonheidssalon",
+   "adres": "De Weer 10E, 1504 AG Zaandam",
+   "plaats": "Zaandam",
+   "telefoon": "+31 6 28177792"
+  },
+  {
+   "id": "bij-dusty-beautysalon",
+   "naam": "Bij Dusty Beautysalon",
+   "branche": "Schoonheidssalon",
+   "adres": "Groetstraat 97, 1024 VA Amsterdam",
+   "plaats": "Amsterdam-Noord",
+   "website": "https://www.treatwell.nl/en/place/bij-dusty-beautysalon/",
+   "eigenaar": "Dusty"
+  },
+  {
+   "id": "mooier-home",
+   "naam": "mooier@home",
+   "branche": "Schoonheidssalon",
+   "adres": "Anemoonstraat 29B, 1031 GV Amsterdam",
+   "plaats": "Amsterdam-Noord",
+   "telefoon": "+31 6 41470701",
+   "website": "http://www.mooierathome.nl/"
+  },
+  {
+   "id": "laser-skin-therapie",
+   "naam": "Laser & Skin Therapie",
+   "branche": "Schoonheidssalon",
+   "adres": "Buikslotermeerplein 170 (1e etage, bij Cosmo), 1025 EZ Amsterdam",
+   "plaats": "Amsterdam-Noord",
+   "telefoon": "+31 6 27346361",
+   "website": "https://www.laserenskintherapie.nl/",
+   "eigenaar": "Rachida"
+  },
+  {
+   "id": "lana-skyn",
+   "naam": "Lana Skyn",
+   "branche": "Schoonheidssalon",
+   "adres": "Bezaanjachtplein 281, 1034 CR Amsterdam",
+   "plaats": "Amsterdam-Noord",
+   "website": "https://www.treatwell.nl/en/place/lana-skyn"
+  },
+  {
+   "id": "madamster",
+   "naam": "Madamster",
+   "branche": "Schoonheidssalon",
+   "adres": "Fazantenweg 47, 1021 HK Amsterdam",
+   "plaats": "Amsterdam-Noord",
+   "telefoon": "+31 6 30846829",
+   "website": "https://www.treatwell.nl/en/place/madamster/"
+  },
+  {
+   "id": "exclusive-beauty",
+   "naam": "Exclusive Beauty",
+   "branche": "Schoonheidssalon",
+   "adres": "Buikslotermeerplein 134, 1025 EX Amsterdam",
+   "plaats": "Amsterdam-Noord",
+   "telefoon": "+31 6 41030001"
+  },
+  {
+   "id": "barbie-beauty",
+   "naam": "Barbie Beauty",
+   "branche": "Schoonheidssalon",
+   "adres": "Buikslotermeerplein 188, 1025 EZ Amsterdam",
+   "plaats": "Amsterdam-Noord",
+   "telefoon": "+31 6 53184979",
+   "eigenaar": "Mardjan"
+  },
+  {
+   "id": "tanya-beauty-center",
+   "naam": "Tanya Beauty Center",
+   "branche": "Schoonheidssalon",
+   "adres": "Viermasterstraat, Banne Buiksloot, Amsterdam",
+   "plaats": "Amsterdam-Noord",
+   "eigenaar": "Soheila"
+  },
+  {
+   "id": "rana-beautysalon",
+   "naam": "Rana Beautysalon",
+   "branche": "Schoonheidssalon",
+   "adres": "Adriaan Loosjesstraat 21, 1035 XP Amsterdam",
+   "plaats": "Amsterdam-Noord",
+   "telefoon": "+31 6 19975555",
+   "eigenaar": "Rana"
+  },
+  {
+   "id": "aurora-holistic-beauty",
+   "naam": "Aurora Holistic Beauty",
+   "branche": "Schoonheidssalon",
+   "adres": "NDSM-kade, in salon van Bianca Vink, Amsterdam",
+   "plaats": "Amsterdam-Noord",
+   "telefoon": "+31 6 34035148",
+   "email": "aurora.ndsm@outlook.com"
+  }
+ ]
+}

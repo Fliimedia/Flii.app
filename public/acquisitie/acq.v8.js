@@ -17,8 +17,11 @@
     { slug: "website", titel: "Website", data: "/acquisitie/website/leads.v3.json" },
     { slug: "social-advertising", titel: "Social advertising", data: "/acquisitie/social-advertising/leads.v1.json" },
     { slug: "social-content", titel: "Social content creation", data: "/acquisitie/social-content/leads.v1.json" },
-    { slug: "search-llm", titel: "Search & LLM advertising", data: "/acquisitie/search-llm/leads.v1.json" }
+    { slug: "search-llm", titel: "Search & LLM advertising", data: "/acquisitie/search-llm/leads.v1.json" },
+    { slug: "interviews", titel: "Interviews", data: "/acquisitie/interviews/leads.v1.json", groep: "overig" }
   ];
+  var GROEPEN = [{ id: "acquisitie", titel: "Acquisitie" }, { id: "overig", titel: "Overig" }];
+  function groepVan(l) { return l.groep || "acquisitie"; }
 
   var wortel = document.getElementById("app");
   var pagina = wortel.getAttribute("data-pagina");
@@ -121,8 +124,10 @@
       var rijen = LIJSTEN.map(function (l, i) {
         var tel = { cold: 0, warm: 0, deal: 0, closed: 0 };
         data[i].leads.forEach(function (ld) { tel[faseVan(l.slug, ld.id)]++; });
-        FASES.forEach(function (f) { totaal[f.id] += tel[f.id]; });
-        alles += data[i].leads.length;
+        if (groepVan(l) === "acquisitie") {
+          FASES.forEach(function (f) { totaal[f.id] += tel[f.id]; });
+          alles += data[i].leads.length;
+        }
         return el("tr", {}, [
           el("td", {}, [el("a", { href: "/acquisitie/" + l.slug + "/", text: l.titel })])
         ].concat(FASES.map(function (f) {
@@ -140,12 +145,18 @@
         ]);
       }));
 
-      var tabel = el("table", { class: "lijsten" }, [
-        el("thead", {}, [el("tr", {}, [el("th", { text: "Lijst" })]
-          .concat(FASES.map(function (f) { return el("th", { text: f.naam }); }))
-          .concat([el("th", { text: "Totaal" })]))]),
-        el("tbody", {}, rijen)
-      ]);
+      var tabellen = [];
+      GROEPEN.forEach(function (g) {
+        var eigen = rijen.filter(function (r, i) { return groepVan(LIJSTEN[i]) === g.id; });
+        if (!eigen.length) return;
+        tabellen.push(el("p", { class: "sec", text: g.titel }));
+        tabellen.push(el("table", { class: "lijsten" }, [
+          el("thead", {}, [el("tr", {}, [el("th", { text: "Lijst" })]
+            .concat(FASES.map(function (f) { return el("th", { text: f.naam }); }))
+            .concat([el("th", { text: "Totaal" })]))]),
+          el("tbody", {}, eigen)
+        ]));
+      });
 
       scherm([el("div", { class: "band" }), el("div", { class: "wrap" }, [
         kop(el("span", { class: "u", text: "Acquisitie" })),
@@ -153,9 +164,8 @@
           el("h1", { text: "Acquisitie" }),
           el("a", { class: "knop", href: "/acquisitie/script/", text: "Cold call script" })
         ]),
-        el("p", { class: "sec", text: "Funnel" }), funnel,
-        el("p", { class: "sec", text: "Lijsten" }), tabel
-      ])]);
+        el("p", { class: "sec", text: "Funnel" }), funnel
+      ].concat(tabellen))]);
     }).catch(function () { scherm([el("div", { class: "wrap" }, [el("p", { class: "leeg", text: "De lijsten konden niet geladen worden." })])]); });
   }
 
@@ -200,15 +210,17 @@
           } } }, [
             el("span", { class: dotKlasse(fase), title: FASES.filter(function (f) { return f.id === fase; })[0].naam }),
             el("span", { class: "naam", text: ld.naam }),
-            el("a", { class: "tel", href: telefoonLink(ld.telefoon), text: ld.telefoon }),
+            ld.telefoon ? el("a", { class: "tel", href: telefoonLink(ld.telefoon), text: ld.telefoon }) : el("span"),
             pijl
           ]);
 
           var info = el("dl", { class: "info" }, [
             el("dt", { text: "Branche" }), el("dd", { text: ld.branche }),
             el("dt", { text: "Adres" }), el("dd", {}, [el("a", { href: ld.maps || mapsLink(ld.naam + ", " + ld.adres), target: "_blank", rel: "noopener", text: ld.adres })]),
-            el("dt", { text: "Google reviews" }), el("dd", { text: ld.rating.toFixed(1).replace(".", ",") + " uit 5, " + ld.reviews + " reviews" })
-          ].concat(ld.googleWebsite ? [el("dt", { text: "Website op Google" }), el("dd", { text: ld.googleWebsite })] : [])
+          ].concat(ld.eigenaar ? [el("dt", { text: "Eigenaar" }), el("dd", { text: ld.eigenaar })] : [])
+           .concat(ld.email ? [el("dt", { text: "E-mail" }), el("dd", {}, [el("a", { href: "mailto:" + ld.email, text: ld.email })])] : [])
+           .concat(typeof ld.rating === "number" ? [el("dt", { text: "Google reviews" }), el("dd", { text: ld.rating.toFixed(1).replace(".", ",") + " uit 5, " + ld.reviews + " reviews" })] : [])
+           .concat(ld.googleWebsite ? [el("dt", { text: "Website op Google" }), el("dd", { text: ld.googleWebsite })] : [])
            .concat(ld.website ? [el("dt", { text: "Website" }), el("dd", {}, [el("a", { href: ld.website, target: "_blank", rel: "noopener", text: ld.website.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "") })])] : [])
            .concat(ld.signaal ? [el("dt", { text: "Op de website" }), el("dd", { text: ld.signaal })] : []));
 
