@@ -63,3 +63,26 @@
   .cb-pil{padding:8px 11px}
   .cb-titel{font-size:12.5px}
 }
+
+/* inplannen in agenda */
+.ag{margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}
+.ag-open{display:inline-flex;align-items:center;gap:8px;padding:0;border:0;background:none;font:inherit;font-size:14px;font-weight:600;color:var(--ink);cursor:pointer}
+.ag-open svg{width:18px;height:18px;fill:none;stroke:var(--pink);stroke-width:1.8;stroke-linecap:round}
+.ag-open:hover{color:var(--pink)}
+.ag-open[aria-expanded="true"]{color:var(--pink)}
+.ag-form{margin-top:14px;display:grid;gap:12px}
+.ag-form[hidden]{display:none}
+.ag-rij{display:grid;grid-template-columns:1fr 1.4fr;gap:10px}
+.ag-rij.ag-drie{grid-template-columns:1.3fr 1fr 1fr}
+.ag-veld{display:grid;gap:5px;min-width:0}
+.ag-veld>span{font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2)}
+.ag-veld input,.ag-veld select,.ag-veld textarea{width:100%;font:inherit;font-size:14px;color:var(--ink);padding:9px 11px;border:1px solid var(--line);border-radius:9px;background:#fff;min-width:0}
+.ag-veld textarea{resize:vertical;line-height:1.45;font-size:13.5px}
+.ag-veld input:focus,.ag-veld select:focus,.ag-veld textarea:focus{outline:none;border-color:var(--ink)}
+.ag-knoppen{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ag-knoppen .cb-optie{justify-content:center}
+.ag-melding{margin:0;font-size:13px;color:var(--pink);min-height:0}
+.ag-melding:empty{display:none}
+@media (max-width:640px){
+  .ag-rij,.ag-rij.ag-drie,.ag-knoppen{grid-template-columns:1fr}
+}

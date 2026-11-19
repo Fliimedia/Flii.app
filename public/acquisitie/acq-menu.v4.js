@@ -36,6 +36,6 @@
   function scan() { document.querySelectorAll(".kop").forEach(bouw); }
   window.acqMenu = scan;
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", scan); else scan();
-  /* De overzichts- en lijstpagina's worden door acq.v8.js en script.v2.js opgebouwd. */
+  /* De overzichts- en lijstpagina's worden door acq.v8.js en script.v3.js opgebouwd. */
   new MutationObserver(scan).observe(document.documentElement, { childList: true, subtree: true });
 })();

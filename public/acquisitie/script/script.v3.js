@@ -130,12 +130,12 @@
           { label: "Nee", naar: "eind_nee" }
         ]
       },
-      eind_afspraak: { eind: true, titel: "Afspraak", zeg: "Bedankt voor uw tijd, ik stuur u zo de uitnodiging. Tot dan!", fase: "Deal call", uitkomst: "Videocall gepland" },
-      eind_sturen: { eind: true, titel: "Nabellen", zeg: "Ik stuur het u vandaag nog. Tot [dag]!", fase: "Warm call", uitkomst: "Voorbeeld sturen en nabellen" },
-      eind_terugbellen: { eind: true, titel: "Terugbellen", zeg: "Dank u, dan bel ik op het afgesproken moment. Fijne dag!", fase: "Cold call", uitkomst: "Terugbelmoment genoteerd" },
-      eind_later: { eind: true, titel: "Over 3 maanden", zeg: "Dank u, dan noteer ik dat. Fijne dag nog!", fase: "Cold call", uitkomst: "Over drie maanden opnieuw bellen" },
-      eind_heeftsite: { eind: true, titel: "Heeft website", zeg: "Dan wens ik u veel succes. Bedankt voor uw tijd!", fase: "Uit de lijst", uitkomst: "Tevreden over eigen website" },
-      eind_nee: { eind: true, titel: "Geen interesse", zeg: "Helemaal goed, bedankt voor uw tijd. Fijne dag nog!", fase: "Cold call", uitkomst: "Geen interesse" }
+      eind_afspraak: { eind: true, titel: "Afspraak", zeg: "Bedankt voor uw tijd, ik stuur u zo de uitnodiging. Tot dan!", fase: "Deal call", uitkomst: "Videocall gepland", agenda: { titel: "Videocall [bedrijf]: voorbeeldwebsite", over: 1, uur: 10, duur: 15 } },
+      eind_sturen: { eind: true, titel: "Nabellen", zeg: "Ik stuur het u vandaag nog. Tot [dag]!", fase: "Warm call", uitkomst: "Voorbeeld sturen en nabellen", agenda: { titel: "Nabellen [bedrijf]: voorbeeldwebsite", over: 2, uur: 10, duur: 10 } },
+      eind_terugbellen: { eind: true, titel: "Terugbellen", zeg: "Dank u, dan bel ik op het afgesproken moment. Fijne dag!", fase: "Cold call", uitkomst: "Terugbelmoment genoteerd", agenda: { titel: "Terugbellen [bedrijf]", over: 1, uur: 10, duur: 10 } },
+      eind_later: { eind: true, titel: "Over 3 maanden", zeg: "Dank u, dan noteer ik dat. Fijne dag nog!", fase: "Cold call", uitkomst: "Over drie maanden opnieuw bellen", agenda: { titel: "Opnieuw bellen [bedrijf]", over: 91, uur: 10, duur: 10 } },
+      eind_heeftsite: { eind: true, titel: "Heeft website", zeg: "Dan wens ik u veel succes. Bedankt voor uw tijd!", fase: "Uit de lijst", uitkomst: "Tevreden over eigen website", agenda: { titel: "Opnieuw bellen [bedrijf]: website", over: 182, uur: 10, duur: 10 } },
+      eind_nee: { eind: true, titel: "Geen interesse", zeg: "Helemaal goed, bedankt voor uw tijd. Fijne dag nog!", fase: "Cold call", uitkomst: "Geen interesse", agenda: { titel: "Opnieuw proberen [bedrijf]", over: 182, uur: 10, duur: 10 } }
     }
   };
 
@@ -235,7 +235,8 @@
     if (s.eind) {
       box.appendChild(el("p", { class: "cb-uitkomst" }, ["Uitkomst: ", el("b", { text: s.uitkomst })]));
       box.appendChild(el("p", { class: "cb-fase" }, [el("span", { text: "Fase in de funnel" }), el("b", { text: s.fase })]));
-      box.appendChild(el("div", { class: "cb-opties" }, [el("button", { type: "button", class: "cb-optie cb-hoofd", text: "Nieuw gesprek", on: { click: opnieuw } })]));
+      box.appendChild(agenda(id));
+      box.appendChild(el("div", { class: "cb-opties" }, [el("button", { type: "button", class: "cb-optie", text: "Nieuw gesprek", on: { click: opnieuw } })]));
       return;
     }
     box.appendChild(el("div", { class: "cb-opties" }, s.opties.map(function (o, i) {
@@ -248,6 +249,92 @@
       }, [el("kbd", { text: String(i + 1) }), o.label]);
     })));
   }
+  /* ---------- inplannen in de agenda ---------- */
+  function twee(n) { return (n < 10 ? "0" : "") + n; }
+  function standaardDatum(over) {
+    var d = new Date();
+    d.setDate(d.getDate() + over);
+    if (d.getDay() === 6) d.setDate(d.getDate() + 2);
+    if (d.getDay() === 0) d.setDate(d.getDate() + 1);
+    return d.getFullYear() + "-" + twee(d.getMonth() + 1) + "-" + twee(d.getDate());
+  }
+  function utc(d) {
+    return d.getUTCFullYear() + twee(d.getUTCMonth() + 1) + twee(d.getUTCDate()) + "T" + twee(d.getUTCHours()) + twee(d.getUTCMinutes()) + "00Z";
+  }
+  function icsTekst(t) { return String(t).replace(/\\/g, "\\\\").replace(/;/g, "\\;").replace(/,/g, "\\,").replace(/\r?\n/g, "\\n"); }
+  function agenda(id) {
+    var s = S[id], a = s.agenda;
+    var verloop = pad.filter(function (p) { return p.label; }).map(function (p) { return "- " + S[p.van].titel + ": " + p.label; }).join("\n");
+    var veld = function (label, invoer) { return el("label", { class: "ag-veld" }, [el("span", { text: label }), invoer]); };
+    var bedrijf = el("input", { type: "text", placeholder: "Naam van het bedrijf" });
+    var titel = el("input", { type: "text", value: a.titel });
+    var datum = el("input", { type: "date", value: standaardDatum(a.over) });
+    var tijd = el("input", { type: "time", value: twee(a.uur) + ":00", step: "300" });
+    var duur = el("select", {}, [5, 10, 15, 30, 45, 60].map(function (m) {
+      var o = el("option", { value: String(m), text: m + " min" }); if (m === a.duur) o.selected = true; return o;
+    }));
+    var beschrijving = el("textarea", { rows: "6" });
+    beschrijving.value = "Uitkomst: " + s.uitkomst + "\nFase: " + s.fase + "\n\nContactpersoon: \nTelefoon: \n\nGespreksverloop:\n" + (verloop || "-") + "\n\nNotities: ";
+    var melding = el("p", { class: "ag-melding" });
+
+    function gegevens() {
+      if (!datum.value || !tijd.value) { melding.textContent = "Vul een datum en tijd in."; return null; }
+      melding.textContent = "";
+      var b = bedrijf.value.trim();
+      var start = new Date(datum.value + "T" + tijd.value);
+      var eind = new Date(start.getTime() + parseInt(duur.value, 10) * 60000);
+      var t = titel.value.replace(/\s*\[bedrijf\]/g, b ? " " + b : "").replace(/\s+:/g, ":").trim();
+      return { titel: t, start: start, eind: eind, tekst: beschrijving.value.replace(/\[bedrijf\]/g, b) };
+    }
+    function google() {
+      var g = gegevens(); if (!g) return;
+      var url = "https://calendar.google.com/calendar/render?action=TEMPLATE" +
+        "&text=" + encodeURIComponent(g.titel) +
+        "&dates=" + utc(g.start) + "/" + utc(g.eind) +
+        "&details=" + encodeURIComponent(g.tekst) +
+        "&ctz=Europe/Amsterdam";
+      window.open(url, "_blank", "noopener");
+    }
+    function ics() {
+      var g = gegevens(); if (!g) return;
+      var regels = [
+        "BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Flii Media//Cold call script//NL", "CALSCALE:GREGORIAN", "METHOD:PUBLISH",
+        "BEGIN:VEVENT",
+        "UID:" + Date.now() + "-" + Math.random().toString(36).slice(2) + "@flii.app",
+        "DTSTAMP:" + utc(new Date()),
+        "DTSTART:" + utc(g.start), "DTEND:" + utc(g.eind),
+        "SUMMARY:" + icsTekst(g.titel),
+        "DESCRIPTION:" + icsTekst(g.tekst),
+        "BEGIN:VALARM", "TRIGGER:-PT10M", "ACTION:DISPLAY", "DESCRIPTION:" + icsTekst(g.titel), "END:VALARM",
+        "END:VEVENT", "END:VCALENDAR"
+      ];
+      var blob = new Blob([regels.map(function (r) { var uit = []; while (r.length > 73) { uit.push(r.slice(0, 73)); r = " " + r.slice(73); } uit.push(r); return uit.join("\r\n"); }).join("\r\n")], { type: "text/calendar;charset=utf-8" });
+      var link = el("a", { href: URL.createObjectURL(blob), download: (g.titel.replace(/[^\w\- ]+/g, "").trim() || "afspraak") + ".ics" });
+      document.body.appendChild(link); link.click();
+      setTimeout(function () { URL.revokeObjectURL(link.href); link.remove(); }, 1000);
+    }
+
+    var formulier = el("div", { class: "ag-form", hidden: "" }, [
+      el("div", { class: "ag-rij" }, [veld("Bedrijf", bedrijf), veld("Titel", titel)]),
+      el("div", { class: "ag-rij ag-drie" }, [veld("Datum", datum), veld("Tijd", tijd), veld("Duur", duur)]),
+      veld("Beschrijving", beschrijving),
+      el("div", { class: "ag-knoppen" }, [
+        el("button", { type: "button", class: "cb-optie cb-hoofd", text: "Google Agenda", on: { click: google } }),
+        el("button", { type: "button", class: "cb-optie", text: "Outlook / Apple (.ics)", on: { click: ics } })
+      ]),
+      melding
+    ]);
+    var open = el("button", { type: "button", class: "ag-open", "aria-expanded": "false", on: { click: function () {
+      var dicht = formulier.hasAttribute("hidden");
+      if (dicht) formulier.removeAttribute("hidden"); else formulier.setAttribute("hidden", "");
+      open.setAttribute("aria-expanded", dicht ? "true" : "false");
+      if (dicht) bedrijf.focus({ preventScroll: true });
+      volg(400);
+    } } }, ["Inplannen in agenda"]);
+    open.insertAdjacentHTML("afterbegin", '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>');
+    return el("div", { class: "ag" }, [open, formulier]);
+  }
+
   function markeer(id, aan) {
     knopen[id].classList.toggle("cb-doel", aan);
     var p = lijnen.querySelector('path[data-van="' + huidig + '"][data-naar="' + id + '"]');
@@ -373,7 +460,7 @@
   function opnieuw() { pad = []; wissel(SCRIPT.start, null); }
 
   document.addEventListener("keydown", function (e) {
-    if (e.target && /input|textarea/i.test(e.target.tagName)) return;
+    if (e.target && /input|textarea|select/i.test(e.target.tagName)) return;
     var n = parseInt(e.key, 10);
     if (n >= 1 && !S[huidig].eind && S[huidig].opties[n - 1]) { e.preventDefault(); kies(S[huidig].opties[n - 1]); }
     else if (e.key === "Backspace" && pad.length) { e.preventDefault(); terug(); }
