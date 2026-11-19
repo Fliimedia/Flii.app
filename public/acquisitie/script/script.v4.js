@@ -6,15 +6,28 @@
 
   var SCRIPT = {
     titel: "Website",
-    start: "opening",
+    start: "bellen",
     stappen: {
+      bellen: {
+        titel: "Bellen",
+        zeg: "Bel [bedrijf]. Wordt er opgenomen?",
+        tip: "Spreek bij de voicemail kort in: naam, Flii Media, dat je terugbelt. Geen pitch.",
+        opties: [
+          { label: "Opgenomen", naar: "opening" },
+          { label: "Geen gehoor", naar: "eind_geengehoor" },
+          { label: "Voicemail", naar: "eind_voicemail" },
+          { label: "In gesprek", naar: "eind_ingesprek" },
+          { label: "Verkeerd nummer", naar: "eind_verkeerd" }
+        ]
+      },
       opening: {
         titel: "Opening",
         zeg: "Goedemiddag, u spreekt met [naam] van Flii Media. Spreek ik met de eigenaar van [bedrijf]?",
         opties: [
           { label: "Ja, eigenaar", naar: "toestemming" },
           { label: "Nee, iemand anders", naar: "poortwachter" },
-          { label: "Geen tijd", naar: "geentijd" }
+          { label: "Geen tijd", naar: "geentijd" },
+          { label: "Bedrijf gestopt", naar: "eind_gestopt" }
         ]
       },
       poortwachter: {
@@ -41,7 +54,8 @@
         zeg: "Ik zal eerlijk zijn: dit is een onverwacht telefoontje. Mag ik u in dertig seconden vertellen waarom ik bel? Daarna beslist u of we verder praten.",
         opties: [
           { label: "Ja, vertel", naar: "aanleiding" },
-          { label: "Nee", naar: "eind_nee" }
+          { label: "Nee", naar: "eind_nee" },
+          { label: "Niet meer bellen", naar: "eind_nietbellen" }
         ]
       },
       aanleiding: {
@@ -94,7 +108,8 @@
         opties: [
           { label: "Geld", naar: "prijs" },
           { label: "Tijd", naar: "tijd" },
-          { label: "Geen behoefte", naar: "eind_nee" }
+          { label: "Geen behoefte", naar: "eind_nee" },
+          { label: "Niet meer bellen", naar: "eind_nietbellen" }
         ]
       },
       tijd: {
@@ -130,16 +145,30 @@
           { label: "Nee", naar: "eind_nee" }
         ]
       },
-      eind_afspraak: { eind: true, titel: "Afspraak", zeg: "Bedankt voor uw tijd, ik stuur u zo de uitnodiging. Tot dan!", fase: "Deal call", uitkomst: "Videocall gepland", agenda: { titel: "Videocall [bedrijf]: voorbeeldwebsite", over: 1, uur: 10, duur: 15 } },
-      eind_sturen: { eind: true, titel: "Nabellen", zeg: "Ik stuur het u vandaag nog. Tot [dag]!", fase: "Warm call", uitkomst: "Voorbeeld sturen en nabellen", agenda: { titel: "Nabellen [bedrijf]: voorbeeldwebsite", over: 2, uur: 10, duur: 10 } },
-      eind_terugbellen: { eind: true, titel: "Terugbellen", zeg: "Dank u, dan bel ik op het afgesproken moment. Fijne dag!", fase: "Cold call", uitkomst: "Terugbelmoment genoteerd", agenda: { titel: "Terugbellen [bedrijf]", over: 1, uur: 10, duur: 10 } },
-      eind_later: { eind: true, titel: "Over 3 maanden", zeg: "Dank u, dan noteer ik dat. Fijne dag nog!", fase: "Cold call", uitkomst: "Over drie maanden opnieuw bellen", agenda: { titel: "Opnieuw bellen [bedrijf]", over: 91, uur: 10, duur: 10 } },
-      eind_heeftsite: { eind: true, titel: "Heeft website", zeg: "Dan wens ik u veel succes. Bedankt voor uw tijd!", fase: "Uit de lijst", uitkomst: "Tevreden over eigen website", agenda: { titel: "Opnieuw bellen [bedrijf]: website", over: 182, uur: 10, duur: 10 } },
-      eind_nee: { eind: true, titel: "Geen interesse", zeg: "Helemaal goed, bedankt voor uw tijd. Fijne dag nog!", fase: "Cold call", uitkomst: "Geen interesse", agenda: { titel: "Opnieuw proberen [bedrijf]", over: 182, uur: 10, duur: 10 } }
+      eind_afspraak: { eind: true, status: "afspraak", titel: "Afspraak", zeg: "Bedankt voor uw tijd, ik stuur u zo de uitnodiging. Tot dan!" },
+      eind_sturen: { eind: true, status: "sturen", titel: "Nabellen", zeg: "Ik stuur het u vandaag nog. Tot [dag]!" },
+      eind_terugbellen: { eind: true, status: "terugbellen", titel: "Terugbellen", zeg: "Dank u, dan bel ik op het afgesproken moment. Fijne dag!" },
+      eind_later: { eind: true, status: "later", titel: "Over 3 maanden", zeg: "Dank u, dan noteer ik dat. Fijne dag nog!" },
+      eind_heeftsite: { eind: true, status: "heeftal", titel: "Heeft website", zeg: "Dan wens ik u veel succes. Bedankt voor uw tijd!" },
+      eind_nee: { eind: true, status: "geeninteresse", titel: "Geen interesse", zeg: "Helemaal goed, bedankt voor uw tijd. Fijne dag nog!" },
+      eind_nietbellen: { eind: true, status: "nietbellen", titel: "Niet meer bellen", zeg: "Begrepen, dan haal ik u van de lijst. Fijne dag nog!" },
+      eind_gestopt: { eind: true, status: "gestopt", titel: "Bedrijf gestopt", zeg: "Excuus voor het storen, en veel succes. Fijne dag!" },
+      eind_geengehoor: { eind: true, status: "geengehoor", titel: "Geen gehoor", zeg: "Leg vast en probeer het later opnieuw." },
+      eind_voicemail: { eind: true, status: "voicemail", titel: "Voicemail", zeg: "Leg vast en bel over een paar dagen opnieuw." },
+      eind_ingesprek: { eind: true, status: "ingesprek", titel: "In gesprek", zeg: "Leg vast en bel later vandaag opnieuw." },
+      eind_verkeerd: { eind: true, status: "verkeerd", titel: "Verkeerd nummer", zeg: "Leg vast. De lead gaat naar Afgevallen." }
     }
   };
 
-  var FASEKLEUR = { "Deal call": "f-deal", "Warm call": "f-warm", "Cold call": "f-cold", "Uit de lijst": "f-uit" };
+  var B = window.FliiBel;
+  Object.keys(SCRIPT.stappen).forEach(function (id) {
+    var s = SCRIPT.stappen[id];
+    if (!s.eind) return;
+    s.st = B.statusVan(s.status);
+    s.uitkomst = s.st.naam;
+    s.fase = s.st.fase ? B.faseNaam(s.st.fase) : "Blijft gelijk";
+  });
+  var FASEKLEUR = { "Deal call": "f-deal", "Warm call": "f-warm", "Cold call": "f-cold", "Afgevallen": "f-uit", "Closed": "f-deal", "Blijft gelijk": "f-cold" };
   var stil = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var S = SCRIPT.stappen;
   var ids = Object.keys(S);
@@ -201,6 +230,60 @@
   boom.appendChild(lijnen);
   var knopen = {};
 
+  /* ---------- lead: wie bel je ---------- */
+  var LEAD = null; /* { lijst, id, naam, telefoon } */
+  var ALLE = [];   /* alle leads uit alle lijsten */
+  var CALLS = [];  /* belpogingen van de gekozen lead (alleen als je bent ingelogd) */
+  var leadBalk = el("div", { class: "cb-lead" });
+  var zoek = el("input", { type: "search", class: "cb-zoek", placeholder: "Zoek het bedrijf dat je belt", list: "cb-leads", autocomplete: "off" });
+  var opties = el("datalist", { id: "cb-leads" });
+  function sleutel(ld) { return ld.naam + " · " + ld.lijstTitel; }
+  zoek.addEventListener("change", function () {
+    var v = zoek.value, ld = ALLE.filter(function (x) { return sleutel(x) === v; })[0];
+    if (ld) kiesLead(ld);
+  });
+  function kiesLead(ld) {
+    LEAD = ld; CALLS = [];
+    try { history.replaceState(null, "", "?lijst=" + ld.lijst + "&lead=" + encodeURIComponent(ld.id)); } catch (e) {}
+    tekenLead();
+    if (B.sessie()) B.staat(ld.lijst).then(function (s) {
+      CALLS = s.calls.filter(function (c) { return c.lead_id === ld.id; });
+      tekenLead();
+    }).catch(function () {});
+    if (S[huidig].eind) vulInhoud(huidig);
+  }
+  function tekenLead() {
+    leadBalk.innerHTML = "";
+    if (!LEAD) {
+      leadBalk.appendChild(el("label", { class: "cb-lead-kies" }, [el("span", { text: "Wie bel je?" }), zoek, opties]));
+      return;
+    }
+    var info = CALLS.length ? CALLS.length + "× gebeld · laatst: " + CALLS[0].status + ", " + B.kortDatum(CALLS[0].created_at) : (B.sessie() ? "Nog niet gebeld" : "");
+    leadBalk.appendChild(el("div", { class: "cb-lead-info" }, [
+      el("b", { text: LEAD.naam }),
+      LEAD.telefoon ? el("a", { class: "cb-lead-tel", href: "tel:" + String(LEAD.telefoon).replace(/[^0-9+]/g, ""), text: LEAD.telefoon }) : null,
+      info ? el("span", { class: "cb-lead-meta", text: info }) : null
+    ]));
+    leadBalk.appendChild(el("button", { type: "button", class: "cb-k", text: "Ander bedrijf", on: { click: function () {
+      LEAD = null; CALLS = []; zoek.value = "";
+      try { history.replaceState(null, "", location.pathname); } catch (e) {}
+      tekenLead(); if (S[huidig].eind) vulInhoud(huidig);
+    } } }));
+  }
+  Promise.all(B.LIJSTEN.map(function (l) {
+    return B.laadLijst(l).then(function (d) {
+      return d.leads.map(function (ld) { return { lijst: l.slug, lijstTitel: l.titel, id: ld.id, naam: ld.naam, telefoon: ld.telefoon }; });
+    }).catch(function () { return []; });
+  })).then(function (res) {
+    ALLE = [].concat.apply([], res);
+    opties.innerHTML = "";
+    ALLE.forEach(function (ld) { opties.appendChild(el("option", { value: sleutel(ld) })); });
+    var q = new URLSearchParams(location.search), l = q.get("lijst"), id = q.get("lead");
+    var ld = ALLE.filter(function (x) { return x.lijst === l && x.id === id; })[0];
+    if (ld) kiesLead(ld); else tekenLead();
+  });
+  tekenLead();
+
   rijen.forEach(function (rij, i) {
     var r = el("div", { class: "cb-rij" + (S[rij[0]].eind ? " cb-einden" : "") });
     rij.forEach(function (id) {
@@ -222,6 +305,7 @@
   app.appendChild(el("div", { class: "wrap cb-wrap" }, [
     el("div", { class: "kop" }, [logo(), el("span", { class: "u", text: "Cold call script" })]),
     el("div", { class: "cb-top" }, [el("h1", { text: "Cold call script: " + SCRIPT.titel }), el("div", { class: "cb-acties" }, [knopTerug, knopOpnieuw])]),
+    leadBalk,
     boom
   ]));
   if (window.acqMenu) window.acqMenu();
@@ -235,7 +319,7 @@
     if (s.eind) {
       box.appendChild(el("p", { class: "cb-uitkomst" }, ["Uitkomst: ", el("b", { text: s.uitkomst })]));
       box.appendChild(el("p", { class: "cb-fase" }, [el("span", { text: "Fase in de funnel" }), el("b", { text: s.fase })]));
-      box.appendChild(agenda(id));
+      box.appendChild(vastleggen(id));
       box.appendChild(el("div", { class: "cb-opties" }, [el("button", { type: "button", class: "cb-optie", text: "Nieuw gesprek", on: { click: opnieuw } })]));
       return;
     }
@@ -249,90 +333,57 @@
       }, [el("kbd", { text: String(i + 1) }), o.label]);
     })));
   }
-  /* ---------- inplannen in de agenda ---------- */
-  function twee(n) { return (n < 10 ? "0" : "") + n; }
-  function standaardDatum(over) {
-    var d = new Date();
-    d.setDate(d.getDate() + over);
-    if (d.getDay() === 6) d.setDate(d.getDate() + 2);
-    if (d.getDay() === 0) d.setDate(d.getDate() + 1);
-    return d.getFullYear() + "-" + twee(d.getMonth() + 1) + "-" + twee(d.getDate());
-  }
-  function utc(d) {
-    return d.getUTCFullYear() + twee(d.getUTCMonth() + 1) + twee(d.getUTCDate()) + "T" + twee(d.getUTCHours()) + twee(d.getUTCMinutes()) + "00Z";
-  }
-  function icsTekst(t) { return String(t).replace(/\\/g, "\\\\").replace(/;/g, "\\;").replace(/,/g, "\\,").replace(/\r?\n/g, "\\n"); }
-  function agenda(id) {
-    var s = S[id], a = s.agenda;
+  /* ---------- vastleggen bij de lead en inplannen in de agenda ---------- */
+  function vastleggen(id) {
+    var s = S[id], st = s.st;
     var verloop = pad.filter(function (p) { return p.label; }).map(function (p) { return "- " + S[p.van].titel + ": " + p.label; }).join("\n");
     var veld = function (label, invoer) { return el("label", { class: "ag-veld" }, [el("span", { text: label }), invoer]); };
+    var beschrijving = el("textarea", { rows: "5" });
+    beschrijving.value = (st.bereikt ? "Contactpersoon: \n\n" : "") + (verloop ? "Gespreksverloop:\n" + verloop + "\n\n" : "") + "Notities: ";
     var bedrijf = el("input", { type: "text", placeholder: "Naam van het bedrijf" });
-    var titel = el("input", { type: "text", value: a.titel });
-    var datum = el("input", { type: "date", value: standaardDatum(a.over) });
-    var tijd = el("input", { type: "time", value: twee(a.uur) + ":00", step: "300" });
+    var d = B.standaardOpvolging(st);
+    var datum = el("input", { type: "date", value: d ? B.datumVeld(d) : "" });
+    var tijd = el("input", { type: "time", value: d ? B.tijdVeld(d) : "", step: "300" });
     var duur = el("select", {}, [5, 10, 15, 30, 45, 60].map(function (m) {
-      var o = el("option", { value: String(m), text: m + " min" }); if (m === a.duur) o.selected = true; return o;
+      var o = el("option", { value: String(m), text: m + " min" }); if (m === (st.duur || 10)) o.selected = true; return o;
     }));
-    var beschrijving = el("textarea", { rows: "6" });
-    beschrijving.value = "Uitkomst: " + s.uitkomst + "\nFase: " + s.fase + "\n\nContactpersoon: \nTelefoon: \n\nGespreksverloop:\n" + (verloop || "-") + "\n\nNotities: ";
     var melding = el("p", { class: "ag-melding" });
+    var naam = function () { return LEAD ? LEAD.naam : bedrijf.value.trim(); };
 
-    function gegevens() {
-      if (!datum.value || !tijd.value) { melding.textContent = "Vul een datum en tijd in."; return null; }
+    function opvolging() { return datum.value ? new Date(datum.value + "T" + (tijd.value || "10:00")) : null; }
+    function agendaGegevens() {
+      var start = opvolging();
+      if (!start) { melding.textContent = "Vul een datum in voor de volgende actie."; return null; }
       melding.textContent = "";
-      var b = bedrijf.value.trim();
-      var start = new Date(datum.value + "T" + tijd.value);
-      var eind = new Date(start.getTime() + parseInt(duur.value, 10) * 60000);
-      var t = titel.value.replace(/\s*\[bedrijf\]/g, b ? " " + b : "").replace(/\s+:/g, ":").trim();
-      return { titel: t, start: start, eind: eind, tekst: beschrijving.value.replace(/\[bedrijf\]/g, b) };
+      var tekst = st.naam + "\n\n" + beschrijving.value + (LEAD && LEAD.telefoon ? "\n\nTelefoon: " + LEAD.telefoon : "");
+      return { titel: ((st.titel || "Bellen") + " " + naam()).trim(), start: start, eind: new Date(start.getTime() + parseInt(duur.value, 10) * 60000), tekst: tekst };
     }
-    function google() {
-      var g = gegevens(); if (!g) return;
-      var url = "https://calendar.google.com/calendar/render?action=TEMPLATE" +
-        "&text=" + encodeURIComponent(g.titel) +
-        "&dates=" + utc(g.start) + "/" + utc(g.eind) +
-        "&details=" + encodeURIComponent(g.tekst) +
-        "&ctz=Europe/Amsterdam";
-      window.open(url, "_blank", "noopener");
-    }
-    function ics() {
-      var g = gegevens(); if (!g) return;
-      var regels = [
-        "BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Flii Media//Cold call script//NL", "CALSCALE:GREGORIAN", "METHOD:PUBLISH",
-        "BEGIN:VEVENT",
-        "UID:" + Date.now() + "-" + Math.random().toString(36).slice(2) + "@flii.app",
-        "DTSTAMP:" + utc(new Date()),
-        "DTSTART:" + utc(g.start), "DTEND:" + utc(g.eind),
-        "SUMMARY:" + icsTekst(g.titel),
-        "DESCRIPTION:" + icsTekst(g.tekst),
-        "BEGIN:VALARM", "TRIGGER:-PT10M", "ACTION:DISPLAY", "DESCRIPTION:" + icsTekst(g.titel), "END:VALARM",
-        "END:VEVENT", "END:VCALENDAR"
-      ];
-      var blob = new Blob([regels.map(function (r) { var uit = []; while (r.length > 73) { uit.push(r.slice(0, 73)); r = " " + r.slice(73); } uit.push(r); return uit.join("\r\n"); }).join("\r\n")], { type: "text/calendar;charset=utf-8" });
-      var link = el("a", { href: URL.createObjectURL(blob), download: (g.titel.replace(/[^\w\- ]+/g, "").trim() || "afspraak") + ".ics" });
-      document.body.appendChild(link); link.click();
-      setTimeout(function () { URL.revokeObjectURL(link.href); link.remove(); }, 1000);
-    }
+    var opslaan = el("button", { type: "button", class: "cb-optie cb-hoofd", text: "Opslaan bij lead", on: { click: function () {
+      if (!LEAD) { melding.textContent = "Kies bovenaan het bedrijf dat je belt."; zoek.focus(); return; }
+      opslaan.disabled = true;
+      var o = opvolging();
+      B.logGesprek({ lijst: LEAD.lijst, lead_id: LEAD.id, lead_naam: LEAD.naam, status: st.naam, bereikt: st.bereikt, fase: st.fase,
+        beschrijving: beschrijving.value, opvolging: o ? o.toISOString() : null })
+        .then(function (r) {
+          CALLS.unshift(r.call); tekenLead();
+          opslaan.textContent = "Opgeslagen"; opslaan.classList.add("cb-klaar");
+          melding.textContent = "";
+        })
+        .catch(function (e) { opslaan.disabled = false; if (e.message !== "login") melding.textContent = "Opslaan lukte niet. Probeer het opnieuw."; });
+    } } });
 
-    var formulier = el("div", { class: "ag-form", hidden: "" }, [
-      el("div", { class: "ag-rij" }, [veld("Bedrijf", bedrijf), veld("Titel", titel)]),
-      el("div", { class: "ag-rij ag-drie" }, [veld("Datum", datum), veld("Tijd", tijd), veld("Duur", duur)]),
-      veld("Beschrijving", beschrijving),
-      el("div", { class: "ag-knoppen" }, [
-        el("button", { type: "button", class: "cb-optie cb-hoofd", text: "Google Agenda", on: { click: google } }),
-        el("button", { type: "button", class: "cb-optie", text: "Outlook / Apple (.ics)", on: { click: ics } })
-      ]),
-      melding
-    ]);
-    var open = el("button", { type: "button", class: "ag-open", "aria-expanded": "false", on: { click: function () {
-      var dicht = formulier.hasAttribute("hidden");
-      if (dicht) formulier.removeAttribute("hidden"); else formulier.setAttribute("hidden", "");
-      open.setAttribute("aria-expanded", dicht ? "true" : "false");
-      if (dicht) bedrijf.focus({ preventScroll: true });
-      volg(400);
-    } } }, ["Inplannen in agenda"]);
-    open.insertAdjacentHTML("afterbegin", '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>');
-    return el("div", { class: "ag" }, [open, formulier]);
+    var delen = [];
+    if (!LEAD) delen.push(veld("Bedrijf", bedrijf));
+    delen.push(veld("Beschrijving", beschrijving));
+    if (st.opvolging != null) delen.push(el("div", { class: "ag-rij ag-drie" }, [veld(st.optioneel ? "Opnieuw proberen (optioneel)" : "Volgende actie", datum), veld("Tijd", tijd), veld("Duur", duur)]));
+    var knoppen = [opslaan];
+    if (st.opvolging != null) {
+      knoppen.push(el("button", { type: "button", class: "cb-optie", text: "Google Agenda", on: { click: function () { var a = agendaGegevens(); if (a) B.googleAgenda(a); } } }));
+      knoppen.push(el("button", { type: "button", class: "cb-optie", text: "Outlook / Apple (.ics)", on: { click: function () { var a = agendaGegevens(); if (a) B.icsBestand(a); } } }));
+    }
+    delen.push(el("div", { class: "ag-knoppen" }, knoppen));
+    delen.push(melding);
+    return el("div", { class: "ag" }, [el("p", { class: "ag-titel", text: "Vastleggen" }), el("div", { class: "ag-form" }, delen)]);
   }
 
   function markeer(id, aan) {
